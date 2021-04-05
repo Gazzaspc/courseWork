@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="CSS/myStyles.css" />
+
+  <title>Using Float:</title>
+
+  <style>
+    .divFL {
+      padding: 5px;
+      border: 2px solid black;
+      float: left;
+      margin: 5px;
+    }
+
+    .div80 {
+      width: 80%
+    }
+
+    .divMarg40 {
+      margin: 20px;
+      border: 2px solid black;
+    }
+
+    .divFR {
+      padding: 5px;
+      border: 2px solid black;
+      float: right;
+      margin: 5px;
+    }
+
+    .MargR {
+      margin-right: 10px;
+    }
+
+    .MargL {
+      margin-left: 10px;
+    }
+
+    #box1 {
+      height: 100px;
+      width: 100px;
+    }
+
+    #box2 {
+      height: 100px;
+      width: 50px;
+    }
+
+    #box3 {
+      height: 75px;
+      width: 40px;
+    }
+
+    #box4 {
+      height: 80px;
+      width: 100px;
+    }
+
+    #box5 {
+      height: 100px;
+      width: 100px;
+    }
+
+    #box6 {
+      height: 90px;
+      width: 100px;
+    }
+
+    #box7 {
+      height: 50px;
+      width: 45px;
+    }
+
+    .clearFloat {
+      clear: both;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <a href="index.html">Home</a>
+
+
+  <h1>Using the FLOAT:value property</h1>
+
+  <div class="divBorder div80">
+    <div class="divFL" id="box1">Box 1</div>
+    <div class="divFL" id="box2">Box 2</div>
+    <div class="divFL" id="box3">Box 3</div>
+    <div class="divFL" id="box4">Box 4</div>
+    <div class="divFL" id="box5">Box 5</div>
+    <div class="divFL" id="box6">Box 6</div>
+    <div class="divFL" id="box7">Box 7</div>
+
+    <p class="clearFloat">
+      And I will clear the float: property by using <br />
+      <b>clear:both;</b> </p>
+  </div>
+
+  <p>
+    Above is using <b>float:left;</b> and <br />
+    below is using <b>float:right;</b>
+  </p>
+
+
+  <div class="divBorder div80">
+    <div class="divFR" id="box1">Box 1</div>
+    <div class="divFR" id="box2">Box 2</div>
+    <div class="divFR" id="box3">Box 3</div>
+    <div class="divFR" id="box4">Box 4</div>
+    <div class="divFR" id="box5">Box 5</div>
+    <div class="divFR" id="box6">Box 6</div>
+    <div class="divFR" id="box7">Box 7</div>
+
+    <p class="clearFloat">
+      And I will clear the float: property by using <br />
+      <b>clear:both;</b> <br />
+    </p>
+  </div>
+
+  <p>
+    Let's try floating some text LEFT and RIGHT of an image
+  </p>
+
+  <div class="divBorder divFlex div80">
+    <div class="divMarg divBorder" style="width:40%">
+      <p>
+        <img class="MargL" src="Images/Top.png" alt="Picture of a Spinning Top" style="float:right;width:100px;height:100px; border:1px solid red;" />
+        Here is some text that I want to 'float' around the LEFT HAND side of the
+        spinning top picture. <br />
+        With any luck it will do just what I want it to do... <br />
+        ...Please, please, pretty please !
+      </p>
+    </div>
+
+    <div class="divMarg divBorder" style="width:40%">
+      <p>
+        <img class="MargR" src="Images/Top.png" alt="Picture of a Spinning Top" style="float:left;width:100px; height:100px; border:1px solid red;" />
+        Here is some text that I want to 'float' around the RIGHT HAND side of the
+        spinning top picture. <br />
+        With any luck it will do just what I want it to do... <br />
+        ...Please, please, pretty please !
+      </p>
+    </div>
+
+  </div>
+
+  <p class="clearFloat">
+    And I will clear the float: property by using <br />
+    <b>clear:both;</b> <br />
+  </p>
+
+
+  <p>
+    ...And now let's try floating some text AROUND an image (sort of)
+  </p>
+
+  <div class="divBorder divFlex div80">
+    <div class="divMarg divBorder" style="width:50%">
+      <div style="position:relative;">
+        <p>
+          <img class="MargL" src="Images/Top.png" alt="Picture of a Spinning Top" style="float:right;width:100px;height:100px;
+          border:1px solid red;position:relative;visibility:hidden;" />
+          <img class="MargL" src="Images/Top.png" alt="Picture of a Spinning Top" style="width:215px;height:100px;
+          border:1px solid red;position:absolute;
+            top:0px;
+            right: -115px;
+            transform: translate (-50%)" />
+          <!-- The value (RIGHT:-115px) has to allow for any margins that may be set -->
+
+          Here is some text that I want to 'float' around the LEFT HAND side of the
+          spinning top picture. <br />
+          With any luck it will do just what I want it to do... <br />
+          ...Please, please, pretty please !<br /> <br />
+          ***************** <br />
+          In order to accomplish this I had to :- <br /> <br />
+          create one image (half width of 3rd image) that FLOAT:RIGHT and put text to the left of it. <br /> <br />
+          then create a 2nd image (half width of 3rd image) with FLOAT:LEFT and put text to the right. <br /> <br />
+          then create a larger 3rd image that gets displayed OVER the top of the other two images
+          in order to cover them up and display it as one large image. <br /> <br /> <br /> <br /> <br /> <br />
+          Hopefully, looking at the code may make it easier???
+
+        </p>
+      </div>
+    </div>
+
+    <div class="divMarg divBorder" style="width:50%">
+      <p>
+        <img class="MargR" src="Images/Top.png" alt="Picture of a Spinning Top" style="float:left;width:100px;
+        height:100px; border:1px solid red;visibility:hidden;" />
+        Here is some text that I want to 'float' around the RIGHT HAND side of the
+        spinning top picture. <br />
+        With any luck it will do just what I want it to do... <br />
+        ...Please, please, pretty please !<br /> <br />
+        ***************** <br />
+        To do this I had to... <br />
+        create a main [div] to hold ALL my element as a DISPLAY:FLEX <br /> <br />
+        and set that to the width I wanted to display everything in. <br /> <br />
+        Then create a second [div] (set as POSITION:RELATIVE) to put the 1st image and text in. <br /> <br />
+        Then inside there I created a [p] to hold Images 1 and 3 and the text that displays on the right of the image. <br /> <br />
+        In there I put image 1 (set as POSITION:RELATIVE;) <br /> <br />
+        And also image 3 (set as POSITION:ABSOLUTE) - then I had to set the TOP and RIGHT & TRANSFORM
+        positioning values so it ended up displaying over the top of image 1. <br /> <br />
+        After that I created another [div] that would hold the 2nd image to FLOAT:LEFT
+        so the text would then stay to the right of it. <br /> <br />
+      </p>
+    </div>
+
+  </div>
+
+
+
+</body>
+
+</html>

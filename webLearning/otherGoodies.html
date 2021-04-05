@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Goodies Page</title>
+
+    <link rel="stylesheet" type="text/css" href="CSS/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/main.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/myStyles.css" />
+
+    <script src="Scripts/myScripts.js" text="text/javascript"></script>
+
+    <style>
+    </style>
+
+</head>
+
+<body class="bodyMove">
+
+    <section id="top">
+        <a href="index.html">Home</a> <br />
+
+    </section>
+    <h1>Goodies Page</h1>
+    <h2>Things with short explanations that I could not put elsewhere</h2>
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h2>Smooth Page Scrolling</h2>
+            <p>
+                When clicking on an ANCHOR tag (&lt;a&gt;) to move back to the top of the
+                page it would normally jump there instantaneously.<br /> <br />
+                But if you want to do it smoothly add in the &lt;head&gt; section (under the
+                &lt;style&gt; area) the following :- <br /> <br />
+                <b>
+                    html { <br />
+                    &nbsp;&nbsp;&nbsp;scroll-behavior: smooth; <br />
+                    }
+                </b> <br /> <br />
+                <i>I actually added it to my MyStyles.css form so it would make EVERY page scroll smoothly.</i>
+                <br /> <br /> <br />
+                <hr /> <br />
+                <h2>Using the &lt;a&gt; tag to go to the TOP of the page</h2>
+                To achieve this you can either:- <br /> <br />
+                <strong>&lt;a href="#Top"&gt;Top&lt;/a&gt;</strong> <br />
+                <em>
+                    but you will aso need an element at the top with the id="top" set, eg... <br />
+                    <strong>&lt;section id="top"&gt;</strong>
+                </em> <br /> <br />
+                OR <br />
+                You can just use the anchor tag like this... <br />
+                <strong>&lt;a href="#"&gt;Top&lt;/a&gt;</strong> <br />
+                and this will automatically take you to the top of your page. <br /> <br />
+
+            </p>
+        </div>
+
+        <div class="divBorder divBSet">
+            <h2>Labels inside Javascript</h2>
+            <p>
+                The label statement allows us to name loops and blocks in JavaScript. <br />
+                We can then use these labels to refer back to the code later.<br /> <br />
+                A label name is just a label name followed by a colon (:) <br />
+                <i>(Label names must not be a reserved word)</i> <br />
+                Eg... <br />
+                <b>myLabel:</b> is okay but <b>var:</b> is not okay<br /> <br />
+
+                It's not really used much but may be useful in NESTED LOOPS... <br />
+                Eg... <br />
+                <b>
+                    first: <br />
+                    for (var i = 0; i < 3; i++) { <br />
+                    &nbsp;&nbsp;&nbsp;second:
+                    &nbsp;&nbsp;&nbsp;for (var j = 0; j < 3; j++) { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (i == 1) continue first; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (j == 1) break second; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(`${i} & ${j}`); <br />
+                    &nbsp;&nbsp;&nbsp;} <br />
+                    }
+                </b> <br /> <br />
+                Which means if i is 1 then just go back to the first loop and continue on. <br />
+                and if j is 1 then stop running the second loop. <br />
+                It will automatically carry on running the first loop. <br />
+                <br />
+                The result will be - displaying the following values in the console.log :- <br />
+                <b>
+                    0 & 0 <br />
+                    2 & 0
+                </b> <br />
+            </p>
+        </div>
+    </div>
+    <a href="#top">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            
+        </div>
+
+    </div>
+
+    <a href="#">Top</a> <br />
+
+</body>
+
+</html>

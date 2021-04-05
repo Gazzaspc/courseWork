@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+  <title>Using transform:</title>
+
+  <style>
+    .divSize {
+      width: 300px;
+      margin: 20px;
+      padding: 10px;
+      outline: 5px solid red;
+    }
+
+    .divFloatL {
+      float: left;
+    }
+
+    img {
+      border: 2px solid blue;
+    }
+
+    #Tweety {
+      width: 150px;
+      height: 150px;
+    }
+
+    #Tweety:hover {
+      transform: scale(2, 2) translate(75px, -25px)
+    }
+
+    .TweetySz {
+      width: 150px;
+      height: 150px;
+    }
+
+    /* START ROTATE STYLES */
+    img#rotator {
+      -webkit-transition: all 1s ease-in-out;
+      -moz-transition: all 1s ease-in-out;
+      -o-transition: all 1s ease-in-out;
+      -ms-transition: all 1s ease-in-out;
+      transition: all 1s ease-in-out
+    }
+
+    /* Rotate it by spinning it around the centre */
+    img#rotator:hover {
+      -webkit-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+
+    img#rotatorY {
+      -webkit-transition: all 1s ease-in-out;
+      -moz-transition: all 1s ease-in-out;
+      -o-transition: all 1s ease-in-out;
+      -ms-transition: all 1s ease-in-out;
+      transition: all 1s ease-in-out
+    }
+
+    /* Rotate it by spinning it around the centre */
+    img#rotatorY:hover {
+      -webkit-transform: rotateY(360deg);
+      -moz-transform: rotateY(360deg);
+      -o-transform: rotateY(360deg);
+      -ms-transform: rotateY(360deg);
+      transform: rotateY(360deg);
+    }
+
+    img#rotatorX {
+      -webkit-transition: all 1s ease-in-out;
+      -moz-transition: all 1s ease-in-out;
+      -o-transition: all 1s ease-in-out;
+      -ms-transition: all 1s ease-in-out;
+      transition: all 1s ease-in-out
+    }
+
+    /* Rotate it by spinning it around the centre */
+    img#rotatorX:hover {
+      -webkit-transform: rotateX(360deg);
+      -moz-transform: rotateX(360deg);
+      -o-transform: rotateX(360deg);
+      -ms-transform: rotateX(360deg);
+      transform: rotateX(360deg);
+    }
+    /* END ROTATE STYLES */
+  </style>
+
+</head>
+
+<body>
+  <section id="Top">
+    <a href="index.html">Home</a>
+  </section>
+  <h1>Using the <b>transform: & transition: attributes</b></h1>
+  <h2>TRANSFORM to scale/skew/rotate & reposition elements</h2>
+  <h2>TRANSITION to spin elements</h2>
+  <p>
+    Transform can be used to manipulate objects to change their :- <br />
+    size eg <b>transform:scale(n, n);</b> <br />
+    rotation eg <b>transform:rotate(10deg);</b> <br />
+    skew eg <b>transform:skew(20deg);</b> <br />
+    reposition eg <b>transform:translate(20px, 30px);</b> <br />
+    perspective eg <b>transform:perspective(1000px);</b> <br /> <br />
+    NOTE... <br />
+    You do not have to have separate lines, you could say <br />
+    <b>transform:scale(1.5, 1.5) rotate(30deg) translate(20px, 20px)</b> <br /> <br />
+    Any adjustments leave the margin in its original position <br />
+    it only really moves the CONTENT around.
+  </p>
+  <div class="divBorder divSize">
+    <p>
+      Normal <br /> <br />
+    </p>
+    <img src="Images/WileHelp.jpeg" alt="Wile E Coyote" />
+  </div>
+
+  <div class="divBorder divSize">
+    <p>
+      transform:scale(1.5, 1.5); <br /> <br />
+    </p>
+    <img src="Images/WileHelp.jpeg" alt="Wile E Coyote" style="transform:scale(1.5, 1.5);" />
+  </div>
+
+  <div class="divFlex">
+    <div class="divBorder divSize">
+      <p>
+        transform:rotate305deg); <br /> <br />
+      </p>
+      <img src="Images/WileHelp.jpeg" alt="Wile E Coyote" style="transform:rotate(30deg);" />
+    </div>
+    <div class="divBorder divSize">
+      <p>
+        transform:rotate(-30deg); <br /> <br />
+      </p>
+      <img src="Images/WileHelp.jpeg" alt="Wile E Coyote" style="transform:rotate(-30deg);" />
+    </div>
+  </div>
+
+  <div class="divFlex">
+    <div class="divBorder divSize">
+      <p>
+        transform:translate(10px, 20px); <br /> <br />
+      </p>
+      <img src="Images/WileHelp.jpeg" alt="Wile E Coyote" style="transform:translate(10px, 20px);" />
+    </div>
+
+    <div class="divBorder divSize">
+      <p>
+        transform:translate(-10px, -20px); <br /> <br />
+      </p>
+      <img src="Images/WileHelp.jpeg" alt="Wile E Coyote" style="transform:translate(-10px, -20px);" />
+    </div>
+
+    <div class="divBorder divSize">
+      <p>
+        transform:translateX(-50%); <br />
+        (this moves 50% of the image size to the left)<br />
+      </p>
+      <img src="Images/WileHelp.jpeg" alt="Wile E Coyote" style="transform:translate(-50%);" />
+    </div>
+  </div>
+  <div class="divFlex">
+
+    <div class="divBorder divSize">
+      <p>
+        transform:skewX(10deg, 10deg); <br /> <br />
+      </p>
+      <img src="Images/WileHelp.jpeg" alt="Wile E Coyote" style="transform:skewX(10deg);" />
+    </div>
+
+    <div class="divBorder divSize">
+      <p>
+        transform:skewY(10deg); <br /> <br />
+      </p>
+      <img src="Images/WileHelp.jpeg" alt="Wile E Coyote" style="transform:skewY(10deg);" />
+    </div>
+
+    <div class="divBorder divSize">
+      <p>
+        transform:skew(10deg, 10deg); <br /> <br />
+      </p>
+      <img src="Images/WileHelp.jpeg" alt="Wile E Coyote" style="transform:skew(10deg, 10deg);" />
+    </div>
+  </div>
+
+  <div class="divBorder divSize">
+    <p>
+      Hover over the picture to see what happens <br />
+      - transform: scale(2, 2) translate(75px, -25px)<br />
+    </p>
+    <img src="Images/Tweety.png" alt="Tweety Pie" id="Tweety" />
+  </div>
+
+  <div class="divBorder divSize">
+    <p>
+      transform:scale(1.5, 1.5) rotate(30deg) translate(40px, 20px); <br /> <br />
+    </p>
+    <img src="Images/WileHelp.jpeg" alt="Wile E Coyote" style="transform:scale(1.5, 1.5) rotate(30deg) translate(40px, 20px);" />
+  </div>
+  <br /> <br /> <br />
+  <div class="divBorder divSize" style="width:400px;">
+    <p>
+      Changing the perspective can give it a 3D look... <br />
+      Left image = <br />
+      transform:perspective(750px)rotateY(65deg)scale(2.5, 1.5)translateX(50px); <br />
+      Right image = <br />
+      transform:perspective(1000px)rotateY(-65deg)scale(2.25, 1.25)translateX(50px); <br />
+    </p>
+    <img src="Images/Tweety.png" alt="Tweety Pie" class="TweetySz" style="transform:perspective(750px)rotateY(65deg)scale(2.5, 1.5)translateX(50px);" />
+    <img src="Images/Tweety.png" alt="Tweety Pie" class="TweetySz" style="transform:perspective(1000px)rotateY(-65deg)scale(2.25, 1.25)translateX(50px);" />
+  </div>
+
+  <div class="divBorder divSize">
+    <p>
+      transform:scale(1.5, 1.5) rotate(30deg) translate(40px, 20px); <br /> <br />
+    </p>
+    <img src="Images/WileHelp.jpeg" alt="Wile E Coyote" style="transform:scale(1.5, 1.5) rotate(30deg) translate(40px, 20px);" />
+  </div>
+  <br /> <br /> <br />
+  <h3>TRANSITION (spin elements)</h3>
+  <div class="divBorder divSize" style="width:550px;">
+    <p>
+      Hover over a picture to spin it <br />
+      It's easier to look at the code rather than me list it here <br />
+      1st = spin around centre <br />
+      2nd = spin around Y axis <br />
+      3rd = spin around X axis <br />
+      and it's best to use a .png so the background is still visible.</p>
+    <img src="Images/Tweety.png" alt="Tweety Pie" class="TweetySz" id="rotator" />
+    <img src="Images/Tweety.png" alt="Tweety Pie" id="rotatorY" class="TweetySz" />
+    <img src="Images/Tweety.png" alt="Tweety Pie" id="rotatorX" class="TweetySz" />
+  </div>
+
+  <br /> <br />
+  <a href="#Top">Top</a>
+</body>
+
+</html>

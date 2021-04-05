@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>nth-child example</title>
+
+  <style>
+    p:nth-child(even) {
+      background-color: yellow;
+    }
+
+    p:nth-child(3n+0) {
+      font-size: 2em;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="index.html">Home</a>
+  <h1>Using the <b>nth-child:(...)</b> selector</h1>
+  <div>
+
+    <p>
+      The nth-child(...) selector is used to set attributes for various occurencies of elements <br /> <br />
+      eg.
+      <b>nth-child(even)</b> will target the 2nd, 4th, 6th etc occurence of the element. <br />
+      <b>nth-child(odd)</b> will target the 1st, 3rd, 5th etc occurence of the element. <br />
+      <b>nth-child(4)</b> will target the 4th occurence of the element. <br />
+      <b>nth-child(3n+0)</b> will target every 3rd occurence of the element. Starting at line 0<br />
+      <b>nth-child(3n+4)</b> will target every 3rd occurence of the element. Starting at line 4<br /> <br /> <br />
+      It can be used with different elements, for example <br />
+      &lt;p&gt; <br />
+      &lt;div&gt; <br />
+      &lt;tr&gt; <br />
+      &lt;section&gt; <br /> <br /> <br />
+
+      For Example...in the <b>&lt;style&gt></b> section of your page you could say... <br />
+      <b>p:nth-child(even) {background-color:yellow;}</b> <br />
+      and every other paragraph &lt;p&gt; will have a yellow background. <br /> <br />
+      <b>p:nth-child(3n+0) {font-size:2em;}</b> <br />
+      and every 3rd paragraph &lt;p&gt; will have double-sized text. <br /> <br />
+      NOTE... <br />
+      I had to put a &lt;div&gt; &lt;/div&gt; around the paragraphs otherwise it targeted <br />
+      the wrong ones - or at least counted wrong for some reason.
+    </p>
+    <p>This is the second paragraph</p>
+    <p>This is the third paragraph</p>
+    <p>This is the fourth paragraph</p>
+    <p>This is the fifth paragraph</p>
+    <p>This is the sixth paragraph</p>
+    <p>This is the seventh paragraph</p>
+    <p>This is the eighth paragraph</p>
+    <p>This is the ninth paragraph</p>
+  </div>
+</body>
+
+</html>

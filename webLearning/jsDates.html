@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" href="CSS/normalize.css" />
+  <link rel="stylesheet" href="CSS/main.css" />
+  <link rel="stylesheet" href="CSS/myStyles.css" />
+
+  <title>Dates</title>
+
+  <style>
+    .looping {
+      color: red;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+
+  </style>
+
+  <script type="text/javascript">
+    function redMsg(param1, param2) {
+      document.getElementById(param1).innerHTML = param2;
+    }
+  </script>
+</head>
+
+<body class="bodyMove">
+  <section id="Top">
+    <a href="index.html">Home</a>
+    <h1>Date Manipulation</h1>
+    <p><b>NOTE...</b> <br />
+      var nowDate = Date(); <br />
+      var orgDate = now; <br />
+      …ANY changes you make to orgDate will ALSO be made to nowDate as
+       Date() is an object and therefore so will be nowDate and orgDate.  <br />
+       The two will be linked as objects come across byReference as opposed to byValue. <br />
+       <br />
+        var nowDate = new Date(); <br />
+        var orgDate = new Date(); <br />
+        <br />
+        will create two separate instances so they will NOT be linked.
+    </p>
+  </section>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <h3>Reading In Dates</h3>
+      <p>
+        To get TODAY's DATE <br />
+        <b>var now = new Date();</b> <br /> <br />
+        This will give the variable 'now' the following value <br />
+        <span id="now1" class="looping"></span> <br />
+      </p>
+      <script type="text/javascript">
+        var now = new Date();
+        redMsg("now1", now);
+      </script>
+      <p>
+        And then you can retrieve what you need in various ways...eg...
+        (using the above date & time) <br />
+        & see the answer below... <br /> <br />
+        <button class="button2" onclick="btnDisplay(
+            'getFullYear',
+            'now2')">get FullYear</button> <br /> <br />
+        <button class="button2" onclick="btnDisplay(
+            'getMonth',
+            'now2')">get Month</button> <i>(returns 0-11 so you must add 1 for 1-12)</i><br /> <br />
+        <button class="button2" onclick="btnDisplay(
+            'getDate',
+            'now2')">get Date</button> <br /> <br />
+        <button class="button2" onclick="btnDisplay(
+            'getHours',
+            'now2')">get Hours</button> <i>(24hr)</i><br /> <br />
+        <button class="button2" onclick="btnDisplay(
+            'getMinutes',
+            'now2')">get Minutes</button> <br /> <br />
+        <button class="button2" onclick="btnDisplay(
+            'getSeconds',
+            'now2')">get Seconds</button> <br /> <br />
+        <button class="button2" onclick="btnDisplay(
+            'getMilliseconds',
+            'now2')">get Milliseconds</button> <br /> <br />
+        <button class="button2" onclick="btnDisplay(
+            'getTime',
+            'now2')">get Time</button> <i>(returns No. milliseconds since Jan 1st, 1970)</i><br /> <br />
+        <button class="button2" onclick="btnDisplay(
+            'getDay',
+            'now2')">get Day</button> <i>(returns weekday as a number 0 (Sun) - 6 (Sat))</i><br /> <br />
+        <button class="button2" onclick="btnDisplay(
+            'toLocaleTimeString',
+            'now2')">get HH:MM:SS</button> <i>(returns HH:MM:SS am/pm)</i><br /> <br />
+        <button class="button2" onclick="btnDisplay(
+            'toLocaleDateString',
+            'now2')">get DD/MM/YYYY</button> <i>(returns DD/MM/YYYY)</i><br /> <br />
+        <button class="button2" onclick="btnDisplay(
+            'toLocaleString',
+            'now2')">get Date/Time</button> <i>(returns DD/MM/YYYY, HH:MM:SS am/pm)</i><br /> <br />
+
+        <span id="now2" class="looping"></span>
+      </p>
+      <script type="text/javascript">
+        function btnDisplay(param1, param2) {
+          var fa = "";
+          switch (param1) {
+            case "getFullYear":
+              fa = now.getFullYear();
+              break;
+            case "getMonth":
+              // this returns 0 - 11....so add 1 for  1 - 12
+              fa = (now.getMonth() + 1) + "  (1 has been added for this result)";
+              break;
+            case "getDate":
+              fa = now.getDate();
+              break;
+            case "getHours":
+              fa = now.getHours();
+              break;
+            case "getMinutes":
+              fa = now.getMinutes();
+              break;
+            case "getSeconds":
+              fa = now.getSeconds();
+              break;
+            case "getMilliseconds":
+              fa = now.getMilliseconds();
+              break;
+            case "getTime":
+              fa = now.getTime();
+              break;
+            case "getDay":
+              fa = now.getDay();
+              break;
+            case "toLocaleTimeString":
+              fa = now.toLocaleTimeString();
+              break;
+            case "toLocaleDateString":
+              fa = now.toLocaleDateString('en-GB');
+              break;
+            case "toLocaleString":
+              fa = now.toLocaleString('en-GB');
+              break;
+
+            default:
+              return;
+          }
+          if ((param1 == "toLocaleDateString") || (param1 == "toLocaleString")) {
+            fa = "now." + param1 + "('en-GB') = " + fa;
+            fa += " <br />Note...without 'en-GB' format is MM/DD/YYYY"
+          } else {
+            fa = "now." + param1 + "() = " + fa;
+          }
+
+          redMsg(param2, fa);
+          return;
+        }
+      </script>
+    </div>
+
+    <div class="divBorder divBSet">
+      <h3>Setting Dates</h3>
+      <p>
+        Where 'now' has the following value <br />
+        <span id="now3" class="looping"></span> <br />
+      </p>
+      <script type="text/javascript">
+        var now = new Date();
+        var keepDate = now.getTime();
+        // I need keepDate so I can reset the date back to my starting Date()
+        redMsg("now3", now);
+      </script>
+      <p>
+        Note...setting the date changes itself directly (will change variable 'now' <br />
+        so I created a new variable called 'd' and set that to be the same as 'now' <br />
+        (Note...I had to use the getTime() function of now and use that to create d...search for 'keepDate' in the code) <br />
+        then I can change the value of 'd' without losing the value of 'now') <br /> <br />
+        Click a button - results will be shown below <br />
+        <button class="button2" onclick="btnDisplayS(
+            'setFullYear',
+            'now4')">set FullYear</button>  <i>(sets year to be 2050)<br /> <br />
+        <button class="button2" onclick="btnDisplayS(
+            'setFullYearYMD',
+            'now4')">set DD/MM/YYYY</button>  <i>(sets date to be 19th June, 1957)<br /> <br />
+        <button class="button2" onclick="btnDisplayS(
+            'setMonth',
+            'now4')">set Month</button> <i>(Jan=0, Feb=1, Mar=2, Apr=3 etc...this sets it to 5(June))</i><br /> <br />
+        <button class="button2" onclick="btnDisplayS(
+            'setDate',
+            'now4')">set Date</button> <i>(sets date to be 7th)</i> <br /> <br />
+        <button class="button2" onclick="btnDisplayS(
+            'setHours',
+            'now4')">set Hours</button> <i>(sets to be 2pm (1400 hours))</i><br /> <br />
+        <button class="button2" onclick="btnDisplayS(
+            'setMinutes',
+            'now4')">set Minutes</button> <i>(sets to be 15 mins)</i> <br /> <br />
+        <button class="button2" onclick="btnDisplayS(
+            'setSeconds',
+            'now4')">set Seconds</button>  <i>(sets to be 25 seconds)</i> <br /> <br />
+        <button class="button2" onclick="btnDisplayS(
+            'addMinutes',
+            'now4')">Add minutes</button> <i>(this will add 75 minutes)</i> <br /> <br />
+        <button class="button2" onclick="btnDisplayS(
+            'addDate',
+            'now4')">add Days</button> <i>(this will add 28 days)</i><br /> <br />
+        <button class="button2" onclick="btnDisplayS(
+            'compDate',
+            'now4')">Compare</button> <i>(checks if today > 19th June, 1957)</i><br /> <br />
+
+
+        <span id="now4" class="looping"></span>
+      </p>
+      <script type="text/javascript">
+        function btnDisplayS(param1, param2) {
+          var fa = "";
+          // When I changed d it ALSO changed now & I do NOT want that to happen
+          // so set now back to keepDate afterwards
+          // var d = now;
+          var d = new Date(keepDate);
+          var dv = "";
+          switch (param1) {
+            case "setFullYear":
+              d.setFullYear(2050);
+              dv = "d.setFullYear(2050)";
+              break;
+            case "setFullYearYMD":
+              d.setFullYear(1957, 6, 19);
+              dv = "d.setFullYear(1957, 6, 19)";
+              break;
+            case "setMonth":
+              // this sets 0 - 11....so 0=Jan, 1=Feb, 2=Mar etc)
+              d.setMonth(5);
+              dv = "d.setMonth(5);"
+              break;
+            case "setDate":
+              d.setDate(7);
+              dv = "d.setDate(7);"
+              break;
+            case "setHours":
+              d.setHours(14);
+              dv = "d.setHours(14);"
+              break;
+            case "setMinutes":
+              d.setMinutes(15);
+              dv = "d.setMinutes(15);"
+              break;
+            case "setSeconds":
+              d.setSeconds(25);
+              dv = "d.setSeconds(25);"
+              break;
+            case "addMinutes":
+              d.setMinutes(d.getMinutes() + 75);
+              dv = "d.setMinutes(d.getMinutes() + 75);"
+              break;
+            case "addDate":
+              d.setDate(d.getDate() + 28);
+              dv = "d.setDate(d.getDate() + 28);"
+              break;
+            case "compDate":
+              var prevDate = new Date();
+              prevDate.setFullYear(1957, 6, 19);
+              dv = "var prevDate = new Date(); <br /> " +
+                "prevDate.setFullYear(1957, 6, 19); <br /> " +
+                "if (d > prevDate) { <br /> " +
+                  "   dv += \"19th June, 1957 is less than today \" <br /> " +
+                "} else { <br /> " +
+                  "   dv += \"19th June, 1957 is >= today \" <br /> " +
+                "} ";
+              if (d > prevDate) {
+                dv += "<br /> so **** 19th June, 1957 is less than today **** "
+              } else {
+                dv += "<br /> so **** 19th June, 1957 is >= today **** "
+              }
+              dv += " <br /> today is: "
+              break;
+
+            default:
+              return;
+          }
+          fa = dv + " = " + d;
+          redMsg(param2, fa);
+          // now = new Date(keepDate);
+          redMsg("now3", now);
+          return;
+        }
+      </script>
+    </div>
+
+  </div>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <h3>Calculate AGE from Date of Birth</h3>
+      <p>
+        We need to pass the function the Date of Birth then we can calculate it...<br />
+        <b>function calculateAge (birthDate) { <br />
+            &nbsp;&nbsp;&nbsp;birthDate = new Date(birthDate); <br />
+            &nbsp;&nbsp;&nbsp;todayDate = new Date(); <br />
+
+            &nbsp;&nbsp;&nbsp;var years = (todayDate.getFullYear() - birthDate.getFullYear()); <br />
+
+            &nbsp;&nbsp;&nbsp;if todayDate.getMonth() < birthDate.getMonth() ||  <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;todayDate.getMonth() == birthDate.getMonth() && todayDate.getDate() < birthDate.getDate()) { <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;years--; <br />
+            &nbsp;&nbsp;&nbsp;}
+
+            &nbsp;&nbsp;&nbsp;return years;
+          }</b> <br /> <br />
+        Calling this function will return an age in years (it allows for leap years). <br /> <br />
+        For testing I will pass the Date of Birth as "06/19/1957" (MM/DD/YYYY) to get back... <br />
+        <span id="BDay" class="looping"></span> <br />
+      </p>
+      <script type="text/javascript">
+          function calculateAge (birthDate) {
+            birthDate = new Date(birthDate);
+            todayDate = new Date();
+
+            var years = (todayDate.getFullYear() - birthDate.getFullYear());
+
+            if (todayDate.getMonth() < birthDate.getMonth() ||
+                todayDate.getMonth() == birthDate.getMonth() && todayDate.getDate() < birthDate.getDate()) {
+                years--;
+            }
+
+            return years;
+          }
+          redMsg("BDay", calculateAge("06/19/1957"));
+
+      </script>
+    </div>
+
+
+
+  </div>
+
+</body>
+
+</html>

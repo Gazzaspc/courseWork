@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>CSS Examples</title>
+
+  <!-- I should really have a separate file for the CSS styles but as it's a tutorial I won't -->
+  <!-- But if I did I would have to add in something like
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="css/MyStyles.css" />
+
+  It is normal to add all 3 links to stylesheets, the first two (narmalize.css & main.css)
+  can be google searched and downloaded as they are considered STANDARD stylesheets.
+  Then add your own one LAST to make sure it overrides the others
+   -->
+
+  <style>
+    .divBox {
+      border: 1px solid blue;
+      padding: 5px;
+      width: 50%;
+    }
+
+    .divSide {
+      background-color: #CCFFE5;
+    }
+
+    .divFlex {
+      display: flex;
+      margin-bottom: 10px;
+    }
+
+    #ItalBlue {
+      font-style: italics;
+      color: blue;
+    }
+  </style>
+
+</head>
+
+<body>
+  <section id="TopPage">
+
+
+    <a href="index.html">Home</a>
+    <h1>CSS Coding Examples</h1>
+    <ul>
+      <li>
+        <a href="#SepCSS">External CSS Style Sheet example</a>
+      </li>
+      <li>
+        <a href="#IntCSS">Internal Style Sheet Example</a>
+      </li>
+      <li>
+        <a href="#InlCSS">Inline Style Example</a>
+      </li>
+      <li>
+        <a href="#IntOrder">Ordering of styles</a>
+      </li>
+    </ul>
+  </section>
+  <section id="SepCSS">
+    <div class="divFlex">
+
+      <div class="divBox">
+        <h2>Using a separate EXTERNAL .css file</h2>
+        <p>
+          Usually it is best practice to create separate .css file(s) that holds the bulk (if not all) of your CSS coding. <br />
+          It's good practice to create a DIRECTORY (called CSS) for them in your working directory and then you have to <br />
+          link to it on EVERY WEB PAGE that will be using it... <br />
+          in the &lt;head&gt; section you have to add the &lt;link&gt; element<br />
+          <b>&nbsp;&nbsp;&lt;link rel="stylesheet" type="text/css" href="css/MyStyles.css"&gt;</b> <br /> <br />
+          Note...for example... <br />
+          D:/Websites/Dingbats - is where all your .html files are <br />
+          D:/Websites/Dingbats/Images - is where all your images go <br />
+          D:/Websites/Dingbats/CSS - is where all your CSS files go <br />
+          <br />
+          <br />
+          <br />
+          <b>Note...</b> <br />
+          You choose any filename.css that suits you...eg... MyStyles.css <br />
+          Class names can be whatever you want...eg...myclH1...Gary...abcde...but should really make sense <br />
+          ID's can also be whatever you want to call them. <br /> <br /> <br />
+          When you reference a <b> CLASS </b> it must start with a dot (.) <br />
+          When you reference an <b> ID </b> it must start with a hash (#) <br />
+          When you reference a <b> TAG </b> it must NOT start with a dot or # <br />
+          <br /> <br /> <br />
+          Use a CLASS when you want to consistently style multiple elements throughout the page/site. <br />
+          Classes are useful when you have, or possibly will have in the future, more than one element that shares the same style. <br />
+          <br />
+          Use the ID when you have a single element on the page that will take the style. <br />
+        </p>
+      </div>
+      <div class="divBox divSide">
+
+        <p>
+          <b>Example of what could be in a &nbsp;&nbsp;<i>MyStyles.css</i>&nbsp;&nbsp; file</b> <br /> <br />
+          /* Styles sheet */ <br />
+
+          .myclH1 { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:red; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-family: "Times New Roman", Times, serif; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br /> <br />
+          .myclH2 { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:blue; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-style: italic; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br />
+          <span id="ItalBlue">So in the HTML file you would have &lt;h1 class="myclH1"&gt;&nbsp;&nbsp;OR&nbsp;&nbsp;&lt;h2 class="myclH2"&gt;</span> <br /> <br /> <br />
+          #myIDH1 { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:red; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-family: "Times New Roman", Times, serif; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br /> <br />
+          #myclH2 { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:blue; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-style: italic; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br />
+          <span id="ItalBlue">So in the HTML file you would have &lt;h1 id="myIDH1"&gt;&nbsp;&nbsp;OR&nbsp;&nbsp;&lt;h2 id="myIDH2"&gt;</span> <br /> <br /> <br />
+          H1 { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:red; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-family: "Times New Roman", Times, serif; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br /> <br />
+          H2 { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:blue; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-style: italic; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br />
+          <span id="ItalBlue">So in the HTML file you would have &lt;h1&gt;&nbsp;&nbsp;OR&nbsp;&nbsp;&lt;h2&gt;</span> <br /> <br /> <br />
+
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="IntCSS">
+    <div class="divFlex">
+
+      <div class="divBox">
+        <h2>Using Internal Style .css coding</h2>
+        <p>
+          Usually it is best practice to create separate .css file(s) but sometimes it is necessary to
+          create a STYLE area at the top (in the &lt;head&gt; section) so you can add styling commands
+          just for use on this one web page.<br />
+          <br />
+          <br />
+          <br />
+          <b>Note...</b> <br />
+          Class names can be whatever you want...eg...myclH1...Gary...abcde...but should really make sense <br />
+          ID's can also be whatever you want to call them.<br /> <br /> <br />
+          When you reference a <b> CLASS </b> it must start with a dot (.) <br />
+          When you reference an <b> ID </b> it must start with a hash (#) <br />
+          When you reference a <b> TAG </b> it must NOT start with a dot or # <br />
+          <br /> <br /> <br />
+          Use a CLASS when you want to consistently style multiple elements throughout the page/site. <br />
+          Classes are useful when you have, or possibly will have in the future, more than one element that shares the same style. <br />
+          <br />
+          Use the ID when you have a single element on the page that will take the style. <br />
+        </p>
+      </div>
+      <div class="divBox divSide">
+
+        <p>
+          <b>Example of what could be in your STYLE area</b> <br /> <br />
+          <b>&lt;style&gt;</b> <br /> <br />
+          .myclH1 { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:red; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-family: "Times New Roman", Times, serif; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br /> <br />
+          .myclH2 { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:blue; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-style: italic; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br />
+          <span id="ItalBlue">So in the HTML file you would have &lt;h1 class="myclH1"&gt;&nbsp;&nbsp;OR&nbsp;&nbsp;&lt;h2 class="myclH2"&gt;</span> <br /> <br /> <br />
+          #myIDH1 { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:red; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-family: "Times New Roman", Times, serif; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br /> <br />
+          #myclH2 { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:blue; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-style: italic; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br />
+          <span id="ItalBlue">So in the HTML file you would have &lt;h1 id="myIDH1"&gt;&nbsp;&nbsp;OR&nbsp;&nbsp;&lt;h2 id="myIDH2"&gt;</span> <br /> <br /> <br />
+          H1 { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:red; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-family: "Times New Roman", Times, serif; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br /> <br />
+          H2 { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:blue; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-style: italic; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br />
+          <span id="ItalBlue">So in the HTML file you would have &lt;h1&gt;&nbsp;&nbsp;OR&nbsp;&nbsp;&lt;h2&gt;</span> <br /> <br />
+          <b>&lt;/style&gt;</b> <br />
+
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="InlCSS">
+    <div class="divFlex">
+
+      <div class="divBox">
+        <h2>Using Inline Style .css coding</h2>
+        <p>
+          Sometimes it is necessary to create a STYLE within the body of your web page code in order
+          to add styling commands for a specific TAG (element) on a web page. <br /> <br /> <br />
+        </p>
+      </div>
+      <div class="divBox divSide">
+
+        <p>
+          <b>Example of how you would create an inline style</b> <br /> <br />
+          &lt;H1 style="color: red; font-family: "Times New Roman", Times, serif;"&gt; <br />
+          &lt;H2 style="color: red; font-style: italic;"&gt;
+
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="IntOrder">
+    <div class="divFlex">
+
+      <div class="divBox">
+        <h2>The order of Internal Style .css coding or External sheets</h2>
+        <p>
+          When using CSS there is an order to how they are used <br />
+          External Sheets are picked up first <br />
+          Internal Styling on your .html file overrides that <br />
+          Inline styling added to your elements override both of the above <br /> <br />
+        </p>
+      </div>
+      <div class="divBox divSide">
+
+        <p>
+          *************************************** <br /> <br />
+
+          To have more than one tag or class or id use commas to separate <br />
+          <b>h1, h2, h3 {color: blue;} <br />
+            .myClass1, .myClass2, .myClass3 {color: blue;} <br />
+            #myID1, #myID2, #myID3 {color:blue;}</b> <br /> <br />
+
+          To mix them together <br />
+          <b>h1, #myID2, #myID3 {color:blue;}</b> <br /> <br />
+
+          If you only want, for example, to change the tag h1 but ONLY if it <br />
+          has a class called myClass2 associated with it. <br />
+          By this I mean in the .html file you may have <br />
+          <b>&lt;h1 class="myClass2"&gt;Header 1 text&lt;/h1&gt;</b> <br />
+          you can say <br />
+          <b>h1.myClass2 {color:blue;}</b> <br /> <br />
+
+          you could also use a comma to say, for example <br />
+          <b>h1.myClass2, h1.myClass3#myID2 {color:blue;}</b> <br />
+          which would mean it would change the color of ALL h1 tags with a class=myClass2 <br />
+          AND it would ALSO change ALL h1 tags that has a class=myClass3 AND an ID=myID2 <br />
+          <i>Although, to be honest, you should ONLY have 1 id on your page as <br />
+            they should be unique</i> <br /> <br />
+
+          you could also use a space to say, for example <br />
+          <b>div.myClass2 h1 {color:blue;}</b> <br />
+          which would mean it would change the color of ALL h1 tags that has a parent <br />
+          <b>&lt;div class=myClass2&gt;</b> <br />
+          eg <br />
+          <b>&lt;div class="myClass2"&gt; <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Some text&lt;/h1&gt; <br />
+            &lt;/div&gt;</b> <br /> <br />
+
+          you could also target the content of an attribute, for example <br />
+          <b>a[href="http://www.googgle.com"] {color:blue;}</b> <br />
+          which would mean it would change the color of all <a> tags that has a value <br />
+            of "http://www.google.com" in its href attribute. <br />
+            <b>&lt;a href="http://www.google.com"&gt;google search&lt;/a&gt;</b> <br /> <br />
+
+            **************************************** <br />
+
+        </p>
+      </div>
+    </div>
+  </section>
+  <a href="#TopPage">Top of Page</a>
+</body>
+
+</html>

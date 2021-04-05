@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Font Family</title>
+
+  <style>
+    div {
+      border: 1px solid;
+      margin: 10px;
+      padding: 10px;
+    }
+
+    .divFlex {
+      display: flex;
+    }
+
+    .divInl {
+      display: inline-block;
+    }
+
+    .backSide {
+      background-color: #CCFFE5;
+    }
+
+    .pressed {
+      font-size: 3em;
+      background-color: #666666;
+      -webkit-background-clip: text;
+      -moz-background-clip: text;
+      -background-clip: text;
+      color:transparent;
+      text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.7);
+    }
+
+  </style>
+
+</head>
+
+<body>
+  <section id="TopSection">
+
+    <a href="index.html">Home</a>
+    <h1>font-family examples of types used in STYLES</h1>
+    <p>
+      These are the most common types of &nbsp;&nbsp;font-family&nbsp;&nbsp; classifications in use:- <br />
+      <!-- <ul style="list-style-type: none;"> -->
+      <ul>
+        <li>
+          <a href="#typeMono">monospace</a>
+        </li>
+        <li>
+          <a href="#typeSans">sans-serif</a>
+        </li>
+        <li>
+          <a href="#typeSerif">serif</a>
+        </li>
+        <li>
+          <a href="#typeSpec">Specific Font</a>
+        </li>
+      </ul>
+    </p>
+    <Section id="typeMono">
+      <div class="divFlex">
+        <div class="divInl">
+          <p>
+            <b>To change the font to be a general MONOSPACE font (all chr's the same size), eg </b><br /> <br />
+            &nbsp;&nbsp;font-family:monospace; <br /> <br />
+            Note... <br />
+            Ideally you should specify more than one so if it does not find the first choice <br />
+            it will drop to the second. If it does not find the second it drops to the third <br />
+            and so on. <br />
+            Eg &nbsp;&nbsp;font-family:monospace, sans-serif, serif;
+          </p>
+        </div>
+        <div class="backSide divInl">
+          <p style="font-family:monospace;">
+            This is a general MONOSPACE font <br />
+            it makes all characters the same width.
+          </p>
+        </div>
+      </div>
+    </Section>
+
+    <Section id="typeSans">
+      <div class="divFlex">
+        <div class="divInl">
+          <p>
+            <b>To change the font to be a general SANS-SERIF font (basic style lettering), eg </b><br /> <br />
+            &nbsp;&nbsp;font-family:sans-serif; <br /> <br />
+            Note... <br />
+            Ideally you should specify more than one so if it does not find the first choice <br />
+            it will drop to the second. If it does not find the second it drops to the third <br />
+            and so on. <br />
+            Eg &nbsp;&nbsp;font-family:sans-serif, serif, monospace;
+          </p>
+        </div>
+        <div class="backSide divInl">
+          <p style="font-family:sans-serif;">
+            This is a general SANS-SERIF font <br />
+            it makes all characters a basic font.
+          </p>
+        </div>
+      </div>
+    </Section>
+
+    <Section id="typeSerif">
+      <div class="divFlex">
+        <div class="divInl">
+          <p>
+            <b>To change the font to be a general SERIF font (fancy style lettering), eg </b><br /> <br />
+            &nbsp;&nbsp;font-family:sans-serif; <br /> <br />
+            Note... <br />
+            Ideally you should specify more than one so if it does not find the first choice <br />
+            it will drop to the second. If it does not find the second it drops to the third <br />
+            and so on. <br />
+            Eg &nbsp;&nbsp;font-family:serif, sans-serif, monospace;
+          </p>
+        </div>
+        <div class="backSide divInl">
+          <p style="font-family:serif;">
+            This is a general SERIF font <br />
+            it makes all characters a fancy font.
+          </p>
+        </div>
+      </div>
+    </Section>
+
+    <Section id="typeSpec">
+      <div class="divFlex">
+        <div class="divInl">
+          <p>
+            <b>To change the font to be a Specific TYPE of font, eg </b><br /> <br />
+            &nbsp;&nbsp;font-family:"Comic Sans MS"; <br /> <br />
+            Note... <br />
+            Ideally you should specify more than one so if it does not find the first choice <br />
+            it will drop to the second. If it does not find the second it drops to the third <br />
+            and so on. <br />
+            Eg &nbsp;&nbsp;font-family:"Comic Sans MS", ariel, sans-serif, monospace; <br />
+            or &nbsp;&nbsp;style="font-family:'Comic Sans MS', ariel, sans-serif, monospace;" <br /> <br />
+            Note... <br />
+            You need speech marks (" ") (or single quotes ' ' if you can't use speech marks) <br />
+            around the font name if it has spaces in but not otherwise.
+          </p>
+        </div>
+        <div class="backSide divInl">
+          <p style="font-family:'Comic Sans MS', ariel, sans-serif, monospace;">
+            This is a SPECIFIC TYPE of font <br />
+            I specified COMIC SANS MS.
+          </p>
+        </div>
+      </div>
+    </Section>
+
+    <section>
+      <div>
+        <p class="pressed">
+          This is an example of PRESSED TEXT
+        </p>
+      </div>
+    </section>
+
+    <a href="#TopSection">Back to Top</a>
+
+  </section>
+
+</body>
+
+</html>

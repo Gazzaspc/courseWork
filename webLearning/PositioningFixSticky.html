@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Positioning Elements</title>
+
+  <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+  <style>
+    .colBrown {
+      color: brown;
+    }
+
+    .colBlue {
+      color: blue;
+    }
+
+    .colRed {
+      color: red;
+    }
+
+    .colGreen {
+      color: green;
+    }
+
+    .colOrange {
+      color: orange;
+    }
+
+    .box1 {
+      border: 2px solid black;
+      background-color: brown;
+      width: 150px;
+      height: 150px;
+      padding: 5px;
+    }
+
+    .box2 {
+      border: 2px solid black;
+      background-color: red;
+      width: 150px;
+      height: 150px;
+      padding: 5px;
+    }
+
+    .box3 {
+      border: 2px dotted black;
+      background-color: green;
+      width: 100px;
+      height: 100px;
+      padding: 5px;
+    }
+
+    .posStatic {
+      position: static;
+    }
+
+    .posRelative {
+      position: relative;
+    }
+
+    .posAbsolute {
+      position: absolute;
+    }
+
+    .posFixed {
+      position: fixed;
+    }
+
+    .posSticky {
+      position: sticky;
+    }
+
+    .pos2 {
+      left: 50%;
+      top: 50%;
+      /* Above will centre the top corner of your box or image on the web page */
+      transform: translate(-50%, -50%);
+      /* above will move your box or image by half the width and
+      half the height to centre the middle of the image */
+    }
+
+    .pos3 {
+      left: 20px;
+      top: 60px;
+    }
+
+    .posParent {
+      right: 30px;
+      top: 30px;
+    }
+
+    .pos2Main {
+      left: 50px;
+      top: 20px;
+      margin-left: 30px;
+    }
+
+    .pos2St {
+      left: 25px;
+      top: 5px;
+    }
+
+    .divMargin1 {
+      margin: 10px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <a href="index.html">Home</a>
+  <section id="PageTop">
+    <h1>Positioning Elements</h1>
+    <p>
+      There are FIVE main types of POSTION values :- <br /> <br />
+      <b class="colBrown">STATIC</b> / <b class="colBlue">RELATIVE</b> / <b class="colRed">ABSOLUTE</b> /
+      <b class="colGreen">FIXED</b> / <b class="colOrange">STICKY</b> <br /> <br />
+      <b class="colBrown">position:static;</b> &nbsp;&nbsp;Default value. Elements render in order, as they appear in the document flow. <br /> <br />
+      <b class="colBlue">position:relative;</b> &nbsp;&nbsp; The element is positioned relative to its normal position, <br />
+      so "left:20px" adds 20 pixels to the element's LEFT position - its effect is to move the element to the Right <br />
+      and "top:20px" adds 20 pixels to its top position - its effect is to move the element Down. <br />
+      This can result in elements that overlap in which case you have to use the <b>z-index</b> property in <br />
+      order to decide which element is displayed on top of the other element(s). <br />
+      <i>Highest z-index property value is placed on top</i> <br /> <br />
+      <b class="colRed">position:absolute;</b> &nbsp;&nbsp;The element is positioned relative to its FIRST positioned (not static) parent/ancestor element. <br /> <br />
+      <b class="colGreen">position:fixed;</b> &nbsp;&nbsp; The element is positioned relative to the browser window. <br /> <br />
+      <b class="colOrange">position:sticky;</b> &nbsp;&nbsp; The element is positioned based on the user's scroll position <br />
+      A sticky element toggles between relative and fixed, depending on the scroll position. <br />
+      It is positioned relative until a given offset position is met in the viewport - then it "sticks" in <br />
+      place (like position:fixed).
+    </p>
+    <p>
+      Note: <br />
+      position: ...; on it's own doesn't do anything. It needs to be used with, eg... <br />
+      left: 10px; / top: 10px; / right: 10px / bottom: 10px; <br />
+      <i>but not left: AND right ... or top: AND bottom: <br />
+        as it can't move from the left AND the right at the same time (or Top & bottom) </i>
+
+
+    </p>
+  </section>
+
+  <section id="Sticky">
+    <div class="divFlex divBorder">
+
+      <div class="divMargin1 divBorder">
+        <h2>default <span class="colBlue">STICKY</span> <br />
+          elements</h2>
+
+        <div class="box1 posSticky">1a. On its own, using no<br />
+          left:; <br />
+          top:;</div>
+        <div class="box2 posSticky">
+          1b. Parent, using no<br />
+          left:; <br />
+          top:;
+          <div class="box3 posSticky">1c. Child</div>
+        </div>
+      </div>
+
+
+      <div class="divMargin1 divBorder">
+        <h2>using positioning elements</h2>
+        <p>
+          boxes 2a and 2b & 2c represent <br />
+          Box 2a to centre of screen. <br />
+          Box 2b near to top right <br />
+          - box 2b is parent of 2c <br />
+          Box 2c (child) is set as <br />
+          position: absolute; to keep its <br />
+          anchor point same as its parent (2b)
+        </p>
+
+        <div class="box1 pos2Main posSticky">2a. On its own, using<br />
+          left:50px; <br />
+          top:20px; <br />
+          margin:30px; </div>
+        <div class="box2 pos2St posSticky">
+          2b. Parent, using <br />
+          right:25px; <br />
+          top:5px;
+          <div class="box3 pos3 posAbsolute">2c. Child, using <br />
+            left:20px; <br />
+            top:60px;
+          </div>
+        </div>
+        <p>
+          NOTE... <br />
+          The TOP:value when used with a STICKY position: <br />
+          means that when the user SCROLLS down <br />
+          the STICKY element will be fixed in position at <br />
+          the value that was set. Eg if <b>top: 20px;</b> was used <br />
+          then the element will stay on screen at 20px from the <br />
+          top and not disappear from view. <br />
+          It does this as long as it's PARENT element is on screen.
+
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="Fixed">
+    <div class="divFlex divBorder">
+
+      <div class="divMargin1 divBorder">
+        <h2>default <span class="colBlue">FIXED</span> <br />
+          elements</h2>
+        <p>
+          NOTE <br />
+          There are no FIXED boxes displayed <br />
+          for 1a / 1b or 1c as no <br />
+          Left/Right/Top or BOTTOM <br />
+          positioning was set.
+        </p>
+
+        <div class="box1 posFixed">1a. On its own, using no<br />
+          left:; <br />
+          top:;</div>
+        <div class="box2 posFixed">
+          1b. Parent, using no<br />
+          left:; <br />
+          top:;
+          <div class="box3 posFixed">1c. Child</div>
+        </div>
+      </div>
+
+      <div class="divMargin1 divBorder">
+        <h2>using positioning <br />
+          elements</h2>
+        <p>
+          boxes 3a and 3b & 3c represent <br />
+          Box 3a to centre of screen. <br />
+          Box 3b near to top right <br />
+          - box 3b is parent of 3c <br />
+          Box 3c (child) is set as <br />
+          position: absolute; to keep its <br />
+          anchor point same as its parent (3b)
+        </p>
+
+        <div class="box1 pos2 posFixed">3a. FIXED <br />
+          On its own, using<br />
+          left:50%; <br />
+          top:50%; <br />
+          Also used transform: </div>
+        <div class="box2 posParent posFixed">
+          3b. FIXED <br />
+          Parent, using <br />
+          right:30px; <br />
+          top:30px;
+          <div class="box3 pos3 posAbsolute">3c. ABSOLUTE <br />
+            Child, using <br />
+            left:20px; <br />
+            top:60px;
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section>
+    <p>
+      I just need a FILLER section to <br />
+      add extra to the bottom of the page <br />
+      so I can SCROLL down to see <br />
+      what happens with my boxes <br />
+      . <br />
+      . <br />
+      . <br />
+      . <br />
+      . <br />
+      . <br />
+      . <br />
+      . <br />
+      . <br />
+      . <br />
+      And I also think I need a really long line of text here to enable the bottom scroll bar (horizontal) to actually work then I can see what happens then.
+    </p>
+  </section>
+
+</body>
+
+</html>

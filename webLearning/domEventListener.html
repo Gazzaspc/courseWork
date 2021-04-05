@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Event Listeners</title>
+
+  <link rel="stylesheet" href="CSS/normalize.css" />
+  <link rel="stylesheet" href="CSS/main.css" />
+  <link rel="stylesheet" href="CSS/myStyles.css" />
+
+  <style>
+    h3 {
+      color: red;
+    }
+
+    #emu1Over {
+      visibility: hidden;
+      position: absolute;
+      z-index: 10;
+    }
+
+    #emu2Over {
+      visibility: hidden;
+      position: absolute;
+      z-index: 10;
+    }
+
+    /* ******** Used with Dragging Events - to show where to drop ******* */
+    .droptarget {
+      float: left;
+      width: 100px;
+      height: 35px;
+      margin: 15px;
+      margin-right: 100px;
+      padding: 10px;
+      border: 1px solid #aaaaaa;
+    }
+
+
+    /* body {background-color:white;}
+    .divBSet {background-color: white;} */
+  </style>
+
+  <script type="text/javascript">
+    function toDisplay(param1, param2) {
+      document.getElementById(param1).innerHTML = param2;
+      return;
+    }
+  </script>
+</head>
+
+<body class="bodyMove">
+  <section id="top">
+    <a href="index.html">Home</a>
+    <h1>Event Listeners</h1>
+
+  </section>
+  <p>
+    Event listeners are used to control the behaviour of the web page and
+    its interactivity with the user. <br /> <br />
+    <ul>
+      <li>You do not cause the events, they are occurring all the time</li>
+      <li>You choose which event that you want to respond to</li>
+      <li>You write an event listener to handle particular events and respond
+        the way that you would like</li>
+    </ul>
+    <br />
+
+  </p>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <h2 id="myH1">Some ways to use an ONCLICK event</h2>
+      <p>
+        There are a few ways you can respond to user actions... <br /> <br />
+        Create a button to click on - which runs a function (myFunction) <br>
+        <b>&lt;button class="button2" onclick="myFunction( <br />
+          &nbsp;&nbsp;&nbsp;'IDName', <br />
+          &nbsp;&nbsp;&nbsp;'My Text Here' <br />
+          )"&gt;Try Me&lt;/button&gt; </b><br /> <br />
+
+        If you want something to happen when a user, for example, clicks on the &lt;h3&gt; element <br />
+        <b>&lt;h3 id="myH3" onclick="this.innerHTML='I clicked it!' "&gt;Original text here
+          &lt;/h3&gt;</b> <br /> <br />
+
+        Or you could even say <br />
+        <b>document.getElementById("myH3").onclick = function() {this.innerHTML="It's clicked"}</b> <br />
+      </p>
+      <h3 id="myH3">This is a test [H3] so click me!</h3>
+      <br />
+
+    </div>
+
+    <div class="divBorder divBSet">
+      <h2>but some say the addEventListener option is the way to go</h2>
+      <p>
+        So you could ... <br />
+        <b>document.getElementById(
+          &nbsp;&nbsp;&nbsp;"myH3a").addEventListener( <br />
+          &nbsp;&nbsp;&nbsp;"click", function() {myFunc1(this)});</b>
+      </p>
+      <h3 id="myH3a">Click me for addEventListener use!</h3>
+      <p>
+        The above uses an anonymous function which calls my actual NAMED function (myFunc1)
+        and then passes to MyFunc1 a parameter that represents this actual element (this). <br />
+        In myFunc1 I will then know the actual element that I clicked on. <br />
+        <i>Remember that <b>this.</b> is used in javascript to represent the current item</i> <br /> <br />
+        You cannot normally pass parameters to functions with addEventListener unless you specify a
+        function within an anonymous function.... <br />
+        &nbsp;&nbsp;&nbsp;function() {...} is an anonymous function <br /> <br />
+
+      </p>
+    </div>
+  </div>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <h2>Some other addEventListener options</h2>
+      <p>
+        So you could use an anonymous function ... <br />
+        <b>document.getElementById(
+          &nbsp;&nbsp;&nbsp;"myH3a").addEventListener( <br />
+          &nbsp;&nbsp;&nbsp;"click", function() {...add some code...});</b> <br /> <br />
+
+        Or use a Named function ...<br /> <br />
+        <b>document.getElementById(
+          &nbsp;&nbsp;&nbsp;"myH3a").addEventListener( <br />
+          &nbsp;&nbsp;&nbsp;"click", myFunction);</b> <br />
+        <i>Note there are no () next to myFunction as you cannot pass parameters
+          this way so it does not like them here</i><br /> <br />
+
+        If you need to pass parameters to your function see the second box (but some
+        say the addEventListener option is the way to go) <br />
+      </p>
+
+    </div>
+
+
+  </div>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <h2>Some other addEventListener events</h2>
+      <p>
+        <a href="https://www.w3schools.com/jsref/dom_obj_event.asp" target="_blank">Click Here</a> for a list of events <br /> <br />
+        Some are listed here, there are more of course... <br />
+        ...eventListener event names are before the / and events to use in the element are after. <br /><br />
+        <a href="https://www.w3schools.com/jsref/event_onmousemove.asp" target="_blank">mousemove/onmousemove</a> <br />
+        <a href="https://www.w3schools.com/jsref/event_onmouseover.asp" target="_blank">mouseover/onmouseover</a> <br />
+        <a href="https://www.w3schools.com/jsref/event_onmouseenter.asp" target="_blank">mouseenter/onmouseenter</a> <br />
+        <a href="https://www.w3schools.com/jsref/event_onmouseleave.asp" target="_blank">mouseleave/onmouseleave</a> <br />
+        <a href="https://www.w3schools.com/jsref/event_onmousedown.asp" target="_blank">mousedown/onmousedown</a> <br />
+        <a href="https://www.w3schools.com/jsref/event_onmouseup.asp" target="_blank">mouseup/onmouseup</a> <br /> <br />
+
+        <a href="https://www.w3schools.com/jsref/event_onchange.asp" target="_blank">change/onchange</a>
+        (Activates upon a change to a &lt;select&gt; element)<br /> <br />
+
+        <a href="https://www.w3schools.com/jsref/event_ondrag.asp" target="_blank">drag/ondrag</a>
+          --- click <a href="https://www.w3schools.com/html/html5_draganddrop.asp"
+          target="_blank">here</a> for an overview of drag/drop <br />
+        <a href="https://www.w3schools.com/jsref/event_ondragend.asp" target="_blank">dragend/ondragend</a> <br />
+        <a href="https://www.w3schools.com/jsref/event_ondragenter.asp" target="_blank">dragenter/ondragenter</a> <br />
+        <a href="https://www.w3schools.com/jsref/event_ondragleave.asp" target="_blank">dragleave/ondragleave</a> <br />
+        <a href="https://www.w3schools.com/jsref/event_ondragover.asp" target="_blank">dragover/ondragover</a> <br />
+        <a href="https://www.w3schools.com/jsref/event_ondragstart.asp" target="_blank">dragstart/ondragstart</a> <br />
+        <a href="https://www.w3schools.com/jsref/event_ondrop.asp" target="_blank">drop/onddop</a> <br />
+        <i>Note...form jqEvents.html (DOM Event Listeners) use Drag/Drop so you could look there as well</i><br /> <br />
+
+        <a href="https://www.w3schools.com/jsref/event_onkeydown.asp" target="_blank">keydown/onkeydown</a> <br />
+        <a href="https://www.w3schools.com/jsref/event_onkeypress.asp" target="_blank">keypress/onkeypress</a> <br />
+        <a href="https://www.w3schools.com/jsref/event_onkeyup.asp" target="_blank">keyup/onkeyup</a> <br /> <br />
+
+        <a href="https://www.w3schools.com/jsref/event_oncopy.asp" target="_blank">copy/oncopy</a> <br />
+        <a href="https://www.w3schools.com/jsref/event_oncut.asp" target="_blank">cut/oncut</a> <br />
+        <a href="https://www.w3schools.com/jsref/event_onclick.asp" target="_blank">click/onclick</a> <br />
+        <a href="https://www.w3schools.com/jsref/event_ondblclick.asp" target="_blank">dblclick/ondblclick</a> <br /> <br />
+
+        <a href="https://www.w3schools.com/jsref/event_onfocus.asp" target="_blank">focus/onfocus</a> <br />
+        <a href="https://www.w3schools.com/tags/ev_onblur.asp" target="_blank">blur/onblur</a> (occurs when element loses focus)<br /> <br />
+
+      </p>
+    </div>
+
+    <div class="divBorder divBSet" style="position:relative;">
+      <h2 id="myH2">Some examples <span id="mouseMess"></span></h2>
+      <p>
+        <b><span id="mOver">Mouseover</span> & <span id="mLeave">Mouseleave</span> </b><br />
+        Move the mouse over the image <br />
+        <img id="emu1" onmouseover="mouseOver('emu1Over', 'emu1')" onmouseleave="mouseLeave('emu1Over')" src="Images/EmuSmall.jpg" alt="Emu picture" width="100" height="100" />
+        <br />
+        <span id="emu1Over">
+          <img src="Images/EmuSmall.jpg" alt="Emu picture" width="200" height="200" /> <br />
+        </span>
+        Above uses <br />
+        <b>onmouseover="mouseOver('emu1Over')" onmouseleave="mouseLeave('emu1Over')" </b><br />
+        which calls my functions mouseOver and mouseLeave to make the picture appear/disappear <br /> <br />
+
+        Below uses the eventListener to do the same thing<br />
+        <b>&lt;<i>object.</i>addEventListener("mouseover", function() {
+          mouseOver("emu2Over", "emu2"))&gt; </b><br />
+        <b>&lt;<i>object.</i>addEventListener("mouseleave", function() {
+          mouseLeave("emu2Over"))&gt; </b><br />
+        <img id="emu2" src="Images/EmuSmall.jpg" alt="Emu picture" width="100" height="100" />
+        <br />
+        <span id="emu2Over">
+          <img src="Images/EmuSmall.jpg" alt="Emu picture" width="200" height="200" /> <br />
+        </span>
+      </p>
+    </div>
+  </div>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <h2 id="myH2">onchange/change event example</h2>
+      <p>
+        The onchange/change event happens when the user selects an option from a &lt;select&gt; element. <br />
+        eg... <br />
+        <b>&lt;select onchange="myFunction()"&gt;</b> <br /> <br />
+        Here's a [select] box (or Drop Down Box as I know it), make a change to see what happens <br />
+        Note...the onchange only activates if it changes from one value to another, different value. <br /><br />
+        Select One:
+        <select id="onChange" onchange="myChange('onChange', 'changeMess')">
+          <option value="Audi">Audi</option>
+          <option value="BMW">BMW</option>
+          <!-- //Use 'selected' to create a default start value -->
+          <option value="Mercedes" selected>Mercedes</option>
+          <option value="Volvo">Volvo Car</option>
+          <option value="VolvoT">Volvo Truck</option>
+        </select> <br /> <br />
+        <span id="changeMess" class="redResult"></span> <br /> <br />
+        <!-- It may be better to make the value = a number so you can easily check it??? -->
+
+        Select One:
+        <select id="onChange2" onchange="myChange('onChange2', 'changeMess')">
+          <option value="" selected disabled>Please Select</option>
+          <option value="Audi">Audi</option>
+          <option value="BMW">BMW</option>
+          <!-- //Use 'selected' to create a default start value -->
+          <option value="Mercedes">Mercedes</option>
+          <option value="Volvo">Volvo Car</option>
+          <option value="VolvoT">Volvo Truck</option>
+        </select> <br /> <br />
+    </div>
+
+    <div class="divBorder divBSet">
+      <h2 id="myH2">Dragging event example</h2>
+      <p>
+        Drag the p element ("Drag Me!") back and forth between the two rectangles:</p>
+
+      <div class="droptarget" ondrop="drop(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)" ondragover="allowDrop(event)">
+        <p ondragstart="dragStart(event)" draggable="true" id="dragtarget">Drag me!</p>
+      </div>
+
+      <div class="droptarget" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+      <p style="clear:both;"><strong>Note:</strong> drag events are not supported in Internet Explorer 8 and earlier versions or Safari 5.1 and earlier versions.</p>
+
+      <p id="demo">
+      </p>
+    </div>
+  </div>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <h2 id="myH2">onfocus/focus & onblur/blur event example</h2>
+      <p>
+        The onfocus event happens when the gets focus and onblur happens when it loses focus. <br />
+        eg... <br />
+        <b>&lt;select onfocus="myFunctionGet()" onblur="myFunctionLose()"&gt;</b> <br /> <br />
+        Click in the box to set focus then click the button to lose focus on the box. <br /><br />
+        <input id="focusBox" type="text" value="Click here " onfocus="funcFocus('focusMess', 'focusBox')" onblur="funcFocusL('focusMess', 'focusBox')" />
+        <button id="focusBtn" class="button2">Change Focus</button> <br /> <br />
+
+        <span id="focusMess" class="redResult"></span> <br /> <br />
+
+    </div>
+
+  </div>
+  <a href="#top">Top</a>
+
+  <script type="text/javascript">
+
+    function funcFocus(p1, p2) {
+      document.getElementById(p1).innerHTML = "Your input box just GOT FOCUS!";
+      document.getElementById(p2).style.backgroundColor = "yellow";
+    }
+
+    function funcFocusL(p1, p2) {
+      document.getElementById(p1).innerHTML = "Your input box has LOST FOCUS!";
+      document.getElementById(p2).style.backgroundColor = "white";
+    }
+
+    function myChange(p1, p2) {
+      var myChg = document.getElementById(p1);
+      document.getElementById(p2).innerHTML = "Your selection was: " + myChg.value;
+    };
+
+
+    function mouseOver(param1, param2) {
+      var myImg = document.getElementById(param1);
+      var myImgOrig = document.getElementById(param2);
+
+      //get left setting of original image
+      var x = myImgOrig.offsetLeft;
+      //get width of original image
+      var y = myImgOrig.offsetWidth;
+      //calculate starting LEFT position of new image
+      myImg.style.left = (0 - (y * 2)) + "px";
+
+      //now calculate the starting TOP postion of new image relative to original
+      var x = myImgOrig.offsetTop;
+      var y = myImgOrig.offsetHeight;
+      myImg.style.top = (x - y) + "px";
+
+      myImg.style.position = "absolute";
+      myImg.style.visibility = "visible";
+
+      //Show message
+      myImgOrig = document.getElementById("mOver");
+      myImgOrig.style.color = "red";
+      myImgOrig = document.getElementById("mLeave");
+      myImgOrig.style.color = "black";
+
+    };
+
+    function mouseLeave(param1) {
+      var myImg = document.getElementById(param1);
+      myImg.style.visibility = "hidden";
+
+      //Show message
+      myImgOrig = document.getElementById("mLeave");
+      myImgOrig.style.color = "red";
+      myImgOrig = document.getElementById("mOver");
+      myImgOrig.style.color = "black";
+
+    };
+
+    document.getElementById(
+      "emu2").addEventListener(
+      "mouseover",
+      function() {
+        mouseOver("emu2Over", "emu2")
+      }
+    );
+    document.getElementById(
+      "emu2").addEventListener(
+      "mouseleave",
+      function() {
+        mouseLeave("emu2Over")
+      }
+    );
+
+    document.getElementById("myH3").onclick = function() {
+      this.innerHTML = "It's clicked"
+    };
+
+    function myFunc1(param1) {
+      param1.innerHTML = "I used an eventListener click";
+    }
+
+    document.getElementById(
+      "myH3a").addEventListener(
+      "click",
+      function() {
+        myFunc1(this)
+      }
+    );
+
+    // <!-- ************* Dragging Events Below************ -->
+    function dragStart(event) {
+      event.dataTransfer.setData("Text", event.target.id);
+    }
+    // <!-- event.target.id is the id of the element being dragged ( in this case it's = "dragtarget") -->
+    // <!-- and it SETS the element that is being dragged -->
+
+    function dragEnter(event) {
+      if (event.target.className == "droptarget") {
+        document.getElementById("demo").innerHTML = "Entered the dropzone";
+        event.target.style.border = "3px dotted red";
+      }
+    }
+
+    function dragLeave(event) {
+      if (event.target.className == "droptarget") {
+        document.getElementById("demo").innerHTML = "Left the dropzone";
+        event.target.style.border = "";
+      }
+    }
+
+      // <!-- Use preventDefault() to override any other default settings that may hinder the drag/drop. -->
+      // <!-- A note from someone... -->
+      // <!-- "You must cancel the default action for ondragenter and ondragover in order for ondrop to fire.  -->
+      // <!-- In the case of a div, the default action is not to drop. This can be contrasted with the  -->
+      // <!-- case of an input type=text element, where the default action is to drop. In order to  -->
+      // <!-- allow a drag-and-drop action on a div, you must cancel the default action". -->
+    function allowDrop(event) {
+      event.preventDefault();
+    }
+
+    function drop(event) {
+      event.preventDefault();
+      <!-- Now to GET the element being dragged (we SET it earlier) -->
+      var data = event.dataTransfer.getData("Text");
+      <!-- And we are APPENDING the dragged 'data' to the target [div] -->
+      event.target.appendChild(document.getElementById(data));
+      <!-- Reset the [div] border to normal as the drop(event) relates to the [div] not the [p] like the 'dragend' would have done. -->
+      event.target.style.border = "";
+      document.getElementById("demo").innerHTML = "Completed a drop";
+    }
+    // <!-- ************* Dragging Events Above************ -->
+  </script>
+
+</body>
+
+</html>

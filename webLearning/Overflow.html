@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Text Overflow</title>
+
+  <link rel="stylesheet" href="CSS/normalize.css" />
+  <link rel="stylesheet" href="CSS/main.css" />
+  <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+  <style>
+    body {
+      margin: 20px;
+    }
+
+    #Div1 {
+      width: 50%;
+      min-width: 380px;
+    }
+
+    .myBorder1,
+    .myBorder2 {
+      border: 5px solid yellow;
+      margin: 40px 20px 20px 20px;
+    }
+
+    .myBorder1 {
+      background-color: #FFB266;
+    }
+
+    .myBorder2 {
+      background-color: #FFCC99;
+    }
+
+    .myDemo1 {
+      width: auto;
+      height: 150px;
+    }
+
+    .myDemo2 {
+      width: auto;
+      height: 150px;
+    }
+
+    p {
+      margin: 5px 5px 0 5px;
+      padding: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+  </nav>
+
+  <section>
+    <h1>Demo of Text Overflow</h1>
+    <p>There are a few setting that can be used to control the text overflow :- <br /> <br />
+      <b>overflow:visible;</b> The overflow is not clipped. It renders outside the element's box. This is default <br />
+      <b>overflow:hidden;</b> The overflow is clipped, and the rest of the content will be invisible <br />
+      <b>overflow:scroll;</b> The overflow is clipped, but a scroll-bar is added to see the rest of the content <br />
+      <b>overflow:auto;</b> If overflow is clipped, a scroll-bar should be added to see the rest of the content <br /> <br />
+      Above are the main settings but you can also have :- <br /> <br />
+      <b>overflow:initial;</b> Sets this property to its default value. <br />
+      <b>overflow:inherit;</b> Inherits this property from its parent element.
+    </p>
+    <div class="divFlex">
+
+      <div class="myBorder1 myDemo1">
+        <p>
+          Using the default settings (width: auto) and (overflow:visible)
+          This is some text for box 1 in order to show how the text overflow
+          works. Additional text to add to the length of my box as I need it to
+          go outside the box (maybe).
+        </p>
+      </div>
+      <div class="myBorder2 myDemo2">
+        <p>
+          Using the default settings (width: auto) and (overflow:visible)
+          This is some text for box 1 in order to show how the text overflow
+          works. Additional text to add to the length of my box as I need it to
+          go outside the box (maybe).
+        </p>
+      </div>
+    </div>
+
+    <div class="divFlex">
+
+      <div class="myBorder1 myDemo1" style="width:100px;">
+        <p>
+          Using the settings (width: 100px) and (overflow:visible)
+          This is some text for box 1 in order to show how the text overflow
+          works. Additional text to add to the length h of my box as I need it to
+          go outside the box (maybe).
+        </p>
+      </div>
+      <div class="myBorder2 myDemo2" style="width:80%;">
+        <p>
+          Using the settings (width: 80%) and (overflow:visible)
+          This is some text for box 1 in order to show how the text overflow
+          works. Additional text to add to the length of my box as I need it to
+          go outside the box (maybe). A bit more of my text as I need it to
+          go outside the box (maybe).
+        </p>
+      </div>
+    </div>
+
+    <div class="divFlex">
+
+      <div class="myBorder1 myDemo1" style="width:100px; overflow: scroll">
+        <p>
+          Using the settings (width: 100px) and (overflow:scroll)
+          This is some text for box 1 in order to show how the text overflow
+          works. Additional text to add to the length h of my box as I need it to
+          go outside the box (maybe).
+        </p>
+      </div>
+      <div class="myBorder2 myDemo2" style="width:80%; overflow:scroll;">
+        <p>
+          Using the settings (width: 80%) and (overflow:scroll)
+          This is some text for box 1 in order to show how the text overflow
+          works. Additional text to add to the length h of my box as I need it to
+          go outside the box (maybe). A bit more of my text as I need it to
+          go outside the box (maybe).
+        </p>
+      </div>
+    </div>
+
+    <div class="divFlex">
+
+      <div class="myBorder1 myDemo1" style="width:100px; overflow: hidden">
+        <p>
+          Using the settings (width: 100px) and (overflow:hidden)
+          This is some text for box 1 in order to show how the text overflow
+          works. Additional text to add to the length.
+        </p>
+      </div>
+      <div class="myBorder2 myDemo2" style="width:80%; overflow:hidden;">
+        <p>
+          Using the settings (width: 80%) and (overflow:hidden)
+          This is some text for box 1 in order to show how the text overflow
+          works. Additional text to add to the length. A bit more of my text as I need it to
+          go outside the box (maybe). A bit more of my text as I need it to
+          go outside the box (maybe). Ooh a lot of text this is.
+        </p>
+      </div>
+    </div>
+
+    <div class="divFlex">
+
+      <div class="myBorder1 myDemo1" style="width:100px; overflow: auto">
+        <p>
+          Using the settings (width: 100px) and (overflow:auto)
+          This is some text for box 1 in order to show how the text overflow
+          works. Additional text to add to the length.
+        </p>
+      </div>
+      <div class="myBorder2 myDemo2" style="width:80%; overflow:auto;">
+        <p>
+          Using the settings (width: 80%) and (overflow:auto)
+          This is some text for box 1 in order to show how the text overflow
+          works. Additional text to add to the length. A bit more of my text as I need it to
+          go outside the box (maybe). A bit more of my text as I need it to
+          go outside the box (maybe).
+        </p>
+      </div>
+    </div>
+
+  </section>
+</body>
+
+</html>

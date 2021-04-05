@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+
+  <title>RegEx Searching</title>
+
+  <link rel="stylesheet" href="CSS/normalize.css" />
+  <link rel="stylesheet" href="CSS/main.css" />
+  <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+  <!-- Required to pull in my default javaScript file -->
+  <!-- It's inside a [script] as it holds cammands that run in a [script] environment -->
+  <script src="Scripts/myScripts.js" />
+  </script>
+
+  <script>
+    function doRegEx(p1) {
+      var forceError = "";
+      var strRegExp = p1;
+      // We cannot use a string in RegEx so we have to remove the leading /
+      // and also get the ending / and gim if there are any (g or i or m)
+      // Then we can construct the RegEx command properly
+      // This function will return a RegEx command that is NOT a string.
+      // OR it will return an ERROR Message
+
+      // Note even though I remove the leading & trailing /'s I do need them in the beginning
+
+      // Let's get the last / and any letters after it
+      var strPos = "";
+      var regFlags = "";
+      var pos = strRegExp.lastIndexOf("/");
+      if (pos > 0) {
+        strPos = strRegExp.substring(pos);
+        if (strPos.length > 1) {
+          regFlags = strPos.replace("/", "");
+          // regFlags now just = g i and/or m
+        }
+        strRegExp = strRegExp.substring(0, pos);
+        // strRegExp now = the RegExp without the last "/gim"
+      } else {
+        forceError = "Missing trailing / ";
+      }
+
+      // Now to check if there is a / at the beginning & if so remove it
+      if (strRegExp.substring(0, 1) == "/") {
+        strRegExp = strRegExp.substring(1, strRegExp.length);
+      } else {
+        if (forceError != "") {
+          forceError = " and " + forceError;
+        }
+        forceError = "Missing Leading /" + forceError;
+      }
+
+      if (forceError != "") {
+        // They are missing the required / / around the RegEx commands
+        return forceError;
+      }
+
+      // So now I have regFlags which = g or i or m
+      // and strRegExp which = the RegEx expression without the surrounding / /
+      // So I have to use the 'new RexExp' command to create it properly
+      var regExp = new RegExp(strRegExp, regFlags);
+
+      return regExp;
+    }
+  </script>
+
+  <style>
+    .lgText {
+      font-size: 24px;
+    }
+
+    #regEx,
+    #checkFor {
+      width: 400px;
+    }
+
+    /* For any field that is invalid (ie a req'd field not answered or a field
+      that has not been entered correctly according to its 'pattern') will
+      have a YELLOW background and RED text */
+    input:invalid,
+    input:required:invalid,
+    input:focus:invalid {
+      background-color: yellow;
+      color: red;
+    }
+  </style>
+
+</head>
+
+<body class="bodyMove">
+
+  <section id="top">
+    <a href="index.html">Home</a>
+  </section>
+
+  <section id="mainTop">
+    <h1>RegEx Searching</h1>
+    <h3>(<b>Reg</b>ular <b>Ex</b>pressions Searching)</h3>
+    <p>
+      Regular Expressions can be used in various javascript methods. <br />
+      Regular Expressions can be extremely complex but they are very flexible and powerful
+      and can be used to perform comparisons that cannot be done using the other
+      checks available. <br />
+      There follows some very basic examples of regular expression usage. <br />
+      For a complete description please visit
+      <a href="https://www.w3schools.com/jsref/jsref_obj_regexp.asp" target="_blank">w3schools</a> or
+      <a href="http://www.regular-expressions.info/" target="_blank">www.regular-expressions.info</a> <br /> <br />
+      It can seem very complicated...but here goes...
+    </p>
+  </section>
+  <div class="divFlex">
+    <div id="mainDiv" class="divBorder divBSet">
+      Regular Expressions can be used in various javascript methods - like :- <br />
+      <b>.test()</b> = returns True if the match was found & False if there was no match. <br />
+      <b>.match()</b> = returns null if no match or returns an Array of matches. <br />
+      <b>.replace()</b> = used in order to replace certain characters with another character. <br />
+      <b>.search()</b> = used in order to get the starting position of the FIRST instance of your search string. <br /> <br />
+      eg <br />
+      <b>var x; <br />
+        var y; <br />
+        var stringToBeChecked = "Hello World!"; <br />
+        var stringToSearchFor = /w[ox]/; <br /> <br />
+
+        x = stringToSearchFor.test(stringToBeChecked); <br />
+        y = stringToBeChecked.match(stringToSearchFor); <br />
+        z = stringToBeChecked.replace(/lo/gi", "") <br />
+        zz = stringToBeChecked.replace(/[lo]/", "%") <br />
+        a = stringToBeChecked.search(/or/) </b> <br /> <br />
+
+      <i>(Note <br />
+        There are NO quote marks used in the Regex expression /w[ox]/ ) <br />
+        AND also note in the .test() & .match() formats the variables are switched about. </i> <br /> <br />
+      In the above scenario :- <br />
+      <b>x</b> will = <b>TRUE</b> as the .test() method just returns a True (matched) or False (not matched). <br />
+      <b>y</b> will be an <b>array</b> if there were any matches or y will = null if there were no matches. <br />
+      <b>z</b> will = "He wrd!" as ALL l & o's will be replaced with nothing. <br />
+      <b>zz</b> will = "He%lo world!" as only the FIRST occurrence will be replaced - if it finds 'l' first
+      then it will stop searching for other letters to replace and not change any more l's or any o's. <br />
+      <b>a</b> will = 7 as the FIRST occurrence of "or" starts at chr position 7 (0=1st chr. -1=Not Found) <br /><br />
+
+    </div>
+
+    <div id="mainDiv" class="divBorder divBSet">
+      <p>
+        <strong>Searching finds the first occurrence and is case-sensitive</strong> <br /> <br />
+        If you need to find ALL occurences then you need to include the global search parameter
+        after your search expression - do this by including <b>g</b>. <br /> <br />
+        If you need to do a case-insensitive search then you need to include <b>i</b> after
+        the search expression. <br /> <br />
+        If you have a string that has line breaks in (\n = line break) then you need to include
+        the multi-line matching symbol (<b>m</b>)) sfter the search expression. <br /> <br />
+        A search expression needs to be enclosed inside <b>/ /</b>. <br />
+        eg <br />
+        <b>/abc/</b> will search for the first instance of abc only <br />
+        <b>/abc/g</b> will search for ALL instances of abc only <br />
+        <b>/abc/i</b> will search for the first instance of ABC and abc <br />
+        <b>/abc/gi</b> will search for ALL instances of ABC and abc <br />
+        <b>/abc/igm</b> will search for ALL instances of abc & ABC even if line breaks are present <br /><br /> <br />
+
+      </p>
+    </div>
+  </div>
+
+  <a href="#top">Top</a>
+
+  <div class="divFlex">
+    <div id="mainDiv" class="divBorder divBSet">
+
+      <h2>My attempt at an explanation of some things...</h2>
+      <p>
+        <strong>Using the <span class="lgText">^</span> symbol just after the opening / </strong> <br />
+        When a <b>^</b> is used just after the opening / in the search expression it means
+        to search for the chr's requested at the BEGINNING of your search field. <br />
+        <i>(using ^ within the search expression means NOT (explained later))</i> <br />
+        eg <br />
+        <b>/^ABC/</b> finds ABCDEF but not ZABCDEF <br /> <br /> <br />
+
+        <strong>Using the <span class="lgText">$</span> symbol just before the closing / </strong> <br />
+        When a <b>$</b> is used just before the closing / in the search expression it means
+        to search for the chr's requested at the END of your search field. <br />
+        eg <br />
+        <b>/ABC$/</b> finds XYZABC but not ABCDEF <br /> <br /> <br />
+
+
+      </p>
+    </div>
+    <div id="mainDiv" class="divBorder divBSet">
+
+      <p>
+        <strong>Using the square bracket <span class="lgText">[ ]</span> symbols</strong> <br />
+        use the square brackets <b>[]</b> to specify which characters are
+        allowed in a single position of a string. <br />
+        If you have [ABC] it means it will look for the character A or B or C in any position <br />
+        so if you have a field to search that = "Hello world!" <br />
+        eg <br />
+        <b>/[ABC]/</b> : would not match as there are no capital A, B or C's present. <br />
+        <b>/[EFG]/</b> : would not match as there are no capital E, F or G's present. <br />
+        <b>/[efg]/</b> : would match as there is an e present. <br />
+        <b>/[EFG]/i</b> : would match as you are using the i to perform a case-insensitive search <br />
+        <b>/w[ox]/</b> : would match as this means search for a 'w' followed by either an o or an x<br />
+        <br /> <br />
+
+        <strong>Using the <span class="lgText">^</span> symbol inside square brackets []</strong> <br />
+        If the <b>^</b> is used within the search expression (and inside the square brackets []) then
+        that means NOT <br />
+        eg <br />
+        <b>/[^ABC]/</b> : would match as there are no capital A, B or C's present and you are
+        saying you are searching a field where A, B or C is not present. <br />
+        <b>/[^EFG]/</b> : would match as there are no capital E, F or G's present. <br />
+        <b>/[^efg]/</b> : would not match as there is an e present. <br />
+        <b>/[^EFG]/i</b> : would not match as you are using the i to perform a case-insensitive search and there
+        is a lower case e present. <br />
+        <b>/w[^ox]/</b> : would not match as this means search for a 'w' followed by a letter that
+        is not an o or an x<br /> <br /> <br />
+
+      </p>
+    </div>
+  </div>
+  <a href="#top">Top</a>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <p>
+        <strong>Using the <span class="lgText">*, + and ?</span> symbols</strong> <br />
+        the symbols '*', '+', and '?', denote the number of times a character or a sequence of characters may occur. <br />
+        What they mean is: <br />
+        * = "zero or more" <br />
+        + = "one or more" <br />
+        ? = "zero or one." <br />
+        eg <br />
+        <b>/ab*/</b> : would match a string that has an a followed by zero or more b's ("ac", "abc", "abbc", etc.) <br />
+        <b>/ab+/</b> : same, but there's at least one b ("abc", "abbc", etc., but not "ac") <br />
+        <b>/ab?/</b> : there might be a single b or not ("ac", "abc" but not "abbc"). <br />
+        <b>/a?b+$/</b> : a possible 'a' followed by one or more 'b's at the end of the string:
+        Matches any string ending with "ab", "abb", "abbb" etc. or "b", "bb" etc. but not "aab", "aabb" etc. <br />
+        <br /> <br />
+
+        <strong>Using the braces <span class="lgText">{ }</span> symbol</strong> <br />
+        Known as bounds...values which appear inside braces indicate ranges in the number of occurrences <br />
+        Note... that you must always specify the first number of a range (i.e., "{0,2}", not "{,2}"). <br />
+        Also, the symbols '*', '+', and '?' have the same effect as using the bounds "{0,}", "{1,}", and "{0,1}", respectively. <br />
+        eg <br />
+        <b>/ab{2}/</b> : matches a string that has an a followed by exactly two b's ("abb") <br />
+        <b>/ab{2,}/</b> : matches a string that has an a followed by two or more b's ("abb", "abbb" etc) <br />
+        <b>/ab{3,5}/</b> : matches a string that has an a followed by three to five b's ("abbb", "abbbb" or "abbbbb") <br />
+        <br />
+
+      </p>
+
+    </div>
+
+    <div class="divBorder divBSet">
+      <p>
+        <strong>Using the round brackets <span class="lgText" ( )</span> symbols (parentheses)</strong> <br />
+          To quantify a sequence of characters, put them inside parentheses <br />
+          eg <br />
+          <b>/a(bc)*/</b> : matches a string that has an a followed by zero or more copies of the sequence "bc" <br />
+          <b>/a(bc){1-5}/</b> : same, but there must be between one and five instances of the sequence "bc") <br />
+          <br /> <br />
+
+          <strong>Using the <span class="lgText">|</span> symbol</strong> <br />
+          Known as the OR operator... <br />
+          eg <br />
+          <b>/hi|hello/</b> : matches a string that has either "hi" or "hello" in it <br />
+          <b>/(b|cd)ef)/</b> : matches "bef" or "cdef" <br />
+          <br /> <br />
+
+          <strong>Using the dot (<span class="lgText">.</span>) symbol</strong> <br />
+          A dot (.) stands for any single character <br />
+          eg <br />
+          <b>/a.[0-9]/</b> : matches a string that has an 'a' followed by any chr and a digit (0-9) <br />
+          <b>/^.{3}$)/</b> : matches a string with exactly 3 chr's in it <br />
+          <br /> <br />
+      </p>
+
+    </div>
+  </div>
+
+  <a href="#top">Top</a>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <h3>Special character (Metacharacters)</h3>
+      <p>
+        Regex also uses some special characters (always start with a backslash (\)) <br />
+        Eg... <br /> <br />
+        <b><a href="https://www.w3schools.com/jsref/jsref_regexp_dot.asp" target="_blank">. (dot)</a></b> -
+        Find any single character, except newline or other line terminators. <br />
+        <b><a href="https://www.w3schools.com/jsref/jsref_regexp_wordchar.asp" target="_blank">\w</a></b> -
+        Find a 'word character' (I think it's A-Z, a-z, 0-9, _, ) <br />
+        <b><a href="https://www.w3schools.com/jsref/jsref_regexp_wordchar_non.asp" target="_blank">\W</a></b> -
+        Find a 'non-word character' (anything that is not A-Z, a-z, 0-9, _, ) <br />
+        <b><a href="https://www.w3schools.com/jsref/jsref_regexp_digit.asp" target="_blank">\d</a></b> -
+        Find a 'digit' (0-9) <br />
+        <b><a href="https://www.w3schools.com/jsref/jsref_regexp_digit_non.asp" target="_blank">\D</a></b> -
+        Find a 'non-digit' (anything other than 0-9) <br />
+        <b><a href="https://www.w3schools.com/jsref/jsref_regexp_whitespace.asp" target="_blank">\s</a></b> -
+        Find a 'whitespace chr' (space, tab, c/return, new line, vertical tab, form feed) <br />
+        <b><a href="https://www.w3schools.com/jsref/jsref_regexp_whitespace_non.asp" target="_blank">\S</a></b> -
+        Find a 'non-whitespace chr' (not: space, tab, c/return, new line, vertical tab, form feed) <br />
+        <b><a href="https://www.w3schools.com/jsref/jsref_regexp_begin.asp" target="_blank">\b</a></b> -
+        Find a match at the beginning (\bABC) or at the end (ABC\b) of a word <br />
+        <b><a href="https://www.w3schools.com/jsref/jsref_regexp_begin_not.asp" target="_blank">\B</a></b> -
+        Find a match but NOT at the beginning (\bABC) or at the end (ABC\b) of a word <br />
+        <b><a href="https://www.w3schools.com/jsref/jsref_regexp_nul.asp" target="_blank">\0</a></b> -
+        Find a NULL character...it is \zero (\0) not \owe (\O)<br /> <br />
+        You can also search for New Line (\n), form feed (\f), c/return (\r), tab (\t) and vertical tab (\v). <br /> <br />
+
+        <b>NOTE...</b> <br />
+        [..] has a special meaning in regular expression. <br />
+        [xyz] matches x, y or z <br />
+        [^...] negates that; [^xyz] matches any character that is not x, y, or z <br />
+        BUT if [ is preceded by \, it loses its special meaning and matches [ literally. <br />
+        Eg... \[ checks for [ , \* checks for * , \^ checks for ^ , etc<br />
+
+
+      </p>
+    </div>
+
+    <div class="divBorder divBSet">
+      <h3>A little recap on some of it...</h3>
+      <p>
+        <b><a href="https://www.w3schools.com/jsref/jsref_regexp_onemore.asp" target="_blank"><i>n</i>+</a></b> -
+        Matches a string that contains at least one <i>n</i> <br />
+        <b><a href="https://www.w3schools.com/jsref/jsref_regexp_zeromore.asp" target="_blank"><i>n</i>*</a></b> -
+        Matches any string that contains zero or more occurrences of <i>n</i> <br />
+        <b><a href="https://www.w3schools.com/jsref/jsref_regexp_zeroone.asp" target="_blank"><i>n</i>*</a></b> -
+        Matches any string that contains zero or only one occurrence of <i>n</i> <br />
+        <b><a href="https://www.w3schools.com/jsref/jsref_regexp_nx.asp" target="_blank"><i>n</i>{X}</a></b> -
+        Matches any string that contains a sequence of X <i>n</i>'s <br />
+        <b><a href="https://www.w3schools.com/jsref/jsref_regexp_nxy.asp" target="_blank"><i>n</i>{X,Y}</a></b> -
+        Matches any string that contains a sequence of X to Y <i>n</i>'s <br />
+        <b><a href="https://www.w3schools.com/jsref/jsref_regexp_nxcomma.asp" target="_blank"><i>n</i>{X,}</a></b> -
+        Matches any string that contains a sequence of X or more <i>n</i>'s <br />
+        <b><a href="https://www.w3schools.com/jsref/jsref_regexp_ndollar.asp" target="_blank"><i>n</i>$</a></b> -
+        Matches any string with <i>n</i> at the END of it <br />
+        <b><a href="https://www.w3schools.com/jsref/jsref_regexp_ncaret.asp" target="_blank">^<i>n</i></a></b> -
+        Matches any string with <i>n</i> at the BEGINNING of it <br />
+        <b><a href="https://www.w3schools.com/jsref/jsref_regexp_nfollow.asp" target="_blank">?=<i>n</i></a></b> -
+        Matches any string that is followed by a specific string <i>n</i> <br />
+        <b><a href="https://www.w3schools.com/jsref/jsref_regexp_nfollow_not.asp" target="_blank">?!<i>n</i></a></b> -
+        Matches any string that is not followed by a specific string <i>n</i> <br />
+
+      </p>
+    </div>
+  </div>
+
+  <a href="#top">Top</a>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <h2>Playtime...</h2>
+      <p>
+        String to be checked for (toBeChecked): <br />
+        <input type="text" id="checkFor" value="and HELLO WORLD hallo world ABCDEF ababcdef" /> <br /> <br />
+
+        RegEx expression (regExp): <br />
+        <input type="text" id="regEx" value="/h[a|e]LLO/gi" /> <br /> <br />
+
+        <button class="button2" onclick="clickMain()">Test It</button> <br /> <br />
+        <span id="main1Command" class="redMess"></span> <br />
+        <span id="main1Result" class="redMess"></span> <br /> <br />
+        <span id="main2Command" class="redMess"></span> <br />
+        <span id="main2Result" class="redMess"></span> <br /> <br />
+        <span id="main3Command" class="redMess"></span> <br />
+        <span id="main3Result" class="redMess"></span> <br /> <br />
+        <span id="main4Command" class="redMess"></span> <br />
+        <span id="main4Result" class="redMess"></span> <br /> <br />
+
+
+      </p>
+
+      <script>
+        function clickMain() {
+          var forceError = "";
+          var toBeChecked = document.getElementById("checkFor").value;
+          var strRegExp = document.getElementById("regEx").value.trim();
+          // to call the function to construct the RegEx command properly
+          var regExp = doRegEx(strRegExp);
+
+          // Did it error when creating regExp
+          if (regExp.toString().substring(0, 7) == "Missing") {
+            // They are missing the required / / around the RegEx commands
+            showMess("main1Command", "Error Occured - " + regExp);
+            showMess("main1Result", "RegEx expressions must be contained within / /");
+            showMess("main2Command", "");
+            showMess("main2Result", "");
+            showMess("main3Command", "");
+            showMess("main3Result", "");
+            showMess("main4Command", "");
+            showMess("main4Result", "");
+            return;
+          }
+
+          var m1C = "regExp<b>.test</b>(toBeChecked) = ";
+          var m1R = "";
+          var m2C = "toBeChecked<b>.match</b>(regExp) = ";
+          var m2R = "";
+          var m3C = "toBeChecked<b>.replace</b>(regExp, '%') = ";
+          var m3R = "";
+          var m4C = "toBeChecked<b>.search</b>(regExp) = ";
+          var m4R = "";
+
+          try {
+            m1R = regExp.test(toBeChecked);
+            m2R = toBeChecked.match(regExp);
+            m3R = toBeChecked.replace(regExp, "%");
+            m4R = toBeChecked.search(regExp);
+            if (m2R==null) {m2R = "null";}
+
+            showMess("main1Command", m1C);
+            showMess("main1Result", m1R);
+            showMess("main2Command", m2C);
+            showMess("main2Result", m2R);
+            showMess("main3Command", m3C);
+            showMess("main3Result", m3R);
+            showMess("main4Command", m4C);
+            showMess("main4Result", m4R);
+          } catch {
+            showMess("main1Command", "An error occured !!");
+            showMess("main1Result", "Please check your RegEx expression for error(s)");
+
+            showMess("main2Command", "also please make sure your 'string to be checked' is valid");
+            showMess("main2Result", "");
+
+            showMess("main3Command", "");
+            showMess("main3Result", "");
+            showMess("main4Command", "");
+            showMess("main4Result", "");
+          }
+
+        }
+      </script>
+    </div>
+
+    <div class="divBorder divBSet">
+      <h2>Useful...</h2>
+      <p>
+        An example of a RegEx expression that a DATE has been correctly formatted could be <br />
+        &nbsp;&nbsp;&nbsp;<b>/^(\d){1,2}\/(\d){1,2}(\d){4}$/</b> <br />
+        <i>this allows (dd/mm/yyyy or d/m/yyyy) <br />
+        BUT does not check if the numbers entered are a valid DD (1-31) or MM (1-12)</i> <br /> <br />
+
+        An example of a RegEx expression that a TIME has been correctly formatted could be <br />
+        &nbsp;&nbsp;&nbsp;<b>/^(\d){1,2}:(\d){1,2}([ ]?[ap]m)?$/</b> <br />
+        <i>this allows (HH:MM or HH:MMam/pm or HH:MM am/pm) <br />
+        BUT does not check if the numbers entered are a valid HH (1-23) or MM (1-59)</i> <br /> <br />
+
+        <label for="inDate">Enter Date: </label>
+        <input type="text" id="inDate" placeholder="dd/mm/yyyy" pattern="^(\d){1,2}\/(\d){1,2}\/(\d){4}$" /> <br />
+
+        <button class="button2" onclick="checkDate('inDate', 'dispDate')">Test Date</button> <br /> <br />
+        <span id="dispDate" class="redMess"></span> <br /> <br />
+
+        <label for="inTime">Enter Time: </label>
+        <input type="text" id="inTime" placeholder="HH:MM am/pm" pattern="^(\d){1,2}:(\d){2}([ ]?[ap]m)?$" /> <br />
+
+        <button class="button2" onclick="checkDate('inTime', 'dispTime')">Test Time</button> <br /> <br />
+        <span id="dispTime" class="redMess"></span> <br /> <br />
+        <b>NOTE</b> <br />
+        I am not going to validate the entries as, in real life, you would not really use a normal
+        text box here. <br />
+        You would use <b>type = "date"</b> or <b>type = "time"</b> in the &lt;input&gt; boxes. <br /> <br />
+
+      </p>
+
+      <script>
+        function checkDate(p1, p2) {
+          var x = document.getElementById(p1).value;
+          document.getElementById(p2).innerHTML = "You entered: " + x;
+        }
+      </script>
+    </div>
+  </div>
+  <a href="#">Top</a>
+</body>
+
+</html>

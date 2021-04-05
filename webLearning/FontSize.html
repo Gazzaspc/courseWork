@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Font Sizes</title>
+
+  <style>
+    div {
+      border: 1px solid;
+      margin: 10px;
+      padding: 10px;
+    }
+
+    .divFlex {
+      display: flex;
+    }
+
+    .divInl {
+      display: inline-block;
+    }
+
+    .backSide {
+      background-color: #CCFFE5;
+    }
+
+    .defP {font-size: 24px;}
+  </style>
+
+</head>
+
+<body>
+  <section id="TopSection">
+
+    <a href="index.html">Home</a>
+    <h1>font-size examples of types used in STYLES</h1>
+    <p>
+      These are the most common types of &nbsp;&nbsp;font-size&nbsp;&nbsp; commands to use:- <br />
+      <!-- <ul style="list-style-type: none;"> -->
+      <ul>
+        <li>
+          <a href="#typePX">px</a>
+        </li>
+        <li>
+          <a href="#typeEM">em</a>
+        </li>
+        <li>
+          <a href="#typeREM">rem</a>
+        </li>
+        <li>
+          <a href="#typePerc">%</a>
+        </li>
+      </ul>
+    </p>
+    <Section id="typePX">
+      <div class="divFlex">
+        <div class="divInl">
+          <p>
+            <b>To change the size of the font to be a specific size, eg </b><br /> <br />
+            font-size:16px; <br />
+            font-size:22px; <br />
+            font-size: 32px;
+          </p>
+        </div>
+        <div class="backSide divInl">
+          <p>
+            16px size = <span style="font-size:16px;">font-size: 16px;</span> <br />
+            22px size = <span style="font-size:22px;">font-size: 22px;</span> <br />
+            32px size = <span style="font-size:32px;">font-size: 32px;</span> <br />
+          </p>
+        </div>
+      </div>
+    </Section>
+
+    <Section id="typeEM">
+      <div class="divFlex">
+        <div class="divInl">
+          <p>
+            <b>To change the size of the font relative to <br />
+              the size of its ELEMENT (or one of it's parents <br />
+              eg &ltBody&gt>), eg </b><br /> <br />
+            font-size:16em; <br />
+            font-size:22em; <br />
+            font-size: 32em; <br /> <br />
+            Note... <br />
+            The text size in the element &lt;p&gt; is the standard 16px size. <br />
+            But if you set it to something different (eg 48px) in, for example, the CSS sheet then it will <br />
+            use that size as its current size so 2em will = 96px (2 x 48)
+          </p>
+        </div>
+        <div class="backSide divInl">
+          <p>
+            1em means 1 x the current text size for this element (16px) = <span style="font-size:1em;">font-size: 1em;</span> <br />
+            1.5em means 1.5 x the current text size for this element (16px) = <span style="font-size:1.5em;">font-size: 1.5em;</span> <br />
+            3em means 3x the current text size for this element (16px) = <span style="font-size:3em;">font-size: 3em;</span> <br />
+          </p>
+        </div>
+      </div>
+    </Section>
+
+    <Section id="typeREM">
+      <div class="divFlex">
+        <div class="divInl">
+          <p>
+            <b>To change the size of the font relative to <br />
+              the size of the actual BROWSER's default, eg </b><br /> <br />
+            font-size:16rem; <br />
+            font-size:22rem; <br />
+            font-size: 32rem; <br /> <br />
+          </p>
+        </div>
+        <div class="backSide divInl">
+          <p>
+            1rem means 1 x the current text size for this browser (16px) = <span style="font-size:1rem;">font-size: 1rem;</span> <br />
+            1.5rem means 1.5 x the current text size for this browser (16px) = <span style="font-size:1.5rem;">font-size: 1.5rem;</span> <br />
+            3rem means 3x the current text size for this browser (16px) = <span style="font-size:3rem;">font-size: 3rem;</span> <br />
+          </p>
+        </div>
+      </div>
+    </Section>
+
+    <Section id="typePerc">
+      <div class="divFlex">
+        <div class="divInl">
+          <p>
+            <b>To change the size of the font relative to <br />
+              the size of the PARENT ELEMENT (or one of it's parents <br />
+              eg &ltBody&gt>), , eg </b><br /> <br />
+            font-size:100%; <br />
+            font-size:50%; <br />
+            font-size: 200%; <br /> <br />
+          </p>
+        </div>
+        <div class="backSide divInl" style="font-size:20px">
+          <p>
+            I made the size of this &lt;div&gt; to be 20px - it is the PARENT of the below...
+          </p>
+          <p>
+            100% means 100% of the current text size of the PARENT element = <span style="font-size:100%;">font-size: 100%;</span> <br />
+            50% means 50% of the current text size of the PARENT element = <span style="font-size:50%;">font-size:50%;</span> <br />
+            200% means 200% of the current text size of the PARENT element = <span style="font-size:200%;">font-size: 200%;</span> <br />
+          </p>
+        </div>
+      </div>
+    </Section>
+    <a href="#TopSection">Back to Top</a>
+
+  </section>
+
+  <section id="Examples">
+    <div style="display:flex" ;>
+
+      <div style="font-size:24px;width:60%;">
+        <p class="defP">Paragraph 1...Font-size: on parent div is now 24px;</p>
+        <p class="defP" style="font-size: 2em;">Paragraph 2...Font size is now 2em; <br />
+          <span style="font-size:48px">equivalent to parent x 2 = 48px</span></p>
+        <p style="font-size: 2rem;">Paragraph 3...Font size is now 2rem; <br />
+          <span style="font-size:32px">equivalent to browser (16px) x 2 = 32px</span></p>
+        <p class="defP" style="font-size: 200%;">Paragraph 4...Font size is now 200%; <br />
+          <span style="font-size:48px">equivalent to parent x 2 = 48px</span></p>
+      </div>
+
+      <div>
+        <p>
+          This div does NOT have a font-size set on it. I will set it on each paragraph line below here.
+        </p>
+        <p style="font-size: 2em;">Paragraph 2...Font size is now 2em;</p>
+        <p style="font-size: 2rem;">Paragraph 3...Font size is now 2rem;</p>
+        <p style="font-size: 200%;">Paragraph 4...Font size is now 200%;</p>
+        <p style="color:rgb(0,0,255)">
+          So as the PARENT div has no new font-size they ALL use browser default.
+        </p>
+        <p style="color:rgba(0,0,255, 0.5)">
+          So as the PARENT div has no new font-size they ALL use browser default. <br />
+          These 2 lines are just playing with rgb() and rgba()
+        </p>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

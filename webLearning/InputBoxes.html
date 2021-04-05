@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+  <!-- Required for JQuery to work - this is the library file from JQuery.com (uncompressed development file) -->
+  <script src="JQuery/jquery-3.5.1.js"></script>
+  <!-- You can use the online one but for now I will download it and use my copy of it (use one or the other)-->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+  <title>HTML Forms/Input Boxes</title>
+
+  <style>
+    .spanCenter {
+      display: block;
+      text-align: center;
+      margin-bottom: 0;
+    }
+
+    input:focus {
+      background-color: yellow;
+    }
+
+    /* For any field that is invalid (ie a req'd field not answered or a field
+      that has not been entered correctly according to its 'pattern') will
+      have a YELLOW background and RED text */
+    input:invalid,
+    input:required:invalid,
+    input:focus:invalid {
+      background-color: yellow;
+      color: red;
+    }
+
+    .containerT {
+      display: inline-block;
+      text-align: right;
+      line-height: 1.35;
+      /* use inline-block to make it the same size as the text/boxes;
+       and text-align: right to make the text align properly
+       and line-height: 1.35 looks like it spaces the text (pretty much) the same as the input box spacing*/
+    }
+
+    .containerL {
+      display: inline-block;
+      text-align: left;
+      /* use inline-block to make it the same size as the text/boxes;
+       and text-align: left to make the boxes align properly...works well with labels in their own div */
+    }
+
+
+    /* ---BELOW--- This will stop the up/down arrows from appearing in the input box */
+    /* Chrome, Safari, Edge, Opera */
+    input.noArrows::-webkit-outer-spin-button,
+    input.noArrows::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Firefox */
+    input.noArrows[type=number] {
+      -moz-appearance: textfield;
+    }
+
+    /* ---ABOVE--- This will stop the up/down arrows from appearing in the input box */
+  </style>
+
+
+  <script>
+    // comments
+    // To see if a radio button or check box is ticked then
+    //      if (form.myTickBox.checked) {...}
+    // can be used (myTickBox is the element name... name="myTickBox")
+    // but all I need for now is...
+    function checkForm(form) {
+      if (form.YourName.value == "") {
+        alert("Error username must be entered");
+        form.YourName.focus();
+        return false;
+      }
+      reg = /^\w+$/;
+      // Above tells it to heck for letters/numbers
+      if (!reg.test(form.YourName.value)) {
+        alert("Error, Invalid chr's in username");
+        form.YourName.focus();
+        return false;
+      }
+      return true;
+    }
+  </script>
+</head>
+
+<body class="bodyMove">
+  <section id="Top">
+
+    <a href="index.html">Home</a>
+  </section>
+  <hr>
+  <!--
+      The form tags are below. It allows the user to enter some information
+      It only works properly in conjunction with Javascript code but
+      for now we are only using HTML (until I learn about Javascript)
+      so below is just a basic form...
+    -->
+  <br />
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+
+
+      <p>
+        A Form should be used to allow the user to provide feedback or send and email <br>
+        with some comments on. <br>
+        This is an example of a form...it uses the label/input tags and text area tag (see code) <br />
+        <i>It also sets the 'Email Address' to be a REQUIRED field</i>
+      </p>
+      <h3>This first part returns me back to a different webpage</h3>
+      <p>Or it would have if I had a different page that made sense, so for now <br>
+        it will just send me back to this page again <b>(index.html)</b> <br />
+        <i>It knows where to send me because of the <br />
+          &lt;form action="index.html" method="post"&gt;</i></p>
+      <!--
+      NOTE...
+        in the form ACTION section if I set it to 'index.html' - (action="index.html")
+        then this is the Name of the page that I want to go to when the [Submit] button was clicked on.
+    -->
+      <form action="index.html" method="post">
+        <label>Your Name: &nbsp; &nbsp;</label> <!-- like a label -->
+        <input type="text" name="" value="Berty" size="20"> <br> <!-- tells it to use a TextBox -->
+        <label>Email Address: </label><input type="email" name="" value="" required> <br>
+        <label>Message:</label> <br>
+        <textarea name="name" rows="8" cols="50"></textarea> <br> <!-- set to be 8 rows deep and 50 columns wide -->
+        <input type="submit" name="" value="Submit"> <br><!-- use a Button to submit the form -->
+      </form>
+    </div>
+    <div class="divBorder divBSet">
+      <!--
+      NOTE...
+        in the form ACTION section if I set it to 'index.html' - (action="index.html")
+        then this is the Name of the page that I want to go to when the [Submit] button was clicked on.
+        But
+        here I am going to tell it to open up the EMAILing routing and send an email to me.
+    -->
+      <!-- <a href="mailto:email@example.com?cc=secondemail@example.com,
+    anotheremail@example.com, &bcc=lastemail@example.com&subject=Mail
+    from our Website&body=Some body text here">Send Email</a> -->
+      <h3>This second part takes me to an emailing routine</h3>
+      <p>
+        It's rather basic as you cannot really use just HTML to send a properly
+        formatted email.
+      </p>
+      <form onsubmit="return checkForm(this)" action="mailto:gazzaspc@gmail.com
+      ?cc=secondemail@example.com, anotheremail@example.com
+      &bcc=lastemail@example.com
+      &subject=Mail from our Website" method="post" enctype="text/plain">
+        <label>UserName: &nbsp; &nbsp;</label> <!-- like a label -->
+        <input type="text" name="YourName" value="Gary Kirby" size="20"> <br> <!-- tells it to use a TextBox -->
+        <label>Email address: </label>
+        <input type="email" name="YourEmail" value="" placeholder="Email Address" required> <br>
+        <label>Message:</label> <br>
+        <textarea name="YourMessage" rows="8" cols="50"></textarea> <br> <!-- set to be 8 rows deep and 50 columns wide -->
+        <input type="submit" name="" value="Submit"> <br><!-- use a Button to submit the form -->
+        <br /> <br /> <br />
+
+        Using the 'pattern' command to set a format that is required <br />
+        eg... <b>pattern="http?://www.+"</b> <br />
+        <i>? = 0 or 1 chr (so http: or https: is accepted) and . (dot) = any chr and + = 1 or more chr's</i>
+        <label>Pattern Tester: </label><input type="text" pattern="http?://www.+" />
+
+      </form>
+
+    </div>
+  </div>
+  <a href="#Top">Top</a>
+  <hr>
+
+  <section id="checkForm">
+
+    <div class="divFlex">
+      <div class="divBorder divBSet">
+
+        <p>
+          A Form's information can be checked before it is actually 'submitted' by
+          using the following example:- <br> <br />
+          <i>In the &lt;script&gt; area, create a function, eg...</i> <br />
+
+          <b>function checkForm(form) { <br />
+            &nbsp;&nbsp;&nbsp;if (form.userName.value == "") { <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert("Error username must be entered"); <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;form.userName.focus(); <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false; <br />
+            &nbsp;&nbsp;&nbsp;} <br />
+            &nbsp;&nbsp;&nbsp;reg = /^\w+$/; <br />
+            &nbsp;&nbsp;&nbsp;if (!re.test(form.userName.value)) { <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert ("Error, Invalid chr's in username"); <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;form.userName.focus(); <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false; <br />
+            &nbsp;&nbsp;&nbsp;} <br />
+            &nbsp;&nbsp;&nbsp;return true;
+            } </b><br /> <br />
+
+          <i>And in the body of the page, where you have your &lt;form&gt; you should add the 'onsubmit()' method <br />
+            eg </i><br />
+
+          <b>
+            &lt;form onsubmit="return checkForm(this);"&gt; <br />
+          </b> <br /> <br />
+          This means my element with the <b>name="userName"</b> in it will get checked for an error before the form
+          gets submitted. <br /> <br />
+          NOTE... <br />
+          I have used an example of this above (second section), just leave the UserName blank before submitting
+          the form. <br />
+        </p>
+
+      </div>
+
+      <div class="divBSet divBorder">
+        <p>
+          Labels on forms must have the <b>for="<i>id</i>"</b> set so when the form is submitted it
+          knows which label goes with which element. <br />
+          eg...<br /> <br />
+
+          &lt;input type="radio" id=<b>"age1"</b> name="age" value="30"&gt; <br />
+          &lt;label <b>for="age1"</b>&gt;0 - 30&lt;/label&gt; <br />
+          &lt;input type="radio" id=<b>"age2"</b> name="age" value="60"&gt; <br />
+          &lt;label <b>for="age2"</b>&gt;31 - 60&lt;/label&gt; <br />
+          &lt;input type="radio" id=<b>"age3"</b> name="age" value="100"&gt; <br />
+          &lt;label <b>for="age3"</b>&gt;61 - 100&lt;/label&gt; <br /> <br />
+
+          <input type="radio" id="age1" name="age" value="30">
+          <label for="age1">0 - 30</label><br>
+          <input type="radio" id="age2" name="age" value="60">
+          <label for="age2">31 - 60</label><br>
+          <input type="radio" id="age3" name="age" value="100">
+          <label for="age3">61 - 100</label><br><br>
+        </p>
+      </div>
+    </div>
+  </section>
+  <a href="#Top">Top</a>
+  <hr>
+
+
+  <div class="divFlex">
+
+    <div class="divBorder divBSet">
+      <br><em>Some other 'Input' commands below:-</em><br>
+      <label>Check box here </label><input type="checkbox" name="checkNo"> <br>
+      <label>Check box here </label><input type="checkbox" name="checkYes" checked> <br>
+      or <br />
+      <input type="checkbox" name="checkNo"> Another Check Box <br>
+      <input type="checkbox" name="checkYes" checked><label> and Check box here </label> <br>
+      <i>(Use the property <b>.checked</b> to see if the box is ticked or not)</i> <br />
+      <br />
+
+      <label>Click me for colour </label><input type="color" name="colBox"> <br>
+      <input type="button" name="" value="I'm a button"> <br>
+      <label>Enter a password </label><input type="password" name="" value="" minlength="8"> <br>
+      <label>Enter a number (-5 to 10) </label><input type="number" name="" value="0" min="-5" max="10"> <br />
+      <label>Enter a number (any) </label><input type="number" size="3" name="" value=""> <br />
+      <i>(Number boxes with no min/max value displays as a long box)</i> <br />
+      <label>Enter a number (any) </label><input class="noArrows" type="number" min="0" max="999999"> <br />
+      <i>(Number boxes with no up/down arrows)</i> <br /> <br />
+      <p>
+        Grouping of Radio buttons (must have the same <b>name=""</b>) <br />
+        eg...&lt;input type="radio" name="ages" value="30"&gt; <br /><br />
+        <label for="age">Please select your age range:</label> <br />
+
+        <input type="radio" id="age1a" name="age" value="30">
+        <label for="age1a">0 - 30</label><br>
+        <input type="radio" id="age2a" name="age" value="60">
+        <label for="age2a">31 - 60</label><br>
+        <input type="radio" id="age3a" name="age" value="100">
+        <label for="age3a">61 - 100</label><br><br>
+      </p>
+      <p>
+        This is an example of a type="range" <br />
+        <span class="spanCenter">0<input id="rangeI" type="range" min="0" max="50" value="25" oninput="rangeChange(this.value)" />50 </span>
+        <span class="spanCenter" id="range">25</span> <br />
+        <br />
+      </p>
+      <script>
+        function rangeChange(p1) {
+          document.getElementById("range").innerHTML = p1;
+        }
+      </script>
+
+    </div>
+    <div class="divBorder divBSet">
+      <p>
+        There are numerous types of 'input boxes' that can be used :- <br /> <br />
+        button <br />
+        checkbox <br />
+        color <br />
+        date <br />
+        datetime-local <br />
+        email <br />
+        file <br />
+        hidden <br />
+        image <br />
+        month <br />
+        number <br />
+        password <br />
+        radio <br />
+        range <br />
+        reset <br />
+        search <br />
+        submit <br />
+        tel <br />
+        text <br />
+        time <br />
+        url <br />
+        week <br /> <br />
+        It's best to look them up in w3shools web site
+        <a href="https://www.w3schools.com/tags/tag_input.asp" target="_blank">HERE</a> for an explanation of the
+        &lt;input&gt; tag - and a list of applicable attributes (eg <b>pattern,
+          list, max, maxlength, checked</b> etc)<br /> <br />
+        or for the list of different <a href="https://www.w3schools.com/tags/att_input_type.asp" target="_blank">types</a> of input boxes<br />
+      </p>
+    </div>
+  </div>
+  <a href="#Top">Top</a>
+  <hr />
+
+  <div class="divFlex">
+
+    <div class="divBorder divBSet">
+      <br><em>Some other 'Input' commands below:-</em><br>
+      <label>date box here </label><input type="date" name="reqDate" min="2020-09-01" max="2022-11-30" value="2021-06-19"> <br />
+      <!-- If you leave out value="2021-06-19" it will default to today's date.
+          on the calendar (but say dd/mm/yyyy in the input box)-->
+      <label>date box here </label><input type="date" name="reqDate" min="2020-09-01" max="2022-11-30">
+      <br> <br />
+      <label>Week# box here </label><input type="week" name="inpWeek" min="2021-W01" max="2022-W50"> <br />
+      <!-- W in week must be CAPITALized -->
+      <i>Note: type="week" is not supported in Firefox, Safari or Internet Explorer 12 and earlier versions.</i>
+      <br> <br />
+      <label>Month# box here </label><input type="month" name="inpMonth" min="2021-01" max="2022-10">
+      <br /> <br /> <br />
+      NOTE... <br />
+      For any field that is invalid (ie a req'd field not answered or a field
+      that has not been entered correctly according to its 'pattern') you could
+      give it a YELLOW background and RED text by adding the following code in the
+      &lt;style&gt; area:- <br />
+      <b>input:invalid, input:required:invalid, input:focus:invalid { <br />
+        &nbsp;&nbsp;&nbsp;background-color: yellow; <br />
+        &nbsp;&nbsp;&nbsp;color:red; <br />
+        }</b> <br />
+      <i>(There is also a :valid available if you want to change the style for correctly answered boxes
+        ... but why would you? - maybe to easily show completed fields?)</i> <br /> <br />
+
+      <script>
+        function rangeChange(p1) {
+          document.getElementById("range").innerHTML = p1;
+        }
+      </script>
+
+    </div>
+
+    <div class="divBorder divBSet">
+      <h2>Lining Up Input Boxes</h2>
+      <p>So far putting the TEXT in one div <br />
+        and the INPUT BOXES in another seem to work well <br />
+        <i>(Another option & may be better in the long run is using a TABLE instead but, for now,
+          I have used div boxes)...</i> <br> <br />
+        I created a DIV with two other DIV's inside (one for labels and one
+        for the INPUT Boxes). <br />
+        Then I could RIGHT-ALIGN the labels (also adjust the line-spacing to make it align
+        with a text box) & LEFT-ALIGN the boxes. <br /> <br />
+
+        combined with the :focus I can set
+        the background colour whenever I am about to enter text in it. <br />
+        <b>input:focus {background-color: yellow;}</b> <br />
+
+        Eg <br />
+        Click on each input box below to see it in action <br /> <br />
+      </p>
+
+      <div class="divFlex">
+        <div class="divBorder containerT">
+          <label name="gname">First Name: </label> <br />
+          <label name="mname">Last Name: </label> <br />
+          <label name="age">Age: </label>
+        </div>
+        <div class="divBorder containerL">
+          <input type="text" name="gname" /> <br />
+          <input type="text" name="mfname" /> <br />
+          <input type="number" name="age" min="0" max="120" /> <br />
+        </div>
+      </div>
+      <br /> <br /> <br />
+    </div>
+
+  </div>
+
+  <a href="#Top">Top</a>
+
+  <div class="divFlex">
+
+    <div class="divBorder divBSet">
+      <br><strong>Password input boxes with error checking</strong><br> <br />
+      <i>(This uses the attribute <br />
+        <b>pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"</b> <br />
+        for RegEx checking...NOTE...No opening or closing / / is req'd with pattern. <br />
+        Coupled with the style <b>input:invalid</b> to make the text red if the pattern format is not matched</i> <br /> <br />
+      <label>Password: </label>
+      <input type="password" name="pass1" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"> <br />
+      <i>(password must be at least 1 number/1 lower case/1 upper case & 6 chr's in length)</i> <br /> <br />
+
+      If the password does not match the pattern then when you submit the form
+      (using the <b>&lt;input type=submit"&gt;</b>) then I think it will tell you there is an error. <br /> <br />
+      Otherwise you could always use your own error checking routine...see the
+      <a href="#checkForm">Submit Form</a> section above. <br /> <br />
+      Another way of checking for valid input is by using the
+      <a href="https://www.w3schools.com/js/js_validation_api.asp" target="_blank">.checkValidity()</a> method. <br /> <br />
+    </div>
+  </div>
+
+  <a href="#Top">Top</a>
+
+</body>
+
+</html>

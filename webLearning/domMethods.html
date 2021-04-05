@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>DOM Methods</title>
+
+  <link rel="stylesheet" href="CSS/normalize.css" />
+  <link rel="stylesheet" href="CSS/main.css" />
+  <link rel="stylesheet" href="CSS/myStyles.css" />
+
+  <style>
+    /* body {background-color:white;}
+    .divBSet {background-color: white;} */
+  </style>
+
+  <script type="text/javascript">
+    function toDisplay(param1, param2) {
+      document.getElementById(param1).innerHTML = param2;
+      return;
+    }
+  </script>
+</head>
+
+<body class="bodyMove">
+  <section id="top">
+    <a href="index.html">Home</a>
+    <h1>DOM Methods</h1>
+
+  </section>
+
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <p>
+        Listed here are some methods that may be useful:- <br /> <br />
+
+        <b><a target="_blank" href="https://www.w3schools.com/jsref/met_win_confirm.asp">confirm(text)</a> </b> <br />
+        Displays a confirmation box, allowing you to ask the user 'OK' or 'Cancel' <br /> <br />
+
+        <b><a target="_blank" href="https://www.w3schools.com/jsref/met_win_confirm.asp">prompt(text, defaultText)</a> </b> <br />
+        Similar to 'confirm()' but allows you to enter some text. <br /> <br />
+
+        <b><a target="_blank" href="https://www.w3schools.com/jsref/met_win_confirm.asp">window.print()</a> </b> <br />
+        Prints the current page <br /> <br />
+
+        <b><a target="_blank" href="https://www.w3schools.com/jsref/met_win_scrollby.asp">window.scrollBy(x, y)</a> </b> <br />
+        Scrolls the current page (up and/or down) by a number of pixels.<br /> <br />
+
+        <b><a target="_blank" href="https://www.w3schools.com/jsref/met_win_scrollto.asp">window.scrollTo(x, y)</a> </b> <br />
+        Scrolls the current page (left/right and...or up/down) to a specific position (in pixels).<br /> <br />
+
+        <b><a target="_blank" href="https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_win_matchmedia">window.matchMedia(x, y)</a> </b> <br />
+        The window.matchMedia() method returns a MediaQueryList object representing the results of the
+        specified CSS media query string. <br />
+        The value of the matchMedia() method can be any of the media features of the CSS @media rule, like
+        min-height, min-width, orientation, etc.<br /> <br />
+
+      </p>
+    </div>
+
+    <div class="divBorder divBSet">
+      <h2 id="myH1">Some Examples...</h2>
+      <p>
+        When you click the 'Confirm' button it will pop up a box asking if it's okay to continue or not <br />
+        <button id="myConfirm" class="button2" onclick="myConfirmFunc('confirmMess')">Confirm</button> <br /> <br />
+
+        <span id="confirmMess" class="redResult"></span> <br /> <br />
+
+        When you click the 'Prompt' button it will pop up a box asking you for your name <br />
+        <button id="myPrompt" class="button2" onclick="myPromptFunc('confirmMess')">Prompt</button> <br /> <br />
+
+        When you click the 'Scroll' button it will scroll along by 50px and down by 25px <br />
+        <i>(if your window can scroll that is...if all the info is on screen then it can't scroll) </i><br />
+        <button id="myScroll" class="button2" onclick="myScroll()">Scroll</button> <br /> <br />
+
+
+      </p>
+    </div>
+  </div>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <p>
+        Listed here are some methods that may be useful:- <br /> <br />
+
+        <b><a target="_blank" href="https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_win_matchmedia">window.matchMedia(x, y)</a> </b> <br />
+        The window.matchMedia() method returns a MediaQueryList object representing the results of the
+        specified CSS media query string. <br />
+        The value of the matchMedia() method can be any of the media features of the CSS @media rule, like
+        min-height, min-width, orientation, etc.<br /> <br />
+
+      </p>
+    </div>
+
+    <div id="myMatchMedia" class="divBorder divBSet">
+      <h2 id="myH1">Some Examples...</h2>
+      <p>
+        When you click the 'matchMedia1' button it will let you know if the current window is <= or> than 700px<br />
+          it will also tell you the current width too (uses
+          <a target="_blank" href="https://www.w3schools.com/jsref/prop_win_innerheight.asp">window.innerWidth</a> for that) <br />
+          <button id="myMatch1" class="button2" onclick="myMatch1('MatchMess')">matchMedia1</button> <br /> <br />
+
+          <span id="MatchMess" class="redResult"></span> <br /> <br />
+
+          <b>AND...</b> this also uses a MatchMedia EventListener (so it check continuously) to change the background colour of this &lt;div&gt; box
+          when you resize the webpage to be <=700px and will put the colour back to normal when you resize>700px <br /> <br />
+
+      </p>
+    </div>
+  </div>
+
+  <a href="#top">Top</a>
+
+  <h1>DOM Properties</h1>
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <p>
+        Listed here are some properties that may be useful:- <br /> <br />
+
+        <b><a target="_blank" href="https://www.w3schools.com/jsref/dom_obj_document.asp">document.</a> </b> <br />
+        Clicking on the link (above) for document. will take you to the w3schools.com page that lists a
+        lot of the commands that can be used...eg... <br />
+        <b>.getElementById() .addEventListener() .createEvent() .hasFocus() etc, etc</b> <br /> <br />
+
+        <b><a target="_blank" href="https://www.w3schools.com/jsref/prop_win_innerheight.asp">.innerHeight & .innerWidth</a> </b> <br />
+        Get the current frame's (webpage content area) height and width (excluding toolbars)<br /> <br />
+
+        <b><a target="_blank" href="https://www.w3schools.com/jsref/prop_win_outerheight.asp">.outerHeight & .outerWidth</a> </b> <br />
+        Get the browser window's height and width (including toolbars)<br /> <br />
+
+      </p>
+    </div>
+
+    <div id="myMatchMedia" class="divBorder divBSet">
+      <h2 id="myH1">Some Examples...</h2>
+      <p>
+        When you click the 'Size' button it will let you know the current window inner & outer width/height<br />
+
+          <button id="mSize" class="button2" onclick="mySize('sizeMess')">Size</button> <br /> <br />
+
+          <span id="sizeMess" class="redResult"></span> <br /> <br />
+
+
+
+      </p>
+    </div>
+  </div>
+
+  <a href="#top">Top</a>
+
+  <script type="text/javascript">
+    function myConfirmFunc(p1) {
+      var txt;
+      var c = confirm("Are you sure you want to continue?");
+      if (c == true) {
+        txt = "You selected OKAY";
+      } else {
+        txt = "You cancelled the action";
+      }
+      document.getElementById(p1).innerHTML = txt;
+    }
+
+    function myPromptFunc(p1) {
+      var txt;
+      var c = prompt("Please enter your name", "First Name");
+      if (c == null) {
+        txt = "You clicked cancel";
+      } else if (c.trim() != "") {
+        txt = "Hi " + c.trim() + ", good to meet you!";
+      } else {
+        txt = "You did not enter a name";
+      }
+      document.getElementById(p1).innerHTML = txt;
+    }
+
+    function myScroll() {
+      window.scrollBy(50, 25);
+    }
+
+    function myMatch1(p1) {
+      var x = "";
+      if (window.matchMedia("(max-width: 700px)").matches) {
+        x = "The viewport is <= 700px wide";
+      } else {
+        x = "The viewport is > 700px wide";
+      }
+      x = x + " (currently: " + window.innerWidth + "px)";
+      document.getElementById(p1).innerHTML = x
+    }
+
+    //****************BELOW************************************************************************************
+    // ***** the below code will create a listener function that keeps checking the size of the window ****
+    var windowX = window.matchMedia("(max-width: 700px)")
+    myCheckWindow(windowX) // Call listener function at run time
+    windowX.addListener(myCheckWindow) // Attach listener function on state changes
+    // ***** the above code will create a listener function that keeps checking the size of the window ****
+
+    function myCheckWindow(x) {
+      if (x.matches) { // If media query matches
+        document.getElementById("myMatchMedia").style.backgroundColor = "pink";
+      } else {
+        //Put colour back to normal by removing the added colour (pink) - better than changing the colour again
+        document.getElementById("myMatchMedia").style.backgroundColor = "";
+      }
+    }
+    //*****************ABOVE***********************************************************************************
+
+    function mySize(p1) {
+      var x = "InnerHeight = " + window.innerHeight + "px <br />";
+      x = x + "InnerWidth = " + window.innerWidth + "px <br />";
+      x = x + "outerHeight = " + window.outerHeight + "px <br />";
+      x = x + "outerWidth = " + window.outerWidth + "px <br />";
+      document.getElementById(p1).innerHTML = x;
+    }
+
+
+    
+  </script>
+
+</body>
+
+</html>

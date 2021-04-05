@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Event Examples</title>
+
+  <link rel="stylesheet" href="CSS/normalize.css" />
+  <link rel="stylesheet" href="CSS/main.css" />
+  <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+  <!-- Required to pull in my default javaScript file -->
+  <!-- It's inside a [script] as it holds cammands that run in a [script] environment -->
+  <script src="Scripts/myScripts.js" />
+  </script>
+
+  <!-- Required for JQuery to work - this is the library file from JQuery.com (uncompressed development file) -->
+  <script src="JQuery/jquery-3.5.1.js"></script>
+  <!-- You can use the online one but for now I will download it and use my copy of it (use one or the other)-->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+  <style>
+    .makeInvisible {
+      display: none;
+    }
+
+    .PlayTbl {
+      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      /* Note... border-collapse: collapse will make it just a single border */
+    }
+
+    .PlayTbl td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    .PlayTbl th {
+      border: 1px solid #ddd;
+    }
+
+    /* Make every other row a different shade */
+    .PlayTbl tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    /* When hovered over a row it will change the background colour */
+    .PlayTbl tr:hover {
+      background-color: #ddd;
+    }
+
+    /* Change the way the table headers are displayed */
+    .PlayTbl th {
+      /* padding-top: 12px;
+      padding-bottom: 12px; */
+      /* Default text in [th] is centered and Bold */
+      /* text-align: left; */
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .tdS {
+      text-align: right;
+    }
+
+    /* ******** Used with Dragging Events - to show where to drop - not needed as it already does that ******* */
+    /* .dropTarget { */
+    /* float: left; */
+    /* width: 100px; */
+    /* height: 35px; */
+    /* margin: 15px; */
+    /* margin-right: 100px; */
+    /* padding: 10px; */
+    /* border: 1px solid #aaaaaa; */
+    /* } */
+  </style>
+
+  <script>
+    //Set-up the info required so it knows what I am dragging
+    function drag(ev) {
+      //This would store the id but I want the HTML instead
+      //ev.dataTransfer.setData("text", ev.target.id);
+      ev.dataTransfer.setData("text", ev.target.innerHTML);
+
+      //Now I have to make sure ALL my 'dragNNNNIn' items are no longer visible They should have a class of makeInvisible.
+      $(".dragIn1").not(".makeInvisible").addClass("makeInvisible");
+    }
+
+    /* Events fired on the drop target */
+    /*If this is missing then you will NOT be allowed to drop the item you are dragging */
+    function allowDrop(event) {
+      event.preventDefault();
+    }
+
+    //What do we want to do when the dragged item is dropped
+    function drop(ev) {
+      //First we should use the next line to stop any default things happening that while
+      //may not want to happen...Then we can tell it to do exactly what we want it to do
+      ev.preventDefault();
+
+      //in the drag function we told it use the elements ID so now we can read it in
+      //Note it will be
+      var data = ev.dataTransfer.getData("text");
+
+      //This would drag the element with the id across but I don't want to do that as I did not pass the id
+      //ev.target.appendChild(document.getElementById(data));
+
+      //i passed, for example,  .click()  so I need to remove the . and the () to be left with click
+      var xx = data.substr(1, data.length - 3);
+
+      //If xx = mouseenter or mouseleave we only want it to read mouse as they use some of the same things
+      if (xx.substring(0, 5) == "mouse") {
+        xx = "mouse";
+      }
+      //also change for keydown/keypress/keyup
+      if (xx.substring(0, 3) == "key") {
+        xx = "key";
+      }
+      //also change for blur (change to use focus)
+      if (xx.substring(0, 4) == "blur") {
+        xx = "focus";
+      }
+
+      //The id on the relevant divs start with 'drag' and end with 'In' so include them now
+      xx = "drag" + xx + "In";
+
+
+      //and then I can show the one I want to be visible
+      $("#" + xx).removeClass("makeInvisible");
+
+    }
+
+
+    // Lets create the jQuery actions we need to run once the page has finished loading.
+    $(document).ready(function() {
+      //Set the css values for the body
+      $("body").addClass("bodyMove");
+
+      // Calculate the height of the drag into box from the height of the div you are dragging out of
+      //var h = $("#mainDiv").height();
+      //$(".dragIn1").css("height", h - 100 + "px");
+
+      //Make the item in the table DRAGGABLE & set up it's drag attributes
+      $(".tdS").attr("draggable", "true")
+        .attr("ondragstart", "drag(event)");
+
+      //Add the click function to the element with id="clickElement"
+      $("#clickElement").click(function() {
+        myClickFunc("clickMess", "you clicked on the 'click me' button", "");
+      });
+
+      //Also do all the other elements
+      $("#dblclickElement").dblclick(function() {
+        myClickFunc("dblclickMess", "you clicked on the 'click me' button", "");
+      });
+      $("#hoverElement").hover(function() {
+        myClickFunc("hoverMess", "you hovered on the 'Hover Over' button", "");
+      });
+      $("#mouseElement").mouseenter(function() {
+        myClickFunc("mouseMess", "you moved the mouse on the 'Mouse Move' button", "");
+      });
+      $("#mouseElement").mouseleave(function() {
+        myClickFunc("mouseMess", "", "");
+      });
+      $("#keyElement").keydown(function() {
+        myClickFunc("keyMess", "You pressed down on a key", "");
+      });
+      $("#keyElement").keypress(function() {
+        myClickFunc("keyMess", "You pressed a key", "");
+      });
+      $("#keyElement").keyup(function() {
+        myClickFunc("keyMess", "You released a key", "");
+      });
+      $("#focusElement").focus(function() {
+        myClickFunc("focusMess", "Element received focus", "");
+      });
+      $("#focusElement").blur(function() {
+        myClickFunc("focusMess", "Element has lost focus", "");
+      });
+      $("#changeElement").change(function() {
+        //could have used var xx = document.getElementById("changeElement").value but I am sticking with jQuery for now
+        var xx = $("#changeElement").val();
+        myClickFunc("changeMess", "You changed the value of the drop down box to: " + xx, "");
+      });
+      $("#changeElement").blur(function() {
+        myClickFunc("changeMess", "", "");
+      });
+
+      //This uses the .on() method to allow me to add mutiple events - rather than one at a time
+      $("#onElement").on({
+        mouseenter: function() {
+          myClickFunc("onMess",
+            "you moved your mouse to the 'Move Mouse On' button",
+            "");
+        },
+        mouseleave: function() {
+          myClickFunc("onMess",
+            "you moved your mouse off of the 'Move Mouse On' button",
+            "");
+        }
+      });
+
+      //My function to display the message p2 or p3
+      function myClickFunc(p1, p2, p3) {
+        var xx = $("#" + p1).html();
+        if (xx != p2) {
+          showMess(p1, p2);
+        } else {
+          showMess(p1, p3);
+        }
+      }
+
+    });
+  </script>
+
+</head>
+
+<body>
+  <section id="top">
+
+
+    <a href="index.html">Home</a>
+    <h1><a href="https://www.w3schools.com/jquery/jquery_ref_events.asp" target="_blank">jQuery Event(s)</a> Examples</h1>
+  </section>
+
+  <div class="divFlex">
+    <div id="mainDiv" class="divBorder divBSet">
+
+      <h2>Some examples of Events are...</h2>
+      <p>
+        Note...if you head to <a href="https://www.w3schools.com/jquery/jquery_events.asp" target="_blank">w3schools.com</a> you
+        will see some examples where you can test out the below commands. <br />
+      </p>
+      <table class="PlayTbl">
+        <caption>
+          This uses a &lt;table&gt; to create this
+        </caption>
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>Meaning</th>
+          </tr>
+        </thead>
+        <thead>
+          <tr>
+            <th colspan="2">
+              Mouse Events
+            </th>
+          </tr>
+        </thead>
+        <tr>
+          <td class="tdS">.click()</td>
+          <td class="tdM">Adds the onClick method</td>
+        </tr>
+        <tr>
+          <td class="tdS">.dblclick()</td>
+          <td class="tdM">Adds the ondblclick method to your element(s)</td>
+        </tr>
+        <tr>
+          <td class="tdS">.hover()</td>
+          <td class="tdM">The hover() method takes two functions and is a combination of the
+            mouseenter() and mouseleave() methods. <br />
+            The first function is executed when the mouse enters the HTML element, <br />
+            and the second function is executed when the mouse leaves the HTML element</td>
+        </tr>
+        <tr>
+          <td class="tdS">.mouseenter()</td>
+          <td class="tdM">Adds the onmouseenter method to your element(s)</td>
+        </tr>
+        <tr>
+          <td class="tdS">.mouseleave()</td>
+          <td class="tdM">Adds the onmouseleave method;</td>
+        </tr>
+        <thead>
+          <tr>
+            <th colspan="2">
+              Keyboard Events
+            </th>
+          </tr>
+        </thead>
+        <tr>
+          <td class="tdS">.keypress()</td>
+          <td class="tdM">Adds the onkeypress event - fires when you press a key</td>
+        </tr>
+        <tr>
+          <td class="tdS">.keydown()</td>
+          <td class="tdM">Adds the onkeydown event - fires when you hold down a key</td>
+        </tr>
+        <tr>
+          <td class="tdS">.keyup()</td>
+          <td class="tdM">Adds the onkeyup event - fires when you release a key</td>
+        </tr>
+        <thead>
+          <tr>
+            <th colspan="2">
+              Form Events
+            </th>
+          </tr>
+        </thead>
+        <tr>
+          <td class="tdS">.blur()</td>
+          <td class="tdM">Adds the onblur method which fires when your element loses focus</td>
+        </tr>
+        <tr>
+          <td class="tdS">.focus()</td>
+          <td class="tdM">Adds the onfocus method which fires when your element gets focus</td>
+        </tr>
+        <tr>
+          <td class="tdS">.change()</td>
+          <td class="tdM">The change event occurs when the value of an element has been changed
+            (only works on &lt;input&gt;, &lt;textarea&gt; and &lt;select&gt; elements). <br />
+            Note: For select menus, the change event occurs when an option is selected. <br />
+            For text fields or text areas, the change event occurs when the field loses focus,
+            after the content has been changed.</td>
+        </tr>
+        <tr>
+          <td class="tdS">.on()</td>
+          <td class="tdM">The on() method attaches one or more event handlers for the selected elements</td>
+        </tr>
+
+      </table>
+
+    </div>
+    <div class="divBorder divBSet" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <p>
+        <b>Drag an event here ...</b> <br />
+        (Eg drag .click() or .dblclick()...etc) <br />
+      </p>
+
+      <!-- ************CLICK EVENT***************** -->
+      <div id="dragclickIn" class="divBorder dragIn1 makeInvisible">
+        <h3><a href="https://www.w3schools.com/jquery/event_click.asp" target="_blank">.click()</a> example</h3>
+        <p>
+          You can use jQuery to add a 'click event' to your element (assume it has an id="clickElement") <br />
+          then add the .click and the function you want to run when it was clicked on...eg... <br /> <br />
+
+          <b>$("#clickElement").click(function() { <br />
+            &nbsp;&nbsp;&nbsp;myClickFunc("clickMess", <br />
+            &nbsp;&nbsp;&nbsp;"you clicked on the 'click me' button", <br />
+            &nbsp;&nbsp;&nbsp;""); <br />
+            });</b> <br /><br />
+          <i>Note... <br />
+            As I need it to run my own function (because I want to pass it parameters) I have to
+            add my function (myClickFunc) inside the 'anonymous function' that this uses</i>
+          <br /> <br />
+          I will just have it display a message saying you clicked on the 'click me' button below <br />
+          and clear the message if you click on it again. <br />
+          <I>the button has the id="clickElement" so I can use jQuery to add the click event to it</I><br /> <br />
+          <button id="clickElement" class="button2">click me</button> <br /> <br />
+          <!-- Note the onclick event for the button is being added via jQuery in the [head] section above -->
+
+          <span id="clickMess" class="redMess"></span>
+        </p>
+      </div>
+
+      <!-- ************DBLCLICK EVENT***************** -->
+      <div id="dragdblclickIn" class="divBorder dragIn1 makeInvisible" style="position: relative; top: 50px;">
+        <h3><a href="https://www.w3schools.com/jquery/event_dblclick.asp" target="_blank">.dblclick()</a> example</h3>
+        <p>
+          You can use jQuery to add a 'double click event' to your element (assume it has an id="dblclickElement") <br />
+          then add the .click and the function you want to run when it was clicked on...eg... <br /> <br />
+
+          <b>$("#dblclickElement").click(function() { <br />
+            &nbsp;&nbsp;&nbsp;myClickFunc("dblclickMess", <br />
+            &nbsp;&nbsp;&nbsp;"you clicked on the 'click me' button", <br />
+            &nbsp;&nbsp;&nbsp;""); <br />
+            });</b> <br /><br />
+          <i>Note... <br />
+            As I need it to run my own function (because I want to pass it parameters) I have to
+            add my function (myClickFunc) inside the 'anonymous function' that this uses</i>
+          <br /> <br />
+          I will just have it display a message saying you clicked on the 'Double Click me' button below <br />
+          and clear the message if you click on it again. <br />
+          <I>the button has the id="dblclickElement" so I can use jQuery to add the click event to it</I><br /> <br />
+          <button id="dblclickElement" class="button2">Double Click me</button> <br /> <br />
+          <!-- Note the ondblclick event for the button is being added via jQuery in the [head] section above -->
+
+          <span id="dblclickMess" class="redMess"></span>
+        </p>
+      </div>
+
+      <!-- ************HOVER EVENT***************** -->
+      <div id="draghoverIn" class="divBorder dragIn1 makeInvisible" style="position: relative; top: 75px;">
+        <h3><a href="https://www.w3schools.com/jquery/event_hover.asp" target="_blank">.hover()</a> example</h3>
+        <p>
+          You can use jQuery to add a 'onHover event' to your element (assume it has an id="hoverElement") <br />
+          then add the .hover and the function you want to run when it was hovered on...eg... <br /> <br />
+
+          <b>$("#hoverElement").click(function() { <br />
+            &nbsp;&nbsp;&nbsp;myClickFunc("hoverMess", <br />
+            &nbsp;&nbsp;&nbsp;"you hovered on the 'Hover Over' button", <br />
+            &nbsp;&nbsp;&nbsp;""); <br />
+            });</b> <br /><br />
+          <i>Note... <br />
+            As I need it to run my own function (because I want to pass it parameters) I have to
+            add my function (myClickFunc) inside the 'anonymous function' that this uses</i>
+          <br /> <br />
+          I will just have it display a message saying you hovered over the' Hover Over' button below <br />
+          and clear the message if you hover on it again. <br />
+          <I>the button has the id="hoverElement" so I can use jQuery to add the hover event to it</I><br /> <br />
+          <button id="hoverElement" class="button2">Hover Over me</button> <br /> <br />
+          <!-- Note the event for the button is being added via jQuery in the [head] section above -->
+
+          <span id="hoverMess" class="redMess"></span>
+        </p>
+      </div>
+
+      <!-- ************MOUSEENTER & MOUSELEAVE EVENTS***************** -->
+      <div id="dragmouseIn" class="divBorder dragIn1 makeInvisible" style="position: relative; top: 200px;">
+        <h3><a href="https://www.w3schools.com/jquery/event_mouseenter.asp" target="_blank">.mouseenter()</a>
+          & <a href="https://www.w3schools.com/jquery/event_mouseleave.asp" target="_blank">.mouseleave()</a> example</h3>
+        <p>
+          NOTE... <br />
+          There are also events for:- <br />
+          <a href="https://www.w3schools.com/jquery/event_mousedown.asp" target="_blank">mousedown()</a> (mouse left button down)<br />
+          <a href="https://www.w3schools.com/jquery/event_mouseup.asp" target="_blank">mouseup()</a> (mouse left button up)<br />
+          <a href="https://www.w3schools.com/jquery/event_mousemove.asp" target="_blank">mousemove()</a> <br />
+          <a href="https://www.w3schools.com/jquery/event_mouseout.asp" target="_blank">mouseout()</a> <br />
+          <a href="https://www.w3schools.com/jquery/event_mouseover.asp" target="_blank">mouseover()</a> <br /> <br />
+
+          You can use jQuery to add a mouseenter or mouseleave event' to your element (assume it has an id="mouseElement") <br />
+          then add the event(s) and the function you want to run when it was moused over...eg... <br /> <br />
+
+          <b>$("#mouseElement").click(function() { <br />
+            &nbsp;&nbsp;&nbsp;myClickFunc("mouseMess", <br />
+            &nbsp;&nbsp;&nbsp;"you moved your mouse to the 'Move Mouse On' button", <br />
+            &nbsp;&nbsp;&nbsp;""); <br />
+            });</b> <br /><br />
+          <i>Note... <br />
+            As I need it to run my own function (because I want to pass it parameters) I have to
+            add my function (myClickFunc) inside the 'anonymous function' that this uses</i>
+          <br /> <br />
+          I will just have it display a message saying you moved the mouse over the'Mouse Move' button (.mouseenter) below <br />
+          and clear the message when you mouse off it again (mouseleave). <br />
+          <I>the button has the id="mouseElement" so I can use jQuery to add the mouse events to it</I><br /> <br />
+          <button id="mouseElement" class="button2">Mouse Move</button> <br /> <br />
+          <!-- Note the event for the button is being added via jQuery in the [head] section above -->
+
+          <span id="mouseMess" class="redMess"></span>
+        </p>
+      </div>
+
+      <!-- ************KEYPRESS EVENTS***************** -->
+      <div id="dragkeyIn" class="divBorder dragIn1 makeInvisible" style="position: relative; top: 225px;">
+        <h3>.keydown(), .keypress() & .keyup() example</h3>
+        <p>
+          You can use jQuery to add a keydown, keypress or keyup event' to your element (assume it has an id="keyElement") <br />
+          then add the event(s) and the function you want to run when a key was pressed...eg... <br /> <br />
+          The order these events happen is:- <br />
+          1. keydown <br />
+          2. keypress <br />
+          3. keyup <br /> <br />
+          Note: <br />
+          The onkeypress event is not fired for all keys (e.g. ALT, CTRL, SHIFT, ESC) in all browsers. <br />
+          To detect only whether the user has pressed a key, use the onkeydown event instead,
+          because it works for all keys. <br /> <br />
+
+          <b>$("#keyElement").keydown(function() { <br />
+            &nbsp;&nbsp;&nbsp;myClickFunc("keyMess", <br />
+            &nbsp;&nbsp;&nbsp;"you pressed a key", <br />
+            &nbsp;&nbsp;&nbsp;""); <br />
+            });</b> <br /><br />
+          <i>Note... <br />
+            As I need it to run my own function (because I want to pass it parameters) I have to
+            add my function (myClickFunc) inside the 'anonymous function' that this uses</i>
+          <br /> <br />
+          I will just have it display a message saying it detected a keydown/keypress (using keydown/keypress) <br />
+          and then saying it detected a keyup when finished. <br />
+          <I>the input box has the id="keyElement" so I can use jQuery to add the key events to it</I><br /> <br />
+          NOTE... <br />
+          <b>Click in the text box then press a key on the keyboard </b><br />
+          ...the keydown message will not be displayed
+          as it will instantly be overridden by the keypress message. <br />
+          So you will probably only use the keydown & keyup events OR the keypress event. <br /> <br />
+          <input id="keyElement" type="text"> <br /> <br />
+          <!-- Note the event for the input text box is being added via jQuery in the [head] section above -->
+
+          <span id="keyMess" class="redMess"></span>
+        </p>
+      </div>
+
+      <!-- ************BLUR() & FOCUS() EVENTS***************** -->
+      <div id="dragfocusIn" class="divBorder dragIn1 makeInvisible" style="position: relative; top: 325px;">
+        <h3>.blur() & .focus() example</h3>
+        <p>
+          You can use jQuery to add a blur() & focus() event' to your element (assume it has an id="focusElement") <br />
+          then add the event(s) and the function you want to run when an element gets focus (focus) or
+          loses focus (blur)...eg... <br /> <br />
+
+          <b>$("#focusElement").focus(function() { <br />
+            &nbsp;&nbsp;&nbsp;myClickFunc("focusMess", <br />
+            &nbsp;&nbsp;&nbsp;"your element lost focus", <br />
+            &nbsp;&nbsp;&nbsp;""); <br />
+            });</b> <br /><br />
+          <i>Note... <br />
+            As I need it to run my own function (because I want to pass it parameters) I have to
+            add my function (myClickFunc) inside the 'anonymous function' that this uses</i>
+          <br /> <br />
+          I will just have it display a message saying it received focus when an element gains focus (uses .focus()) <br />
+          and then saying it lost focus (uses .blur()) when the element loses focus. <br />
+          <I>the input box has the id="focusElement" so I can use jQuery to add the focus events to it</I><br /> <br />
+          NOTE... <br />
+          <b>Click in the text box to give it focus & TAB out or click in the demo box to force it to lose focus </b><br />
+          <br />
+          <input id="focusElement" type="text" maxlength="6" style="width:50px;">
+          <!-- Note the event for the input text box is being added via jQuery in the [head] section above -->
+          <input type="text" maxlength="13" value="demo use only" style="width:100px;"> <br /> <br />
+
+          <span id="focusMess" class="redMess"></span> <br /> <br />
+          Note... To force an element to get focus use <b>.focus()</b> with no function inside ( )'s <br />
+          eg... <b>$("#myElementID").focus();</b> - then the element with the id="myElementID" will get focus.
+        </p>
+      </div>
+
+      <!-- ************CHANGE EVENT***************** -->
+      <div id="dragchangeIn" class="divBorder dragIn1 makeInvisible" style="position: relative; top: 450px;">
+        <h3>.change() example</h3>
+        <p>
+          You can use jQuery to add a 'onchange event' to your element (assume it has an id="changeElement") <br />
+          then add the .change and the function you want to run when it was changed...eg... <br /> <br />
+
+          <b>$("#changeElement").click(function() { <br />
+            &nbsp;&nbsp;&nbsp;myClickFunc("changeMess", <br />
+            &nbsp;&nbsp;&nbsp;"you changed the value of the drop down box", <br />
+            &nbsp;&nbsp;&nbsp;""); <br />
+            });</b> <br /><br />
+          <i>Note... <br />
+            As I need it to run my own function (because I want to pass it parameters) I have to
+            add my function (myClickFunc) inside the 'anonymous function' that this uses</i>
+          <br /> <br />
+          I will just have it display a message saying you changed the drop down value <br />
+          and clear the message when it loses focus. <br />
+          <I>the drop down box (select box) has the id="changeElement" so I can use jQuery to add the change event to it</I><br /> <br />
+          <select id="changeElement">
+            <option value="Audi">Audi</option>
+            <option value="BMW">BMW</option>
+            <option value="Mercedes">Mercedes</option>
+            <option value="Toyota">Toyota</option>
+          </select>
+          <!-- Note the event for the button is being added via jQuery in the [head] section above -->
+          <input type="text" maxlength="13" value="demo use only" style="width:100px;"> <br /> <br />
+          <span id="changeMess" class="redMess"></span>
+        </p>
+      </div>
+
+      <!-- ************ON EVENT***************** -->
+      <div id="dragonIn" class="divBorder dragIn1 makeInvisible" style="position: relative; top: 350px;">
+        <h3>.on() example</h3>
+        <p>
+          You can use jQuery to add a multiple events to your element (assume it has an id="onElement") <br />
+          then add the event(s) and the function you want to run. <br />
+          For this example I am using .mouseenter() & .mouseleave() events...eg... <br /> <br />
+
+          <b>$("#onElement").on({ <br />
+            &nbsp;&nbsp;&nbsp;mouseenter: function() {myClickFunc("onMess", <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"you moved your mouse to the 'Move Mouse On' button", <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;""); <br />
+            &nbsp;&nbsp;&nbsp;}, <br />
+            &nbsp;&nbsp;&nbsp;mouseleave: function() {myClickFunc("onMess", <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"you moved your mouse off of the 'Move Mouse On' button", <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;""); <br />
+            &nbsp;&nbsp;&nbsp;} <br />
+            });</b> <br /><br />
+          <i>Note... <br />
+            As I need it to run my own function (because I want to pass it parameters) I have to
+            add my function (myClickFunc) inside the 'anonymous function' that this uses</i>
+          <br /> <br />
+          I will just have it display a message saying you moved the mouse over the'Mouse Move' button (.mouseenter) below <br />
+          and clear the message when you mouse off it again (mouseleave). <br />
+          <I>the button has the id="onElement" so I can use jQuery to add the mouse events to it</I><br /> <br />
+          <button id="onElement" class="button2">Mouse Move</button> <br /> <br />
+          <!-- Note the event for the button is being added via jQuery in the [head] section above -->
+
+          <span id="onMess" class="redMess"></span>
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <h2>event.xxxxx methods may also be useful</h2>
+      <p>
+        There are also some methods that may be useful that I will not go in to here & now. <br />
+        I may add to this area if I start to use some of them but you can head
+        <a href="https://www.w3schools.com/jquery/jquery_ref_events.asp" target="_blank">here</a> to
+        see a list of them (event.currentTarget / event.data / event.result are just some of them). <br /> <br /> <br />
+
+        And w3Schools.com also have a list of a lot of other
+        <a href="https://www.w3schools.com/jquery/jquery_ref_html.asp" target="_blank">jQuery HTML/CSS Methods</a> which are
+        well worth taking a look at. <br />
+      </p>
+    </div>
+
+    <div class="divBorder divBSet">
+      <h2>.each() method</h2>
+      <p>
+        <a href="https://www.w3schools.com/jquery/misc_each.asp" target="_blank">.each()</a> can list each
+        occurrence it finds of an element (eg list each &lt;li&gt; item it finds in a list) <br /> <br />
+        EG... <br />
+        I have an unordered list (with an id="eachEx"):- <br />
+        <ul id="eachEx">
+          <li>Coffee</li>
+          <li>Tea</li>
+          <li>Milk</li>
+        </ul> <br /> <br />
+        When you click on the button (below) to list the items it will use the command <br />
+        <b>$("#eachEx li").each(function(){alert("list item is: " + $(this).text())})</b> <br /> <br />
+        <button class="button2" id="eachbtn" onclick="eachFunc()">Run Each</button> <br />
+
+      </p>
+      <script>
+        function eachFunc() {
+          $("#eachEx li").each(function() {
+            alert("list item is: " + $(this).text());
+          });
+        }
+      </script>
+    </div>
+  </div>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <h2>.html() Vs .text() Vs .val()</h2>
+      <p>
+        The .html() and .text() methods can be used to set or return information from an element. <br /> <br />
+
+        <a href="https://www.w3schools.com/jquery/html_html.asp" target="_blank">.html()</a> can be used to
+        set/retrieve the text of an element if it includes HTML code <br /> <br />
+
+        <a href="https://www.w3schools.com/jquery/html_text.asp" target="_blank">.text()</a> can be used to
+        set/retrieve the text of an element if it does NOT include HTML code -OR - if there is any
+        HTML code then it will get stripped out. <br /> <br />
+
+        <a href="https://www.w3schools.com/jquery/html_val.asp" target="_blank">.val()</a> can be used to
+        set/retrieve the value of an &lt;input&gt; element. <br />
+      </p>
+      <p id="htmlText">
+        To <b>demonstrate</b> this we shall use this <span style="color: green;">[p] element</span> !! <br />
+      </p>
+      <button class="button2" onclick="showHtml()">Show .html()</button>
+      <button class="button2" onclick="showText()">Show .text()</button> <br /> <br />
+      <input id="valInput" type="text" value="Input Element Here" />
+      <button class="button2" onclick="showVal()">Show .val()</button> <br />
+
+      <p id="showHtml" class="redMess"> </p>
+      <br />
+      <script>
+        function showHtml() {
+          $("#showHtml").html($("#htmlText").html());
+        }
+
+        function showText() {
+          $("#showHtml").html($("#htmlText").text());
+        }
+
+        function showVal() {
+          $("#showHtml").html($("#valInput").val());
+        }
+      </script>
+    </div>
+  </div>
+  <a href="#top">Top</a>
+</body>
+
+</html>

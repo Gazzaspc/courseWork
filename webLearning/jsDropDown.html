@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>DropDown Box</title>
+
+  <link rel="stylesheet" href="CSS/normalize.css" />
+  <link rel="stylesheet" href="CSS/main.css" />
+  <link rel="stylesheet" href="CSS/myStyles.css" />
+
+  <!-- Required for JQuery to work - this is the library file from JQuery.com (uncompressed development file) -->
+  <script src="JQuery/jquery-3.5.1.js"></script>
+  <!-- You can use the online one but for now I will download it and use my copy of it (use one or the other)-->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+  <script text="text/javascript">
+    function mySwitch(p1, p2) {
+      var textF = "";
+      var myElem = document.getElementById(p1).value;
+
+      switch (myElem.toLowerCase()) {
+        case "apple":
+          textF = "Apples taste apple-y";
+          break;
+        case "orange":
+          textF = "I suppose oranges are okay";
+          break;
+        case "banana":
+          textF = "Banana is good";
+          break;
+        case "pear":
+          textF = "pears grow on trees";
+          break;
+        case "lemon":
+          textF = "Lemons screw your face up";
+          break;
+          Default:
+            textF = "Unknown Fruit !!!"
+      }
+      document.getElementById(p2).innerHTML = textF;
+    }
+  </script>
+
+  <style>
+
+  </style>
+
+</head>
+
+<body class="bodyMove">
+  <section id="Top">
+
+    <a href="index.html">Home</a>
+    <h1>Drop Down Boxes</h1>
+    <p>
+      The Drop Down Box is really a <br />
+      <b>&lt;select&gt; <br />
+        &nbsp;&nbsp;&nbsp;&lt;option value="1"&gt;Opt 1&lt;/option&gt; <br />
+        &nbsp;&nbsp;&nbsp;&lt;option value="2"&gt;Opt 2&lt;/option&gt; <br />
+        &nbsp;&nbsp;&nbsp;&lt;option value="3"&gt;Opt 3&lt;/option&gt; <br />
+        &lt;/select&gt; </b>. <br /> <br />
+        You can have any value...eg value = "1" or value="opt 1" <br />
+        and that is the value you will be checking for. <br /> <br />
+    </p>
+  </section>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <h3>Drop Down Box</h3>
+      <p>
+        For Example... <br /> <br />
+        <b>
+          &lt;select id="fruits"&gt; <br />
+            &nbsp;&nbsp;&nbsp;&lt;option value="Banana"&gt;Banana&lt;/option&gt; <br />
+            &nbsp;&nbsp;&nbsp;&lt;option value="orange"&gt;orange&lt;/option&gt;</b> <br />
+            &nbsp;&nbsp;&nbsp;<i>//Use 'selected' to create a default start value</i> <br />
+            <b>&nbsp;&nbsp;&nbsp;&lt;option value="Apple" selected&gt;Apple&lt;/option&gt; <br />
+            &nbsp;&nbsp;&nbsp;&lt;option value="PEAR"&gt;PEAR&lt;/option&gt; <br />
+            &nbsp;&nbsp;&nbsp;&lt;option value="leMON"&gt;leMON&lt;/option&gt; <br />
+          &lt;/select&gt; </b><br /> <br /> <br />
+
+        In my demo (in the right pane) every time you change the option in the drop down
+        it will display a message. <br />
+        For this I am implementing the <b>onchange</b> event and calling my function (called mySwitch)
+        on the &lt;select id="fruits"&gt; line as follows: <br /> <br />
+        <b>&lt;select id="fruits" onchange="mySwitch('fruits', 'switchId')"&gt;</b> <br /> <br />
+        See the code on my form for more <br />
+      </p>
+
+    </div>
+
+    <div class="divBorder divBSet">
+      <p>
+        A quick demo... <br /> <br />
+        I am using various upper/lower case in my dropdown box and checking just
+        for lowercase in my code that uses the 'switch' statement. <br /> <br />
+        Select One:
+        <select id="fruits" onchange="mySwitch('fruits', 'switchId')">
+          <option value="Banana">Banana</option>
+          <option value="orange">orange</option>
+          <!-- //Use 'selected' to create a default start value -->
+          <option value="Apple" selected>Apple</option>
+          <option value="PEAR">PEAR</option>
+          <option value="leMON">leMON</option>
+        </select> <br /> <br />
+        <span id="switchId" class="redMess"></span> <br />
+        <br /> <br /> <br />
+        Note... <br />
+        You cannot use this box and allow the user to enter new text <br />
+        they can only select one from the list that has already been created. <br />
+        Apparently a common way to get round this is to have an 'OTHER' option (placed
+        at the top of the list) which, when chosen, can make visible a hidden
+        text box where the user can then enter the new field they want added to
+        the box. <br />
+        You can then add the new option to your list...Upon a search  for <br />
+        'HTML select form with option to enter custom value' <br />
+        there are some suggestions of what people have done but I wont go in to it now. <br />
+      </p>
+      <script>
+
+        // To make sure the message is displayed for the default option
+
+        mySwitch("fruits", "switchId");
+      </script>
+
+
+    </div>
+  </div>
+
+
+  <a href="#Top">Top</a>
+
+
+
+</body>
+
+</html>

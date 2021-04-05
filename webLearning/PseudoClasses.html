@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>CSS Selectors</title>
+
+  <link rel="stylesheet" type="type/css" href="CSS/normalize.css" />
+  <link rel="stylesheet" type="text/css" href="CSS/main.css" />
+  <link rel="stylesheet" type="text/css" href="CSS/MyStyles.css" />
+
+  <!-- Required for JQuery to work - this is the library file from JQuery.com (uncompressed development file) -->
+  <script src="JQuery/jquery-3.5.1.js"></script>
+  <!-- You can use the online one but for now I will download it and use my copy of it (use one or the other)-->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+  <style>
+    p.fLet::first-letter {
+      font-size: 200%;
+      color: #8A2BE2;
+    }
+
+    .MyHover:hover,
+    .VisClick:visited {
+      color: red;
+    }
+
+    .ActClick:active {
+      font-size: 2em;
+    }
+
+    input:focus {
+      background-color: yellow;
+    }
+
+    .container {
+      display: inline-block;
+      text-align: right;
+      /* use inline-block to make it the same size as the text/boxes;
+       and text-align: right to make the boxes align properly...Only works if all boxes are same size */
+    }
+
+    .containerT {
+      display: inline-block;
+      text-align: right;
+      line-height: 1.35;
+      /* use inline-block to make it the same size as the text/boxes;
+       and text-align: right to make the text align properly
+       and line-height: 1.35 looks like it spaces the text (pretty much) the same as the input box spacing*/
+    }
+
+    .containerL {
+      display: inline-block;
+      text-align: left;
+      /* use inline-block to make it the same size as the text/boxes;
+       and text-align: left to make the boxes align properly...works well with labels in their own div */
+    }
+
+    .pseudoNormal {
+      background.color: none;
+    }
+
+    .myCol {
+      color: purple;
+    }
+  </style>
+
+</head>
+
+<body class="bodyMove">
+  <section id="top">
+
+    <a href="index.html">Home</a>
+  </section>
+  <section>
+    <h1>Example of CSS Selectors</h1>
+    <p class="fLet">
+      Also known as 'pseudo elements' and 'pseudo classes' <br />
+      (Elements are the whole command eg a:hover {...} and the <br />
+      Class is the function part eg :hover) <br /> <br />
+      Placed inside the &lt;style&gt; &lt;/style&gt; area <br />
+      eg... <br />
+      &lt;style&gt; <br />
+      &nbsp;&nbsp;&nbsp;p { <i>styles</i>} <br />
+      &lt;/style&gt; <br /> <br />
+      Go and visit <b><a href="https://www.w3schools.com/cssref/css_selectors.asp" target="_blank">CSS Selector References</a> </b> for more <br />
+
+    </p>
+  </section>
+  <section>
+
+    <div class="divFlex">
+      <div class="divBorder divBSet">
+        <h2>Selector concept Pt 1</h2>
+        <p>
+          <b class="myCol">tag</b> <br />
+          the tag on its own selects ALL instances of that tag <br />
+          eg... <br />
+          <b>h1 {color:red;}</b> <br />
+          will change the color of the text in ALL h1 tags to be red <br /> <br />
+
+          <b class="myCol">.<i>classname</i></b> <br />
+          the dot (.) represents a tag with a class="<i>classname</i>" given to it <br />
+          eg... <br />
+          <b>.myClassName {color:red;}</b> <br />
+          will change the color of the text in ALL tags with a class="myClassName" associated to it <br /> <br />
+
+          <b class="myCol">#<i>idname</i></b> <br />
+          the hash (#) represents a tag with an id="<i>idname</i>" given to it <br />
+          eg... <br />
+          <b>#myId {color:red;}</b> <br />
+          will change the color of the text in ALL tags with an id="myId" associated to it <br /> <br />
+
+          <b class="myCol">tag.<i>classname</i></b> <br />
+          the tag, followed by a .<i>classname</i> selects tags that also that class attched to it <br />
+          eg... <br />
+          <b>h1.myClassName {color:red;}</b> <br />
+          will change the color of the text in ALL h1 tags that ALSO have the class="myClassName" attached. <br /> <br />
+
+          <b class="myCol">tag#<i>idname</i></b> <br />
+          the tag, followed by a hash (#) represents a tag with an id="<i>idname</i>" attached to it <br />
+          eg... <br />
+          <b>h1#myId {color:red;}</b> <br />
+          will change the color of the text in ALL h1 tags with an id="myId" associated to it <br /> <br />
+
+        </p>
+      </div>
+
+      <div class="divBorder divBSet">
+        <h2>Selector concept Pt 2</h2>
+        <p>
+          You can also list it like, for example... <br /> <br />
+
+          <b class="myCol">h1, h2, h3 {color: red;}</b> <br />
+          this will change the color of the text in ALL h1 AND h2 AND h3 tags <br /> <br />
+
+          <b class="myCol">h1, h2.myClassName, h3#myId {color: red;}</b> <br />
+          this will change the color of the text in ALL h1 tags <br />
+          AND the h2 tags with a class="myClassName" <br />
+          AND the h3 tags with an id="myId"<br /> <br />
+
+          <b class="myCol">div p.myClassName {color: red;}</b> <br />
+          this will change the color of the text in ALL 'p' elements (with a class="myClassName") that
+          are within the div element (see
+          <a href="https://www.w3schools.com/cssref/tryit.asp?filename=trycss_sel_element_element" ) target="_blank">example</a>
+          )<br />
+          <br />
+
+          <b class="myCol">.myClass p.myClassName {color: red;}</b> <br />
+          this will change the color of the text in ALL 'p' elements (with a class="myClassName") that
+          are within an element with the class="myClass"<br />
+          <br />
+
+          <b class="myCol">div &gt; p.myClassName {color: red;}</b> <br />
+          this will change the color of the text in ALL 'p' elements (with a class="myClassName") that
+          has a parent div element (see
+          <a href="https://www.w3schools.com/cssref/tryit.asp?filename=trycss_sel_element_gt" ) target="_blank">example</a>
+          )<br />
+          <br />
+
+          <b class="myCol">div + p {color: red;}</b> <br />
+          this will change the color of the text in the a 'p' element that
+          is directly AFTER a div element (see
+          <a href="https://www.w3schools.com/cssref/sel_element_pluss.asp" ) target="_blank">example</a>
+          )<br />
+          <br />
+
+          <b class="myCol">div ~ p {color: red;}</b> <br />
+          this will change the color of the text in every 'p' element that
+          is a sibling of the div ...(see
+          <a href="https://www.w3schools.com/cssref/sel_gen_sibling.asp" ) target="_blank">example</a>
+          )<br />
+          <br />
+        </p>
+
+      </div>
+    </div>
+
+    <a href="#top">Top</a> <br />
+
+    <div class="divFlex">
+      <div class="divBorder divBSet">
+        <h2>Selector concept Pt 3</h2>
+        <p>
+          <b class="myCol">[<i>href="nnnn"</i>]</b> <br />
+          the[ ] represents an attribute <br />
+          eg... <br />
+          <b>a[href="index.html"] {color:red;}</b> <br />
+          will change the color of the text in ALL anchor (a) tags with an attribute of href="<b>index.html</b>" <br />
+          (see
+          <a href="https://www.w3schools.com/cssref/tryit.asp?filename=trycss_sel_attribute_value" ) target="_blank">example</a>
+          )<br /> <br />
+
+          <b class="myCol">[<i>href*="index"</i>]</b> <br />
+          the *= means any anchor tag with an attribute of <b>href="..."</b> and the
+          text 'index' anywhere within the quotes (" ")<br />
+          eg... <br />
+          <b>[href*="index"] {color:red;}</b> <br />
+          will change the color of the text in ALL anchor (a) tags with an
+          attribute of href="<i>nnn</i><b>index</b><i>nnn</i>"  <br /> <br />
+
+          <b class="myCol">[<i>href~="index"</i>]</b> <br />
+          the ~= means any anchor tag with an attribute of <b>href="..."</b> and the
+          word 'index' anywhere within the quotes (" ")<br />
+          <i>(Note...index would be found but indexes would not)</i>
+          eg... <br />
+          <b>[href~="index"] {color:red;}</b> <br />
+          will change the color of the text in ALL anchor (a) tags with an
+          attribute of href="<i>nnn </i><b>index</b><i> nnn</i>"  <br /> <br />
+
+          <b class="myCol">[<i>href^="index"</i>]</b> <br />
+          the ^= means any anchor tag with an attribute of <b>href="..."</b> and the
+          text inside the quotes MUST START with "index" <br />
+          eg... <br />
+          <b>[href^="index"] {color:red;}</b> <br />
+          will change the color of the text in ALL anchor (a) tags with an
+          attribute of href="<b>index</b><i>nnnn</i>" <br /> <br />
+
+          <b class="myCol">[<i>href$=".html"</i>]</b> <br />
+          the $= means any anchor tag with an attribute of <b>href="..."</b> and the
+          text inside the quotes MUST END with ".html" <br />
+          eg... <br />
+          <b>[href$=".html"] {color:red;}</b> <br />
+          will change the color of the text in ALL anchor (a) tags with an
+          attribute of href="<i>nnnn</i><b>.html</b>" <br /> <br />
+
+        </p>
+
+      </div>
+    </div>
+
+    <a href="#top">Top</a> <br />
+
+    <div class="divFlex">
+      <div class="divBorder divBSet">
+        <h2>CSS Selectors have a few types</h2>
+        <p>A few examples would be :- <br> <br />
+          :active <br />
+          :hover <br />
+          ::first-letter <br />
+          ::first-child <br />
+          ::first-line <br />
+        </p>
+
+        <h3>Active</h3>
+        <p class="fLet">
+          When you click on a link it becomes ACTIVE so you could say <br />
+          <b>a:active {font-size: 2em;}</b> <br /> </p>
+
+        <h3>Hover</h3>
+        <p class="fLet">
+
+          When you hover your mouse over an element you could, eg underline it <br />
+          <b>.MyHover:hover {color:red;}</b> <br />
+          <br /> <br />
+        </p>
+
+      </div>
+      <div class="divBorder divAside divBSet">
+        <p class="fLet">
+          For example, <br /> <br />
+          You can HOVER your mouse over the text that says
+          <a class="MyHover" href="">HOVER HERE</a> to see <br />
+          it change to a red color. <br /> <br />
+          And you can CLICK the link that says <a class="ActClick" href="#DoNothing">CLICK ME</a> to see <br />
+          it double the original text size. <br /> <br />
+          <br /> <br />
+          NOTE... <br /> <br />
+          I am also using (in the &lt;Styles&gt; area) the command <br />
+          <b>
+            p.fLet::first-letter { <br />
+            &nbsp;&nbsp;&nbsp;font-size: 200%; <br />
+            &nbsp;&nbsp;&nbsp;color: #8A2BE2; <br />
+            &nbsp;&nbsp;} </b><br />
+          in order to change the FIRST character of EVERY &lt;p&gt; element that has a class="fLet".
+
+        </p>
+      </div>
+    </div>
+
+    <a href="#">Top</a>
+
+    <div class="divFlex">
+      <div class="divBorder divBSet">
+        <h2>CSS Selectors have a few types</h2>
+        <p>More examples would be :- <br>
+        </p>
+
+        <h3>:focus</h3>
+        <p>
+          When you use the :focus in, for example, an INPUT box you could set
+          the background colour whenever you are about to enter text in it. <br />
+          <b>input:focus {background-color: yellow;}</b> <br />
+
+          Eg <br />
+          Click on each input box below to see it in action <br /> <br />
+        </p>
+        <div class="container divBorder">
+          <!-- This works well if boxes are all the same size -->
+          <label name="fname">First Name: </label>
+          <input type="text" name="fname" /> <br />
+          <label name="lname">Last Name: </label>
+          <input type="text" name="lname" />
+        </div> <br /> <br />
+
+        <div class="divFlex">
+          <div class="divBorder containerT">
+            <label name="gname">First Name: </label> <br />
+            <label name="mname">Last Name: </label> <br />
+            <label name="age">Age: </label>
+          </div>
+          <div class="divBorder containerL">
+            <input type="text" name="gname" /> <br />
+            <input type="text" name="mfname" /> <br />
+            <input type="number" name="age" min="0" max="120" /> <br />
+          </div>
+        </div>
+
+
+        <br /> <br /> <br />
+      </div>
+
+
+    </div>
+  </section>
+  <a href="#top">Top</a> <br />
+</body>
+
+</html>

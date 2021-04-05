@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>::before & ::after</title>
+
+  <style>
+
+    p {border:1px solid black;}
+    
+    p::before {
+      content: "<<<";
+      background-color: yellow;
+      font-size: 1.5em;
+    }
+
+    p::after {
+      content: ">>>";
+      background-color: yellow;
+      font-size: 1.5em;
+    }
+
+    body {background-color: #F5F5F5}
+  </style>
+
+</head>
+
+<body>
+  <a href="index.html">Home</a>
+  <h1>Using ::before and ::after</h1>
+
+  <p>
+    This is to demonstrate the use(s) of the <br />
+    <b>::before</b> and <b>::after</b> commands. <br /> <br />
+    You need to set up the value of the ::before & ::after elements by Using
+    the command <b>content:</b>. I will be setting mine to <br />
+    (::before) content:"
+    <<<" <br />
+    (::after) content:">>>" <br /> <br />
+    It affects your objects 'content' area - so it will include what
+    you add as your content: field (<<<) & (>>>) to the beginning of the CONTENT area
+      and not before and after the MARGIN or PADDING sections
+  </p>
+
+  <P>On this page I told it to use ::before and ::after on EVERY &lt;p&gt; element</P>
+  <P>NOTE... <br />
+    When you RIGHT+CLICK on a web page and choose the INSPECT option <br />
+    you will see ::before on its own line EVERYWHERE that the ::before is being used. <br />
+    The same applies to the ::after command.</P> <br />
+  <p style="background-color:#DCDCDC">
+    To do this, in the &lt;style&gt; section at the top of my page I created... <br />
+    <b>
+      p::before { <br />
+      content: "
+      <<<"; <br />
+      background-color:yellow; <br />
+      font-size:1.5em; <br />
+      } <br />
+      <br />
+      p::after { <br />
+      content: ">>>"; <br />
+      background-color:yellow; <br />
+      font-size:1.5em; <br />
+      } <br />
+    </b>
+  </p>
+</body>
+
+</html>

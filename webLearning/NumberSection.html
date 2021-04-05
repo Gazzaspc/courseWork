@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Numbering Sections</title>
+
+  <link rel="stylesheet" type="text/css" href="CSS/normalize.css" />
+  <link rel="stylesheet" type="text/css" href="CSS/main.css" />
+  <link rel="stylesheet" type="text/css" href="CSS/myStyles.css" />
+
+  <script src="Scripts/myScripts.js" text="text/javascript"></script>
+
+  <style>
+    body {
+      counter-reset: section;
+    }
+
+    .incrSection {
+      counter-reset: subsection;
+    }
+
+    .incrSection::before {
+      counter-increment: section;
+      font-weight: bold;
+      content: "Section "counter(section) ". ";
+    }
+
+    .incrSub::before {
+      counter-increment: subsection;
+      font-weight: bold;
+      content: counter(section) ". "counter(subsection) " ";
+    }
+
+    h1.incrSection {
+      counter-reset: subsection;
+    }
+
+    h1.incrSection::before {
+      counter-increment: section;
+      content: "Section "counter(section) ". ";
+    }
+
+    h2::before {
+      counter-increment: subsection;
+      content: counter(section) ". "counter(subsection) " ";
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    ul.incrSection::before {
+      counter-increment: section;
+      font-weight: bold;
+      content: "Section: "counter(section) ". ";
+    }
+
+    resetSection {
+      counter-reset: section;
+    }
+
+    ol {
+      counter-reset: mySection;
+      list-style-type: none;
+    }
+
+    ol li::before {
+      counter-increment: mySection;
+      font-weight: bold;
+      content: counters(mySection, ".") " ";
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+
+</head>
+
+<body class="bodyMove">
+
+  <section id="top">
+    <a href="index.html">Home</a> <br />
+
+  </section>
+  <h1>Numbering Sections (CSS Counters)</h1>
+  <p>
+    CSS Counters are used to maintain an 'automatic numbering' system <br />
+    and could be good for sections and sub-sections / Chapter & Verse.
+  </p>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <p>
+        To implement the CSS Counter system you need to use the following properties:- <br /> <br />
+
+        <ul>
+          <li>
+            <a href="https://www.w3schools.com/cssref/pr_gen_counter-reset.asp" target=_blank">counter-reset</a>
+          </li>
+          <li>
+            <a href="https://www.w3schools.com/cssref/pr_gen_counter-increment.asp" target=_blank">counter-increment</a>
+          </li>
+          <li>
+            <a href="https://www.w3schools.com/cssref/pr_gen_content.asp" target=_blank">content</a>
+          </li>
+        </ul>
+        The functions counter() or counters() adds the value of a counter to an element. <br /> <br /> <br />
+
+        <b><a href="https://www.w3schools.com/cssref/pr_gen_counter-reset.asp" target=_blank">counter-reset</a></b> <br />
+        To use a CSS counter, it must first be created with counter-reset. <br />
+        It is used to reset the Section or the Subsection values back to zero. <br />
+        If you only need one counter on a web page then in the &lt;body&gt; section you can put your... <br />
+        <b>counter-reset: section;</b> <br /> <br />
+
+        <b><a href="https://www.w3schools.com/cssref/pr_gen_counter-increment.asp" target=_blank">counter-increment</a></b> <br />
+        Use counter-increment to increase the SECTION number or the SUBSECTION number. <br />
+        It seems a good idea to use this with the ::BEFORE method. <br /> <br />
+
+        <b><a href="https://www.w3schools.com/cssref/pr_gen_content.asp" target=_blank">content</a></b> <br />
+        The content command is used to display the Section and/or Subsection values <br /> <br />
+
+
+
+
+
+      </p>
+    </div>
+  </div>
+  <a href="#top">Top</a> <br />
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <p>
+        So, for example:- <br /> <br />
+
+        In the &lt;head&gt; section you can have <br />
+        <b>&lt;style&gt; <br />
+
+          &nbsp;&nbsp;&nbsp;body { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;counter-reset: section; <br />
+          &nbsp;&nbsp;&nbsp;} <br />
+
+          &nbsp;&nbsp;&nbsp;.incrSection { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;counter-reset: subsection; <br />
+          &nbsp;&nbsp;&nbsp;} <br />
+
+          &nbsp;&nbsp;&nbsp;.incrSection::before { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content: "Section " counter(section) ". "; <br />
+          &nbsp;&nbsp;&nbsp;} <br />
+
+          &nbsp;&nbsp;&nbsp;.incrSub::before { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;counter-increment: subsection; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content: counter(section) ". " counter(subsection) " "; <br />
+          &nbsp;&nbsp;&nbsp;} <br />
+
+          &lt;/style&gt; </b> <br /> <br />
+
+        This basically means... <br />
+        <ul>
+          <li>
+            At the start of the BODY you <b>Reset the Section Number</b> (make it 0)
+          </li>
+          <li>
+            At the start of each SECTION you <b>Reset the Subsection Number</b> (make it 0)
+          </li>
+          <li>
+            On each SECTION::BEFORE you <b>increment the Section Number</b> (add 1 to it)
+          </li>
+          <li>
+            On each SUBSECTION::BEFORE you <b>increment the Subsection Number</b> (add 1 to it)
+          </li>
+        </ul> <br />
+
+
+      </p>
+    </div>
+
+    <div class="divBorder divBSet">
+      <p>
+        So, for example:- <br /> </p>
+
+      <p class="incrSection">
+        This is a Section <br /> <br />
+        <span class="incrSub">
+          Sub-section, the first line. <br />
+          With some more text. <br /> <br />
+        </span>
+        <span class="incrSub">
+          Sub-section, the second line. <br />
+          With some more text. <br /> <br />
+        </span>
+        <span class="incrSub">
+          Sub-section, the third line. <br />
+          With some more text. <br /> <br />
+        </span>
+        <br /> <br /> <br />
+        And here I shall use it with an unordered list... <br /> <br />
+
+        <ul class="incrSection">
+          <li class="incrSub">
+            Line item 1
+          </li>
+          <li class="incrSub">
+            Line item 2
+          </li>
+          <li class="incrSub">
+            Line item 3
+          </li>
+          <li class="incrSub">
+            Line item 4
+          </li>
+        </ul>
+      </p>
+
+
+    </div>
+  </div>
+  <a href="#top">Top</a> <br />
+
+  <div class="divFlex">
+
+    <div class="divBorder divBSet">
+      <p>
+        So, for example:- <br /> </p>
+      <p>
+        <i>If I want to reset the Section Number back to ONE I can add a
+          counter-reset:section; before the element. <br />
+          Here I decided to create my own &lt;resetSection&gt; tag which does just that - see code</i>
+      </p>
+      <resetSection></resetSection>
+      <h1 class="incrSection">This is a Section </h1>
+      <h2>
+        Sub-section, the first line. <br />
+        With some more text. <br />
+      </h2>
+      <h2>
+        Sub-section, the second line. <br />
+        With some more text. <br />
+      </h2>
+      <h2>
+        Sub-section, the third line. <br />
+        With some more text. <br />
+      </h2>
+
+    </div>
+    <div class="divBorder divBSet">
+
+      <p>
+        Another example is of nested ordered lists... <br />
+        It seems to have it's own way of creating the numbers as all I am using is
+        just one counter (called mySection) and it knows to display 2 or 2.3 or 2.3.1 etc. <br />
+        <i>(I created a NEW counter - called mySection for this)</i> <br />
+      </p>
+      <ol>
+        <li>First Item</li>
+        <li>Second item
+          <ol>
+            <li>First nested item</li>
+            <li>Second nested item</li>
+            <li>Third Nested item
+              <ol>
+                <li>And another Nested item</li>
+                <li>And another Nested item</li>
+                <li>And another Nested item</li>
+              </ol>
+            </li>
+            <li>Fourth nested item</li>
+          </ol>
+        </li>
+        <li>Third item</li>
+        <li>Fourth item</li>
+      </ol>
+
+      <ol>
+        <li>First line of a brand new ordered list</li>
+        <li>Second line of a brand new ordered list</li>
+      </ol>
+    </div>
+  </div>
+
+  <a href="#top">Top</a> <br />
+
+</body>
+
+</html>

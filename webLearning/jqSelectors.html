@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Selector Examples</title>
+
+  <link rel="stylesheet" href="CSS/normalize.css" />
+  <link rel="stylesheet" href="CSS/main.css" />
+  <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+  <!-- Required for JQuery to work - this is the library file from JQuery.com (uncompressed development file) -->
+  <script src="JQuery/jquery-3.5.1.js"></script>
+  <!-- You can use the online one but for now I will download it and use my copy of it (use one or the other)-->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+  <style>
+    .PlayTbl {
+      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      /* Note... border-collapse: collapse will make it just a single border */
+    }
+
+    .PlayTbl td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    .PlayTbl th {
+      border: 1px solid #ddd;
+    }
+
+    /* Make every other row a different shade */
+    .PlayTbl tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    /* When hovered over a row it will change the background colour */
+    .PlayTbl tr:hover {
+      background-color: #ddd;
+    }
+
+    /* Change the way the table headers are displayed */
+    .PlayTbl th {
+      /* padding-top: 12px;
+      padding-bottom: 12px; */
+      /* Default text in [th] is centered and Bold */
+      /* text-align: left; */
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .tdS {text-align: right;}
+
+  </style>
+
+  <script>
+    <!-- If I wanted to make every even row of the table a certain colour I could do... -->
+    <!-- $(document).ready(function() { -->
+      <!-- $("tr:even").css("background-color", "#f2f2f2") -->
+    <!-- }); -->
+    <!-- which uses jQuery - instead of the CSS code I am actually using ABOVE...see  .PlayTbl tr:nth-child(even) -->
+
+
+  </script>
+
+</head>
+
+<body class="bodyMove">
+  <a href="index.html">Home</a>
+  <h1>jQuery Selector Examples</h1>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <h2>Basic Syntax</h2>
+      <p>
+        The basic syntax of a jQuery command could be... <br /> <br />
+        <b>$(selector).action();</b> <br /> <br />
+
+        eg (hiding an object)...<br />
+        <b>$(this).hide();</b> (this relates to the current object) <br />
+        <b>$("p").hide();</b> (all the &lt;p&gt; elements) <br />
+        <b>$(.test).hide();</b> (this relates to the element with the class="test") <br />
+        <b>$(#test).hide();</b> (this relates to the element with the id="test") <br />
+        <br />
+        <i>so <b>$()</b> is basically the same as saying <b>document.getElementsByTag()</b> or
+          one of the other getElement options</i> <br /> <br />
+        You can also chain commands together on one line...eg... <br />
+        <b>$("#test").css("color", "red") <br />
+          .slideUp(2000) <br />
+          .slideDown(2000) <br />
+          .html("New Text");</b> <br /> <br />
+        NOTE... <br />
+        So far it seems that jQuery is just a bunch of METHODS or FUNCTIONS <br />
+        which means that changes are all in brackets...eg... <br />
+        <b>.html("New Text")</b> and not .html="New Text" <br /> <br />
+      </p>
+    </div>
+
+    <div class="divBorder divBSet ">
+      <h2>Some examples of Syntax</h2>
+      <p>
+        Note...if you head to <a href="https://www.w3schools.com/jquery/jquery_selectors.asp" target="_blank">w3schools.com</a> you
+        will see some examples where you can test out the below commands. <br />
+        </p>
+      <div class="divFlex">
+
+        <div class="divBorder">
+          <table class="PlayTbl">
+            <caption>
+              This uses a &lt;table&gt; to create this
+            </caption>
+          <thead>
+            <tr>
+              <th>Syntax</th>
+              <th>Meaning</th>
+            </tr>
+          </thead>
+          <tr>
+            <td class="tdS">$("*")</td>
+            <td class="tdM">Selects all elements</td>
+          </tr>
+          <tr>
+            <td class="tdS">$("this")</td>
+            <td class="tdM">Selects the current HTML element</td>
+          </tr>
+          <tr>
+            <td class="tdS">$("p.intro")</td>
+            <td class="tdM">Selects all &lt;p&gt; elements with class="intro"</td>
+          </tr>
+          <tr>
+            <td class="tdS">$("p, .intro")</td>
+            <td class="tdM">Selects all &lt;p&gt; elements AND all class="intro" elements</td>
+          </tr>
+          <tr>
+            <td class="tdS">$("p:first")</td>
+            <td class="tdM">Selects the first &lt;p&gt; element</td>
+          </tr>
+          <tr>
+            <td class="tdS">$("ul li:first")</td>
+            <td class="tdM">Selects the first &lt;li&gt; element of the first &lt;ul&gt;</td>
+          </tr>
+          <tr>
+            <td class="tdS">$("ul li:first-child")</td>
+            <td class="tdM">Selects the first &lt;li&gt; element of the every &lt;ul&gt;</td>
+          </tr>
+          <tr>
+            <td class="tdS">$("[href]")</td>
+            <td class="tdM">Selects all elements with an href attribute</td>
+          </tr>
+          <tr>
+            <td class="tdS">$("a[target='_blank']")</td>
+            <td class="tdM">Selects all &lt;a&gt; elements with a target attribute value equal to "_blank"</td>
+          </tr>
+          <tr>
+            <td class="tdS">$("a[target!='_blank']")</td>
+            <td class="tdM">Selects all &lt;a&gt; elements with a target attribute value NOT equal to "_blank"</td>
+          </tr>
+          <tr>
+            <td class="tdS">$(":button")</td>
+            <td class="tdM">Selects all &lt;button&gt; elements and &lt;input&gt; elements of type="button"</td>
+          </tr>
+          <tr>
+            <td class="tdS">$("tr:even")</td>
+            <td class="tdM">Selects all even &lt;tr&gt; elements</td>
+          </tr>
+          <tr>
+            <td class="tdS">$("tr:odd")</td>
+            <td class="tdM">Selects all odd &lt;tr&gt; elements</td>
+          </tr>
+          </table>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

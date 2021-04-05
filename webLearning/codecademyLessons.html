@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <title>Codecademy Lessons</title>
+
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/myStyles.css" />
+
+
+</head>
+
+<body class="bodyMove">
+    <a href="index.html">Home</a> <br /> <br />
+
+    In here I have the code of some of my Codecademy lessons. <br />
+    <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+
+            <h3>Some routines I used...</h3>
+
+            <p>
+                I needed to create a 2D array of each word in 'overusedWords' with a count of 0 <br />
+                eg... <br />
+                ['really'][0] <br />
+                ['very'][0] <br />
+                etc... <br />
+                So I did the following... <br /> <br />
+                <b>
+                    var overusedWords = ['really', 'very', 'basically']; <br /> <br />
+                    var usedWords = []; <br /> <br />
+
+                    overusedWords.forEach(ow => { <br />
+                    &nbsp;&nbsp;&nbsp;usedWords.push(ow, 0); <br />
+                    });
+                </b> <br /> <br />
+
+                End Result: usedWords = [ [ 'really', 0 ], [ 'very', 0 ], [ 'basically', 0 ] ] </br> <br />
+                so <br />
+                usedWords[1][0] = "very" <br />
+                usedWords[1][1] = 0 <br /> <br /> <br />
+
+                <hr /> <br /> <br /> <br />
+
+
+
+            </p>
+
+        </div>
+
+        <div class="divBSet divBorder">
+
+            <h3>Some routines I used...part 2</h3>
+
+            <p>
+                I needed to create an array of pizza options and then
+                create a message saying No to each of the options. <br />
+                The main point was ... <br />
+                <i>
+                    Write a function declineEverything() that takes in an array of strings
+                    and, using .forEach(), loops through each element in the array and
+                    calls politelyDecline() with each of them. <br />
+                    The .forEach() function should apply politelyDecline() directly; it should NOT
+                    merely receive an argument function that uses politelyDecline().
+                </i> <br /> <br />
+
+                So I did the following... <br /> <br />
+                <b>
+                    const veggies = ['broccoli', 'spinach', 'cauliflower', 'broccoflower']; <br /> <br />
+                    var outputMsg = ""; <br /> <br />
+                    const politelyDecline = (veg) => { <br />
+                    &nbsp;&nbsp;&nbsp;outputMsg += 'No ' + veg + ' please. I will have pizza with extra cheese. <br /> ';
+                    } <br /> <br />
+
+                    const declineEverything = function(arr) { <br />
+                </b><i>
+                    &nbsp;&nbsp;&nbsp;// This is the bit that caused problems... <br />
+                    &nbsp;&nbsp;&nbsp;// as 'politelyDecline' is a function that accepts 1 parameter... <br />
+                    &nbsp;&nbsp;&nbsp;// but I don't pass one in as the '.forEach' handles that automatically.
+                </i> <br /> <b>
+                    &nbsp;&nbsp;&nbsp;arr.forEach(politelyDecline); <br />
+                    } <br /> <br />
+
+                    declineEverything(veggies); <br />
+                    document.getElementById("test2").innerHTML = outputMsg;
+                </b> <br /> <br />
+
+                <span class="redMess" id="test2"></span> <br />
+                <br /> <br />
+            </p>
+
+            <script>
+
+                const veggies = ['broccoli', 'spinach', 'cauliflower', 'broccoflower'];
+                var outputMsg = "";
+
+                const politelyDecline = (veg) => {
+                    outputMsg += 'No ' + veg + ' please. I will have pizza with extra cheese. <br /> ';
+                }
+
+                const declineEverything = function (arr) {
+                    arr.forEach(politelyDecline);
+                }
+
+                declineEverything(veggies);
+                document.getElementById("test2").innerHTML = outputMsg;
+            </script>
+        </div>
+    </div>
+
+    <br /> <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h3>Some routines I used...part 3</h3>
+
+            <p>
+                I had to create an array that holds properties <br />
+                then sort by the number of teeth (.numTeeth) property. <br /> <br />
+                So I did this... <br /> <br />
+
+                <b>
+                    const speciesArray = [ <br />
+                    &nbsp;&nbsp;&nbsp;{speciesName:'shark', numTeeth:50}, <br />
+                    &nbsp;&nbsp;&nbsp;{speciesName:'dog', numTeeth:42}, <br />
+                    &nbsp;&nbsp;&nbsp;{speciesName:'alligator', numTeeth:80}, <br />
+                    &nbsp;&nbsp;&nbsp;{speciesName:'human', numTeeth:32} <br />
+                    ]; <br /> <br />
+
+                </b>//SORT by numTeeth <br /> <b>
+                    function sortSpeciesByTeeth(arr) { <br />
+                    &nbsp;&nbsp;&nbsp;var newArr = arr.sort(function(a, b){return a.numTeeth - b.numTeeth}); <br />
+                    &nbsp;&nbsp;&nbsp;return newArr; <br />
+                    }; <br /> <br />
+
+                </b>//Display array, numTeeth <br /> <b>
+                    function showSpeciesByTeeth(arr) { <br />
+                    &nbsp;&nbsp;&nbsp;arr.forEach(function(a) { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(a, a.numTeeth); <br />
+                    &nbsp;&nbsp;&nbsp;}); <br />
+                    }; <br /> <br />
+
+                </b>//Run the sort function <br /> <b>
+                    console.log(sortSpeciesByTeeth(speciesArray)) <br /> <br />
+
+                </b>// Should print (in order of numTeeth): <br />
+                // [ { speciesName: 'human', numTeeth: 32 }, <br />
+                //   { speciesName: 'dog', numTeeth: 42 }, <br />
+                //   { speciesName: 'shark', numTeeth: 50 }, <br />
+                //   { speciesName: 'alligator', numTeeth: 80 } ] <br /> <br />
+
+                //Will show array, numTeeth <br /> <b>
+                    showSpeciesByTeeth(speciesArray); <br /> <br />
+                </b>
+            </p>
+
+        </div>
+
+        <div class="divBSet divBorder">
+            <h3>Some routines I used...part 4</h3>
+
+            <p>
+                I had to create a 'factory function' that returns an object of properties and methods <br />
+                that uses Getters/Setters as well. <br />
+                I was told what it had to achieve so I did this... <br /> <br />
+
+                <b>
+                    function dogFactory(name, breed, weight) { <br />
+                    &nbsp;&nbsp;&nbsp;var dog = { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_name: name, <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_breed: breed, <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_weight: weight, <br /><br />
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;get name() {return this._name},  <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;get breed() {return this._breed}, <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;get weight() {return this._weight}, <br /><br />
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set name(name) {this._name = name}, <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set breed(breed) {this._breed = breed}, <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set weight(weight) {this._weight = weight}, <br /><br />
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bark() {return "ruff! ruff!"}, <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;eatTooManyTreats() {this._weight++} <br /> <br />
+
+                    &nbsp;&nbsp;&nbsp;}; <br /> <br />
+
+                    &nbsp;&nbsp;&nbsp;return dog; <br />
+                    }; <br /> <br />
+
+                </b>//Creates object 'tilly' <b>
+                    <br />
+                    var tilly = dogFactory("Tilly", "Schnauzer", 13); <br /> <br />
+
+                </b>//The below uses the methods in 'tilly' to displays to the console the info <b>
+                    <br />
+                    console.log(tilly); <br />
+                    console.log(tilly.bark()); <br />
+                    console.log(tilly.weight); <br /> <br />
+
+                </b>//Runs the method and adds 1 to the weight then redisplays the weight <b>
+                    <br />
+                    tilly.eatTooManyTreats(); <br />
+                    console.log(tilly.weight); <br /> <br />
+
+                </b>
+            </p>
+        </div>
+    </div>
+
+
+    <br /> <a href="#">Top</a> <br />
+
+
+</body>
+
+</html>

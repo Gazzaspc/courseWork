@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Positioning Elements</title>
+
+  <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+  <style>
+    .colBrown {
+      color: brown;
+    }
+
+    .colBlue {
+      color: blue;
+    }
+
+    .colRed {
+      color: red;
+    }
+
+    .colGreen {
+      color: green;
+    }
+
+    .colOrange {
+      color: orange;
+    }
+
+    .box1 {
+      border: 2px solid black;
+      background-color: brown;
+      width: 150px;
+      height: 150px;
+      padding: 5px;
+    }
+
+    .box2 {
+      border: 2px solid black;
+      background-color: red;
+      width: 150px;
+      height: 150px;
+      padding: 5px;
+    }
+
+    .box3 {
+      border: 2px dotted black;
+      background-color: green;
+      width: 100px;
+      height: 100px;
+      padding: 5px;
+    }
+
+    .posStatic {
+      position: static;
+    }
+
+    .posRelative {
+      position: relative;
+    }
+
+    .posAbsolute {
+      position: absolute;
+    }
+
+    .posFixed {
+      position: fixed;
+    }
+
+    .posSticky {
+      position: sticky;
+    }
+
+    .pos2 {
+      left: 20px;
+      top: 20px;
+    }
+
+    .pos3 {
+      left: 20px;
+      top: 20px;
+    }
+
+    .pos2_3a {
+      left: 120px;
+      top: 120px;
+    }
+
+    .posParent {
+      left: 30px;
+      top: 30px;
+    }
+
+    .posParentNeg {
+      left: -30px;
+      top: -30px;
+    }
+
+    .posParentNegA {
+      right: -10px;
+      bottom: -15px;
+    }
+
+    .pos2RB {
+      right: 20px;
+      bottom: 20px;
+    }
+
+    .pos3RB {
+      right: 5px;
+      bottom: 5px;
+    }
+
+    .divMargin1 {
+      margin: 10px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <a href="index.html">Home</a>
+  <section id="PageTop">
+    <h1>Positioning Elements</h1>
+    <p>
+      There are FIVE main types of POSTION values :- <br /> <br />
+      <b class="colBrown">STATIC</b> / <b class="colBlue">RELATIVE</b> / <b class="colRed">ABSOLUTE</b> /
+      <b class="colGreen">FIXED</b> / <b class="colOrange">STICKY</b> <br /> <br />
+      <b class="colBrown">position:static;</b> &nbsp;&nbsp;Default value. Elements render in order, as they appear in the document flow. <br /> <br />
+      <b class="colBlue">position:relative;</b> &nbsp;&nbsp; The element is positioned relative to its normal position, <br />
+      so "left:20px" adds 20 pixels to the element's LEFT position - its effect is to move the element to the Right <br />
+      and "top:20px" adds 20 pixels to its top position - its effect is to move the element Down. <br />
+      This can result in elements that overlap in which case you have to use the <b>z-index</b> property in <br />
+      order to decide which element is displayed on top of the other element(s). <br />
+      <i>Highest z-index property value is placed on top</i> <br /> <br />
+      <b class="colRed">position:absolute;</b> &nbsp;&nbsp;The element is positioned relative to its FIRST positioned (not static) parent/ancestor element. <br /> <br />
+      <b class="colGreen">position:fixed;</b> &nbsp;&nbsp; The element is positioned relative to the browser window. <br /> <br />
+      <b class="colOrange">position:sticky;</b> &nbsp;&nbsp; The element is positioned based on the user's scroll position <br />
+      A sticky element toggles between relative and fixed, depending on the scroll position. <br />
+      It is positioned relative until a given offset position is met in the viewport - then it "sticks" in <br />
+      place (like position:fixed).
+    </p>
+    <p>
+      Note: <br />
+      position: ...; on it's own doesn't do anything. It needs to be used with, eg... <br />
+      left: 10px; / top: 10px; / right: 10px / bottom: 10px; <br />
+      <i>but not left: AND right ... or top: AND bottom: <br />
+        as it can't move from the left AND the right at the same time (or Top & bottom) </i>
+
+
+    </p>
+  </section>
+  <section id="Static">
+    <div class="divFlex divBorder">
+
+      <div class="divMargin1 divBorder">
+        <h2>default <span class="colBrown">STATIC</span> <br />
+          elements</h2>
+
+        <div class="box1">1a. On its own, using no<br />
+          left:; <br />
+          top:;
+        </div>
+        <div class="box2">
+          1b. Parent, using no<br />
+          left:; <br />
+          top:;
+          <div class="box3">1c. Child</div>
+        </div>
+      </div>
+
+
+      <div class="divMargin1 divBorder">
+        <h2>using positioning <br />
+          elements</h2>
+
+        <div class="box1 pos2 posStatic">2a. On its own, using<br />
+          left:20px; <br />
+          top:20px; </div>
+        <div class="box2 posParent posStatic">
+          2b. Parent, using <br />
+          left:30px; <br />
+          top:30px;
+          <div class="box3 pos3 posStatic">2c. Child, using <br />
+            left:20px; <br />
+            top:20px;
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="Relative">
+    <div class="divFlex divBorder">
+
+      <div class="divMargin1 divBorder">
+        <h2>default <span class="colBlue">RELATIVE</span> <br />
+          elements</h2>
+
+        <div class="box1 posRelative">1a. On its own, using no<br />
+          left:; <br />
+          top:;</div>
+        <div class="box2">
+          1b. Parent, using no<br />
+          left:; <br />
+          top:;
+          <div class="box3">1c. Child</div>
+        </div>
+      </div>
+
+
+      <div class="divMargin1 divBorder">
+        <h2>using positioning <br />
+          elements</h2>
+
+        <div class="box1 pos2 posRelative">2a. On its own, using<br />
+          left:20px; <br />
+          top:20px; </div>
+        <div class="box2 posParent posRelative">
+          2b. Parent, using <br />
+          left:30px; <br />
+          top:30px;
+          <div class="box3 pos3 posRelative">2c. Child, using <br />
+            left:20px; <br />
+            top:20px;
+          </div>
+        </div>
+      </div>
+
+      <div class="divMargin1 divBorder">
+        <h2>using positioning <br />
+          elements</h2>
+
+        <div class="box1 pos2 posRelative">3a. On its own, using<br />
+          left:20px; <br />
+          top:20px; </div>
+        <div class="box2 posRelative">
+          3b. Parent, using NO<br />
+          left:; <br />
+          top:;
+          <div class="box3 pos3 posRelative">3c. Child, using <br />
+            left:20px; <br />
+            top:20px;
+          </div>
+        </div>
+      </div>
+
+      <div class="divMargin1 divBorder">
+        <h2>using positioning <br />
+          elements</h2>
+
+        <div class="box1 pos2RB posRelative">4a. On its own, using<br />
+          right:20px; <br />
+          bottom:20px; </div>
+        <div class="box2 posParentNeg posRelative">
+          4b. Parent, using <br />
+          left: -30px; <br />
+          top: -30px;
+          <div class="box3 pos3RB posRelative">4c. Child, using <br />
+            right:5px; <br />
+            bottom:5px;
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+  <br />
+
+  <section id="Absolute">
+    <div class="posAbsolute" style="border: 2px solid yellow;">
+      <p>
+        This position:absolute is different...it places the elements by using it's FIRST ancestor/parent <br />
+        that has a position:absolute (or relative or fixed - but NOT static) as a start point. <br />
+        So I included a &lt;div style="position:absolute;"&gt; to anchor the display boxes to it... <br />
+        (a div with a purple border), otherwise they were displayed right at the top of the page.
+      </p>
+
+      <div class="divFlex posAbsolute" style="border: 2px solid purple;">
+
+        <div class="divMargin1 divBorder">
+          <h2>default <span class="colBlue">Absolute</span> <br />
+            elements</h2>
+
+          <div class="box1 posAbsolute">1a. On its own, using no<br />
+            left:; <br />
+            top:;</div>
+          <div class="box2">
+            1b. Parent, using no<br />
+            left:; <br />
+            top:;
+            <div class="box3">1c. Child</div>
+          </div>
+        </div>
+
+        <!-- make this div Relative so it's absolute elements use this as it's anchor point & NOT purple div-->
+        <div class="divMargin1 divBorder posRelative">
+          <h2>using positioning <br />
+            elements</h2>
+
+          <div class="box1 pos2 posAbsolute">2a. On its own, using<br />
+            left:20px; <br />
+            top:20px; </div>
+          <div class="box2 posParent posAbsolute">
+            2b. Parent, using <br />
+            left:30px; <br />
+            top:30px;
+            <div class="box3 pos3 posAbsolute">2c. Child, using <br />
+              left:20px; <br />
+              top:20px;
+            </div>
+          </div>
+        </div>
+
+        <div class="divMargin1 divBorder">
+          <h2>using positioning <br />
+            elements</h2>
+
+          <div class="box1 pos2_3a posAbsolute">3a. On its own, using<br />
+            left:120px; <br />
+            top:120px; </div>
+          <div class="box2 posAbsolute">
+            3b. Parent, using NO<br />
+            left:; <br />
+            top:;
+            <div class="box3 pos3 posAbsolute">3c. Child, using <br />
+              left:20px; <br />
+              top:20px;
+            </div>
+          </div>
+        </div>
+
+        <div class="divMargin1 divBorder ">
+          <h2>using positioning <br />
+            elements</h2>
+
+          <div class="box1 pos2RB posAbsolute">4a. On its own, using<br />
+            right:20px; <br />
+            bottom:20px; </div>
+          <div class="box2 posParentNegA posAbsolute">
+            4b. Parent, using <br />
+            right: -10px; <br />
+            bottom: -15px;
+            <div class="box3 pos3RB posAbsolute">4c. Child, using <br />
+              right:5px; <br />
+              bottom:5px;
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+</body>
+
+</html>

@@ -1,0 +1,458 @@
+﻿/* Styles sheet */
+
+
+
+/*********************** CLASS SELECTORS ************************/
+
+.backColorEven {
+    background-color: #CB7777;
+    border-radius: 30px;
+}
+
+.backColorEvenSquare {
+    background-color: #CB7777;
+}
+
+.backgroundAbout {
+    background: url("images/PawsFlat.png");
+    background-attachment: fixed;
+    background-color: #EAF6F6;
+    background-repeat: no-repeat;
+    background-position: right 10% bottom 40%;
+}
+
+
+.blocker {
+    /* This section creates a block (div) that follows the navbar
+  so that the rest of the elements start below the fixed navbar */
+    max-height: 85px;
+    height: 85px;
+    width: 100%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    height: 100px;
+    width: 100px;
+    outline: black;
+    background-size: 100%, 100%;
+    background-image: none;
+}
+
+    .carousel-control-next-icon:after {
+        content: '>';
+        font-size: 55px;
+        font-weight: bold;
+        color: red;
+    }
+
+    .carousel-control-prev-icon:after {
+        content: '<';
+        font-size: 55px;
+        font-weight: bold;
+        color: red;
+    }
+
+.carouselDots {
+    bottom: 0;
+    color: blue;
+    position: absolute;
+}
+
+.carouselHead {
+    /* margin-top: 13%; */
+    text-align: center;
+}
+
+.carousel-indicators li {
+    border-radius: 100%;
+    height: 15px;
+    width: 15px;
+    background-color: blue;
+}
+
+.carousel-indicators .active {
+    background-color: rgb(213, 72, 3);
+}
+
+.carousel-text {
+    color: #ca3e47;
+    position: absolute; /* so text (h2) can go over the image */
+    /* left: 10vw; */
+    font-weight: bold;
+    top: 5px;
+    z-index: 2; /* make sure text is in front of image */
+}
+
+.divCenter {
+    text-align: center;
+}
+
+.dropdown-menu {
+    /* navbar drop down margin set to 0 as it lost dropdown when trying
+  to move the cursor over the dropdown menu  */
+    margin: 0 !important;
+}
+
+    .dropdown-menu > a:hover, .dropdown-menu > a:focus {
+        color: #AF1515 !important;
+        font-weight: bold;
+    }
+
+.floatImgLeft {
+    float: left;
+    /* width:200px; */
+}
+
+.floatLeft {
+    float: left;
+}
+
+.floatRightNav {
+    /* float:right; */
+    /* width: 15%; */
+    left: 30vw;
+    top: 5vw;
+    position: absolute;
+    z-index: 98;
+}
+
+.fontSizeNav {
+    font-family: Merriweather;
+    font-size: 210%;
+}
+
+.fontSizeNav2 {
+    font-family: montserrat;
+    font-size: 2vw; /* resizes when window shrinks/expands */
+    font-weight: 900;
+    line-height: 1.2;
+}
+
+.fontSizeMed {
+    font-size: 14px;
+}
+
+.fontSizeSmall {
+    font-size: 12px;
+}
+
+
+.hideTog {
+    display: none;
+}
+
+.hideTogOn {
+    display: inline_block;
+}
+
+.home-section {
+    margin: 30px 50px;
+    text-align: center;
+}
+
+.hrDots {
+    border-style: dotted none none none;
+    border-color: #5588a3;
+    border-width: 8px;
+    width: 7%;
+}
+
+.hrDotsOdd { /* uses same color as Section Odd */
+    border-style: dotted none none none;
+    border-color: #801336;
+    border-width: 8px;
+    width: 7%;
+}
+
+.hrDotsSm {
+    border-style: dotted none none none;
+    border-color: #930077;
+    border-width: 4px;
+    width: 15%;
+}
+
+/* Center the image VERTICALLY within a div */
+.imgCenter {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.imgCenterA {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.imgCenterMouse {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transform: translateX(-50%);
+}
+
+/* slightly round the image corners */
+.imgRounded {
+    border-radius: 40px;
+}
+
+/* Allow the image to shrink when screen resized */
+.imgShrink {
+    height: auto;
+    max-width: 100%;
+}
+
+.largeHeader {
+    font-family: 'Sacramento', cursive;
+    font-size: 4.5rem;
+}
+
+.lineHeight2 {
+    line-height: 2;
+}
+
+.logo-pictureW {
+    height: auto;
+    /*width: 27%;*/
+    width: 110px;
+}
+
+.logo-picture img.logo-pic {
+    display: block;
+}
+
+.logo-picture:hover img.logo-pic {
+    display: none;
+}
+
+.logo-picture img.logo-picHover {
+    display: none;
+}
+
+.logo-picture:hover img.logo-picHover {
+    display: block;
+}
+
+.mL0 {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.myFacebook {
+    zoom: 125%;
+}
+
+    .myFacebook:hover {
+        background-color: #ca3e47;
+        text-decoration: underline;
+    }
+
+.myNavDrop {
+    background-color: #EAF6F6;
+    color: #AF1515 !important;
+}
+
+.navbar-default {
+    background: linear-gradient(to right, #E2DDDD, black 30%, #A10808 98%);
+    /* Start fading from left to right / start as light grey, fade into black then fade to red(-ish)
+      Light grey starts at 0%
+      Black starts at 30%
+      red starting at 98% to the end
+      and inbetween grey and black it fades the grey/black together
+      and inbetween black and red it fades black/red together.
+              IF
+      if I needed the black colour to not fade between 30% and 70% of the navbar I would say...
+          background: linear-gradient(to right, #E2DDDD, black 30% 70%, #A10808 98%);
+      that way the black will only start fading in to red at the 70% mark.
+      */
+}
+
+    .navbar-default .navbar-nav > li.dropdown:hover > a,
+    .navbar-default .navbar-nav > li.dropdown:hover > a:hover,
+    /* .navbar-default .navbar-nav > li.dropdown:hover > a:focus {
+    background-color: rgb(231, 231, 231);
+    color: yellow;
+} */
+    li.dropdown:hover > .dropdown-menu {
+        display: block;
+    }
+
+.navbarDiv {
+    position: absolute;
+    /* right: 260px; */
+    left: 0;
+    text-align: left;
+    top: -50px;
+    width: 100%;
+}
+
+.navbarTele {
+    font-family: 'Roboto Mono', 'Sacramento', cursive;
+    /* font-size: 12px;  use fontSizeSmall class*/
+    position: absolute;
+    /* right: -255px; */
+    right: 20px;
+    /* text-align: left; */
+    top: 0;
+}
+
+.navbarText {
+    margin-bottom: 0;
+    font-family: 'Sacramento', cursive;
+    left: 10px;
+}
+
+.padRight {
+    padding-right: 5px;
+}
+
+.padPropertyExtra {
+    padding-left: 5%;
+}
+
+.padPropertyPage {
+    padding-top: 100px;
+}
+
+.padPropertyPageA {
+    padding-top: 160px;
+}
+
+.propertyButtons {
+    background-color: #EAF6F6;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+}
+
+.propImages {
+    margin-top: 30px;
+    z-index: -1;
+}
+
+.rlBorderWhite {
+    border-right: 1px solid white;
+    border-left: 1px solid white;
+    padding: 0 5px 0 5px;
+}
+
+/* Even sections change colour etc */
+.sectionEven {
+    background-color: #EAF6F6;
+    color: #801336;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.sectionEvenProperty {
+    background-color: #EAF6F6;
+    color: #801336;
+    padding-right: 5%;
+}
+
+/* Odd sections change colour etc */
+.sectionOdd {
+    background-color: #801336;
+    color: #EAF6F6;
+    padding: 40px 5% 0 5%;
+}
+
+.sectionOddProperty {
+    background-color: #801336;
+    color: #EAF6F6;
+    padding-right: 5%;
+}
+
+.servicesOverImg {
+    width: 200px;
+    background-color: white;
+    background: linear-gradient(rgba(255,255,255,0.25), rgba(255,255,255,0.5));
+    color: #ca3e47;
+    font-family: "Arial", sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.25;
+    position: absolute;
+    left: 20px;
+    top: 30px;
+    /* vertical-align: 0; */
+}
+
+.text-primary {
+    /* This is the colour I want my navbar dropdown items to be    */
+    color: #AF1515 !important;
+}
+
+/* This is the color I want the main text to be */
+.textMainColor {
+    color: #801336;
+}
+
+.textServicesList {
+    line-height: 1.25;
+}
+
+.textWhite {
+    color: white;
+}
+
+.Transp1 {
+    height: 400px;
+    width: 50%;
+    background-color: red;
+    font-size: 36px
+}
+
+.TranspBack {
+    background-image: url("images/PawsFlat.png");
+    /* Fixing the attachment in place means the scrolling works
+  whereas removing the next line will make everything scroll. */
+    background-attachment: fixed;
+    background-color: #EAF6F6;
+    background-repeat: no-repeat;
+    /* Where to place the background picture */
+    background-position: 25%, 75%;
+    /* if we want the picture to cover the whole area */
+    /* background-size: cover; */
+    /* Tell it the height of the gap to show */
+    min-height: 300px;
+}
+
+.vAlignBottom {
+    vertical-align: bottom;
+}
+
+.vAlignMiddle {
+    vertical-align: middle;
+}
+
+/*********************** ID SELECTORS ************************/
+
+
+/*********************** TAG SELECTORS ************************/
+
+/* NOTE there is NO DOT (,) before the tag (body)
+      so it's body  not  .body */
+body {
+    background-color: #FCEFEF;
+    font-family: 'Merriweather', serif;
+    /* text-align:center; */
+}
+
+
+
+
+
+/********************* To position TEXT over an IMAGE ****************/
+.container {
+    position: relative;
+    text-align: center;
+    color: #fff;
+}
+
+.top-right {
+    position: absolute;
+    top: 20%;
+    right: 29%;
+}

@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Arrays</title>
+
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+    <style>
+        body {
+            padding: 20px;
+        }
+
+        /* button {
+          background-color: #6495ED;
+          border: 1px solid blue;
+          border-radius: 10px;
+          box-shadow: 3px 3px rgb(0, 0, 255);
+        } */
+        .button2 {
+            border: 0;
+            line-height: 1.7;
+            margin: 0 2px 0 0;
+            ;
+            padding: 5px 8px;
+            font-size: 0.8rem;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            text-shadow: 1px 1px 1px #000;
+            border-radius: 10px;
+            /* background-color: #6495ED; */
+            /* fallback colour */
+            /* background-color: rgba(0, 178, 255, 1); */
+            background-color: rgba(65, 105, 255, 1);
+            background-image: linear-gradient(to top left, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2) 30%, rgba(0, 0, 0, 0));
+            box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6), inset -2px -2px 3px rgba(0, 0, 0, .6);
+        }
+
+            .button2:hover {
+                background-color: #EAF6F6;
+                /* fallback colour */
+                /* background-color: rgba(153, 204, 255, 1); */
+                background-color: rgba(30, 144, 255, 1);
+            }
+
+            .button2:active {
+                box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6), inset 2px 2px 3px rgba(0, 0, 0, .6);
+                transform: translate(1px, 4px);
+            }
+
+        .errorLine {
+            color: red;
+            font-weight: bold;
+            font-style: italic;
+        }
+    </style>
+
+    <!-- Put this script here because I call it as I go along
+    so it cannot go at the bottom -->
+    <script type="text/javascript">
+        function toDisplay1(callElem, myVal) {
+            document.getElementById(callElem).value = myVal;
+        }
+    </script>
+
+</head>
+
+<body>
+    <a href="index.html">Home</a>
+    <h1>Arrays</h1>
+
+    <p>
+        To see a list of <a href="https://www.w3schools.com/jsref/jsref_obj_array.asp" target="_blank">properties/Methods</a>
+        (eg .forEach, .map, .filter etc) that can be used with arrays. <br /> <br />
+
+    </p>
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <p>
+                To create an array you should...eg... <br /> <br />
+                <b>var myArray = ["One", "Two", "Four", "Five"]</b> <br />
+                <label>myArray: </label>
+                <input type="text" id="myArray1" value="0" readonly /> <br /> <br /> <br />
+                and as I missed out "Three" I can add it in by... <br />
+                <b>myArray.splice(2, 0, "Three");</b> <br />
+                <label>myArray: </label><input type="text" id="myArray2" value="0" readonly /> <br />
+                <i>
+                    ...The splice() method has the syntax like <br />
+                    <b>myArray.splice(startIndex, deleteCount, item1, item2,...);</b> <br />
+                    ...The startIndex starts at 0 <br />
+                    ...To add elements to an array using this method, set the deleteCount to 0) <br />
+                    ...To replace elements then set deleteCount to the No. of items to remove eg... <br />
+                    <b>myArray.splice(2, 1)</b> will REMOVE 1 item starting at position No. 2 ("three") <br />
+                    <label>myArray: </label><input type="text" id="myArray2a" value="0" readonly /> <br />
+                    <b>myArray.splice(2,2, "NewThree")</b> will remove 2 items, starting at pos 2 and then add "newThree" at pos 2.
+                </i> <br />
+                <label>myArray: </label><input type="text" id="myArray2b" value="0" readonly /> <br /> <br /> <br />
+                NOTE... <br /> <br />
+                There is also a <b>.slice()</b> option too - which is NOT TO BE CONFUSED with <b>.splice()</b>. <br />
+                <i>
+                    I spent a while trying to sort thru a problem and found I mixed the logic
+                    of splice & slice together, doh!
+                </i> <br /> <br /> <br />
+                <hr /> <br /> <br />
+
+                I can ADD to the END of the array by... <br />
+                <b>myArray.push("Six");</b> <br />
+                <label>myArray: </label>
+                <input type="text" id="myArray3" value="0" readonly size="30" /> <br />
+                <i>to REMOVE the last item in the array use : <b>myArray.pop();</b></i><br /> <br /> <br />
+
+                <hr /> <br /> <br />
+
+                I can REPLACE an element in an array by... <br />
+                <b>myArray[2] = "--Three--";</b> <br />
+                <label>myArray: </label>
+                <input type="text" id="myArray4" value="0" readonly size="30" /> <br /> <br />
+            </p>
+
+            <script type="text/javascript">
+                var myArray = ["One", "Two", "Four", "Five"];
+                toDisplay1("myArray1", myArray);
+                myArray.splice(2, 0, "Three");
+                toDisplay1("myArray2", myArray);
+                myArray.splice(2, 1);
+                toDisplay1("myArray2a", myArray);
+                myArray.splice(2, 2, "NewThree");
+                toDisplay1("myArray2b", myArray);
+                myArray.push("Six");
+                toDisplay1("myArray3", myArray);
+                myArray[2] = "--Three--";
+                toDisplay1("myArray4", myArray);
+            </script>
+        </div>
+        <div class="divBorder divBSet">
+            <p>
+                To read through each element in the array you can perform a FOR/NEXT loop <br />
+                eg... <br />
+                <label>myArray: </label><input type="text" id="myArray4a" value="0" readonly /> <br /> <br />
+                <b>
+                    for (i=0; i&lt;myArray.length; i++) {<br />
+                    &nbsp;&nbsp;&nbsp;//Code that deals with...myArray[i] <br />
+                    } <br /> <br />
+                </b>
+                The below gives the results as an UnOrdered List... <br />
+            </p>
+            <p id="demo1">
+            </p>
+            <p>
+                ************ <br /> <br />
+                <b>myArray.toString()</b> will put your array in to a string (comma seperated no spaces), eg <br />
+                "One,Two,--Three--,Four,Five" <br /> <br />
+                Use <b>.join(string)</b> to create a string with your own seperator... <br /> <br />
+                <b>myArray.join(", ")</b> will put your array in to a string (seperated by ', '), eg <br />
+                "One, Two, --Three--, Four, Five" <br /> <br />
+                <b>myArray.join(" / ")</b> will put your array in to a string (seperated by ' / '), eg <br />
+                "One / Two / --Three-- / Four / Five" <br /> <br />
+            </p> 
+            <script>
+                toDisplay1("myArray4a", myArray);
+                var text, i;
+
+                text = "<ul>";
+                for (i = 0; i < myArray.length; i++) {
+                    text += "<li>" + myArray[i] + "</li>";
+                }
+                text += "</ul>";
+
+                document.getElementById("demo1").innerHTML = text;
+            </script>
+
+            <hr /> <br /> 
+            <p>
+                <h3>.slice(start, end)</h3>
+                The <b>myArray.slice(<i>start, end</i>) </b> option returns the selected elements
+                in an array. <br />
+                This method selects the elements starting at the given start 
+                argument, and ends at, but does not include, the given end argument. <br /> <br />
+                For example... <br /> <br />
+                <b>var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"]; <br />
+                var citrus = fruits.slice(1, 3);</b> <br /> <br />
+                Will return <b>Orange, Lemon</b> <br />
+                as Orange is at index 1 and <br />
+                Lemon is at index 2 (the end position is up to but NOT including, so 3 = index 2). <br />
+                <i>Sounds strange but it allows you to say, for example, from 
+                start index 2 and ending at myArray.length</i> <br /> <br />
+            </p>
+
+        </div>
+    </div>
+
+    <br /> <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+
+
+
+        <div class="divBorder divBSet">
+            <p>
+                Because the first element in the array starts at 0 <br />
+                each element is numbered 0, 1, 2, 3 etc. <br />
+                So to find the LAST element you need to know how many elements are in the array. <br /> <br />
+                use <b>.length</b> to get this. <br />
+                <label>myArray:</label>
+                <input type="text" id="myArray5" readonly size="30" /> <br />
+                <label>myArray.length:</label>
+                <input type="text" id="myArray6" readonly size="1" /> <br /> <br />
+
+                And to find the LAST element you need to look at the .length - 1 (as it starts at 0). <br />
+                so <b>myArray[myArray.length-1]</b> will be <br />
+                <label>Last Element:</label>
+                <input type="text" id="myArray7" readonly size="3" /> <br /> <br /> <br />
+                **************** <br /> <br />
+                If you want to REVERSE the array you can <br />
+                <b>myArray.reverse();</b> <br />
+                <i>BEWARE though as it will actually REVERSE myArray (no need to say myArray=myArray.reverse())</i><br /> <br />
+                <label>Unsorted: </label>
+                <input type="text" id="myArray8" readonly size="30" /> <br />
+                <label>Reversed: </label>
+                <input type="text" id="myArray9" readonly size="30" /> <br />
+
+                <br />
+                **************** <br /> <br />
+                If you want to put ALL the elements in to a STRING you can <br />
+                Note...I am putting an asterisk ( * ) between all the elements <br />
+                <b>myArrayString = myArray.join(" * ");</b> <br /> <br />
+                <label>Stringed: </label>
+                <input type="text" id="myArray10" readonly size="30" /> <br />
+            </p>
+
+            <script type="text/javascript">
+                myArray = ["One", "Two", "Three", "Four", "Five"];
+                toDisplay1("myArray5", myArray);
+                toDisplay1("myArray6", myArray.length);
+                toDisplay1("myArray7", myArray[myArray.length - 1]);
+
+                toDisplay1("myArray8", myArray);
+                toDisplay1("myArray9", myArray.reverse());
+
+                // Put it back to normal before making it a string
+                myArray.reverse()
+                toDisplay1("myArray10", myArray.join(" * "));
+            </script>
+
+        </div>
+
+        <div class="divBorder divBSet">
+            <h3>Sorting Arrays</h3>
+            <p>
+                Note...The .sort() option always sorts arrays as if they are STRINGS even if they are numeric. <br /> <br />
+                *************** <br />
+                Normal Sort <br />
+                <b>myArrToBeSorted.sort()</b> <br /> <br />
+                Numeric Sort <br />
+                <b>myArrToBeSorted.sort(function(a, b){return a - b})</b> <br /> <br />
+                Numeric Sort (Descending) <br />
+                <b>myArrToBeSorted.sort(function(a, b){return b - a})</b> <br /> <br />
+                *************** <br /> <br />
+                <i>BEWARE though as it will actually SORT myArray (no need to say myArray=myArray.sort())</i> <br />
+            </p>
+            <p>
+
+
+                Eg. an array of <br />
+                <b>var myArrSort1 = ["One", "Two", "Three", "Four"]</b> <br />
+                when sorted will become <br />
+                <label>Unsorted: </label>
+                <input type="text" id="myArrSort1" readonly /> <br />
+
+                <label>Sorted: </label>
+                <input type="text" id="myArrSort2" readonly /> <br /> <br />
+
+                <b>var myArrSort2 = [1, 2, 10, 3, 25]</b> <br />
+                when sorted just using .sort() it will become <br />
+                <label>Unsorted: </label>
+                <input type="text" id="myArrSort3" readonly /> <br />
+
+                <label>Sorted: </label>
+                <input type="text" id="myArrSort4" readonly /> <br />
+
+                So when you sort them as a NUMERIC you get... <br />
+
+                <label>Unsorted: </label>
+                <input type="text" id="myArrSort5" readonly /> <br />
+                <label>Sorted: </label>
+                <input type="text" id="myArrSort6" readonly /> <br />
+                <label>Descending: </label>
+                <input type="text" id="myArrSort7" readonly /> <br />
+            </p>
+
+            <script type="text/javascript">
+                var myArrSort1 = ["One", "Two", "Three", "Four"];
+                toDisplay1("myArrSort1", myArrSort1);
+                toDisplay1("myArrSort2", myArrSort1.sort());
+
+                myArrSort1 = [1, 2, 10, 3, 25];
+                toDisplay1("myArrSort3", myArrSort1);
+                toDisplay1("myArrSort4", myArrSort1.sort());
+
+                toDisplay1("myArrSort5", myArrSort1);
+                // Sorts NUMERICALLY
+                toDisplay1("myArrSort6", myArrSort1.sort(function (a, b) {
+                    return a - b
+                }));
+                // Sorts NUMERICALLY (REVERSED)
+                toDisplay1("myArrSort7", myArrSort1.sort(function (a, b) {
+                    return b - a
+                }));
+            </script>
+        </div>
+    </div>
+
+    <br /> <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <p>
+                There are examples of things you can do with the array :- <br /> <br />
+                Sort Randomly <br />
+                Find the Highest value <br />
+                Find the Lowest value <br />
+                go and visit <a href="https://www.w3schools.com/js/js_array_sort.asp" target="_blank">Sort in W3Schools</a> <br /> <br /> <br />
+                or you can: <br />
+                POP() items out of the end of the array <br />
+                PUSH("value") items in to the end of the array <br />
+                SHIFT() to remove from the beginning of the array <br />
+                UNSHIFT("value") to add to the beginning of the array <br />
+                ...But really it is BEST PRACTICE to use <br />
+                SPLICE(<i>startIndex, deleteCount, "item1", "item2", ...etc)</i> to add/remove items <br />
+                For more... visit <a href="https://www.w3schools.com/js/js_array_methods.asp" target="_blank">Methods in W3Schools</a> <br />
+
+            </p>
+        </div>
+        <div class="divBorder divBSet">
+            <h3>Multidimensional Array</h3>
+            <p>
+                Multidimensional arrays are created by (for a 2 dimensional array):- <br />
+                <b>
+                    var multiArray = [ <br />
+                    ["one", 1], <br />
+                    ["two", 2], <br />
+                    ["three", 3], <br />
+                    ["four", 4] <br />
+                    ];
+                </b> <br /> <br />
+                And are referred to by:- <br />
+                <b>myMultiArray[0][0]</b>&nbsp;&nbsp;&nbsp;= element at (0,0) = "one" <br />
+                <b>myMultiArray[0][1]</b>&nbsp;&nbsp;&nbsp;= element at (0,1) = 1 <br /> <br />
+                Try it:- <br /> <br />
+                <label>1st Position: </label>
+                <input type="number" id="multi1" min="0" max="3" value="0" />
+                &nbsp;&nbsp;
+                <label>2nd: </label>
+                <input type="number" id="multi2" min="0" max="1" value="0" /> <br />
+                <!-- <button type="button" onclick="arrFunc1(
+                'multi3',
+                document.getElementById('multi1'),
+                document.getElementById('multi2'))">Show value</button> -->
+                <button class="button2" onclick="arrFunc1(
+            'multi3',
+            document.getElementById('multi1'),
+            document.getElementById('multi2'))">
+                    Show value
+                </button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <!-- <label>Answer: </label> -->
+                <input type="text" id="multi3" readonly size="15" /> <br />
+                <span id="errLine1" class="errorLine"> </span><br /> <br />
+                <span id="dispMA" class="redMess"> </span><br /> <br />
+
+                <hr /> <br /> <br />
+
+                <h3>Arrays with Properties as their values</h3>
+                <br />
+                You can also create an array with property values... <br /> <br />
+
+                <b>
+                    const speciesArray = [ <br />
+                    {speciesName:'shark', numTeeth:50}, <br />
+                    {speciesName:'dog', numTeeth:42}, <br />
+                    {speciesName:'alligator', numTeeth:80}, <br />
+                    {speciesName:'human', numTeeth:32} <br />
+                    ]; <br />
+                </b> <br />
+                And you would refer to it by... <br />
+                <b>
+                    console.log(speciesArray[0].speciesName);  // = 'shark'
+                    console.log(speciesArray[3].numTeeth);  // = 32
+                </b> <br /> <br />
+
+            </p>
+            <script text="text/javascript">
+                var myMultiArray = [
+                    ["one", 1],
+                    ["two", 2],
+                    ["three", 3],
+                    ["four", 4]
+                ];
+
+                //document.getElementById("dispMA").innerHTML = myMultiArray + " <br />" +
+                //    myMultiArray[3][1];
+            </script>
+        </div>
+    </div>
+
+    <script text="text/javascript">
+        // Can be at the end - as it will not be called until user clicks a button
+        function arrFunc1(callElem, elem1, elem2) {
+            // Lets check input values are within acceptable range(s) AND an integer
+            var minV = Number(elem1.min);
+            var maxV = Number(elem1.max);
+            var val1 = Number(elem1.value);
+            // Clear error field
+            document.getElementById("errLine1").innerHTML = ""
+
+            if ((val1 < minV || val1 > maxV) || (Number.isInteger(val1) == false)) {
+                document.activeElement.blur();
+                document.getElementById(callElem).value = "Invalid 1st number";
+                document.getElementById("errLine1").innerHTML = "1st number must be (an integer) between " + minV + " and " + maxV;
+                return
+            }
+
+            minV = Number(elem2.min);
+            maxV = Number(elem2.max);
+            var val2 = Number(elem2.value);
+            if ((val2 < minV || val2 > maxV) || (Number.isInteger(val2) == false)) {
+                document.activeElement.blur();
+                document.getElementById(callElem).value = "Invalid 2nd number";
+                document.getElementById("errLine1").innerHTML = "2nd number must be (an integer) between " + minV + " and " + maxV;
+                return
+            }
+
+            try {
+                document.getElementById(callElem).value = myMultiArray[val1][val2];
+                // next line removes the focus from the button (active element)
+                document.activeElement.blur();
+            } catch (err) {
+                document.getElementById(callElem).value = "Out of Range";
+                document.getElementById("errLine1").innerHTML = err.message;
+            }
+        }
+    </script>
+
+    <br /> <a href="#">Top</a> <br />
+
+    <div class="divFlex" id="forEach">
+        <div class="divBSet divBorder">
+            <h1>Dealing with arrays</h1>
+
+            <h3>using '.forEach' to read thru array elements</h3>
+
+            <p>
+                .forEach will read through each item in the array and return its value. <br />
+                You need a function to go with it that will return its current value. <br />
+                <br />
+                See w3schools page on <a href="https://www.w3schools.com/jsref/jsref_foreach.asp" target="_blank">forEach</a> for more. <br />
+                as you can also change the value of the original value in the original array if you want to <br /> <br />
+                For example... <br /> <br />
+
+                <b>
+                    const fruits = ['mango', 'papaya', 'pineapple', 'apple']; <br /> <br />
+
+                    fruits.forEach(function(fruitItem) { <br />
+                    &nbsp;&nbsp;&nbsp;alert("I found a fruit called: " + fruitItem); <br />
+                    });
+                </b> <br /> <br />
+
+                The above will send an alert for each fruit item it finds in the array. <br /> <br /> <br />
+
+                <hr />
+                <br /> <br /> <br />
+
+                Example 2... <br /> <br />
+
+                <b>
+                    const fruits = ['mango', 'papaya', 'pineapple', 'apple']; <br /> <br />
+
+                    function showFruits(fruit) { <br />
+                    &nbsp;&nbsp;&nbsp;var txt = ""; <br />
+                    &nbsp;&nbsp;&nbsp;fruit.forEach(function(fruitItem) { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;txt += "I found a fruit called: " + fruitItem; <br />
+                    &nbsp;&nbsp;&nbsp;}); <br />
+                    &nbsp;&nbsp;&nbsp;document.getElementById("array2").innerHTML = txt; <br />
+                    } <br /> <br />
+
+                    showFruits(fruits);
+                </b> <br /> <br />
+                <span class="redMess" id="array2"></span> <br /> <br /> <br />
+
+                <hr />
+                <br /> <br /> <br />
+
+                Example 3... <br /> <br />
+
+                <b>
+                    const fruits = ['mango', 'papaya', 'pineapple', 'apple']; <br /> <br />
+
+                    var txt=""; <br />
+
+                    fruits.forEach(function(fruitItem) { <br />
+                    &nbsp;&nbsp;&nbsp;txt += "I found a fruit called: " + fruitItem; <br />
+                    }); <br /> <br />
+
+                    document.getElementById("array3").innerHTML = txt; <br />
+                </b> <br /> <br />
+                <span class="redMess" id="array3"></span> <br /> <br /> <br />
+
+                <hr />
+                <br /> <br /> <br />
+
+                Example 4... <br /> <br />
+
+                <b>
+                    const fruits = ['mango', 'papaya', 'pineapple', 'apple']; <br /> <br />
+
+                    var txt=""; <br />
+
+                    fruits.forEach(fruitItem => { <br />
+                    &nbsp;&nbsp;&nbsp;txt += "I found a fruit called: " + fruitItem; <br />
+                    }); <br /> <br />
+
+                    document.getElementById("array4").innerHTML = txt; <br />
+                </b> <br /> <br />
+                <span class="redMess" id="array4"></span> <br /> <br />
+
+
+            </p>
+
+            <script>
+                const fruits = ['mango', 'papaya', 'pineapple', 'apple'];
+
+                //Example 2 below
+                function showFruits(fruit) {
+                    var txt = "";
+                    fruit.forEach(function (fruitItem) {
+                        txt += "I found a fruit called: " + fruitItem + " <br />";
+                    });
+                    document.getElementById("array2").innerHTML = txt;
+                }
+
+                showFruits(fruits);
+                //Example 2 above
+
+                //Example 3 below
+                var txt3 = "";
+                fruits.forEach(function (fruitItem) {
+                    txt3 += "I found a fruit called: " + fruitItem + " <br />";
+                });
+
+                document.getElementById("array3").innerHTML = txt3;
+                //Example 3 above
+
+                //Example 4 below
+                var txt4 = "";
+                fruits.forEach(fruitItem => {
+                    txt4 += "I found a fruit called: " + fruitItem + " <br />";
+                });
+
+                document.getElementById("array4").innerHTML = txt4;
+                //Example 3 above
+            </script>
+
+        </div>
+
+        <div class="divBSet divBorder">
+            <h1>Dealing with arrays</h1>
+
+            <h3>using '.map' to read thru array elements</h3>
+
+            <p>
+                The map() method creates a new array with the results of calling a function for every array element. <br />
+                The map() method calls the provided function once for each element in an array, in order. <br />
+                Note: map() does not execute the function for array elements without values. <br />
+                <br />
+                See w3schools page on <a href="https://www.w3schools.com/jsref/jsref_map.asp" target="_blank">map</a> for more. <br />
+                <br />
+
+                So we could say... <br />
+                <b>numbers.map(number => { return number * 10 });</b> <br />
+                Where <i>numbers.map</i> is the original array we are working from. <br />
+                and <i>number</i> is the current value of the item in the original array. <br />
+                followed by the { return ... }  which calculates what we want to return... <br />
+                ...Note...the { return ... } command writes out the NEW ARRAY element. <br />
+                <i>Hopefully the below examples make sense when you see it</i> <br /> <br />
+
+                For example... <br /> <br />
+
+                <i>
+                    The below creates an array called 'numbers' <br />
+                    then creates another array called 'bigNumbers' which uses the 'numbers.map' command
+                    to read thru the values in 'numbers'. <br />
+                    Then it returns each individual value found multiplied by 10 in to the newly created array called 'bigNumbers'. <br /> <br />
+                </i>
+
+                <b>
+                    const numbers = [1, 2, 3, 4, 5]; <br /> <br />
+
+                    const bigNumbers = numbers.map(number => { <br />
+                    &nbsp;&nbsp;&nbsp;return number * 10; <br />
+                    }); <br /> <br />
+
+                    console.log(numbers); // Output: [1, 2, 3, 4, 5] <br />
+                    console.log(bigNumbers); // Output: [10, 20, 30, 40, 50]
+                </b> <br /> <br /> <br />
+
+                <hr /> <br /> <br />
+
+                Example 2... <br /> <br />
+
+                <i>Shows how to call a function 'myFunction' to calculate what gets put in the new array 'newarray'</i> <br /> <br />
+                <b>
+                    var numbers = [65, 44, 12, 4]; <br />
+                    var newarray = numbers.map(myFunction) <br /> <br />
+
+                    function myFunction(num) { <br />
+                    &nbsp;&nbsp;&nbsp;return num * 10; <br />
+                    } <br /> <br />
+
+                    console.log(newarray); // Output: [650,440,120,40]
+                </b> <br /> <br /> <br />
+
+
+                <hr /> <br /> <br />
+
+                Example 3... <br /> <br />
+
+                <i>
+                    Shows how to call a function 'myFunction' on a button click <br />
+                    and 'myFunction' also calls function 'getFullName' to calculate what gets written to the screen
+                </i> <br /> <br />
+                <b>
+                    &lt;button class="button2" onclick="myFunction()"&gt;Click Me&lt;/button&gt; <br /> <br />
+
+                    &lt;script&gt; <br />
+                    &nbsp;&nbsp;&nbsp;var persons = [ <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ firstname: "Malcom", lastname: "Reynolds" }, <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ firstname: "Kaylee", lastname: "Frye" }, <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ firstname: "Jayne", lastname: "Cobb" } <br />
+                    &nbsp;&nbsp;&nbsp;]; <br /> <br />
+
+
+                    &nbsp;&nbsp;&nbsp;function getFullName(item) { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var fullname = [item.firstname, item.lastname].join(" "); <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return fullname; <br />
+                    &nbsp;&nbsp;&nbsp;} <br /> <br />
+
+                    &nbsp;&nbsp;&nbsp;function myFunction() { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById("demoMap").innerHTML = persons.map(getFullName); <br />
+                    &nbsp;&nbsp;&nbsp;} <br />
+                    &lt;/script&gt; <br />
+                </b> <br /> <br />
+
+                <button class="button2" onclick="myFunction()">Click Me</button> <br /> <br />
+            </p>
+
+            <p>New array: <span id="demoMap" class="redMess"></span></p>
+
+            <script>
+                var persons = [
+                    { firstname: "Malcom", lastname: "Reynolds" },
+                    { firstname: "Kaylee", lastname: "Frye" },
+                    { firstname: "Jayne", lastname: "Cobb" }
+                ];
+
+                function getFullName(item) {
+                    var fullname = [item.firstname, item.lastname].join(" ");
+                    return fullname;
+                }
+
+                function myFunction() {
+                    document.getElementById("demoMap").innerHTML = persons.map(getFullName);
+                }
+            </script>
+
+        </div>
+    </div>
+
+    <br /> <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+
+            <h1>Dealing with arrays</h1>
+
+            <h3>using '.filter' to read thru array elements</h3>
+
+            <p>
+                The filter() method creates an array filled with all array elements that pass a test (provided as a function)
+                ... in other words it reads in from one array and creates another array by filtering out what you don't need. <br />
+                Note: filter() does not execute the function for array elements without values. <br />
+                <br />
+                See w3schools page on <a href="https://www.w3schools.com/jsref/jsref_filter.asp" target="_blank">filter</a> for more. <br />
+                <br />
+                Example ... <br />
+                Reads in array 'words' and creates a new array 'shortWords' with only the words that
+                are less than 6 chr's in length. <br /><br />
+
+                <b>
+                    const words = ['chair', 'music', 'pillow', 'brick', 'pen', 'door']; <br /> <br />
+
+                    const shortWords = words.filter(word => { <br />
+                    &nbsp;&nbsp;&nbsp;return word.length < 6; <br />
+                    });
+                </b> <br /> <br />
+
+                New 'shortWords' array: <span id="demoFilter" class="redMess"></span> <br /> <br />
+            </p>
+
+            <script>
+                const words = ['chair', 'music', 'pillow', 'brick', 'pen', 'door'];
+
+                const shortWords = words.filter(word => {
+                    return word.length < 6;
+                });
+
+                document.getElementById("demoFilter").innerHTML = shortWords;
+
+            </script>
+
+            <p>
+
+                <hr /> <br /> <br />
+
+                <h3>using '.findIndex' to read thru array elements and return the index of the one you want</h3>
+
+                The findIndex() method returns the index of the first element in an array that pass a test (provided as a function). <br />
+                The findIndex() method executes the function once for each element present in the array: <br />
+                If it finds an array element where the function returns a true value, findIndex() returns
+                the index of that array element (and does not check the remaining values) Otherwise it returns -1 <br /> <br />
+
+                Example... <br /> <br />
+
+                <b>
+                    const jumbledNums = [123, 25, 78, 5, 9]; <br /> <br />
+
+                    const lessThanTen = jumbledNums.findIndex(num => { <br />
+                    &nbsp;&nbsp;&nbsp;return num < 10; <br />
+                </b>// if checking for 78 then use    <i>return num == 78;</i><br /> <b>
+                    });
+                </b> <br /> <br />
+
+                Returns: <span id="demoFindIndex" class="redMess"></span> <br /> <br />
+
+            </p>
+
+            <script>
+
+                const jumbledNums = [123, 25, 78, 5, 9];
+
+                const lessThanTen = jumbledNums.findIndex(num => {
+                    return num < 10;
+                });
+
+                document.getElementById("demoFindIndex").innerHTML = lessThanTen;
+            </script>
+
+        </div>
+
+        <div class="divBSet divBorder">
+            <h1>A short review of some methods</h1>
+
+            <p>
+                .forEach() <br />
+                is used to execute the same code on every element in an array but does
+                not change the array and returns undefined. <br /> <br />
+
+                .map() <br />
+                executes the same code on every element in an array and returns a
+                new array with the updated elements. <br /> <br />
+
+                .filter() <br />
+                checks every element in an array to see if it meets certain criteria
+                and returns a new array with the elements that return truthy for the criteria. <br /> <br />
+
+                .findIndex() <br />
+                returns the index of the first element of an array which satisfies a condition
+                in the callback function. <br />
+                It returns -1 if none of the elements in the array satisfies the condition. <br /> <br />
+
+                .reduce() <br />
+                iterates through an array and takes the values of the elements and returns a single value. <br /> <br />
+
+                .some() <br />
+                iterates through an array and returns true if the expression is true otherwise false. <br /> <br />
+
+                All iterator methods takes a callback function that can be pre-defined, or a function
+                expression, or an arrow function. <br /> <br />
+            </p>
+
+        </div>
+    </div>
+
+    <br /> 
+    To see some examples of tasks I was set that use 
+    Arrays/Functions/Objects then <a href="codecademyLessons.html">click here</a> <br />
+    <a href="#">Top</a> 
+    <br />
+
+    
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+
+  <title>Add Javascript</title>
+
+
+</head>
+
+<body>
+
+  <a href="index.html">Home</a>
+
+  <h1>Adding Javascript Tags</h1>
+  <p>
+    You can add the &lt;script&gt;&lt;/script&gt; tags in a few places on the HTML form.
+  </p>
+  <p>
+    Javascript code can be added to the sections<br />
+    <b>&lt;head&gt;&lt;/head&gt;</b> <br />
+    <b>&lt;body&gt;&lt;/body&gt;</b> <br />
+    but know that the more you put in the &lt;head&gt;&lt;/head&gt; the
+    slower the web page will load (parse). It also slows with it in the &lt;body&gt;&lt;/body&gt;
+    but it may not be so noticeable. <br />
+    ALSO...if you put the Javascript at the end (just before the &lt;/body&gt;) then it
+     will not parse until the page has loaded. <br /> <br />
+    This will probably change when I learn more though. <br /> <br />
+    (Edit... <br />
+    I am using javascript on some web pages (jsArrays.html & jsOperators.html etc) and
+    because I am requiring the scripts to run a javascript function as it processes the
+    code on the web page I had to put my function within the &lt;head&gt; section. <br />
+    Otherwise, if I put the function script at the bottom, it did not know about the function
+    until the page had already finished loading and by then it was too late.)
+  </p>
+  <p>
+    For example... <br /> <br />
+    &lt;head&gt; <br />
+    &nbsp; &nbsp; &nbsp; &lt;script type="text/javascript"&gt; <br />
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Javascript goes here// <br />
+    &nbsp; &nbsp; &nbsp; &lt;/script&gt; <br />
+    &lt;/head&gt; <br /> <br />
+    &lt;body&gt; <br />
+    &nbsp; &nbsp; &nbsp;//code in the body// <br />
+    &nbsp; &nbsp; &nbsp; &lt;script type="text/javascript"&gt; <br />
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Javascript goes here <br />
+    &nbsp; &nbsp; &nbsp; &lt;/script&gt; <br />
+    &nbsp; &nbsp; &nbsp;//MORE code in the body// <br />
+    &nbsp; &nbsp; &nbsp; &lt;script type="text/javascript"&gt; <br />
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Javascript goes here <br />
+    &nbsp; &nbsp; &nbsp; &lt;/script&gt; <br />
+    &nbsp; &nbsp; &nbsp;//EVEN MORE code in the body// <br />
+    &nbsp; &nbsp; &nbsp;//etc...etc...// <br />
+    &lt;/body&gt; <br />
+  </p>
+  <p>
+    You can also create an external file (similar to what we can do with CSS)
+    that holds the Javascript code. To do this you can say... <br />
+    <b>&lt;script src="Scripts/myScripts.js" text="text/javascript"&gt;</b> <br />
+    ...again this can go in the head or at the bottom of the body sections. <br />
+    </p>
+</body>
+
+</html>

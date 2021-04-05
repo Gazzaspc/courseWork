@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Functions</title>
+
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+    <style>
+        body {
+            padding: 20px;
+        }
+
+        .looping {
+            color: red;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .button2 {
+            border: 0;
+            line-height: 1.7;
+            margin: 0 2px 0 0;
+            ;
+            padding: 5px 8px;
+            font-size: 0.8rem;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            text-shadow: 1px 1px 1px #000;
+            border-radius: 10px;
+            /* background-color: #6495ED; */
+            /* fallback colour */
+            /* background-color: rgba(0, 178, 255, 1); */
+            background-color: rgba(65, 105, 255, 1);
+            background-image: linear-gradient(to top left, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2) 30%, rgba(0, 0, 0, 0));
+            box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6), inset -2px -2px 3px rgba(0, 0, 0, .6);
+        }
+
+            .button2:hover {
+                background-color: #EAF6F6;
+                /* fallback colour */
+                /* background-color: rgba(153, 204, 255, 1); */
+                background-color: rgba(30, 144, 255, 1);
+            }
+
+            .button2:active {
+                box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6), inset 2px 2px 3px rgba(0, 0, 0, .6);
+            }
+    </style>
+
+    <!-- Put this script here because I call it as I go along
+    so it cannot go at the bottom -->
+    <script type="text/javascript">
+        function toDisplay1(callElem, myVal) {
+            document.getElementById(callElem).innerHTML = myVal;
+        }
+    </script>
+
+</head>
+
+<body class="bodyMove">
+    <a href="index.html">Home</a>
+    <h1>Functions</h1>
+    <p>
+        It may also be worth visiting my
+        <a href="jsObjects.html">Objects Page</a> for more info as I talk about functions there as well. <br />
+        ...for instance, see <a href="jsObjects.html#factoryFunctions">Factory Functions</a> for additional info.<br />
+    </p>
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h3>Named Functions</h3>
+            <p>
+                The code for a function must be within a <br />
+                &lt;script type="text/javascript"&gt; &lt;/script&gt; <br />
+                and can be either in the &lt;head&gt;&lt/head&gt; or the bottom of the &lt;body&gt;&lt/body&gt; <br /> <br />
+                It is better to place it at the end of the BODY because when the web page gets loaded it will have to load
+                everything in the HEAD section before it displays the web page...but if it is at the end then the page will
+                load and be displayed before it loads the code for your FUNCTION(s). <br /> <br />
+                NOTE... <br />
+                Usually functions are used after some user interaction (maybe they click a button?) and this function
+                can go at the end...BUT...If your web page uses the functions while it loads, in order to display
+                the page properly, then it MUST go in the HEAD section otherwise the function will not be available
+                to be used. <br /> <br /> <br />
+                *************** <br /> <br /> <br />
+                Also Note... <br /> <br />
+                In more recent versions of JavaScript you can give parameters a default value when creating the function eg... <br />
+                <br />
+                <b>
+                    function myFunc(p1 = "Default Value") { <br />
+                    &nbsp;&nbsp;&nbsp;// Code <br />
+                    }
+                </b> <br /> <br />
+                <i>
+                    Therefore if you do not pass a value to the function when calling it it will
+                    use "Default Value" as the passed in value.
+                </i> <br /> <br />
+
+                *************** <br /> <br />
+                You can also use a shorthand way of creating the function that is assigned to a variable
+                (known as <a href="https://www.w3schools.com/js/js_arrow_function.asp" target="_blank">Arrow Functions</a>)...eg... <br />
+                <br />
+                <b>
+                    const rectangleArea = myFunc(row, col) { <br />
+                    &nbsp;&nbsp;&nbsp;return "Area is: " + row*col; <br />
+                    }
+                </b> <br />
+                Would be written in shorthand as... <br /> <br />
+                <b>
+                    const rectangleArea = (row, col) => { <br />
+                    &nbsp;&nbsp;&nbsp;return "Area is: " + row*col; <br />
+                    }
+                </b> <br /> <br />
+                <i>(It does not work too well when you include the <b>this.</b> command (see next pane))</i> <br /> <br />
+                And can be shortened still by... <br />
+                <br />
+                A function assigned to a variable can be used in the following way(s):- <br /> <br />
+                1. <br />
+                Functions that take only a single parameter do not need that parameter to be enclosed
+                in parentheses. However, if a function takes zero or multiple parameters,
+                parentheses are required. Eg...<br />
+                <i>Zero parameters</i> <br />
+                <b>const <i>functionName</i> = () => { return "Hello Gary" };</b> <br />
+                <i>One parameter</i> <br />
+                <b>const <i>functionName</i> = paramOne => { return "Hello Gary" };</b> <br />
+                <i>Two or More parameters</i> <br />
+                <b>const <i>functionName</i> = (paramOne, paramTwo) => { return "Hello Gary" };</b> <br /> <br />
+                2. <br />
+                A function body composed of a single-line block does not need curly braces. Without the curly
+                braces, whatever that line evaluates will be automatically returned. The contents of the
+                block should immediately follow the arrow => and the return keyword can be
+                removed. This is referred to as implicit return. <br />
+                <i>Single Line Code Block</i> <br />
+                <b>const <i>functionName</i> = paramOne => "ParamOne is:" + paramOne;</b> <br />
+                <br />
+
+
+            </p>
+
+        </div>
+        <div class="divBorder divBSet">
+            <p>
+                Examples... <br /> <br />
+
+                <b>
+                    &lt;script type="text/javascript"&gt; <br />
+                    &nbsp;&nbsp;&nbsp;function myFunction1(p1, p2) { <br />
+                    &nbsp;&nbsp;&nbsp;return p1*p2; <br />
+                    &nbsp;&nbsp;&nbsp;} <br />
+                    &lt;/script&gt;
+                </b><br /> <br />
+                This function may be called, for example, by the code... <br />
+                <b>var x = myFunction1(3, 4);</b> <br />
+                or <br />
+                <b>document.getElementById("myElement").innerHTML = "value is " + myFunction(3, 4); </b> <br />
+                <br /> <br />
+                This function was used to set the value of 'x' to be 12 <br />
+                and then changed the HTML code of an element with the ID of 'myElement' to be 'Value is 12' <br />
+                <br /> <br />
+                *************** <br /> <br />
+                <b>
+                    &lt;script type="text/javascript"&gt; <br />
+                    &nbsp;&nbsp;&nbsp;function myFunction2(callElem, myVal) { <br />
+                    &nbsp;&nbsp;&nbsp;document.getElementById(callElem).value = myVal; <br />
+                    &nbsp;&nbsp;&nbsp;} <br />
+                    &lt;/script&gt;
+                </b> <br /> <br />
+                This function I used on my page (jsArrays and others) to display the value of the parameter 'myVal'
+                inside an INPUT BOX that had the ID name that was passed to it in the parameter 'callElem'. <br /> <br />
+                *************** <br /> <br />
+
+                Stored as a variable... <br />
+                <b>var f1 = function(a, b) {return a * b;};</b> <br />
+                Then in your code you can say <br />
+                z = f1(3, 4) <br />
+                and z will then = 12 <br /> <br />
+                *************** <br /> <br />
+
+                I could even say... <br />
+                <b>
+                    var myObj = { <br />
+                    &nbsp;&nbsp;&nbsp;FName: "John", <br />
+                    &nbsp;&nbsp;&nbsp;LName:"Smith", <br />
+                    &nbsp;&nbsp;&nbsp;FULLName: function() {return this.FName + " " + this.LName}};
+                </b> <br /> <br />
+                and this will use the function command to create the FULLName variable (myObj.FULLName). <br />
+                <br />
+                NOTE... <br />
+                <b>this.</b> &nbsp;&nbsp;&nbsp;is used to denote the properties (FName & LName) are within this object. If I refer
+                to FName & LName outside of creating this object (var myObj...) then I have to say <br />
+                myObj.FName <br />
+                <br />
+                So referring to <b>myObj.FNam</b>e will give me back the value of "John" <br />
+                and <b>myObj.LName</b> will give "Smith" <br />
+                and <b>myObj.FULLName()</b> will give "John Smith" - NOTE the brackets () - as it is a FUNCTION it MUST have
+                the brackets otherwise (<b>myObj.FULLName</b>) it will end up giving you the contents of your
+                function - a value of something like <br />
+                &nbsp;&nbsp;&nbsp;ƒ () {return this.FName + " " + this.LName} <br /> <br />
+
+
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br /> <br />
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h1>Assigning functions to variables</h1>
+
+            <p>
+                JavaScript functions behave like any other data type in the language; <br />
+                we can assign functions to variables, and we can reassign them to new variables. <br />
+            </p>
+
+            <p>
+                Because we can call the function name whatever we like it could end up
+                being a really long name (people like to assign names that describe what it does) <br />
+                For Example... <br />
+                <b>
+                    function makeAnAnnouncementThatIAmVeryBusy() {
+                    &nbsp;&nbsp;&nbsp;alert("I am very busy right now!");
+                    }
+                </b> <br /> <br />
+                You would not want to keep calling that long function name. <br />
+                So you can assign it to a variable and then refer to the variable, eg... <br /> <br />
+
+                <b>const busy = makeAnAnnouncementThatIAmVeryBusy; </b> <br /> <br />
+
+                Then call it with the command <br />
+                <b>busy();</b> <br />
+                <br />
+
+                <b>NOTE...</b> <br />
+                When assigning the function to a variable you <b>DO NOT</b> include the opening or closing brackets '()' BUT
+                you do need them when calling the variable. <br />
+                <i>
+                    If the function uses parameters you will not know the values when you assign it to a variable
+                    only when you call the variable.
+                </i> <br /> <br />
+
+
+
+            </p>
+
+
+        </div>
+
+        <div class="divBorder divBSet">
+            <h1>Assigning functions to variables - Examples</h1>
+
+            <p>
+
+                <b>
+                    function makeAnAnnouncementThatIAmVeryBusy() {
+                    &nbsp;&nbsp;&nbsp;alert("I am very busy right now!");
+                    }
+                </b> <br /> <br />
+
+                <b>const busy = makeAnAnnouncementThatIAmVeryBusy; </b> <br /> <br />
+
+                Then call it with the command <br />
+                <b>busy();</b> <br />
+                <br />
+
+                The above will show an ALERT message saying <br />
+                <span style="color: red">"I am very busy right now!"</span> <br /> <br /> <br />
+
+                OR... <br /> <br />
+
+                <b>
+                    function makeAnAnnouncementToShowHowBusyIAm(param1, param2) {
+                    &nbsp;&nbsp;&nbsp;alert(param1 + ", I am " + param2 + " busy right now!");
+                    }
+                </b> <br /> <br />
+
+                <b>const howBusy = makeAnAnnouncementToShowHowBusyIAm; </b> <br /> <br />
+
+                Then call it with the command <br />
+                <b>howBusy("Yes", "VERY");</b> <br />
+                <br />
+
+                The above will show an ALERT message saying <br />
+                <span style="color: red">"Yes, I am VERY busy right now!"</span> <br /> <br /> <br />
+
+
+                NOTE ...
+                If you need to get the name of the function that is being used by 'howBusy' you could say... <br />
+                <b>console.log(howBusy.name);</b> <br /> <br />
+
+                and it will display "makeAnAnnouncementToShowHowBusyIAm" in the console log. <br /> <br />
+
+
+            </p>
+
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br /> <br />
+
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+
+            <h1>Higher Order Functions</h1>
+            <h3>(Example - How long it takes to run a function)</h3>
+            <p>
+                A higher-order function is a function that either accepts functions as parameters,
+                returns a function, or both! <br /> <br />
+            </p>
+
+            <p>
+                I would normally create a variable (that is a function) in the following way... <br />
+                <b>
+                    const timeFuncRuntime = function(funcParameter) { <br />
+                    &nbsp;&nbsp;&nbsp;let t1 = Date.now(); <br />
+                    &nbsp;&nbsp;&nbsp;funcParameter(); <br />
+                    &nbsp;&nbsp;&nbsp;let t2 = Date.now(); <br />
+                    &nbsp;&nbsp;&nbsp;return t2 - t1; <br />
+                    } <br />
+                </b>
+                That tells me I want a variable called <b>timeFuncRuntime</b> <br />
+                and it is a function that has one parameter (<b>funcParameter</b>) <br />
+                And the task is between the { } brackets. <br /> <br />
+
+                But the examples I am following uses the shorthand version (below)
+                which means the same... <br /> <br />
+
+                <b>
+                    const timeFuncRuntime = funcParameter => { <br />
+                    &nbsp;&nbsp;&nbsp;let t1 = Date.now(); <br />
+                    &nbsp;&nbsp;&nbsp;funcParameter(); <br />
+                    &nbsp;&nbsp;&nbsp;let t2 = Date.now(); <br />
+                    &nbsp;&nbsp;&nbsp;return t2 - t1; <br />
+                    } <br /> <br />
+
+                    const addOneToOne = () => 1 + 1; <br /> <br />
+
+                    console.log(timeFuncRuntime(addOneToOne));
+                </b> <br /> <br />
+
+                So...what is happening is :- <br />
+                I am creating a variable called <b>timeFuncRuntime</b> <br />
+                that is actually a function that requires one parameter (<b>funcParameter</b>) <br />
+                The code inside the { }'s tell it to read in the date & time (t1) then run the function that was passed
+                to it as a parameter (funcParameter) then read in the date & time again (t2). <br />
+                It then returns the difference (t2 - t1), which is probably the milliseconds it took to run
+                funcParameter. <br /> <br />
+
+                <b>addOneToOne</b> is another function we created that justs returns the value of 1+1 <br />
+                <br />
+
+                The next line calls the function <b>timeFuncRuntime</b> and passed in the function we want to run
+                which was stored in the parameter <b>funcParameter</b>. <br /> <br />
+
+                <hr /> <br /> <br />
+
+                <h1>Higher Order Functions (pt 2)</h1>
+
+                This time we will create a variable with an anonymous function with NO PARAMETERS. <br />
+                And it will just log the numbers 1 to 10 to the console. <br /> <br />
+
+                <b>
+                    timeFuncRuntime(() => { <br />
+                    &nbsp;&nbsp;&nbsp;for (let i = 10; i>0; i--){ <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(i); <br />
+                    &nbsp;&nbsp;&nbsp;} <br />
+                    });
+                </b> <br /> <br /> <br />
+
+
+
+            </p>
+        </div>
+
+        <div class="divBorder divBSet">
+
+            <p>
+                And an example of creating a factory function that returns
+                an object that has a mixture of <span class="redMess">properties & methods</span>... <br />
+                <i>Note...Methods (eg mutate:) will create an anonymous function to return it's value</i><br /> <br />
+
+                <b>
+                    const myFactoryFunction = (number, array) => { <br />
+                </b>
+                &nbsp;&nbsp;&nbsp;//Return a few different things at the same time <br />
+                &nbsp;&nbsp;&nbsp;//...properties and methods <br />
+                &nbsp;&nbsp;&nbsp;<b>
+                    return { <br /> <br />
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="redMess">specimenNum</span>: number, <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="redMess">dna</span>: array, <br /> <br />
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </b>//Change 1 base DNA letter <br /><b>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="redMess">mutate</span>: () => { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var mutateArray = array; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var rnd = Math.floor(Math.random() * mutateArray.length); <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var stop = 0; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var newBase = ""; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;do { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newBase = returnRandBase(); <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (mutateArray[rnd] != newBase) { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mutateArray[rnd] = newBase; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stop = 1; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} while (stop = 0); <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return mutateArray; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}, <br /> <br />
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </b>//Check percentage match of DNA <br /><b>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="redMess">compareDNA</span>: (pAequor) => { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var max = array.length; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (max > pAequor.length) { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max = pAequor.length; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var match = 0; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var perc = 0; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (i = 0; i < max; i++) { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (array[i] == pAequor[i]) { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;match++; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;perc = Math.round((match / max) * 100); <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return `specimen #1 and specimen #2 have ${perc}% DNA in common.` <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}, <br /> <br />
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </b>//Return TRUE if 'G' or 'C' => 60% exists in DNA <br /><b>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="redMess">willLikelySurvive</span>: () => { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var countG = 0; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var countC = 0; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;survive = false; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (i = 0; i < array.length; i++) { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (array[i] == "G") { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;countG++; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else if (array[i] == "C") { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;countC++; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (Math.round((countG / array.length) * 100) >= 60) { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;survive = true; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else if (Math.round((countC / array.length) * 100) >= 60) { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;survive = true; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return survive; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br /> <br />
+
+                    &nbsp;&nbsp;&nbsp;};
+                </b>//End of main RETURN <br /> <br /> <b>
+
+                    };
+                </b>//End of myFactoryFunction <br />
+
+            </p>
+
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br /> <br />
+
+</body>
+
+</html>

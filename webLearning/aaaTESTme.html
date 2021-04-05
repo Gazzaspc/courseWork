@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Numbering Sections</title>
+
+  <link rel="stylesheet" type="text/css" href="CSS/normalize.css" />
+  <link rel="stylesheet" type="text/css" href="CSS/main.css" />
+  <link rel="stylesheet" type="text/css" href="CSS/myStyles.css" />
+
+  <script src="Scripts/myScripts.js" text="text/javascript"></script>
+
+  <style>
+    
+  </style>
+
+</head>
+
+<body class="bodyMove">
+
+  <section id="top">
+    <a href="index.html">Home</a> <br />
+
+  </section>
+
+<script>
+
+
+
+    // Returns a random DNA base
+    const returnRandBase = () => {
+        const dnaBases = ['A', 'T', 'C', 'G']
+        return dnaBases[Math.floor(Math.random() * 4)]
+    }
+
+    // Returns a random single stand of DNA containing 15 bases
+    const mockUpStrand = () => {
+        const newStrand = []
+        for (let i = 0; i < 15; i++) {
+            newStrand.push(returnRandBase())
+        }
+        return newStrand
+    }
+
+    const pAequorFactory = (number, array) => {
+        //Return a few different things at the same time
+        //...properties and methods
+        return {
+            specimenNum: number,
+            dna: array,
+
+            mutate: () => {
+                var mutateArray = array;
+                var rnd = Math.floor(Math.random() * mutateArray.length);
+                var stop = 0;
+                var newBase = "";
+                do {
+                    newBase = returnRandBase();
+                    if (mutateArray[rnd] != newBase) {
+                        mutateArray[rnd] = newBase;
+                        stop = 1;
+                    };
+                } while (stop = 0);
+                return mutateArray;
+            },
+
+            //Check percentage match of DNA
+            compareDNA: (pAequor) => {
+                var max = array.length;
+                if (max > pAequor.length) {
+                    max = pAequor.length;
+                };
+                var match = 0;
+                var perc = 0;
+                for (i = 0; i < max; i++) {
+                    if (array[i] == pAequor[i]) {
+                        match++;
+                    };
+                };
+                perc = Math.round((match / max) * 100);
+                return `specimen #1 and specimen #2 have ${perc}% DNA in common.`
+            },
+
+            //Return TRUE if 'G' or 'C' => 60% exists in DNA
+            willLikelySurvive() {
+                var countG = 0;
+                var countC = 0;
+                survive = false;
+                for (i = 0; i < array.length; i++) {
+                    if (array[i] == "G") {
+                        countG++;
+                    } else if (array[i] == "C") {
+                        countC++;
+                    };
+                };
+                if (Math.round((countG / array.length) * 100) >= 60) {
+                    survive = true;
+                } else if (Math.round((countC / array.length) * 100) >= 60) {
+                    survive = true;
+                };
+                return survive;
+            }
+
+        };  //End of main RETURN
+
+    };  //End of pAequorFactory
+
+    function createPAequor() {
+        var pA = [];
+        for (i = 0; i < 30; i++) {
+            pA.push(mockUpStrand());
+        };
+        return pA;
+    }
+
+    var pAequor = createPAequor();
+
+    console.log(pAequor);
+
+    var Animal1 = pAequorFactory(1, pAequor[1]);
+
+
+</script>
+  
+
+</body>
+
+</html>

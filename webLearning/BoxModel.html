@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Box Model</title>
+
+  <link rel="stylesheet" href="CSS/normalize.css" />
+  <link rel="stylesheet" href="CSS/main.css" />
+  <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+  <style>
+    body {
+      margin: 20px;
+    }
+
+    #Div1 {
+      width: 50%;
+      min-width: 380px;
+    }
+
+    .myBorder1,
+    .myBorder2,
+    .myBorder3,
+    .myBorder4 {
+      border: 5px solid yellow;
+      margin: 0 20px 20px 20px;
+    }
+
+    .myBorder1 {
+      background-color: #FFB266;
+    }
+
+    .myBorder2 {
+      background-color: #FFCC99;
+    }
+
+    .myBorder3 {
+      background-color: #BDB76B;
+    }
+
+    .myBorder4 {
+      background-color: #66B2FF;
+    }
+
+    .myDemo1 {
+      width: 100px;
+      height: 100px;
+    }
+
+    .myDemo2 {
+      width: 100px;
+      height: 100px;
+    }
+
+    p {
+      margin: 5px 5px 0 5px;
+      padding: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+  </nav>
+  <h1>Box Model</h1>
+  <p>
+    Every element is a box model. <br />
+    (This means every element is made up of a <br />
+    Margin / Border / Padding / Content) <br /> <br />
+
+  </p>
+  <section>
+    <div id="Div1">
+
+
+      <div class="myBorder1">
+        <p>Margin</p>
+        <div class="myBorder2">
+          <p>Border</p>
+          <div class="myBorder3">
+            <p>Padding</p>
+            <div class="myBorder4">
+              <p>
+                Content <br />
+                All the content of the ELEMENT goes in here. <br />
+                NOTE... <br />
+                Setting the WIDTH: and HEIGHT: properties only sets <br />
+                the CONTENT area width/height. It does NOT include Margin/Border/Padding
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p>
+      Therefore, to know the actual size of your elements box model you have to add up:- <br />
+      margin (top) + border + padding (top) + height + padding (bottom) + margin (bottom) = actual HEIGHT <br />
+      margin (left) + border + padding (left) + width + padding (right) + margin (right) = actual WIDTH <br />
+    </p>
+  </section>
+  <section>
+    <h2>Demo of changing the MARGIN's of 2 boxes</h2>
+    <p style="margin-top:-20px;">
+      Note... <br />
+      you can set a margin to be a negative number as well as a positive one.
+    </p>
+    <div class="divFlex">
+
+      <div class="myBorder1 myDemo1" style="margin: 0 20px 20px 20px;">
+        <p>
+          margin set as - margin: 0 20px 20px 20px;
+        </p>
+      </div>
+      <div class="myBorder2 myDemo2">
+        <p>
+          margin set as - margin: 0 20px 20px 20px;
+        </p>
+      </div>
+    </div>
+
+    <div class="divFlex">
+
+      <div class="myBorder1 myDemo1">
+        <p>
+          margin set as - margin: 0 20px 20px 20px;
+        </p>
+      </div>
+      <div class="myBorder2 myDemo2" style="margin: 20px 20px 20px -40px;">
+        <p>
+          margin set as - margin: 20px 20px 20px -40px;
+        </p>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

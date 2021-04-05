@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Create/Remove Elements</title>
+
+  <link rel="stylesheet" href="CSS/normalize.css" />
+  <link rel="stylesheet" href="CSS/main.css" />
+  <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+  <!-- Required to pull in my default javaScript file -->
+  <!-- It's inside a [script] as it holds cammands that run in a [script] environment -->
+  <script src="Scripts/myScripts.js" />
+  </script>
+
+  <!-- Required for JQuery to work - this is the library file from JQuery.com (uncompressed development file) -->
+  <script src="JQuery/jquery-3.5.1.js"></script>
+  <!-- You can use the online one but for now I will download it and use my copy of it (use one or the other)-->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+  <style>
+    .makeInvisible {
+      display: none;
+    }
+  </style>
+
+  <script>
+    // Lets create the jQuery actions we need to run once the page has finished loading.
+    $(document).ready(function() {
+      //Set the css values for the body
+      $("body").addClass("bodyMove");
+
+
+
+      //My function to display the message p2 or p3
+      function myClickFunc(p1, p2, p3) {
+        var xx = $("#" + p1).html();
+        if (xx != p2) {
+          showMess(p1, p2);
+        } else {
+          showMess(p1, p3);
+        }
+      }
+
+    });
+  </script>
+
+</head>
+
+<body>
+
+  <section id="top">
+    <a href="index.html">Home</a>
+  </section>
+
+  <section id="mainTop">
+    <h1>Creating and Removing Elements</h1>
+  </section>
+
+  <div class="divFlex">
+    <div id="mainDiv" class="divBorder divBSet">
+
+      <h2>Some examples of ways to create Elements are...</h2>
+      <p>
+        <b>var txt1 = "&lt;p class='addedIn'&gt;This is the P ELEMENT created with HTML/CSS code&lt;/p&gt;"; </b><br />
+        <b>var txt2 = "$('&lt;p class=\"addedIn\"&gt;&lt;/p&gt;').text('This is the P ELEMENT created with jQuery code')"; </b><br />
+        <b>var txt3 = "document.createElement("p"); <br />
+          txt3.innerHTML="This is the P ELEMENT created with DOM code"; <br />
+          <br />
+          $("body")<span style="color:red">.append</span>(txt1, txt2, txt3);</b><br />
+        txt3.addClass = "addedIn";<br /> <br />
+        The above creates three different ways to add in a &lt;p&gt; element. <br />
+        Using jQuery the (.append) should add all 3 to the END of the &lt;body&gt; section. <br /> <br /> <br />
+
+        When removing the elements all I am doing is (using jQuery)... <br />
+        <b>$(".addedIn").remove();</b> <br /> <br /> <br />
+        Note... <br />
+        To place the newly created elements at the TOP of the body section then change
+        <span style="color:red">.append</span> to be <span style="color:red">.prepend</span> <br /> <br />
+        And...to place the newly created elements BEFORE a particular element then use
+        .before and AFTER a particular element use .after <br /> <br />
+      </p>
+    </div>
+
+    <div class="divBorder divBSet">
+      <br />
+      <p>
+        Add elements to the TOP (prepending) of the body... <br />
+      </p>
+      <button class="button2" onclick="preaddElement()">Add Elements</button>
+      <button class="button2" onclick="preremoveElement()">Remove Elements</button>
+      <br /> <br />
+      <p>
+        Add elements to the BOTTOM (appending) of the body... <br />
+      </p>
+      <button class="button2" onclick="addElement()">Add Elements</button>
+      <button class="button2" onclick="removeElement()">Remove Elements</button>
+      <br /> <br /><br /> <br />
+      <p>
+        Add elements BEFORE the 'mainTop section' (before)... <br />
+      </p>
+      <button class="button2" onclick="beforeaddElement()">Add Elements</button>
+      <button class="button2" onclick="beforeremoveElement()">Remove Elements</button>
+      <br /> <br />
+      <p>
+        Add elements AFTER the 'mainTop section' (after)... <br />
+      </p>
+      <button class="button2" onclick="afteraddElement()">Add Elements</button>
+      <button class="button2" onclick="afterremoveElement()">Remove Elements</button>
+
+      <script>
+        function preaddElement() {
+          var txt1 = "<p class='preaddedIn'>This is the P ELEMENT created with HTML/CSS code</p>";
+          var txt2 = $("<p class='preaddedIn'></p>").text("This is the P ELEMENT created with jQuery code");
+          var txt3 = document.createElement("p");
+          txt3.innerHTML = "This is the P ELEMENT created with DOM code";
+          txt3.classList.add("preaddedIn"); //This is dom
+
+          $("body").prepend(txt1, txt2, txt3);
+        }
+
+        function preremoveElement() {
+          $(".preaddedIn").remove();
+        }
+
+        function addElement() {
+          var txt1 = "<p class='addedIn'>This is the P ELEMENT created with HTML/CSS code</p>";
+          var txt2 = $("<p class='addedIn'></p>").text("This is the P ELEMENT created with jQuery code");
+          var txt3 = document.createElement("p");
+          txt3.innerHTML = "This is the P ELEMENT created with DOM code";
+          txt3.classList.add("addedIn"); //This is dom
+
+          $("body").append(txt1, txt2, txt3);
+        }
+
+        function removeElement() {
+          $(".addedIn").remove();
+        }
+
+        function beforeaddElement() {
+          var txt1 = "<p class='beforeaddedIn'>This is the P ELEMENT created with HTML/CSS code</p>";
+          var txt2 = $("<p class='beforeaddedIn'></p>").text("This is the P ELEMENT created with jQuery code");
+          var txt3 = document.createElement("p");
+          txt3.innerHTML = "This is the P ELEMENT created with DOM code";
+          txt3.classList.add("beforeaddedIn"); //This is dom
+
+          $("#mainTop").before(txt1, txt2, txt3);
+        }
+
+        function beforeremoveElement() {
+          $(".beforeaddedIn").remove();
+        }
+
+        function afteraddElement() {
+          var txt1 = "<p class='afteraddedIn'>This is the P ELEMENT created with HTML/CSS code</p>";
+          var txt2 = $("<p class='afteraddedIn'></p>").text("This is the P ELEMENT created with jQuery code");
+          var txt3 = document.createElement("p");
+          txt3.innerHTML = "This is the P ELEMENT created with DOM code";
+          txt3.classList.add("afteraddedIn"); //This is dom
+
+          $("#mainTop").after(txt1, txt2, txt3);
+        }
+
+        function afterremoveElement() {
+          $(".afteraddedIn").remove();
+        }
+      </script>
+    </div>
+
+
+  </div>
+  <a href="#top">Top</a>
+
+</body>
+
+</html>

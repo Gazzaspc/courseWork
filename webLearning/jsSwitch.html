@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Switch</title>
+
+  <link rel="stylesheet" href="CSS/normalize.css" />
+  <link rel="stylesheet" href="CSS/main.css" />
+  <link rel="stylesheet" href="CSS/myStyles.css" />
+
+  <style>
+    .looping {
+      color: red;
+      font-weight: bold;
+      font-style: italic;
+    }
+  </style>
+
+</head>
+
+<body class="bodyMove">
+  <section id="Top">
+
+    <a href="index.html">Home</a>
+    <h1>Switch - like Select Case in msAccess</h1>
+    <p>
+      It is basically an easier way of using multiple IF( ) statements. <br />
+      So instead of saying: <br />
+      if(<i>condition</i>) { <br />
+      &nbsp;&nbsp;&nbsp;//Some Code <br />
+      } else if(<i>condition</i>) { <br />
+      &nbsp;&nbsp;&nbsp;//Some Code <br />
+      &nbsp;&nbsp;&nbsp;} <br />
+      } <br />
+      etc...etc
+    </p>
+  </section>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <h3>Switch</h3>
+      <p>
+        This is javaScript's version of Select Case in MsAccess <br /> <br />
+        <b>switch(myFruit) { <br />
+          &nbsp;&nbsp;&nbsp;case "Banana": <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text = "Banana is good";<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />
+          &nbsp;&nbsp;&nbsp;case "Orange": <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text = "I suppose oranges are okay"; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break; <br />
+          &nbsp;&nbsp;&nbsp;default: <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text = "Unknown fruit ???"; <br />
+          } </b><br /> <br />
+
+        This checks the value of <b>myFruit</b> and if it matches what is in one of
+        the <b>case</b> statements it will run the relevant code. <br /> <br />
+        NOTE... <br />
+        On the end of EVERY <b>case</b> statement there must be a <b>colon (:)</b> <br />
+        AFTER the code for each <b>case</b> statement there must be a <b>break;</b> statement otherwise
+        it will just carry on to the code in the next case statement. <br />
+        AT THE END after the LAST <b>case</b> statement there should be a <b>default:</b> statement in
+        order to catch anything that does not match any of the above case statements. <br />
+        <br />
+        ALSO NOTE... <br />
+        As javaScript is CASE SENSITIVE things like "Banana" and "BANANA" will not match and it
+        will not run the code you may expect. <br />
+        Therefore I think it best to make sure and run it like this... <br /> <br />
+
+        <b>switch(myFruit.toLowerCase()) { <br />
+          &nbsp;&nbsp;&nbsp;case "banana": <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text = "Banana is good";<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />
+          &nbsp;&nbsp;&nbsp;case "orange": <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text = "I suppose oranges are okay"; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break; <br />
+          &nbsp;&nbsp;&nbsp;default: <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text = "Unknown fruit ???"; <br />
+          } </b><br /> <br />
+
+        Using the <b>.toLowerCase()</b> option will make sure that it checks everything in lowercase <br />
+        <i>(or .toUpperCase() if you prefer)</i> <br />
+      </p>
+    </div>
+    <div class="divBorder divBSet">
+      <p>
+        For example... <br /> <br />
+        I am using various upper/lower case in my dropdown box and checking just
+        for lowercase in my code. <br /> <br />
+        Select One:
+        <select id="onChange" onchange="mySwitch('onChange', 'switchId')">
+          <option value="Banana">Banana</option>
+          <option value="orange">orange</option>
+          <!-- //Use 'selected' to create a default start value -->
+          <option value="Apple" selected>Apple</option>
+          <option value="PEAR">PEAR</option>
+          <option value="leMON">leMON</option>
+        </select> <br /> <br />
+        <span id="switchId" class="redMess">Apples taste apple-y</span> <br />
+      </p>
+
+    </div>
+  </div>
+
+
+  <a href="#Top">Top</a>
+
+  <script text="text/javascript">
+    function mySwitch(p1, p2) {
+      var textF = "";
+      var myElem = document.getElementById(p1).value;
+
+      switch (myElem.toLowerCase()) {
+        case "apple":
+          textF = "Apples taste apple-y";
+          break;
+        case "orange":
+          textF = "I suppose oranges are okay";
+          break;
+        case "banana":
+          textF = "Banana is good";
+          break;
+        case "pear":
+          textF = "pears grow on trees";
+          break;
+        case "lemon":
+          textF = "Lemons screw your face up";
+          break;
+          Default:
+            textF = "Unknown Fruit !!!"
+      }
+      document.getElementById(p2).innerHTML = textF;
+    }
+  </script>
+
+</body>
+
+</html>

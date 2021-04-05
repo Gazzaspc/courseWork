@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Loops (For & While)</title>
+
+  <link rel="stylesheet" href="CSS/normalize.css" />
+  <link rel="stylesheet" href="CSS/main.css" />
+  <link rel="stylesheet" href="CSS/myStyles.css" />
+
+  <style>
+    body {
+      padding: 20px;
+    }
+
+    .looping {
+      color: red;
+      font-weight: bold;
+      font-style: italic;
+    }
+  </style>
+
+</head>
+
+<body>
+  <section id="Top">
+
+    <a href="index.html">Home</a>
+    <h1>Working with Loops</h1>
+    <p>
+      There are different ways to perform loops :- <br />
+      FOR/NEXT looping <br />
+      FOR/IN looping <br />
+      FOR/OF looping <br />
+      WHILE looping <br />
+      DO/WHILE looping <br /> <br />
+
+      And there are also... <br />
+        To loop thru the properties in an object 
+        <a href="jsObjects.html#objects">click here</a> for an example of <b>'for (x in myObject)'</b> <br />
+        and to loop thru arrays using <b>'.forEach(<i>function(item) { }</i>)'</b> then 
+        <a href="jsArrays.html#forEach">click here</a>. <br /> <br />
+
+    </p>
+  </section>
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <h3>FOR/NEXT Loops</h3>
+      <p>
+        An example of this could be... <br /> <br />
+        <b>For (i=0; i&lt;10; i++) { <br />
+          //Perform some code <br />
+          }</b> <br /> <br />
+        This basically says... <br />
+        i=0; --- Set i to be 0 <br />
+        i&lt;10; --- if i&lt;10 then stay in the loop until i&gt;=10 <br />
+        i++; --- will add 1 to i each time it loops through <br />
+        <br />
+      </p>
+    </div>
+    <div class="divBorder divBSet">
+      <p>
+        For example... <br /> <br />
+
+        <b>var a = "" <br />
+          for (i=0; i
+          <10; i++) { <br />
+          a = a + i + ", "; <br />
+          }</b> <br />
+        document.getElementById("loop1").innerHTML = a.slice(0, a.length-2); <br /> <br />
+        Will give 'a' the value of the numbers 0 thru 9 <br />
+        <i>(it removes the last two chr's as we do not want the ', ' on the end)</i><br />
+        <span id="loop1" class="looping"> </span> <br />
+      </p>
+      <script text="text/javascript">
+        var a = "";
+        for (i = 0; i < 10; i++) {
+          a = a + i + ", ";
+        }
+        document.getElementById("loop1").innerHTML = a.slice(0, a.length - 2);
+      </script>
+    </div>
+  </div>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <h3>FOR/IN Loops</h3>
+      <p>
+        Loops through the properties of an object <br /> <br />
+        An example of this could be... <br /> <br />
+        <b>var person = {fname:"John", lname:"Doe", age:25}; <br />
+          var text = ""; <br />
+          var x; <br />
+          for (x in person) { <br />
+          &nbsp;&nbsp;&nbsp;text += person[x] + " "; <br />
+          }</b> <br /> <br />
+        This basically says... <br />
+        Create a <b>person</b> object with 3 properties (<b>fname / lname / age</b>)<br />
+        Create two variables (text / x) <br />
+        then the 'for (x in person)' means it will loop through each property in 'person' and
+        save it in the variable 'x' <br />
+        It will then keep adding each property it finds to the 'text' variable <br />
+        <br /> <br />
+        ALSO SEE <a href="jsObjects.html#objects">Objects & Properties</a> page for an example of
+        a FOR/IN loop with objects. <br /> <br />
+      </p>
+    </div>
+
+    <div class="divBorder divBSet">
+      <p>
+        For example... <br /> <br />
+
+        <b>var person = {fname:"John", lname:"Doe", age:25}; <br />
+          var text = ""; <br />
+          var textX = ""; <br />
+          var x; <br />
+          for (x in person) { <br />
+          &nbsp;&nbsp;&nbsp;text += person[x] + ", "; <br />
+          &nbsp;&nbsp;&nbsp;textX += x + ": " + person[x] + ", "; <br />
+          }</b> <br /> <br />
+        document.getElementById("loopIn").innerHTML = text.slice(0, text.length-2); <br />
+        document.getElementById("loopInX").innerHTML = textX.slice(0, textX.length-2); <br /> <br />
+        <i>(it removes the last two chr's as we do not want the ', ' on the end)</i><br /> <br />
+        <span id="loopIn" class="looping"> </span> <br />
+        <span id="loopInX" class="looping"> </span> <br />
+      </p>
+      <script text="text/javascript">
+        var person = {
+          fname: "John",
+          lname: "Doe",
+          age: 25
+        };
+        var text = "";
+        var textX = "";
+        var x;
+        for (x in person) {
+          text += person[x] + ", ";
+          textX += x + ": " + person[x] + ", ";
+        }
+        document.getElementById("loopIn").innerHTML = text.slice(0, text.length - 2);
+        document.getElementById("loopInX").innerHTML = textX.slice(0, textX.length - 2);
+      </script>
+    </div>
+  </div>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <h3>FOR/OF Loops</h3>
+      <p>
+        Loops through the values of an Array <br />
+        or <br />
+        Loops through the letters of a string <br /> <br />
+        An example of this could be... <br /> <br />
+        <b>var cars = ['BMW', 'Volvo', 'Mini']; <br />
+          var x; <br />
+          for (x of cars) { <br />
+          alert(x); <br />
+          }</b> <br /> <br />
+        This basically says... <br />
+        Create a <b>cars</b> array with 3 values (<b>BMW / Volvo / Mini</b>)<br />
+        then the 'for (x of cars)' means it will loop through each value in the 'cars' array and
+        show it as a pop-up alert message. <br />
+        <br />
+      </p>
+    </div>
+
+    <div class="divBorder divBSet">
+      <p>
+        For example... <b><i>loop through Array</i> </b><br /> <br />
+
+        <b>var cars = ['BMW', 'Volvo', 'Mini']; <br />
+          var x; <br />
+          var text = ""; <br />
+          for (x of cars) { <br />
+          &nbsp;&nbsp;&nbsp;text += x + ", "; <br />
+          }</b> <br /> <br />
+        document.getElementById("loopOf").innerHTML = text.slice(0, text.length-2); <br />
+        <i>(it removes the last two chr's as we do not want the ', ' on the end)</i><br /> <br />
+        <span id="loopOf" class="looping"> </span> <br /> <br /> <br />
+
+        ...<b><i>loop through String</i></b><br /> <br />
+
+        <b>var myString = "Testing" <br />
+          var x; <br />
+          var text = ""; <br />
+          for (x of myString) { <br />
+          &nbsp;&nbsp;&nbsp;text += x + ", "; <br />
+          }</b> <br /> <br />
+        document.getElementById("loopOfS").innerHTML = text.slice(0, text.length-2); <br />
+        <i>(it removes the last two chr's as we do not want the ', ' on the end)</i><br /> <br />
+        <span id="loopOfS" class="looping"> </span> <br />
+      </p>
+      <script text="text/javascript">
+        var cars = ['BMW', 'Volvo', 'Mini'];
+        var x;
+        var text = "";
+        for (x of cars) {
+          text += x + ", ";
+        }
+        document.getElementById("loopOf").innerHTML = text.slice(0, text.length - 2);
+
+        var myString = "Testing";
+        var x;
+        var text = "";
+        for (x of myString) {
+          text += x + ", ";
+        }
+        document.getElementById("loopOfS").innerHTML = text.slice(0, text.length - 2);
+      </script>
+    </div>
+  </div>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <h3>WHILE Loops</h3>
+      <p>
+        An example of this could be... <br /> <br />
+        <b>while (i&lt;10) { <br />
+          //Perform some code <br />
+          i++; <br />
+          }</b> <br /> <br />
+        This basically says... <br />
+        i&lt;10 --- if i&lt;10 then stay in the loop until i&gt;=10 <br />
+        i++; --- will add 1 to i each time it loops through <br />
+        <br />
+      </p>
+    </div>
+    <div class="divBorder divBSet">
+      <p>
+        This type of looping may not run at all ... <br />
+        ...if the value of i is not less than 10 when it starts it will not perform the code inside the loop (whereas a DO/WHILE loop will always run once). <br />
+        For example... <br /> <br />
+
+        <b>var a = "", i=0; <br />
+          while (i&lt;10) { <br />
+          a = a + i + ", "; <br />
+          i++; <br />
+          }</b> <br />
+        document.getElementById("loop2").innerHTML = a.slice(0, a.length-2); <br /> <br />
+        Will give 'a' the value of the numbers 0 thru 9 <br />
+        <i>(it removes the last two chr's as we do not want the ', ' on the end)</i><br />
+        <span id="loop2" class="looping"> </span> <br />
+      </p>
+      <script text="text/javascript">
+        var a = "",
+          i = 0;
+        for (i = 0; i < 10; i++) {
+          a = a + i + ", ";
+        }
+        document.getElementById("loop2").innerHTML = a.slice(0, a.length - 2);
+      </script>
+    </div>
+  </div>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <h3>DO/WHILE Loops</h3>
+      <p>
+        An example of this could be... <br /> <br />
+        <b>do { <br />
+          //Perform some code <br />
+          i++; <br />
+          } <br />
+          while (i&lt;10);</b> <br /> <br />
+        This basically says... <br />
+        i&lt;10 --- if i&lt;10 then stay in the loop until i&gt;=10 <br />
+        i++; --- will add 1 to i each time it loops through <br />
+        <br />
+      </p>
+    </div>
+    <div class="divBorder divBSet">
+      <p>
+        This type of looping will ALWAYS run at least once as it checks the values to stay inside the loop AFTER it has completed the first pass. <br />
+        For example... <br /> <br />
+
+        <b>var a = "", i=0; <br />
+          do { <br />
+          a = a + i + ", "; <br />
+          i++; <br />
+          } <br />
+          while (i&lt;10);</b> <br />
+        document.getElementById("loop3").innerHTML = a.slice(0, a.length-2); <br /> <br />
+        Will give 'a' the value of the numbers 0 thru 9 <br />
+        <i>(it removes the last two chr's as we do not want the ', ' on the end)</i><br />
+        <span id="loop3" class="looping"> </span> <br />
+      </p>
+      <script text="text/javascript">
+        var a = "",
+          i = 0;
+        for (i = 0; i < 10; i++) {
+          a = a + i + ", ";
+        }
+        document.getElementById("loop3").innerHTML = a.slice(0, a.length - 2);
+      </script>
+    </div>
+  </div>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <h3>BREAKing out of Loops & CONTINUEing in Loops</h3>
+      <p>
+        If ever you need to leave a loop early you can <br />
+        <b>break;</b><br /> <br />
+        And if you need to skip mid loop you can <br />
+        <b>continue;</b> <br /> <br />
+        Eg... <br />
+        <b>For (i=0; i&lt;10; i++) { <br />
+          &nbsp;&nbsp;&nbsp;if (i==3) {continue;} <br />
+          &nbsp;&nbsp;&nbsp;if (i==8) {break;} <br />
+          a = a + ", " + i; <br />
+          }</b> <br /> <br />
+        This basically says... <br />
+        if i = 3 then skip the rest and carry on with the next loop through. <br />
+        if i = 8 then break out of the loop altogether and don't run anymore. <br />
+        <br />
+      </p>
+    </div>
+    <div class="divBorder divBSet">
+      <p>
+        For example... <br /> <br />
+
+        <b>For (i=0; i&lt;10; i++) { <br />
+          &nbsp;&nbsp;&nbsp;if (i==3) {continue;} <br />
+          &nbsp;&nbsp;&nbsp;if (i==8) {break;} <br />
+          a = a + ", " + i; <br />
+          } <br />
+          document.getElementById("loopBC" + i).innerHTML = a; <br /> <br />
+          Will give 0, 1, 2, 4, 5, 6, 7 <br /> <br />
+          <span id="loopBC" class="looping"> </span> <br />
+      </p>
+      <script text="text/javascript">
+        var a = "",
+          i = 0;
+        for (i = 0; i < 10; i++) {
+          if (i == 3) {
+            continue;
+          }
+          if (i == 8) {
+            break;
+          }
+          a = a + i + ", ";
+        }
+        document.getElementById("loopBC").innerHTML = a.slice(0, a.length - 2);
+      </script>
+    </div>
+  </div>
+  <a href="#Top">Top</a>
+</body>
+
+</html>

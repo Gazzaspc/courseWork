@@ -1,0 +1,26 @@
+//Will this work ???
+
+<section id="myCommonHeader">
+  <h1>This is my common header Section</h1>
+  <p>
+    I would really like this to appear at the TOP of my web page <br /> <br />
+    <img src="../Images/WileHelp.jpeg" width="100px" height="100px" alt="Wile E Coyote" />
+    Is that a picture ?? <br />
+    </p>
+  </section>
+
+//It kinda works....
+//if you add the below code to the location you want your code to appear on the page...
+
+
+  <OBJECT data="../CommonToPages/commonHeader.html">
+    Warning: file_to_include.html could not be included.
+  </OBJECT>
+
+  <!-- NOTE...
+  that the image file has ../ before the link to the file as the location Will
+  start at directory CommonToPages and ..\ will send it back one directory.
+
+  Not great though as you will need to resize <object> to be the size you need to be displayed
+    otherwise scroll bars are shown.
+     -->

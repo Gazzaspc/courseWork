@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>JQuery Set-up</title>
+
+  <link rel="stylesheet" href="CSS/normalize.css" />
+  <link rel="stylesheet" href="CSS/main.css" />
+  <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+  <!-- Required for JQuery to work - this is the library file from JQuery.com (uncompressed development file) -->
+  <script src="JQuery/jquery-3.5.1.js"></script>
+  <!-- You can use the online one but for now I will download it and use my copy of it (use one or the other)-->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+  <script>
+    <!-- If I wanted to make jQuery function here I should use the -->
+    <!-- $(document).ready command to make sure the page has loaded before continuing -->
+    <!-- (otherwise the body would not be displayed right if I had no .ready around the addclass command) -->
+    $(document).ready(function() {
+      <!-- Whatever code i need (CSS or jQuery) -->
+      $("body").addClass("bodyMove");
+    });
+  </script>
+
+</head>
+
+<body>
+  <a href="index.html">Home</a>
+  <h1>Using the jQuery Library Files</h1>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <p>
+        There is a website called <b><a href="https://jquery.com/" target="_blank">jQuery.com</a></b> that you
+        can visit for all sorts of information. <br />
+
+        You need to grab the JQuery Library File from this site and while developing/learning the
+        uncompressed file is best. <br />
+        <a href="https://jquery.com/download/" target="_blank">Click Here</a> to get the file. <br /> <br />
+        Although <a href="https://www.w3schools.com/jquery/" target="_blank">w3schools</a> also have a jQuery tutorial.<br /> <br />
+
+      </p>
+    </div>
+  </div>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <h2>Basic Syntax</h2>
+      <p>
+        The basic syntax of a jQuery command could be... <br /> <br />
+        <b>$(selector).action();</b> <br /> <br />
+
+        eg (hiding an object)...<br />
+        <b>$(this).hide();</b> (this relates to the current object) <br />
+        <b>$("p").hide();</b> (all the &lt;p&gt; elements) <br />
+        <b>$(.test).hide();</b> (this relates to the element with the class="test") <br />
+        <b>$(#test).hide();</b> (this relates to the element with the id="test") <br />
+        <br />
+        <i>so <b>$()</b> is basically the same as saying <b>document.getElementsByTag()</b> or
+          one of the other getElement options</i> <br /> <br />
+        You can also chain commands together on one line...eg... <br />
+        <b>$("#test").css("color", "red") <br />
+          .slideUp(2000) <br />
+          .slideDown(2000) <br />
+          .html("New Text");</b> <br /> <br />
+        NOTE... <br />
+        So far it seems that jQuery is just a bunch of METHODS or FUNCTIONS <br />
+        which means that changes are all in brackets...eg... <br />
+        <b>.html("New Text")</b> and not .html="New Text" <br /> <br />
+      </p>
+    </div>
+
+    <div class="divBorder divBSet">
+      <h2>Page Loading problems</h2>
+      <p>
+        A common problem can be scripts running before the page has loaded and jQuery has a
+        function to take care of that ... eg ...<br />
+        <b>$(document).ready( function() {alert("page has loaded")})</b> <br /> <br />
+        so the function only runs when the page has finished loading. <br /> <br />
+        This is useful if your function/code has to reference something that may take a moment to finish
+        loading (maybe loading a large picture). The .ready command waits until the image has loaded
+        before continuing. <br /> <br />
+        NOTE... <br />
+        There is a shorter version of this but the above is probably easier to read/understand. <br />
+        The short version is... <br />
+        <b>$(function(){alert("page has loaded")}</b> <br /> <br /> <br />
+        Also Note... <br />
+        I am using the $(document).ready command on this page to add a class to the
+        &lt;body&gt; element (I'm adding "bodyMove"). <br />
+        The code looks like this... <br />
+        <b>$(document).ready(function() { <br />
+          &nbsp;&nbsp;&nbsp;$("body").addClass("bodyMove"); <br />
+          });</b> <br />
+      </p>
+    </div>
+  </div>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <h2>Comparing jQuery vs javaScript</h2>
+      <p>
+        <b>javaScript</b> <br />
+        function myFunction() { <br />
+        &nbsp;&nbsp;&nbsp;var obj = document.getElementById("myID"); <br />
+        &nbsp;&nbsp;&nbsp;obj.innerHTML = "New Text"; <br />
+        } <br /> <br />
+
+        <b>jQuery</b> <br />
+        function myFunction() { <br />
+        &nbsp;&nbsp;&nbsp;$("#myID").html("New Text"); <br />
+        } <br /> <br />
+      </p>
+    </div>
+
+
+    <!-- <div class="divBorder divBSet">
+        <p>
+
+        </p>
+      </div> -->
+  </div>
+</body>
+
+</html>

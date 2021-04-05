@@ -1,0 +1,435 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- Required meta tags (Bootstrap?)-->
+    <!--The viewport meta tag tells the browser that the width of the screen should be
+    considered the "Full Width" of the page.
+    Meaning no matter the width of the device you are on,
+    whether on desktop or mobile. ... You can read more about the viewport
+    meta tag at W3Schools. In regards to the term "render" -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Below link tells the system where to find the icon that I
+      want to be used on my chrome tab -->
+    <!--<link rel="icon" href="images/icons/pawPrint.ico">-->
+
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat|Roboto+Mono|Sacramento&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 4.3.1 CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- my stylesheet -->
+    <link href="webLearning/CSS/main.css" rel="stylesheet" />
+    <link href="webLearning/CSS/normalize.css" rel="stylesheet" />
+    <link href="webLearning/CSS/MyStyles.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/dingbats.css">
+
+    <title>Dingbats Home</title>
+
+    <!-- Optional JavaScript -->
+    <!-- so I can use Font Awesome icons...note the number 45a726 etc belongs to me - I registered -->
+    <script src="https://kit.fontawesome.com/45a726f69a.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- I dont want this below section as it's not what I want to do -->
+    <!-- <script type="text/javascript">
+      function clickedExp(id) {
+        var e = document.getElementById(id);
+        var eb = document.getElementById("navButton");
+        alert("navButton display value = " + eb.style.display);
+        if (eb.style.display == "none") {
+          e.style.display = "none";
+        } else {
+          e.style.display = "inline-block";
+        }
+
+        if ($('#navButton').attr('aria-expanded') === true) {
+          alert('closing');
+          e.style.display = "inline-block";
+          } else {
+              alert('opening');
+              e.style.display = "none";
+          }
+
+        (THIS line gives FALSE if the icon has been clicked on to EXPAND the
+        navbar menu....and TRUE if you are closing the menu.)
+        alert($('#navButton').attr('aria-expanded'));
+      }
+      </script>
+       -->
+    <!-- If the navbar menu icon is visible then hide the text
+        'Gary Kirby' -->
+    <script type="text/javascript">
+        function clickedExp(id) {
+            var e = document.getElementById(id);
+            var eb = document.getElementById("navButton");
+
+            if ($('#navButton').is(':visible') === true) {
+                e.style.display = "none";
+            } else {
+                e.style.display = "inline-block";
+            }
+        }
+    </script>
+
+    <style>
+        @media only screen and (min-width: 990px) {
+            #HomeFromHome {
+                display: inline-block !important;
+            }
+        }
+
+        html {
+            background-color: #FCEFEF;
+        }
+
+        .divColour1 {
+            background-color: #F08080;
+        }
+
+        .divColour2 {
+            background-color: #F2ACAC;
+        }
+
+        .textSizeA {
+            font-size: 14px;
+            font-family: "Century Gothic",CenturyGothic,AppleGothic,sans-serif;
+        }
+
+        h4 {
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+<body>
+    <section id="title">
+        <div class="container-fluid mL0 ">
+            <!-- Nav Bar -->
+            <!--
+                align-items-end   places the elements at the bottom of the navbar.
+                fixed-top         will make navbar fixed in position & visible always
+                navbar-expand-lg   will collapse the navbar when it reaches the smallest point for a large (pc) screen
+                navbar-expand-md   so I changed it to collapse when it reaches the smallest medium size screen (tablet)
+              -->
+            <nav id="navbarMain" class="navbar navbar-default navbar-expand-md navbar-dark bg-dark fixed-top align-items-end pb-1 pt-1">
+
+                <div class="logo-pictureW logo-picture floatLeft">
+                    <img id="logoAwake" class="imgShrink logo-pic" src="images/logos/DingBatTiny.png" alt="Dingbats logo">
+                    <img id="logoSleep" class="imgShrink logo-pic logo-picHover" src="images/logos/BatSleepTiny.png" alt="Dingbats logo">
+                </div>
+                <button id="navButton" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerGK01" aria-controls="navbarTogglerGK01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span onclick="clickedExp('HomeFromHome')" class="navbar-toggler-icon"></span>
+                </button>
+
+                <div style="position: relative;" class="collapse navbar-collapse" id="navbarTogglerGK01">
+                    <div id="HomeFromHome" class="navbarDiv">
+                        <div>
+                            <!--<h2 class="mt-2 navbar-text navbarText"><em>Gary Kirby </em></h2>-->
+                            <h2 style="color:#C5CECE;" class="mt-2 navbar-text navbarText"><em>Gary</em></h2>
+                            &nbsp;&nbsp;
+                            <img style="height:60px; z-index: 1;" src="images/GKimage.png" alt="Gary" />
+                            <h2 style="color:#C5CECE;" class="mt-2 navbar-text navbarText"><em> Kirby </em></h2>
+                        </div>
+                        <div id="myCollapseNavbar">
+                            <p class="navbar-text navbarTele fontSizeSmall">This page uses: <br> Bootstrap</p>
+                        </div>
+
+
+                    </div>
+                    <ul style="z-index: 2;" class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="mainMenu.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#section1">Section 1</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#section2">Section 2</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a id="navbardrop" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Property</a>
+                            <div class="dropdown-menu myNavDrop">
+                                <a class="dropdown-item text-primary" href="#">Property</a>
+                                <a class="dropdown-item text-primary" href="#">Garden</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Services</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a id="navbardrop" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Gallery</a>
+                            <div class="dropdown-menu myNavDrop">
+                                <a class="dropdown-item text-primary" href="#">Gallery 1</a>
+                                <a class="dropdown-item text-primary" href="#">Gallery 2</a>
+                                <a class="dropdown-item text-primary" href="#">Gallery 3</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
+                    </ul>
+            </nav>
+        </div>
+    </section>
+
+    <section id="section1">
+        <!-- below div makes sure the carousel starts below the navbar -->
+        <div class="blocker">
+        </div>
+
+
+        <section class="carouselHead">
+            <!-- Carousel to slide in pictures -->
+            <div id="HomeCarouselID" class="carousel slide" data-ride="carousel" data-interval="5000">
+
+                <!-- Indicators - these are the dashes (I changed them to dots, see my class
+                .carousel-indicators)
+            that show which carousel image is currently being displayed -->
+                <ol class="carousel-indicators carouselDots">
+                    <li data-target="#HomeCarouselID" data-slide-to="0" class="active"></li>
+                    <li data-target="#HomeCarouselID" data-slide-to="1"></li>
+                    <li data-target="#HomeCarouselID" data-slide-to="2"></li>
+                    <li data-target="#HomeCarouselID" data-slide-to="3"></li>
+                </ol>
+
+                <div class="carousel-inner text-center">
+                    <div class="carousel-item active">
+                        <div class="d-flex h-100 align-items-center justify-content-center">
+                            <h2 style="display: inline-block" class="carousel-text">Office Desk</h2>
+                            <img class="imgShrink" src="images/Office1.jpg" alt="Office 1">
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex h-100 align-items-center justify-content-center">
+                            <h2 class="carousel-text">Office Screens</h2>
+                            <img class="imgShrink" src="images/Office1a.jpg" alt="Office 1a">
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex h-100 align-items-center justify-content-center">
+                            <h2 class="carousel-text">Office PC's</h2>
+                            <img class="imgShrink" src="images/Office2.jpg" alt="Office 2">
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex h-100 align-items-center justify-content-center">
+                            <h2 class="carousel-text">Office Folders/Printers</h2>
+                            <img class="imgShrink" src="images/Office3.jpg" alt="Office 3">
+                        </div>
+                    </div>
+
+                </div>
+                <!-- The below are for the  < Previous & Next > icons -->
+                <!-- BUT I DONT WANT TO USE THEM NOW as you can click on the indicators -->
+                <!--<a class="carousel-control-prev carouselIconPrev" href="#HomeCarouselID" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon carouselIcons"></span>
+            </a>
+            <a class="carousel-control-next carouselIconNext" href="#HomeCarouselID" role="button" data-slide="next">
+              <span class="carousel-control-next-icon carouselIcons"></span>
+            </a>-->
+            </div>
+            <br />
+            <!--<hr class="hrDots">-->
+        </section>
+
+        <script>
+
+            //Timer routines - if no movement on the page in 1 minute put the bat to sleep
+            var timeoutTimer;
+            var expireTime = (1000 * 60) * 1; //1000*60 = 1 minute : *2 = 2 minutes
+
+            function expireSession() {
+                clearTimeout(timeoutTimer);
+                timeoutTimer = setTimeout("IdleTimeout()", expireTime);
+                if ($("#logoAwake").attr("src") == "images/logos/BatSleepTiny.png") {
+                    $("#logoAwake").attr("src", "images/logos/DingBatTiny.png");
+                };
+            }
+            function IdleTimeout() {
+                $("#logoAwake").attr("src", "images/logos/BatSleepTiny.png");
+            }
+
+            $(document).on('click mousemove scroll', function () {
+                expireSession();
+            });
+            expireSession();
+
+        </script>
+
+        <div class="row mx-5 divBorder divCenter"
+             style="width:90%">
+
+            <div class="mt-1 col-lg-3 col-md-5 divBorder divColour1"
+                 style="display: inline-block; margin: 0 auto; ">
+                <p>
+                    <b>Please Note...</b> <br /> <br />
+                    The menu list in the header is just for demonstration purposes
+                    and only the <b>Home</b> and <b>Section</b> links work.
+                </p>
+            </div>
+            <div class="mt-1 col-lg-3 col-md-5 divBorder divColour2"
+                 style="display: inline-block; margin: 0 auto; ">
+                <p>
+                    Filler Section for display <br /> <br />
+                    Section 2 Section 2 Section 2 Section 2 Section 2
+                    Section 2 Section 2 Section 2 Section 2 Section 2
+                    Section 2 Section 2 Section 2 Section 2 Section 2
+                    Section 2 Section 2 Section 2 Section 2 Section 2
+                </p>
+            </div>
+            <div class="mt-1 col-lg-3 divBorder divColour1"
+                 style="display: inline-block; margin: 0 auto;">
+                <p>
+                    <b>Also Note... </b> <br />
+                    If no mouse movement happens for one minute then the
+                    bat (top left) will go to sleep until a mouse movement
+                    or button click happens. <br />
+                    I was just seeing how easy it was to make this happen. <br />
+                    (or mouse over it)
+                </p>
+            </div>
+
+        </div>
+
+        <div class="row mx-5 divBorder divCenter"
+             style="width:90%">
+            <div class="mt-1 col-lg-2 col-md-5 divBorder divColour2"
+                 style="display: inline-block; margin: 0 auto; ">
+                <p>
+                    Filler Section for display <br /> <br />
+                    Section 4 Section 4 Section 4 Section 4 Section 4
+                    Section 4 Section 4 Section 4 Section 4 Section 4
+                    Section 4 Section 4 Section 4 Section 4 Section 4
+                    Section 4 Section 4 Section 4 Section 4 Section 4
+                </p>
+            </div>
+            <div class="mt-1 col-lg-2 col-md-5 divBorder divColour2"
+                 style="display: inline-block; margin: 0 auto;">
+                <p>
+                    Filler Section for display <br /> <br />
+                    Section 5 Section 5 Section 5 Section 5
+                    Section 5 Section 5 Section 5 Section 5
+                    Section 5 Section 5 Section 5 Section 5
+                    Section 5 Section 5 Section 5 Section 5
+                    Section 5 Section 5 Section 5 Section 5
+                </p>
+            </div>
+            <div class="mt-1 col-lg-2 col-md-5 divBorder divColour2"
+                 style="display: inline-block; margin: 0 auto; ">
+                <p>
+                    Filler Section for display <br /> <br />
+                    Section 6 Section 6 Section 6 Section 6 Section 6
+                    Section 6 Section 6 Section 6 Section 6 Section 6
+                    Section 6 Section 6 Section 6 Section 6 Section 6
+                    Section 6 Section 6 Section 6 Section 6 Section 6
+                </p>
+            </div>
+            <div class="mt-1 col-lg-2 col-md-5 divBorder divColour2"
+                 style="display: inline-block; margin: 0 auto;">
+                <p>
+                    Filler Section for display <br /> <br />
+                    Section 7 Section 7 Section 7 Section 7
+                    Section 7 Section 7 Section 7 Section 7
+                    Section 7 Section 7 Section 7 Section 7
+                    Section 7 Section 7 Section 7 Section 7
+                    Section 7 Section 7 Section 7 Section 7
+                </p>
+            </div>
+            <div class="mt-1 col-lg-2 divBorder divColour2"
+                 style="display: inline-block; margin: 0 auto;">
+                <p>
+                    Filler Section for display <br /> <br />
+                    Section 8 Section 8 Section 8 Section 8
+                    Section 8 Section 8 Section 8 Section 8
+                    Section 8 Section 8 Section 8 Section 8
+                    Section 8 Section 8 Section 8 Section 8
+                    Section 8 Section 8 Section 8 Section 8
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="section2" class="sectionOdd">
+
+        <div class="blocker">
+        </div>
+        <p class="divCenter" style="font-size:10px; font-style:italic;">(The below was borrowed from a company website for demonstration purposes only)</p>
+        <div class="row textSizeA">
+            <div class="col-sm-6">
+                <h4>Is Caliq Relevant To Me?</h4>
+                <p>
+                    Caliq is now the solution of choice for multi-channel wholesale distributors
+                    operating in the Home, Gift, Garden and allied sectors. Take a look
+                    at our Clients page to see people you know who place their trust in us.
+                </p>
+                <p>
+                    A <b>constant investment programme in R&D</b> run in close cooperation with
+                    clients who do what you do means that you are assured that we
+                    have software and services available to support your business
+                    when you need it, today and into the future.
+                </p>
+                <h4>Our role is to solve your problems… </h4>
+                <p>
+                    The fact that you are reading this means that you are facing challenges
+                    with your current software system and maybe your supplier as well.
+                    You are probably running a system designed to work for every type of
+                    business rather than yours so it is hardly surprising that <b>
+                        you have
+                        the need for better, more relevant functionality, appropriate to your business.
+                    </b> <br /> <br />
+
+                    Your supplier is probably a reseller who is restricted by not being
+                    the author of the software and therefore unable to influence
+                    product development. Maybe they do not have a “can do” philosophy.
+                    Our clients tell us we have this approach to everything we do for
+                    them. <b>You do not need barriers, your business needs creative open minds.</b>
+                </p>
+            </div>
+
+            <div class="col-sm-6">
+                <h4>A Solution with no limits…</h4>
+                <p>
+                    With Caliq, the people you work with own and develop the software right
+                    here in the UK. <b>No reseller structure to get in the way between us and you </b>.
+                    From the initial meeting right through implementation and
+                    beyond, you are always with members of our team who are
+                    dedicated to ensuring that Caliq is relevant, capable and supporting your needs.
+                </p>
+
+                <h4>Our focus is on you… </h4>
+                <p>
+                    Our aims are to provide <b>clarity over all aspects of your business</b>,
+                    deliver efficient and effective processes through your supply
+                    chain, implement controls where you need them, margin monitoring
+                    and performance analysis at all pressure points and the tools
+                    for your team to deliver outstanding customer service.
+                    A Business Intelligence module helps you monitor and
+                    manage every aspect of your operation. <br /> <br />
+
+                    With all that in place, <b>the ultimate aim is to aid your bottom line</b>
+                    and provide you with a business solution that empowers you
+                    to grow your business knowing that you and your team have
+                    the right tools in place to support your Company wherever you take it. <br /> <br />
+
+                    <b>
+                        If the Caliq community sounds appealing for your Company,
+                        we would be delighted to talk.
+                    </b>
+                </p>
+                <br />
+            </div>
+
+        </div>
+    </section>
+</body>
+
+</html>

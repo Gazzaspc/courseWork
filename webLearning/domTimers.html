@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Timer Functions</title>
+
+  <link rel="stylesheet" href="CSS/normalize.css" />
+  <link rel="stylesheet" href="CSS/main.css" />
+  <link rel="stylesheet" href="CSS/myStyles.css" />
+
+  <style>
+    h3 {
+      color: red;
+    }
+
+    /* body {background-color:white;}
+    .divBSet {background-color: white;} */
+  </style>
+
+  <script type="text/javascript">
+
+    var myTimCounter = 0;
+
+    function toDisplay(param1, param2) {
+      document.getElementById(param1).innerHTML = param2;
+      return;
+    }
+  </script>
+</head>
+
+<body class="bodyMove">
+  <section id="top">
+    <a href="index.html">Home</a>
+    <h1>Timer Functions</h1>
+
+  </section>
+  <p>
+    There are two main time intervals:- <br /> <br />
+    <a href="https://www.w3schools.com/js/js_timing.asp">setTimeout and setInterval</a> <br /> <br />
+    <b><a href="https://www.w3schools.com/jsref/met_win_settimeout.asp">setTimeout(function, milliseconds);</a></b> <br />
+    Executes a function after waiting a specified number of milliseconds (1000 = 1 second) <br /> <br />
+
+    <b><a href="https://www.w3schools.com/jsref/met_win_setinterval.asp">setInterval(function, milliseconds);</a></b> <br />
+    same as setTimeout but repeats the execution of the function continuously (1000 = 1 second) <br /> <br />
+
+    And when you need to STOP the timers you need to use:- <br /> <br />
+    <b><a href="https://www.w3schools.com/jsref/met_win_cleartimeout.asp">clearTimeout(myVar);</a></b> <br />
+    To stop the setTimeout function. <br /> <br />
+
+    <b><a href="https://www.w3schools.com/jsref/met_win_clearinterval.asp">clearInterval(myVar);</a></b> <br />
+    To stop the setInterval function. <br /> <br />
+  </p>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <h2 id="myH1">Example of setTimeout(function, milliseconds)</h2>
+      <p>
+        NOTE... <br />
+        this really expects a function with NO parameters to be passed to the timer event <br />
+        eg <br />
+        <b>onclick = "setTimeout(myTimerA, 5000)"</b> <br />
+        but if you really need to pass parameters then you can do it with an unnamed function <br />
+        eg <br />
+        <b>onclick = "setTimeout(function() {myTimerA('timeoutMess')}, 5000)"</b> <br /> <br />
+        So to demo it I am doing... <br />
+        ...on a button click it will wait for the specified time and then it will... <br /> <br />
+        run <b>myTimer('timeoutMess')</b> - a function that passes it a parameter so it
+        knows where to display the message. <br />
+        It also runs a function (<b>readTime('myTimeout', 'timeoutMess')</b>) with 2 parameters to
+        calculate the time it needs to wait before displaying the message. <br /> <br />
+
+        So...This will wait for the number of seconds you specified and when the time is up it will
+        display a message. <br /> <br />
+
+        Time to wait (in seconds):
+        <input id="myTimeout" type="number" value="3" min="1" max="10" onchange="clearMess('timeoutMess')" /> <br />
+
+        <button id="myTimeoutBtn" class="button2" onclick="setTimeout(function() {myTimer('timeoutMess')}, readTime('myTimeout', 'timeoutMess'))">Start Timer</button> <br /> <br />
+
+        <span id="timeoutMess" class="redResult"></span> <br /> <br />
+        <i>Note...If you need to STOP the timer you can use the clearTimeout() routine...see separate example below</i>
+      </p>
+    </div>
+
+    <div class="divBorder divBSet">
+      <h2 id="myH1">Example of setInterval(function, milliseconds)</h2>
+      <p>
+        NOTE... <br />
+        this ALSO expects a function with NO parameters to be passed to the timer event <br />
+        but the same rules apply that I listed previously. <br /> <br />
+
+        So...This will wait for the number of seconds you specified and when the time is up it will
+        display a message - continuously. <br /> <br />
+
+        Time to wait (in seconds):
+        <input id="myInterval" type="number" value="3" min="1" max="10" onchange="clearMess('IntervalMess')" /> <br />
+
+        <!-- <button id="myIntervalBtn" class="button2" onclick="myTimCounter = setInterval(function() {myTimerI('IntervalMess')}, readTime('myInterval', 'IntervalMess'))">Start Timer</button> -->
+        <button id="myIntervalBtn" class="button2" onclick="startTimerI('IntervalMess', 'myInterval')">Start Timer</button>
+
+        <!-- <button id="myIntervalStop" class="button2" onclick="clearInterval(myTimCounter)">Stop Timer</button> <br /> <br /> -->
+        <button id="myIntervalStop" class="button2" onclick="stopTimerI()">Stop Timer</button> <br /> <br />
+
+        <span id="IntervalMess" class="redResult"></span> <br /> <br />
+        <i>Note...If you need to STOP the timer you can use the clearInterval() routine...see separate example below</i> <br /> <br />
+        I would advise you look at the code as I saw that you could click multiple times to start the timer multiple times
+        but stopping the timer (multiple times) did not stop them all from running. <br /> <br />
+        I found it was best to call my own function on the button click and inside my own function(s) I could
+        manipulate how the timer counts work. <br />
+      </p>
+    </div>
+  </div>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <h2 id="myH1">Example of clearTimeout(myVar)</h2>
+      <p>
+        NOTE... <br />
+        this requires you to create a VARIABLE that holds the details of the <b>setTimeout</b> that was used. <br />
+        To do this you just need to add a <b>var myVar = </b> just before the setTimeout command <br />
+        eg <br />
+        <b>onclick = "var myVar = setTimeout(myTimerA, 5000)"</b> <br />
+        Note you are NOT putting quotes around the 'setTimeout(myTimerA, 5000)'' <br /> <br />
+
+        Then when you create your button to STOP the timer you will just say<br />
+        <b>&lt;button onclick="clearTimeout(myVar)"&gt;Stop it&lt;/button&gt;</b>
+      </p>
+    </div>
+
+    <div class="divBorder divBSet">
+      <h2 id="myH1">Example of clearInterval(myVarI)</h2>
+      <p>
+        NOTE... <br />
+        this requires you to create a VARIABLE that holds the details of the <b>setInterval</b> that was used. <br />
+        To do this you just need to add a <b>var myVarI = </b> just before the setInterval command <br />
+        eg <br />
+        <b>onclick = "var myVarI = setInterval(myTimerA, 5000)"</b> <br />
+        Note you are NOT putting quotes around the 'setInterval(myTimerA, 5000)'' <br /> <br />
+
+        Then when you create your button to STOP the timer you will just say<br />
+        <b>&lt;button onclick="clearInterval(myVarI)"&gt;Stop Timer&lt;/button&gt;</b>
+      </p>
+    </div>
+  </div>
+
+  <div class="divBorder divBSet">
+    <h2 id="myH1">Lets just scroll through some pictures...</h2>
+    <p>
+      This uses the methods...<br />
+      <b>setInterval() <br />
+      clearInterval() </b><br />
+      <br />
+      and also it disables / enables the Restart Scrolling button by using the property <br />
+      <b>document.getElementById("idName").disabled = true</b> (or false) <br />
+      <i>Note...you need to set the backgroundColor to grey when disabled ...
+      and clear it back to normal when not disabled</i> <br />
+      <br />
+      <img id="scrollImg" src="Images/EmuSmall.jpg" height="150" width="150" alt="Scrolling images" />
+      <br />
+      <br />
+      <button id="scrollStop" class="button2" onclick="scrollsStop()">Stop Scrolling</button>
+      <button id="scrollReStart" class="button2" onclick="scrollReStart()">Restart Scrolling</button> <br />
+
+    </p>
+  </div>
+  <a href="#top">Top</a>
+
+  <script type="text/javascript">
+
+    document.getElementById("myIntervalStop").addEventListener("click", function() {
+      resetStopButton('myIntervalBtn')
+    });
+    document.getElementById("myIntervalBtn").addEventListener("click", function() {
+      redStopButton('myIntervalBtn')
+    });
+
+    function redStopButton(p1) {
+      document.getElementById(p1).style.backgroundColor = "red";
+    }
+
+    function resetStopButton(p1) {
+      // Do not reset the colour as it STOPS the on HOVER from working
+      // You have to clear out the .style you created & all is well.
+      <!-- document.getElementById(p1).style.backgroundColor="rgba(65, 105, 255, 1)"; -->
+      document.getElementById(p1).style.backgroundColor = "";
+    }
+
+    function startTimerI(p1, p2) {
+      if (myTimCounter >= 1) {return}
+      // Timer is already running so just return (it adds 1 to its internal timer count each time A TIMER is run)
+      //so depending on how many timers there are this could start at 1 or any number upwards
+
+      myTimCounter = setInterval(function() {myTimerI(p1)}, readTime(p2, p1));
+    }
+
+    function stopTimerI() {
+      clearInterval(myTimCounter)
+      //Clear out the myTimCounter otherwise you cannot restart this timer
+      myTimCounter = 0;
+
+    }
+
+    function myTimer(p1) {
+      document.getElementById(p1).innerHTML = "The specified amount of time has passed ";
+    }
+
+    function myTimerI(p1) {
+      document.getElementById(p1).innerHTML += " / The specified amount of time has passed ";
+/*      Usually I would pass the parameter 'myIntervalBtn' but for now just hard code it as the function isn't reused*/
+    }
+
+    function clearMess(p1) {
+      document.getElementById(p1).innerHTML = "";
+    }
+
+    function readTime(p1, p2) {
+      try {
+        var x = document.getElementById(p1).value;
+        x = x * 1000;
+        return x;
+      } catch (err) {
+        document.getElementById(p1).innerHTML = "An error occurred, check you entered a valid amount";
+        return 0;
+      }
+    }
+
+    //******************start scrolling images****************
+    var scrollImg = document.getElementById("scrollImg");
+    var scrollImgPos = 0;
+    var sStop = 0;
+    var scrollArr = ["Images/EmuSmall.jpg", "Images/LooneyGK.bmp", "Images/McD_Logo.png",
+      "Images/Paw.png", "Images/PawBullet.png","Images/Top.png",
+      "Images/Tweety.png", "Images/WileHelp.jpeg"];
+
+    function scrollReStart() {
+      if (sStop >= 1) {
+        //Already running do not start again
+        return;
+      }
+      //Disable Restart button as it is now running
+      document.getElementById("scrollReStart").disabled = true;
+      document.getElementById("scrollReStart").style.backgroundColor = "gray";
+      sStop = setInterval("scrollStart()", 5000);
+    }
+
+    function scrollsStop() {
+      clearInterval(sStop);
+      sStop = 0;
+      //Enable restart button
+      document.getElementById("scrollReStart").disabled = false;
+      document.getElementById("scrollReStart").style.backgroundColor = "";
+    }
+
+    function scrollStart() {
+      scrollImgPos ++;
+      if (scrollImgPos >= scrollArr.length) {
+        scrollImgPos=0;
+      }
+      scrollImg.setAttribute("src", scrollArr[scrollImgPos]);
+    }
+
+      scrollReStart();
+    //******************End scrolling images**********************
+
+  </script>
+
+</body>
+
+</html>

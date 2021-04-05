@@ -1,0 +1,342 @@
+<DOCTYPE html>
+  <html>
+
+  <head>
+    <title>Working with Tables</title>
+
+    <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+    <style>
+      #customersTbl {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        /* Note... border-collapse: collapse will make it just a single border */
+        width: 50%;
+      }
+
+      #customersTbl td,
+      #customersTbl th {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+
+      /* Make every other row a different shade */
+      #customersTbl tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      /* When hovered over a row it will change the background colour */
+      #customersTbl tr:hover {
+        background-color: #ddd;
+      }
+
+      /* Change the way the table headers are displayed */
+      #customersTbl th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        /* Default text in [th] is centered and Bold */
+        /* text-align: left; */
+        background-color: #4CAF50;
+        color: white;
+      }
+
+      .ExampleTbl {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        /* Note... border-collapse: collapse will make it just a single border */
+        width: 50%;
+      }
+
+      .PlayTbl {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        /* Note... border-collapse: collapse will make it just a single border */
+        width: 50%;
+      }
+
+      .PlayTbl td {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+
+      .PlayTbl th {
+        border: 1px solid #ddd;
+      }
+
+      /* Make every other row a different shade */
+      .PlayTbl tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      /* When hovered over a row it will change the background colour */
+      .PlayTbl tr:hover {
+        background-color: #ddd;
+      }
+
+      /* Change the way the table headers are displayed */
+      .PlayTbl th {
+        /* padding-top: 12px;
+        padding-bottom: 12px; */
+        /* Default text in [th] is centered and Bold */
+        /* text-align: left; */
+        background-color: #4CAF50;
+        color: white;
+      }
+
+      .fs15 {
+        font-size: 1.5em;
+      }
+
+      .fs2 {
+        font-size: 2em;
+      }
+
+      .adjHead {
+        padding-top: 0px;
+        padding-bottom: 0px;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <a href="index.html">Home</a>
+
+    <h1>Working with Tables</h1>
+    <div class="divFlex">
+      <div class="divBorder divBSet">
+        <p>An example format/layout of the table... <br /> <br />
+          &lt;table&gt; <br />
+          &nbsp;&nbsp;&nbsp;&lt;caption&gt;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Some Caption Text<br />
+          &nbsp;&nbsp;&nbsp;&lt;/caption&gt; <br />
+          &nbsp;&nbsp;&nbsp;&lt;thead&gt; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Header Text&lt;/th&gt; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;More Header Text&lt;/th&gt; <br />
+          &nbsp;&nbsp;&nbsp;&lt;/tr&gt; <br />
+          &lt;/thead&gt; <br />
+          &nbsp;&nbsp;&nbsp;&lt;tr&gt; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Row Text&gt; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;More Row Text&lt;/td&gt; <br />
+          &nbsp;&nbsp;&nbsp;&lt;/tr&gt; <br />
+          &nbsp;&nbsp;&nbsp;&lt;tr&gt; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Row Text&gt; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;More Row Text&lt;/td&gt; <br />
+          &nbsp;&nbsp;&nbsp;&lt;/tr&gt; <br />
+          &nbsp;&nbsp;&nbsp;&lt;tr&gt; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Row Text&gt; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;More Row Text&lt;/td&gt; <br />
+          &nbsp;&nbsp;&nbsp;&lt;/tr&gt; <br />
+          &lt;/table&gt; <br />
+        </p>
+      </div>
+
+      <div class="divBorder divBSet">
+        <p>Result of an example format/layout of the table... <br /> <br />
+          <table id="customersTbl">
+            <caption>
+              Some Caption Text <br>
+              (MUST be directly after &lt;table&gt;) <br />
+              see <a href="https://www.w3schools.com/cssref/pr_tab_caption-side.asp"
+              target="_blank">caption-side:</a> for more <br />
+            </caption>
+          <thead>
+            <tr>
+              <th>Header Text</th>
+              <th>More Header Text</th>
+            </tr>
+          </thead>
+          <tr>
+            <td>Row Text</td>
+            <td>More Row Text</td>
+          </tr>
+          <tr>
+            <td>Row Text</td>
+            <td>More Row Text</td>
+          </tr>
+          <tr>
+            <td>Row Text</td>
+            <td>More Row Text</td>
+          </tr>
+          </table>
+        </p>
+      </div>
+    </div>
+    <table id="customersTbl">
+      <caption>
+        This [caption] tag MUST be directly after the [table] tag <br />
+        if we need a caption
+      </caption>
+
+      <!-- Colgroup must follow [caption] (or [table] if no caption)
+      and needs a [col] for as many times as you have columns
+      But it's commented out as this is just an example - it overrides other settings
+      and looks bad in this example -->
+      <!-- <colgroup>
+        <col style="background-color:gray;" />
+        <col style="background-color:white;" />
+        <col style="background-color:gray;" />
+        </colgroup> -->
+
+      <!-- Main Header for the table -->
+      <thead>
+        <tr>
+          <th colspan="3">Spread over 3 columns</th>
+        </tr>
+        <tr>
+          <th>Month</th>
+          <th>Sales</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+
+      <!-- The next rows are defined here -->
+      <tr>
+        <td>July</td>
+        <td>7</td>
+        <td>£1,500.00</td>
+      </tr>
+      <tr>
+        <td>August</td>
+        <td>12</td>
+        <td>£4,200.00</td>
+      </tr>
+      <tr>
+        <td>September</td>
+        <td>16</td>
+        <td>£3,200.00</td>
+      </tr>
+      <tr>
+        <td>October</td>
+        <td>15</td>
+        <td>£3,000.00</td>
+      </tr>
+      <tr>
+        <!-- The colspan attribute defines the number of columns a table cell should span. -->
+        <td colspan="3">
+          Grand Total = £11,900.00
+        </td>
+      </tr>
+    </table>
+    <br /> <br /> <br />
+    <div>
+      <h2>Another example but with no real settings other that specifying column colours</h2>
+      <table class="ExampleTbl">
+
+        <!-- Colgroup must follow [caption] (or [table] if no caption)
+    and needs a [col] for as many times as you have columns
+    But it's commented out as this is just an example - it overrides other settings
+    and looks bad in this example -->
+        <colgroup>
+          <col style="background-color:gray;" />
+          <col style="background-color:white;" />
+          <col style="background-color:yellow;" />
+        </colgroup>
+
+        <!-- Main Header for the table -->
+        <thead>
+          <tr>
+            <th colspan="3">Spread over 3 columns</th>
+          </tr>
+          <tr>
+            <th>Month</th>
+            <th>Sales</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+
+        <!-- The next rows are defined here -->
+        <tr>
+          <td>July</td>
+          <td>7</td>
+          <td>£1,500.00</td>
+        </tr>
+        <tr>
+          <td>August</td>
+          <td>12</td>
+          <td>£4,200.00</td>
+        </tr>
+        <tr>
+          <td>September</td>
+          <td>16</td>
+          <td>£3,200.00</td>
+        </tr>
+        <tr>
+          <td>October</td>
+          <td>15</td>
+          <td>£3,000.00</td>
+        </tr>
+        <tr>
+          <!-- The colspan attribute defines the number of columns a table cell should span. -->
+          <td colspan="3">
+            Grand Total = £11,900.00
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <br /> <br /> <br />
+    <div>
+      <h2>Playing around with settings...</h2>
+      <table class="PlayTbl">
+
+        <!-- Colgroup must follow [caption] (or [table] if no caption)
+    and needs a [col] for as many times as you have columns
+    But it's commented out as this is just an example - it overrides other settings
+    and looks bad in this example -->
+        <colgroup>
+          <col style="background-color:transparent;" />
+          <col style="background-color:transparent;" />
+          <col style="background-color:yellow;" />
+        </colgroup>
+
+        <!-- Main Header for the table -->
+        <thead>
+          <tr>
+            <th colspan="3" style="font-size:2em; height:80px;">Spread over 3 columns</th>
+          </tr>
+          <tr>
+            <th class="adjHead">Month</th>
+            <th class="adjHead fs15">Sales</th>
+            <th class="adjHead fs2">Total</th>
+          </tr>
+        </thead>
+
+        <!-- The next rows are defined here -->
+        <tr>
+          <td>July</td>
+          <td class="fs15">7</td>
+          <td class="fs2">£1,500.00</td>
+        </tr>
+        <tr>
+          <td>August</td>
+          <td class="fs15">12</td>
+          <td class="fs2">£4,200.00</td>
+        </tr>
+        <tr>
+          <!-- I didn't want to add classes in this one -->
+          <td>September</td>
+          <td class="fs15">16</td>
+          <td class="fs2">£3,200.00</td>
+        </tr>
+        <th colspan="3">
+          I want another heading here
+        </th>
+        <tr>
+          <td>October</td>
+          <td>15</td>
+          <td>£3,000.00</td>
+        </tr>
+        <tr>
+          <!-- The colspan attribute defines the number of columns a table cell should span. -->
+          <th class="fs2" colspan="3">
+            Grand Total = £11,900.00
+            </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+
+  </html>
+</DOCTYPE>

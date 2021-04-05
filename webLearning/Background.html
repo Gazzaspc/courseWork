@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Background Images</title>
+
+  <style>
+    html {
+      background-color: #E0E0E0;
+    }
+
+    body {
+      /* width: 80%;
+      margin: 0 auto; */
+      /* Cannot use above 2 lines when using Parallax Scrolling */
+      background-image: url("Images/Glacier.jpeg");
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center center;
+      background-size: cover;
+    }
+
+    .divFlex {
+      display: flex;
+    }
+
+    .divMain {
+      /* height: 250px; */
+      border: 1px solid black;
+    }
+
+    .div2 {
+      /* height: 250px; */
+      border: 1px solid black;
+    }
+
+    .div3 {
+      /* height: 250px; */
+      border: 1px solid black;
+      position: relative;
+    }
+
+    .Emu {
+      position: Absolute;
+      border-radius: 50px;
+      border: 2px solid green;
+      height: 200px;
+      width: 200px;
+      bottom: 35%;
+      right: 5%;
+      background-image: url("Images/EmuSmall.jpg");
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-position: 95% 50%;
+      background-size: 220px 210px;
+      /*
+      For PARALLAX SCROLLING you need to match the
+         right: 5%   to what is the background-position: 95%
+      the two values added together must make 100 for it to work
+      otherwise when you resize the page (making it thinner/fatter)
+      the picture does not move with the div box.
+      */
+
+    }
+
+    .Looney {
+      position: Absolute;
+      border-radius: 50px;
+      border: 2px solid red;
+      height: 200px;
+      width: 200px;
+      top: 0%;
+      right: 15%;
+      background-image: url("Images/LooneyGK.bmp");
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-position: 85% 50%;
+      background-size: 250px 400px;
+      /*
+      For PARALLAX SCROLLING you need to match the
+         right: 5%   to what is the background-position: 95%
+      the two values added together must make 100 for it to work
+      otherwise when you resize the page (making it thinner/fatter)
+      the picture does not move with the div box.
+      */
+    }
+
+    p {
+      margin-left: 20px;
+    }
+
+    .textCenter {
+      text-align: center;
+    }
+
+    .filler1 {
+      width: 400px;
+      height: 1200px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <Parallax-Scrolling>
+    <div class="Emu">
+      <p class="textCenter">
+        Parallax Scrolling 1</p>
+    </div>
+  </Parallax-Scrolling>
+  <!-- Place a Parallax Scrolling (Emu Picture) up here so I can Position
+it all to the actual [html] area & not the [body] -->
+
+  <a href="index.html">Home</a>
+  <h1>Playing with BACKGROUND settings</h1>
+
+  <section>
+    <div class="divMain">
+      <p>
+        In the &lt;head&gt; section, in the &lt;style&gt; area I created:- <br /> <br />
+        body { <br />
+        &nbsp;&nbsp;&nbsp; background-image: url("Images/Glacier.jpeg"); <br />
+        &nbsp;&nbsp;&nbsp; background-repeat: no-repeat; <br />
+        &nbsp;&nbsp;&nbsp; background-attachment: fixed; <br />
+        &nbsp;&nbsp;&nbsp; background-position: center center; <br />
+        &nbsp;&nbsp;&nbsp; background-size: cover; <br />
+        } <br /> <br />
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="div2">
+      <p>
+        In the &lt;head&gt; section, in the &lt;style&gt; area I created:- <br /> <br />
+        .Emu { <br />
+        &nbsp;&nbsp;&nbsp; position: Absolute; <br />
+        &nbsp;&nbsp;&nbsp; border-radius: 50px; <br />
+        &nbsp;&nbsp;&nbsp; border: 2px solid green; <br />
+        &nbsp;&nbsp;&nbsp; height: 200px; <br />
+        &nbsp;&nbsp;&nbsp; width: 200px; <br />
+        &nbsp;&nbsp;&nbsp; bottom: 35%; <br />
+        &nbsp;&nbsp;&nbsp; right: 5%; <br />
+        &nbsp;&nbsp;&nbsp; background-image: url("Images/EmuSmall.jpg"); <br />
+        &nbsp;&nbsp;&nbsp; background-attachment: fixed; <br />
+        &nbsp;&nbsp;&nbsp; background-repeat: no-repeat; <br />
+        &nbsp;&nbsp;&nbsp; background-position: 95% 50%; <br />
+        &nbsp;&nbsp;&nbsp; background-size: 220px 210px; <br />
+        } <br />
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="div3 divFlex">
+      <p>
+        In the &lt;head&gt; section, in the &lt;style&gt; area I created:- <br /> <br />
+        .Looney { <br />
+        &nbsp;&nbsp;&nbsp; position: Absolute; <br />
+        &nbsp;&nbsp;&nbsp; border-radius: 50px; <br />
+        &nbsp;&nbsp;&nbsp; border: 2px solid red; <br />
+        &nbsp;&nbsp;&nbsp; height: 200px; <br />
+        &nbsp;&nbsp;&nbsp; width: 200px; <br />
+        &nbsp;&nbsp;&nbsp; top: 0%; <br />
+        &nbsp;&nbsp;&nbsp; right: 10%; <br />
+        &nbsp;&nbsp;&nbsp; background-image: url("Images/LooneyGK.bmp"); <br />
+        &nbsp;&nbsp;&nbsp; background-attachment: fixed; <br />
+        &nbsp;&nbsp;&nbsp; background-repeat: no-repeat; <br />
+        &nbsp;&nbsp;&nbsp; background-position: 90% 50%; <br />
+        &nbsp;&nbsp;&nbsp; background-size: 250px 400px; <br />
+        } <br />
+      </p>
+      <p>
+        This one (Looney Tunes - Parallax Scrolling 2 example) <br />
+        keeps the &lt;div class="Looney"&gt; associated within this <br />
+        section of the page. <br /> <br />
+        NOTE... <br />
+        I made the div container a position:relative so the <br />
+        child div (looney) will be 'absolutely' positioned within it.
+      </p>
+      <div class="Looney">
+        <p class="textCenter" style="color:white;">
+          Parallax Scrolling 2
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="filler1">
+
+  </div>
+</body>
+
+</html>

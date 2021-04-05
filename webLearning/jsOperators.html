@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Variables & Operators</title>
+
+  <link rel="stylesheet" href="CSS/normalize.css" />
+  <link rel="stylesheet" href="CSS/main.css" />
+  <link rel="stylesheet" href="CSS/myStyles.css" />
+
+  <style>
+    p {
+      margin-bottom: 0px;
+    }
+  </style>
+
+  <!-- Put this script here because I call it as I go along
+  so it cannot go at the bottom -->
+  <script type="text/javascript">
+    function toDisplay1(callElem, myVal) {
+      document.getElementById(callElem).value = myVal;
+    }
+  </script>
+
+</head>
+
+<body>
+  <a href="index.html">Home</a>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <h1>Javascript Variables</h1>
+      <p>
+        To set variables in javascript you need to use the command <br />
+        <b>var</b> or <b>const</b> (in lowercase) <br /> <br />
+        eg... (for <b>VARIABLES</b> that you can change the values of)<br />
+        &nbsp;&nbsp;&nbsp;var x; <br />
+        or &nbsp;&nbsp;&nbsp;var x = 5; <br />
+        or &nbsp;&nbsp;&nbsp;var x = "ABCD"; <br /> <br />
+        or for setting multiple variables at once you can... <br />
+        &nbsp;&nbsp;&nbsp;var obj = { <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x:5, y:6, <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myAlph:"ABCD" <br />
+        &nbsp;&nbsp;&nbsp;}; <br /> <br />
+        or (for <b>CONSTANTS</b> that you can NOT change the values of)<br />
+        &nbsp;&nbsp;&nbsp;const x = 5; <br />
+        &nbsp;&nbsp;&nbsp;const x = "ABCD"; <br />
+        &nbsp;&nbsp;&nbsp;const obj = {x:5, y:6, myAlph:"ABCD"}; <br /> <br />
+        or (for <b>BOOLEANS</b> you should set the value when declaring it)<br />
+        &nbsp;&nbsp;&nbsp;const myBool = True; <br />
+        &nbsp;&nbsp;&nbsp;var myBool = False; <br /> <br />
+        Note... <br />
+        You can also say <br />
+        <b>let myVar = "abc";</b> <br />
+        instead of var myVar = "abc" but <b>let</b> may not work everywhere. <br />
+        Some people say LET should be used within functions but, for now, stick with var. <br /> <br />
+      </p>
+    </div>
+    <div class="divBorder divBSet">
+      <p>
+        The proof... <br />
+      </p>
+      <p>
+        The value of 'a' in: <br />
+        <b>&nbsp;&nbsp;var a=5;</b>
+      </p>
+      <label>Answer: </label>
+      <input type="text" id="myVar5" value="0" readonly />
+      <p>
+        The value of 'z' in : <br />
+        <b> &nbsp;&nbsp;var objM = {x:5, y:6} <br />
+          &nbsp;&nbsp;var z = (objM.x + objM.y); </b><br />
+      </p>
+      <label>Answer: </label>
+      <input type="text" id="myObjM" value="0" readonly />
+
+      <p>
+        var b=6; <br />
+        b = b + 4.5; <br />
+        <label>Answer: </label>
+        <input type="text" id="myFrac" value="0" readonly />
+        <br /> <br /> <br />
+        ALSO Note... <br />
+        When creating a variable you can also incorporate a 'truthy/falsey' way of thinking. <br />
+        This is where, for example, if another variable is blank/empty or null it sets another value... by this
+        I mean:- <br /> <br />
+        <b>var username = "Gary"; <br />
+        if (username.length==0) { <br />
+          &nbsp;&nbsp;&nbsp;myUser = "No Name"; <br />
+        } else { <br />
+          &nbsp;&nbsp;&nbsp;myUser = username; <br />
+        } </b><br /> <br />
+        Can also be sone by saying... <br /> <br />
+        <b>var username = "Gary"; <br />
+          var user = username || "No Name";</b> <br /> <br />
+          So if username is empty it gives the variable user the value of "No Name" <br />
+          and if it has a value it gives user the value of username <br />
+          (|| means 'or')<br /> <br />
+
+      </p>
+
+
+
+      <script type="text/javascript">
+        //1st box
+        var a = 5;
+        toDisplay1("myVar5", "a = " + a);
+
+        //2nd Box
+        var objM = {
+          x: 5,
+          y: 6
+        };
+        var z = "z = " + (objM.x + objM.y);
+        toDisplay1("myObjM", z);
+
+        //3rd Box
+        var b = 6;
+        b = b + 4.5;
+        toDisplay1("myFrac", "b = " + b);
+
+        //4th Box
+        // var myIntVar1 = Math.round(10.5);
+        // toDisplay1("myIntVar1", myIntVar1);
+        // myIntVar1 = Math.round(10.495)
+        // toDisplay1("myIntVar2", myIntVar1);
+      </script>
+
+    </div>
+  </div>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <h1>Javascript Operators</h1>
+      <p>
+        Examples of some of the operators used in Javascript... <br /> <br />
+        <b>Basic Operators:-</b><br />
+        <b>+</b> Addition <br />
+        <b>-</b> Subtraction <br />
+        <b>*</b> Multiplication <br />
+        <b>/</b> Division <br />
+        <b>%</b> Modulus (remainder) <br />
+        <b>++</b> Increment Number by 1 <br />
+        <b>--</b> Decrease Number by 1 <br />
+        <b>=</b> Set value to <br />
+        <br />
+        <i>You can also have <br />
+          <b>&nbsp;&nbsp;&nbsp;+=, -=, *=, /= </b><br />
+          Which would add/minus/multiply/divide a value to your variable <br />
+          eg...Assume x = 10...<br />
+          x += 5 will give 15 (10+5=5)<br />
+          x -= 5 will give 5 (10-5=5)<br />
+          x *= 4 will give 40 (10*4=40) <br />
+          x /= 4 will give 2.5 (10/4=2.5) <br />
+          (it's just less code to say x+=y rather than x=x+y) </i><br />
+
+        <br />
+        <b>Comparison Operators:- </b><br />
+        <b>==</b> Equal value to (check value) <br />
+        <b>===</b> Equal value AND Equal Type <br />
+        <b>!=</b> Not Equal to <br />
+        <b>!==</b> Not Equal to OR not Equal Type <br />
+        <b>></b> Greater than <br />
+        <b>
+          <</b> Less than <br />
+          <b>>=</b> Greater than or Equal to <br />
+          <b>
+            <=</b> Less than or Equal to <br />
+            <b>?</b> Ternary operator <br />
+            <br />
+            <b>Logical Operators:-</b> <br />
+            <b>&&</b> Logical AND <br />
+            <b>||</b> Logical OR <br />
+            <b>!</b> Logical NOT <br />
+            <br />
+
+
+      </p>
+    </div>
+    <div class="divBorder divBSet">
+      <p>
+        The proof... <br />
+      </p>
+      <p>
+        You would say: <b>a = 5;</b> to set a to equal 5 <br /> <br />
+        But to check if a value is equal to something you would
+        use == (two equal signs)...eg...<br /> <br />
+        <b>if (a == 5) then { <br />
+          <i>//Code if True</i> <br />
+          } else { <br />
+          <i>//Code if FALSE</i> <br />
+          }</b> <br /> <br />
+        ************ <br /> <br />
+        the '%' (modulus) is used to check for a REMAINDER value <br />
+        and to also see if a value is ODD or EVEN. <br />
+        eg... <br />
+        25 % 2 would give a remainder of 1 <br />
+        24 % 2 would give a remainder of 0 <br />
+        ...in fact ANY number DIVIDED BY 2 would give a remainder of 0 or 1 <br />
+        so to check if a value is <br />
+        ODD - the remainder MUST be 1 <br />
+        EVEN - the remainder MUST be 0 <br /> <br />
+        <label>25 % 2 = </label>
+        <input type="text" id="myMod1" value="0" readonly />
+        <br />
+        <label>24 % 2 = </label>
+        <input type="text" id="myMod2" value="0" readonly />
+        <br />
+        <label>23 % 4 = </label>
+        <input type="text" id="myMod3" value="0" readonly />
+        <br /> <br />
+        ************ <br /> <br />
+        The <b>Ternary Operator</b> is a conditionary operator. <br />
+        It can set a value based on a condition. <br />
+        (variable x = (expression) ? value if true: value if false) <br />
+        ...eg...assume a=10 <br />
+        <label>b = (a == 1) ? 20: 30; </label>
+        <input type="text" id="myTern" value="0" readonly /> <br />
+        ...eg...assume a=1 <br />
+        <label>b = (a == 1) ? 20: 30; </label>
+        <input type="text" id="myTern2" value="0" readonly />
+        <br /> <br />
+        <i>or, instead of <br />
+        if (a==1) {b=100} else {b=0}; <br />
+      you could say <br />
+      <b>a==1 ? b=100 : b=0;</b>
+    </i> <br /> <br />
+        ************ <br /> <br />
+      </p>
+
+      <script type="text/javascript">
+        //1st box
+        toDisplay1("myMod1", 25 % 2);
+
+        //2nd Box
+        toDisplay1("myMod2", 24 % 2);
+
+        //3rd Box
+        toDisplay1("myMod3", 23 % 4);
+
+        //4th Box
+        var b = (10 == 1) ? 20 : 30;
+        toDisplay1("myTern", b);
+
+        //5th Box
+        var b = (1 == 1) ? 20 : 30;
+        toDisplay1("myTern2", b);
+      </script>
+    </div>
+
+  </div>
+
+
+
+
+
+
+</body>
+
+</html>

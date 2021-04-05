@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Special Effects</title>
+
+  <link rel="stylesheet" href="CSS/normalize.css" />
+  <link rel="stylesheet" href="CSS/main.css" />
+  <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+  <!-- Required to pull in my default javaScript file -->
+  <!-- It's inside a [script] as it holds cammands that run in a [script] environment -->
+  <script src="Scripts/myScripts.js" />
+  </script>
+
+  <!-- Required for JQuery to work - this is the library file from JQuery.com (uncompressed development file) -->
+  <script src="JQuery/jquery-3.5.1.js"></script>
+  <!-- You can use the online one but for now I will download it and use my copy of it (use one or the other)-->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+  <style>
+
+  </style>
+
+  <script>
+    // Lets create the jQuery actions we need to run once the page has finished loading.
+    $(document).ready(function() {
+      //Set the css values for the body
+      $("body").addClass("bodyMove");
+
+
+
+      //My function to display the message p2 or p3
+      function myClickFunc(p1, p2, p3) {
+        var xx = $("#" + p1).html();
+        if (xx != p2) {
+          showMess(p1, p2);
+        } else {
+          showMess(p1, p3);
+        }
+      }
+
+    });
+  </script>
+
+</head>
+
+<body>
+
+  <section id="top">
+    <a href="index.html">Home</a>
+  </section>
+
+  <section id="mainTop">
+    <h1>Some jQuery Effects</h1>
+  </section>
+
+  <div class="divFlex">
+    <div id="mainDiv" class="divBorder divBSet">
+
+      <h2>Some Special Effects you can do with jQuery are...</h2>
+      <ul>
+        <li><a href="https://www.w3schools.com/jquery/jquery_hide_show.asp" target="_blank">Hide/Show</a></li>
+        <li><a href="https://www.w3schools.com/jquery/jquery_fade.asp" target="_blank">Fade In/Out</a></li>
+        <li><a href="https://www.w3schools.com/jquery/jquery_slide.asp" target="_blank">Slide Up/Down</a></li>
+        <li><a href="https://www.w3schools.com/jquery/jquery_animate.asp" target="_blank">Animate</a></li>
+        <li><a href="https://www.w3schools.com/jquery/jquery_stop.asp" target="_blank">Stop the Effect</a></li>
+        <li><a href="" target="_blank">Callback</a> (makes sure effect finishes before continuing)</li>
+        <li><a href="https://www.w3schools.com/jquery/jquery_chaining.asp" target="_blank">Chaining</a></li>
+      </ul> <br /> <br /> <br />
+
+      <h3>Some examples for you...</h3>
+      <p>
+        <b>Hide/Show</b> <br />
+        <span id="hideShow">Basically this is just a matter of saying .hide(n) or .show(n)
+          where n=time in milliseconds ("slow" or "fast" can be used too) <br />
+          (use .toggle(n) to toggle between hide/show)</span> <br />
+        Eg... <br />
+        <b>$("#elementID").hide(3000);</b> or <br />
+        <b>$("#elementID").show(5000);</b> <br /> <br />
+      </p>
+      <button class="button2" onclick="doHide()">Hide It</button>
+      <button class="button2" onclick="doShow()">Show It</button>
+      or
+      <button class="button2" onclick="doHideShow()">Toggle It</button>
+      <br /> <br />
+    </div>
+
+    <div class="divBorder divBSet">
+      <h3>Some examples for you...</h3>
+
+      <p>
+        <b>Fade In/Out</b> <br />
+        <span id="fadeMe">Basically this is just a matter of saying .fadeIn(n) or .fadeOut(n)
+          where n=time in milliseconds ("slow" or "fast" can be used too) <br />
+          (use .fadeToggle(n) to toggle between fading in/out)</span> <br />
+        Eg... <br />
+        <b>$("#elementID").fadeIn(3000);</b> or <br />
+        <b>$("#elementID").fadeOut(5000);</b> <br /> <br />
+        There is also a .fadeTo(n, p) event which will just fade the element to
+        a given opacity at a specific speed. (n=speed p=opacity (0 to 1)) <br /> <br />
+      </p>
+      <button class="button2" onclick="doFadeOut()">Fade Out</button>
+      <button class="button2" onclick="doFadeIn()">Fade In</button>
+      or
+      <button class="button2" onclick="doFade()">Toggle It</button> <br />
+      <button class="button2" onclick="doFadeTo()">Fade Me</button>
+      <br /> <br /> <br />
+
+      <p>
+        <b>Slide Up/Down</b> <br />
+        <span id="slideMe">Basically this is just a matter of saying .slideUp(n) or .slideDown(n)
+          where n=time in milliseconds ("slow" or "fast" can be used too) <br />
+          (use .slideToggle(n) to toggle between sliding Up/Down). <br />
+          To me the
+          result just looks like the Hide/Show looks but without the fading.</span> <br />
+        Eg... <br />
+        <b>$("#elementID").slideUp(3000);</b> or <br />
+        <b>$("#elementID").slideDown(5000);</b> <br /> <br />
+      </p>
+      <button class="button2" onclick="doSlideUp()">Slide Up</button>
+      <button class="button2" onclick="doSlideDown()">Slide Down</button>
+      or
+      <button class="button2" onclick="doSlide()">Toggle It</button>
+      <br /> <br />
+
+      <script>
+        function doHide() {
+          $("#hideShow").hide(3000);
+        }
+
+        function doShow() {
+          $("#hideShow").show(5000);
+        }
+
+        function doHideShow() {
+          $("#hideShow").toggle(5000); //I guess the default is to Hide and Show
+        }
+
+        function doFadeIn() {
+          $("#fadeMe").fadeIn(3000);
+        }
+
+        function doFadeOut() {
+          $("#fadeMe").fadeOut(5000);
+        }
+
+        function doFade() {
+          $("#fadeMe").fadeToggle(5000);
+        }
+
+        function doFadeTo() {
+          $("#fadeMe").fadeTo(3000, 0.4);
+        }
+
+        function doSlideUp() {
+          $("#slideMe").slideUp(3000);
+        }
+
+        function doSlideDown() {
+          $("#slideMe").slideDown(5000);
+        }
+
+        function doSlide() {
+          $("#slideMe").slideToggle(5000);
+        }
+      </script>
+    </div>
+  </div>
+
+  <div class="divFlex">
+    <div id="mainDiv" class="divBorder divBSet">
+
+      <h3>Some examples for you...</h3>
+      <p>
+        <b>Animate</b> <br />
+        <span id="animate">This is a bit different to the above as you need to decide
+          what you want to do and build up the cammand(s) in order to achieve it. <br />
+          For example you may want to change the text to red, opacity to 0.5 & change the size of the text.<br />
+        The format is .animate( {command, command, command}, interval)</span> <br />
+        Eg... <br />
+        <b>$("#elementID").class("color", "red").animate({ <br />
+          &nbsp;&nbsp;&nbsp;opacity: "0.5", <br />
+          &nbsp;&nbsp;&nbsp;fontSize: '3em' <br />
+          }, 3000);</b> <br /> <br />
+          <i>(There are various CSS commands you cannot do directly in .animate() so you will need
+          to use .css() commands as well and chain them together - like I do in my example)</i>
+
+      </p>
+      <button class="button2" onclick="doAnimate()">Animate It</button>
+      <button class="button2" onclick="doAnimateClear()">Animate Undo</button>
+      <br /> <br /> <br />
+      <b>Chaining</b> <br />
+      <p>
+        There is a technique called chaining, that allows us to run multiple jQuery commands, one after the other,
+        on the same element(s). <br />
+        <i>(This way, browsers do not have to find the same element(s) more than once)</i> <br /> <br />
+
+        To chain an action, you simply append the action to the previous action. <br />
+        The following example chains together the css(), slideUp(), and slideDown() methods. <br />
+        The "p1" element first changes to red, then it slides up, and then it slides down: <br /> <br />
+        <b>$("#p1").css("color", "red").slideUp(2000).slideDown(2000);</b> <br />
+        <i>Also acceptable is...</i> <br />
+        <b>$("#p1").css("color", "red") <br />
+          &nbsp;&nbsp;&nbsp;.slideUp(2000) <br />
+          &nbsp;&nbsp;&nbsp;.slideDown(2000);</b> <br /> <br />
+          I wont repeat an example here as I use 'chaining' in my Animate section (above). <br /> <br />
+        </p>
+    </div>
+
+    <div class="divBorder divBSet">
+      <h3>Some examples for you...</h3>
+
+      <p>
+        <b>Stop</b> <br />
+        <span id="stopMe">If you need to stop an animation from running you can .stop()</span> <br />
+        Eg... <br />
+        <b>$("#elementID").stop();</b> or <br />
+        <b>$("#elementID").stop(stopAll, goToEnd);</b> <br /> <br />
+        The .stop() will stop all ACTIVE (currently running) animations and allow any queued animations
+        to carry on running.<br />
+        The .stop(stopAll, goToEnd) will stop ALL animations (active & queued) and then it will
+        complete the currently running animation immediately. <br />
+        (stopAll & goToEnd are both optional and default to false - NOTE... You need to use
+        .stop(true, true) & not .stop(stopAll, goToEnd) as stopAll & goToEnd are not defined) <br /> <br />
+      </p>
+      <button class="button2" onclick="doAnim()">Start Animation</button>
+      <button class="button2" onclick="doAnimR()">Reset Animation</button>
+      <br /> <br />
+      <button class="button2" onclick="doStop()">Stop Animation</button>
+      or
+      <button class="button2" onclick="doStopEnd()">Stop & Complete</button>
+      <br /> <br /> <br />
+
+      <p>
+        <b>Callback</b> <br />
+        <span id="callback">JavaScript statements are executed line by line. However,
+          with effects, the next line of code can be run even though the effect is
+          not finished. This can create errors. <br />
+          To prevent this, you can create a callback FUNCTION. <br /> <br />
+          A callback function is executed after the current effect is finished. <br />
+          (You should probably use this if you need something specific to run
+          AFTER the animation)</span> <br />
+        Eg... <br />
+        <b>$("#elementID").hideToggle(3000, Function() {alert("Alert Message example");});</b> <br /> <br />
+      </p>
+      <button class="button2" onclick="doCallbackNo()">Without Callback</button>
+      <button class="button2" onclick="doCallback()">With Callback</button> <br />
+      <button class="button2" onclick="doCallbackR()">Reset</button>
+      <br /> <br />
+
+      <script>
+        //Actually you cannot use animate to change the font colour
+        //So I needed to use the .css() command as well.
+        //It's a good example of chaining though.
+        function doAnim() {
+          $("#stopMe").css("color", "red").animate({
+            opacity: "0.5",
+            fontSize: "3em"},
+            3000);
+        }
+
+        function doAnimR() {
+          $("#stopMe").css("color", "black").animate({
+            opacity: "1",
+            fontSize: "1em"},
+            1000);
+        }
+
+        function doStop() {
+          $("#stopMe").stop();
+        }
+
+        function doStopEnd() {
+          $("#stopMe").stop(true, true);
+        }
+
+        function doCallbackNo() {
+          $("#callback").hide(3000);
+          alert("Without CALLBACK this alert popped up too quick");
+        }
+
+        function doCallback() {
+          $("#callback").hide(3000, function() {
+              alert("With CALLBACK this alert popped up after the effect finished");
+          });
+        }
+
+        function doCallbackR() {
+          $("#callback").show(1000);
+        }
+
+      </script>
+    </div>
+
+  </div>
+  <a href="#top">Top</a>
+
+</body>
+
+</html>

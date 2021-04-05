@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <title>Objects & Properties</title>
+
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="CSS/normalize.css" />
+  <link rel="stylesheet" href="CSS/main.css" />
+  <link rel="stylesheet" href="CSS/myStyles.css" />
+
+  <style>
+    < !-- body {
+      background-color: white;
+    }
+
+    -->< !-- html {
+      background-color: white;
+    }
+
+    -->< !-- .divBSet {
+      background-color: white;
+    }
+
+    -->
+  </style>
+
+  <script type="text/javascript">
+    function toDisplay(param1, param2) {
+      document.getElementById(param1).innerHTML = param2;
+      return;
+    }
+  </script>
+
+</head>
+
+<body class="bodyMove">
+  <a href="index.html">Home</a>
+  <h1>Objects and Properties</h1>
+  <p>
+  As there are a lot of <b>functions</b> being talked about here you may also
+  want to visit my <a href="jsFunctions.html">Functions Page</a> for more info. <br /> <br />
+  </p>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+
+
+      <p>
+        Nearly everything in Javascript is/can be an object. <br />
+        * Booleans can be objects <br />
+        * Numbers can be objects <br />
+        * Strings can be objects <br />
+        * Dates are always objects <br />
+        * Maths are always objects <br />
+        * Regular expressions are always objects <br />
+        * Arrays are always objects <br />
+        * Functions are always objects <br />
+        * Objects are objects <br /> <br />
+        To make a string/number an object you need to... <br />
+        <b>var a = new String();</b> or <b>var a = new String("ABCDE");</b> <br />
+        <b>var n = new Number();</b> or <b>var n = new Number(123);</b> <br /> <br />
+        Objects are basically variables that contain variables (properties)...eg... <br /> <br />
+        <b>var person = {firstName:"John", lastName:"Smith", age:50}</b> <br />
+        So the properties of the 'person' object is:- <br />
+        firstName / lastName & age <br />
+        and are referred to by using... <br />
+        person.firstName; eg <b>x = person.firstName;</b> <br />
+        person.lastName; eg <b>y = person.lastName;</b> <br />
+        person.age; eg <b>a = person.age;</b> <br /> <br /> <br />
+
+        Take a look at <a href="https://www.w3schools.com/js/js_object_definition.asp" target="_blank">Object
+          Definitions</a> on W3Schools website for more <br /> <br /> <br />
+
+        Also take a look at <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys#" target="_blank">Object
+          Methods</a> on mozilla website for more <br />
+        Eg... <b>Object.keys(Person) </b> //Returns a list of property names <br />
+        & in the Related Topics section you can see more methods listed, eg <br />
+        <b>Object.entries(Person) </b> //Returns propertynames & values <br />
+        <b>Object.assign(target, source, source...) </b> //Combines objects properties on to target object<br />
+        etc <br /> <br /> <br />
+      </p>
+
+    </div>
+
+    <div class="divBorder divBSet">
+      <h3>Different ways to create an object: </h3>
+      <p>
+        Creating a single object <br />
+        <b>var person = { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;firstName:"John", <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;lastName:"Smith", <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;age:50 <br />
+          };</b> <br /> <br />
+
+        or... (above is easier and more common) <br />
+        <b>var person = new object(); <br />
+          person.firstName ="John"; <br />
+          person.lastName = "Smith"; <br />
+          person.age:50; </b> <br /> <br />
+
+        ****** <br /> <br />
+
+        If you need to create more than one object of the same type then use an object constructor function <br />
+        <b>function person(first, last, age) { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;this.firstName = first; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;this.lastName = last; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;this.age = age; <br />
+          }; <br />
+          var myFather = new person("Les", "Kirby", 75); <br />
+          var myMother = new person("Lilian", "Kirby", 79); </b> <br /> <br />
+        <i>(<b>this.</b> refers to the current object. So saying this.age means you are creating a property
+          inside this object) </i> <br /> <br />
+        You can even create a property that is a 'function', for example...you may need the person's full name so
+        you can add in a line (just below this.age = age;)... <br />
+        <b>this.fullName = function() { <br />
+          &nbsp;&nbsp;&nbsp;return this.firstName + " " + this.lastName; <br />
+          };</b> <br /> <br />
+        and then the property <br />
+        <b>myFather.fullName()</b> or <b>myMother.fullName()</b> <br />
+        will also exist. You can also refer to it as... <br />
+        <b>myFather["fullName"]()</b> or <b>myMother["FullName"]()</b> <br />
+        if you want to...Note the () as 'fullName' is a function.<br /> <br /> <br />
+        <strong style="color:red;"><b>Note...This is how things like Math.round()
+            work... Math is an object and .round() is a method (function)...just like
+            myFather is an object and .fullName() is a method (function). </b></strong> <br /> <br />
+      </p>
+    </div>
+  </div>
+  <a href="#">Top</a> <br />
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <p>
+        <b>To ADD a new PROPERTY to your object... </b><br />
+        <b>myFather.myExtraProperty = "ABCDE";</b> <br />
+        <i>(Note...You cannot add it to the function 'person' only to myFather and/or myMother.
+          You will need to change the function for 'person' if you want a new property for
+          ALL of your objects)</i> <br /> <br />
+
+        <b>To DELETE a PROPERTY from your object... </b><br />
+        <b>delete myFather.myExtraProperty;</b> <br />
+        <i>(Note...You can only delete properties that you added (above) to myFather and/or myMother.
+          You will need to change the function for 'person' if you want to delete a property that came
+          from the function 'person' - and it will affect ALL your objects that use 'person')</i> <br /> <br />
+      </p>
+    </div>
+
+    <div class="divBorder divBSet">
+      <p>
+        <b>You can access the object's properties by using the <br />
+          . (dot) or [] (square brackets) methods </b><br />
+        Eg... <br /> <br />
+
+        <b>var person = { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;firstName:"John", <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;'last Name':"Smith", <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;'my Age':50 <br />
+          };</b> <br /> <br />
+        <i>(Persoanally I would say DO NOT use spaces in the property names (eg 'last Name')
+          as it makes it harder to code)</i> <br /> <br />
+        <b>person.firstName </b> <br />
+        <b>person['firstName'] </b> <br />
+        <b>person['last Name'] </b> <br />
+        <i>(Note...you MUST use the brackets if you created the property name within quotes (eg 'last Name') but
+          I would not recommend creating properties that way as it is not the accepted way of doing it anyway)</i> <br />
+        <br /> <br />
+      </p>
+    </div>
+
+  </div>
+  <a href="#">Top</a> <br />
+
+  <div id="objects" class="divFlex">
+    <div class="divBorder divBSet">
+      <h3>Example 1 - Constructors</h3>
+      <p>
+        A constructor is a function that is used when creating many objects. <br />
+        It is good practice to name constructors with an upper-case first letter. <br /> <br />
+        Show a list of Property Names and Property Values that are in my object...and use
+        a constructor to base the objects myFather & myMother on....> <br />
+      </p>
+      <p>
+        <i>Constructor... </i> <br />
+        <b>function Person(first, last, age) { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;this.firstName = first; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;this.lastName = last; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;this.age = age; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;this.fullName = function() { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return this.firstName + " " + this.lastName}; <br />
+          }; <br />
+          <i>Objects... </i> <br />
+          var myFather = new Person("Les", "Kirby", 75); <br />
+          var myMother = new Person("Lilian", "Kirby", 79); </b> <br /> <br />
+        Then using a FOR loop to display the results (of myFather)... <br />
+        <i>(Note... In this example I have to check if one of the properties is a
+          function - because person.fullName IS a function)</i><br /> <br />
+        <b>var txt = ""; <br />
+          for (x in myFather) { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;if (typeof(myFather[x]) == "function") { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;txt += x + ": "+myFather[x]() + " &lt;br /&gt;" <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;} else { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;txt += x + ": "+myFather[x] + " &lt;br /&gt;" <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;} <br />
+          }; <br />
+          toDisplay("example1", txt); </b><br />
+        <span id="example1" class="redResult"></span> <br /> <br />
+        Note... <br />
+        If you want to add new properties to your constructor function you need to include the
+        new properties as part of the original 'function'... <br />BUT... <br />
+        If you cannot do that for some reason (maybe you are reusing the code) then you must use the
+        <a href="https://www.w3schools.com/js/js_object_prototypes.asp" target="_blank">Prototype Inheritance</a> option. <br />
+        Eg... <br />
+        <b>Person.prototype.<i>newProperty</i> = "myValue"</b> <br /> <br />
+
+      </p>
+
+      <script type="text/javascript">
+        function person(first, last, age, fullName) {
+          this.firstName = first;
+          this.lastName = last;
+          this.age = age;
+          this.fullName = function() {
+            return this.firstName + " " + this.lastName
+          };
+        }
+        var myFather = new person("Les", "Kirby", 75);
+        var myMother = new person("Lilian", "Kirby", 79);
+
+        var txt = "";
+        for (x in myFather) {
+          if (typeof(myFather[x]) == "function") {
+            txt += x + ": " + myFather[x]() + " <br />"
+          } else {
+            txt += x + ": " + myFather[x] + " <br />"
+          }
+        };
+        toDisplay("example1", txt);
+      </script>
+    </div>
+
+    <div class="divBorder divBSet">
+      <p>
+        A scenario... <br /> <br />
+
+        //Create a constant object called 'spaceship' <br />
+        <b>const spaceship = { <br />
+          &nbsp;&nbsp;&nbsp;homePlanet : 'Earth', <br />
+          &nbsp;&nbsp;&nbsp;color : 'silver' <br />
+          }; </b><br /> <br />
+
+        //Create a function called 'paintIt' that takes <br />
+        // one parameter called 'obj' <br />
+        <i>(Note.. I could have said... <br />
+          let paintIt = function(obj) {...} but chose this strange looking (shorthand) way instead)</i> <br />
+        <b>let paintIt = obj => { <br />
+          &nbsp;&nbsp;&nbsp;obj.color = 'glorious gold' <br />
+          }; </b> <br /> <br />
+
+        //Call the 'paintIt' function and pass it the 'spaceship' object <br />
+        //which then changes the 'color' property.
+        <b>paintIt(spaceship); <br />
+          spaceship.color // Returns 'glorious gold' </b> <br /> <br />
+        <i>The above shows that it remembers the change to the 'color' property even outside
+          of the function 'paintIt' because it is an OBJECT and that gets treated as a BYREFERENCE object
+          and not BYVALUE... <br /> <br />
+          ...BUT if you ADD any new properties via the 'paintIt' function then they will get forgotten about
+          when you exit the function)</i> <br /> <br />
+
+      </p>
+    </div>
+
+  </div>
+  <a href="#">Top</a> <br />
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <h3>Example 2</h3>
+      <p>
+        Show a list of Property Names and Property Values that are in my object....> <br />
+      </p>
+      <p>
+        <B>
+          let spaceship = { <br /> <br />
+
+          &nbsp;&nbsp;&nbsp;crew: { <br /> <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;captain: { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: 'Lily', <BR />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;degree: 'Computer Engineering', <BR />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cheerTeam() { console.log('You got this!') } <BR />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}, <BR /> <BR />
+
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'chief officer': { <BR />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: 'Dan', <BR />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;degree: 'Aerospace Engineering', <BR />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;agree() { console.log('I agree, captain!') } <BR />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}, <BR /> <BR />
+
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;medic: { <BR />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: 'Clementine', <BR />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;degree: 'Physics', <BR />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;announce() { console.log(`Jets on!`) } <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}, <BR /> <BR />
+
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;translator: { <BR />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: 'Shauna', <BR />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;degree: 'Conservation Science', <BR />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;powerFuel() { console.log('The tank is full!') } <BR />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <BR /> <br />
+          &nbsp;&nbsp;&nbsp;} <BR />
+          }; <BR /> <BR />
+
+          for (let x in spaceship.crew) { <BR />
+          &nbsp;&nbsp;&nbsp;console.log(x + ": " + spaceship.crew[x].name + ", " + spaceship.crew[x].degree); <BR />
+          } <BR />
+        </B>
+        <BR />
+
+        <span id="example2" class="redResult"></span>
+      </p>
+
+      <script type="text/javascript">
+        let spaceship = {
+          crew: {
+            captain: {
+              name: 'Lily',
+              degree: 'Computer Engineering',
+              cheerTeam() {
+                console.log('You got this!')
+              }
+            },
+            'chief officer': {
+              name: 'Dan',
+              degree: 'Aerospace Engineering',
+              agree() {
+                console.log('I agree, captain!')
+              }
+            },
+            medic: {
+              name: 'Clementine',
+              degree: 'Physics',
+              announce() {
+                console.log(`Jets on!`)
+              }
+            },
+            translator: {
+              name: 'Shauna',
+              degree: 'Conservation Science',
+              powerFuel() {
+                console.log('The tank is full!')
+              }
+            }
+          }
+        };
+
+        /* for (let x in spaceship.crew) {
+        console.log(x + ": " + spaceship.crew[x].name);
+        } */
+
+        var txt = "";
+        for (let x in spaceship.crew) {
+          /* txt += x + ": " + spaceship.crew[x].name + ", " + spaceship.crew[x].degree + "<br />"; */
+          txt += `${x}: ${spaceship.crew[x].name}, ${spaceship.crew[x].degree} <br />`
+        }
+
+        toDisplay("example2", txt);
+      </script>
+    </div>
+
+    <div class="divBorder divBSet">
+      <h3>A little more about <span class="redResult">THIS.</span></h3>
+      <p>
+        The command <b>this.</b> will need to be used sometimes and (hopefully)
+        this will help explain it a little more <br /> <br />
+
+        For example... <br /> <br />
+        <b>const robot = { <br />
+          &nbsp;&nbsp;&nbsp;model: "1E78V2", <br />
+          &nbsp;&nbsp;&nbsp;energyLevel: 100, <br />
+          &nbsp;&nbsp;&nbsp;provideInfo() { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return `I am ${<span class="redResult">this.</span>model} and
+          my current energy level is ${<span class="redResult">this.</span>energyLevel}.` <br />
+          &nbsp;&nbsp;&nbsp;} <br />
+          }; <br /> <br />
+
+          console.log(robot.provideInfo()); <br /> <br />
+        </b>
+
+        The above will print to the console the following... <br />
+        <b>I am 1E78V2 and my current energy level is 100.</b> <br /> <br />
+
+        BUT if I did not include <b>this.</b> in the 'provideInfo' property then
+        it would have errored out saying that <b>model</b> and <b>energyLevel</b> were both
+        'undefined'. <br /> <br />
+        This was because it does not know where to find the property 'model' or 'energyLevel', even
+        though they were defined above they were not defined inside the function <b>provideInfo</b>. <br /> <br />
+        So...adding <b>this.</b> before the properties (model & energyLevel) it knows to look
+        inside the current object. <br /> <br />
+
+      </p>
+
+    </div>
+  </div>
+
+  <a href="#">Top</a> <br />
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <h3>using GETTERS & SETTERS</h3>
+      <p>
+        Getters return/Display information <br />
+        Setters update information <br /> <br />
+
+        some notable advantages of using getter/setter methods:- <br /> <br />
+
+        Getters can perform an action on the data when getting a property. <br />
+        Getters can return different values using conditionals. <br />
+        In a getter, we can access the properties of the calling object using <b>this.</b> <br />
+        The functionality of our code may be easier for other developers to understand. <br />
+        Another thing to keep in mind when using getter (and setter) methods is that properties cannot
+        share the same name as the getter/setter function. If we do so, then calling the method
+        will result in an infinite call stack error. <br />
+        One workaround is to add an underscore before the property name like I did in the example below. <br /> <br />
+        (Use GET and SET commands) <br /> <br />
+        <i>NOTE <br />
+          Even though the getter looks like a function command when calling them in your code
+          you DO NOT include the ( ) (opening/closing round brackets) like you would for a function. </i> <br /> <br />
+
+        <B>const person = { <br /> <br />
+          &nbsp;&nbsp;&nbsp;_firstName: 'John', <br />
+          &nbsp;&nbsp;&nbsp;_lastName: 'Doe', <br /> <br />
+
+          &nbsp;&nbsp;&nbsp;<span class="redResult">get </span> firstName() { <br /> <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (this._firstName){ <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return `${this._firstName}`; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 'Missing a first name.'; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br />
+          &nbsp;&nbsp;&nbsp;}, <br /> <br />
+
+          &nbsp;&nbsp;&nbsp;<span class="redResult">set </span> firstName(name) { <br /> <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (typeof(name)==="string"){ <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._firstName = name; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "Invalid First Name!"; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br />
+          &nbsp;&nbsp;&nbsp;}, <br /> <br />
+
+          &nbsp;&nbsp;&nbsp;<span class="redResult">get </span> lastName() { <br /> <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (this._lastName){ <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return `${this._lastName}`; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 'Missing a last name.'; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br />
+          &nbsp;&nbsp;&nbsp;}, <br /> <br />
+
+          &nbsp;&nbsp;&nbsp;<span class="redResult">set </span> lastName(name) { <br /> <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (typeof(name)==="string"){ <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._lastName = name; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "Invalid Last Name!"; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br />
+          &nbsp;&nbsp;&nbsp;}, <br /> <br />
+
+          &nbsp;&nbsp;&nbsp;<span class="redResult">get </span> fullName() { <br /> <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (this._firstName && this._lastName){ <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return `${this._firstName} ${this._lastName}`; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 'Missing a first name or a last name.'; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br />
+          &nbsp;&nbsp;&nbsp;} <br />
+          } <br /> <br /> </b>
+
+        <i>// To call the getter method </i> <br />
+        <b>person.fullName; </b><i>&nbsp;&nbsp;&nbsp;// will give the value 'John Doe'</i> <br />
+        <i>(Note there are no round brackets Eg...
+          NOT person.fullName() like there would normally be for a function)</i> <br />
+          <span class="redMess" id="getFullName"></span> <br /> <br />
+
+        <i>// To call the setter method </i> <br />
+        <b>person.firstName = "Gary"; </b><i>&nbsp;&nbsp;&nbsp;// will set _firstName to be 'Gary'</i> <br />
+        <i>(Note there are no round brackets (and it uses the = sign, Eg...
+          NOT person.firstName("Gary") like I would have expected for a function)</i> <br />
+          <span class="redMess" id="getFullName"></span> <br /> <br />
+
+        <i>// To call the setter method </i> <br />
+        <b>person.lastName = "Kirby"; </b><i>&nbsp;&nbsp;&nbsp;// will set _lastName to be 'Kirby'</i> <br /> <br />
+
+        <i>So now when you call the getter for fullName... </i> <br />
+        <b>person.fullName; </b><i>&nbsp;&nbsp;&nbsp;// will give the value 'Gary Kirby'</i> <br />
+        <span class="redMess" id="getName"></span> <br /> <br />
+
+      </p>
+
+      <script>
+        const person2 = {
+          _firstName: 'John',
+          _lastName: 'Doe',
+
+          get firstName() {
+            if (this._firstName){
+              return `${this._firstName}`;
+            } else {
+              return 'Missing a first name.';
+            }
+          },
+
+          set firstName(name) {
+            if (typeof(name)==="string"){
+              this._firstName = name;
+            } else {
+              return "Invalid First Name!";
+            }
+          },
+
+          get lastName() {
+            if (this._lastName){
+              return `${this._lastName}`;
+            } else {
+              return 'Missing a last name.';
+            }
+          },
+
+          set lastName(name) {
+            if (typeof(name)==="string"){
+              this._lastName = name;
+            } else {
+              return "Invalid Last Name!";
+            }
+          },
+
+          get fullName() {
+            if (this._firstName && this._lastName){
+              return `${this._firstName} ${this._lastName}`;
+            } else {
+              return 'Missing a first name or a last name.';
+            }
+          }
+        }
+
+        document.getElementById("getFullName").innerHTML = person2.fullName;
+        person2.firstName = "Gary";
+        person2.lastName = "Kirby";
+        document.getElementById("getName").innerHTML = person2.fullName;
+
+      </script>
+
+    </div>
+
+    <div class="divBorder divBSet">
+      <p>
+        <b>You can also use a technique called 'Destructured Assignment' <br />
+        </b><br />
+        Once the object (vampire) has been created you would then need to access the properties. <br /> <br />
+
+        <b>const creature = { <br />
+          &nbsp;&nbsp;&nbsp;residence: 'Transylvania', <br />
+          &nbsp;&nbsp;&nbsp;preferences: { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;day: 'stay inside', <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;night: 'satisfy appetite' <br />
+          &nbsp;&nbsp;&nbsp;} <br />
+          }; </b> <br /> <br />
+
+        And then when you want to retrieve, for example, the property 'residence' <br />
+        the 'normal' way of doing things could look like this... <br /> <br />
+
+        <b>const residence = creature.residence; <br />
+          console.log(residence); </b> &nbsp;&nbsp;&nbsp;// Prints 'Transylvania' <br /> <br />
+
+        But the 'Destructured' way would be... <br />
+        <b>const { residence } = creature; <br />
+          console.log(residence); </b> &nbsp;&nbsp;&nbsp;// Prints 'Transylvania'</b> <br /> <br />
+
+        and to read the creature.preferences.day property value you would say... <br />
+        <b>var { day } = creature.preferences;</b> <br /> <br /> <br />
+        <hr />
+        <br /> <br /> <br />
+        Now what if we want another object that has the properties of creature but with a few additional properties. <br />
+        Object.assign() could be a good method to use as it combines one or more objects to a 'target' object. <br />
+        eg... <br />
+        <b>Object.assign(target, source, source, source etc); </b><br /> <br />
+
+        So...we could create our new object with just the additional properties in it
+        and the use the <b>.assign</b> command to inherit the properties in 'creature'. <br /> <br />
+
+        <i>Create new object called vampire</i> <br />
+        <b>const vampire = { <br />
+          &nbsp;&nbsp;&nbsp;name: 'Dracula', <br />
+          &nbsp;&nbsp;&nbsp;skill: 'Change into Bat' <br />
+          }; </b> <br /> <br />
+
+        <i>inherit properties of creature and include them on the target object 'vampire'</i> <br />
+        Object.assign(vampire, creature); <br /> <br />
+
+        Once assigned the properties & values of vampire will be... <br />
+        <span class="redMess" id="assignIt"></span> <br /> <br /> <br />
+        And to display the values in red I had to do the following... <br />
+        (it reads all properties & displays it but if it finds a property
+        that is an object it reads through that to find those properties too)<br /> <br />
+        <b>
+          var txt=""; <br />
+          for (x in vampire) { <br />
+          &nbsp;&nbsp;&nbsp;if (typeof(vampire[x])!=="object") { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;txt += x + ": " + vampire[x] + "<br />";
+          &nbsp;&nbsp;&nbsp;} else { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><i>//It's another object so read thru this too</i><b> <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (y in vampire[x]) { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;txt += x + "." + y + ": " + vampire[x][y] + "<br />"; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br />
+          &nbsp;&nbsp;&nbsp;} <br />
+          } <br />
+          document.getElementById("assignIt").innerHTML = txt; <br />
+        </b>
+
+      </p>
+      <script>
+        const creature = {
+          residence: 'Transylvania',
+          preferences: {
+            day: 'stay inside',
+            night: 'satisfy appetite'
+          }
+        };
+
+        const vampire = {
+          name: 'Dracula',
+          skill: 'Change into Bat'
+        };
+
+        Object.assign(vampire, creature);
+        //document.getElementById("assignIt").innerHTML = Object.entries(vampire);
+
+        var txt = "";
+        for (x in vampire) {
+          if (typeof(vampire[x]) !== "object") {
+            txt += x + ": " + vampire[x] + "<br  />";
+          } else {
+            for (y in vampire[x]) {
+              txt += x + "." + y + ": " + vampire[x][y] + "<br />";
+            }
+          }
+        }
+        document.getElementById("assignIt").innerHTML = txt;
+      </script>
+    </div>
+
+  </div>
+
+  <a href="#">Top</a> <br />
+
+  <div id="factoryFunctions" class="divFlex">
+    <div class="divBorder divBSet">
+      <h3>Factory Function example (using shorthand version)</h3>
+      <p>
+        <i>//Factory Function - A function that can be called over and again to create objects</i> <br />
+        <b>
+          function createCircle(radius) { <br />
+          &nbsp;&nbsp;&nbsp;return { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;radius, <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;draw() { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return `Circle was drawn with a radius of: ${radius}`; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br />
+          &nbsp;&nbsp;&nbsp;}; <br />
+          } <br /> <br />
+          const circle1 = createCircle(20); <br />
+          console.log(circle1.draw());
+        </b> <br /> <br />
+        <span class="redMess" id="factory"></span> <br /> <br />
+
+        Compared to the LongHand version (on the right pane)... <br /> <br />
+        You don't need the <b>radius: radius,</b> if the parameter and the property
+        name are going to be the same (just <b>radius,</b>) will do and Javascript
+        will give it the property name of 'radius' automatically. <br /> <br />
+
+        When creating a function called 'draw' you don't need to specify <b>draw(): function() {}</b> as
+        JavaScript will know it's a function if you just tell it <b>draw() {}</b> ... <br />
+        <i>Note a normal way of creating a function outside of an object is <br />
+          <b>function draw() {}</b> <br />
+          so it is very much the same but you are dropping
+          the word 'function'</i><br /> <br />
+
+      </p>
+
+      <script>
+        function createCircle(radius) {
+          return {
+            radius,
+            draw() {
+              return `Circle was drawn with a radius of: ${radius}`;
+            }
+          };
+        }
+
+        const circle1 = createCircle(20);
+        document.getElementById("factory").innerHTML = circle1.draw();
+      </script>
+
+    </div>
+
+    <div class="divBorder divBSet">
+      <h3>Factory Function example (using longhand version)</h3>
+      <p>
+        <i>//Factory Function - A function that can be called over and again to create objects</i> <br />
+        <b>
+          function createCircle(radius) { <br />
+          &nbsp;&nbsp;&nbsp;return { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;radius: radius, <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;draw: function() { <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return `Circle was drawn with a radius of: ${radius}`; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br />
+          &nbsp;&nbsp;&nbsp;}; <br />
+          } <br /> <br />
+          const circle1 = createCircle(20); <br />
+          console.log(circle1); <br />
+          const circle2 = createCircle(30); <br />
+          const circle3 = createCircle(40); <br />
+          etc... <br />
+        </b> <br /> <br />
+        <span class="redMess" id="factoryL"></span> <br /> <br /> <br />
+        NOTE... <br />
+        The return bit in 'createCircle' has { } which means it is returning an Object with the
+        property <b>radius</b> and a method <b>draw()</b> ... <br />
+        ...this way when it is called I am
+        making the variables <b>circle1, circle2 & circle3</b> all Objects with the same properties & methods. <br /> <br />
+
+      </p>
+
+      <script>
+        function createCircle2(radius) {
+          return {
+            radius: radius,
+            draw: function() {
+              return `Circle was drawn with a radius of: ${radius}`;
+            }
+          };
+        }
+
+        const circle2 = createCircle2(20);
+        document.getElementById("factoryL").innerHTML = circle2.draw();
+      </script>
+
+    </div>
+
+  </div>
+
+  <a href="#">Top</a> <br />
+
+</body>
+
+</html>

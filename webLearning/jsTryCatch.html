@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Try/Catch/Throw</title>
+
+  <link rel="stylesheet" href="CSS/normalize.css" />
+  <link rel="stylesheet" href="CSS/main.css" />
+  <link rel="stylesheet" href="CSS/myStyles.css" />
+
+  <!-- Required for JQuery to work - this is the library file from JQuery.com (uncompressed development file) -->
+  <script src="JQuery/jquery-3.5.1.js"></script>
+  <!-- You can use the online one but for now I will download it and use my copy of it (use one or the other)-->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+  <style>
+
+  </style>
+
+</head>
+
+<body class="bodyMove">
+  <section id="Top">
+
+    <a href="index.html">Home</a>
+    <h1>Try/Catch/Throw - Error trapping</h1>
+    <p>
+      The try/catch/finally statement handles some or all of the errors that may occur in a
+      block of code, while still running code. <br />
+      Errors can be coding errors made by the programmer, errors due to wrong input,
+      and other unforeseeable things. <br />
+      The <b>try</b> statement allows you to define a block of code to be tested for errors while
+      it is being executed. <br />
+      The <b>catch</b> statement allows you to define a block of code to be executed, if an
+      error occurs in the try block. <br />
+      The <b>finally</b> statement lets you execute code, after try and catch,
+      regardless of the result. <br /> <br />
+      The <b>throw</b> statement throws (generates) an error. <br /> <br />
+      Note: The catch, finally & throw statements are both optional, but you need to use one of them
+      (if not both) while using the try statement. <br />
+    </p>
+  </section>
+
+  <div class="divFlex">
+    <div class="divBorder divBSet">
+      <h3>Try/Catch</h3>
+      <p>
+        Code placed inside the TRY area will be processed and if it errors out then there will be
+        a message caught by the CATCH command. <br />
+        The error message will be in the ERR variable. <br />
+        You can also create your own error message via the THROW command, which will also get
+        caught by the CATCH. <br />
+        If you need some code to be run regardless of any error then you can use the FINALLY
+        command to run that code. <br /> <br />
+        Eg... <br />
+        <b>try { <br />
+          <i>&nbsp;&nbsp;&nbsp;tryCode - Block of code to try <br />
+            &nbsp;&nbsp;&nbsp;...and you throw your own 'error message' in here if needed
+          (eg throw "my message here")</i><br />
+          } <br />
+          catch(err) { <br />
+          <i>&nbsp;&nbsp;&nbsp;catchCode - Block of code to handle errors </i><br />
+          } <br />
+          finally { <br />
+          <i>&nbsp;&nbsp;&nbsp;finallyCode - Block of code to be executed regardless of the try / catch result </i><br />
+        }</b> <br /> <br /> <br />
+        NOTE <br />
+        If using <b>finally {}</b> then it may be worth setting a variable inside the
+        <b>catch {}</b> area so you can check it (in the finally {} bit) to see if an actual error occured
+        or not. <br /> <br />
+      </p>
+
+    </div>
+
+    <div class="divBorder divBSet">
+      <p>
+        Example 1...uses THROW to create error messages...<br />
+        To test enter an invalid entry in the box. <br /> <br />
+        Please input a number between 5 and 10:</p>
+
+      <input id="demo" type="text">
+      <button id="btn" class="button2" type="button" onclick="myFunction()">Test Input</button> <br />
+      <p id="message" class="redMess"> </p>
+
+      <p>
+        <br /> <br /> <br />
+        Example 2...this time I will make a programming error and
+        an then that will cause an error message without using THROW. <br /> <br />
+        Please input a number between 5 and 10:
+      </p>
+
+      <input id="demo2" type="text" onkeyup="functionKU(event)">
+      <button id="btn2" class="button2" type="button" onclick="myFunction2()">Test Input</button> <br />
+      <p id="message2" class="redMess"> </p>
+
+      <p>
+        <br /> <br />
+        <i>Note... <br />
+          I want to be able to enter text in the input box(es) then when I press [Enter] it fire the
+          relevant button's click event. <br />
+          To do this I added the jQuery code (this shows code for the top button):- <br /><br />
+          <b>$("#demo").keyup(function(event){ <br />
+            &nbsp;&nbsp;&nbsp;if(event.keyCode == 13){ <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#btn").click(); <br />
+            &nbsp;&nbsp;&nbsp;} <br />
+            });</b></i> <br />
+        <br />
+        <i>And the second input box I programmed in DOM <br />
+          by adding the <b>onkeyup</b> command to the input box and adding the function <b>functionKU()</b>. <br />
+          Just to show two different ways of doing it.<br /> <br />
+
+          <b>&lt;input id="demo2" type="text"
+            &nbsp;&nbsp;&nbsp;onkeyup="functionKU(event)"&gt; <br /> <br />
+            function functionKU(event){ <br />
+            &nbsp;&nbsp;&nbsp;if(event.keyCode == 13) { <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById('btn2').click(); <br />
+            &nbsp;&nbsp;&nbsp;} <br />
+            }</b></i> <br />
+      </p>
+
+      <script>
+        function myFunction() {
+          var message, x;
+          message = document.getElementById("message");
+          message.innerHTML = "";
+          x = document.getElementById("demo").value;
+          try {
+            if (isNaN(x)) throw "not a number";
+            if (x == "") throw "is Empty";
+            if (x > 10) throw "too high";
+            if (x < 5) throw "too low";
+
+            message.innerHTML = "Your input of: " + x + " is acceptable";
+          } catch (err) {
+            message.innerHTML = "Input " + err;
+          }
+        }
+
+        function myFunction2() {
+          var message, x;
+          message = document.getElementById("message2");
+          message.innerHTML = "";
+          x = document.getElementById("demo").value;
+          try {
+            if (isNaN - OOps(x)) throw "not a number";
+            if (x == "") throw "is Empty";
+            if (x > 10) throw "too high";
+            if (x < 5) throw "too low";
+
+            message.innerHTML = "Your input of: " + x + " is acceptable";
+          } catch (err) {
+            message.innerHTML = "Input " + err;
+          }
+        }
+      </script>
+
+    </div>
+  </div>
+
+
+  <a href="#Top">Top</a>
+
+  <script>
+    // if I press enter in an input box then fire the button click
+    // First one uses jQuery
+    $("#demo").keyup(function(event) {
+      if (event.keyCode == 13) {
+        $("#btn").click();
+      }
+    });
+
+    // Second one uses DOM coding
+    function functionKU(event) {
+      if (event.keyCode == 13) {
+        document.getElementById('btn2').click();
+      }
+    }
+  </script>
+
+</body>
+
+</html>

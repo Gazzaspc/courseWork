@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+
+  <title>RegEx Searching</title>
+
+  <link rel="stylesheet" href="CSS/normalize.css" />
+  <link rel="stylesheet" href="CSS/main.css" />
+  <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+  <!-- Required to pull in my default javaScript file -->
+  <!-- It's inside a [script] as it holds cammands that run in a [script] environment -->
+  <script src="Scripts/myScripts.js" />
+  </script>
+
+  <script>
+
+  </script>
+
+  <style>
+    h1,
+    h2,
+    h3,
+    p {
+      margin-bottom: 5px;
+      margin-top: 5px;
+    }
+  </style>
+
+</head>
+
+<body class="bodyMove">
+
+  <section id="top">
+    <a href="index.html">Home</a>
+  </section>
+
+  <section id="mainTop">
+    <h1>Canvas Element</h1>
+    <h3>Used to draw graphics on a web page</h3>
+    <br />
+    <p>
+      The HTML &lt;canvas&gt; element is used to draw graphics, on the fly, via
+      scripting (usually JavaScript). <br />
+      The &lt;canvas&gt; element is only a container for graphics. <br />
+      You must use a script to actually draw the graphics. <br />
+      Canvas has several methods for drawing paths, boxes, circles, text, and adding images. <br /> <br /></p>
+
+    <h3>HTML Canvas Can Draw Text</h3>
+    <p>Canvas can draw colourful text, with or without animation. <br /> <br /></p>
+
+    <h3>HTML Canvas Can Draw Graphics</h3>
+    <p>Canvas has great features for graphical data presentation with an imagery of graphs and charts. <br /> <br /></p>
+
+    <h3>HTML Canvas Can Be Animated</h3>
+    <p>Canvas objects can move. Everything is possible: from simple bouncing balls to complex animations. <br /> <br /></p>
+
+    <h3>HTML Canvas Can Be Interactive</h3>
+    <p>Canvas can respond to JavaScript events. <br />
+      Canvas can respond to any user action (key clicks, mouse clicks, button clicks, finger movement). <br /> <br /></p>
+
+  </section>
+
+  <div class="divFlex">
+    <div id="mainDiv" class="divBorder divBSet">
+      <p>
+        The format of the HTML Canvas Element looks like this: <br />
+        &nbsp;&nbsp;&nbsp;<b>&lt;canvas id="myCanvas" width="200" height="100"&gt;&lt;/canvas&gt;</b> <br /> <br />
+
+        An <b>id</b> is necessary for javaScript to be able to refer to it. <br />
+        The <b>width & height</b> are also necessary to define the size of the canvas. <br />
+        By defaut the canvas element has no border or content (use the 'style' commands to
+        set a border if one is required). <br />
+        <b>Events</b> can be added if required (onclick, onmouseover, onkeypress etc). <br /> <br /> <br />
+
+        w3schools have a web page for a <a href="https://www.w3schools.com/graphics/canvas_intro.asp" target="_blank">Introduction/Tutorial</a> <br />
+        and a page showing some <a href="https://www.w3schools.com/tags/ref_canvas.asp" target="_blank">
+          HTML Canvas References</a>. <br /> <br /> <br />
+        <br />
+        The below is an example that uses the code described above and also in the pane
+        to the right. <br />
+        <i>(although i added a border to the canvas (in black) just so you could see the canvas area)</i> <br /> <br />
+      </p>
+      <canvas id="myCanvas" width="200" height="100" style="border:1px solid black" ;></canvas> <br />
+      <p>
+        <i>The ctx.fillStyle & ctx.fillRect is what creates the red rectangle.</i>
+      </p>
+
+      <script>
+        var canvasTest = document.getElementById("myCanvas");
+        var ctx = canvasTest.getContext("2d");
+        ctx.fillStyle = "#FF0000";
+        ctx.fillRect(10, 10, 100, 50);
+      </script>
+
+    </div>
+
+    <div id="mainDiv" class="divBorder divBSet">
+      <h2>Canvas Drawing</h2>
+      <ol>
+        <li>
+          Find the canvas element using it's id
+        </li>
+        <li>
+          Create a drawing object
+        </li>
+        <li>
+          Draw on the canvas
+        </li>
+      </ol>
+      <p>
+        1. <br />
+        Find the canvas element by, for example... <br />
+        <b>var canvasTest = document.getElementById("myCanvas");</b> <br /> <br />
+
+        2. <br />
+        Then you need to create a drawing object for the canvas... <br />
+        <b>var ctx = canvasText.getContext("2d");</b> <br />
+        "2d" creates a 2-dimensional rendering. Others are avail but don't work
+        with all browsers (eg webgl, webgl2, bitmaprenderer). <br /> <br />
+
+        3. <br />
+        Then you can draw on the canvas... <br />
+        <b>ctx.fillStyle = "#FF0000";</b> <br />
+        <b>ctx.fillRect(<i>x, y, width, height</i>);</b> <br />
+        The <a href="https://www.w3schools.com/tags/canvas_fillstyle.asp" target="_blank">fillStyle</a> property
+        sets or returns the color, gradient, or pattern used to fill the drawing. <br />
+        The <a href="https://www.w3schools.com/tags/canvas_fillRect.asp" target="_blank">fillRect</a> method
+        draws a "filled" rectangle. The default color of the fill is black. <br />
+        <i>x</i> = the coordinate of the upper-left hand corner of the rectangle (in relation
+        to the canvas), 0 = at the corner, 10 moves it 10px to the right.<br />
+        <i>y</i> = the coordinate of the upper-left hand corner of the rectangle (in relation
+        to the canvas), 0 = at the corner, 10 moves it 10px down.<br />
+        <i>width</i> = the width of the rectangle, 100 = 100px wide. <br />
+        <i>height</i> = the height of the rectangle, 100 = 100px high. <br /> <br />
+
+      </p>
+    </div>
+  </div>
+
+  <a href="#top">Top</a>
+
+  <div class="divFlex">
+    <div id="mainDiv" class="divBorder divBSet">
+      <h2>Things you can do - a clock</h2>
+      <p>
+        I'll admit I just cut & pasted text here but for an explanation of it
+        you can visit <a target="_blank" href="https://www.w3schools.com/graphics/canvas_clock.asp">Clock Intro</a>
+        and read thru it.
+      </p>
+      <canvas id="canvasClock" width="300" height="300" style="background-color:#333">
+      </canvas>
+
+      <script>
+        var canvas = document.getElementById("canvasClock");
+        var ctx = canvas.getContext("2d");
+        var radius = canvas.height / 2;
+        ctx.translate(radius, radius);
+        radius = radius * 0.90
+        setInterval(drawClock, 1000);
+
+        function drawClock() {
+          drawFace(ctx, radius);
+          drawNumbers(ctx, radius);
+          drawTime(ctx, radius);
+        }
+
+        function drawFace(ctx, radius) {
+          var grad;
+          ctx.beginPath();
+          ctx.arc(0, 0, radius, 0, 2 * Math.PI);
+          ctx.fillStyle = 'white';
+          ctx.fill();
+          grad = ctx.createRadialGradient(0, 0, radius * 0.95, 0, 0, radius * 1.05);
+          grad.addColorStop(0, '#333');
+          grad.addColorStop(0.5, 'white');
+          grad.addColorStop(1, '#333');
+          ctx.strokeStyle = grad;
+          ctx.lineWidth = radius * 0.1;
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(0, 0, radius * 0.1, 0, 2 * Math.PI);
+          ctx.fillStyle = '#333';
+          ctx.fill();
+        }
+
+        function drawNumbers(ctx, radius) {
+          var ang;
+          var num;
+          ctx.font = radius * 0.15 + "px arial";
+          ctx.textBaseline = "middle";
+          ctx.textAlign = "center";
+          for (num = 1; num < 13; num++) {
+            ang = num * Math.PI / 6;
+            ctx.rotate(ang);
+            ctx.translate(0, -radius * 0.85);
+            ctx.rotate(-ang);
+            ctx.fillText(num.toString(), 0, 0);
+            ctx.rotate(ang);
+            ctx.translate(0, radius * 0.85);
+            ctx.rotate(-ang);
+          }
+        }
+
+        function drawTime(ctx, radius) {
+          var now = new Date();
+          var hour = now.getHours();
+          var minute = now.getMinutes();
+          var second = now.getSeconds();
+          //hour
+          hour = hour % 12;
+          hour = (hour * Math.PI / 6) +
+            (minute * Math.PI / (6 * 60)) +
+            (second * Math.PI / (360 * 60));
+          drawHand(ctx, hour, radius * 0.5, radius * 0.07);
+          //minute
+          minute = (minute * Math.PI / 30) + (second * Math.PI / (30 * 60));
+          drawHand(ctx, minute, radius * 0.8, radius * 0.07);
+          // second
+          second = (second * Math.PI / 30);
+          drawHand(ctx, second, radius * 0.9, radius * 0.02);
+        }
+
+        function drawHand(ctx, pos, length, width) {
+          ctx.beginPath();
+          ctx.lineWidth = width;
+          ctx.lineCap = "round";
+          ctx.moveTo(0, 0);
+          ctx.rotate(pos);
+          ctx.lineTo(0, -length);
+          ctx.stroke();
+          ctx.rotate(-pos);
+        }
+      </script>
+
+    </div>
+    <div id="mainDiv" class="divBorder divBSet">
+      <h2>Things you can do - a gradient with text & things</h2>
+      <p>
+        I'll admit I just cut & pasted text here (and adjusted it) but for an explanation of it
+        you can visit <a target="_blank" href="https://www.w3schools.com/graphics/canvas_gradients.asp">Canvas Gradient</a>
+        and read thru it.
+      </p>
+      <canvas id="canvasGrad" width="300" height="300" style="background-color:#333">
+      </canvas>
+
+      <script>
+        var c = document.getElementById("canvasGrad");
+        var ctxG = c.getContext("2d");
+        var ctxR = c.getContext("2d");
+        var ctxC = c.getContext("2d");
+        var ctxGT = c.getContext("2d");
+
+        // Create gradient
+        var grd = ctxG.createLinearGradient(0, 0, 200, 0);
+        grd.addColorStop(0, "red");
+        grd.addColorStop(1, "white");
+
+        // Fill with gradient
+        ctxG.fillStyle = grd;
+        ctxG.fillRect(10, 10, 150, 80);
+
+        // Add text
+        ctxGT.font = "30px Arial";
+        ctxGT.fillStyle = "Green";
+        ctxGT.fillText("Hello World!", 40, 100);
+
+        // Add a rectangle
+        ctxR.fillStyle = "#FF00FF";
+        ctxR.fillRect(10, 10, 100, 50);
+
+        // Add a circle
+        ctxC.beginPath();
+        ctxC.arc(95, 150, 40, 0, 2 * Math.PI);
+        ctxC.fillStyle = "Yellow";
+        ctxC.fill();  // need this to fill in the circe
+        ctxC.stroke();
+
+        var smile = c.getContext("2d");
+         //105 means x it will go the left side and 75 means y it will go upward of //downward
+         smile.moveTo(105, 75);
+         smile.beginPath();
+         smile.strokeStyle = "red";
+         smile.arc(95, 145, 30, 0, Math.PI, false);
+         //to draw a half rounded circle with a line stroke we can invoke the stroke function
+         smile.stroke();
+
+         var eyes = c.getContext("2d");
+         eyes.beginPath();
+         eyes.arc(80, 130, 4, 0, 2 * Math.PI);
+         eyes.fillStyle = "blue";
+         eyes.fill();  // need this to fill in the circe
+         eyes.stroke();
+         eyes.beginPath();
+         eyes.arc(110, 130, 4, 0, 2 * Math.PI);
+         eyes.fillStyle = "blue";
+         eyes.fill();  // need this to fill in the circe
+         eyes.stroke();
+      </script>
+
+    </div>
+  </div>
+
+  <a href="#top">Top</a>
+</body>
+
+</html>

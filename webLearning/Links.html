@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>HyperLinks/Email</title>
+
+  <style>
+    /* Place text over the top of some pictures when HOVERing over image */
+    .img__wrap {
+      position: relative;
+      height: 100px;
+      width: 100px;
+    }
+
+    .img__description {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(29, 106, 154, 0.72);
+      color: #fff;
+      visibility: hidden;
+      opacity: 0;
+
+      transition: opacity .2s, visibility .2s;
+    }
+
+    .img__wrap:hover .img__description {
+      visibility: visible;
+      opacity: 1;
+    }
+    /* END OF CODE FOR -- Place text over the top of some pictures when HOVERing over image */
+  </style>
+
+</head>
+
+<body>
+  <header id="TopArea">
+    <nav>
+      <a href="index.html">Home</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="LinkArea">
+      <h1>Linking to other ID's (areas/sections) on this page</h1>
+      <div style="display:flex;">
+        <div>
+          <ul>
+            <li>
+              <a href="#OtherWebsites">Go to Other Websites section</a>
+            </li>
+            <li>
+              <a href="#SendEmail">Go to Send Email section</a>
+            </li>
+            <li>
+              <a href="#ImageLink">Go to Image Link section</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <aside style="margin-left:15px;background-color:lightgray;padding:10px;">
+            <p>
+              To link to other areas/sections on this page that have an ID : <br />
+              &nbsp;&nbsp;&lt;a href="#NameOfID"&gt;Decription Text eg Go to Email section&lt;a&gt; <br /> <br />
+              eg. <br />
+              &nbsp;&nbsp;&lt;a href="#EmailSection"&gtGo to Email section&lt;a&gt; <br /> <br />
+              Note... <br />
+              It MUST be preceeded by a '#' in the href command (above). <br />
+              The place to move to has to have an 'id="EmailSection"' set <br />
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h1>Linking to other Web Pages within this website</h1>
+      <div style="display:flex;">
+        <div>
+          <ul>
+            <li>
+              <a href="index.html">Home Page</a>
+            </li>
+            <li>
+              <a href="structure.html">Structure Page</a>
+            </li>
+            <li>
+              <a href="jsObjects.html#objects">Objects Page</a> section example 1
+            </li>
+          </ul>
+        </div>
+        <div>
+          <aside style="margin-left:15px;background-color:lightgray;padding:10px;">
+            <p>To link to other internal pages use : <br />
+              &nbsp;&nbsp;&lt;a href="NameOfFile.html"&gt;Decription Text eg Home Page&lt;a&gt;
+              <br /> <br />
+              &nbsp;&nbsp;&lt;a href="jsObjects.html#objects"&gt;Objects Page&lt;a&gt;
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="OtherWebsites">
+      <h1>Linking to other Websites</h1>
+      <div style="display:flex;">
+        <div>
+          <ul>
+            <li>
+              <a href="https://www.google.com/" target="_blank">Google's Website</a>
+              <!-- The target command will force it to open up in a NEW TAB -->
+            </li>
+            <li>
+              <a href="https://uk.yahoo.com/">Yahoo News Page</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <aside style="margin-left:15px;background-color:lightgray;padding:10px;">
+            <p>
+              To link to other Websites use : <br />
+              &nbsp;&nbsp;&lt;a href="NameOfWebsite"&gt;Decription Text eg Google's Website&lt;a&gt; <br />
+              eg <br />
+              &nbsp;&nbsp;&lt;a href="https://www.google.com/"&gt;Google's Website&lt;a&gt; <br /><br />
+              To open in a NEW TAB add the &nbsp;&nbsp;target="_blank"&nbsp;&nbsp;command - eg... <br />
+              &nbsp;&nbsp;&lt;a href="https://www.google.com/" <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;target="_blank"&gt;Google's Website&lt;a&gt; <br /><br />
+              Note... You need the HTTPS://
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+    <section id="SendEmail">
+      <h1>Linking to Send an Email</h1>
+      <div style="display:flex;">
+        <div>
+          <ul>
+            <li>
+              <a href="mailto:gazzaspc@gmail.com">Send Blank Email to gazzaspc@gmail.com</a>
+            </li>
+            <li>
+              <a href="mailto:gazzaspc@googlemail.com
+              ?subject=Mail from our Website">Send Email and Subject Only</a>
+            </li>
+            <li>
+              <a href="mailto:gazzaspc@googlemail.com
+              ?subject=Mail from our Website
+              &body=Dear Charlie Edgar">Send Email and Subject & Body Only</a>
+            </li>
+            <li>
+              <a href="mailto:gazzaspc@googlemail.com
+              ?cc=secondemail@example.com, anotheremail@example.com
+              &bcc=lastemail@example.com
+              &subject=Mail from our Website
+              &body=Dear Charlie Edgar%0D%0AWhere are You.">Send Email and Subject/Body/CC & BCC</a>
+
+            </li>
+          </ul>
+        </div>
+        <div>
+          <aside style="margin-left:15px;background-color:lightgray;padding:10px;">
+            <p>
+              To send emails use : <br />
+              &nbsp;&nbsp;&lt;a href="mailto:gazzaspc@gmail.com"&gt;Decription Text eg Send Email to Gazzaspc@gmail.com&lt;a&gt; <br />
+              eg <br />
+              &nbsp;&nbsp;&lt;a href=""mailto:gazzaspc@gmail.com"&gt;Send Email to Gazzaspc@gmail.com&lt;a&gt; <br /><br />
+              If you want to include CC/BCC/Subject Line and Body information you can do this BUT <br />
+              the info MUST be in a certain format. <br /><br />
+              The FIRST command after the 'mailto email address' MUST start with ? <br />
+              Each of the other details MUST start with & <br />
+              Eg. <br />
+              &lt;a href="mailto:gazzaspc@gmail.com <br />
+              ?cc=secondemail@example.com, anotheremail@example.com <br />
+              &bcc=lastemail@example.com <br />
+              &subject=Mail from our Website <br />
+              &body=Dear Charlie Edgar %0D%0AWhere are you." <br /><br />
+              Also Note... <br />
+              &nbsp;&nbsp;If more than 1 email address is req'd in CC or BCC they must be comma separated. <br />
+              &nbsp;&nbsp;If you include the BODY information then it will NOT include the SIGNATURE* <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;unless you add that in the body of your text information. <br />
+              &nbsp;&nbsp;If you DO NOT include the BODY information then it WILL include the SIGNATURE* <br />
+              &nbsp;&nbsp;<i>*(If you have a SIGNATURE set up in your emails)</i> <br /><br />
+              &nbsp;&nbsp;...and %0D%0A is a CRLF to put 'Where are you.' on a new line.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+    <section id="ImageLink">
+      <h1>Linking to other areas using an Image</h1>
+      <div style="display:flex;">
+        <div>
+          <!-- Note...
+          list-style-type: none  = no bullet points
+          and this first picture allows ON HOVER to display text over image -->
+          <ul style="list-style-type: none;">
+            <li class="img__wrap">
+              <a href="https://www.mcdonalds.com/gb/en-gb.html" target="_blank">
+                <img class="img__img" border="0" alt="McD's Logo" src="Images/McD_Logo.png" width="100" height="100">
+                <p class="img__description">Click me to goto McD Website.</p>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.mcdonalds.com/gb/en-gb.html" target="_blank">
+                <img border="0" alt="McD's Logo" src="Images/McD_Logo.png" width="100" height="100">
+              </a>
+            </li>
+            <li class="img__wrap">
+              <a href="#TopArea">
+                <img class="img__img" border="0" alt="My Link Area" src="Images/Top.png" width="100" height="100">
+                <p class="img__description">Click me to go to TOP.</p>
+              </a>
+            </li>
+            <li>
+              <a href="#TopArea">
+                <img border="0" alt="My Link Area" src="Images/Top.png" width="100" height="100">
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <aside style="margin-left:15px;background-color:lightgray;padding:10px;">
+            <p>
+              To link to other Websites/areas/sections on this page that have an ID <br />
+              by clicking on an image : <br />
+              &nbsp;&nbsp;&lt;a href="NameOfID_or_Website_etc"&gt; <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;img border="0" alt="McD's Logo" src="Images/McD_Logo.png" width="100" height="100"&gt; <br />
+              &nbsp;&nbsp;&lt;a&gt; <br /> <br />
+              eg. <br />
+              &nbsp;&nbsp;&lt;a href="#LinkAreas"&gt; <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;img border="0" alt=My Link Area" src="Images/Top.png" width="100" height="100"&gt; <br />
+              &nbsp;&nbsp;&lt;a&gt; <br /> <br />
+              or <br />
+              &nbsp;&nbsp;&lt;a href="https://www.mcdonalds.com/gb/en-gb.html" target="_blank"&gt; <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&lt;img border="0" alt=MMcD's Logo" src="Images/McD_Logo.png" width="100" height="100"&gt; <br />
+              &nbsp;&nbsp;&lt;a&gt; <br /> <br />
+              Note... <br />
+              You can link to any of the examples used on this web page by <br />
+              clicking on a picture. Two examples of this are above. <br />
+            </p>
+          </aside>
+        </div>
+      </div>
+
+      <h1>Using links to display an Image</h1>
+      <div style="display:flex;">
+        <div>
+          <p>
+            Click to see a
+              <a href="Images/LooneyGK.bmp" target="_blank">picture</a> of LooneyTunes <br /> <br />
+          </p>
+        </div>
+
+        <div>
+          <aside style="margin-left:15px;background-color:lightgray;padding:10px;">
+            <p>
+              This was achieved by the following code:- <br /> <br />
+
+              <b>&lt;p&gt; <br />
+                Click to see a <br />
+                &lt;a href="Images/LooneyGK.bmp" target="_blank"&gt;picture&lt;/a&gt; <br />
+                of LooneyTunes <br />
+              &lt/p&gt;</b>
+                <br /> <br />
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</body>
+
+</html>

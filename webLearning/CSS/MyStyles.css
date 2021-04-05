@@ -1,0 +1,139 @@
+/* These are some styles that will probably get used on most of my web pages */
+/* NOTE...
+Class Names start with dot (.)
+ID Names start with a hash (#)
+TAG's do NOT start with a # or a .
+Attributes, like the INPUT (BOX) that has the attribute 'readonly' set are in [ ]  */
+
+/*
+***************************************
+To have more than one tag or class or id use commas to separate
+    h1, h2, h3 {color: blue;}
+    .myClass1, .myClass2, .myClass3 {color: blue;}
+    #myID1, #myID2, #myID3 {color:blue;}
+
+To mix them together
+  h1, #myID2, #myID3 {color:blue;}
+
+If you only want, for example, to change the tag h1 but ONLY if it
+has a class called myClass2 associated with it.
+By this I mean in the .html file you may have
+  <h1 class="myClass2">Header 1 text</h1>
+you can say
+  h1.myClass2 {color:blue;}
+
+you could also say, for example
+  h1.myClass2, h1.myClass3#myID2 {color:blue;}
+which would mean it would change the color of ALL h1 tags with a class=myClass2
+AND it would ALSO change ALL h1 tags that has a class=myClass3 AND an ID=myID2
+
+you could also say, for example
+  div.myClass2 h1 {color:blue;}
+which would mean it would change the color of ALL h1 tags that has a parent
+<div class=myClass2>
+eg
+<div class="myClass2">
+  <h1>Some text</h1>
+</div>
+
+  you could also target the content of an attribute, for example
+  a[href="http://www.googgle.com"] {color:blue;}
+which would mean it would change the color of all <a> tags that has a value
+of "http://www.google.com" in its href attribute.
+<a href="http://www.google.com">google search</a>
+
+****************************************
+   */
+
+.bodyMove {
+  background-color: #F0F8FF;
+  width:90%;
+  /* margin 0 auto   will centre the [body] on the page
+  but you would need to set a width otherwise it takes up the whole page. */
+  margin: 0 auto;
+  /* and if you want a margin at the top and bottom you need to ALSO specify it afterwards */
+  /* margin: 20px 0 20px 0;     but NOT in this way...do it separately*/
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+html {
+  background-color: #DCDCDC;
+  scroll-behavior: smooth;
+}
+
+.pageHeader {
+    background-color:red;
+}
+
+.divFlex {
+  display: flex;
+}
+
+.divAside {
+  background-color: lightgray;
+}
+
+.divBorder {
+  border: 1px solid;
+  padding: 5px;
+}
+
+.divBSet {
+  background-color: #B0C4DE;
+  margin: 20px;
+  padding: 10px;
+  width: 400px;
+}
+
+/* Change ALL input boxes that are 'readonly' */
+input[readonly] {background-color:#E0E0E0}
+
+.redResult, .redMess {
+  color: red;
+  font-style:italic;
+  font-weight: bold;
+
+}
+
+.button2 {
+  border: 0;
+  /* outline:none means it will not put lines round the button to
+  signify it has focus */
+  outline: none;
+  line-height: 1.7;
+  margin: 0 2px 0 0;
+  ;
+  padding: 5px 8px;
+  font-size: 0.8rem;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  text-shadow: 1px 1px 1px #000;
+  border-radius: 10px;
+  /* background-color: #6495ED; */
+  /* fallback colour */
+  /* background-color: rgba(0, 178, 255, 1); */
+  background-color: rgba(65, 105, 255, 1);
+  background-image: linear-gradient(to top left,
+    rgba(0, 0, 0, .2),
+    rgba(0, 0, 0, .2) 30%,
+    rgba(0, 0, 0, 0));
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+    inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+
+.button2:hover {
+  background-color: #EAF6F6;
+  /* fallback colour */
+  /* background-color: rgba(153, 204, 255, 1); */
+  background-color: rgba(30, 144, 255, 1);
+}
+
+.button2:active {
+  box-shadow: inset 1px -2px 3px rgba(255, 255, 255, .6),
+    inset 2px 2px 3px rgba(0, 0, 0, .6);
+    /* transform: translateY(4px); */
+    transform: translate(1px, 4px);
+}
