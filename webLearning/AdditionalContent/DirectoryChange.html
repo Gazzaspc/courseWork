@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Directory Change</title>
+</head>
+
+<body>
+  <a href="../index.html">Home</a>
+  <h1>Changing Directory on Links/Images/etc</h1>
+  <p>
+    When you make a LINK to a file in a different directory you need to :- <br />
+    <br />
+    To refer to a file and drill down to a lower directory use <br />
+    &nbsp;&nbsp;DirectoryName/FileName <br />
+    <br />
+    To refer to a file in a higher directory use <br />
+    &nbsp;&nbsp;../FileName <br />
+  </p>
+  <p>
+    Examples :- <br /> <br />
+    In, for example, a directory chain of <br />
+    <b>C:/MyDirectory/Coursework/MainHTML/Images/MoreImages</b> <br />
+    <br />
+    Lets say all your main HTML files are in C:MyDirectory/Coursework/MainHTML <br /> <br />
+    When you want to refer to images stored in MoreImages you would need, for example... <br />
+    &nbsp;&nbsp;&lt;img src="Images/MoreImages/image.jpg" &gt; <br /> <br />
+
+    When you want to refer to images stored in CourseWork you would need, for example... <br />
+    &nbsp;&nbsp;&lt;img src="../image.jpg" &gt; <br /> <br />
+
+    When you want to link to a .html file stored in MyDirectory you would need, for example... <br />
+    &nbsp;&nbsp;&lt;a href="../../index.html"&gt;Back to file&lt;/a&gt; <br /> <br />
+  </p>
+</body>
+
+</html>

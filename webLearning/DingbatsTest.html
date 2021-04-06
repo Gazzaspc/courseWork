@@ -14,14 +14,14 @@
 
     <!-- Below link tells the system where to find the icon that I
       want to be used on my chrome tab -->
-    <!--<link rel="icon" href="images/icons/pawPrint.ico">-->
+    <link rel="icon" href="images/icons/pawPrint.ico">
 
     <link href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat|Roboto+Mono|Sacramento&display=swap" rel="stylesheet">
 
     <!-- Bootstrap 4.3.1 CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- my stylesheet -->
-    <link rel="stylesheet" href="css/dingbats.css">
+    <link rel="stylesheet" href="css/styles.css">
 
     <title>Dingbats Home</title>
 
@@ -59,8 +59,17 @@
       }
       </script>
        -->
+    <!-- This section is for displaying 360 degree video -->
+    <link rel="stylesheet" href="https://cdn.pannellum.org/2.5/pannellum.css" />
+    <script type="text/javascript" src="https://cdn.pannellum.org/2.5/pannellum.js"></script>
+
+    <link href="https://vjs.zencdn.net/7.6.5/video-js.css" rel="stylesheet">
+    <!-- <script src="https://vjs.zencdn.net/7.1.0/video.js"></script> -->
+    <link href="https://vjs.zencdn.net/7.6.5/video-js.css" rel="stylesheet">
+    <script src="/js/videojs-pannellum-plugin.js"></script>
+    <!-- End of 360 degree video  -->
     <!-- If the navbar menu icon is visible then hide the text
-        'Gary Kirby' -->
+        'Your dog's home from home' -->
     <script type="text/javascript">
         function clickedExp(id) {
             var e = document.getElementById(id);
@@ -96,9 +105,9 @@
               -->
             <nav id="navbarMain" class="navbar navbar-default navbar-expand-md navbar-dark bg-dark fixed-top align-items-end pb-1 pt-1">
 
-                <div class="logo-pictureW logo-picture floatLeft">
-                    <img id="logoAwake" class="imgShrink logo-pic" src="images/logos/DingBatTiny.png" alt="Dingbats logo">
-                    <img id="logoSleep" class="imgShrink logo-pic logo-picHover" src="images/logos/BatSleepTiny.png" alt="Dingbats logo">
+                <div class="logo-pictureW logo-picture">
+                    <img class="imgShrink logo-pic" src="images/logos/DingBat1Tiny.png" alt="Dingbats logo">
+                    <img class="imgShrink logo-pic logo-picHover" src="images/logos/BatSleep1Tiny.png" alt="Dingbats logo">
                 </div>
                 <button id="navButton" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerLisa01" aria-controls="navbarTogglerLisa01" aria-expanded="false" aria-label="Toggle navigation">
                     <span onclick="clickedExp('HomeFromHome')" class="navbar-toggler-icon"></span>
@@ -107,48 +116,44 @@
                 <div style="position: relative;" class="collapse navbar-collapse" id="navbarTogglerLisa01">
                     <div id="HomeFromHome" class="navbarDiv">
                         <div>
-                            <!--<h2 class="mt-2 navbar-text navbarText"><em>Gary Kirby </em></h2>-->
-                            <h2 style="color:#C5CECE;" class="mt-2 navbar-text navbarText"><em>Gary</em></h2>
-                            &nbsp;&nbsp;
-                            <img style="height:60px; z-index: 1;" src="images/GKimage.png" alt="Gary" />
-                            <h2 style="color:#C5CECE;" class="mt-2 navbar-text navbarText"><em> Kirby </em></h2>
+                            <h2 class="mt-2 navbar-text navbarText"><em>Dingbats Testing</em></h2>
                         </div>
-                        <div id="myCollapseNavbar">
-                            <p class="navbar-text navbarTele fontSizeSmall">This page uses: <br> Bootstrap</p>
+                        <div class="">
+                            <p class="navbar-text navbarTele fontSizeSmall">T: 01253 983 271 <br> M: 07758 217 131</p>
                         </div>
 
 
                     </div>
-                    <ul style="z-index: 2;" class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="mainMenu.html">Home</a>
+                            <a class="nav-link" href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
+                            <a class="nav-link" href="about.html">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Grooming</a>
+                            <a class="nav-link" href="grooming.html">Grooming</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbardrop" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Property</a>
                             <div class="dropdown-menu myNavDrop">
-                                <a class="dropdown-item text-primary" href="#">Property</a>
-                                <a class="dropdown-item text-primary" href="#">Garden</a>
+                                <a class="dropdown-item text-primary" href="property.html#property">Property</a>
+                                <a class="dropdown-item text-primary" href="property.html#garden">Garden</a>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Services</a>
+                            <a class="nav-link" href="services.html">Services</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbardrop" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Gallery</a>
                             <div class="dropdown-menu myNavDrop">
-                                <a class="dropdown-item text-primary" href="#">Gallery 1</a>
-                                <a class="dropdown-item text-primary" href="#">Gallery 2</a>
-                                <a class="dropdown-item text-primary" href="#">Gallery 3</a>
+                                <a class="dropdown-item text-primary" href="gallery1.html">Gallery 1</a>
+                                <a class="dropdown-item text-primary" href="gallery2.html">Gallery 2</a>
+                                <a class="dropdown-item text-primary" href="gallery3.html">Gallery 3</a>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
+                            <a class="nav-link" href="contact.html">Contact</a>
                         </li>
                     </ul>
             </nav>
@@ -158,7 +163,6 @@
     <!-- below div makes sure the carousel starts below the navbar -->
     <div class="blocker">
     </div>
-
 
     <section class="carouselHead">
         <!-- Carousel to slide in pictures -->
@@ -172,34 +176,41 @@
                 <li data-target="#HomeCarouselID" data-slide-to="1"></li>
                 <li data-target="#HomeCarouselID" data-slide-to="2"></li>
                 <li data-target="#HomeCarouselID" data-slide-to="3"></li>
+                <li data-target="#HomeCarouselID" data-slide-to="4"></li>
             </ol>
 
             <div class="carousel-inner text-center">
                 <div class="carousel-item active">
                     <div class="d-flex h-100 align-items-center justify-content-center">
-                        <h2 style="display: inline-block" class="carousel-text">Office Desk</h2>
-                        <img class="imgShrink" src="images/Office1.jpg" alt="Office 1">
+                        <h2 style="display: inline-block" class="carousel-text">Travel in Style</h2>
+                        <img class="imgShrink" src="images/Slide1_CarNew.jpg" alt="Car Picture">
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div class="d-flex h-100 align-items-center justify-content-center">
-                        <h2 class="carousel-text">Office Screens</h2>
-                        <img class="imgShrink" src="images/Office1a.jpg" alt="Office 1a">
+                        <h2 class="carousel-text">Home Boarding</h2>
+                        <img class="imgShrink" src="images/Slide1_HomeBoard.jpg" alt="Home Boarding">
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div class="d-flex h-100 align-items-center justify-content-center">
-                        <h2 class="carousel-text">Office PC's</h2>
-                        <img class="imgShrink" src="images/Office2.jpg" alt="Office 2">
+                        <h2 class="carousel-text">Grooming Available</h2>
+                        <img class="imgShrink" src="images/Slide1_Groom.jpg" alt="Grooming picture">
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div class="d-flex h-100 align-items-center justify-content-center">
-                        <h2 class="carousel-text">Office Folders/Printers</h2>
-                        <img class="imgShrink" src="images/Office3.jpg" alt="Office 3">
-                    </div>
-                </div>
+                        <h2 class="carousel-text">Comfortable Rooms</h2>
+                        <img class="imgShrink" src="images/Slide1_Room.jpg" alt="Puppies picture">
 
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="d-flex h-100 align-items-center justify-content-center">
+                        <img class="imgShrink" src="images/Slide1_Garden.jpg" alt="Garden picture">
+                        <h2 class="carousel-text">Large Garden Area</h2>
+                    </div>
+                </div>
             </div>
             <!-- The below are for the  < Previous & Next > icons -->
             <!-- BUT I DONT WANT TO USE THEM NOW as you can click on the indicators -->
@@ -211,43 +222,94 @@
             </a> -->
         </div>
         <br />
-        <!--<hr class="hrDots">-->
+        <hr class="hrDots">
+    </section>
+    <section class="home-section mt-0">
+        <div class="row">
+            <div class="col-lg-4 col-md-5 mb-5 WelfareLicenceImg">
+
+                <img class="imgCenter" src="images/Star5a.jpg" width="250" alt="Small Animal Welfare Licence">
+                <span class="WelfareLicenceSpan"><img style="max-width:90vw;" src="images/Star5.JPG" width="500" alt="Large Animal Welfare Licence"></span>
+            </div>
+
+            <div style="position: relative;" class="col-lg-4 col-md-7 mb-5">
+                <div class="imgCenter">
+
+                    <!-- <img style="z-index:-1;" class="imgCenterA" src=" images/5StarArc.png" alt="Arcing 5 Star picture"> -->
+                    <!-- <h2 class="d-inline-block"><i class="far fa-star goldStar"></i></h2>
+                    <h2 class="d-inline-block"><i class="fas fa-star goldStar"></i></h2>
+                    <h2 class="d-inline-block"><i class="far fa-star goldStar"></i></h2>
+                    <h2 class="d-inline-block"><i class="fas fa-star goldStar"></i></h2>
+                    <h2 class="d-inline-block"><i class="far fa-star goldStar"></i></h2>
+                    <h3 class="textMainColor">Proud recipient of <br><strong>5 STAR Animal Welfare Licence </strong> <br>
+                      from Fylde Council</h3> -->
+                    <video width="320" height="240" controls>
+                        <source src="Videos/movieTest.mp4" type="video/mp4">
+                        <!-- <source src="movie.ogg" type="video/ogg"> -->
+                        Your browser does not support the video tag.
+                    </video>
+                    <video width="320" height="240" controls>
+                        <source src="Videos/Test360_1_injected.mp4" type="video/mp4">
+                        <!-- <source src="movie.ogg" type="video/ogg"> -->
+                        Your browser does not support the video 360 tag.
+                    </video>
+
+                    <video id='my-video' class='video-js' controls preload='auto' width='640' height='264' poster='MY_VIDEO_POSTER.jpg' data-setup='{}'>
+                        <source src='Videos/Test360_1_injected.mp4' type='video/mp4'>
+                        <!-- <source src='MY_VIDEO.webm' type='video/webm'> -->
+                        <p class='vjs-no-js'>
+                            To view this video please enable JavaScript, and consider upgrading to a web browser that
+                            <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+                        </p>
+                    </video>
+                    <a href="https://youtu.be/osyLnoJ4ACM">YouTube Vid</a>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-5">
+                <img class="imgRounded imgCenter" src=" images/PawHandSmall.jpg" alt="Dog and Human hands">
+            </div>
+        </div>
+        <!-- <div style="top: 10%S; right:10%; position: absolute; " class="">
+          <img src="images/Star5.jpg" alt="Large 5 Star Animal Welfare Licence">
+        </div> -->
     </section>
 
-    <div class="divCenter">
-        <p>
-            <b>Please Note...</b> <br /> <br />
-            The menu list in the header is just for demonstration purposes
-            and will not take you anywhere other than the Home Page.
-        </p>
-    </div>
+    <section id="home-intro" class="pb-4 mt-1 sectionOdd">
+        <div class="d-inline-block text-center">
+            <div style="position: relative;" class="">
 
-    <script>
+                <!-- <img style="zoom:50%; top: 0; right: 5%; position:absolute;" class="mr-3" src="images/logos/PawLogoSmall.png" alt="Paw Logo"> -->
+                <h2 class="largeHeader d-inline-block">
+                    <img style="zoom:50%; " class="imgCenter" src="images/logos/PawLogoSmall.png" alt="Paw Logo">
+                    Introducing <strong><em>Lisa's Place</em></strong>
+                    <img style="zoom:50%; top: 0; right: 0; position: relative;" class="ml-2" src="images/logos/PawLogoSmall.png" alt="Paw Logo">
+                </h2>
 
-        //Timer routines - if no movement on the page in 2 minutes put the bat to sleep
-        var timeoutTimer;
-        var expireTime = (1000 * 60) * 1; //1000*60 = 1 minute : *2 = 2 minutes
+            </div>
+            <p>
+                Home Boarding and Grooming in the Fylde Area from Preston to Blackpool. <br> <br>
+                Pets are part of your family and they deserve the best, we set up <em>Lisa's Place </em>
+                to take care of your pets while you are away. With our Home Boarding Service you can ensure your
+                pets are fed, watered, exercised and loved during your absence. <br> <br>
+                Grooming Services are available (including Late Nights and Weekends). <br> <br>
+                All breeds catered for, Bulldogs a speciality. <br> <br>
+                Please see our <a href="services.html">Services</a> page for a full list of services we offer
+                and here for some of our <a href="reviews.html">Reviews</a>
+            </p>
+        </div>
+    </section>
 
-        function expireSession() {
-            clearTimeout(timeoutTimer);
-            timeoutTimer = setTimeout("IdleTimeout()", expireTime);
-            if ($("#logoAwake").attr("src") == "images/logos/BatSleepTiny.png") {
-                $("#logoAwake").attr("src", "images/logos/DingBatTiny.png");
-            };
+    <!-- Start of 360 degree video -->
+    <!-- <script>
+    videojs('panorama', {
+        plugins: {
+            pannellum: {}
         }
-        function IdleTimeout() {
-            //localStorage.setItem("logoutMessage", true);
-            //window.location.href = "{{url('logout')}}";
-            $("#logoAwake").attr("src", "images/logos/BatSleepTiny.png");
-        }
+    });
+    </script> -->
+    <script src='https://vjs.zencdn.net/7.6.5/video.js'></script>
+    <!-- End of 360 degree Video  -->
 
-        $(document).on('click mousemove scroll', function () {
-            expireSession();
-        });
-        expireSession();
-
-
-    </script>
 </body>
 
 </html>
