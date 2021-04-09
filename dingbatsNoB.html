@@ -1,0 +1,483 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+
+    <!-- Below link tells the system where to find the icon that I
+      want to be used on my chrome tab -->
+    <!--<link rel="icon" href="images/icons/pawPrint.ico">-->
+    <link rel="icon" href="images/logos/bat.png">
+
+    <!-- For fonts - in case they are not loaded already -->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat|Roboto+Mono|Sacramento&display=swap" rel="stylesheet">
+
+    <!-- my stylesheet -->
+    <link href="webLearning/CSS/main.css" rel="stylesheet" />
+    <link href="webLearning/CSS/normalize.css" rel="stylesheet" />
+    <link href="webLearning/CSS/MyStyles.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/dingbatsNoB.css">
+
+    <!-- jQuery first -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    
+    <title>Dingbats NoB</title>
+
+    <!--<script type="text/javascript">
+        function clickedExp(id) {
+            var e = document.getElementById(id);
+
+            if ($('#navButton').is(':visible') === true) {
+                e.style.display = "none";
+            } else {
+                e.style.display = "inline-block";
+            }
+        }
+    </script>-->
+
+    <style>
+        /*
+            Common breakpoints:
+        320 - 480px: Mobiles
+        481 - 768px: IPads/Tablets
+        769 - 1024px: Laptops (small screen)
+            But I want 660px for now
+        */
+        @media only screen and (max-width: 660px) {
+            #myCollapseNavbar {
+                display: none;
+            }
+        }
+
+        /*        @media only screen and (max-width: 746px) {
+            #horiz2Div {
+                display: none;
+            }
+        }*/
+
+        #garyName {
+            margin: 5px 10px 0 10px;
+        }
+
+        .divColour1 {
+            background-color: #F08080;
+        }
+
+        .divColour2 {
+            background-color: #F2ACAC;
+        }
+
+        .divCenter {
+            text-align: center;
+        }
+
+        html {
+            background-color: #FCEFEF;
+        }
+
+
+        .sectionEven {
+            background-color: #EAF6F6;
+            color: #801336;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+        /* Odd sections change colour etc */
+        .sectionOdd {
+            background-color: #801336;
+            color: #EAF6F6;
+            padding: 40px 5% 0 5%;
+        }
+
+        .textSizeA {
+            font-size: 14px;
+            font-family: "Century Gothic",CenturyGothic,AppleGothic,sans-serif;
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+    <script>
+        //Script for the Navigation Bar only
+        function ulMainDrop(id) {
+            var e = document.getElementById(id);
+            if (e.style.display == "") { e.style.display = "none" };
+
+            if (e.style.display == "none") {
+                e.style.display = "block";
+                ulMainOut(id);
+            } else {
+                e.style.display = "none";
+            };
+        };
+
+        function ulMainForce(id) {
+            var e = document.getElementById(id);
+            if (e.style.display != "none") { e.style.display = "none" };
+        };
+
+        function ulMainOut(id) {
+            switch (id) {
+                case "navGallery":
+                    ulMainForce("navProperty");
+                    break;
+                case "navProperty":
+                    ulMainForce("navGallery");
+                    break;
+                case "dropNavGallery":
+                    ulMainForce("dropNavProperty");
+                    break;
+                case "dropNavProperty":
+                    ulMainForce("dropNavGallery");
+                    break;
+                default:
+                    ulMainForce("navProperty");
+                    ulMainForce("navGallery");
+                    ulMainForce("dropNavProperty");
+                    ulMainForce("dropNavGallery");
+                    break;
+            };
+        };
+
+        function showNavButton(id, show) {
+            var x = document.getElementById(id);
+            if (x.style.display == "") { x.style.display = "none" }
+
+            if (show == true) {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            };
+
+        };
+
+        //This is here to set up page for screen size
+        function screenSizeCheck(x) {
+            if (x.matches) {  //Screen size matches size we set
+                ulMainOut("All");
+                ulMainForce("horiz2Div");
+                showNavButton("horizButton", true);
+            } else {
+                showNavButton("horizButton", false);
+                ulMainDrop("droppedMenu");
+                showNavButton("droppedMenu", false);
+                ulMainDrop("horiz2Div");
+            }
+        }
+
+        //END of Script for the Navigation Bar only
+    </script>
+    <nav class="fixedPosition">
+        <div style="padding:0;">
+            <div class="navbarDefault divFlex" style="position:relative;">
+                <div class="logo-pictureW logo-picture floatLeft navbarSub">
+                    <img id="logoAwake" class="imgShrink logo-pic" src="images/logos/DingBatTiny.png" alt="Dingbats logo">
+                    <img id="logoSleep" class="imgShrink logo-pic logo-picHover" src="images/logos/BatSleepTiny.png" alt="Dingbats logo">
+                </div>
+                <div id="garyName" class="navbarDiv">
+                    <div class="navbarDiv divFlex navbarCenter">
+                        <h2 class="navbarText navbarTextColor"><em>Gary</em></h2>
+                        &nbsp;&nbsp;
+                        <img style="height:60px; z-index: 1;" src="images/GKimage.png" alt="Gary" />
+                        <h2 class="navbarText navbarTextColor"><em> Kirby </em></h2>
+                    </div>
+                    <div id="myCollapseNavbar">
+                        <p class="navbarTele navbarTextMenu">This page does NOT use: <br> Bootstrap</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="position:relative;">
+                <div id="horizButton">
+                    <img id="horizButtonImage"
+                         src="images/menu.png"
+                         alt="Menu Icon"
+                         onclick="ulMainDrop('droppedMenu')" />
+                </div>
+                <div id="horiz2Div">
+                    <ul id="horiz2">
+                        <!--Call ulMainOut to close any opened drop down menu lists
+                            but only necessary if staying on this page -->
+                        <li><a class="ulMain" href="mainMenu.html">Home</a></li>
+                        <li><a class="ulMain" onclick="ulMainOut('All')" href="#section1">Section 1</a></li>
+                        <li><a class="ulMain" onclick="ulMainOut('All')" href="#section2">Section 2</a></li>
+                        <li>
+                            <div class="ulMainDropDiv" style="display:inline-block;position:relative;">
+                                <a class="ulMainDrop" onclick="ulMainDrop('navProperty')" href="#">Property<span id="triangleDown">&#9660</span></a>
+                                <div id="navProperty" class="verticalNav">
+                                    <a class="ulSub" href="#">Property</a>
+                                    <a class="ulSub" href="#">Garden</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li><a class="ulMain" href="#">Services</a></li>
+                        <li>
+                            <div class="ulMainDropDiv">
+                                <a class="ulMainDrop"
+                                   onclick="ulMainDrop('navGallery')"
+                                   href="#">Gallery<span id="triangleDown">&#9660</span></a>
+                                <div id="navGallery" class="verticalNav">
+                                    <a class="ulSub" href="#">Gallery 1</a>
+                                    <a class="ulSub" href="#">Gallery 2</a>
+                                    <a class="ulSub" href="#">Gallery 3</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li><a class="ulMain" href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="droppedMenu">
+                <div id="droppedItems">
+                    <ul id="droppedUl">
+
+                        <li><a class="dropItem" href="mainMenu.html">Home</a></li>
+                        <li><a class="dropItem" onclick="ulMainOut('All')" href="#section1">Section 1</a></li>
+                        <li><a class="dropItem" onclick="ulMainOut('All')" href="#section2">Section 2</a></li>
+                        <li>
+                            <div class="dropItemDropDiv" style="display:inline-block;position:relative;">
+                                <a class="dropItemDrop" onclick="ulMainDrop('dropNavProperty')" href="#">Property<span id="triangleDown">&#9660</span></a>
+                                <div id="dropNavProperty" class="dropVerticalNav">
+                                    <a class="dropItemSub" href="#">Property</a>
+                                    <a class="dropItemSub" href="#">Garden</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li><a class="dropItem" href="#">Services</a></li>
+                        <li>
+                            <div class="dropItemDropDiv">
+                                <a class="dropItemDrop"
+                                   onclick="ulMainDrop('dropNavGallery')"
+                                   href="#">Gallery<span id="triangleDown">&#9660</span></a>
+                                <div id="dropNavGallery" class="dropVerticalNav">
+                                    <a class="dropItemSub" href="#">Gallery 1</a>
+                                    <a class="dropItemSub" href="#">Gallery 2</a>
+                                    <a class="dropItemSub" href="#">Gallery 3</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li><a class="dropItem" href="#">Contact</a></li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+    </nav>
+
+    <script>
+
+        //This is for the Navigation bars use
+        var x = window.matchMedia("(max-width: 746px)")
+        screenSizeCheck(x) // Call listener function at run time
+        x.addListener(screenSizeCheck) // Attach listener function on state changes (no parameters)
+        //And it HAS to be here at the end of the Navigation bar set up to make sure all the elements
+        //have been created (otherwise errors occur as the elements are not found).
+
+
+        //Timer routines - if no movement on the page in 1 minute put the bat to sleep
+        var timeoutTimer;
+        var expireTime = (1000 * 60) * 1; //1000*60 = 1 minute : *2 = 2 minutes
+
+        function expireSession() {
+            clearTimeout(timeoutTimer);
+            timeoutTimer = setTimeout("IdleTimeout()", expireTime);
+            if ($("#logoAwake").attr("src") == "images/logos/BatSleepTiny.png") {
+                $("#logoAwake").attr("src", "images/logos/DingBatTiny.png");
+            };
+        }
+        function IdleTimeout() {
+            $("#logoAwake").attr("src", "images/logos/BatSleepTiny.png");
+        }
+
+        $(document).on('click mousemove scroll', function () {
+            expireSession();
+        });
+        expireSession();
+
+    </script>
+
+    <section id="section1">
+        <!-- below div makes sure the carousel starts below the navbar -->
+        <div class="blocker">
+        </div>
+
+        <div class="divFlex divBorder divCenter divNoMargin"
+             style="width:100%">
+
+            <div class="divBorder divColour1"
+                 style="display: inline-block; margin: 0 auto; ">
+                <p>
+                    <b>Please Note...</b> <br /> <br />
+                    The menu list in the header is just for demonstration purposes
+                    and only the <b>Home</b> and <b>Section</b> links work.
+                </p>
+            </div>
+            <div class="divBorder divColour2"
+                 style="display: inline-block; margin: 0 auto; ">
+                <p>
+                    Filler Section for display <br /> <br />
+                    Section 2 Section 2 Section 2 Section 2 Section 2
+                    Section 2 Section 2 Section 2 Section 2 Section 2
+                    Section 2 Section 2 Section 2 Section 2 Section 2
+                    Section 2 Section 2 Section 2 Section 2 Section 2
+                </p>
+            </div>
+            <div class="divBorder divColour1"
+                 style="display: inline-block; margin: 0 auto;">
+                <p>
+                    <b>Also Note... </b> <br />
+                    If no mouse movement happens for one minute then the
+                    bat (top left) will go to sleep until a mouse movement
+                    or button click happens. <br />
+                    I was just seeing how easy it was to make this happen. <br />
+                    (or mouse over it)
+                </p>
+            </div>
+
+        </div>
+
+        <div class="divFlex divNoMargin divBorder divCenter"
+             style="width:100%">
+            <div class="divBorder divColour2"
+                 style="display: inline-block; margin: 0 auto; ">
+                <p>
+                    Filler Section for display <br /> <br />
+                    Section 4 Section 4 Section 4 Section 4 Section 4
+                    Section 4 Section 4 Section 4 Section 4 Section 4
+                    Section 4 Section 4 Section 4 Section 4 Section 4
+                    Section 4 Section 4 Section 4 Section 4 Section 4
+                </p>
+            </div>
+            <div class="divBorder divColour2"
+                 style="display: inline-block; margin: 0 auto;">
+                <p>
+                    Filler Section for display <br /> <br />
+                    Section 5 Section 5 Section 5 Section 5
+                    Section 5 Section 5 Section 5 Section 5
+                    Section 5 Section 5 Section 5 Section 5
+                    Section 5 Section 5 Section 5 Section 5
+                    Section 5 Section 5 Section 5 Section 5
+                </p>
+            </div>
+            <div class="divBorder divColour2"
+                 style="display: inline-block; margin: 0 auto; ">
+                <p>
+                    Filler Section for display <br /> <br />
+                    Section 6 Section 6 Section 6 Section 6 Section 6
+                    Section 6 Section 6 Section 6 Section 6 Section 6
+                    Section 6 Section 6 Section 6 Section 6 Section 6
+                    Section 6 Section 6 Section 6 Section 6 Section 6
+                </p>
+            </div>
+            <div class="divBorder divColour2"
+                 style="display: inline-block; margin: 0 auto;">
+                <p>
+                    Filler Section for display <br /> <br />
+                    Section 7 Section 7 Section 7 Section 7
+                    Section 7 Section 7 Section 7 Section 7
+                    Section 7 Section 7 Section 7 Section 7
+                    Section 7 Section 7 Section 7 Section 7
+                    Section 7 Section 7 Section 7 Section 7
+                </p>
+            </div>
+            <div class="divBorder divColour2"
+                 style="display: inline-block; margin: 0 auto;">
+                <p>
+                    Filler Section for display <br /> <br />
+                    Section 8 Section 8 Section 8 Section 8
+                    Section 8 Section 8 Section 8 Section 8
+                    Section 8 Section 8 Section 8 Section 8
+                    Section 8 Section 8 Section 8 Section 8
+                    Section 8 Section 8 Section 8 Section 8
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="section2" class="sectionOdd">
+
+        <div class="blockerSmall">
+        </div>
+        <p class="divCenter" style="font-size:10px; font-style:italic;">(The below was borrowed from a company website for demonstration purposes only)</p>
+        <div class="divFlex textSizeA">
+            <div class="" style="margin-right:10px;">
+                <h4>Is Caliq Relevant To Me?</h4>
+                <p>
+                    Caliq is now the solution of choice for multi-channel wholesale distributors
+                    operating in the Home, Gift, Garden and allied sectors. Take a look
+                    at our Clients page to see people you know who place their trust in us.
+                </p>
+                <p>
+                    A <b>constant investment programme in R&D</b> run in close cooperation with
+                    clients who do what you do means that you are assured that we
+                    have software and services available to support your business
+                    when you need it, today and into the future.
+                </p>
+                <h4>Our role is to solve your problems… </h4>
+                <p>
+                    The fact that you are reading this means that you are facing challenges
+                    with your current software system and maybe your supplier as well.
+                    You are probably running a system designed to work for every type of
+                    business rather than yours so it is hardly surprising that <b>
+                        you have
+                        the need for better, more relevant functionality, appropriate to your business.
+                    </b> <br /> <br />
+
+                    Your supplier is probably a reseller who is restricted by not being
+                    the author of the software and therefore unable to influence
+                    product development. Maybe they do not have a “can do” philosophy.
+                    Our clients tell us we have this approach to everything we do for
+                    them. <b>You do not need barriers, your business needs creative open minds.</b>
+                    <br /> <br /> <br />
+                </p>
+            </div>
+
+            <div class="" style="margin-left: 10px;">
+                <h4>A Solution with no limits…</h4>
+                <p>
+                    With Caliq, the people you work with own and develop the software right
+                    here in the UK. <b>No reseller structure to get in the way between us and you </b>.
+                    From the initial meeting right through implementation and
+                    beyond, you are always with members of our team who are
+                    dedicated to ensuring that Caliq is relevant, capable and supporting your needs.
+                </p>
+
+                <h4>Our focus is on you… </h4>
+                <p>
+                    Our aims are to provide <b>clarity over all aspects of your business</b>,
+                    deliver efficient and effective processes through your supply
+                    chain, implement controls where you need them, margin monitoring
+                    and performance analysis at all pressure points and the tools
+                    for your team to deliver outstanding customer service.
+                    A Business Intelligence module helps you monitor and
+                    manage every aspect of your operation. <br /> <br />
+
+                    With all that in place, <b>the ultimate aim is to aid your bottom line</b>
+                    and provide you with a business solution that empowers you
+                    to grow your business knowing that you and your team have
+                    the right tools in place to support your Company wherever you take it. <br /> <br />
+
+                    <b>
+                        If the Caliq community sounds appealing for your Company,
+                        we would be delighted to talk.
+                    </b>
+                </p>
+                <br /> <br /> <br />
+            </div>
+            
+        </div>
+    </section>
+
+
+</body>
+</html>

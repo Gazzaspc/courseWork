@@ -137,7 +137,6 @@
     font-size: 12px;
 }
 
-
 .hideTog {
     display: none;
 }
@@ -243,10 +242,10 @@
     zoom: 125%;
 }
 
-    .myFacebook:hover {
-        background-color: #ca3e47;
-        text-decoration: underline;
-    }
+.myFacebook:hover {
+    background-color: #ca3e47;
+    text-decoration: underline;
+}
 
 .myNavDrop {
     background-color: #EAF6F6;

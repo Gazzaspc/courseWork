@@ -52,6 +52,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -63,6 +64,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="images\logos\pspbrwse.jbf" />
+    <None Include="images\logos\ReadMe.docx" />
+    <None Include="images\pspbrwse.jbf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -72,9 +76,114 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="webLearning\Images\pspbrwse.jbf" />
+    <None Include="webLearning\JQuery\Event Examples_files\jquery-3.5.1.js.download" />
+    <None Include="webLearning\JQuery\Event Examples_files\myScripts.js.download" />
+    <None Include="webLearning\pspbrwse.jbf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\dingbats.css" />
+    <Content Include="css\dingbatsNoB.css" />
+    <Content Include="dingbats.html" />
+    <Content Include="dingbatsNoB.html" />
+    <Content Include="images\CVPicSmall.jpg" />
+    <Content Include="images\GKimage.png" />
+    <Content Include="images\logos\bat.png" />
+    <Content Include="images\logos\BatSleepTiny - Copy.png" />
+    <Content Include="images\logos\BatSleepTiny.png" />
+    <Content Include="images\logos\DingBat - Copy.png" />
+    <Content Include="images\logos\DingBat.png" />
+    <Content Include="images\logos\DingBatTiny - Copy.png" />
+    <Content Include="images\logos\DingBatTiny.png" />
+    <Content Include="images\Office1 - Copy.jpg" />
+    <Content Include="images\Office1.jpg" />
+    <Content Include="images\Office1a.jpg" />
+    <Content Include="images\Office2.jpg" />
+    <Content Include="images\Office3.jpg" />
+    <Content Include="webLearning\aaaTESTme.html" />
+    <Content Include="webLearning\AddJavascript.html" />
+    <Content Include="webLearning\Animation.html" />
+    <Content Include="webLearning\Background.html" />
+    <Content Include="webLearning\BeforeAfter.html" />
+    <Content Include="webLearning\BoxModel.html" />
+    <Content Include="webLearning\codecademyCCards.html" />
+    <Content Include="webLearning\codecademyLessons.html" />
+    <Content Include="webLearning\codecademyMenu.html" />
+    <Content Include="webLearning\CommonToPages\commonHeader.html" />
+    <Content Include="webLearning\CSSExamples.html" />
+    <Content Include="webLearning\CSS\main.css" />
+    <Content Include="webLearning\CSS\MyStyles.css" />
+    <Content Include="webLearning\CSS\normalize.css" />
+    <Content Include="webLearning\DingbatsTest.html" />
+    <Content Include="webLearning\domElements.html" />
+    <Content Include="webLearning\domEventListener.html" />
+    <Content Include="webLearning\domMethods.html" />
+    <Content Include="webLearning\domTimers.html" />
+    <Content Include="webLearning\Float.html" />
+    <Content Include="webLearning\FontFamily.html" />
+    <Content Include="webLearning\FontSize.html" />
+    <Content Include="webLearning\ImageHover.html" />
+    <Content Include="webLearning\Images\EmuSmall.jpg" />
+    <Content Include="webLearning\Images\Glacier.jpeg" />
+    <Content Include="webLearning\Images\LooneyGK.bmp" />
+    <Content Include="webLearning\Images\McD_Logo.png" />
+    <Content Include="webLearning\Images\Paw.png" />
+    <Content Include="webLearning\Images\PawBullet.png" />
+    <Content Include="webLearning\Images\Top.png" />
+    <Content Include="webLearning\Images\Tweety.png" />
+    <Content Include="webLearning\Images\WileHelp.jpeg" />
+    <Content Include="webLearning\index.html" />
+    <Content Include="webLearning\InputBoxes.html" />
+    <Content Include="webLearning\jqCreate.html" />
+    <Content Include="webLearning\jqEffects.html" />
+    <Content Include="webLearning\jqEvents.html" />
+    <Content Include="webLearning\jqSelectors.html" />
+    <Content Include="webLearning\jqSettingUp.html" />
+    <Content Include="webLearning\JQuery\Event Examples.html" />
+    <Content Include="webLearning\JQuery\Event Examples_files\main.css" />
+    <Content Include="webLearning\JQuery\Event Examples_files\MyStyles.css" />
+    <Content Include="webLearning\JQuery\Event Examples_files\normalize.css" />
+    <Content Include="webLearning\JQuery\jquery-3.5.1.js" />
+    <Content Include="webLearning\jsArrays.html" />
+    <Content Include="webLearning\jsDates.html" />
+    <Content Include="webLearning\jsDropDown.html" />
+    <Content Include="webLearning\jsFunctions.html" />
+    <Content Include="webLearning\jsLoops.html" />
+    <Content Include="webLearning\jsNumbers.html" />
+    <Content Include="webLearning\jsObjects.html" />
+    <Content Include="webLearning\jsOperators.html" />
+    <Content Include="webLearning\jsStrings.html" />
+    <Content Include="webLearning\jsSwitch.html" />
+    <Content Include="webLearning\jsTryCatch.html" />
+    <Content Include="webLearning\Links.html" />
+    <Content Include="webLearning\Lists_ulol.html" />
+    <Content Include="webLearning\lodash.html" />
+    <Content Include="webLearning\NthChild.html" />
+    <Content Include="webLearning\NumberSection.html" />
+    <Content Include="webLearning\oddElements.html" />
+    <Content Include="webLearning\otherCanvas.html" />
+    <Content Include="webLearning\otherGoodies.html" />
+    <Content Include="webLearning\otherRegex.html" />
+    <Content Include="webLearning\Overflow.html" />
+    <Content Include="webLearning\Positioning.html" />
+    <Content Include="webLearning\PositioningFixSticky.html" />
+    <Content Include="webLearning\Properties.html" />
+    <Content Include="webLearning\PseudoClasses.html" />
+    <Content Include="webLearning\RoundBorders.html" />
+    <Content Include="webLearning\Scripts\myScripts.js" />
+    <Content Include="webLearning\Shadow.html" />
+    <Content Include="webLearning\startFile.html" />
+    <Content Include="webLearning\Structure.html" />
+    <Content Include="webLearning\tables.html" />
+    <Content Include="webLearning\TitlePopup.html" />
+    <Content Include="webLearning\Transform.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
+    <Folder Include="bin\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

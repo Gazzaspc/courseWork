@@ -1,0 +1,286 @@
+﻿
+
+.blocker {
+    /* This section creates a block (div) that follows the navbar
+  so that the rest of the elements start below the fixed navbar */
+    max-height: 85px;
+    height: 85px;
+    width: 100%;
+}
+
+.blockerSmall {
+    /* This section creates a block (div) that follows the navbar
+  so that the rest of the elements start below the fixed navbar */
+    max-height: 55px;
+    height: 55px;
+    width: 100%;
+}
+
+#droppedMenu {
+    background-color: rgba(255,255,255,.9);
+    display:none;
+    position: absolute;
+    top:80px;
+    z-index: 5;
+}
+
+#droppedUl {
+    background-color: none;
+    margin-top:10px;
+    padding: 0 10px 0 10px;
+}
+
+#droppedUl li {
+    background-color: none;
+    color: #AF1515;
+    list-style-type: none;
+    padding: 2px 0 0 0;
+    text-decoration: none;
+    /*border-radius: 4px 4px 0 0;*/
+}
+
+/* In order  to NOT change the text color & not have it underlined when
+    the link was clicked on you need to the below...ALSO the :hover MUST be
+    after the :link & :visited*/
+a.dropItem:link,
+a.dropItem:visited {
+    color: #AF1515;
+    text-decoration: none;
+}
+
+.dropItem:hover {
+    color: red !important;
+}
+
+a.dropItemDrop:link,
+a.dropItemDrop:visited {
+    color: #AF1515;
+    text-decoration: none;
+}
+
+.dropItemDrop:hover {
+    color: red !important;
+}
+
+a.dropItemSub {
+    color: #AF1515;
+    display: block;
+}
+
+/* In order  to NOT change the text color & not have it underlined when
+the link was clicked on you need to the below...ALSO the :hover MUST be
+after the :link & :visited*/
+a.dropItemSub:link,
+a.dropItemSub:visited {
+    color: #AF1515;
+    text-decoration: none;
+}
+
+a.dropItemSub:hover, a.dropItemSub:focus {
+    color: red !important;
+}
+
+.dropVerticalNav {
+    background-color: rgba(255,255,255,.9);
+    border-left: 1px solid #990000;
+    border-bottom: 1px solid #990000;
+    border-radius: 0 0 0 10px;
+    color: #AF1515;
+    display: none;
+    padding: 5px 2px 5px 2px;
+    position: relative;
+    left: 20px;
+    text-align: right;
+    text-decoration: none;
+    /*width: 135px;*/
+    z-index: 5;
+}
+
+
+.fixedPosition {
+    position: fixed;
+    width: 100%;
+}
+
+h2.navbarText {
+    display:inline-block;
+    font-size:2rem;
+    font-weight:normal;
+}
+
+#horiz2 {
+    margin: 0;
+    padding-right: 20px;
+    font-size:1.2rem;
+}
+
+#horiz2Div {
+    height:20px;
+    padding-left:50px;
+    position: relative;
+    text-align:right;
+    /*width:100%;*/
+    top: -25px;
+}
+
+#horizButton {
+    display: none;
+    position: relative;
+    text-align: right;
+    /*width:100%;*/
+    top: -30px;
+}
+
+#horizButtonImage {
+    border: 1px solid rgba(255,255,255,.5);
+    margin-right: 50px;
+    padding: 0;
+}
+
+#horizontal li {
+    display: inline;
+}
+
+#horiz2 li {
+    display: inline;
+    background-color: none;
+    color: rgba(255,255,255,.5);
+    padding: 5px 10px;
+    text-decoration: none;
+    /*border-radius: 4px 4px 0 0;*/
+}
+
+/* In order  to NOT change the text color & not have it underlined when
+    the link was clicked on you need to the below...ALSO the :hover MUST be
+    after the :link & :visited*/
+a.ulMain:link,
+a.ulMain:visited {
+    color: rgba(255,255,255,.5);
+    text-decoration: none;
+}
+
+.ulMain:hover {
+    color: #C5CECE !important;
+}
+
+a.ulMainDrop:link,
+a.ulMainDrop:visited {
+    color: rgba(255,255,255,.5);
+    text-decoration: none;
+}
+
+.ulMainDrop:hover {
+    color: #C5CECE !important;
+}
+
+.ulMainDropDiv {
+    display:inline-block;
+    position:relative;
+}
+
+.verticalNav {
+    background-color: #EAF6F6;
+    border-radius: 4px 4px 0 0;
+    color: #AF1515;
+    display: none;
+    padding: 5px 2px 5px 2px;
+    position: absolute;
+    top: 25px;
+    text-align: left;
+    text-decoration: none;
+    width: 80px;
+    z-index: 5;
+}
+
+a.ulSub {
+    color: #AF1515;
+    display: block;
+}
+
+    /* In order  to NOT change the text color & not have it underlined when
+    the link was clicked on you need to the below...ALSO the :hover MUST be
+    after the :link & :visited*/
+a.ulSub:link,
+a.ulSub:visited {
+        color: #AF1515;
+        text-decoration: none;
+    }
+
+a.ulSub:hover, a.ulSub:focus {
+    color: red !important;
+}
+
+.logo-pictureW {
+    height: auto;
+    margin-left:5px;
+    /*width: 27%;*/
+    width: 110px;
+}
+
+.logo-picture img.logo-pic {
+    display: block;
+}
+
+.logo-picture:hover img.logo-pic {
+    display: none;
+}
+
+.logo-picture img.logo-picHover {
+    display: none;
+}
+
+.logo-picture:hover img.logo-picHover {
+    display: block;
+}
+
+.navbarCenter {
+    align-items: center;
+}
+
+.navbarDefault {
+    background: linear-gradient(to right, #E2DDDD, black 25%, #A10808 98%);
+    /* Start fading from left to right / start as light grey, fade into black then fade to red(-ish)
+      Light grey starts at 0%
+      Black starts at 25%
+      red starting at 98% to the end
+      and inbetween grey and black it fades the grey/black together
+      and inbetween black and red it fades black/red together.
+              IF
+      if I needed the black colour to not fade between 30% and 70% of the navbar I would say...
+          background: linear-gradient(to right, #E2DDDD, black 30% 70%, #A10808 98%);
+      that way the black will only start fading in to red at the 70% mark.
+      */
+}
+
+.navbarSub {
+    display: inline-block;
+}
+
+.navbarTele {
+    font-family: 'Roboto Mono', 'Sacramento', cursive;
+    font-size: 12px;
+    position: absolute;
+    /* right: -255px; */
+    right: 20px;
+    /* text-align: left; */
+    top: 0;
+}
+
+.navbarText {
+    margin-bottom: 0;
+    margin-top: 0;
+    font-family: 'Sacramento', cursive;
+    left: 10px;
+}
+
+.navbarTextColor {
+    color: #C5CECE;
+}
+
+.navbarTextMenu {
+    color:rgba(255,255,255,.5);
+}
+
+#triangleDown {
+    font-size: 60%;
+}
