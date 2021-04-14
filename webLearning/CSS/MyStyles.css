@@ -58,6 +58,23 @@ of "http://www.google.com" in its href attribute.
   padding: 20px;
 }
 
+.bodyMoveMain {
+    background-color: #FCEFEF;
+    width: 95%;
+    /* margin 0 auto   will centre the [body] on the page
+  but you would need to set a width otherwise it takes up the whole page. */
+    margin: 0 auto;
+    /* and if you want a margin at the top and bottom you need to ALSO specify it afterwards */
+    /* margin: 20px 0 20px 0;     but NOT in this way...do it separately*/
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.centerMe {
+    text-align: center;
+}
+
 html {
   background-color: #DCDCDC;
   scroll-behavior: smooth;
@@ -85,6 +102,13 @@ html {
   margin: 20px;
   padding: 10px;
   width: 400px;
+}
+
+.divBSetMain {
+    background-color: #F08080;
+    margin: 20px;
+    padding: 10px;
+    width: 400px;
 }
 
 /* Change ALL input boxes that are 'readonly' */
@@ -136,4 +160,8 @@ input[readonly] {background-color:#E0E0E0}
     inset 2px 2px 3px rgba(0, 0, 0, .6);
     /* transform: translateY(4px); */
     transform: translate(1px, 4px);
+}
+
+.makeInlineBlock {
+    display:inline-block;
 }

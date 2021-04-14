@@ -22,6 +22,7 @@
     <!-- jQuery first -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     
+
     <title>Dingbats NoB</title>
 
     <!--<script type="text/javascript">
@@ -60,6 +61,11 @@
             margin: 5px 10px 0 10px;
         }
 
+        body {
+            font-family: 'Merriweather', serif;
+            line-height: 1.5;
+        }
+
         .divColour1 {
             background-color: #F08080;
         }
@@ -72,10 +78,25 @@
             text-align: center;
         }
 
+        h1, h2, h3, h4, h5, h6 {
+            margin-bottom: .5rem;
+            margin-top: 0;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+        h4 {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
         html {
             background-color: #FCEFEF;
         }
 
+        p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
 
         .sectionEven {
             background-color: #EAF6F6;
@@ -204,7 +225,7 @@
                     <ul id="horiz2">
                         <!--Call ulMainOut to close any opened drop down menu lists
                             but only necessary if staying on this page -->
-                        <li><a class="ulMain" href="mainMenu.html">Home</a></li>
+                        <li><a class="ulMain" href="mainMenu.html">Main</a></li>
                         <li><a class="ulMain" onclick="ulMainOut('All')" href="#section1">Section 1</a></li>
                         <li><a class="ulMain" onclick="ulMainOut('All')" href="#section2">Section 2</a></li>
                         <li>
@@ -229,7 +250,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li><a class="ulMain" href="#">Contact</a></li>
+                        <li><a class="ulMain" href="contact.html">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -263,7 +284,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li><a class="dropItem" href="#">Contact</a></li>
+                        <li><a class="dropItem" href="contact.html">Contact</a></li>
                     </ul>
 
                 </div>
@@ -318,7 +339,7 @@
                 <p>
                     <b>Please Note...</b> <br /> <br />
                     The menu list in the header is just for demonstration purposes
-                    and only the <b>Home</b> and <b>Section</b> links work.
+                    and not all navigation links will be working. <br />
                 </p>
             </div>
             <div class="divBorder divColour2"

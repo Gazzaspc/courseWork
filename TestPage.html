@@ -1,0 +1,302 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Contact Me</title>
+
+    <!-- Bootstrap BOOTSTRAP BOOTSTRAP 4.3.1 CSS :::: AND fonts for Dingbats NAVBAR-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat|Roboto+Mono|Sacramento&display=swap" rel="stylesheet">
+
+
+    <link href="webLearning/CSS/normalize.css" rel="stylesheet" />
+    <link href="webLearning/CSS/main.css" rel="stylesheet" />
+
+    <!-- Required meta tags (Bootstrap BOOTSTRAP BOOTSTRAP?)-->
+    <!--The viewport meta tag tells the browser that the width of the screen should be
+    considered the "Full Width" of the page.
+    Meaning no matter the width of the device you are on,
+    whether on desktop or mobile. ... You can read more about the viewport
+    meta tag at W3Schools. In regards to the term "render" -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS ::: ALL are req'd for Bootstrap BOOTSTRAP BOOTSTRAP-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <link href="css/dingbats.css" rel="stylesheet" />
+    <link href="webLearning/CSS/MyStyles.css" rel="stylesheet" />
+
+    <style>
+        #emailTbl {
+            border: 1px solid black;
+            border-collapse: collapse;
+            /* Note... border-collapse: collapse will make it just a single border */
+        }
+
+            #emailTbl td {
+                /*border: 1px solid black;*/
+            }
+
+        /* In order  to NOT change the text color & not have it underlined when
+        the link was clicked on you need to the below...ALSO the :hover MUST be
+        after the :link & :visited*/
+        a.button2:link,
+        a.button2:visited {
+            text-decoration: none;
+        }
+
+        a.button2:hover {
+            color: white;
+        }
+
+        .tdRight {
+            text-align: right;
+        }
+
+        .tdLeft {
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .tdTop {
+            vertical-align: top;
+            padding-top: 7px;
+        }
+
+        .tdPadText {
+            padding: 2px 5px 0 5px;
+        }
+
+        .tdPadBox {
+            padding: 0 5px 10px 5px;
+        }
+
+        .tdPadBoxSub {
+            padding: 0 5px 10px 0;
+        }
+    </style>
+
+
+
+</head>
+<body class="bodyMoveMain">
+
+    <section id="title">
+        <div class="container-fluid mL0 ">
+            <!-- Nav Bar -->
+            <!--
+                align-items-end   places the elements at the bottom of the navbar.
+                fixed-top         will make navbar fixed in position & visible always
+                navbar-expand-lg   will collapse the navbar when it reaches the smallest point for a large (pc) screen
+                navbar-expand-md   so I changed it to collapse when it reaches the smallest medium size screen (tablet)
+              -->
+            <nav id="navbarMain" class="navbar navbar-default navbar-expand-md navbar-dark bg-dark fixed-top align-items-end pb-1 pt-1">
+
+                <div class="logo-pictureW logo-picture floatLeft">
+                    <img id="logoAwake" class="imgShrink logo-pic" src="images/logos/DingBatTiny.png" alt="Dingbats logo">
+                    <img id="logoSleep" class="imgShrink logo-pic logo-picHover" src="images/logos/BatSleepTiny.png" alt="Dingbats logo">
+                </div>
+                <button id="navButton" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerGK01" aria-controls="navbarTogglerGK01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span onclick="clickedExp('HomeFromHome')" class="navbar-toggler-icon"></span>
+                </button>
+
+                <div style="position: relative;" class="collapse navbar-collapse" id="navbarTogglerGK01">
+                    <div id="HomeFromHome" class="navbarDiv">
+                        <div>
+                            <!--<h2 class="mt-2 navbar-text navbarText"><em>Gary Kirby </em></h2>-->
+                            <h2 style="color:#C5CECE;" class="mt-2 navbar-text navbarText"><em>Gary</em></h2>
+                            &nbsp;&nbsp;
+                            <img style="height:60px; z-index: 1;" src="images/GKimage.png" alt="Gary" />
+                            <h2 style="color:#C5CECE;" class="mt-2 navbar-text navbarText"><em> Kirby </em></h2>
+                        </div>
+                        <div id="myCollapseNavbar">
+                            <p class="navbar-text navbarTele fontSizeSmall">This page uses: <br> Bootstrap</p>
+                        </div>
+
+
+                    </div>
+                    <ul style="z-index: 2;" class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="mainMenu.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="dingbats.html#section1">Section 1</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="dingbats.html#section2">Section 2</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a id="navbardrop" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Property</a>
+                            <div class="dropdown-menu myNavDrop">
+                                <a class="dropdown-item text-primary" href="#">Property</a>
+                                <a class="dropdown-item text-primary" href="#">Garden</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Services</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a id="navbardrop" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Gallery</a>
+                            <div class="dropdown-menu myNavDrop">
+                                <a class="dropdown-item text-primary" href="#">Gallery 1</a>
+                                <a class="dropdown-item text-primary" href="#">Gallery 2</a>
+                                <a class="dropdown-item text-primary" href="#">Gallery 3</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+            </nav>
+        </div>
+    </section>
+
+
+
+    <section id="section1">
+        <!-- below div makes sure the carousel starts below the navbar -->
+        <div class="blocker">
+        </div>
+
+        <h1 class="centerMe">Contact me</h1>
+
+        <div class="row divFlex divBorder divCenter ">
+            <div class="divBSet col-lg-2 col-md-3">
+                <h1>Gary Kirby</h1>
+                <h6>
+                    3 Richards Way <br />
+                    Lytham St Annes <br />
+                    Lancashire <br />
+                    FY8 3UZ
+                </h6>
+                <br /> <br /> <br />
+                <!--<button class="button2" onclick="showDirections()">Directions</button>-->
+                <div class="divDirection">
+                    <a href="https://www.google.com/maps/place/Richard's+Way,+Lytham+Saint+Annes+FY8+3UZ/@53.7689471,-3.0281041,17z/data=!3m1!4b1!4m5!3m4!1s0x487b4148b232bf8d:0xe9afb485c4df945!8m2!3d53.7690624!4d-3.0259378"
+                       target="_blank"
+                       style="display:inline-block;"
+                       class="button2"
+                       onclick="moveMe()">Directions</a>
+                </div>
+
+            </div>
+            <div class="divBSet col-lg-7 col-md-7 " style="overflow:auto;">
+
+                <!--<form onsubmit="return checkForm(this)"
+                      action="mailto:gazzaspc@gmail.com ?
+                      cc=secondemail@example.com
+                  &subject=Mail from our Website"
+                      method="post" enctype="text/plain">-->
+                <!--I will build the 'action' attribute within the function 'checkForm'-->
+                <form onsubmit="return checkForm(this)"
+                      action=""
+                      method="post" enctype="text/plain">
+
+                    <table id="emailTbl" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td class="tdLeft tdPadText">
+                                Your Name:
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdLeft tdPadBox">
+                                <input type="text" name="yourName" placeholder="Your name" size="20" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="tdLeft" style="padding: 0 0 0 5px;">
+                                <table border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td class="tdLeft">
+                                            Email:
+                                        </td>
+                                        <td> </td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdLeft tdPadBoxSub">
+                                <input type="email" name="yourEmail" placeholder="email@aaa.com" size="20" />
+                            </td>
+                            <td class="tdLeft tdPadBoxSub">
+                                <input type="checkbox" name="yourEmailCopy" />
+                                Copy Email to You?
+                            </td>
+                        </tr>
+                    </table>
+
+                    </td>
+
+                    </tr>
+                    <tr>
+                        <td class="tdLeft tdPadText">
+                            Message:
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdLeft tdPadBox">
+                            <textarea name="yourMessage" placeholder="Message" rows="15" cols="50" /></textarea>
+                        </td>
+                    </tr>
+                    <tr style="width:100px;">
+                        <td class="tdLeft">
+                            <input type="submit" value="Submit" />
+                        </td>
+                        <!--<td> </td>--> <!--//if not here then the border gets screwed up.-->
+                    </tr>
+
+                    </table>
+
+
+                </form>
+
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        function checkForm(form) {
+            if (form.yourName.value == "") {
+                alert("Error! your name must be entered");
+                form.yourName.focus();
+                return false;
+            } else if (form.yourEmail.value == "") {
+                alert("Error! your email address must be entered");
+                form.yourEmail.focus();
+                return false;
+            } else if (form.yourMessage.value == "") {
+                alert("Error! you must enter a message to send");
+                form.yourMessage.focus();
+                return false;
+            };
+
+            reg = /^[\w- ]+$/;  //Alphanumeric or - or space (must have the +)
+            // Above tells it to check for letters/numbers & space in the name
+            if (!reg.test(form.yourName.value)) {
+                alert("Error, Invalid chr's in your name");
+                form.yourName.focus();
+                return false;
+            }
+            alert(form.action);
+            form.action = buildAction(form);
+            alert(form.action);
+            return true;
+        };
+
+        function buildAction(form) {
+            var txt = "mailto:gazzaspc@gmail.com ?";
+            if (form.yourEmailCopy.checked == true) {
+                txt = txt + "cc=" + form.yourEmail.value + " &";
+            };
+            txt = txt + "subject=Mail from our Website";
+            return txt;
+        };
+
+    </script>
+</body>
+</html>
