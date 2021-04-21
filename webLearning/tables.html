@@ -31,13 +31,18 @@
       }
 
       /* Change the way the table headers are displayed */
-      #customersTbl th {
-        padding-top: 12px;
-        padding-bottom: 12px;
-        /* Default text in [th] is centered and Bold */
-        /* text-align: left; */
-        background-color: #4CAF50;
-        color: white;
+        #customersTbl th, #customersTbl tfoot {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            /* Default text in [th] is centered and Bold */
+            /* text-align: left; */
+            background-color: #4CAF50;
+            color: white;
+            font-weight:bold;
+        }
+
+      .demoTbl tr th {
+          height:40px;
       }
 
       .ExampleTbl {
@@ -105,32 +110,47 @@
     <h1>Working with Tables</h1>
     <div class="divFlex">
       <div class="divBorder divBSet">
-        <p>An example format/layout of the table... <br /> <br />
-          &lt;table&gt; <br />
-          &nbsp;&nbsp;&nbsp;&lt;caption&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Some Caption Text<br />
-          &nbsp;&nbsp;&nbsp;&lt;/caption&gt; <br />
-          &nbsp;&nbsp;&nbsp;&lt;thead&gt; <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt; <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Header Text&lt;/th&gt; <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;More Header Text&lt;/th&gt; <br />
-          &nbsp;&nbsp;&nbsp;&lt;/tr&gt; <br />
-          &lt;/thead&gt; <br />
-          &nbsp;&nbsp;&nbsp;&lt;tr&gt; <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Row Text&gt; <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;More Row Text&lt;/td&gt; <br />
-          &nbsp;&nbsp;&nbsp;&lt;/tr&gt; <br />
-          &nbsp;&nbsp;&nbsp;&lt;tr&gt; <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Row Text&gt; <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;More Row Text&lt;/td&gt; <br />
-          &nbsp;&nbsp;&nbsp;&lt;/tr&gt; <br />
-          &nbsp;&nbsp;&nbsp;&lt;tr&gt; <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Row Text&gt; <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;More Row Text&lt;/td&gt; <br />
-          &nbsp;&nbsp;&nbsp;&lt;/tr&gt; <br />
-          &lt;/table&gt; <br /> <br /> <br /> <br />
-          For more information see <a href="https://www.w3schools.com/tags/tag_table.asp">Table Info</a>
-        </p>
+          <p>
+              An example format/layout of the table... <br /> <br />
+              &lt;table&gt; <br />
+              &nbsp;&nbsp;&nbsp;&lt;caption&gt;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Some Caption Text<br />
+              &nbsp;&nbsp;&nbsp;&lt;/caption&gt; <br />
+              &nbsp;&nbsp;&nbsp;&lt;thead&gt; <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt; <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th scope="col"&gt;Col Header Text&lt;/th&gt; <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th scope="col"&gt;More Col Header Text&lt;/th&gt; <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt; <br />
+              &nbsp;&nbsp;&nbsp;&lt;/thead&gt; <br />
+              &nbsp;&nbsp;&nbsp;&lt;tbody&gt; <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt; <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Row Text&gt; <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;More Row Text&lt;/td&gt; <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt; <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt; <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Row Text&gt; <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;More Row Text&lt;/td&gt; <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt; <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt; <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Row Text&gt; <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;More Row Text&lt;/td&gt; <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt; <br />
+              &nbsp;&nbsp;&nbsp;&lt;/tbody&gt; <br />
+              &nbsp;&nbsp;&nbsp;&lt;tfoot&gt; <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt; <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td colspan="2"&gt;Footer Section&gt; <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt; <br />
+              &nbsp;&nbsp;&nbsp;&lt;/tfoot&gt; <br />
+              &lt;/table&gt; <br /> <br /> <br />
+              Note... <br />
+              The <b>&lt;th scope="col"&gt;</b> means that the header is a <b>column header</b> <br />
+              If we used <b>&lt;th scope="row"&gt;</b> then it would be a <b>row header</b> <br />
+              <i>
+                  (Although you do not have to include the <b>scope</b> command...it's
+                  probably more use for screen readers)
+              </i><br /> <br />
+              For more information see <a href="https://www.w3schools.com/tags/tag_table.asp">Table Info</a>
+          </p>
       </div>
 
       <div class="divBorder divBSet">
@@ -144,22 +164,29 @@
             </caption>
           <thead>
             <tr>
-              <th style="width:70px;">Header Text</th>
-              <th>More Header Text</th>
+              <th scope="col" style="width:70px;">Col Header Text</th>
+              <th>More Col Header Text</th>
             </tr>
           </thead>
-          <tr>
-            <td>Row Text </td>
-            <td>More Row Text</td>
-          </tr>
-          <tr>
-            <td>Row Text </td>
-            <td>More Row Text</td>
-          </tr>
-          <tr>
-            <td style="vertical-align:top;padding-top:2px;">Row Text*</td>
-            <td>More Row Text</td>
-          </tr>
+          <tbody>
+              <tr>
+                  <td>Row Text </td>
+                  <td>More Row Text</td>
+              </tr>
+              <tr>
+                  <td>Row Text </td>
+                  <td>More Row Text</td>
+              </tr>
+              <tr>
+                  <td style="vertical-align:top;padding-top:2px;">Row Text*</td>
+                  <td>More Row Text</td>
+              </tr>
+          </tbody>
+              <tfoot>
+                  <tr>
+                      <td colspan="2">Footer Section</td>
+                  </tr>
+              </tfoot>
           </table>
           <br /> <br /> <br />
           Note <br /> <br />
@@ -171,6 +198,7 @@
         </p>
       </div>
     </div>
+      <br /> <br />
     <table id="customersTbl">
       <caption>
         This [caption] tag MUST be directly after the [table] tag <br />
@@ -190,7 +218,7 @@
       <!-- Main Header for the table -->
       <thead>
         <tr>
-          <th colspan="3">Spread over 3 columns</th>
+          <th colspan="3">Spread over 3 columns (uses colspan="3")</th>
         </tr>
         <tr>
           <th>Month</th>
@@ -343,6 +371,37 @@
             </td>
         </tr>
       </table>
+
+    </div>
+      <br /> <br />
+    <div>
+        <h2>Using &lt;td rowspan="2"&gt;, for example</h2>
+        <p>Which makes a &lt;td&gt; spread downwards - over 2 rows...I also make it spread 'Relax' over 3 rows.</p>
+        <table class="PlayTbl demoTbl">
+            <tr>
+                <!-- Row 1 -->
+                <th></th>
+                <th>Saturday</th>
+                <th>Sunday</th>
+            </tr>
+            <tr>
+                <!-- Row 2 -->
+                <th>Morning</th>
+                <td rowspan="2">Work</td>
+                <td rowspan="3">Relax</td>
+            </tr>
+            <tr>
+                <!-- Row 3 -->
+                <th>Afternoon</th>
+            </tr>
+            <tr>
+                <!-- Row 4 -->
+                <th>Evening</th>
+                <td>Dinner</td>
+            </tr>
+        </table>
+        <br /> <br /> <br />
+
     </div>
   </body>
 

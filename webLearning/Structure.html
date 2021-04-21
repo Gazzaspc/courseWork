@@ -4,169 +4,237 @@
     Nothing should go in here but you can make it a different colour...See above grey area.</p> -->
 
 <head>
-  <meta charset="utf-8">
-  <title>Structure of Web Pages</title>
+    <meta charset="utf-8">
+    <title>Structure of Web Pages</title>
 
-  <style>
-    body {
-      /* margin 0 auto   will centre the [body] on the page
-      but you would need to set a width otherwise it takes up the whole page. */
-      margin: 0 auto;
-      /* and if you want a margin at the top and bottom you need to ALSO specify it afterwards */
-      /* margin: 20px 0 20px 0;     but NOT in this way...do it separately*/
-      margin-top: 20px;
-      margin-bottom: 20px;
+    <link href="CSS/main.css" rel="stylesheet" />
+    <link href="CSS/normalize.css" rel="stylesheet" />
+    <link href="CSS/MyStyles.css" rel="stylesheet" />
 
-      background-color: #F0F8FF;
-      width: 80%;
-    }
+    <style>
+        body {
+            /* margin 0 auto   will centre the [body] on the page
+        but you would need to set a width otherwise it takes up the whole page. */
+            margin: 0 auto;
+            /* and if you want a margin at the top and bottom you need to ALSO specify it afterwards */
+            /* margin: 20px 0 20px 0;     but NOT in this way...do it separately*/
+            margin-top: 20px;
+            margin-bottom: 20px;
+            background-color: #F0F8FF;
+            width: 80%;
+        }
 
-    html {
-      background-color: lightgray;
-    }
+        html {
+            background-color: lightgray;
+        }
 
-    div {
-      border: 1px solid #191970;
-      padding: 5px;
-    }
+        div {
+            border: 1px solid #191970;
+            padding: 5px;
+        }
 
-    h1,
-    h2 {
-      padding: 5px;
-      margin-bottom: 5px;
-    }
+        h1,
+        h2 {
+            padding: 5px;
+            margin-bottom: 5px;
+        }
 
-    nav {
-      border: 2px solid black;
-    }
+        nav {
+            border: 2px solid black;
+        }
 
-    p {
-      padding: 5px;
-    }
+        p {
+            padding: 5px;
+        }
 
-    section#IS {
-      width: 45%;
-      display: inline-block;
-      border: 1px solid blue;
-      margin: 5px;
-    }
+        section#IS {
+            width: 45%;
+            display: inline-block;
+            border: 1px solid blue;
+            margin: 5px;
+        }
 
-    section#IS2 {
-      margin: 5px;
-      background-color: #B0E0E6;
-    }
-  </style>
+        section#IS2 {
+            margin: 5px;
+            background-color: #B0E0E6;
+        }
+    </style>
 </head>
 
 <body>
 
-  <!-- A simple web page structure could be ...
-  Company Logo - not put a logo in here yet.
-  A Navigation Menu
-  Body of Page
-  -->
-  <nav>
-    <h1>Site Navigation Menu</h1>
-    <p><a href="index.html" title-"Home">Home Page</a>&nbsp;&nbsp;
-      <a href="about.html" title-"About">About Us</a>&nbsp;&nbsp;
-      <a href="faqs.html" title-"Faq's">Frequently Asked Questions</a>
-    </p>
-
-    <h2 style="display:inline-block;">Or we can do it like this</h2>(Using an unordered list)
-    <ul>
-      <li><a href="index.html" title-"Home">Home Page</a></li>
-      <li><a href="about.html" title-"About">About Us</a></li>
-      <li><a href="faqs.html" title-"Faq's">Frequently Asked Questions</a></li>
-    </ul>
-  </nav>
-  <br />
-  <div>
-    <p>
-    Setting the style of &nbsp;&nbsp;<b> margin: 0 auto </b>&nbsp;&nbsp; will centre the [body] on the page <br />
-      but you would need to set a width (eg <b>width: 80%</b>) otherwise it takes up the whole page.
-    </p>
-  </div>
-  <div style="display:flex;">
-
-    <section id="IS">
-      <h1>Make believe list of my favourite things (Section 1)</h1>
-      <div style=" display: flex; margin 5px;">
-
-        <div style="background-color:#B0E0E6;width:50%; margin: 5px;">
-
-          <section id="IS2">
-            <h2>Restaurants</h2>
-            <ul>
-              <li>
-                McDonalds
-              </li>
-              <li>
-                Gazza's Bistro
-              </li>
-              <li>
-                Charlie's Sannies
-              </li>
-            </ul>
-          </section>
-
-          <section id="IS2">
-            <h2>Films</h2>
-            <ul>
-              <li>
-                Enter The Dragon
-              </li>
-              <li>
-                Independance Day
-              </li>
-              <li>
-                Airplane
-              </li>
-              <li>
-                Die Hard
-              </li>
-
-            </ul>
-          </section>
-        </div>
-        <article style="display: inline-block; border:1px solid brown;
-      margin:5px;padding:5px;background-color:#E0E0E0;width:30%;">
-          This is an [Article] it shows
-          content that belongs here but could be
-          separate from the page too.<br /> <br />
-          I wanted it to be by the side of the lists
-          so had to put the lists in their own [div].
-        </article>
-      </div>
-
-    </section>
-
-    <section id="IS">
-      <h1>This is section 2</h1>
-      <div style="display:flex;">
+    <!-- A simple web page structure could be ...
+    Company Logo - not put a logo in here yet.
+    A Navigation Menu
+    Body of Page
+    -->
+    <nav>
+        <h1>Site Navigation Menu</h1>
         <p>
-          This section I wanted to appear next to the first section <br />
-          so I created a [div] that covers both Section 1 and Section 2 <br />
-          (ALL [div]'s are bordered in <span style="color:	#191970;">Blue</span>) and gave it a style... <br />
-          &nbsp;&nbsp;style="display:flex; <br />
-          This way the &bnsp;&bnsp;flex&bnsp;&bnsp; means it can line <br />
-          the inside sections up how I want.<br /><br />
-          Each of the two sections have a background-color set as #B0E0E6... <br />
-          which is the same as the [div] that contains them. <br /><br />
-          And then within the first section are 2 other sections (one below the other) <br />
-          I then added an [article] to section 1 <br />
-          and an [aside] to section 2
+            <a href="index.html" title-"Home">Home Page</a>&nbsp;&nbsp;
+            <a href="about.html" title-"About">About Us</a>&nbsp;&nbsp;
+            <a href="faqs.html" title-"Faq's">Frequently Asked Questions</a>
         </p>
 
-        <aside style="border:1px solid orange;margin:5px;background-color:#E0E0E0;width:30%;padding:5px;">
-          <p>
-            This is an example of the [aside] tag.<br />
-            The text should relate to this section but be more <br />
-            of a side comment (or additional info)...in an orange box/Grey backround.
-          </p>
-        </aside>
-      </div>
-    </section>
-  </div>
+        <h2 style="display:inline-block;">Or we can do it like this</h2>(Using an unordered list)
+        <ul>
+            <li><a href="index.html" title-"Home">Home Page</a></li>
+            <li><a href="about.html" title-"About">About Us</a></li>
+            <li><a href="faqs.html" title-"Faq's">Frequently Asked Questions</a></li>
+        </ul>
+    </nav>
+    <br />
+    <div>
+        <p>
+            Setting the style of &nbsp;&nbsp;<b> margin: 0 auto </b>&nbsp;&nbsp; will centre the [body] on the page <br />
+            but you would need to set a width (eg <b>width: 80%</b>) otherwise it takes up the whole page.
+        </p>
+    </div>
+    <div style="display:flex;">
+
+        <section id="IS">
+            <h1>Make believe list of my favourite things (Section 1)</h1>
+            <div style=" display: flex; margin 5px;">
+
+                <div style="background-color:#B0E0E6;width:50%; margin: 5px;">
+
+                    <section id="IS2">
+                        <h2>Restaurants</h2>
+                        <ul>
+                            <li>
+                                McDonalds
+                            </li>
+                            <li>
+                                Gazza's Bistro
+                            </li>
+                            <li>
+                                Charlie's Sannies
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section id="IS2">
+                        <h2>Films</h2>
+                        <ul>
+                            <li>
+                                Enter The Dragon
+                            </li>
+                            <li>
+                                Independance Day
+                            </li>
+                            <li>
+                                Airplane
+                            </li>
+                            <li>
+                                Die Hard
+                            </li>
+
+                        </ul>
+                    </section>
+                </div>
+                <article style="display: inline-block; border:1px solid brown;
+      margin:5px;padding:5px;background-color:#E0E0E0;width:30%;">
+                    This is an [Article] it shows
+                    content that belongs here but could be
+                    separate from the page too.<br /> <br />
+                    I wanted it to be by the side of the lists
+                    so had to put the lists in their own [div].
+                </article>
+            </div>
+
+        </section>
+
+        <section id="IS">
+            <h1>This is section 2</h1>
+            <div style="display:flex;">
+                <p>
+                    This section I wanted to appear next to the first section <br />
+                    so I created a [div] that covers both Section 1 and Section 2 <br />
+                    (ALL [div]'s are bordered in <span style="color:	#191970;">Blue</span>) and gave it a style... <br />
+                    &nbsp;&nbsp;style="display:flex; <br />
+                    This way the &bnsp;&bnsp;flex&bnsp;&bnsp; means it can line <br />
+                    the inside sections up how I want.<br /><br />
+                    Each of the two sections have a background-color set as #B0E0E6... <br />
+                    which is the same as the [div] that contains them. <br /><br />
+                    And then within the first section are 2 other sections (one below the other) <br />
+                    I then added an [article] to section 1 <br />
+                    and an [aside] to section 2
+                </p>
+
+                <aside style="border:1px solid orange;margin:5px;background-color:#E0E0E0;width:30%;padding:5px;">
+                    <p>
+                        This is an example of the [aside] tag.<br />
+                        The text should relate to this section but be more <br />
+                        of a side comment (or additional info)...in an orange box/Grey backround.
+                    </p>
+                </aside>
+            </div>
+        </section>
+    </div>
+    <br /> <br />
+    <hr /> <br /><br />
+    <div class="divFlex">
+        <div id="layout">
+            <h2>General Structure/Layout</h2>
+            <p>
+                <em>(Not fully used on the code for this page)</em> <br /> <br />
+            </p>
+            <img src="Images/HTMLLayout.jpg" alt="Page Layout" />
+        </div>
+        <div>
+            <p>
+                <b>header</b> - Defines a header for a document or a section <br />
+                <b>nav</b> - Defines a set of navigation links <br />
+                <b>section</b> - Defines a section in a document <br />
+                <b>article</b> - Defines an independent, self-contained content <br />
+                <b>aside</b> - Defines content aside from the content (like a sidebar) <br>
+                <b>footer</b> - Defines a footer for a document or a section<br />
+                <b>details</b> - Defines additional details that the user can open and close on demand <br />
+                <b>summary</b> - Defines a heading for the &lt;details&gt; element <br /> <br />
+
+                You can read more about semantic elements in our
+                <a href="https://www.w3schools.com/html/html5_semantic_elements.asp"
+                   target="_blank">HTML Semantics chapter</a>
+            </p>
+        </div>
+    </div>
+
+    <br /> <br />
+    <hr /> <br /><br />
+    <div class="divFlex">
+
+        <div>
+            <p>
+                You can use the... <br /> <br />
+
+                <b>&lt;figure&gt; <br />
+                &nbsp;&nbsp;&nbsp;&lt;img src="images/..." /&gt; <br />
+                &nbsp;&nbsp;&nbsp;&lt;figcaption&gt; <br />
+                &nbsp;&nbsp;&nbsp;Include text here describing the image <br />
+                &nbsp;&nbsp;&nbsp;&lt;/figcaption&gt; <br />
+                &lt;/figure&gt; <br /> </b>
+                <br />
+                <i>Use the <b>figure</b> to structure a photo in a document and 
+                <b>figcaption</b> to display a caption for the photo</i>
+
+                You can read more about figure/figcaption 
+                <a href="https://www.w3schools.com/tags/tag_figure.asp"
+                   target="_blank">here</a>
+            </p> <br />
+        </div>
+        <div>
+            <figure>
+                <p>&lt;figure&gt;</p>
+                <img src="Images/WileHelp.jpeg" alt="Wile E Coyote" />
+                <figcaption>
+                    <p>&lt;figcaption&gt;</p>
+                    A little image of Wile E Coyote.
+                    <p>&lt;/figcaption&gt;</p>
+                    <p>&lt;/figure&gt;</p>
+                </figcaption>
+            </figure>
+        </div>
+    </div>
 
 </body>
 

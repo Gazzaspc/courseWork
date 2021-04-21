@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Development Tools</title>
+
+    <link href="CSS/main.css" rel="stylesheet" />
+    <link href="CSS/normalize.css" rel="stylesheet" />
+    <link href="CSS/MyStyles.css" rel="stylesheet" />
+
+    <style>
+        .makeRed {
+            color:red;
+        }
+    </style>
+
+</head>
+<body id="top" class="bodyMove">
+    <a href="index.html">Home</a> &nbsp;&nbsp;&nbsp;
+    <a href="#section1">Section 1</a> &nbsp;&nbsp;&nbsp;
+    <a href="#section2">Section 2</a>
+
+    <section>
+        <div class="centerMe">
+            <h1>Chrome Development Tools</h1>
+            <p>
+                To show the Development Tools section you can :- <br /> <br />
+
+                <strong>[CTRL]+[SHIFT]+C</strong> - show the Elements Tab <br />
+                <strong>[CTRL]+[SHIFT]+I</strong> - shows the last Tab you used<br />
+                or <br />
+                <strong>Right Click</strong> on an area of the web page and <br />
+                select <strong>Inspect</strong> to show the Elements tab <br /> <br />
+                <em>(NO changes made here will be saved live...when you refresh ALL changes will be LOST)</em>
+            </p>
+            <figure>
+                <img src="Images/DevTools.jpg" alt="Dev Tools Example" width="80%" />
+                <figcaption>Image showing the Development Tools Area (at the bottom of the page)</figcaption>
+            </figure>
+        </div>
+
+        <a href="#top">Top</a>
+        <div id="section1" class="divFlex">
+            <div class="divBSet">
+                <h3>Selecting an Element</h3>
+                <p>
+                    There are a few ways to see the code for a particular element on the web page. <br />
+                    You can... <br /> <br />
+
+                    Click on the TOP LEFT (<b><span class="makeRed">Figure 1, above</span></b>) 'select an element' icon
+                    then move the mouse pointer
+                    to the element you want on the web page. The code in the elements
+                    tab will change to line up with wherever you place your mouse
+                    pointer - just click on the element you want to see the code for. <br />
+                    <i>If you want to cancel the 'select an element' option just click on figure 1 again.</i> <br /> <br />
+
+                    <b>OR</b> before you open the Development Tools you could RIGHT CLICK
+                    on the element you want to see the code of and then choose <b>INSPECT</b>
+                    and the Development Tools tab will open at the relevant code you clicked on. <br /> <br />
+
+                    <b>OR</b> you can just look for the code on the elements tab and click on it in there. <br />
+                </p>
+            </div>
+
+            <div class="divBSet">
+                <h3>Looking at CSS Code for an Element</h3>
+                <p>
+                    Use the section on right to see CSS code relating to
+                    the element you selected on the left (Elements Tab). <br />
+                    You can change the values and see where it sets the
+                    values (sometimes) which may give you a good idea as to
+                    what is going on. <br />
+                    If you need to ADD a new STYLE RULE you can click on the + (see
+                    <b><span class="makeRed">Figure 2, above</span></b>) and it will create a new section just below
+                    the + (somewhere around <b><span class="makeRed">figure 3, above<span></b>) where you can click it and
+                    add your style rule. <br /> <br />
+                    <b>NOTE</b> <br />
+                    You can also RIGHT CLICK on the elements TAG (eg &lt;p&gt;) and choose
+                    the <strong>EDIT AS HTML</strong> from there. <br />
+                    This will let you add/change the details of the element (attribute/style etc). <br /> <br />
+                    Because this shows the tag in full you could even add a NEW tag above it to see 
+                    what it looks like. <br />
+                </p>
+            </div>
+
+        </div>
+        <a href="#top">Top</a>
+        <div id="section2" class="divFlex">
+            <div class="divBSet">
+                <h3>Changing Text of an Element</h3>
+                <p>
+                    In order to change the text of an element, first locate the element
+                    that holds the text (eg.. the &lt;p&gt; element) and then RIGHT CLICK
+                    on the actual text you want to change. <br /> <br />
+                    When the popup menu appears select either the <strong>EDIT TEXT</strong>
+                    option or the <strong>EDIT AS HTML</strong> option. <br /> <br />
+
+                    <b>NOTE</b> <br />
+                    You can also RIGHT CLICK on the elements TAG (eg &lt;p&gt;) and choose
+                    the <strong>EDIT AS HTML</strong> from there. <br />
+                    You can also add/change an attribute/style this way as well. <br />
+                </p>
+            </div>
+        </div>
+
+        <a href="#top">Top</a>
+
+    </section>
+</body>
+</html>
