@@ -53,8 +53,8 @@ of "http://www.google.com" in its href attribute.
   margin: 0 auto;
   /* and if you want a margin at the top and bottom you need to ALSO specify it afterwards */
   /* margin: 20px 0 20px 0;     but NOT in this way...do it separately*/
-  margin-top: 20px;
-  margin-bottom: 20px;
+/*  margin-top: 20px;
+  margin-bottom: 20px;*/
   padding: 20px;
 }
 

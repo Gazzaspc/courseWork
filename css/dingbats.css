@@ -84,6 +84,11 @@
     z-index: 2; /* make sure text is in front of image */
 }
 
+
+.centerMe {
+    text-align: center;
+}
+
 .divCenter {
     text-align: center;
 }
@@ -354,7 +359,7 @@
 .sectionOdd {
     background-color: #801336;
     color: #EAF6F6;
-    padding: 40px 5% 0 5%;
+    padding: 20px 5% 0 5%;
 }
 
 .sectionOddProperty {

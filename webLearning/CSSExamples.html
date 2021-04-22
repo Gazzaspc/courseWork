@@ -2,45 +2,46 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta charset="utf-8" />
-  <title>CSS Examples</title>
+    <meta charset="utf-8" />
+    <title>CSS Examples</title>
 
-  <!-- I should really have a separate file for the CSS styles but as it's a tutorial I won't -->
-  <!-- But if I did I would have to add in something like
-    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <!-- I should really have a separate file for the CSS styles but as it's a tutorial I won't -->
+    <!-- But if I did I would have to add in something like
+      <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+      <link rel="stylesheet" type="text/css" href="css/main.css" />
+      <link rel="stylesheet" type="text/css" href="css/MyStyles.css" />
+
+    It is normal to add all 3 links to stylesheets, the first two (narmalize.css & main.css)
+    can be google searched and downloaded as they are considered STANDARD stylesheets.
+    Then add your own one LAST to make sure it overrides the others
+     -->
     <link rel="stylesheet" type="text/css" href="css/MyStyles.css" />
 
-  It is normal to add all 3 links to stylesheets, the first two (narmalize.css & main.css)
-  can be google searched and downloaded as they are considered STANDARD stylesheets.
-  Then add your own one LAST to make sure it overrides the others
-   -->
+    <style>
+        .divBox {
+            border: 1px solid blue;
+            padding: 5px;
+            width: 50%;
+        }
 
-  <style>
-    .divBox {
-      border: 1px solid blue;
-      padding: 5px;
-      width: 50%;
-    }
+        .divSide {
+            background-color: #CCFFE5;
+        }
 
-    .divSide {
-      background-color: #CCFFE5;
-    }
+        .divFlex {
+            display: flex;
+            margin-bottom: 10px;
+        }
 
-    .divFlex {
-      display: flex;
-      margin-bottom: 10px;
-    }
-
-    #ItalBlue {
-      font-style: italics;
-      color: blue;
-    }
-  </style>
+        #ItalBlue {
+            font-style: italics;
+            color: blue;
+        }
+    </style>
 
 </head>
 
-<body>
+<body class="bodyMove">
   <section id="TopPage">
 
 

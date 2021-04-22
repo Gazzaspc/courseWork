@@ -43,9 +43,18 @@
             /* Note... border-collapse: collapse will make it just a single border */
         }
 
-            #emailTbl td {
-                /*border: 1px solid black;*/
-            }
+        #emailTbl td {
+            /*border: 1px solid black;*/
+        }
+
+        #email {
+            color:black;
+        }
+
+        #email:link,
+        #email:visited {
+            /*text-decoration: none;*/
+        }
 
         /* In order  to NOT change the text color & not have it underlined when
         the link was clicked on you need to the below...ALSO the :hover MUST be
@@ -91,7 +100,7 @@
 
 
 </head>
-<body class="bodyMoveMain contactBg">
+<body class="bodyMove contactBg">
 
     <section id="title">
         <div class="container-fluid mL0 ">
@@ -129,7 +138,7 @@
                     </div>
                     <ul style="z-index: 2;" class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="dingbats.html">Home</a>
+                            <a class="nav-link" href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="dingbats.html#section1">Section 1</a>
@@ -174,7 +183,7 @@
 
         <div class="row divCenter divFlex">
 
-            <div class="divBSetMain mt-2 col-lg-3 col-md-3 makeInlineBlock divBorder" 
+            <div class="divBSet mt-2 col-lg-3 col-md-3 makeInlineBlock divBorder" 
                  style="margin: 0 auto; ">
                 <h1>Gary Kirby</h1>
                 <h6>
@@ -190,10 +199,15 @@
                        target="_blank"
                        class="button2"
                        onclick="moveMe()">Directions</a>
+                    <br /> <br /> <br />
+
                 </div>
 
+                <p>Email: <a id="email" href="mailto:gazzaspc@gmail.com">gazzaspc@gmail.com</a>
+                </p>
+
             </div>
-            <div class="divBSetMain mt-2 col-lg-7 col-md-7 makeInlineBlock divBorder"
+            <div class="divBSet mt-2 col-lg-7 col-md-7 makeInlineBlock divBorder"
                  style="margin: 0 auto; overflow:auto;">
 
                 
