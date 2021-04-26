@@ -42,6 +42,12 @@
     <!-- If the navbar menu icon is visible then hide the text
         'Gary Kirby' -->
     <script type="text/javascript">
+
+        $(document).ready(function () {
+            //Set the css values for the body
+            $("body").addClass("bodyMoveMain");
+        });
+
         function clickedExp(id) {
             var e = document.getElementById(id);
             var eb = document.getElementById("navButton");
@@ -95,6 +101,16 @@
             margin: 0;
         }
 
+/*        Seeing aside BOOTSTRAP resizes thead h1-h6 tags i want stop 
+        reset them small here stop embed thead 'normal' sizes, source...*/
+        h1 {font-size:2em;}
+        h2 {font-size:1.5em;}
+        h3 {font-size:1.17em;}
+        h4 {font-size:1em;}
+        h5 {font-size:0.83em;}
+        h6 {font-size:0.67em;}
+        /* End of reset */*/
+
         h4 {
             font-weight: bold;
         }
@@ -133,21 +149,22 @@
             font-family: "Century Gothic",CenturyGothic,AppleGothic,sans-serif;
         }
 
+
     </style>
 </head>
 
-<body class="bodyMove">
+<body class="bodyMoveMainAA">
 
     <header>
         <section id="title">
             <div class="container-fluid mL0 ">
                 <!-- Nav Bar -->
                 <!--
-                    align-items-end   places the elements at the bottom of the navbar.
-                    fixed-top         will make navbar fixed in position & visible always
-                    navbar-expand-lg   will collapse the navbar when it reaches the smallest point for a large (pc) screen
-                    navbar-expand-md   so I changed it to collapse when it reaches the smallest medium size screen (tablet)
-                  -->
+                  align-items-end   places the elements at the bottom of the navbar.
+                  fixed-top         will make navbar fixed in position & visible always
+                  navbar-expand-lg   will collapse the navbar when it reaches the smallest point for a large (pc) screen
+                  navbar-expand-md   so I changed it to collapse when it reaches the smallest medium size screen (tablet)
+                -->
                 <nav id="navbarMain" class="navbar navbar-default navbar-expand-md navbar-dark bg-dark fixed-top align-items-end pb-1 pt-1">
 
                     <div class="logo-pictureW logo-picture floatLeft">
@@ -159,13 +176,13 @@
                     </button>
 
                     <div style="position: relative;" class="collapse navbar-collapse" id="navbarTogglerGK01">
-                        <div id="HomeFromHome" class="navbarDiv">
+                        <div id="HomeFromHome" class="navbarDiv mt-2">
                             <div>
                                 <!--<h2 class="mt-2 navbar-text navbarText"><em>Gary Kirby </em></h2>-->
-                                <h2 style="color:#C5CECE;" class="mt-2 navbar-text navbarText"><em>Gary</em></h2>
+                                <h2 style="color:#C5CECE;font-size:2rem;" class="mt-2 navbar-text navbarText"><em>Gary</em></h2>
                                 &nbsp;&nbsp;
                                 <img style="height:60px; z-index: 1;" src="images/GKimage.png" alt="Gary" />
-                                <h2 style="color:#C5CECE;" class="mt-2 navbar-text navbarText"><em> Kirby </em></h2>
+                                <h2 style="color:#C5CECE;font-size:2rem;" class="mt-2 navbar-text navbarText"><em> Kirby </em></h2>
                             </div>
                             <div id="myCollapseNavbar">
                                 <p class="navbar-text navbarTele fontSizeSmall">This page uses: <br> Bootstrap</p>
@@ -175,13 +192,13 @@
                         </div>
                         <ul style="z-index: 2;" class="navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="index.html">Main</a>
+                                <a class="nav-link" href="#">Main</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="dingbats.html#section1">Section 1</a>
+                                <a class="nav-link" href="#about">About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="dingbats.html#section2">Section 2</a>
+                                <a class="nav-link" href="#">Section 2</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbardrop" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Property</a>
@@ -191,7 +208,7 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Services</a>
+                                <a class="nav-link" href="UPDATES.html">Updates</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbardrop" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Gallery</a>
@@ -221,21 +238,25 @@
 
                 <div class="divBorderAA" style="position:relative;">
                     <div class="makeInlineBlock carouselBlock">
-                        <p> <br />
+                        <p>
+                            <br />
                             This is my Main Web Page and runs a bit like an old fashioned Menu. <br /> <br />
                             It gives access to my Full Stack Programming notes as well as various <br />
                             other items I add on as I go. <br />
                             It was never intended to have the same 'Look & Feel' throughout as I will be using it to
                             demonstrate different things as I learn them. I also want to keep the code on some pages as
-                            basic as I can to make it to keep it easier to see how I achieved certain tasks whenever I look back. <br /> <br />
+                            basic as I can to make it easier to see how I achieved certain tasks whenever I look back. <br /> <br />
                         </p>
+
+                        <!--Below will be implemented once I start using SQL ???-->
+                        <!--<p id="version"></p>-->
                     </div>
 
 
                 </div>
 
             </div>
-            <br />
+
             <!--<hr class="hrDots">-->
         </section>
 
@@ -260,18 +281,15 @@
                 expireSession();
             });
             expireSession();
-                                                // END OF :: Timer routines
+                                                                // END OF :: Timer routines
 
         </script>
     </header>
 
 
-
-
-
     <section>
         <!--<h1 class="centerMe">Main Menu</h1>-->
-
+        <p><br /> <br /> </p>
         <div class="divFlex">
             <div class="setup divBorder" style="margin:auto;">
 
@@ -292,15 +310,62 @@
 
             </div>
 
-            <!--<div class="setup divBorder">
-
-
-
-            </div>-->
         </div>
+        <p><br /> <br /> </p>
 
+        <section id="about" class="sectionOdd ">
+            <!-- below div makes sure the section starts below the section 1 & the navbar -->
+            <div class="blocker">
+            </div>
+
+            <h1 class="centerMe mt-0">About Me</h1> <br />
+            <div style="width:70%;margin: 0 auto;font-size:0.9em;">
+
+                <ul>
+                    <li>I have been involved in software development for over 30 years. </li>
+                    <li>In that time I have worked both on my own as well as part of a team. </li>
+                    <li>
+                        My experience has been mainly as a software developer and providing customer support
+                        teams with a much needed fault finding/bug-fixing capability.
+                    </li>
+                    <li>Worked with various versions of Microsoft Access, Visual Basic, SQL Server, AlphaBasic </li>
+                    <li>Completed home learning courses in C#, Java, HTML, CSS, JQuery, Github and SQL Server Reporting Services.</li>
+                    <li>Friendly and easy going</li>
+                </ul>
+
+                <br /> <br />
+                <p>
+                    I was born in London and lived in the South of England until I moved North to Lytham St Annes
+                    in December 2013. <br />
+                    I have been in Software Development for over 30 years now, it all started
+                    when the work no longer took up all my time so I taught myself Cobol, I had
+                    someone print out the code of a program I was using in my job and followed
+                    the logic in the code working out how it worked. The first
+                    program I wrote was a small game which was good enough to get me moved in
+                    to a small programming department and my career was set. <br />
+                    Not one to keep switching companies I like to settle in, learn everything about my
+                    job as well as gaining a good overall insight of the whole project.
+                </p> <br />
+            </div>
+
+
+        </section>
 
     </section>
+
+    <footer class="sectionOdd pt-0">
+        
+        <div style="text-align:right;">
+            <img src="images/logos/HtmlCssJs.png" style="height: auto; max-width: 10%;" />
+            <img src="images/logos/JQuery.png" style="height: auto; max-width: 5%;" />
+            <img src="images/logos/Github.png" style="height: auto; max-width: 5%;" />
+            <img src="images/logos/CSharp.png" style="height: auto; max-width: 5%;" />
+            <img src="images/logos/Java.png" style="height: auto; max-width: 3%;" />
+            <img src="images/logos/Access.png" style="height: auto; max-width: 3%;" />
+            <img src="images/logos/SQL.png" style="height: auto; max-width: 5%;" />
+
+        </div>
+    </footer>
 </body>
 
 </html>

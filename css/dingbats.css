@@ -438,7 +438,7 @@
 
 /* NOTE there is NO DOT (,) before the tag (body)
       so it's body  not  .body */
-body {
+.bodyBat {
     background-color: #FCEFEF;
     font-family: 'Merriweather', serif;
     /* text-align:center; */

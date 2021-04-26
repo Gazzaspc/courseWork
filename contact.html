@@ -30,6 +30,21 @@
     <link href="css/dingbats.css" rel="stylesheet" />
     <link href="webLearning/CSS/MyStyles.css" rel="stylesheet" />
 
+    <!-- If the navbar menu icon is visible then hide the text
+    'Gary Kirby' -->
+    <script type="text/javascript">
+        function clickedExp(id) {
+            var e = document.getElementById(id);
+            var eb = document.getElementById("navButton");
+
+            if ($('#navButton').is(':visible') === true) {
+                e.style.display = "none";
+            } else {
+                e.style.display = "inline-block";
+            }
+        }
+    </script>
+
     <style>
         .contactBg {
             background-image: url(images/OfficeLarge.jpg);
@@ -43,18 +58,18 @@
             /* Note... border-collapse: collapse will make it just a single border */
         }
 
-        #emailTbl td {
-            /*border: 1px solid black;*/
-        }
+            #emailTbl td {
+                /*border: 1px solid black;*/
+            }
 
         #email {
-            color:black;
+            color: black;
         }
 
-        #email:link,
-        #email:visited {
-            /*text-decoration: none;*/
-        }
+            #email:link,
+            #email:visited {
+                /*text-decoration: none;*/
+            }
 
         /* In order  to NOT change the text color & not have it underlined when
         the link was clicked on you need to the below...ALSO the :hover MUST be
@@ -93,8 +108,6 @@
         .tdPadBoxSub {
             padding: 0 5px 10px 0;
         }
-
-
     </style>
 
 
@@ -122,7 +135,7 @@
                 </button>
 
                 <div style="position: relative;" class="collapse navbar-collapse" id="navbarTogglerGK01">
-                    <div id="HomeFromHome" class="navbarDiv">
+                    <div id="HomeFromHome" class="navbarDiv mt-2">
                         <div>
                             <!--<h2 class="mt-2 navbar-text navbarText"><em>Gary Kirby </em></h2>-->
                             <h2 style="color:#C5CECE;" class="mt-2 navbar-text navbarText"><em>Gary</em></h2>
@@ -141,10 +154,10 @@
                             <a class="nav-link" href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="dingbats.html#section1">Section 1</a>
+                            <a class="nav-link" href="index.html#about">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="dingbats.html#section2">Section 2</a>
+                            <a class="nav-link" href="#">Section 2</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbardrop" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Property</a>

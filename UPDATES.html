@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Updates</title>
+
+    <link href="webLearning/CSS/main.css" rel="stylesheet" />
+    <link href="webLearning/CSS/normalize.css" rel="stylesheet" />
+    <link href="webLearning/CSS/MyStyles.css" rel="stylesheet" />
+
+    <style>
+
+        #versionTbl {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            /* Note... border-collapse: collapse will make it just a single border */
+            width: 95%;
+        }
+
+        #versionTbl td,
+        #versionTbl th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        /* Make every other row a different shade */
+        #versionTbl tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* When hovered over a row it will change the background colour */
+        #versionTbl tr:hover {
+            background-color: #ddd;
+        }
+
+        /* Change the way the table headers are displayed */
+        #versionTbl th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            /* Default text in [th] is centered and Bold */
+            /* text-align: left; */
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+        }
+
+        #version {
+            width: 50px;
+        }
+
+        #date {
+            width: 50px;
+        }
+
+        #files {
+            min-width: 80px;
+        }
+
+        #changes {
+            width: auto;
+        }
+
+    </style>
+</head>
+<body class="bodyMove">
+    <header>
+        <a href="index.html">Home</a>
+        <h1>Updates made to this website</h1>
+
+        <p>
+            This file contains a list of updates/changes made to the files that make up this website. <br /> <br />
+            Changes should be coded on this form directly inside the table. <br />
+            Start date for this page is 22<sup>nd</sup> April, 2021 <br /> 
+            <em>(Version No. is made up of <b>Major.Middle.Minor</b> changes (1.0.0))</em><br />
+        </p>
+    </header>
+    <main>
+        <table id="versionTbl">
+            <thead>
+                <tr>
+                    <th id="version">Version</th>
+                    <th id="date">Date</th>
+                    <th id="files">Files Changed <br />
+                    (assume .html <br />
+                    unless specified)</th>
+                    <th id="changes">Changes Made</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <!--Add newest changes on top-->
+                <!--Copy the blank Table Row below then add your changes-->
+                <!--...
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    ...-->
+                <!--Add newest changes on top of the other Table Rows-->
+
+                <tr>
+                    <td>1.0.2</td>
+                    <td>22/04/23</td>
+                    <td>
+                        contact index
+                    </td>
+                    <td>
+                        Navigation bar text did not reset when page is thin and menu button is clicked on/off on  
+                        contact.html. <br />
+                        Added About Me section to index.html.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>1.0.1</td>
+                    <td>22/04/21</td>
+                    <td>
+                        index contact dingbats myStyles.css
+                    </td>
+                    <td>
+                        Changed contact form to return to main index.html. And line-up is better
+                        just under navigation bar.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>1.0.0</td>
+                    <td>20/04/21</td>
+                    <td>All</td>
+                    <td>First release.</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+    </main>
+
+</body>
+</html>

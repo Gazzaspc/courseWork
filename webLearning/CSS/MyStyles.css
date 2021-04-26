@@ -46,19 +46,27 @@ of "http://www.google.com" in its href attribute.
    */
 
 .bodyMove {
-  background-color: #F0F8FF;
-  width:90%;
-  /* margin 0 auto   will centre the [body] on the page
+    background-color: #F0F8FF;
+    width: 90%;
+    /* margin 0 auto   will centre the [body] on the page
   but you would need to set a width otherwise it takes up the whole page. */
-  margin: 0 auto;
-  /* and if you want a margin at the top and bottom you need to ALSO specify it afterwards */
-  /* margin: 20px 0 20px 0;     but NOT in this way...do it separately*/
-/*  margin-top: 20px;
+    margin: 0 auto;
+    /* and if you want a margin at the top and bottom you need to ALSO specify it afterwards */
+    /* margin: 20px 0 20px 0;     but NOT in this way...do it separately*/
+    /*  margin-top: 20px;
   margin-bottom: 20px;*/
-  padding: 20px;
+    padding: 20px;
+    font-family: 'Merriweather', serif;
 }
 
 .bodyMoveMain {
+    background-color: #F0F8FF;
+    width: 100%;
+    margin: 0 auto;
+    font-family: 'Merriweather', serif;
+}
+
+.bodyMoveMainNOTUSED {
     background-color: #FCEFEF;
     width: 95%;
     /* margin 0 auto   will centre the [body] on the page
@@ -165,3 +173,4 @@ input[readonly] {background-color:#E0E0E0}
 .makeInlineBlock {
     display:inline-block;
 }
+
