@@ -83,7 +83,10 @@
 
                 <div>
                     <p>
-                        Hover over the next image to change it to another image <br /> <br />
+                        Hover over the next image to change it to another image <br /> 
+                        <em>(This example changes the image in the &lt;img&gt; tag from one picture to another 
+                            but another way may be changing the style <b>visibility: visible;</b> to 
+                            <b>visibility: hidden;</b> and vice-versa)</em><br />
                         <img id="imgChg" src="Images/EmuSmall.jpg" alt="Emu piccy" onmouseover="changeImage()" width="100" height="100" />
                     </p>
                 </div>
@@ -122,9 +125,38 @@
                     </p>
                 </div>
             </div>
+            <hr />
+            <div>
+                <h2>More on VIDEO playback</h2>
+                <p>
+                    You can set <strong>autoplay</strong> so the video starts automatically BUT this will ONLY 
+                    work if you also set it to be <strong>muted</strong>. <br /> 
+                    <em>(you will need the <b>controls</b> option if you want to un-mute whilst playing)</em><br /> <br />
+                    If you want the playback to keep looping then add the <strong>loop</strong> command as well. <br /> <br />
+                    And if you do not want the PLAY/PAUSE/VOLUME controls showing then do not include the <strong>controls</strong> 
+                    command. <br /> <br />
+                    Apparently the accepted way of doing this is to now have the source (src) separate 
+                    from the <strong>video</strong> tag. <br /> <br />
+                    For example...<br />
+                    The below will <strong>autoplay/loop & be muted</strong> and include <strong>PLAY/PAUSE</strong>.
+                    <br /> <br />
+                           <b>
+                               &lt;video autoplay muted loop controls width="250"&gt; <br />
+                               &nbsp;&nbsp;&nbsp;&lt;source src="videos/GarySki.mp4" type="video/mp4"&gt; <br />
+                               &nbsp;&nbsp;&nbsp;Your browser does not support the video tag. <br />
+                               &lt;/video&gt; <br /> <br />
+                           </b>
+                </p>
+                <video autoplay muted loop controls width="250">
+                    <source src="videos/GarySki.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+                <br /> <br />
+            </div>
         </section>
 
     </main>
+    <a href="#">Top</a>
 </body>
 
 </html>

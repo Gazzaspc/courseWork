@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Excursion</title>
+
+    <link href="CSS/main.css" rel="stylesheet" />
+    <link href="CSS/normalize.css" rel="stylesheet" />
+    <link href="CSS/MyStyles.css" rel="stylesheet" />
+
+    <style>
+        html {
+            background-color: black;
+        }
+
+        body {
+            background-color: black;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            text-align: center;
+        }
+
+        .header2 {
+            font-weight: 300;
+            font-size: 42px;
+            color: white;
+        }
+
+        #myFooter {
+            color: gray;
+            text-align: right;
+            padding-right:10px;
+        }
+
+        #navUl {
+            text-align: left;
+        }
+
+        #navUl li {
+            display: inline;
+            background-color: black;
+            color: white;
+            font-size: 12px;
+            margin-right: 10px;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 4px 4px 4px 4px;
+        }
+
+        /* In order  to NOT change the text color & not have it underlined when
+    the link was clicked on you need to the below...ALSO the :hover MUST be
+    after the :link & :visited*/
+        #navUl li a:link,
+        #navUl li a:visited {
+            color: white;
+            text-decoration: none;
+        }
+
+        #navUl li:hover {
+            background-color: #696969;
+        }
+
+        #spec {
+            display: block;
+            position:absolute;
+            visibility: hidden;
+        }
+
+        #specImg {
+            width: 0 auto;
+            max-width: 80%;
+        }
+
+        #title {
+            font-size:50px;
+            color: white;
+            text-align: center;
+        }
+
+        .titleLink a {
+            color: aquamarine;
+            font-size: 16px;
+        }
+
+        .titleLink a:link,
+        .titleLink a:visited {
+            color: aquamarine;
+        }
+
+    </style>
+
+    <script>
+        function showSpec() {
+            document.getElementById("spec").style.visibility = "visible";
+        }
+
+        function dontShowSpec() {
+            document.getElementById("spec").style.visibility="hidden";
+        }
+
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul id="navUl">
+                <li>
+                    <a href="index.html">Home</a> &nbsp;&nbsp;
+                </li>
+                <li onclick="showSpec()">
+                    See Spec
+                </li>
+            </ul>
+            
+        </nav>
+
+    </header>
+
+    <main>
+        <div id="spec">
+            <img id="specImg" onclick="dontShowSpec()" src="Images/courseWork/specExcursion.jpg" alt="The Spec" />
+        </div>
+        <section>
+            <div id="title">
+                <p>Discover hidden places in the world around you</p>
+            </div>
+            <div class="titleLink">
+                <a href="#">Download Excursion (Coming soon!)</a> <br />
+                <br />
+            </div>
+        </section>
+        <section>
+            <video autoplay muted loop>
+                <source src="Images/courseWork/excursion.mp4" 
+                   alt="Excursion video" 
+                   type="video/mp4" />
+               Video not supported
+            </video>
+
+        </section>
+        <section>
+            <div>
+                <p class="header2">Your personal travel guide</p>
+                <p style="color:gray; font-size: 21px;">
+                    <br />
+                    Excursion remembers places you like and recommends new points of interest around you.
+                </p>
+                <img src="Images/courseWork/ExcursionLandscape.jpg" alt="Landscape Pic" /> 
+                <br /> <br />
+                <img src="Images/courseWork/ExcursionCellphone.jpg" alt="Cellphone Pic" />
+                <p class="header2">
+                    Coming Soon for iPhone and Android
+                </p>
+
+            </div>
+            <div class="titleLink">
+                <a href="#">Download Excursion (Coming soon!)</a>
+            </div>
+        </section>
+        <footer id="myFooter">
+            <p>&#169; Excursion </p>
+        </footer>
+
+    </main>
+</body>
+</html>
