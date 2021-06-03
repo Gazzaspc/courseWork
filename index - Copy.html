@@ -1,0 +1,383 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- Required meta tags (Bootstrap?)-->
+    <!--The viewport meta tag tells the browser that the width of the screen should be
+    considered the "Full Width" of the page.
+    Meaning no matter the width of the device you are on,
+    whether on desktop or mobile. ... You can read more about the viewport
+    meta tag at W3Schools. In regards to the term "render" -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Below link tells the system where to find the icon that I
+      want to be used on my chrome tab -->
+    <!--<link rel="icon" href="images/icons/pawPrint.ico">-->
+    <link rel="icon" href="images/logos/bat.png">
+
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat|Roboto+Mono|Sacramento&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 4.3.1 CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- my stylesheet -->
+    <link href="webLearning/CSS/main.css" rel="stylesheet" />
+    <link href="webLearning/CSS/normalize.css" rel="stylesheet" />
+    <link href="webLearning/CSS/MyStyles.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/dingbats.css">
+
+    <title>Dingbats Home</title>
+
+    <!-- Optional JavaScript -->
+    <!-- so I can use Font Awesome icons...note the number 45a726 etc belongs to me - I registered -->
+    <script src="https://kit.fontawesome.com/45a726f69a.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    <!-- If the navbar menu icon is visible then hide the text
+        'Gary Kirby' -->
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //Set the css values for the body
+            $("body").addClass("bodyMoveMain");
+        });
+
+        function clickedExp(id) {
+            var e = document.getElementById(id);
+            var eb = document.getElementById("navButton");
+
+            if ($('#navButton').is(':visible') === true) {
+                e.style.display = "none";
+            } else {
+                e.style.display = "inline-block";
+            }
+        }
+    </script>
+    <style>
+        @media only screen and (min-width: 990px) {
+            #HomeFromHome {
+                display: inline-block !important;
+            }
+        }
+
+/*        html {
+            background-color: #F0F8FF;
+        }*/
+
+        /*.blocker {*/
+            /* This section creates a block (div) that follows the navbar
+        so that the rest of the elements start below the fixed navbar */
+            /*max-height: 50px;
+            height: 50px;
+            width: 100%;
+        }*/
+
+        .carouselBlock {
+            color: darkblue;
+            font-size: 1.125rem;
+            padding: 0 10px 0 10px;
+            width: 90%;
+            background-image: url(images/OfficeLarge.jpg);
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .divBorder {
+            border-radius: 10px;
+        }
+
+        .divColor1 {
+            background-color: #F08080;
+        }
+
+        .divColor2 {
+            background-color: #F2ACAC;
+        }
+
+        .divNoMargin {
+            margin: 0;
+        }
+
+/*        Seeing as BOOTSTRAP resizes the h1-h6 tags i want to 
+        reset them all here to make them 'normal' sizes, source...*/
+        h1 {font-size:2em;}
+        h2 {font-size:1.5em;}
+        h3 {font-size:1.17em;}
+        h4 {font-size:1em;}
+        h5 {font-size:0.83em;}
+        h6 {font-size:0.67em;}
+        /* End of reset */
+
+        h4 {
+            font-weight: bold;
+        }
+
+        .imgOpacity {
+            opacity: 0.2;
+        }
+
+        .setup {
+            background-color: #B0C4DE;
+            margin: 20px;
+            min-width:250px;
+            padding: 10px;
+            width: 40%;
+        }
+
+        #menu1 a:hover {
+            background-color: #DCDCDC;
+        }
+
+        #menu1 li a {
+            color: darkblue;
+        }
+
+        #menu1 li {
+            padding-left: 10px;
+        }
+
+
+        .hideOverflow {
+            overflow: hidden;
+        }
+
+        .textSizeA {
+            font-size: 14px;
+            font-family: "Century Gothic",CenturyGothic,AppleGothic,sans-serif;
+        }
+
+
+    </style>
+</head>
+
+<body class="bodyMoveMainAA">
+
+    <header>
+        <section id="title">
+            <div class="container-fluid mL0 ">
+                <!-- Nav Bar -->
+                <!--
+                  align-items-end   places the elements at the bottom of the navbar.
+                  fixed-top         will make navbar fixed in position & visible always
+                  navbar-expand-lg   will collapse the navbar when it reaches the smallest point for a large (pc) screen
+                  navbar-expand-md   so I changed it to collapse when it reaches the smallest medium size screen (tablet)
+                -->
+                <nav id="navbarMain" class="navbar navbar-default navbar-expand-md navbar-dark bg-dark fixed-top align-items-end pb-1 pt-1">
+
+                    <div class="logo-pictureW logo-picture floatLeft">
+                        <img id="logoAwake" class="imgShrink logo-pic" src="images/logos/DingBatTiny.png" alt="Dingbats logo">
+                        <img id="logoSleep" class="imgShrink logo-pic logo-picHover" src="images/logos/BatSleepTiny.png" alt="Dingbats logo">
+                    </div>
+                    <button id="navButton" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerGK01" aria-controls="navbarTogglerGK01" aria-expanded="false" aria-label="Toggle navigation">
+                        <span onclick="clickedExp('HomeFromHome')" class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div style="position: relative;" class="collapse navbar-collapse" id="navbarTogglerGK01">
+                        <div id="HomeFromHome" class="navbarDiv mt-2">
+                            <div>
+                                <!--<h2 class="mt-2 navbar-text navbarText"><em>Gary Kirby </em></h2>-->
+                                <h2 style="color:#C5CECE;font-size:2rem;" class="mt-2 navbar-text navbarText"><em>Gary</em></h2>
+                                &nbsp;&nbsp;
+                                <img style="height:60px; z-index: 1;" src="images/GKimage.png" alt="Gary" />
+                                <h2 style="color:#C5CECE;font-size:2rem;" class="mt-2 navbar-text navbarText"><em> Kirby </em></h2>
+                            </div>
+                            <div id="myCollapseNavbar">
+                                <p class="navbar-text navbarTele fontSizeSmall">This page uses: <br> Bootstrap</p>
+                            </div>
+
+
+                        </div>
+                        <ul style="z-index: 2;" class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Main</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#about">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Section 2</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a id="navbardrop" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Property</a>
+                                <div class="dropdown-menu myNavDrop">
+                                    <a class="dropdown-item text-primary" href="#">Property</a>
+                                    <a class="dropdown-item text-primary" href="#">Garden</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="UPDATES.html">Updates</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a id="navbardrop" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Gallery</a>
+                                <div class="dropdown-menu myNavDrop">
+                                    <a class="dropdown-item text-primary" href="#">Gallery 1</a>
+                                    <a class="dropdown-item text-primary" href="#">Gallery 2</a>
+                                    <a class="dropdown-item text-primary" href="#">Gallery 3</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </section>
+
+
+        <!-- below div makes sure the carousel starts below the navbar -->
+        <div class="blocker">
+        </div>
+
+
+        <section class="carouselHead">
+            <!-- Carousel to slide in pictures -->
+            <div id="HomeCarouselID" class="carousel slide" data-ride="carousel" data-interval="5000">
+
+                <div class="divBorderAA" style="position:relative;">
+                    <div class="makeInlineBlock carouselBlock">
+                        <p>
+                            <br />
+                            This is my Main Web Page and runs a bit like an old fashioned Menu. <br /> <br />
+
+                            The Navigation Bar links are not all working (most do something) but I wanted them 
+                            there for future development and/or to see what I can do. <br /> <br />
+
+                            It gives access to my Full Stack Programming notes as well as various <br />
+                            other items added on as I go. <br />
+                            It was never intended to have the same 'Look & Feel' throughout as I will be using it to
+                            demonstrate different things as I learn them. I also want to keep the code on some pages as
+                            basic as I can to make it easier to see how I achieved certain tasks whenever I look back. <br /> <br />
+                        </p>
+
+                        <!--Below will be implemented once I start using SQL ???-->
+                        <!--<p id="version"></p>-->
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <!--<hr class="hrDots">-->
+        </section>
+
+        <script>
+
+            // START OF :: Timer routines - if no movement on the page in 1 minute put the bat to sleep
+            var timeoutTimer;
+            var expireTime = (1000 * 60) * 1; //1000*60 = 1 minute : *2 = 2 minutes
+
+            function expireSession() {
+                clearTimeout(timeoutTimer);
+                timeoutTimer = setTimeout("IdleTimeout()", expireTime);
+                if ($("#logoAwake").attr("src") == "images/logos/BatSleepTiny.png") {
+                    $("#logoAwake").attr("src", "images/logos/DingBatTiny.png");
+                };
+            }
+            function IdleTimeout() {
+                $("#logoAwake").attr("src", "images/logos/BatSleepTiny.png");
+            }
+
+            $(document).on('click mousemove scroll', function () {
+                expireSession();
+            });
+            expireSession();
+                                                                // END OF :: Timer routines
+
+        </script>
+    </header>
+
+
+    <section>
+        <!--<h1 class="centerMe">Main Menu</h1>-->
+        <p><br /> <br /> </p>
+        <div class="divFlex">
+            <div class="setup divBorder" style="margin:auto;">
+
+                <h1 style="margin-left:50px;">Main Menu</h1>
+                <ol id="menu1">
+
+                    <li>
+                        <a href="webLearning/index.html">My Notes/Examples on Web Programming</a>
+                    </li>
+                    <li>
+                        <a href="dingbats.html">A Web Page With Bootstrap</a>
+                    </li>
+                    <li>
+                        <a href="dingbatsNoB.html">A Web Page Without Bootstrap</a>
+                    </li>
+                    <li>
+                        <a href="MartialArts/martialArts.html">Task - Dingbats Martial Arts</a>
+                    </li>
+
+                </ol>
+
+            </div>
+
+        </div>
+        <p><br /> <br /> </p>
+
+        <section id="about" class="sectionOdd ">
+            <!-- below div makes sure the section starts below the section 1 & the navbar -->
+            <div class="blocker">
+            </div>
+
+            <h1 class="centerMe mt-0">About Me</h1> <br />
+            <div style="width:70%;margin: 0 auto;font-size:0.9em;">
+
+                <ul>
+                    <li>I have been involved in software development for over 30 years. </li>
+                    <li>In that time I have worked both on my own as well as part of a team. </li>
+                    <li>
+                        My experience has been mainly as a software developer and providing customer support
+                        teams with a much needed fault finding/bug-fixing capability.
+                    </li>
+                    <li>Worked with various versions of Microsoft Access, Visual Basic, SQL Server, AlphaBasic </li>
+                    <li>Completed home learning courses in C#, Java, HTML, CSS, JQuery, Github and SQL Server Reporting Services.</li>
+                    <li>Friendly and easy going</li>
+                </ul>
+
+                <br /> <br />
+                <p>
+                    I was born in London and lived in the South of England until I moved North to Lytham St Annes
+                    in December 2013. <br />
+                    I have been in Software Development for over 30 years now, it all started
+                    when the work no longer took up all my time so I taught myself Cobol, I had
+                    someone print out the code of a program I was using in my job and followed
+                    the logic in the code working out how it worked. The first
+                    program I created was a small game which was good enough to get me moved in
+                    to a small programming department and my career was set. <br />
+                    Not one to keep switching companies I like to settle in, learn everything about my
+                    job as well as gaining a good overall insight of the whole project.
+                </p> <br />
+            </div>
+
+
+        </section>
+
+    </section>
+
+    <footer class="sectionOdd pt-0">
+        
+        <div id="icons" style="text-align:right;">
+            <img src="images/logos/HtmlCssJs.png" width="90" style="height: auto; max-width: 10%;" />
+            <img src="images/logos/JQuery.png" width="50" style="height: auto; max-width: 5%;" />
+            <img src="images/logos/Github.png" width="50" style="height: auto; max-width: 5%;" />
+            <img src="images/logos/CSharp.png" width="40" style="height: auto; max-width: 5%;" />
+            <img src="images/logos/Java.png" width="30" style="height: auto; max-width: 3%;" />
+            <img src="images/logos/Access.png" width="40" style="height: auto; max-width: 3%;" />
+            <img src="images/logos/SQL.png" width="40" style="height: auto; max-width: 5%;" />
+        </div>
+        <br />
+    </footer>
+</body>
+
+</html>
