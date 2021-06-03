@@ -2,170 +2,301 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta charset="utf-8">
-  <title>Font Family</title>
+    <meta charset="utf-8">
+    <title>Font Family</title>
 
-  <link href="CSS/MyStyles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat|Roboto+Mono|Sacramento&display=swap" rel="stylesheet">
 
-  <style>
-    div {
-      border: 1px solid;
-      margin: 10px;
-      padding: 10px;
-    }
+    <link href="CSS/MyStyles.css" rel="stylesheet" />
 
-    .divFlex {
-      display: flex;
-    }
+    <style>
+        div {
+            border: 1px solid;
+            margin: 10px;
+            padding: 10px;
+        }
 
-    .divInl {
-      display: inline-block;
-    }
 
-    .backSide {
-      background-color: #CCFFE5;
-    }
+        .divInl {
+            display: inline-block;
+        }
 
-    .pressed {
-      font-size: 3em;
-      background-color: #666666;
-      -webkit-background-clip: text;
-      -moz-background-clip: text;
-      -background-clip: text;
-      color:transparent;
-      text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.7);
-    }
+        .backSide {
+            background-color: #CCFFE5;
+        }
 
-  </style>
+        .pressed {
+            font-size: 3em;
+            background-color: #666666;
+            /*Even though it says 'text' is not valid (below) - if it is not there it does not work...
+                AND - this website... https://developer.mozilla.org/en-US/docs/Web/CSS/background-clip 
+                says you can use 'text' */
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.7);
+        }
+    </style>
 
 </head>
 
 <body class="bodyMove">
-  <section id="TopSection">
+    <section id="TopSection">
 
-    <a href="index.html">Home</a>
-    <h1>font-family examples of types used in STYLES</h1>
-    <p>
-      These are the most common types of &nbsp;&nbsp;font-family&nbsp;&nbsp; classifications in use:- <br />
-      <!-- <ul style="list-style-type: none;"> -->
-      <ul>
-        <li>
-          <a href="#typeMono">monospace</a>
-        </li>
-        <li>
-          <a href="#typeSans">sans-serif</a>
-        </li>
-        <li>
-          <a href="#typeSerif">serif</a>
-        </li>
-        <li>
-          <a href="#typeSpec">Specific Font</a>
-        </li>
-      </ul>
-    </p>
-    <Section id="typeMono">
-      <div class="divFlex">
-        <div class="divInl">
-          <p>
-            <b>To change the font to be a general MONOSPACE font (all chr's the same size), eg </b><br /> <br />
-            &nbsp;&nbsp;font-family:monospace; <br /> <br />
-            Note... <br />
-            Ideally you should specify more than one so if it does not find the first choice <br />
-            it will drop to the second. If it does not find the second it drops to the third <br />
-            and so on. <br />
-            Eg &nbsp;&nbsp;font-family:monospace, sans-serif, serif;
-          </p>
-        </div>
-        <div class="backSide divInl">
-          <p style="font-family:monospace;">
-            This is a general MONOSPACE font <br />
-            it makes all characters the same width.
-          </p>
-        </div>
-      </div>
-    </Section>
-
-    <Section id="typeSans">
-      <div class="divFlex">
-        <div class="divInl">
-          <p>
-            <b>To change the font to be a general SANS-SERIF font (basic style lettering), eg </b><br /> <br />
-            &nbsp;&nbsp;font-family:sans-serif; <br /> <br />
-            Note... <br />
-            Ideally you should specify more than one so if it does not find the first choice <br />
-            it will drop to the second. If it does not find the second it drops to the third <br />
-            and so on. <br />
-            Eg &nbsp;&nbsp;font-family:sans-serif, serif, monospace;
-          </p>
-        </div>
-        <div class="backSide divInl">
-          <p style="font-family:sans-serif;">
-            This is a general SANS-SERIF font <br />
-            it makes all characters a basic font.
-          </p>
-        </div>
-      </div>
-    </Section>
-
-    <Section id="typeSerif">
-      <div class="divFlex">
-        <div class="divInl">
-          <p>
-            <b>To change the font to be a general SERIF font (fancy style lettering), eg </b><br /> <br />
-            &nbsp;&nbsp;font-family:sans-serif; <br /> <br />
-            Note... <br />
-            Ideally you should specify more than one so if it does not find the first choice <br />
-            it will drop to the second. If it does not find the second it drops to the third <br />
-            and so on. <br />
-            Eg &nbsp;&nbsp;font-family:serif, sans-serif, monospace;
-          </p>
-        </div>
-        <div class="backSide divInl">
-          <p style="font-family:serif;">
-            This is a general SERIF font <br />
-            it makes all characters a fancy font.
-          </p>
-        </div>
-      </div>
-    </Section>
-
-    <Section id="typeSpec">
-      <div class="divFlex">
-        <div class="divInl">
-          <p>
-            <b>To change the font to be a Specific TYPE of font, eg </b><br /> <br />
-            &nbsp;&nbsp;font-family:"Comic Sans MS"; <br /> <br />
-            Note... <br />
-            Ideally you should specify more than one so if it does not find the first choice <br />
-            it will drop to the second. If it does not find the second it drops to the third <br />
-            and so on. <br />
-            Eg &nbsp;&nbsp;font-family:"Comic Sans MS", ariel, sans-serif, monospace; <br />
-            or &nbsp;&nbsp;style="font-family:'Comic Sans MS', ariel, sans-serif, monospace;" <br /> <br />
-            Note... <br />
-            You need speech marks (" ") (or single quotes ' ' if you can't use speech marks) <br />
-            around the font name if it has spaces in but not otherwise.
-          </p>
-        </div>
-        <div class="backSide divInl">
-          <p style="font-family:'Comic Sans MS', ariel, sans-serif, monospace;">
-            This is a SPECIFIC TYPE of font <br />
-            I specified COMIC SANS MS.
-          </p>
-        </div>
-      </div>
-    </Section>
-
-    <section>
-      <div>
-        <p class="pressed">
-          This is an example of PRESSED TEXT
+        <a href="index.html">Home</a>
+        <h1>font-family examples of types used in STYLES</h1>
+        <p>
+            These are the most common types of &nbsp;&nbsp;font-family&nbsp;&nbsp; classifications in use:- <br />
+            <!-- <ul style="list-style-type: none;"> -->
+            <ul>
+                <li>
+                    <a href="#typeMono">monospace</a>
+                </li>
+                <li>
+                    <a href="#typeSans">sans-serif</a>
+                </li>
+                <li>
+                    <a href="#typeSerif">serif</a>
+                </li>
+                <li>
+                    <a href="#typeSpec">Specific Font</a>
+                </li>
+            </ul>
         </p>
-      </div>
+        <Section id="typeMono">
+            <div class="divFlex">
+                <div class="divInl">
+                    <p>
+                        <b>To change the font to be a general MONOSPACE font (all chr's the same size), eg </b><br /> <br />
+                        &nbsp;&nbsp;font-family:monospace; <br /> <br />
+                        Note... <br />
+                        Ideally you should specify more than one so if it does not find the first choice <br />
+                        it will drop to the second. If it does not find the second it drops to the third <br />
+                        and so on. <br />
+                        Eg &nbsp;&nbsp;font-family:monospace, sans-serif, serif;
+                    </p>
+                </div>
+                <div class="backSide divInl">
+                    <p style="font-family:monospace;">
+                        This is a general MONOSPACE font <br />
+                        it makes all characters the same width.
+                    </p>
+                </div>
+            </div>
+        </Section>
+
+        <Section id="typeSans">
+            <div class="divFlex">
+                <div class="divInl">
+                    <p>
+                        <b>To change the font to be a general SANS-SERIF font (basic style lettering), eg </b><br /> <br />
+                        &nbsp;&nbsp;font-family:sans-serif; <br /> <br />
+                        Note... <br />
+                        Ideally you should specify more than one so if it does not find the first choice <br />
+                        it will drop to the second. If it does not find the second it drops to the third <br />
+                        and so on. <br />
+                        Eg &nbsp;&nbsp;font-family:sans-serif, serif, monospace;
+                    </p>
+                </div>
+                <div class="backSide divInl">
+                    <p style="font-family:sans-serif;">
+                        This is a general SANS-SERIF font <br />
+                        it makes all characters a basic font.
+                    </p>
+                </div>
+            </div>
+        </Section>
+
+        <Section id="typeSerif">
+            <div class="divFlex">
+                <div class="divInl">
+                    <p>
+                        <b>To change the font to be a general SERIF font (fancy style lettering), eg </b><br /> <br />
+                        &nbsp;&nbsp;font-family:sans-serif; <br /> <br />
+                        Note... <br />
+                        Ideally you should specify more than one so if it does not find the first choice <br />
+                        it will drop to the second. If it does not find the second it drops to the third <br />
+                        and so on. <br />
+                        Eg &nbsp;&nbsp;font-family:serif, sans-serif, monospace;
+                    </p>
+                </div>
+                <div class="backSide divInl">
+                    <p style="font-family:serif;">
+                        This is a general SERIF font <br />
+                        it makes all characters a fancy font.
+                    </p>
+                </div>
+            </div>
+        </Section>
+
+        <Section id="typeSpec">
+            <div class="divFlex">
+                <div class="divInl">
+                    <p>
+                        <b>To change the font to be a Specific TYPE of font, eg </b><br /> <br />
+                        &nbsp;&nbsp;font-family:"Comic Sans MS"; <br /> <br />
+                        Note... <br />
+                        Ideally you should specify more than one so if it does not find the first choice <br />
+                        it will drop to the second. If it does not find the second it drops to the third <br />
+                        and so on. <br />
+                        Eg &nbsp;&nbsp;font-family:"Comic Sans MS", ariel, sans-serif, monospace; <br />
+                        or &nbsp;&nbsp;style="font-family:'Comic Sans MS', ariel, sans-serif, monospace;" <br /> <br />
+                        Note... <br />
+                        You need speech marks (" ") (or single quotes ' ' if you can't use speech marks) <br />
+                        around the font name if it has spaces in but not otherwise.
+                    </p>
+                </div>
+                <div class="backSide divInl">
+                    <p style="font-family:'Comic Sans MS', ariel, sans-serif, monospace;">
+                        This is a SPECIFIC TYPE of font <br />
+                        I specified COMIC SANS MS.
+                    </p>
+                </div>
+            </div>
+        </Section>
+
+        <section>
+            <div>
+                <p class="pressed">
+                    This is an example of PRESSED TEXT
+                </p>
+            </div>
+        </section>
+        <a href="#TopSection">Back to Top</a>
+        <br /><hr /><br />
+        <section>
+            <div class="divFlex">
+                <div style="font-family:Merriweather, Montserrat, 'Robot Mono', Sacramento, serif; font-size:12px;">
+                    <p>
+                        You can can use fonts in your web page in a few ways - it depends if your desired font
+                        is already loaded on the user's computer or not. <br /> <br />
+                        If it is then you can just say... <br />
+                        &nbsp;&nbsp;&nbsp;<b>font-family: <em>fontName</em></b> <br /> <br />
+
+                        If it is not already loaded - or you are not sure if is loaded are not - then you can either
+                        <b>LINK</b> to it OR download it to the computer and use <b>@font-face</b> to set it up. <br /> <br />
+
+                        <h2>An example of <b>LINK</b>ing a font is below...</h2>
+                        <br />
+                        <b>
+                            &lt;link href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat|Roboto+Mono|Sacramento&display=swap" rel="stylesheet"&gt;
+                        </b> <br /> <br />
+                        This must be added to the <b>&lt;head&gt;</b> section of your page...It
+                        links to some fonts on the google server, the fonts (in this example) are:- <br />
+                        <b>Merriweather, Montserrat, Roboto Mono & Sacramento</b> <br />
+                        To see what fonts are available this way (and there are lots) go to the
+                        <a href="https://fonts.google.com/?query=space" target="_blank">Google Site</a> and take a look. <br />
+                        <em>
+                            When you find a/some fonts you want to use click the "+ Select this style" option and
+                            it will build the &lt;link&gt; for you. You can then cut & paste it in your code.
+                        </em> <br /> <br />
+
+                        Then you use the <b>font-family</b> command to set it...eg... <br />
+                        <b>font-family:Merriweather, 'Robot Mono';</b> <br /> <br />
+
+                        <h2>Using @font-face</h2>
+                        Seeing as (I think) that to use fonts in this way it has to be actually downloaded on your
+                        PC I doubt I will use it, but to see some information on it
+                        <a href="https://www.w3schools.com/cssref/css3_pr_font-face_rule.asp" target="_blank">Click Here</a>. <br />
+                    </p>
+                </div>
+            </div>
+
+            <div class="divFlex">
+                <div class="divBSet">
+                    <h1>Some Web Safe Font Examples</h1>
+                    <p style="font-family:arial">
+                        ABCDEFGHIJKLMNOPQRSTUVWXYZ <br />
+                        abcdefghijklmnopqrstuvwxyz <br />
+                        This is an example of <b>ARIAL</b>
+                    </p> <br />
+
+                    <p style="font-family:verdana">
+                        ABCDEFGHIJKLMNOPQRSTUVWXYZ <br />
+                        abcdefghijklmnopqrstuvwxyz <br />
+                        This is an example of <b>VERDANA</b>
+                    </p> <br />
+
+                    <p style="font-family:tahoma">
+                        ABCDEFGHIJKLMNOPQRSTUVWXYZ <br />
+                        abcdefghijklmnopqrstuvwxyz <br />
+                        This is an example of <b>TAHOMA</b>
+                    </p> <br />
+
+                    <p style="font-family:'Trebuchet MS'">
+                        ABCDEFGHIJKLMNOPQRSTUVWXYZ <br />
+                        abcdefghijklmnopqrstuvwxyz <br />
+                        This is an example of <b>TREBUCHET MS</b>
+                    </p> <br />
+
+                    <p style="font-family:'Times New Roman'">
+                        ABCDEFGHIJKLMNOPQRSTUVWXYZ <br />
+                        abcdefghijklmnopqrstuvwxyz <br />
+                        This is an example of <b>TIMES NEW ROMAN</b>
+                    </p> <br />
+
+                    <p style="font-family:georgia">
+                        ABCDEFGHIJKLMNOPQRSTUVWXYZ <br />
+                        abcdefghijklmnopqrstuvwxyz <br />
+                        This is an example of <b>GEORGIA</b>
+                    </p> <br />
+
+                    <p style="font-family:'Courier New'">
+                        ABCDEFGHIJKLMNOPQRSTUVWXYZ <br />
+                        abcdefghijklmnopqrstuvwxyz <br />
+                        This is an example of <b>COURIER NEW</b>
+                    </p> <br />
+
+                    <p style="font-family:'Brush Script MT'">
+                        ABCDEFGHIJKLMNOPQRSTUVWXYZ <br />
+                        abcdefghijklmnopqrstuvwxyz <br />
+                        This is an example of <b>BRUSH SCRIPT MT</b>
+                    </p> <br />
+                </div>
+                <div class="divBSet">
+                    <h1>Some Font Styles that may NOT be on ALL computers</h1>
+                    <p style="font-size: 10px;"> <em>(I added a link to these fonts in the <b>&lt;head&gt;</b> section)</em></p>
+
+                    <p style="font-family:Merriweather">
+                        ABCDEFGHIJKLMNOPQRSTUVWXYZ <br />
+                        abcdefghijklmnopqrstuvwxyz <br />
+                        This is an example of <b>MERRIWEATHER</b>
+                    </p> <br />
+
+                    <p style="font-family:Montserrat">
+                        ABCDEFGHIJKLMNOPQRSTUVWXYZ <br />
+                        abcdefghijklmnopqrstuvwxyz <br />
+                        This is an example of <b>MONTSERRAT</b>
+                    </p> <br />
+
+                    <p style="font-family:'Roboto Mono'">
+                        ABCDEFGHIJKLMNOPQRSTUVWXYZ <br />
+                        abcdefghijklmnopqrstuvwxyz <br />
+                        This is an example of <b>ROBOTO MONO</b>
+                    </p> <br />
+
+                    <p style="font-family:Sacramento">
+                        ABCDEFGHIJKLMNOPQRSTUVWXYZ <br />
+                        abcdefghijklmnopqrstuvwxyz <br />
+                        This is an example of <b>SACRAMENTO</b>
+                    </p> <br />
+
+                    <!--Comic Sans MS is already on mine & probably others too-->
+                    <p style="font-family:'Comic Sans MS'">
+                        ABCDEFGHIJKLMNOPQRSTUVWXYZ <br />
+                        abcdefghijklmnopqrstuvwxyz <br />
+                        This is an example of <b>COMIC SANS MS</b>
+                    </p> <br />
+
+
+                </div>
+            </div>
+        </section>
+
+        <a href="#TopSection">Back to Top</a>
+
     </section>
-
-    <a href="#TopSection">Back to Top</a>
-
-  </section>
 
 </body>
 

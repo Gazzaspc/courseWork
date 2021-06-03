@@ -32,6 +32,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,12 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,12 +83,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="contact.html" />
     <Content Include="css\dingbats.css" />
     <Content Include="css\dingbatsNoB.css" />
     <Content Include="dingbats.html" />
     <Content Include="dingbatsNoB.html" />
     <Content Include="images\CVPicSmall.jpg" />
     <Content Include="images\GKimage.png" />
+    <Content Include="images\Glacier.jpg" />
     <Content Include="images\logos\bat.png" />
     <Content Include="images\logos\BatSleepTiny - Copy.png" />
     <Content Include="images\logos\BatSleepTiny.png" />
@@ -98,18 +98,27 @@
     <Content Include="images\logos\DingBat.png" />
     <Content Include="images\logos\DingBatTiny - Copy.png" />
     <Content Include="images\logos\DingBatTiny.png" />
-    <Content Include="images\Office1 - Copy.jpg" />
+    <Content Include="images\logos\Github.png" />
+    <Content Include="images\logos\HtmlCssJs.png" />
+    <Content Include="images\logos\JQuery.png" />
     <Content Include="images\Office1.jpg" />
     <Content Include="images\Office1a.jpg" />
     <Content Include="images\Office2.jpg" />
     <Content Include="images\Office3.jpg" />
+    <Content Include="images\OfficeLarge.jpg" />
+    <Content Include="index.html" />
+    <Content Include="UPDATES.html" />
     <Content Include="webLearning\aaaTESTme.html" />
+    <Content Include="webLearning\AdditionalContent\DirectoryChange.html" />
     <Content Include="webLearning\AddJavascript.html" />
     <Content Include="webLearning\Animation.html" />
     <Content Include="webLearning\Background.html" />
     <Content Include="webLearning\BeforeAfter.html" />
     <Content Include="webLearning\BoxModel.html" />
     <Content Include="webLearning\codecademyCCards.html" />
+    <Content Include="webLearning\codecademyDasmoto.html" />
+    <Content Include="webLearning\codecademyExcursion.html" />
+    <Content Include="webLearning\codecademyFlex.html" />
     <Content Include="webLearning\codecademyLessons.html" />
     <Content Include="webLearning\codecademyMenu.html" />
     <Content Include="webLearning\CommonToPages\commonHeader.html" />
@@ -117,17 +126,30 @@
     <Content Include="webLearning\CSS\main.css" />
     <Content Include="webLearning\CSS\MyStyles.css" />
     <Content Include="webLearning\CSS\normalize.css" />
+    <Content Include="webLearning\devTools.html" />
     <Content Include="webLearning\DingbatsTest.html" />
     <Content Include="webLearning\domElements.html" />
     <Content Include="webLearning\domEventListener.html" />
     <Content Include="webLearning\domMethods.html" />
     <Content Include="webLearning\domTimers.html" />
+    <Content Include="webLearning\flexItems.html" />
     <Content Include="webLearning\Float.html" />
     <Content Include="webLearning\FontFamily.html" />
     <Content Include="webLearning\FontSize.html" />
     <Content Include="webLearning\ImageHover.html" />
+    <Content Include="webLearning\Images\courseWork\brushes.jpg" />
+    <Content Include="webLearning\Images\courseWork\excursion.mp4" />
+    <Content Include="webLearning\Images\courseWork\ExcursionCellphone.jpg" />
+    <Content Include="webLearning\Images\courseWork\ExcursionLandscape.jpg" />
+    <Content Include="webLearning\Images\courseWork\frames.jpg" />
+    <Content Include="webLearning\Images\courseWork\paints.jpg" />
+    <Content Include="webLearning\Images\courseWork\pattern.jpg" />
+    <Content Include="webLearning\Images\courseWork\spec.jpg" />
+    <Content Include="webLearning\Images\courseWork\specExcursion.jpg" />
+    <Content Include="webLearning\Images\DevTools.jpg" />
     <Content Include="webLearning\Images\EmuSmall.jpg" />
     <Content Include="webLearning\Images\Glacier.jpeg" />
+    <Content Include="webLearning\Images\HTMLLayout.jpg" />
     <Content Include="webLearning\Images\LooneyGK.bmp" />
     <Content Include="webLearning\Images\McD_Logo.png" />
     <Content Include="webLearning\Images\Paw.png" />
@@ -180,6 +202,7 @@
     <Content Include="webLearning\tables.html" />
     <Content Include="webLearning\TitlePopup.html" />
     <Content Include="webLearning\Transform.html" />
+    <Content Include="webLearning\videos\GarySki.mp4" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\" />

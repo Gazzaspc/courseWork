@@ -25,6 +25,7 @@
     </section>
     <h1>Goodies Page</h1>
     <h2>Things with short explanations that I could not put elsewhere</h2>
+    <p><b>Mandatory & Optional</b> being expressions I may use in places.</p> <br />
 
     <div class="divFlex">
         <div class="divBorder divBSet">
@@ -102,9 +103,43 @@
                 you should set the style... <br /> <br />
                 <b>margin: auto;</b> <br /> <br />
                 <i>(you may also need to set width:100%; if the margin:auto; does not work properly)</i>
+            </p> <br />
+            <hr /> <br /> <br />
+        </div>
+        <div class="divBordedr divBSet">
+            <h2>Difference between <b>var</b> and <b>let</b></h2>
+            <p>
+                In JavaScript using <strong>var</strong> or <strong>let</strong> to declare
+                variables depends on where you are declaring them. <br /> <br />
+
+                The <strong>var</strong> command should be used to create a page-wide variable <br /> <br />
+                whereas the <strong>let</strong> command should be used inside sections of code like loops
+                or functions etc. <br /> <br />
+
+                Basically the <strong>let</strong> variable is a variable that will lose its value once
+                you leave the function/loop code but the <strong>var</strong> would keep its value. <br />
+                Eg... <br /> <br />
+
+                <strong>
+                var a = 1; <br />
+                var b = 2; <br />
+                     <br />
+                if (a === 1) { <br />
+                &nbsp;&nbsp;&nbsp;var a = 11; // the scope is global <br />
+                &nbsp;&nbsp;&nbsp;let b = 22; // the scope is inside the if-block <br />
+                     <br />
+                &nbsp;&nbsp;&nbsp;console.log(a);  // 11 <br />
+                &nbsp;&nbsp;&nbsp;console.log(b);  // 22 <br />
+                } <br />
+                     <br />
+                console.log(a); // 11 <br />
+                console.log(b); // 2 <br />
+                </strong>
+                <br />
+                <em>(It is also worth noting that <b>let</b> is a newer command and may 
+                not work in all (older) browsers (okay in 2015 onwards I think))</em> <br /> <br />
             </p>
         </div>
-
     </div>
 
     <a href="#">Top</a> <br />

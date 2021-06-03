@@ -1,0 +1,9 @@
+D:\VisualStudioWeb\mainWebsite\obj\Debug\mainWebsite.csprojAssemblyReference.cache
+D:\VisualStudioWeb\mainWebsite\obj\Debug\mainWebsite.Properties.Resources.resources
+D:\VisualStudioWeb\mainWebsite\obj\Debug\mainWebsite.csproj.GenerateResource.cache
+D:\VisualStudioWeb\mainWebsite\obj\Debug\mainWebsite.csproj.CoreCompileInputs.cache
+D:\VisualStudioWeb\mainWebsite\bin\Debug\mainWebsite.dll.config
+D:\VisualStudioWeb\mainWebsite\bin\Debug\mainWebsite.dll
+D:\VisualStudioWeb\mainWebsite\bin\Debug\mainWebsite.pdb
+D:\VisualStudioWeb\mainWebsite\obj\Debug\mainWebsite.dll
+D:\VisualStudioWeb\mainWebsite\obj\Debug\mainWebsite.pdb

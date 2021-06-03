@@ -1,0 +1,270 @@
+﻿@font-face {
+    font-family: mmaFont;
+    src: url(../fonts/Shojumaru-Regular.ttf);
+}
+
+.blocker {
+    /* This section creates a block (div) that follows the navbar
+  so that the rest of the elements start below the fixed navbar */
+    /*    max-height: 124px;*/
+    height: 145px;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+header {
+    position: fixed;
+}
+
+#maLogo {
+    width: 8%;
+    height: auto;
+    float: left;
+    position: relative;
+    transform: translate(10%, 10%);
+    z-index: 99;
+    border-radius: 15px;
+}
+
+#articleSection {
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-gap: 10px 20px;
+}
+
+.articleSmall {
+    font-size: 12px;
+    font-style: italic;
+    float: right;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+}
+
+/*button {
+    margin-bottom:25PX;
+}*/
+
+.centerMe {
+    text-align: center;
+}
+
+.centerJustify {
+    justify-content: center;
+}
+
+#contact .mmaFont {
+    color: white;
+}
+
+.divBorder {
+    border: 1px solid rgb(6, 85, 145);
+    padding: 0 10px;
+}
+
+.divBSet {
+    background-color: #E0FFFF;
+    padding: 0 10px;
+}
+
+
+.divBSetEven {
+    background-color: #FCF2F2;
+    padding: 0 10px;
+}
+
+.divFlex {
+    display: flex;
+}
+
+.divGrid {
+    display: grid;
+    margin: 10px;
+}
+
+.divBlock {
+    display: block;
+}
+
+.divHeader {
+    background-color: rgb(138, 191, 233);
+    display: flex;
+}
+
+.divHeader2 {
+    background-color: rgb(6, 85, 145);
+    height: 25px;
+    position: relative;
+    text-align: center;
+}
+
+#dojo {
+    background-image: url("../images/dojo.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: white;
+    min-height: 250px;
+    position: relative;
+}
+
+    #dojo p {
+        position: absolute;
+        bottom: 0;
+        right: 10px;
+    }
+
+.fColor1 {
+    color: white;
+}
+
+#footerDiv {
+    position: relative;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    background-color: rgb(138, 191, 233);
+}
+
+#footerAuth {
+    position: absolute;
+    font-size: 0.75em;
+    float: left;
+    padding: 0 25px 0 25px;
+    bottom: 0;
+    margin: 0;
+}
+
+#footerImg {
+    width: 50%;
+}
+
+.fs2 {
+    font-size: 2em;
+}
+
+#header {
+    z-index: 98;
+}
+
+#headStyles {
+    width: 60%;
+    height: auto;
+}
+
+#home {
+    padding-bottom: 20px;
+}
+
+
+#locMap {
+    width: 40%;
+    margin: 20px 20px;
+}
+
+    #locMap img {
+        width: 90%;
+        border: 1px solid blue;
+        margin-bottom: 10px;
+    }
+
+
+.mt0 {
+    margin-top: 0;
+}
+
+.maArticle {
+    min-width: 180px;
+    position: relative;
+    margin: 0 20px;
+}
+
+.mmaFont {
+    font-family: mmaFont;
+}
+
+.mmaFontL {
+    font-family: mmaFont;
+    font-size: 30px;
+}
+
+.sectionEven {
+    /*margin-left: 10px;
+    margin-right: 10px;*/
+    background-color: #801336;
+}
+
+.sectionOdd {
+    /*margin-left:10px;
+    margin-right:10px;*/
+    background-color: white;
+}
+
+#sensei {
+    padding-bottom: 20px;
+}
+
+.senseiImg {
+    width: 40%;
+    height: auto;
+    float: left;
+    padding: 10px 15px 10px 0;
+}
+
+#sensei .mmaFont {
+    color: white;
+}
+
+.senseiP::first-letter {
+    font-size: 250%;
+    color: #801336;
+}
+
+#senseiSection {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px 10px;
+}
+
+
+#ulHeader {
+    margin: 0;
+    color: white;
+    display: inline-block;
+    padding-top: 3px;
+    padding-left: 0;
+}
+
+    #ulHeader li {
+        display: inline-block;
+        padding: 0 20px;
+        text-decoration: none;
+    }
+
+        /* In order  to NOT change the text color & not have it underlined when
+      the link was clicked on you need to the below...ALSO the :hover MUST be
+      after the :link & :visited*/
+        #ulHeader li a:link,
+        #ulHeader li a:visited {
+            color: white;
+            text-decoration: none;
+        }
+
+        #ulHeader li:hover {
+            background-color: rgb(138, 191, 233);
+        }
+
+.verticalCenterMeParent {
+    position: relative;
+}
+
+.verticalCenterMeChild {
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}

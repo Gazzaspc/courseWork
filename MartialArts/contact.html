@@ -1,0 +1,292 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="CSS/myStyles.css" rel="stylesheet" />
+
+    <title>Dingbats Martial Arts</title>
+
+
+    <style>
+
+
+        #contactMap {
+            margin: 0 auto 30px auto;
+            overflow: auto;
+            box-shadow: 10px 10px 0 rgba(128, 19, 54, .75);
+            background: rgba(252, 242, 242, .75);
+        }
+
+        #reqdField {
+            margin: 10px 0 0 0;
+            position: relative;
+            text-align: end;
+            right: 0;
+        }
+
+        #emailTbl {
+            /*border: 1px solid black;*/
+            border-collapse: collapse;
+            /* Note... border-collapse: collapse will make it just a single border */
+        }
+
+            #emailTbl td {
+                /*border: 1px solid black;*/
+            }
+
+        #email {
+            color: black;
+        }
+
+            #email:link,
+            #email:visited {
+                /*text-decoration: none;*/
+            }
+
+        /* In order  to NOT change the text color & not have it underlined when
+        the link was clicked on you need to the below...ALSO the :hover MUST be
+        after the :link & :visited*/
+        a.button2:link,
+        a.button2:visited {
+            text-decoration: none;
+        }
+
+        a.button2:hover {
+            color: white;
+        }
+
+        .tdRight {
+            text-align: right;
+        }
+
+        .tdLeft {
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .tdTop {
+            vertical-align: top;
+            padding-top: 7px;
+        }
+
+        .tdPadText {
+            padding: 2px 5px 0 5px;
+        }
+
+        .tdPadBox {
+            padding: 0 5px 10px 5px;
+        }
+
+        .tdPadBoxSub {
+            padding: 0 5px 10px 0;
+        }
+
+        #contact {
+            background-image: url(images/Contact.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size:90%;
+        }
+
+        .button2 {
+            display:block;
+            text-align: center;
+            width:313px;
+        }
+
+        /*Keep @media changes last - some changes did not happen if above the other styles*/
+        @media only screen and (max-width: 780px) {
+            /*Shows 2 div boxes inline*/
+            #articleSection {
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 10px 10px;
+            }
+        }
+
+        @media only screen and (max-width: 550px) {
+            /*Shows 1 div boxes inline - smallest screen*/
+
+            /*Change grid Below - No. of columns to 1*/
+            #articleSection {
+                grid-template-columns: 1fr;
+                grid-gap: 10px;
+            }
+
+            .verticalCenterMeParent {
+                display: block;
+            }
+
+            .verticalCenterMeChild {
+                position: static;
+                top: auto;
+                -ms-transform: none;
+                transform: none;
+            }
+            /*Change flexbox above - make them display:block & change other settings so they stay in place*/
+
+            #contactMap {
+                box-shadow: none;
+            }
+
+            #ulHeader li {
+                padding: 0 10px;
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+    <header id="header">
+        <div class="divHeader centerMe">
+            <div>
+                <img id="maLogo" src="images/maLogo.jpg" alt="M.A. logo" />
+                <img id="headStyles" src="images/styles.png" alt="Fighting Styles" />
+            </div>
+        </div>
+        <nav>
+            <div class="divHeader2">
+                <ul id="ulHeader">
+                    <li><a href="../index.html">Main</a></li>
+                    <li><a href="martialArts.html">Home</a></li>
+                    <li><a href="martialArts.html#sensei">Sensei's</a></li>
+                    <li><a href="martialArts.html#location">Location</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!--<div class="blocker"></div>-->
+
+
+    <section id="contact" class="sectionEven centerMe">
+        <div class="blocker"></div>
+
+        <p class="mt0 fColor1">
+            <span class="mmaFontL">Contact Us</span> <br /> <br />
+        </p>
+
+        <div id="contactSection" class="centerJustify divFlex">
+            <div id="contactMap" class="divBorder divBSetEven">
+
+                <!--I will build the 'action' attribute within the function 'checkForm'-->
+                <form class="makeInlineBlock"
+                      onsubmit="return checkForm(this)"
+                      action=""
+                      method="post" enctype="text/plain">
+
+                    <table id="emailTbl" border="0" cellspacing="0" cellpadding="0" style="font-size: 1.25rem;">
+                        <tr>
+                            <td class="tdLeft tdPadText">
+                                *Your Name:
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdLeft tdPadBox">
+                                <input type="text" name="yourName" placeholder="Your name" size="20" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="tdLeft" style="padding: 0 0 0 5px;">
+                                <table border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td class="tdLeft">
+                                            *Email:
+                                        </td>
+                                        <td> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdLeft tdPadBoxSub">
+                                            <input type="email" name="yourEmail" placeholder="email@aaa.com" size="20" />
+                                        </td>
+                                        <td class="tdLeft tdPadBoxSub">
+                                            <input type="checkbox" name="yourEmailCopy" />
+                                            Copy Email to You?
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="tdLeft tdPadText">
+                                *Message:
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdLeft tdPadBox">
+                                <textarea name="yourMessage" placeholder="Message" rows="15" cols="40"></textarea>
+                            </td>
+                        </tr>
+                        <tr style="width:100px;">
+                            <td class="tdLeft">
+                                <!--<input type="submit" value="Submit" />-->
+                                <button class="button2" type="submit">Submit</button>
+                            </td>
+
+                        </tr>
+
+                    </table>
+                    <p id="reqdField">* Required Field</p>
+
+                </form>
+            </div>
+        </div>
+
+    </section>
+    <footer>
+        <div id="footerDiv" class="centerMe">
+            <p id="footerAuth">&#169; Gary Kirby 2021</p>
+            <img id="footerImg" src="images/footer.png" alt="Martial Arts poses" />
+        </div>
+
+    </footer>
+
+    <script src="js/myJScript.js"></script>
+
+    <script>
+        function checkForm(form) {
+            if (form.yourName.value == "") {
+                alert("Missing Details! your name must be entered");
+                form.yourName.focus();
+                return false;
+            } else if (form.yourEmail.value == "") {
+                alert("Missing Details! your email address must be entered");
+                form.yourEmail.focus();
+                return false;
+            } else if (form.yourMessage.value == "") {
+                alert("Missing Details! you must enter a message to send");
+                form.yourMessage.focus();
+                return false;
+            };
+
+            reg = /^[\w- ]+$/;  //Alphanumeric or - or space (must have the +)
+            // Above tells it to check for letters/numbers & space in the name
+            if (!reg.test(form.yourName.value)) {
+                alert("Error, Invalid chr's in your name" + "\n" + "(alphanumeric only)");
+                form.yourName.focus();
+                return false;
+            }
+
+            form.action = buildAction(form);
+            return true;
+        };
+
+        function buildAction(form) {
+            var txt = "mailto:gazzaspc@gmail.com ?";
+            if (form.yourEmailCopy.checked == true) {
+                txt = txt + "cc=" + form.yourEmail.value + " &";
+            };
+            txt = txt + "subject=Mail from our Website";
+            return txt;
+        };
+
+    </script>
+</body>
+</html>

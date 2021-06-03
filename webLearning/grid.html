@@ -1,0 +1,1085 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Grid</title>
+
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+    <style>
+        /*...Code Styles...*/
+
+        /* ***********eg... BREAKPOINTS for different size screens - SEE BELOW FOR EXAMPLES *************   */
+        /*Breakpoints
+        We use @media queries to define breakpoints. A breakpoint sets the pixel width at
+        which the content will collapse - when your navigation bar will transform in
+        some way, and your grid will break into individual elements. Google Developers suggests
+        basing breakpoints on content, not specific devices, and people agree.
+
+        You may have heard the phrase mobile first flying around a lot.
+        The concept is that you build your content to look great for mobile, and scale up
+        from there.
+        This is a good philosophy to work with.*/
+
+        /*(Note the below is used in the  dingbatsNoB.html form)*/
+        @media only screen and (min-width: 1101px) {
+            /*Shows 5 div boxes inline - largest screen */
+            .block2 {
+                width: 18%;
+            }
+        }
+
+        @media only screen and (max-width: 1100px) {
+            /*Shows 4 div boxes inline*/
+            .block2 {
+                width: 20%;
+            }
+        }
+
+        @media only screen and (max-width: 900px) {
+            /*Shows 3 div boxes inline*/
+            .block2 {
+                width: 30%;
+            }
+        }
+
+        @media only screen and (max-width: 700px) {
+            /*Shows 2 div boxes inline*/
+            .block2 {
+                width: 46%;
+            }
+        }
+
+        @media only screen and (max-width: 510px) {
+            /*Shows 1 div boxes inline - smallest screen*/
+            .block2 {
+                width: 90%;
+            }
+        }
+        /************ legend color-profile BREAKPOINT EXAMPLES **********/
+
+        .item1 {
+            grid-area: header;
+        }
+
+        .item2 {
+            grid-area: menu;
+        }
+
+        .item3 {
+            grid-area: main;
+        }
+
+        .item4 {
+            grid-area: right;
+        }
+
+        .item5 {
+            grid-area: footer;
+        }
+
+        .grid-container {
+            display: grid;
+            grid: 'header header header header header header' 'menu main main main right right' 'menu footer footer footer footer footer';
+            grid-gap: 10px;
+            background-color: #2196F3;
+            padding: 10px;
+        }
+
+            .grid-container > div {
+                background-color: rgba(255, 255, 255, 0.8);
+                text-align: center;
+                padding: 20px 0;
+                font-size: 30px;
+            }
+
+        .grid2 {
+            display: grid;
+            border: 2px blue solid;
+            width: 300px;
+            height: 500px;
+            grid-template: 1fr 1fr 1fr / 3fr 50% 1fr;
+        }
+
+        .box2 {
+            background-color: beige;
+            color: black;
+            border-radius: 5px;
+            border: 2px dodgerblue solid;
+        }
+
+        .grid3 {
+            display: grid;
+            border: 2px blue solid;
+            width: 300px;
+            height: 500px;
+            grid-template: repeat(3, 1fr) / 3fr 50% 1fr;
+            grid-gap: 10px;
+        }
+
+        .box3 {
+            background-color: beige;
+            color: black;
+            border-radius: 5px;
+            border: 2px dodgerblue solid;
+        }
+
+        .grid4 {
+            display: grid;
+            border: 2px blue solid;
+            height: 200px;
+            width: 200px;
+            grid-template: repeat(4, 1fr) / repeat(4, 1fr);
+            grid-gap: 5px;
+        }
+
+        .a4 {
+            grid-row: 3 / 5;
+        }
+
+        .b4 {
+            grid-row: 4 / 5;
+            grid-column: 2 / span 2;
+        }
+
+        .box4 {
+            background-color: beige;
+            color: black;
+            border-radius: 5px;
+            border: 2px dodgerblue solid;
+        }
+
+        .item5_1 {
+            grid-area: myArea;
+            font-size: 16px !important;
+        }
+
+        .grid-container5 {
+            display: grid;
+            grid-template: repeat(2, 1fr) / repeat(5, 1fr); /* make ROWS same size & make COLUMNS same size */
+            grid-template-areas: 'myArea myArea . . .'; /* I only NAMED one item 'myArea' so use dots to fill out to 5 columns */
+            grid-gap: 5px;
+            background-color: #2196F3;
+            padding: 10px;
+        }
+
+            .grid-container5 > div {
+                background-color: rgba(255, 255, 255, 0.8);
+                text-align: center;
+                padding: 20px 0;
+                font-size: 30px;
+            }
+
+        #main6 {
+            width: 200px;
+            height: 70px;
+            border: 1px solid black;
+            display: flex;
+        }
+
+            #main6 div {
+                width: 35px;
+                height: 35px;
+            }
+
+        #main6a {
+            width: 200px;
+            height: 50px;
+            border: 1px solid black;
+            display: flex;
+        }
+
+            #main6a div {
+                width: 35px;
+                /*height not wanted if we align-items:stretch the div's*/
+                /*height: 35px;*/
+            }
+
+        #main7 {
+            width: 35px;
+            height: 150px;
+            border: 1px solid black;
+            display: inline-grid;
+            margin-right: 40px;
+        }
+
+            #main7 div {
+                width: 35px;
+                height: 35px;
+            }
+
+        p.boldMe {
+            font-weight: bold;
+            /*display:inline-block;*/
+        }
+
+        .smBox {
+            width: 25px !important;
+            height: 25px !important;
+        }
+    </style>
+
+    <!--Any code that is just for this page and not to go in myScripts.js can go here (or in a SCRIPT area elsewhere
+    on the page or at the end)-->
+    <script>
+                                                                //...Code / Functions etc...
+    </script>
+
+</head>
+<body class="bodyMove">
+    <a href="index.html">Home</a>
+
+
+    <div class="divBorder">
+        <h1>This is an example of using the <strong>display:grid;</strong> property</h1>
+
+        <p>You can use the <em>grid-areas</em> property to name grid items.</p>
+        <p>You can refer to the name when you set up the grid layout, by using the <em>grid</em> property on the grid container.</p>
+        <p>This grid layout contains six columns and three rows:</p>
+
+        <div class="grid-container">
+            <div class="item1">Header</div>
+            <div class="item2">Menu</div>
+            <div class="item3">Main</div>
+            <div class="item4">Right</div>
+            <div class="item5">Footer</div>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <p>
+                <b>
+                    See <a href="#gridArea">'grid-area'</a> at the end of this page
+                    for more...but for now (a brief bit)...
+                </b> <br /> <br />
+                My little explanation of one way of using the
+                <a href="" target="_blank">grid</a> - Above this area is a grid layout with each section of the grid
+                labelled as Header, Menu, Main, Right & Footer <br /> <br />
+
+                The <a href="https://www.w3schools.com/cssref/pr_grid-area.asp" target="_blank">grid-area</a>
+                can property can be used to assign a name to a grid item. Named grid items can then
+                be referenced to by the
+                <a href="https://www.w3schools.com/cssref/pr_grid-template-areas.asp" target="_blank">
+                    grid-template-areas
+                </a> property of the grid container. <br /> <br />
+
+                <em>
+                    Note... The <strong>grid</strong> property is a shorthand property for various
+                    grid properties (including grid-template-area) and my example uses this method.
+                </em> <br /> <br />
+
+                <b>
+                    .item1 { grid-area: header; } <br />
+                    .item2 { grid-area: menu; } <br />
+                    .item3 { grid-area: main; } <br />
+                    .item4 { grid-area: right; } <br />
+                    .item5 { grid-area: footer; } <br />
+                    <br />
+                    .grid-container { <br />
+                    &nbsp;&nbsp;&nbsp;display: grid;
+                </b> //(or use - display:inline-grid) <b>
+                    <br />
+                    &nbsp;&nbsp;&nbsp;grid: <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'header header header header header header' <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'menu main main main right right' <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'menu footer footer footer footer footer'; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grid-gap: 10px; <br />
+                    &nbsp;&nbsp;&nbsp;background-color: #2196F3; <br />
+                    &nbsp;&nbsp;&nbsp;padding: 10px; <br />
+                    }
+                </b> <br /> <br />
+
+            </p>
+        </div>
+        <div class="divBorder divBSet">
+            <p>
+                <b>Note...</b> <br />
+                Each name (header, menu, main etc) represents a grid element. <br />
+                This shows the header takes up 6 columns <br />
+                while the menu only takes up 1 column (but 2 rows). <br />
+                If you wanted the menu to take up 2 columns you would need to replace a main with the menu name <br />
+                and also a footer with the menu name (as it is on both rows) <br />
+                Eg... <br />
+                <b>
+                    &nbsp;&nbsp;&nbsp;grid: <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'header header header header header header' <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'<span style="color:red;">menu menu</span> main main right right' <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'<span style="color:red;">menu menu</span> footer footer footer footer'; <br />
+                </b> <br /> <br />
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+    <h1>Some comments about grids</h1>
+
+    <div class="divFlex">
+
+        <div class="divBorder divBSet">
+
+            <h2><a href="https://www.w3schools.com/cssref/pr_grid-template-columns.asp" target="_blank">grid-template-columns:</a></h2>
+            <p>
+                By default, grids contain only one column. <br />
+                If you were to start adding items, each item would be put on a new row; that’s not
+                much of a grid! To change this, we need to explicitly define the number
+                of rows and columns in our grid. <br /> <br />
+
+                We can define the columns of our grid by using the CSS property
+                <b><span style="color:red;">grid-template-columns:</span></b> <br />
+                <b>
+                    .grid { <br />
+                    &nbsp;&nbsp;&nbsp;display: grid; <br />
+                    &nbsp;&nbsp;&nbsp;width: 500px; <br />
+                    &nbsp;&nbsp;&nbsp;<span style="color:red;">grid-template-columns: 100px 200px;</span> <br />
+                    }
+                </b> <br /> <br />
+                This property creates two changes. <br />
+                First, it defines the number of columns in the grid; in this case, there are two. <br />
+                Second, it sets the width of each column. <br />
+                The first column will be 100 pixels wide and the second column will be 200 pixels wide. <br /> <br />
+
+                We can also define the size of our columns as a percentage of the entire grid’s width. <br />
+                <b><span style="color:red;">grid-template-columns: 20% 50%;</span> </b> <br /> <br />
+
+                We can also mix and match... <br />
+                <b><span style="color:red;">grid-template-columns: 100px 50%;</span> </b> <br /> <br />
+
+                If you are not careful then the grid items can go outside of the boundaries of the grid <br />
+                eg... if the grid has a width:500px <br />
+                and grid-template-column:200px 200px 200px; <br /> <br />
+
+                AS WELL AS %-ages and px's for the sizes there is also <strong>fr</strong>. <br /> <br />
+
+                This means FRACTIONS (although I would say it is really PARTS), eg... <br />
+                Whatever the size of the grid cell if you say <br />
+                <b>grid-template-columns: 2fr 1fr 2fr; </b> <br />
+                Then it will split the cell into 5 equal parts and allocate 2 parts to the first section, 1 part to
+                the second section and 2 parts to the third section. <br /> <br />
+
+                And just to complicate matters more you can mix fr and % and px as well. <br />
+                So <b>grid-template-columns: 2fr 50% 2fr;</b> <br />
+                Will now split the cell into one part being 50% of the grid size and the remaining 50% will be
+                split into 4 equal parts. <br />
+                It will then allocate 2 parts to the first section,
+                50% of the size of the grid to the second section
+                and the remaining 2 parts to the third section. <br /> <br />
+
+
+            </p>
+        </div>
+
+        <div class="divBorder divBSet">
+
+            <h2><a href="https://www.w3schools.com/cssref/pr_grid-template-rows.asp" target="_blank">grid-template-rows:</a></h2>
+            <p>
+                By default, the rows are sized to fit evenly inside the grid. <br />
+                We can set the height of each row manually by... <br /> <br />
+
+                We can define the rows of our grid by using the CSS property
+                <b><span style="color:red;">grid-template-rows:</span></b> <br />
+                <b>
+                    .grid { <br />
+                    &nbsp;&nbsp;&nbsp;display: grid; <br />
+                    &nbsp;&nbsp;&nbsp;width: 500px; <br />
+                    &nbsp;&nbsp;&nbsp;heaight: 700px; <br />
+                    &nbsp;&nbsp;&nbsp;grid-template-columns: 100px 200px; <br />
+                    &nbsp;&nbsp;&nbsp;<span style="color:red;">grid-template-rows: 20% 30% 500px;</span> <br />
+                    }
+                </b> <br /> <br />
+                Very similar to grid-template-columns, you can use %-ages and/or px's to set the height. <br /> <br />
+
+                If you are not careful then the grid items can go outside of the boundaries of the grid <br />
+                eg... if the grid has a height:500px <br />
+                and grid-template-rows:200px 200px 200px; <br />
+                <hr /> <br />
+
+                NOTE... <br />
+                You can also say <br /> <br />
+
+                <b>grid-template-rows: repeat(3, 200px);</b> <br />
+                which is the same as saying grid-template-rows: 200px 200px 200px; <br /> <br />
+
+                <b>grid-template-columns: 200px minmax(100px, 300px) 200px;</b> <br />
+                which will make the first column 200px wide, <br />
+                the second can grow/shrink between 100px and 300px and <br />
+                the third column will be 200px wide.<br /> <br />
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+
+            <h2><a href="https://www.w3schools.com/cssref/pr_grid-template.asp" target="_blank">grid-template:</a></h2>
+            <p>
+                The grid-template property is a shorthand property for the following properties <br />
+                <strong>grid-template-rows, grid-template-columns and grid-template-areas</strong><br /> <br />
+
+                <b>
+                    .grid { <br />
+                    &nbsp;&nbsp;&nbsp;display: grid; <br />
+                    &nbsp;&nbsp;&nbsp;width: 500px; <br />
+                    &nbsp;&nbsp;&nbsp;height: 700px; <br />
+                    &nbsp;&nbsp;&nbsp;<span style="color:red;">grid-template: 20% 30% 500px / 100px 200px;</span> <br />
+                    }
+                </b> <br /> <br />
+
+                NOTE... <br />
+                The format is ROWS then COLUMNS then AREAS <br /> <br />
+
+            </p>
+        </div>
+        <div class="divBorder divBSet">
+            <h2>Example of grid-template: 1fr 1fr 1fr / 3fr 50% 1fr;</h2>
+            <i>with a height of 500px and a width of 300px</i> <br /> <br />
+
+            <div class="grid2">
+                <div class="box2 a">A</div>
+                <div class="box2 b">B</div>
+                <div class="box2 c">C</div>
+                <div class="box2 d">D</div>
+                <div class="box2 e">E</div>
+                <div class="box2 f">F</div>
+                <div class="box2 g">G</div>
+            </div>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <p>
+                Example of... <br /> <br />
+                <span style="font-size:24px">
+                    <strong><a href="https://www.w3schools.com/cssref/pr_grid-gap.asp" target="_blank">grid-gap: 10px;</a></strong> <br />
+                    <strong><a href="https://www.w3schools.com/cssref/pr_grid-row-gap.asp" target="_blank">grid-row-gap: 10px;</a></strong> <br />
+                    <strong><a href="https://www.w3schools.com/cssref/pr_grid-column-gap.asp" target="_blank">grid-column-gap: 10px;</a></strong>
+                </span>
+            </p>
+            <p>
+                NOTE... <br />
+                grid-gap, grid-row-gap and grid-column-gap was renamed to gap, row-gap and column-gap in CSS3. <br /> <br />
+
+                If you want a gap between the columns in your grid you can use <br />
+                <strong>grid-column-gap: 10px;</strong><br /> <br />
+
+                This affects the size of the columns when using %-ages or fr's, eg... <br />
+                Let’s quickly calculate how wide these columns are. <br />
+                Remember that using fr considers all of the available space. <br />
+                The grid is 320 pixels wide and 20 of those pixels are taken up by the two grid gaps. <br />
+                Therefore each column takes a piece of the 300 available pixels. <br />
+                Each column gets 1fr, so the columns are evenly divided into thirds (or 100 pixels each). <br /> <br />
+
+                >And there is also a
+                <h2>grid-row-gap:</h2>
+                eg... <br />
+                <strong>grid-row-gap: 10px;</strong><br /> <br />
+
+                Which can be incorporated into the shorthand version of <br />
+                <strong>grid-gap: 10px</strong> - make ROW & COLUMN both 10px <br />
+                or <br />
+                <strong>grid-gap: 10px 5px</strong> - make ROW = 10px & COLUMN = 5px gaps <br /> <br />
+
+            </p>
+        </div>
+
+        <div class="divBorder divBSet">
+            <p>
+                Example of <br />
+                <strong>grid-template: repeat(3, 1fr) / 3fr 50% 1fr;</strong> <br />
+                <strong>grid-gap: 10px;</strong> <br /> <br />
+            </p>
+
+            <div class="grid3">
+                <div class="box3 a">A</div>
+                <div class="box3 b">B</div>
+                <div class="box3 c">C</div>
+                <div class="box3 d">D</div>
+                <div class="box3 e">E</div>
+                <div class="box3 f">F</div>
+                <div class="box3 g">G</div>
+            </div>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h2>Grid Items</h2>
+            <p>
+                Think of a grid made up rows and columns. <br />
+                With Row Lines and Column Lines. <br />
+                So row 1 begins at line 1 but ends at line 2 and <br />
+                row 2 begins at line 2 and ends at line 3 and <br />
+                row 3 begins at line 3 and ends at line 4...etc <br /> <br />
+                <i>See example in next box...</i> <br /> <br />
+
+                Example of... <br /> <br />
+                <span style="font-size:20px">
+                    <strong><a href="https://www.w3schools.com/cssref/pr_grid-row.asp" target="_blank">grid-row: 1 / 3;</a></strong> <br />
+                    <strong><a href="https://www.w3schools.com/cssref/pr_grid-row-start.asp" target="_blank">grid-row-start: 1;</a></strong> <br />
+                    <strong><a href="https://www.w3schools.com/cssref/pr_grid-row-end.asp" target="_blank">grid-row-end: 3;</a></strong>
+                </span>
+            </p>
+            <p>
+                Basically, you can specify where you want your row of cells to start and end <br />
+                <strong>grid-row: 1 / 3;</strong> <br />
+                means start at row line 1 and end at row line 3 <br />
+                which will give you a cell spanning two rows. <br />
+                <i>(you can also say <b>grid-row: 1 / span 2</b> which will do the same thing)</i>
+                <br /> <br />
+
+                There are ALSO properties for the columns... <br />
+                Example of... <br /> <br />
+                <span style="font-size:20px">
+                    <strong><a href="https://www.w3schools.com/cssref/pr_grid-column.asp" target="_blank">grid-column: 1 / 3;</a></strong> <br />
+                    <strong><a href="https://www.w3schools.com/cssref/pr_grid-column-start.asp" target="_blank">grid-column-start: 1;</a></strong> <br />
+                    <strong><a href="https://www.w3schools.com/cssref/pr_grid-column-end.asp" target="_blank">grid-column-end: 3;</a></strong>
+                </span>
+
+            </p>
+        </div>
+
+        <div class="divBorder divBSet">
+            <p>Grid layout example, rows & columns... <br /></p>
+            <img src="Images/Grid1.png" alt="Grid Example" width="250" />
+            <br /> <hr /> <br />
+
+            <p>
+                Example grid with... <br />
+                The grid is a simple 4 x 4 with equal spaced cells <br />
+                specification of <br />
+                <b>
+                    grid-template: repeat(4, 1fr) / repeat(4, 1fr); <br />
+                    grid-gap: 5px;
+                </b> <br /> <br />
+                and box a covers two rows, one cell (row 3 & 4, starting on line 3 & ending at line 5) <br />
+                <b>grid-row: 3 / 5;</b> <br />
+                <i>I could also have said <b>grid-row: 3 / span 2;</b></i> <br />
+                and box b covers one row, two cells (row 4 only, starting on line 4 & ending at line 5) <br />
+                <b>grid-row: 4 / 5;</b> <br />
+                <b>grid-column: 2 / span 2;</b> <br />
+
+            </p>
+            <div class="grid4">
+                <div class="box4 a4">A</div>
+                <div class="box4 b4">B</div>
+            </div>
+        </div>
+
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div id="gridArea" class="divFlex">
+        <div class="divBorder divBSet">
+            <p>
+                There is also a <br />
+
+                <span style="font-size:20px">
+                    <strong><a href="https://www.w3schools.com/cssref/pr_grid-area.asp" target="_blank">grid-area: ...;</a></strong> <br />
+                </span> <br />
+
+                This is a shorthand property that covers <b>grid-row-start, grid-column-start, grid-row-end, </b>and <b>
+                    grid-column-end
+                </b>. <br /> <br />
+
+                Example 1 <br />
+                Make "item1" start on row 2 column 1, and span 2 rows and 3 columns: <br />
+                <b>
+                    .item1 { <br />
+                    &nbsp;&nbsp;&nbsp;grid-area: 2 / 1 / span 2 / span 3; <br />
+                    }
+                </b> <br /> <br />
+                Which is actually...
+                grid-area: <i>Start Row Line / Start Column Line / Span over 2 Rows / Span over 3 Columns</i>; <br />
+                <hr /> <br />
+
+                The grid-area property can also be used to assign a name to a grid item. <br />
+                <b>Named grid items</b> can then be referenced to by the <b>grid-template-areas</b> property of the grid container. <br />
+                <i>grid-area: grid-row-start / grid-column-start / grid-row-end / grid-column-end | itemname;</i> <br /> <br />
+
+                Example 2<br />
+                Item1 gets the name "myArea", and spans all five columns in a five columns grid layout: <br />
+                <b>
+                    .item1 { <br />
+                    &nbsp;&nbsp;&nbsp;grid-area: myArea; <br />
+                    } <br />
+                    .grid-container { <br />
+                    &nbsp;&nbsp;&nbsp;display: grid; <br />
+                    &nbsp;&nbsp;&nbsp;grid-template-areas: 'myArea myArea myArea myArea myArea'; <br />
+                    } <br />
+                </b> <br />
+
+            </p>
+
+        </div>
+
+        <div class="divBorder divBSet">
+            <h1>The grid-area Property</h1>
+
+            <p>You can use the <em>grid-area</em> property to name grid items.</p>
+            <p>You can refer to the name when you set up the grid layout, by using the <em>grid-template-areas</em> property on the grid container.</p>
+            <p>Item 1, is called "myArea" and will take up the place of two columns (out of five):</p>
+
+            <!--Settings for the STYLES are ABOVE in the STYLES SECTION inside the <head> area-->
+            <div class="grid-container5">
+                <div class="item5_1">1 (myArea)</div>
+                <div class="item5_2">2</div>
+                <div class="item5_3">3</div>
+                <div class="item5_4">4</div>
+                <div class="item5_5">5</div>
+                <div class="item5_6">6</div>
+                <div class="item5_7">7</div>
+                <div class="item5_8">8</div>
+                <div class="item5_9">9</div>
+            </div>
+            <p>
+                <br /> This is the CODE to show how it works... <br /> <br />
+
+                In the &lt;head&gt; area in the &lt;styles&gt; section is the following:- <br /> <br />
+                <b>
+                    .item5_1 { <br />
+                    &nbsp;&nbsp;&nbsp;grid-area: myArea; <br />
+                    &nbsp;&nbsp;&nbsp;font-size: 16px !important <br />
+                    } <br /> <br />
+
+                    .grid-container5 { <br />
+                    &nbsp;&nbsp;&nbsp;display: grid; <br />
+                </b><i>/* make ROWS same size & make COLUMNS same size */ </i> <b>
+                    <br />
+                    &nbsp;&nbsp;&nbsp;grid-template: repeat(2, 1fr) / repeat(5, 1fr);  <br />
+                </b><i>/* I only NAMED one item ('myArea') so use dots to fill out to 5 columns */ </i> <b>
+                    <br />
+                    &nbsp;&nbsp;&nbsp;grid-template-areas: 'myArea myArea . . .';  <br />
+                    &nbsp;&nbsp;&nbsp;grid-gap: 5px; <br />
+                    &nbsp;&nbsp;&nbsp;background-color: #2196F3; <br />
+                    &nbsp;&nbsp;&nbsp;padding: 10px; <br />
+                    } <br /> <br />
+
+                    .grid-container5 > div { <br />
+                    &nbsp;&nbsp;&nbsp;background-color: rgba(255, 255, 255, 0.8); <br />
+                    &nbsp;&nbsp;&nbsp;text-align: center; <br />
+                    &nbsp;&nbsp;&nbsp;padding: 20px 0; <br />
+                    &nbsp;&nbsp;&nbsp;font-size: 30px; <br />
+                    }
+                </b> <br /> <br />
+
+                And the code for the grid is:- <br /> <br />
+
+                <b>
+                    &lt;div class="grid-container5"&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&lt;div class="item5_1"&gt;1 (myArea)&lt;/div&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&lt;div class="item5_2"&gt;2&lt;/div&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&lt;div class="item5_3"&gt;3&lt;/div&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&lt;div class="item5_4"&gt;4&lt;/div&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&lt;div class="item5_5"&gt;5&lt;/div&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&lt;div class="item5_6"&gt;6&lt;/div&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&lt;div class="item5_7"&gt;7&lt;/div&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&lt;div class="item5_8"&gt;8&lt;/div&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&lt;div class="item5_9"&gt;9&lt;/div&gt; <br />
+                    &lt;/div&gt; <br />
+                </b> <br /> <br />
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h2>Extra Comments</h2>
+
+            <p>
+                Use <b>
+                    <a href="https://www.w3schools.com/cssref/css3_pr_justify-content.asp" target="_blank">
+                        justify-content
+                    </a>
+                </b> to position the entire
+                grid along the horizontal axis. <br />
+                <i>
+                    So if you have 2 cells on a row with 4 columns and then you set <br />
+                    <b>justify-content: flex-end;</b> then the two cells will be closer to the end (right) of the grid.<br />
+
+                    <b>justify-content: center;</b> then
+                    the two cells will be in the middle of the grid with a blank area at
+                    the start and a blank area at the end.<br />
+                    <b>justify-content: flex-start;</b> then
+                    the two cells will be closer to the start (left) of the grid.
+                </i> <br /> <br /> <br />
+                <hr /> <br /> <br />
+                <br />
+                Use <b>
+                    <a href="https://www.w3schools.com/cssref/css3_pr_align-items.asp" target="_blank">
+                        align-items
+                    </a>
+                </b> to position the items in the grid along the vertical axis. Only really works if
+                there is spare space around the items in the cell so they have room to move.<br /> <br />
+
+                <br /> <br />
+
+                <hr /> <br /> <br />
+                <br />
+                Use <b>
+                    <a href="https://www.w3schools.com/cssref/css3_pr_align-content.asp" target="_blank">
+                        align-content
+                    </a>
+                </b> to position the entire grid along the vertical axis. <br />
+                There must be multiple lines of items for this property to have any effect! <br />
+
+                <br /> <br /> <hr /> <br /> <br /> <br />
+
+                NOTE... <br />
+                There are also the following properties:- <br />
+                <b>
+                    <a href="https://www.w3schools.com/cssref/css3_pr_align-self.asp" target="_blank">
+                        align-self:
+                    </a>
+                </b> <br />
+                <b>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/justify-self" target="_blank">
+                        justify-self:
+                    </a>
+                </b> <br />
+                Which can be added to each cell item, rather than the grid itself and it will override the
+                <b>align-items:</b> and <b>justify-items:</b> property settings for that particular cell. <br /> <br />
+            </p>
+
+        </div>
+
+        <div class="divBorder divBSet">
+            <p class="boldMe">justify-content:flex-end;</p>
+            <div id="main6" style="justify-content: flex-end;">
+                <div style="background-color:coral;">1</div>
+                <div style="background-color:lightblue;">2</div>
+                <div style="background-color:pink;">3</div>
+            </div>
+
+            <p class="boldMe">justify-content:center;</p>
+            <div id="main6" style="justify-content:center;">
+                <div style="background-color:coral;">1</div>
+                <div style="background-color:lightblue;">2</div>
+                <div style="background-color:pink;">3</div>
+            </div>
+
+            <p class="boldMe">justify-content:flex-start;</p>
+            <div id="main6" style="justify-content:flex-start;">
+                <div style="background-color:coral;">1</div>
+                <div style="background-color:lightblue;">2</div>
+                <div style="background-color:pink;">3</div>
+            </div>
+
+            <hr />
+
+            <!--The next three examples only really work when grid-template-rows has been specified
+            and there is space to fill around the cell contents-->
+            <p class="boldMe">justify-content:left;align-items:flex-end;</p>
+            <div id="main6a"
+                 style="
+                    display:grid;
+                    grid-template-columns: repeat(3, 30px);
+                    /*Total number of rows x height needs to = height set above in styles section*/
+                    /*Below is 1 row @ 50px height*/
+                    grid-template-rows: 50px;
+                    align-items:flex-end;
+                ">
+                <div style="background-color:coral;display:inline-block;">1</div>
+                <div style="background-color:lightblue;display:inline-block;">2</div>
+                <div style="background-color:pink;display:inline-block;">3</div>
+            </div>
+
+            <p class="boldMe">justify-content:left;align-items:flex-start;</p>
+            <div id="main6a"
+                 style="
+                    display:grid;
+                    grid-template-columns: repeat(3, 30px);
+                    /*Total number of rows x height needs to = height set above in styles section*/
+                    /*Below is 1 row @ 50px height*/
+                    grid-template-rows: 50px;
+                    align-items:flex-start;
+                ">
+                <div style="background-color:coral;display:inline-block;">1</div>
+                <div style="background-color:lightblue;display:inline-block;">2</div>
+                <div style="background-color:pink;display:inline-block;">3</div>
+            </div>
+
+            <p class="boldMe">justify-content:left;align-items:stretch;</p>
+            <div id="main6a"
+                 style="
+                    display:grid;
+                    grid-template-columns: repeat(3, 30px);
+                    /*Total number of rows x height needs to = height set above in styles section*/
+                    /*Below is 1 row @ 50px height*/
+                    grid-template-rows: 50px;
+                    align-items:stretch;
+                ">
+                <div style="background-color:coral;display:inline-block;">1</div>
+                <div style="background-color:lightblue;display:inline-block;">2</div>
+                <div style="background-color:pink;display:inline-block;">3</div>
+            </div>
+
+            <hr />
+
+            <p class="boldMe">
+                align-content: <br />
+                flex-end;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;center;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;flex-start;
+
+            </p>
+            <div class="divFlex">
+                <div id="main7" style="align-content:flex-end;">
+                    <div style="background-color:coral;">1</div>
+                    <div style="background-color:lightblue;">2</div>
+                    <div style="background-color:pink;">3</div>
+                </div>
+                <div id="main7" style="align-content:center;">
+                    <div style="background-color:coral;">1</div>
+                    <div style="background-color:lightblue;margin:auto;">2</div>
+                    <div style="background-color:pink;">3</div>
+                </div>
+                <div id="main7" style="align-content:flex-start;">
+                    <div style="background-color:coral;">1</div>
+                    <div style="background-color:lightblue;">2</div>
+                    <div style="background-color:pink;">3</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h1>Explicit Vs Implicit Grid</h1>
+            <p>
+                <b>Explicit Grid</b> <br />
+                You can set the actual size of your grid by specifying the number of columns and the number of rows
+                you require. <br /> <br /> <br />
+
+                <b>Implicit Grid></b> <br />
+                When you do not know how many Rows and/or Columns you need for your grid this is known as an Implicit Grid. <br />
+                "What happens if the developer has specified a 3-column, 5-row grid (for a total of 15 items),
+                but the search results return 30? <br /> <br />
+
+                Something called the implicit grid takes over. The implicit grid is an algorithm built into the
+                specification for CSS Grid that determines default behavior for the placement
+                of elements when there are more than fit into the grid specified by the CSS. <br /> <br />
+
+                The default behavior of the implicit grid is as follows: <br />
+                items fill up rows first, adding new rows as necessary. <br />
+                New grid rows will only be tall enough to contain the content within them." <br /> <br /> <br />
+
+            </p>
+
+        </div>
+
+        <div class="divBorder divBSet">
+            <p>
+                For Implicit Grids you need to use <br />
+                <b>
+                    <a href="https://www.w3schools.com/cssref/pr_grid-auto-rows.asp" target="_blank">
+                        grid-auto-rows:
+                    </a>
+                </b> and/or <br />
+                <b>
+                    <a href="https://www.w3schools.com/cssref/pr_grid-auto-columns.asp" target="_blank">
+                        grid-auto-columns:
+                    </a>
+                </b>  <br /> <br />
+
+                These properties are declared on grid containers. <br />
+                <b>grid-auto-rows</b> specifies the height of implicitly added grid rows. <br />
+                <b>grid-auto-columns</b> specifies the width of implicitly added grid columns. <br /> <br />
+
+                grid-auto-rows and grid-auto-columns accept the same values as their explicit counterparts, <br />
+                grid-template-rows and grid-template-columns: (px, %, fr and the repeat funtion).<br /> <br />
+
+                ALSO SEE... <br />
+                <b>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/justify-self" target="_blank">
+                        grid-auto-flow:
+                    </a>
+                </b> <br /> <br />
+
+                The <b>grid-auto-flow:</b> property controls how auto-placed items get inserted in the grid. <br /> <br />
+            </p>
+        </div>
+
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h1>Grid Review</h1>
+            <p>
+                grid layouts are two-dimensional: they have a row, or inline, axis and a column, or block, axis. <br /> <br />
+
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items" target="_blank">justify-items</a> <br />
+                specifies how individual elements should spread across the row axis <br /> <br />
+
+                <a href="https://www.w3schools.com/cssref/css3_pr_justify-content.asp" target="_blank">justify-content</a> <br />
+                specifies how groups of elements should spread across the row axis <br /> <br />
+
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/justify-self" target="_blank">justify-self</a> <br />
+                specifies how a single element should position itself with respect to the row axis. <br />
+                It is added to each cell item, rather than the grid itself and it will override
+                the justify-items: property settings for that particular cell.<br /> <br />
+
+                <a href="https://www.w3schools.com/cssref/css3_pr_align-items.asp" target="_blank">align-items</a> <br />
+                specifies how individual elements should spread across the column axis <br /> <br />
+
+                <a href="https://www.w3schools.com/cssref/css3_pr_align-content.asp" target="_blank">align-content</a> <br />
+                specifies how groups of elements should spread across the column axis <br /> <br />
+
+                <a href="https://www.w3schools.com/cssref/css3_pr_align-self.asp" target="_blank">align-self</a> <br />
+                specifies how a single element should position itself with respect to the column axis. <br />
+                It is added to each cell item, rather than the grid itself and it will override
+                the align-items: property settings for that particular cell.<br /> <br />
+
+
+            </p>
+
+        </div>
+
+        <div class="divBorder divBSet">
+            <p>
+                <h1>Grid Review (continued)</h1>
+            <p>
+                <a href="https://www.w3schools.com/cssref/pr_grid.asp" target="_blank">grid</a> <br />
+                The grid property is a shorthand property for:- <br />
+                grid-template-rows, grid-template-columns, grid-template-areas,
+                grid-auto-rows, grid-auto-columns, grid-auto-flow <br /> <br />
+
+                <a href="https://www.w3schools.com/cssref/pr_grid-template.asp" target="_blank">grid-template</a> <br />
+                This property is a shorthand property for:- <br />
+                grid-template-rows, grid-template-columns, grid-template-areas <br /> <br />
+
+                <a href="https://www.w3schools.com/cssref/pr_grid-template-rows.asp" target="_blank">grid-template-rows</a> <br />
+                specifies how many rows and the height of rows added to the grid <br /> <br />
+
+                <a href="https://www.w3schools.com/cssref/pr_grid-template-columns.asp" target="_blank">grid-template-columns</a> <br />
+                specifies how many and the width of columns added to the grid <br /> <br />
+
+                <a href="https://www.w3schools.com/cssref/pr_grid-template-areas.asp" target="_blank">grid-template-areas</a> <br />
+                specifies areas within the grid layout. <br />
+                You can name grid items by using the grid-area property, and then reference
+                to the name in the grid-template-areas property. <br />
+                Each area is defined by apostrophes. <br />
+                Use a period sign to refer to a grid item with no name. <br /> <br />
+
+                <a href="https://www.w3schools.com/cssref/pr_grid-auto-rows.asp" target="_blank">grid-auto-rows</a> <br />
+                specifies the height of rows added automatically to the grid. <br />
+                This property affects only rows with the size not set.<br /> <br />
+
+                <a href="https://www.w3schools.com/cssref/pr_grid-auto-columns.asp" target="_blank">grid-auto-columns</a> <br />
+                specifies the width of columns added implicitly to the grid, <br />
+                This property affects only columns with the size not set.<br /> <br />
+
+                <a href="https://www.w3schools.com/cssref/pr_grid-auto-flow.asp" target="_blank">grid-auto-flow</a> <br />
+                specifies how auto-placed items get inserted in the grid. <br /> <br />
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h1>Grid Review (continued)</h1>
+            <p>
+                <a href="https://www.w3schools.com/cssref/pr_grid-area.asp" target="_blank">grid-area</a> <br />
+                This is a shorthand property for the following properties: <br />
+                grid-row-start, grid-column-start, grid-row-end and grid-column-end. <br /> <br />
+
+                <a href="https://www.w3schools.com/cssref/pr_grid-row.asp" target="_blank">grid-row</a> <br />
+                The grid-row property is shorthand for:- <br />
+                grid-row-start and grid-row-end<br /> <br />
+
+                <a href="https://www.w3schools.com/cssref/pr_grid-row-start.asp" target="_blank">grid-row-start</a> <br />
+                This property defines on which row-line the item will start. <br /> <br />
+
+                <a href="https://www.w3schools.com/cssref/pr_grid-row-end.asp" target="_blank">grid-row-end</a> <br />
+                This property defines on which row-line the item will end. <br />
+                or (using span) how many rows the item will span.<br /> <br />
+
+                <a href="https://www.w3schools.com/cssref/pr_grid-column.asp" target="_blank">grid-column</a> <br />
+                The grid-column property is shorthand for:- <br />
+                grid-column-start and grid-column-end<br /> <br />
+
+                <a href="https://www.w3schools.com/cssref/pr_grid-column-start.asp" target="_blank">grid-column-start</a> <br />
+                This property defines on which column-line the item will start. <br /> <br />
+
+                <a href="https://www.w3schools.com/cssref/pr_grid-column-end.asp" target="_blank">grid-column-end</a> <br />
+                This property defines on which column-line the item will end. <br />
+                or (using span) how many columns the item will span.<br /> <br />
+
+            </p>
+
+        </div>
+
+        <div class="divBorder divBSet">
+            <p>
+                <h1>Grid Review (continued)</h1>
+            <p>
+                grid-gap, grid-row-gap and grid-column-gap was renamed to gap, row-gap and column-gap in CSS3. <br /> <br />
+
+                <a href="https://www.w3schools.com/cssref/css3_pr_gap.asp" target="_blank">gap</a> <br />
+                The grid-gap property is shorthand for:- <br />
+                row-gap and column-gap<br /> <br />
+
+                <a href="https://www.w3schools.com/cssref/css3_pr_row-gap.asp" target="_blank">row-gap</a> <br />
+                This property defines the size of the gap between the rows in a grid layout. <br /> <br />
+
+                <a href="https://www.w3schools.com/cssref/css3_pr_column-gap.asp" target="_blank">column-gap</a> <br />
+                This property defines the size of the gap between the columns in a grid layout. <br /> <br />
+
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <p>
+                <br />
+                <i>
+                    <span style="font-size:2rem;">
+                        <b>
+                            <span class="redMess">Flexbox</span> is essentially for laying out items in a single dimension – in a row OR a column. <br /><br />
+
+                            <span class="redMess">Grid</span>  is for layout of items in two dimensions – rows AND columns. <br /> <br />
+                        </b>
+                    </span>
+                </i> <br /> <br /> <br />
+
+                Also, take a look at <br />
+                <a href="https://css-tricks.com/things-ive-learned-css-grid-layout/" target="_blank">
+                    Things I've Learned About CSS Grid Layout
+                </a> - by Ollie Williams <br /> <br />
+
+            </p>
+        </div>
+
+    </div>
+
+    <a href="#">Top</a> <br />
+</body>
+</html>

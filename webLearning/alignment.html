@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Aligning Div's</title>
+
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+    <style>
+        /*...Code Styles...*/
+
+        #main6 {
+            width: 200px;
+            height: 70px;
+            border: 1px solid black;
+            display: flex;
+        }
+
+            #main6 div {
+                width: 35px;
+                height: 35px;
+            }
+
+        #main7 {
+            width: 35px;
+            height: 150px;
+            border: 1px solid black;
+            display: inline-grid;
+            margin-right: 40px;
+        }
+
+            #main7 div {
+                width: 35px;
+                height: 35px;
+            }
+
+        p.boldMe {
+            font-weight: bold;
+            /*display:inline-block;*/
+        }
+
+        .smBox {
+            width: 25px !important;
+            height: 25px !important;
+        }
+    </style>
+
+    <!--Any code that is just for this page and not to go in myScripts.js can go here (or in a SCRIPT area elsewhere
+    on the page or at the end)-->
+    <script>
+                                                    //...Code / Functions etc...
+    </script>
+
+</head>
+<body class="bodyMove">
+    <a href="index.html">Home</a>
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h2>Aligning DIV's inside a DIV</h2>
+
+            <p>
+                Aligning <b>&lt;div&gt;</b> boxes inside a parent <b>&lt;div&gt;</b> can get confusing (well, to me at least)
+                so I have attempted to do some examples (see box to the right). <br /> <br />
+
+                Depending on what you are trying to do depends on how you need to code it. <br /> <br />
+
+                Here I found that making the <b>parent &lt;div&gt;</b> set to be <b>display: flex;</b> worked best. <br /> <br />
+
+                If you need ALL your div's to start on the RIGHT (A) or CENTER (B) or LEFT (C) then you can
+                use the <br />
+                <b>justify-content:</b> property on the parent div. <br /> <br />
+
+                The other examples get more complicated and using a <b>display:grid;</b> instead of <b>display:flex;</b>
+                may be a better way to go (see my page on <a href="grid.html">grids</a> for examples). <br /> <br />
+
+                But if not using a grid then... <br /> <br />
+
+                <b>(D)</b> <br />
+                Uses a combination of <b>float:left;, margin: 0 auto; & float:right;</b> properties <br />
+                On my code I used inline styles on each child &lt;div&gt; to make it easier to follow. <br /> <br />
+
+                <b>(E)</b> <br />
+                Uses a combination of other properties. <br />
+                For instance I needed to make the parent <b>position:relative;</b> so I could use the properties... <br />
+                <b>top, right, bottom, transform</b> etc. <br />
+                On my code I used inline styles on each child &lt;div&gt; to make it easier to follow. <br /> <br />
+
+                <b>(F)</b> <br />
+                Uses a combination of <b>align-items, float & margin</b> properties <br />
+                On my code I used inline styles on each child &lt;div&gt; to make it easier to follow. <br /> <br />
+
+                <b>(G)</b> <br />
+                Uses a combination of other properties. <br />
+                For instance I needed to make the parent <b>position:relative;</b> so I could use the properties... <br />
+                <b>float, top, right, transform</b> etc. <br />
+                On my code I used inline styles on each child &lt;div&gt; to make it easier to follow. <br /> <br />
+            </p>
+
+        </div>
+
+        <div class="divBorder divBSet">
+            <p class="boldMe">(A) justify-content:flex-end;</p>
+            <div id="main6" style="justify-content: flex-end;">
+                <div style="background-color:coral;">1</div>
+                <div style="background-color:lightblue;">2</div>
+                <div style="background-color:pink;">3</div>
+            </div>
+
+            <p class="boldMe">(B) justify-content:center;</p>
+            <div id="main6" style="justify-content:center;">
+                <div style="background-color:coral;">1</div>
+                <div style="background-color:lightblue;">2</div>
+                <div style="background-color:pink;">3</div>
+            </div>
+
+            <p class="boldMe">(C) justify-content:flex-start;</p>
+            <div id="main6" style="justify-content:flex-start;">
+                <div style="background-color:coral;">1</div>
+                <div style="background-color:lightblue;">2</div>
+                <div style="background-color:pink;">3</div>
+            </div>
+
+
+
+            <p class="boldMe">(D) uses float/margin</p>
+            <div id="main6">
+                <div style="background-color:coral;float:left;">1</div>
+                <div style="background-color:lightblue;margin:0 auto;">2</div>
+                <div style="background-color:pink;float:right;">3</div>
+            </div>
+
+            <p class="boldMe">(E) uses top/right/transform etc</p>
+            <div id="main6" style="position:relative;">
+                <div style="background-color:coral;float:left;">1</div>
+                <!-- the transform:translate property moves the div over a bit (half of its size)
+            It needs to do this to center it properly otherwise the starting corner is centered
+            and not the center of the div.
+            We also need to set the parent to be position:relative and the child div's to be
+            position:absolute so top/right etc works -->
+                <div style="background-color:lightblue;top:50%;right:50%;transform:translate(50%, -50%);position:absolute;">2</div>
+                <div style="background-color:pink;right:0;bottom:0;position:absolute;">3</div>
+            </div>
+
+            <p class="boldMe">(F) uses align-items/float/margin</p>
+            <div id="main6" style="align-items:flex-end;">
+                <div style="background-color:coral;float:left;">1</div>
+                <div style="background-color:lightblue;margin:0 auto;">2</div>
+                <div style="background-color:pink;float:right;">3</div>
+            </div>
+
+            <p class="boldMe">(G) uses top/right/transform etc</p>
+            <div id="main6" style="position:relative;">
+                <!-- the transform:translateY property moves the div down a bit (half of its size)
+            It needs to do this to center it properly otherwise the starting corner is centered
+            and not the center of the div.
+            We also need to set the parent to be position:relative and the child div's to be
+            position:absolute so top/right etc works -->
+                <div style="background-color:coral;float:left;top:50%;transform:translateY(-50%);position:absolute;">1</div>
+                <div style="background-color:lightblue;top:50%;right:50%;transform:translate(50%, -50%);position:absolute;">2</div>
+                <div style="background-color:pink;right:0;top:50%;transform:translateY(-50%);position:absolute;">3</div>
+            </div>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+</body>
+</html>

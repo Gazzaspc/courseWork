@@ -52,6 +52,10 @@
             background-size: cover;
         }
 
+        .divBorder {
+            border-radius: 10px;
+        }
+
         #emailTbl {
             /*border: 1px solid black;*/
             border-collapse: collapse;
@@ -181,6 +185,7 @@
                             <a class="nav-link" href="contact.html">Contact</a>
                         </li>
                     </ul>
+                </div>
             </nav>
         </div>
     </section>
@@ -250,22 +255,20 @@
                                             Email:
                                         </td>
                                         <td> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdLeft tdPadBoxSub">
+                                            <input type="email" name="yourEmail" placeholder="email@aaa.com" size="20" />
+                                        </td>
+                                        <td class="tdLeft tdPadBoxSub">
+                                            <input type="checkbox" name="yourEmailCopy" />
+                                            Copy Email to You?
+                                        </td>
+                                    </tr>
+                                 </table>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="tdLeft tdPadBoxSub">
-                                <input type="email" name="yourEmail" placeholder="email@aaa.com" size="20" />
-                            </td>
-                            <td class="tdLeft tdPadBoxSub">
-                                <input type="checkbox" name="yourEmailCopy" />
-                                Copy Email to You?
-                            </td>
-                        </tr>
-                    </table>
 
-                    </td>
-
-                    </tr>
                     <tr>
                         <td class="tdLeft tdPadText">
                             Message:
@@ -273,7 +276,7 @@
                     </tr>
                     <tr>
                         <td class="tdLeft tdPadBox">
-                            <textarea name="yourMessage" placeholder="Message" rows="15" cols="40" /></textarea>
+                            <textarea name="yourMessage" placeholder="Message" rows="15" cols="40" ></textarea>
                         </td>
                     </tr>
                     <tr style="width:100px;">
@@ -281,7 +284,6 @@
                             <!--<input type="submit" value="Submit" />-->
                             <button class="button2" type="submit">Submit</button>
                         </td>
-                        <!--<td> </td>--> <!--//if not here then the border gets screwed up.-->
                     </tr>
 
                     </table>

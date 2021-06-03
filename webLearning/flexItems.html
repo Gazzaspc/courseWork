@@ -1,0 +1,398 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Flex Items</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Mono' rel='stylesheet'>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+    <style>
+        body {
+            border: 0;
+            margin: 0;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        h1 {
+            text-align: center;
+            display: block;
+            font-size: 18px;
+        }
+
+        /*1st box below*/
+
+        .container {
+            height: 150px;
+            width: 100%;
+            display: flex;
+            background-color: silver;
+        }
+
+        .box {
+            height: 75px;
+            width: 100px;
+            background-color: dodgerblue;
+            border: 1px solid lightgrey;
+            display: inline-block;
+        }
+
+        #flexstart {
+            justify-content: flex-start;
+        }
+
+        #flexend {
+            justify-content: flex-end;
+        }
+
+        #center {
+            justify-content: center;
+        }
+
+        #spacearound {
+            justify-content: space-around;
+        }
+
+        #spacebetween {
+            justify-content: space-between;
+        }
+        /*END OF 1st box above*/
+
+        /*2nd box below*/
+
+        .container2 {
+            height: 150px;
+            background-color: silver;
+            display: flex;
+            justify-content: center;
+        }
+
+        .left,
+        .center,
+        .right {
+            height: 75px;
+            width: 125px;
+            background-color: dodgerblue;
+            border: 2px solid lightgrey;
+        }
+
+        #baseline2 .center {
+            height: 100px;
+            width: 100px;
+            border: 5px solid turquoise;
+        }
+
+        #flexstart2 {
+            align-items: flex-start;
+        }
+
+        #flexend2 {
+            align-items: flex-end;
+        }
+
+        #center2 {
+            align-items: center;
+        }
+
+        #baseline2 {
+            align-items: baseline;
+        }
+
+        /*END OF 2nd box above*/
+
+        /*START OF 3rd box below*/
+
+        .top3,
+        .middle3,
+        .bottom3 {
+            width: 100px;
+            height: 100px;
+            background-color: dodgerblue;
+            border: 2px solid lightgrey;
+            margin: 10px 30px;
+        }
+
+        .top3.side3 {
+            flex-shrink: 2;
+        }
+
+        .top3.center3 {
+        }
+
+        .middle3.side3 {
+            flex-shrink: 0;
+        }
+
+        .middle3.center3 {
+        }
+
+        .bottom3.side3 {
+        }
+
+        .bottom3.center3 {
+            flex-shrink: 2;
+        }
+
+        #top3,
+        #middle3,
+        #bottom3 {
+            display: flex;
+            background-color: silver;
+            justify-content: center;
+            min-height: 200px;
+            align-items: center;
+        }
+        /*END OF 3rd box above*/
+    </style>
+</head>
+
+<body class="bodyMove">
+    <a href="index.html">Home</a>
+    <div>
+        <p>
+            <h2>FLEXBOX (display:flex;)</h2>
+            justify-content & align-items <br /> <br />
+
+            When we changed the display value of parent containers to flex or inline-flex,
+            all of the child elements (flex items) moved toward the upper left corner of the
+            parent container. <br />
+            This is the default behavior of flex containers and their children. <br />
+            We can specify how flex items spread out from left to right, along the main axis. <br /> <br />
+
+            <strong>
+                To position the items from left to right (horizontally), we use a property called
+                <a href="https://www.w3schools.com/cssref/css3_pr_justify-content.asp" target="_blank">justify-content</a>. <br /> <br />
+                To position the items up/down (vertically), we use a property called
+                <a href="https://www.w3schools.com/cssref/css3_pr_align-items.asp" target="_blank">align-items</a> OR if there 
+            are items over multiple lines then use 
+            <a href="https://www.w3schools.com/cssref/css3_pr_align-content.asp" target="_blank">align-content</a>. </strong><br /> <br />
+
+            There is also a <strong>display:flex-grow;</strong> property which specifies how much the item
+            will grow relative to the rest of the flexible items inside the same container. <br />
+            Visit the link <a href="https://www.w3schools.com/cssref/css3_pr_flex-grow.asp" target="_blank">flex-grow</a> for more. <br /> <br />
+
+            There is also a <strong>display:flex-shrink;</strong> property which specifies how much the item
+            will shrink relative to the rest of the flexible items inside the same container. <br />
+            Visit the link <a href="https://www.w3schools.com/cssref/css3_pr_flex-shrink.asp" target="_blank">flex-shrink</a> for more. <br /> <br />
+
+            Actually you can also take a look at
+            <a href="https://www.w3schools.com/cssref/css3_pr_flex-basis.asp" target="_blank">flex-basis</a> and
+            <a href="https://www.w3schools.com/cssref/css3_pr_flex-direction.asp" target="_blank">flex-direction</a> and
+            <a href="https://www.w3schools.com/cssref/css3_pr_flex-flow.asp" target="_blank">flex-flow</a> and
+            <a href="https://www.w3schools.com/cssref/css3_pr_flex-wrap.asp" target="_blank">flex-wrap</a> <br />
+            or visit the main <a href="https://www.w3schools.com/cssref/css3_pr_flex.asp" target="_blank">flex explanation</a> <br /> <br />
+        </p>
+    </div>
+    <!--I used align-items:flex-start here so BOTH div children start at the same height-->
+    <div class="divBorder" style="display:flex; align-items:flex-start;">
+
+        <div class="divBorder" style="width:45%;display:inline-block;">
+            <h1>Using 'justify-content:....' (left-right)</h1>
+            <h1>Flex Start</h1>
+            <div class='container' id='flexstart'>
+                <div class='box'></div>
+                <div class='box'></div>
+                <div class='box'></div>
+            </div>
+            <h1>Flex End</h1>
+            <div class='container' id='flexend'>
+                <div class='box'></div>
+                <div class='box'></div>
+                <div class='box'></div>
+            </div>
+            <h1>Center</h1>
+            <div class='container' id='center'>
+                <div class='box'></div>
+                <div class='box'></div>
+                <div class='box'></div>
+            </div>
+            <h1>Space Around</h1>
+            <div class='container' id='spacearound'>
+                <div class='box'></div>
+                <div class='box'></div>
+                <div class='box'></div>
+            </div>
+            <h1>Space Between</h1>
+            <div class='container' id='spacebetween'>
+                <div class='box'></div>
+                <div class='box'></div>
+                <div class='box'></div>
+            </div>
+        </div>
+
+        <div class="divBorder" style="width:45%;display:inline-block;">
+            <h1>Using 'align-items:....' (up - down)</h1>
+            <h1>Flex Start</h1>
+            <div class='container2' id='flexstart2'>
+                <div class='left'></div>
+                <div class='center'></div>
+                <div class='right'></div>
+            </div>
+            <h1>Flex End</h1>
+            <div class='container2' id='flexend2'>
+                <div class='left'></div>
+                <div class='center'></div>
+                <div class='right'></div>
+            </div>
+            <h1>Center</h1>
+            <div class='container2' id='center2'>
+                <div class='left'></div>
+                <div class='center'></div>
+                <div class='right'></div>
+            </div>
+            <h1>Baseline - boxes align at the bottom edge if boxes are different heights</h1>
+            <div class='container2' id='baseline2'>
+                <div class='left'></div>
+                <div class='center'></div>
+                <div class='right'></div>
+            </div>
+
+        </div>
+    </div>
+    <br />
+    <div class="divBorder" style="display:flex; align-items:flex-start;">
+
+        <div class="divBorder" style="width:45%;display:inline-block;">
+            <h1>Example of flex-shrink</h1>
+            <h1>Step 1 (flex-shrink:2; on either side)</h1>
+            <p class="centerMe">(either side shrinks twice as fast as center)</p>
+            <div id='top3'>
+                <div class='top3 side3'>
+                    <h2>1</h2>
+                </div>
+                <div class='top3 center3'>
+                    <h2>2</h2>
+                </div>
+                <div class='top3 side3'>
+                    <h2>3</h2>
+                </div>
+            </div>
+            <h1>Step 2 (flex-shrink:0; on either side)</h1>
+            <p class="centerMe">(either side does not shrink at all)</p>
+            <div id='middle3'>
+                <div class='middle3 side3'>
+                    <h2>1</h2>
+                </div>
+                <div class='middle3 center3'>
+                    <h2>2</h2>
+                </div>
+                <div class='middle3 side3'>
+                    <h2>3</h2>
+                </div>
+            </div>
+            <h1>Step 3 (flex-shrink:2; on center only)</h1>
+            <p class="centerMe">(center shrinks twice as fast as either side)</p>
+            <div id='bottom3'>
+                <div class='bottom3 side3'>
+                    <h2>1</h2>
+                </div>
+                <div class='bottom3 center3'>
+                    <h2>2</h2>
+                </div>
+                <div class='bottom3 side3'>
+                    <h2>3</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="divBorder" style="width:45%;display:inline-block;">
+            <h1>Some things I learned here</h1>
+            <p>
+                display: flex <br />
+                changes an element to a block-level container with flex items inside of it. <br /> <br />
+
+                display: inline-flex <br />
+                allows multiple flex containers to appear inline with each other. <br /> <br />
+
+                justify-content <br />
+                is used to space items along the main axis.  <br /> <br />
+
+                align-items <br />
+                is used to space items along the cross axis. <br /> <br />
+
+                flex-grow <br />
+                is used to specify how much space (and in what proportions) flex items absorb along the main axis.  <br /> <br />
+
+                flex-shrink <br />
+                is used to specify how much flex items shrink and in what proportions along the main axis. <br /> <br />
+
+                flex-basis <br />
+                is used to specify the initial size of an element styled with flex-grow and/or flex-shrink.  <br /> <br />
+
+                flex <br />
+                is used to specify flex-grow, flex-shrink, and flex-basis in one declaration. <br /> <br />
+
+                flex-wrap <br />
+                specifies that elements should shift along the cross axis if the flex container is not large enough. <br /> <br />
+
+                align-content <br />
+                is used to space rows along the cross axis. <br /> <br />
+
+                flex-direction <br />
+                is used to specify the main and cross axes. <br /> <br />
+
+                flex-flow <br />
+                is used to specify flex-wrap and flex-direction in one declaration. <br /> <br />
+
+                Flex containers can be nested inside of each other by declaring
+                display: flex or display: inline-flex for children of flex containers. <br /> <br />
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a>
+
+    <div class="divFlex">
+        <div class="divBorder divBSet" style="width:90%;">
+            <h2>Using display:flex; on my index.html form</h2>
+
+            <p>
+                See the code in <b>index.html</b> for more <br /> <br />
+                but for a brief explanation:- <br />
+                In the <b>&lt;style&gt;</b> area at the top of my form I included... <br /> <br />
+
+                <b><i>/*Start with both boxes maintain a width of 45%*/ </i> <br />
+                .flexBlock { <br />
+                &nbsp;&nbsp;&nbsp;width:45%; <br />
+                } <br /> <br />
+
+                <i>/*set this to NOWRAP now - it is the default so it's not necessary but I wanted to show it. <br />
+                change to wrap (in the @media command) when screen size shrinks. */ </i> <br />
+                .flexContainer { <br />
+                &nbsp;&nbsp;&nbsp;flex-wrap: nowrap; <br />
+                } <br /> <br />
+
+                @media only screen and (max-width: 900px) { <br /> <br />
+
+                &nbsp;&nbsp;&nbsp;<i>/*when screen size drops below 900px make the width 95%*/ <br />
+                &nbsp;&nbsp;&nbsp;/*So it will now show 1 div box instead of 2 wide... <br />
+                &nbsp;&nbsp;&nbsp;(flex-wrap must change to 'wrap' - see.flexContainer below) */ </i> <br />
+                &nbsp;&nbsp;&nbsp;.flexBlock { <br />
+                &nbsp;&nbsp;&nbsp;width: 95%; <br />
+                &nbsp;&nbsp;&nbsp;} <br /> <br />
+
+                &nbsp;&nbsp;&nbsp;<i>/*When screen size drops below 900px this makes sure the 2 boxes wrap.*/ </i> <br />
+                &nbsp;&nbsp;&nbsp;.flexContainer { <br />
+                &nbsp;&nbsp;&nbsp;flex-wrap: wrap; <br />
+                &nbsp;&nbsp;&nbsp;} <br /> <br />
+
+                } <br />
+                <i>/*Above here is the code for making the flexbox change it's size and then drop to single boxes*/ </i> </b><br /> <br />
+
+                Then on the parent (div) container I allocate the class <b>flexContainer</b> <br />
+                and on the children (div's) I allocate the class <b>flexBlock</b> <br /> <br />
+
+
+            </p>
+
+        </div>
+    </div>
+</body>
+
+</html>

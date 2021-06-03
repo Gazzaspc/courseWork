@@ -47,44 +47,64 @@
       border: 2px solid green;
       height: 200px;
       width: 200px;
-      bottom: 35%;
+      top: 35%;
+      /*transform moves the div AND the background Image so can't use it*/
+      /*transform:translateY(-50%);*/
       right: 5%;
       background-image: url("Images/EmuSmall.jpg");
       background-attachment: fixed;
       background-repeat: no-repeat;
       background-position: 95% 50%;
-      background-size: 220px 210px;
+      background-size: 230px 250px;
       /*
       For PARALLAX SCROLLING you need to match the
          right: 5%   to what is the background-position: 95%
       the two values added together must make 100 for it to work
       otherwise when you resize the page (making it thinner/fatter)
       the picture does not move with the div box.
+
+        For resizing the screen UP & DOWN then that is different
+          as the background-image covers the whole page size 
+          and the div position relates to the visible screen size so it 
+          is like a window looking at just the part of the image
+          that appears through the window.
+          Therefore when you resize the screen UP / DOWN the image and the div 
+          may be in a different position as the div %-age is positioned according to
+          the visible screen size and the background image could be on a different ratio.
       */
 
     }
 
-    .Looney {
-      position: Absolute;
-      border-radius: 50px;
-      border: 2px solid red;
-      height: 200px;
-      width: 200px;
-      top: 0%;
-      right: 15%;
-      background-image: url("Images/LooneyGK.bmp");
-      background-attachment: fixed;
-      background-repeat: no-repeat;
-      background-position: 85% 50%;
-      background-size: 250px 400px;
-      /*
+      .Looney {
+          position: Absolute;
+          border-radius: 50px;
+          border: 2px solid red;
+          height: 200px;
+          width: 200px;
+          top: 0%;
+          right: 15%;
+          background-image: url("Images/LooneyGK.bmp");
+          background-attachment: fixed;
+          background-repeat: no-repeat;
+          background-position: 85% 50%;
+          background-size: 250px 400px;
+          /*
       For PARALLAX SCROLLING you need to match the
          right: 5%   to what is the background-position: 95%
       the two values added together must make 100 for it to work
       otherwise when you resize the page (making it thinner/fatter)
       the picture does not move with the div box.
+
+          For resizing the screen UP & DOWN then that is different
+          as the background-image covers the whole page size 
+          and the div position relates to the visible screen size so it 
+          is like a window looking at just the part of the image
+          that appears through the window.
+          Therefore when you resize the screen UP / DOWN the image and the div 
+          may be in a different position as the div %-age is positioned according to
+          the visible screen size and the background image could be on a different ratio.
       */
-    }
+      }
 
     p {
       margin-left: 20px;
@@ -95,9 +115,44 @@
     }
 
     .filler1 {
-      width: 400px;
-      height: 1200px;
+        height:800px;
     }
+
+      #redSolid {
+          width: 200px;
+          height: 200px;
+          background-color: rgb(255, 0, 0);
+          display: inline-block;
+      }
+
+      #redTransparent {
+          width: 200px;
+          height: 200px;
+          background-color: rgba(255, 0, 0, 0.5);
+          display: inline-block;
+      }
+
+      #redTransparentLess {
+          width: 200px;
+          height: 200px;
+          background-color: rgba(255, 0, 0, 0.75);
+          display: inline-block;
+      }
+
+      #redTransparentMore {
+          width: 200px;
+          height: 200px;
+          background-color: rgba(255, 0, 0, 0.25);
+          display: inline-block;
+      }
+
+      #redTransparentStillMore {
+          width: 200px;
+          height: 200px;
+          background-color: rgba(255, 0, 0, 0.1);
+          display: inline-block;
+      }
+
   </style>
 
 </head>
@@ -151,8 +206,15 @@ it all to the actual [html] area & not the [body] -->
         &nbsp;&nbsp;&nbsp; background-attachment: fixed; <br />
         &nbsp;&nbsp;&nbsp; background-repeat: no-repeat; <br />
         &nbsp;&nbsp;&nbsp; background-position: 95% 50%; <br />
-        &nbsp;&nbsp;&nbsp; background-size: 220px 210px; <br />
-        } <br />
+        &nbsp;&nbsp;&nbsp; background-size: 230px 250px; <br />
+        } <br /> <br />
+          <em>
+              Note... <br />
+              Left / Right screen resizing seems to work okay <br />
+              but UP / DOWN screen resizing does not as the position of the div and the position of the 
+              background-image seem to be at different ratio's. Although it would be fine if the image size was bigger 
+              as the div window would just look at a different part of the image as it resizes.
+          </em>
       </p>
     </div>
   </section>
@@ -193,7 +255,36 @@ it all to the actual [html] area & not the [body] -->
   </section>
 
   <div class="filler1">
-
+      <div id="redTransparentStillMore">
+          <p>
+              This is to show a partially transparent background <br />
+              uses <strong>background-color: rgba(255,0,0,0.1);</strong>
+          </p>
+      </div>
+      <div id="redTransparentMore">
+          <p>
+              This is to show a partially transparent background <br />
+              uses <strong>background-color: rgba(255,0,0,0.25);</strong>
+          </p>
+      </div>
+      <div id="redTransparent">
+          <p>
+              This is to show a partially transparent background <br />
+              uses <strong>background-color: rgba(255,0,0,0.5);</strong>
+          </p>
+      </div>
+      <div id="redTransparentLess">
+          <p>
+              This is to show a partially transparent background <br />
+              uses <strong>background-color: rgba(255,0,0,0.75);</strong>
+          </p>
+      </div>
+      <div id="redSolid">
+          <p>
+              This is to show a solid background <br />
+              uses <strong>background-color: rgb(255,0,0);</strong>
+          </p>
+      </div>
   </div>
 </body>
 

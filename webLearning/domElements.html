@@ -2,410 +2,559 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta charset="utf-8">
-  <title>DOM Elements</title>
+    <meta charset="utf-8">
+    <title>DOM Elements</title>
 
-  <link rel="stylesheet" href="CSS/normalize.css" />
-  <link rel="stylesheet" href="CSS/main.css" />
-  <link rel="stylesheet" href="CSS/MyStyles.css" />
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/MyStyles.css" />
 
-  <style>
-    h3 {
-      color: red;
-    }
+    <style>
+            h3 {
+                color: red;
+            }
 
-    /* body {background-color:white;}
-    .divBSet {background-color: white;} */
-  </style>
+            /* body {background-color:white;}
+        .divBSet {background-color: white;} */
+    </style>
 
-  <script type="text/javascript">
-    function toDisplay(param1, param2) {
-      document.getElementById(param1).innerHTML = param2;
-      return;
-    }
-  </script>
+    <script type="text/javascript">
+        function toDisplay(param1, param2) {
+            document.getElementById(param1).innerHTML = param2;
+            return;
+        }
+    </script>
 </head>
 
 <body class="bodyMove">
-  <section id="top">
-    <a href="index.html">Home</a>
-    <h1>Document Object Model (DOM)</h1>
-    <h2>(document.getElement(s)By....)</h2>
-  </section>
-  <p>
-    The DOM is a standard for how to get, change, add or delete HTML elements. <br /> <br />
+    <section id="top">
+        <a href="index.html">Home</a>
+        <h1>Document Object Model (DOM)</h1>
+        <p>
+            See an explanation on the
+            <a href="https://www.w3schools.com/js/js_htmldom.asp" target="_blank">W3Schools Website</a> <br /> <br />
 
-    <b>document.getElementById()</b> <br />
-    <i>The getElementById() method returns the element that has the ID attribute
-      with the specified value.</i> <br /> <br />
-    <b>document.getElementsByClassName()</b> <br />
-    <i>The getElementsByClassName() method returns a collection of all elements
-      in the document with the specified class name, as an HTMLCollection object.</i> <br /> <br />
-    <b>document.getElementByTagName()</b> <br />
-    <i>The getElementsByTagName() method returns a collection of all elements in the document
-      with the specified tag name, as an HTMLCollection object.</i> <br /> <br />
-    <b>document.getElementsByName()</b> <br />
-    <i>The getElementsByName() method returns a collection of all elements in the document with the
-      specified name (the value of the name attribute), as an HTMLCollection object.</i> <br />
+            See a comprehensive list of all document properties...
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document" target="_blank">MDN Document</a> <br /> <br />
+        </p>
+        <h2>(document.getElement(s)By....)</h2>
+    </section>
+    <p>
+        The DOM is a standard for how to get, change, add or delete HTML elements. <br /> <br />
 
-  </p>
-  <div class="divFlex">
-    <div class="divBorder divBSet">
-      <h2>document.getElementById</h2>
-      <p>
-        For example, if you had an element with the id="myElement1"... <br />
-        <b>&lt;h3 id="myElement1"&gt;This is my test&lt;/h3&gt;</b> <br /> <br />
-        Then you could say... <br />
-        <b>var aDom = document.getElementById("myElement1")</b> <br /> <br />
-        and aDom would then be what you could use to manipulate the element...eg... <br />
-        <b>aDom.innerHTML = "This WAS my test"</b> <br />
-        would change the original text (This is my test) to read This WAS my test <br /> <br />
-      </p>
-      <h3 id="myElement1" class="myElement2">This is my test</h3>
-      <button class="button2" onclick="funcTestID(
+        <b><a href="https://www.w3schools.com/jsref/met_document_getelementbyid.asp" target="_blank">
+    document.getElementsById()</a></b> <br />
+        <i>
+            The getElementById() method returns the element that has the ID attribute
+            with the specified value. <br />
+            And if you want to store an element as a variable do this, eg... <br />
+            var myElement = document.getElementById("myId");
+        </i> <br /> <br />
+        <b><a href="https://www.w3schools.com/jsref/met_document_getelementsbyclassname.asp" target="_blank">
+    document.getElementsByClassName() </a></b> <br />
+        <i>
+            The getElementsByClassName() method returns a collection of all elements
+            in the document with the specified class name, as an HTMLCollection object.
+        </i> <br /> <br />
+        <b><a href="https://www.w3schools.com/jsref/met_document_getelementsbytagname.asp" target="_blank">
+    document.getElementsByTagName() </a></b> <br />
+        <i>
+            The getElementsByTagName() method returns a collection of all elements in the document
+            with the specified tag name, as an HTMLCollection object.
+        </i> <br /> <br />
+        <b><a href="https://www.w3schools.com/jsref/met_doc_getelementsbyname.asp" target="_blank">
+            document.getElementsByName() </a></b> <br />
+        <i>
+            The getElementsByName() method returns a collection of all elements in the document with the
+            specified name (the value of the name attribute), as an HTMLCollection object.
+        </i> <br /> <br />
+        NOTE <br />
+        If you want to save the &lt;body&gt; then you could use <br />
+        <strong>var myElement = document.body;</strong> <br />
+        instead of 'var myElement = document.getElementByTagName("body");' <br /> 
+        And make sure that your webpage has finished loading as 'getElementByTagName() (or any of the others) will 
+        not have a 'tag' to read yet....For this you would need to put  the getElementByTagName in to a 
+        &lt;script&gt; which goes at the end of the web page. <br /><br />
+
+    </p>
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h2>document.getElementById</h2>
+            <p>
+                For example, if you had an element with the id="myElement1"... <br />
+                <b>&lt;h3 id="myElement1"&gt;This is my test&lt;/h3&gt;</b> <br /> <br />
+                Then you could say... <br />
+                <b>var aDom = document.getElementById("myElement1")</b> <br /> <br />
+                and aDom would then be what you could use to manipulate the element...eg... <br />
+                <b>aDom.innerHTML = "This WAS my test"</b> <br />
+                would change the original text (This is my test) to read This WAS my test <br /> <br />
+            </p>
+            <h3 id="myElement1" class="myElement2">This is my test</h3>
+            <button class="button2" onclick="funcTestID(
             'myElement1',
             'This WAS my test',
-            'This is my test')">Try Me</button>
-    </div>
+            'This is my test')">
+                Try Me
+            </button>
+        </div>
 
-    <div class="divBorder divBSet">
-      <h2>document.getElementsByClassName</h2>
-      <p>
-        For example, if you had an element with the class="myElement2"... <br />
-        <b>&lt;h3 class="myElement2"&gt;I am a class test&lt;/h3&gt;</b> <br /> <br />
-        Then you could say... <br />
-        <b>var aDomC = document.getElementsByClassName("myElement2")</b> <br /> <br />
-        and aDomC would then be a collection that you could use to manipulate the element(s)...eg... <br />
-        <b>aDomC.innerHTML[0] = "Testing Classes"</b> <br />
-        would change the original text for the first element found in the collection - or
-        you could read through the whole collection and change them all. <br /> <br />
-        Note... testing this will also change the [H3] in the ID test as I also gave that a class of myElement2 <br /> <br />
-        ALSO...You can only search for one iteration at a time...so you have to
-        perform multiple getElementByClassNames for more than one Class.<br />
-        However if your element uses multiple classes (eg class="class1 class2") you can do a
-        getElementByClassName("class1 class2") to find it.
-      </p>
-      <h3 class="myElement2">I am a class test</h3>
-      <button class="button2" onclick="funcTestClass(
+        <div class="divBorder divBSet">
+            <h2>document.getElementsByClassName</h2>
+            <p>
+                For example, if you had an element with the class="myElement2"... <br />
+                <b>&lt;h3 class="myElement2"&gt;I am a class test&lt;/h3&gt;</b> <br /> <br />
+                Then you could say... <br />
+                <b>var aDomC = document.getElementsByClassName("myElement2")</b> <br /> <br />
+                and aDomC would then be a collection that you could use to manipulate the element(s)...eg... <br />
+                <b>aDomC.innerHTML[0] = "Testing Classes"</b> <br />
+                would change the original text for the first element found in the collection - or
+                you could read through the whole collection and change them all. <br /> <br />
+                Note... testing this will also change the [H3] in the ID test as I also gave that a class of myElement2 <br /> <br />
+                ALSO...You can only search for one iteration at a time...so you have to
+                perform multiple getElementByClassNames for more than one Class.<br />
+                However if your element uses multiple classes (eg class="class1 class2") you can do a
+                getElementByClassName("class1 class2") to find it.
+            </p>
+            <h3 class="myElement2">I am a class test</h3>
+            <button class="button2" onclick="funcTestClass(
             'myElement2',
             'Testing Classes',
-            'I am a class test')">Try Me</button>
-    </div>
-  </div>
-
-  <div class="divFlex">
-    <div class="divBorder divBSet">
-      <h2>document.getElementByTagName</h2>
-      <p>
-        This time I shall grab ALL the [H3]'s and perform a FOR loop to show
-        the details of each one found. <br />
-        You can only search for one iteration at a time...so you have to
-        perform multiple getElementByTagNames for more than one Tag.<br />
-
-        <b>document.getElementByTagName("h3")</b><br />
-        Note...I used FOR/IN loop with getElementsByClassName okay BUT here it went
-        wrong so I changed it to a FOR loop (for (i=0;...etc))
-      </p>
-      <button class="button2" onclick="funcTestTag('h3', 'tagOutput')">Try Me</button> <br />
-      <p id="tagOutput" style="color: red;">
-
-      </p>
+            'I am a class test')">
+                Try Me
+            </button>
+        </div>
     </div>
 
-    <div class="divBorder divBSet">
-      <h2>document.getElementByName</h2>
-      <p>
-        This time I shall grab ALL the elements that have a NAME and perform a FOR loop to show
-        the details of each one found. <br />
-        You can only search for one iteration at a time...so you have to
-        perform multiple getElementByNames for more than one name.<br /> <br />
-        eg... <br />
-        <b>&lt;h4 name="myH4"&gt;This is a NAMED h4&lt;/h4&gt;</b>
-        <b>document.getElementByName("myH4")</b><br />
-        Note...I used a FOR loop (for (i=0;...etc)) to read thru the returned collection <br />
-      </p>
-      <h4 name="myH4">This is a NAMED h4 tag</h4>
-      <button class="button2" onclick="funcTestName('myH4', 'nameOutput')">Try Me</button> <br />
-      <p id="nameOutput" style="color: red;">
-      </p>
-    </div>
-  </div>
+    <a href="#top">Top</a>
 
-  <div class="divFlex">
-    <div class="divBorder divBSet">
-      <h2>Some useful properties maybe</h2>
-      <p>
-        You will find it useful to look at <a target="_blank" href="https://www.w3schools.com/jsref/dom_obj_all.asp">w3schools site</a>
-        for more information on the properties that you can use with the getElement(s)By.... commands. <br /> <br />
-        A few are listed here :-<br />
-        <a target="_blank" href="https://www.w3schools.com/jsref/met_element_addeventlistener.asp">.addEventListener()
-        </a> : Attaches an event handler to the specified element <br />
-        <a target="_blank" href="https://www.w3schools.com/jsref/prop_node_attributes.asp">.attributes
-        </a> : Returns a NamedNodeMap of an element's attributes <br />
-        <a target="_blank" href="https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_html_blur">.blur()
-        </a> : Removes focus from an element (see also focus()) <br />
-        <a target="_blank" href="https://www.w3schools.com/jsref/met_html_focus.asp">.focus()
-        </a> : Gives focus to an element (see also blur()) <br />
-        <a target="_blank" href="https://www.w3schools.com/jsref/prop_element_childelementcount.asp">.childElementCount
-        </a> : Returns a collection of an element's child nodes (including text and comment nodes) <br />
-        <a target="_blank" href="https://www.w3schools.com/jsref/prop_node_childnodes.asp">.childNodes
-        </a> : Returns a collection of an element's child element (excluding text and comment nodes) <br />
-        <a target="_blank" href="https://www.w3schools.com/jsref/prop_element_children.asp">.children
-        </a> : Attaches an event handler to the specified element <br />
-        <a target="_blank" href="https://www.w3schools.com/jsref/prop_html_innerhtml.asp">.innerHTML
-        </a> : Sets or returns the content of an element <br />
-        <a target="_blank" href="https://www.w3schools.com/jsref/prop_element_offsetheight.asp">.offsetHeight
-        </a> : Returns the height of an element, including padding, border and scrollbar <br />
-        <a target="_blank" href="https://www.w3schools.com/jsref/prop_element_children.asp">.offsetLeft
-        </a> : Returns the horizontal offset position of an element <br />
-        <a target="_blank" href="https://www.w3schools.com/jsref/prop_html_outerhtml.asp">.outerHTML
-        </a> : Sets or returns the content of an element (including the start tag and the end tag) <br />
-        <a target="_blank" href="https://www.w3schools.com/jsref/met_element_queryselector.asp">.querySelector()
-        </a> : Returns the first child element that matches a specified CSS selector(s) of an element <br />
-        <a target="_blank" href="https://www.w3schools.com/jsref/met_element_queryselectorall.asp">.querySelectorAll()
-        </a> : Returns all child elements that matches a specified CSS selector(s) of an element <br />
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h2>document.getElementByTagName</h2>
+            <p>
+                This time I shall grab ALL the [H3]'s and perform a FOR loop to show
+                the details of each one found. <br />
+                You can only search for one iteration at a time...so you have to
+                perform multiple getElementByTagNames for more than one Tag.<br />
 
-    </div>
-    <div class="divBorder divBSet">
-      <h2>Some MORE useful properties maybe</h2>
-      <p>
-        You will find it useful to look at <a target="_blank" href="https://www.w3schools.com/jsref/dom_obj_all.asp">w3schools site</a>
-        for more information on the properties that you can use with the getElement(s)By.... commands. <br /> <br />
-        A few more are listed here :-<br />
+                <b>document.getElementByTagName("h3")</b><br />
+                Note...I used FOR/IN loop with getElementsByClassName okay BUT here it went
+                wrong so I changed it to a FOR loop (for (i=0;...etc))
+            </p>
+            <button class="button2" onclick="funcTestTag('h3', 'tagOutput')">Try Me</button> <br />
+            <p id="tagOutput" style="color: red;">
 
-        <a target="_blank" href="https://www.w3schools.com/jsref/met_element_remove.asp">.remove()
-        </a> : Removes the element from the DOM <br />
-        <a target="_blank" href="https://www.w3schools.com/jsref/met_element_removeattribute.asp">.removeAttribute()
-        </a> : Removes a specified attribute from an element <br />
-        <a target="_blank" href="https://www.w3schools.com/jsref/met_element_removeeventlistener.asp">.removeEventListener()
-        </a> : Removes an event handler that has been attached with the addEventListener() method <br />
-        <a target="_blank" href="https://www.w3schools.com/jsref/prop_element_scrollheight.asp">.scrollHeight
-        </a> : Returns the entire height of an element, including padding <br />
-        <a target="_blank" href="https://www.w3schools.com/jsref/met_element_scrollintoview.asp">.scrollIntoView()
-        </a> : Scrolls the specified element into the visible area of the browser window <br />
-        <a target="_blank" href="https://www.w3schools.com/jsref/met_element_getattribute.asp">.getAttribute()
-        </a> : Returns the specified attribute value of an element node <br />
-        <a target="_blank" href="https://www.w3schools.com/jsref/met_element_setattribute.asp">.setAttribute()
-        </a> : Sets or changes the specified attribute, to the specified value <br />
-        <a target="_blank" href="https://www.w3schools.com/jsref/prop_html_style.asp">.style
-        </a> : Sets or returns the value of the style attribute of an element. <br />
-        Note...in CSS it is <b><i>background-colour</b></i> and here it is <b><i>style.backgroundColor</i></b> so
-        the '-' is missing and it uses camel case. (font-family vs style.fontFamily...etc) <br />
-        <a target="_blank" href="https://www.w3schools.com/jsref/prop_html_tabindex.asp">.tabIndex
-        </a> : Sets or returns the value of the tabindex attribute of an element <br />
-        <a target="_blank" href="https://www.w3schools.com/jsref/prop_element_tagname.asp">.tagName
-        </a> : Returns the tag name of an element <br />
+            </p>
+        </div>
 
-    </div>
-  </div>
-
-  <div class="divFlex">
-    <div class="divBorder divBSet">
-      <h2>document.createElement()</h2>
-      <h4>Adding New Elements</h4>
-      <p>
-        To add a new element (assume &lt;p&gt;My New Text&lt;/p&gt;) to your page you need to... <br /><br />
-        Create the element to be added <br />
-        <b>var newP = document.createElement("p")</b> <br />
-        Create a Text Node of text to be added <br />
-        <b>var txt = document.createText Node("My New Text");</b> <br />
-        Append the text to the new element <br />
-        <b>newP.appendChild(txt);</b> <br />
-        Find the element that you want to add the new code after <br />
-        <b>var foundElement = document.getElementById("myElem");</b> <br />
-        Append the new code to the old element you just found<br />
-        <b>foundElement.appendChild(newP);</b> <br />
-        <i>Note...you only need to add newP as this now holds the &lt;p&gt; and the "My New Text" element.</i> <br /> <br />
-        ************************ <br /> <br />
-        You can add new list items to an Unordered List, first you need to decide where to put it
-        then you can add it, for example, lets say you have an unordered list with an ID of "myUList" <br />
-        to add a new item to this unordered list :- <br /> <br />
-
-        <b> var myElement = document.getElementById("myUlist"); <br />
-          var newElement = document.createElement("li");</b> <br />
-
-        The above will create the new list item but next you would have to set all the attributes/properties for it. <br /> <br />
-
-        The next step is to create a new text node and attach it to the element <br />
-        <b>var myText = document.createTextNode("My added Item"); <br />
-          newElement.appendChild(myText);</b> <br /> <br />
-
-        Then you need to append the newly created list item to the unordered list <br />
-          <b>myElement.appendChild(newElement); </b> <br /> <br />
-          <i>This will add the new list item to the END of the unordered list</i> <br /> <br />
-
-        You can insert it into a specific spot in the Unordered List but that takes a bit of mucking about.
-        I found that it was best to ask the position you want to add it then <br />
-        Count the No. of LI's (to add at position 2 count 3 LI's) and then perform an
-        <b>.insertBefore()</b> command. <br />
-        I have got an example (see right pane) but it is best to look at the code to see
-        how it works. <br /> <br />
-      </p>
-
+        <div class="divBorder divBSet">
+            <h2>document.getElementByName</h2>
+            <p>
+                This time I shall grab ALL the elements that have a NAME and perform a FOR loop to show
+                the details of each one found. <br />
+                You can only search for one iteration at a time...so you have to
+                perform multiple getElementByNames for more than one name.<br /> <br />
+                eg... <br />
+                <b>&lt;h4 name="myH4"&gt;This is a NAMED h4&lt;/h4&gt;</b>
+                <b>document.getElementByName("myH4")</b><br />
+                Note...I used a FOR loop (for (i=0;...etc)) to read thru the returned collection <br />
+            </p>
+            <h4 name="myH4">This is a NAMED h4 tag</h4>
+            <button class="button2" onclick="funcTestName('myH4', 'nameOutput')">Try Me</button> <br />
+            <p id="nameOutput" style="color: red;">
+            </p>
+        </div>
     </div>
 
-    <div class="divBorder divBSet">
-      <h2>For Example...</h2>
-      <p id="myP">
-        For example...to ADD a new &lt;p&gt;some new text&lt;/p&gt; below this line
-      </p>
-      <button class="button2" onclick="funcNewP('myP')">Try Me</button>
-      <p>
-        <br />******************** <br />
-      </p>
-      <p>
-        For example, <br />
-        My Unordered list is... <br />
-      </p>
-      <ul id="myUlist">
-        <li>First Item</li>
-        <li>Second Item</li>
-        <li>Third Item</li>
-        <li>Fourth Item</li>
-        <li>Fifth Item</li>
-      </ul>
+    <a href="#top">Top</a>
 
-      <p>
-        Now to add another line
-      </p>
-      <button class="button2" onclick="funcAddUl(
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h2>Some useful properties maybe</h2>
+            <p>
+                You will find it useful to look at <a target="_blank" href="https://www.w3schools.com/jsref/dom_obj_all.asp">w3schools site</a>
+                for more information on the properties that you can use with the getElement(s)By.... commands. <br /> <br />
+                A few are listed here :-<br />
+                <a target="_blank" href="https://www.w3schools.com/jsref/met_element_addeventlistener.asp">
+                    .addEventListener()
+                </a> : Attaches an event handler to the specified element <br />
+
+                <a target="_blank" href="https://www.w3schools.com/jsref/met_node_appendchild.asp">
+                    .appendChild
+                </a> and <a target="_blank" href="https://www.w3schools.com/jsref/met_node_insertbefore.asp">
+                    .insertBefore
+                </a> : Used to create new elements (along with the
+                <a target="_blank" href="https://www.w3schools.com/jsref/met_document_createelement.asp">
+                    .createElement
+                </a> method - see below examples <br />
+
+                <a target="_blank" href="https://www.w3schools.com/jsref/prop_node_attributes.asp">
+                    .attributes
+                </a> : Returns a NamedNodeMap of an element's attributes <br />
+                <a target="_blank" href="https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_html_blur">
+                    .blur()
+                </a> : Removes focus from an element (see also focus()) <br />
+                <a target="_blank" href="https://www.w3schools.com/jsref/met_html_focus.asp">
+                    .focus()
+                </a> : Gives focus to an element (see also blur()) <br />
+                <a target="_blank" href="https://www.w3schools.com/jsref/prop_element_childelementcount.asp">
+                    .childElementCount
+                </a> : Returns a collection of an element's child nodes (including text and comment nodes) <br />
+                <a target="_blank" href="https://www.w3schools.com/jsref/prop_node_childnodes.asp">
+                    .childNodes
+                </a> : Returns a collection of an element's child element (excluding text and comment nodes) <br />
+                <a target="_blank" href="https://www.w3schools.com/jsref/prop_element_children.asp">
+                    .children
+                </a> : Attaches an event handler to the specified element <br />
+                <a target="_blank" href="https://www.w3schools.com/jsref/prop_html_innerhtml.asp">
+                    .innerHTML
+                </a> : Sets or returns the content of an element <br />
+                <a target="_blank" href="https://www.w3schools.com/jsref/prop_element_offsetheight.asp">
+                    .offsetHeight
+                </a> : Returns the height of an element, including padding, border and scrollbar <br />
+                <a target="_blank" href="https://www.w3schools.com/jsref/prop_element_children.asp">
+                    .offsetLeft
+                </a> : Returns the horizontal offset position of an element <br />
+                <a target="_blank" href="https://www.w3schools.com/jsref/prop_html_outerhtml.asp">
+                    .outerHTML
+                </a> : Sets or returns the content of an element (including the start tag and the end tag) <br />
+                <a target="_blank" href="https://www.w3schools.com/jsref/met_element_queryselector.asp">
+                    .querySelector()
+                </a> : Returns the first child element that matches a specified CSS selector(s) of an element <br />
+                <a target="_blank" href="https://www.w3schools.com/jsref/met_element_queryselectorall.asp">
+                    .querySelectorAll()
+                </a> : Returns all child elements that matches a specified CSS selector(s) of an element <br />
+
+        </div>
+        <div class="divBorder divBSet">
+            <h2>Some MORE useful properties maybe</h2>
+            <p>
+                You will find it useful to look at <a target="_blank" href="https://www.w3schools.com/jsref/dom_obj_all.asp">w3schools site</a>
+                for more information on the properties that you can use with the getElement(s)By.... commands. <br /> <br />
+                A few more are listed here :-<br />
+
+                <a target="_blank" href="https://www.w3schools.com/jsref/met_element_remove.asp">
+                    .remove()
+                </a> : Removes the element from the DOM <br />
+                <a target="_blank" href="https://www.w3schools.com/jsref/met_node_removechild.asp">
+                    .removeChild()
+                </a> : This method removes a specified child node of the specified element. <br />
+                <a target="_blank" href="https://www.w3schools.com/jsref/met_element_removeattribute.asp">
+                    .removeAttribute()
+                </a> : Removes a specified attribute from an element <br />
+                <a target="_blank" href="https://www.w3schools.com/jsref/met_element_removeeventlistener.asp">
+                    .removeEventListener()
+                </a> : Removes an event handler that has been attached with the addEventListener() method <br />
+                <a target="_blank" href="https://www.w3schools.com/jsref/prop_element_scrollheight.asp">
+                    .scrollHeight
+                </a> : Returns the entire height of an element, including padding <br />
+                <a target="_blank" href="https://www.w3schools.com/jsref/met_element_scrollintoview.asp">
+                    .scrollIntoView()
+                </a> : Scrolls the specified element into the visible area of the browser window <br />
+                <a target="_blank" href="https://www.w3schools.com/jsref/met_element_getattribute.asp">
+                    .getAttribute()
+                </a> : Returns the specified attribute value of an element node <br />
+                <a target="_blank" href="https://www.w3schools.com/jsref/met_element_setattribute.asp">
+                    .setAttribute()
+                </a> : Sets or changes the specified attribute, to the specified value <br />
+                <a target="_blank" href="https://www.w3schools.com/jsref/prop_html_style.asp">
+                    .style
+                </a> : Sets or returns the value of the style attribute of an element. <br />
+                Note...in CSS it is <b><i>background-colour</b></i> and here it is <b><i>style.backgroundColor</i></b> so
+                the '-' is missing and it uses camel case. (font-family vs style.fontFamily...etc) <br />
+                <a target="_blank" href="https://www.w3schools.com/jsref/prop_html_tabindex.asp">
+                    .tabIndex
+                </a> : Sets or returns the value of the tabindex attribute of an element <br />
+                <a target="_blank" href="https://www.w3schools.com/jsref/prop_element_tagname.asp">
+                    .tagName
+                </a> : Returns the tag name of an element <br />
+
+        </div>
+    </div>
+
+    <a href="#top">Top</a>
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h2>document.createElement()</h2>
+            <h4>Adding New Elements</h4>
+            <p>
+                To add a new element (assume &lt;p&gt;My New Text&lt;/p&gt;) to your page you need to... <br /><br />
+                Create the element to be added <br />
+                <b>var newP = document.createElement("p")</b> <br />
+                Create a Text Node of text to be added <br />
+                <b>var txt = document.createText Node("My New Text");</b> <br />
+                Append the text to the new element <br />
+                <b>newP.appendChild(txt);</b> <br />
+                Find the element that you want to add the new code after <br />
+                <b>var foundElement = document.getElementById("myElem");</b> <br />
+                Append the new code to the old element you just found<br />
+                <b>foundElement.appendChild(newP);</b> <br />
+                <i>Note...you only need to add newP as this now holds the &lt;p&gt; and the "My New Text" element.</i> <br /> <br />
+                ************************ <br /> <br />
+                You can add new list items to an Unordered List, first you need to decide where to put it
+                then you can add it, for example, lets say you have an unordered list with an ID of "myUList" <br />
+                to add a new item to this unordered list :- <br /> <br />
+
+                <b>
+                    var myElement = document.getElementById("myUlist"); <br />
+                    var newElement = document.createElement("li");
+                </b> <br />
+
+                The above will create the new list item but next you would have to set all the attributes/properties for it. <br /> <br />
+
+                The next step is to create a new text node and attach it to the element <br />
+                <b>
+                    var myText = document.createTextNode("My added Item"); <br />
+                    newElement.appendChild(myText);
+                </b> <br /> <br />
+
+                Then you need to append the newly created list item to the unordered list <br />
+                <b>myElement.appendChild(newElement); </b> <br /> <br />
+                <i>
+                    This will add the new list item to the END of the unordered list...
+                    <b>ALSO</b> see below for another (working) example where you click a button to add
+                </i> <br /> <br />
+
+                You can insert it into a specific spot in the Unordered List but that takes a bit of mucking about.
+                I found that it was best to ask the position you want to add it then <br />
+                Count the No. of LI's (to add at position 2 count 3 LI's) and then perform an
+                <b>.insertBefore()</b> command. <br />
+                I have got an example (see right pane) but it is best to look at the code to see
+                how it works. <br /> <br />
+                See <b>.remove</b> or <b>.removeChild</b> to remove elements.
+            </p>
+
+        </div>
+
+        <div class="divBorder divBSet">
+            <h2>For Example...</h2>
+            <p id="myP">
+                For example...to ADD a new &lt;p&gt;some new text&lt;/p&gt; below this line
+            </p>
+            <button class="button2" onclick="funcNewP('myP')">Try Me</button>
+            <p>
+                <br />******************** <br />
+            </p>
+            <p>
+                For example, <br />
+                My Unordered list is... <br />
+            </p>
+            <ul id="myUlist">
+                <li>First Item</li>
+                <li>Second Item</li>
+                <li>Third Item</li>
+                <li>Fourth Item</li>
+                <li>Fifth Item</li>
+            </ul>
+
+            <p>
+                Now to add another line
+            </p>
+            <button class="button2" onclick="funcAddUl(
         'myUlist',
         'My Added Item',
-        'n/a')">Try Me</button> <br />
+        'n/a')">
+                Try Me
+            </button> <br />
 
-      <p>
-        Now to INSERT another line at position 2 (item count 1 as it starts at 0) <br />
-        uses <b>.insertBefore(..., ...)</b>
-      </p>
-      Position:
-      <input id="inBefore" type="number" value="2" style="width:40px" />
-      <button class="button2" onclick="funcAddUl(
+            <p>
+                Now to INSERT another line at position 2 (item count 1 as it starts at 0) <br />
+                uses <b>.insertBefore(..., ...)</b>
+            </p>
+            Position:
+            <input id="inBefore" type="number" value="2" style="width:40px" />
+            <button class="button2" onclick="funcAddUl(
             'myUlist',
             'My Inserted Before Item',
-            'inBefore')">Try Me</button>
+            'inBefore')">
+                Try Me
+            </button>
 
-      <p>
-        Now to Show a list of NODES in the Unordered List as I need to know for INSERTING the line above <br />
-        On the "li" items in the list this will show #text between each "li" BUT for lines
-        added by clicking the buttons it does NOT show #text in between these lines. <br />
-      </p>
-      <button class="button2" onclick="funcShowUl(
-            'myUlist')">Show Me</button>
+            <p>
+                Now to Show a list of NODES in the Unordered List as I need to know for INSERTING the line above <br />
+                On the "li" items in the list this will show #text between each "li" BUT for lines
+                added by clicking the buttons it does NOT show #text in between these lines. <br />
+            </p>
+            <button class="button2" onclick="funcShowUl(
+            'myUlist')">
+                Show Me
+            </button>
 
-      <p id="showNodes"></p>
+            <p id="showNodes"></p>
+
+        </div>
+
 
     </div>
 
+    <a href="#top">Top</a>
 
-  </div>
-
-  <a href="#top">Top</a>
-
-  <script type="text/javascript">
-    function funcShowUl(p1) {
-      if (document.getElementById("showNodes").innerHTML != "") {
-        document.getElementById("showNodes").innerHTML = "";
-        return;
-      }
-
-      var c = document.getElementById(p1).childNodes;
-      var txt = "";
-      var i;
-      for (i = 0; i < c.length; i++) {
-        txt = txt + c[i].nodeName + "<br>";
-        txt = txt + " = " + c[i].innerHTML + "<br />";
-      }
-      document.getElementById("showNodes").innerHTML = txt;
-    }
-
-    function funcAddUl(p1, p2, pDisp) {
-      //Find the UL to add to
-      var myElement = document.getElementById(p1);
-      //Create the new LI
-      var newElement = document.createElement("li");
-      //Create the new Text Node (Line item)
-      var myText = document.createTextNode(p2);
-      var p3 = 0;
-
-      if (pDisp == "n/a") {
-        //This will add on the end
-        myElement.appendChild(newElement);
-        newElement.appendChild(myText);
-      } else {
-        //This will INSERT the new line item
-        p3 = document.getElementById(pDisp).value;
-        //This will add at position p3
-        //We need to count thru until we get to the "li" that is > p3
-        //then add it just before this line (as there may be text's and other elements in it)
-        var c = document.getElementById(p1).childNodes;
-        var cnt = 0;
-        for (i = 0; i < c.length; i++) {
-          //c[i].nodeName will show in uppercase even though it is in lower case really
-          //but to make sure it always is I added the .toUpperCase()
-          if (c[i].nodeName.toUpperCase() == "LI") {
-            cnt++;
-            if (cnt >= p3) {
-              p3 = i;
-              break;
+    <script type="text/javascript">
+        function funcShowUl(p1) {
+            if (document.getElementById("showNodes").innerHTML != "") {
+                document.getElementById("showNodes").innerHTML = "";
+                return;
             }
-          }
+
+            var c = document.getElementById(p1).childNodes;
+            var txt = "";
+            var i;
+            for (i = 0; i < c.length; i++) {
+                txt = txt + c[i].nodeName + "<br>";
+                txt = txt + " = " + c[i].innerHTML + "<br />";
+            }
+            document.getElementById("showNodes").innerHTML = txt;
         }
-        newElement.appendChild(myText);
-        myElement.insertBefore(newElement, myElement.childNodes[p3]);
-      }
-    }
 
-    function funcNewP(id) {
-      var foundElement = document.getElementById(id);
-      var newP = document.createElement("p");
-      var txt = document.createTextNode("some new text");
+        function funcAddUl(p1, p2, pDisp) {
+            //Find the UL to add to
+            var myElement = document.getElementById(p1);
+            //Create the new LI
+            var newElement = document.createElement("li");
+            //Create the new Text Node (Line item)
+            var myText = document.createTextNode(p2);
+            var p3 = 0;
 
-      newP.appendChild(txt);
-      foundElement.appendChild(newP);
-    }
-
-    function funcTestID(id, out, out2) {
-      var aDom = document.getElementById(id);
-      if (aDom.innerHTML == "This is my test") {
-        aDom.innerHTML = out;
-      } else {
-        aDom.innerHTML = out2;
-      }
-    }
-
-    function funcTestClass(param1, out, out2) {
-      var aDomC = document.getElementsByClassName(param1);
-
-      for (var x in aDomC) {
-        if (aDomC[x].innerHTML != out) {
-          aDomC[x].innerHTML = out;
-        } else {
-          aDomC[x].innerHTML = out2;
+            if (pDisp == "n/a") {
+                //This will add on the end
+                myElement.appendChild(newElement);
+                newElement.appendChild(myText);
+            } else {
+                //This will INSERT the new line item
+                p3 = document.getElementById(pDisp).value;
+                //This will add at position p3
+                //We need to count thru until we get to the "li" that is > p3
+                //then add it just before this line (as there may be text's and other elements in it)
+                var c = document.getElementById(p1).childNodes;
+                var cnt = 0;
+                for (i = 0; i < c.length; i++) {
+                    //c[i].nodeName will show in uppercase even though it is in lower case really
+                    //but to make sure it always is I added the .toUpperCase()
+                    if (c[i].nodeName.toUpperCase() == "LI") {
+                        cnt++;
+                        if (cnt >= p3) {
+                            p3 = i;
+                            break;
+                        }
+                    }
+                }
+                newElement.appendChild(myText);
+                myElement.insertBefore(newElement, myElement.childNodes[p3]);
+            }
         }
-      }
-    }
 
-    function funcTestTag(param1, param2) {
-      var aDomT = document.getElementsByTagName(param1);
-      var t = "No. of elements found: " + aDomT.length
-      for (x = 0; x < aDomT.length; x++) {
-        t += " <br />" + aDomT[x].tagName + " ";
-        t += " - value: " + aDomT[x].innerHTML
-      }
-      document.getElementById(param2).innerHTML = t
-    }
+        function funcNewP(id) {
+            var foundElement = document.getElementById(id);
+            var newP = document.createElement("p");
+            var txt = document.createTextNode("some new text");
 
-    function funcTestName(param1, param2) {
-      var aDomT = document.getElementsByName(param1);
-      var t = "No. of elements found: " + aDomT.length
-      for (x = 0; x < aDomT.length; x++) {
-        t += " <br />" + aDomT[x].tagName + " ";
-        t += " - value: " + aDomT[x].innerHTML
-      }
-      document.getElementById(param2).innerHTML = t
-    }
-  </script>
+            newP.appendChild(txt);
+            foundElement.appendChild(newP);
+        }
 
+        function funcTestID(id, out, out2) {
+            var aDom = document.getElementById(id);
+            if (aDom.innerHTML == "This is my test") {
+                aDom.innerHTML = out;
+            } else {
+                aDom.innerHTML = out2;
+            }
+        }
+
+        function funcTestClass(param1, out, out2) {
+            var aDomC = document.getElementsByClassName(param1);
+
+            for (var x in aDomC) {
+                if (aDomC[x].innerHTML != out) {
+                    aDomC[x].innerHTML = out;
+                } else {
+                    aDomC[x].innerHTML = out2;
+                }
+            }
+        }
+
+        function funcTestTag(param1, param2) {
+            var aDomT = document.getElementsByTagName(param1);
+            var t = "No. of elements found: " + aDomT.length
+            for (x = 0; x < aDomT.length; x++) {
+                t += " <br />" + aDomT[x].tagName + " ";
+                t += " - value: " + aDomT[x].innerHTML
+            }
+            document.getElementById(param2).innerHTML = t
+        }
+
+        function funcTestName(param1, param2) {
+            var aDomT = document.getElementsByName(param1);
+            var t = "No. of elements found: " + aDomT.length
+            for (x = 0; x < aDomT.length; x++) {
+                t += " <br />" + aDomT[x].tagName + " ";
+                t += " - value: " + aDomT[x].innerHTML
+            }
+            document.getElementById(param2).innerHTML = t
+        }
+    </script>
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h2>Only want to change the FIRST Element</h2>
+            <p>
+                If you have, for example, lots of &lt;h1&gt; tags but you only want to change
+                the FIRST one...you could...give it an <b>id name</b> and then use that to identify it <br />
+                OR you could use the <strong>document.querySelector()</strong> which returns the FIRST element it finds, eg... <br /> <br />
+
+                <strong>document.querySelector("h1").innerHTML="This is my new value"</strong> <br /> <br />
+                The above will change the value of the FIRST &lt;h1&gt; it finds to 'This is my new value'. <br /> <br />
+
+                <strong>document.querySelector(".myClass").innerHTML="This is my new value"</strong> <br /> <br />
+                The above will change the value of the FIRST element it finds that has a class
+                called 'myClass' to 'This is my new value'. <br /> <br />
+
+                For more on .querySelector() then click on the link in the list of useful properties above. <br /> <br />
+            </p>
+        </div>
+
+        <div class="divBorder divBSet" style="overflow:auto;">
+            <h2>Example of creating a new element and appending it to another Element</h2>
+            <p>
+                In this example :- <br />
+                <ul id="myList">
+                    <li>I create a new Unordered List item</li>
+                    <li>Give it an ID</li>
+                    <li>Give it a value</li>
+                    <li>Make it red in color</li>
+                    <li>Append it on the end of some other items in the Unordered List</li>
+                </ul> <br />
+
+                <strong>
+                    let newDestination = document.createElement("li"); <br />
+                    newDestination.id = 'addedOn'; <br />
+                    newDestination.innerHTML='Here I am'; <br />
+                    newDestination.style.color="red"; <br />
+                    document.getElementById("myList").appendChild(newDestination);
+                </strong> <br /> <br />
+            </p>
+            <button class="button2" onclick="appendMe('addedOn')">Click Me</button>
+            <br /> <br />
+            <em>(When the new line appears you can click the button again to make it disappear)</em><br />
+        </div>
+    </div>
+    <script>
+        function appendMe(p1) {
+            let x = document.getElementById(p1);
+            if (x == null) {
+                //Does NOT exist so APPEND IT
+                let newDestination = document.createElement("li");
+                newDestination.id = 'addedOn';
+                newDestination.innerHTML = 'Here I am';
+                newDestination.style.color = "red";
+                document.getElementById("myList").appendChild(newDestination);
+            } else {
+                //DOES EXIST so REMOVE it
+                document.getElementById(p1).remove();
+            }
+        }
+
+    </script>
 </body>
 
 </html>

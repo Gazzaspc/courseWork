@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Demo of the Flex property</title>
+
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet'>
+
+    <style>
+        /*...Code Styles...*/
+
+        /* Universal Styles */
+        body {
+            margin: 0px;
+            background-color: whitesmoke;
+            font-family: 'Rock Salt', cursive;
+            text-align: center;
+        }
+
+        .secondary-background {
+            background-color: snow;
+        }
+
+        .tagline {
+            font-family: 'Quicksand', sans-serif;
+            color: lightslategrey;
+            line-height: 125px;
+        }
+
+        /* Header */
+        h1 {
+            margin: 0;
+            background-color: steelblue;
+            line-height: 100px;
+            color: khaki;
+        }
+
+        h2 {
+            margin: 10px;
+        }
+
+        /* App Container */
+        .container {
+            border: 2px solid snow;
+            display: flex;
+        }
+
+        /* To Do Section */
+        .week {
+            display: inline-flex;
+            flex-grow: 3;
+            flex-direction: column;
+        }
+
+        .row {
+            min-height: 200px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .square {
+            width: 125px;
+            height: 125px;
+            padding: 10px;
+        }
+
+        .day.square {
+            background-color: steelblue;
+            border: 1px solid white;
+            display:inline-flex;
+            align-items: center;
+            /* Don't know why I need justify-content here and not on '.task.square' as well?? */
+            justify-content:center;
+        }
+
+        .task.square {
+            background-color: khaki;
+            border: 1px solid white;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .task p {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        /* Reminders */
+        .reminders {
+            background-color: khaki;
+            display: inline-flex;
+            flex-grow: 2;
+            /*Below will align the text in the center*/
+            /*align-items:center;*/
+        }
+
+            .reminders h3 {
+                width: 100%;
+                margin: 10px;
+                color: black;
+                line-height: 90px;
+                font-size: 24px;
+            }
+
+        /* Footer */
+        footer {
+            font-size: 24px;
+        }
+    </style>
+
+    <!--Any code that is just for this page and not to go in myScripts.js can go here (or in a SCRIPT area elsewhere
+    on the page or at the end)-->
+    <script>
+                                //...Code / Functions etc...
+    </script>
+
+</head>
+<body >
+    <div style="text-align:left;">
+    <a href="index.html">Home</a> <br /> <br />
+    </div>
+    <h1>This is a task from Codecademy - a demo of the Flex property</h1>
+
+    <!-- Header -->
+    <div id='header'>
+        <h1>To Do or Not To Do</h1>
+        <h2 class='tagline'>(your priorities at a glance)</h2>
+    </div>
+
+    <!-- App Container -->
+    <div class='container'>
+
+        <!-- To Do Section -->
+        <div class='week'>
+            <div class='row secondary-background'>
+                <div class='day square'><h3>MON</h3></div>
+                <div class='task square'>
+                    <p> Insert some information about your week here :) </p>
+                </div>
+                <div class='task square'></div>
+                <div class='task square'></div>
+            </div>
+            <div class='row'>
+                <div class='day square'><h3>TUE</h3></div>
+                <div class='task square'></div>
+                <div class='task square'></div>
+                <div class='task square'></div>
+            </div>
+            <div class='row secondary-background'>
+                <div class='day square'><h3>WED</h3></div>
+                <div class='task square'></div>
+                <div class='task square'></div>
+                <div class='task square'></div>
+            </div>
+            <div class='row'>
+                <div class='day square'><h3>THU</h3></div>
+                <div class='task square'></div>
+                <div class='task square'></div>
+                <div class='task square'></div>
+            </div>
+            <div class='row secondary-background'>
+                <div class='day square'><h3>FRI</h3></div>
+                <div class='task square'></div>
+                <div class='task square'></div>
+                <div class='task square'></div>
+            </div>
+        </div>
+
+        <!-- Reminders Section -->
+        <div class='reminders'>
+            <h3>Reminders</h3>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <span class='tagline'>copyright nottodo.com</span>
+    </footer>
+
+</body>
+</html>

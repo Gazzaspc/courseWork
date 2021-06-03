@@ -1,0 +1,349 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="CSS/myStyles.css" rel="stylesheet" />
+
+    <title>Dingbats Martial Arts</title>
+
+    <style>
+
+        #location {
+            margin-bottom: 50px;
+        }
+
+        @media only screen and (max-width: 780px) {
+            /*Shows 2 div boxes inline*/
+            #articleSection {
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 10px 10px;
+            }
+
+
+            #locMap {
+                width: 90%;
+            }
+
+            #senseiSection {
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 10px 10px;
+            }
+        }
+
+        @media only screen and (max-width: 550px) {
+            /*Shows 1 div boxes inline - smallest screen*/
+
+            /*Change grid Below - No. of columns to 1*/
+            #articleSection {
+                grid-template-columns: 1fr;
+                grid-gap: 10px;
+            }
+
+            /*Change grid Below - make size of cell bigger now it is just 1 cell wide*/
+            #locMap {
+                width: 90%;
+                display: block;
+            }
+
+
+            #senseiSection {
+                grid-template-columns: 1fr;
+                grid-gap: 10px;
+            }
+
+            /*Change flexbox Below - make them display:block & change other settings so they stay in place*/
+            #locationSection {
+                display: block;
+            }
+
+            .verticalCenterMeParent {
+                display: block;
+            }
+
+            .verticalCenterMeChild {
+                position: static;
+                top: auto;
+                -ms-transform: none;
+                transform: none;
+            }
+            /*Change flexbox above - make them display:block & change other settings so they stay in place*/
+
+            #ulHeader li {
+                padding: 0 10px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <header id="header">
+        <div class="divHeader centerMe">
+            <div>
+                <img id="maLogo" src="images/maLogo.jpg" alt="M.A. logo" />
+                <img id="headStyles" src="images/styles.png" alt="Fighting Styles" />
+            </div>
+        </div>
+        <nav>
+            <div class="divHeader2">
+                <ul id="ulHeader">
+                    <li><a href="../index.html">Main</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#sensei">Sensei's</a></li>
+                    <li><a href="#location">Location</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!--<div class="blocker"></div>-->
+
+    <section id="home" class="sectionOdd centerMe">
+        <div class="blocker"></div>
+
+        <h1 class="mmaFontL">Dingbats Martial Arts Centre</h1>
+
+        <div id="articleSection" class="divGrid">
+
+            <div class="centerMe maArticle divBorder divBSet">
+                <p>
+                    The Origins of Martial Arts in the UK <br /> <br />
+
+                    <strong>Jujutsu Arrives </strong> <br />
+
+                    On the 26th of September 1899 a British engineer, called Barton Wright,
+                    returned to England after an extended period of living and working in Japan.
+                    He brought with him an eighteen year old Japanese man whom he had
+                    developed a friendship with, and who he believed had something special
+                    to give to the British people. The Japanese youth was Yukio Tani (1881 - 1950)
+                    and he was an exponent of the Japanese art of Jujutsu.
+                    The combination ofBarton Wright, as entrepreneur /manager and
+                    Yukio Tani, a natural showman, led the two men into touring the
+                    Music Hall circuit, where Tani would challenge anyone willing
+                    to wrestle with him. With the temptation of winning £1 for
+                    lasting each minute, overan initial 5 minutes, or £50 for winning,
+                    there was never a shortage of challengers. However, at a diminutive
+                    5 feet 6 inches (1.67Mts) Tani allegedly lost only one music hall
+                    match and that was to a fellow Japanese national. <br /> <br />
+
+                    <span class="articleSmall">
+                        An extract from an article on
+                        <a href="https://www.streetdirectory.com/travel_guide/45603/martial_arts/the_origins_of_martial_arts_in_the_uk.html"
+                           target="_blank">streetdirectory.com</a>
+                    </span> <br />
+                </p>
+            </div>
+
+            <div id="dojo" class="maArticle divBorder divBSet">
+                <p>
+                    Quiet time in the Dojo
+                </p>
+            </div>
+
+            <div class="centerMe maArticle divBorder divBSet">
+                <p>
+                    The Origins of Martial Arts in the UK (continued...) <br /> <br />
+
+                    <strong>Kenshiro Abbe and Kyu Shin Do </strong> <br />
+
+                    In 1955 and as a result of the LJS decision, a man, who's credentials were
+                    incredible by Japanese standards let alone British ones, arrived in Britain.
+                    The man was Kenshiro Abbe (1915 - 1985) and he was single handedly to have
+                    more of an impact on British Martial Arts than anyone who had gone before
+                    or, for that matter, after. <br /> <br />
+
+                    Abbe Sensei was born in Tokushima province, Japan and was first introduced to
+                    Martial Arts by his father, a Kendo teacher,at the age of 3.
+                    Abbe Sensei learnt Sumo wrestling at school and became the regional
+                    school champion. In 1931 Abbe Sensei began Judo and one year
+                    later, when only 15 years old, was graded 2nd Dan. His Judo prowess
+                    grew from there, becoming the Tokushima High schools champion at 16 and
+                    receiving his 3rd Dan from the national Martial Arts governing body, the Butokukai. <br /> <br />
+
+                    <span class="articleSmall">
+                        An extract from an article on
+                        <a href="https://www.streetdirectory.com/travel_guide/45603/martial_arts/the_origins_of_martial_arts_in_the_uk.html"
+                           target="_blank">streetdirectory.com</a>
+                    </span> <br />
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="sensei" class="sectionEven centerMe">
+        <div class="blocker"></div>
+
+        <p class="mt0 fColor1">
+            <span class="mmaFontL">Sensei's</span> <br />
+            These are some of the teachers you wish we had... <br /> <br />
+        </p>
+
+        <div id="senseiSection" class="divGrid">
+
+            <div class="centerMe maArticle divBorder divBSetEven">
+                <img class="senseiImg" src="images/Norris.png" />
+                <p class="senseiP">
+                    <b>Carlos Ray "Chuck" Norris</b><br />
+                    is an American martial artist, actor, film producer, and screenwriter. <br />
+                    He is a black belt in Tang Soo Do, Brazilian jiu jitsu and judo. <br />
+                    After serving in the United States Air Force, Norris won many martial arts championships and
+                    later founded his own discipline Chun Kuk Do. <br /> <br />
+                    The style was formally founded in 1990 as Chun Kuk Do by Chuck Norris, and was originally based on Norris' Tang Soo Do training in Korea while he was in the military.
+
+                    During his competitive fighting career, Norris began to evolve the style to make
+                    it more effective and well-rounded by studying other systems such as
+                    Shōtōkan, Gōjū-ryū, Shitō-ryū, American Kenpo, Enshinkaikan, Kyokushin, Judo,
+                    Brazilian Jiu-Jitsu, Arnis, Tae Kwon Do, Tang Soo Do and Hapkido. <br />
+                    Chun Kuk Do now emphasizes self defense, competition, weapons, grappling, and fitness,
+                    among other things. <br />
+                    Each summer the United Fighting Arts Federation (UFAF) holds a training conference
+                    and the Chun Kuk Do world championship tournament in Las Vegas, Nevada. <br /> <br />
+                </p>
+            </div>
+
+            <div class="centerMe maArticle divBorder divBSetEven">
+                <img class="senseiImg" src="images/Chan.jpg" />
+                <p class="senseiP">
+                    <b>Chan Kong-sang SBS MBE PMW</b><br />
+                    known professionally as Jackie Chan, is a Hong Kong actor and
+                    martial artist known for his slapstick acrobatic fighting style,
+                    comic timing, and innovative stunts, which he typically performs himself. <br /> <br />
+
+                    He has trained in Wushu and Hapkido and has been acting since the 1960s,
+                    performing in more than 150 films. He is one of the most popular
+                    action film stars of all time. <br /> <br />
+
+                    Chan is one of the most recognizable and influential cinematic personalities
+                    in the world, gaining a widespread global following in both the
+                    Eastern and Western hemispheres, and has received stars on the
+                    Hong Kong Avenue of Stars and the Hollywood Walk of Fame.
+                    He has been referenced in various pop songs, cartoons, and video games.
+                    He is an operatically trained vocalist and is also a Cantopop and Mandopop star,
+                    having released a number of albums and sung many of the theme songs for the films
+                    in which he has starred. He is also a globally known philanthropist
+                    and has been named as one of the top 10 most charitable celebrities by Forbes magazine. <br /> <br />
+
+
+                </p>
+            </div>
+
+            <div class="centerMe maArticle divBorder divBSetEven">
+                <img class="senseiImg" src="images/JetLi.jpg" />
+                <p class="senseiP">
+                    <b>Li Lianjie</b><br />
+                    better known by his stage name Jet Li, is a Chinese-born Singaporean film actor,
+                    film producer, martial artist, and retired Wushu champion who was born
+                    in Beijing. After three years of training with acclaimed Wushu teacher
+                    Wu Bin, Li won his first national championship for the Beijing Wushu Team. <br /> <br />
+
+                    "My winning first place caused quite a sensation because I was so young. <br />
+                    I was 12 years old, and the other two medalists were in their mid- to late twenties. <br />
+                    During the awards ceremony, as I stood on the top step of the podium, I was still shorter
+                    than the 2nd and 3rd place medalists. It must have been quite a sight."
+
+
+                </p>
+            </div>
+
+            <div class="centerMe maArticle divBorder divBSetEven">
+                <img class="senseiImg" src="images/Yen.jpg" />
+                <p class="senseiP">
+                    <b>Donnie Yen Ji-dan</b><br />
+                    is a Hong Kong Chinese actor, martial artist, film director, producer, action choreographer,
+                    stuntman, and multiple-time world wushu tournament champion.
+                    Yen is one of Hong Kong's top action stars. <br /> <br />
+
+                    Yen is one of Hong Kong's top action stars. Yen is widely credited for bringing mixed
+                    martial arts (MMA) into the mainstream Asian cinema by choreographing MMA
+                    in many of his films since the early 2000s.
+                    Yen has displayed skill in an array of martial arts, being well-versed
+                    in Tai Chi, Boxing, Kickboxing, Jeet Kune Do, Hapkido, Taekwondo, Karate, Muay Thai,
+                    Wrestling, Brazilian Jiu-Jitsu, Judo, Wing Chun, and Wushu.
+                    One of the most popular film stars in Asia of the early 2000s, Yen is consistently
+                    one of the highest-paid actors in Asia. <br /> <br />
+
+
+                </p>
+            </div>
+
+            <div class="centerMe maArticle divBorder divBSetEven">
+                <img class="senseiImg" src="images/teacher.jpg" />
+                <p class="senseiP">
+                    <b>Our Teacher</b><br />
+                    Unfortunately this is what we have ! <br /> <br />
+
+                    <b>Seely Prattus</b> is a self-proclaimed 19th Dan in TaekwoMadeUpushu and has been
+                    practising diligently for a few hours. Never one to pass by an opportunity he took control
+                    of our Dojo after the sad passing of his grandfather who, unfortunately, died whilst
+                    practising the rarely used plastic light sabre swinging move. He impaled himself when tripping over
+                    a poorly fitted crash mat. <br /> <br />
+
+                    Born in the 1960's his mother is said to have been the one screaming in the hospital delivery room
+                    when she first laid eyes on her new born son. From there Seely's fame went from strength to
+                    obscurity in a matter of moments. <br /> <br />
+
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="location" class="sectionOdd centerMe">
+        <div class="blocker"></div>
+
+        <p class="mt0">
+            <span class="mmaFontL">Location</span> <br /> <br />
+        </p>
+
+        <div id="locationSection" class="centerJustify divFlex">
+            <div id="locMap" class="divBorder divBSet">
+
+                <p style="padding: 10px 10% 0 10%;">
+                    We are located in the
+                    <a href="https://www.google.com/maps/place/The+Deakin+Centre/@52.1763766,0.1398136,15z/data=!4m5!3m4!1s0x0:0xb446440bd96d48e7!8m2!3d52.1763727!4d0.1398004"
+                       target="_blank">Deakin Centre</a> <br />
+                    at <br />
+                    Addenbrookes Hospital, Cambridge. UK. <br /> <br />
+
+                    Our students are well known there and we never have any problems getting medical attention
+                    when needed. <br /> <br />
+                </p>
+                <a href="https://www.google.com/maps/place/The+Deakin+Centre/@52.1763766,0.1398136,15z/data=!4m5!3m4!1s0x0:0xb446440bd96d48e7!8m2!3d52.1763727!4d0.1398004"
+                   target="_blank"><img id="locDeakin" src="images/Deakin.jpg" /></a>
+
+            </div>
+
+            <div id="locMap" class="divFlex divBorder divBSet centerJustify verticalCenterMeParent">
+                <div class="verticalCenterMeChild">
+
+                    <p class="fs2">
+                        <b>Addenbrookes Hospital</b><br /><br />
+                        Deakin Centre <br />
+                        Hills Road <br />
+                        Cambridge <br />
+                        CB2 0QQ <br />
+                        Cambridgeshire <br />
+                        United Kingdom
+
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div id="footerDiv" class="centerMe">
+            <p id="footerAuth">&#169; Gary Kirby 2021</p>
+            <img id="footerImg" src="images/footer.png" alt="Martial Arts poses" />
+        </div>
+
+    </footer>
+
+    <script src="js/myJScript.js"></script>
+
+</body>
+</html>

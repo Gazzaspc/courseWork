@@ -2,64 +2,103 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta charset="utf-8" />
+    <meta charset="utf-8" />
 
-  <title>Add Javascript</title>
-  <link href="CSS/MyStyles.css" rel="stylesheet" />
+    <title>Add Javascript</title>
+    <link href="CSS/MyStyles.css" rel="stylesheet" />
 
 </head>
 
 <body class="bodyMove">
 
-  <a href="index.html">Home</a>
+    <a href="index.html">Home</a>
 
-  <h1>Adding Javascript Tags</h1>
-  <p>
-    You can add the &lt;script&gt;&lt;/script&gt; tags in a few places on the HTML form.
-  </p>
-  <p>
-    Javascript code can be added to the sections<br />
-    <b>&lt;head&gt;&lt;/head&gt;</b> <br />
-    <b>&lt;body&gt;&lt;/body&gt;</b> <br />
-    but know that the more you put in the &lt;head&gt;&lt;/head&gt; the
-    slower the web page will load (parse). It also slows with it in the &lt;body&gt;&lt;/body&gt;
-    but it may not be so noticeable. <br />
-    ALSO...if you put the Javascript at the end (just before the &lt;/body&gt;) then it
-     will not parse until the page has loaded. <br /> <br />
-    This will probably change when I learn more though. <br /> <br />
-    (Edit... <br />
-    I am using javascript on some web pages (jsArrays.html & jsOperators.html etc) and
-    because I am requiring the scripts to run a javascript function as it processes the
-    code on the web page I had to put my function within the &lt;head&gt; section. <br />
-    Otherwise, if I put the function script at the bottom, it did not know about the function
-    until the page had already finished loading and by then it was too late.)
-  </p>
-  <p>
-    For example... <br /> <br />
-    &lt;head&gt; <br />
-    &nbsp; &nbsp; &nbsp; &lt;script type="text/javascript"&gt; <br />
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Javascript goes here// <br />
-    &nbsp; &nbsp; &nbsp; &lt;/script&gt; <br />
-    &lt;/head&gt; <br /> <br />
-    &lt;body&gt; <br />
-    &nbsp; &nbsp; &nbsp;//code in the body// <br />
-    &nbsp; &nbsp; &nbsp; &lt;script type="text/javascript"&gt; <br />
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Javascript goes here <br />
-    &nbsp; &nbsp; &nbsp; &lt;/script&gt; <br />
-    &nbsp; &nbsp; &nbsp;//MORE code in the body// <br />
-    &nbsp; &nbsp; &nbsp; &lt;script type="text/javascript"&gt; <br />
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Javascript goes here <br />
-    &nbsp; &nbsp; &nbsp; &lt;/script&gt; <br />
-    &nbsp; &nbsp; &nbsp;//EVEN MORE code in the body// <br />
-    &nbsp; &nbsp; &nbsp;//etc...etc...// <br />
-    &lt;/body&gt; <br />
-  </p>
-  <p>
-    You can also create an external file (similar to what we can do with CSS)
-    that holds the Javascript code. To do this you can say... <br />
-    <b>&lt;script src="Scripts/myScripts.js" text="text/javascript"&gt;</b> <br />
-    ...again this can go in the head or at the bottom of the body sections. <br />
+    <h1>Adding Javascript Tags</h1>
+    <em>
+        For more information on this
+        <a href="https://www.w3schools.com/tags/tag_script.asp"
+           target="_blank">Click Here</a> <br /> <br />
+        <a href="#defer">See below</a> for information regarding the <strong>defer & async</strong> attributes.
+    </em> <br /> <br />
+    <p>
+        You can add the &lt;script&gt;&lt;/script&gt; tags in a few places on the HTML form.
     </p>
+    <p>
+        Javascript code can be added to the sections<br />
+        <b>&lt;head&gt;&lt;/head&gt;</b> <br />
+        <b>&lt;body&gt;&lt;/body&gt;</b> <br />
+        but know that the more you put in the &lt;head&gt;&lt;/head&gt; the
+        slower the web page will load (parse). It also slows with it in the &lt;body&gt;&lt;/body&gt;
+        but it may not be so noticeable. <br />
+        ALSO...if you put the Javascript at the end (just before the &lt;/body&gt;) then it
+        will not parse until the page has loaded. <br /> <br />
+        This will probably change when I learn more though. <br /> <br />
+        (Edit... <br />
+        I am using javascript on some web pages (jsArrays.html & jsOperators.html etc) and
+        because I am requiring the scripts to run a javascript function as it processes the
+        code on the web page I had to put my function within the &lt;head&gt; section. <br />
+        Otherwise, if I put the function script at the bottom, it did not know about the function
+        until the page had already finished loading and by then it was too late.)
+    </p>
+    <div class="divBSet">
+        <p>
+            For example... <br /> <br />
+            &lt;head&gt; <br />
+            &nbsp; &nbsp; &nbsp; &lt;script type="text/javascript"&gt; <br />
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Javascript goes here// <br />
+            &nbsp; &nbsp; &nbsp; &lt;/script&gt; <br />
+            &lt;/head&gt; <br /> <br />
+            &lt;body&gt; <br />
+            &nbsp; &nbsp; &nbsp;//code in the body// <br />
+            &nbsp; &nbsp; &nbsp; &lt;script type="text/javascript"&gt; <br />
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Javascript goes here <br />
+            &nbsp; &nbsp; &nbsp; &lt;/script&gt; <br />
+            &nbsp; &nbsp; &nbsp;//MORE code in the body// <br />
+            &nbsp; &nbsp; &nbsp; &lt;script type="text/javascript"&gt; <br />
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Javascript goes here <br />
+            &nbsp; &nbsp; &nbsp; &lt;/script&gt; <br />
+            &nbsp; &nbsp; &nbsp;//EVEN MORE code in the body// <br />
+            &nbsp; &nbsp; &nbsp;//etc...etc...// <br />
+            &lt;/body&gt; <br />
+        </p>
+    </div>
+    <p>
+        You can also create an external file (similar to what we can do with CSS)
+        that holds the Javascript code. To do this you can say... <br />
+        <b>&lt;script src="Scripts/myScripts.js" text="text/javascript"&gt;</b> <br />
+        ...again this can go in the head or at the bottom of the body sections. <br /> <br />
+    </p>
+    <hr /> <br />
+    <section id="defer">
+        <p>
+            To stop an external script from running until AFTER the page has loaded you need to
+            add the '<span class="forceRed">defer</span>' attribute, eg... <br />
+            <b>&lt;script src="Scripts/myScripts.js" <span class="forceRed">defer</span>&gt;&lt;/script&gt;</b> <br /> <br />
+
+            <em>
+                For more information on DEFER
+                <a href="https://www.w3schools.com/tags/att_script_defer.asp"
+                   target="_blank">Click Here</a>
+            </em> <br /> <br />
+
+            <hr /> <br />
+
+            Similar to DEFER is the <b>ASYNC</b> attribute. <br />
+            But this does not wait until the whole page has loaded it just carries on loading the page while it is
+            loading the JavaScript code - As soon as the JavaScript code has finished loading then it will run. <br /> <br />
+            Useful if your JavaScript Code does not depend on the page being loaded before it runs. <br /> <br />
+            <b>&lt;script src="Scripts/myScripts.js" <span class="forceRed">async</span>&gt;&lt;/script&gt;</b> <br /> <br />
+
+            <em>
+                For more information on ASYNC
+                <a href="https://www.w3schools.com/tags/att_script_async.asp"
+                   target="_blank">Click Here</a>
+            </em> <br /> <br />
+
+
+        </p>
+    </section>
+
 </body>
 
 </html>

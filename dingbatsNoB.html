@@ -21,7 +21,7 @@
 
     <!-- jQuery first -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    
+
 
     <title>Dingbats NoB</title>
 
@@ -51,19 +51,20 @@
             }
         }
 
-        /*        @media only screen and (max-width: 746px) {
-            #horiz2Div {
-                display: none;
-            }
-        }*/
-
         #garyName {
             margin: 5px 10px 0 10px;
+        }
+
+        .block2 {
+            display: inline-block;
+            margin: 5px auto 0 auto;
+            width: 19%;
         }
 
         body {
             font-family: 'Merriweather', serif;
             line-height: 1.5;
+
         }
 
         .divColour1 {
@@ -84,6 +85,7 @@
             font-weight: 500;
             line-height: 1.2;
         }
+
         h4 {
             font-weight: bold;
             font-size: 1.5rem;
@@ -117,6 +119,41 @@
             font-family: "Century Gothic",CenturyGothic,AppleGothic,sans-serif;
         }
 
+        /*NOTE - %-ages below must not = 100%, eg 5 x 18% <> 100%*/
+        @media only screen and (min-width: 1101px) {
+            /*Shows 5 div boxes inline*/
+            .block2 {
+                width: 18%;
+            }
+        }
+
+        @media only screen and (max-width: 1100px) {
+            /*Shows 4 div boxes inline*/
+            .block2 {
+                width: 20%;
+            }
+        }
+
+        @media only screen and (max-width: 900px) {
+            /*Shows 3 div boxes inline*/
+            .block2 {
+                width: 30%;
+            }
+        }
+
+        @media only screen and (max-width: 700px) {
+            /*Shows 2 div boxes inline*/
+            .block2 {
+                width: 46%;
+            }
+        }
+
+        @media only screen and (max-width: 510px) {
+            /*Shows 1 div boxes inline*/
+            .block2 {
+                width: 90%;
+            }
+        }
     </style>
 
 
@@ -225,23 +262,26 @@
                     <ul id="horiz2">
                         <!--Call ulMainOut to close any opened drop down menu lists
                             but only necessary if staying on this page -->
-                        <li><a class="ulMain" href="index.html">Main</a></li>
-                        <li><a class="ulMain" onclick="ulMainOut('All')" href="#section1">Section 1</a></li>
-                        <li><a class="ulMain" onclick="ulMainOut('All')" href="#section2">Section 2</a></li>
+                        <li><a class="ulMain" onmouseover="ulMainOut('All')" href="index.html">Main</a></li>
+                        <li><a class="ulMain" onclick="ulMainOut('All')" onmouseover="ulMainOut('All')" href="#section1">Section 1</a></li>
+                        <li><a class="ulMain" onclick="ulMainOut('All')" onmouseover="ulMainOut('All')" href="#section2">Section 2</a></li>
                         <li>
                             <div class="ulMainDropDiv" style="display:inline-block;position:relative;">
-                                <a class="ulMainDrop" onclick="ulMainDrop('navProperty')" href="#">Property<span id="triangleDown">&#9660</span></a>
+                                <a class="ulMainDrop" onclick="ulMainDrop('navProperty')" 
+                                   onmouseover="ulMainOut('navProperty')" 
+                                   href="#">Property<span id="triangleDown">&#9660</span></a>
                                 <div id="navProperty" class="verticalNav">
                                     <a class="ulSub" href="#">Property</a>
                                     <a class="ulSub" href="#">Garden</a>
                                 </div>
                             </div>
                         </li>
-                        <li><a class="ulMain" href="#">Services</a></li>
+                        <li><a class="ulMain" onclick="ulMainOut('All')" onmouseover="ulMainOut('All')" href="#">Services</a></li>
                         <li>
                             <div class="ulMainDropDiv">
                                 <a class="ulMainDrop"
-                                   onclick="ulMainDrop('navGallery')"
+                                   onclick="ulMainDrop('navGallery')" 
+                                   onmouseover="ulMainOut('navGallery')" 
                                    href="#">Gallery<span id="triangleDown">&#9660</span></a>
                                 <div id="navGallery" class="verticalNav">
                                     <a class="ulSub" href="#">Gallery 1</a>
@@ -250,7 +290,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li><a class="ulMain" href="#">Contact</a></li>
+                        <li><a class="ulMain" onclick="ulMainOut('All')" onmouseover="ulMainOut('All')" href="#">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -271,7 +311,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li><a class="dropItem" href="#">Services</a></li>
+                        <li><a class="dropItem" onclick="ulMainOut('All')" href="#">Services</a></li>
                         <li>
                             <div class="dropItemDropDiv">
                                 <a class="dropItemDrop"
@@ -284,7 +324,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li><a class="dropItem" href="#">Contact</a></li>
+                        <li><a class="dropItem" onclick="ulMainOut('All')" href="#">Contact</a></li>
                     </ul>
 
                 </div>
@@ -331,8 +371,7 @@
         <div class="blocker">
         </div>
 
-        <div class="divFlex divBorder divCenter divNoMargin"
-             style="width:100%">
+        <div class="divFlex divBorder divCenter divNoMargin">
 
             <div class="divBorder divColour1"
                  style="display: inline-block; margin: 0 auto; ">
@@ -366,10 +405,8 @@
 
         </div>
 
-        <div class="divFlex divNoMargin divBorder divCenter"
-             style="width:100%">
-            <div class="divBorder divColour2"
-                 style="display: inline-block; margin: 0 auto; ">
+        <div class="divFlex_NOT_HERE divNoMargin divBorder divCenter">
+            <div class="divBorder divColour2 block2">
                 <p>
                     Filler Section for display <br /> <br />
                     Section 4 Section 4 Section 4 Section 4 Section 4
@@ -378,8 +415,7 @@
                     Section 4 Section 4 Section 4 Section 4 Section 4
                 </p>
             </div>
-            <div class="divBorder divColour2"
-                 style="display: inline-block; margin: 0 auto;">
+            <div class="divBorder divColour2 block2">
                 <p>
                     Filler Section for display <br /> <br />
                     Section 5 Section 5 Section 5 Section 5
@@ -389,8 +425,7 @@
                     Section 5 Section 5 Section 5 Section 5
                 </p>
             </div>
-            <div class="divBorder divColour2"
-                 style="display: inline-block; margin: 0 auto; ">
+            <div class="divBorder divColour2 block2">
                 <p>
                     Filler Section for display <br /> <br />
                     Section 6 Section 6 Section 6 Section 6 Section 6
@@ -399,8 +434,7 @@
                     Section 6 Section 6 Section 6 Section 6 Section 6
                 </p>
             </div>
-            <div class="divBorder divColour2"
-                 style="display: inline-block; margin: 0 auto;">
+            <div class="divBorder divColour2 block2">
                 <p>
                     Filler Section for display <br /> <br />
                     Section 7 Section 7 Section 7 Section 7
@@ -410,8 +444,7 @@
                     Section 7 Section 7 Section 7 Section 7
                 </p>
             </div>
-            <div class="divBorder divColour2"
-                 style="display: inline-block; margin: 0 auto;">
+            <div class="divBorder divColour2 block2">
                 <p>
                     Filler Section for display <br /> <br />
                     Section 8 Section 8 Section 8 Section 8
@@ -495,9 +528,10 @@
                 </p>
                 <br /> <br /> <br />
             </div>
-            
+
         </div>
     </section>
+
 
 
 </body>

@@ -119,6 +119,10 @@ html {
     width: 400px;
 }
 
+.forceRed {
+    color: red;
+}
+
 /* Change ALL input boxes that are 'readonly' */
 input[readonly] {background-color:#E0E0E0}
 
@@ -136,7 +140,6 @@ input[readonly] {background-color:#E0E0E0}
   outline: none;
   line-height: 1.7;
   margin: 0 2px 0 0;
-  ;
   padding: 5px 8px;
   font-size: 0.8rem;
   text-align: center;

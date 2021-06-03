@@ -14,12 +14,13 @@
       background-color: #DCDCDC;
     }
 
-    .Index {
-      background-color: #B0C4DE;
-      margin: 20px;
-      padding: 10px;
-      width: 400px;
-    }
+      .Index {
+          background-color: #B0C4DE;
+          margin: 20px;
+          padding: 10px;
+          width: 400px;
+          display: inline-block;
+      }
 
     .myCenter {
       text-align: center;
@@ -27,8 +28,36 @@
 
     ul {
       list-style-position: inside;
-      padding-left: 10px;;
+      padding-left: 10px;
     }
+
+    /*Below here is the code for making the flexbox change it's size and then drop to single boxes*/
+
+    /*Start with both boxes maintain a width of 45%*/ 
+    .flexBlock {
+        width:45%;
+    }
+
+    /*set this to NOWRAP now - it is the default so it's not necessary but I wanted to show it.
+    change to wrap (in the @media command) when screen size shrinks. */
+    .flexContainer {
+        flex-wrap: nowrap;
+    }
+
+      @media only screen and (max-width: 900px) {
+
+          /*when screen size drops below 900px make the width 95%*/ 
+          /*So it will now show 1 div box instead of 2 wide*/
+          .flexBlock {
+              width: 95%;
+          }
+
+          /*When screen size drops below 900px this makes sure the 2 boxes wrap.*/ 
+          .flexContainer {
+              flex-wrap: wrap;
+          }
+      }
+      /*Above here is the code for making the flexbox change it's size and then drop to single boxes*/
   </style>
 </head>
 
@@ -50,238 +79,254 @@
       certain tasks. <br />
       <i>(Although I am sure this will change as I add more pages)</i>
     </p>
-    <div class="divFlex">
-      <div class="Index divBorder">
+    <div class="divFlex flexContainer">
+        <div class="Index divBorder flexBlock">
+            <h1 class="myCenter">HTML & CSS Course Index</h1>
+            <ul>
 
-        <ul>
-          <h1 class="myCenter">HTML & CSS Course Index</h1>
-          <li>
-            <a href="AdditionalContent/DirectoryChange.html">Changing Directory on Links/Images/etc</a>
-          </li>
-          <li>
-            <a href="Animation.html">Animation</a>
-          </li>
-          <li>
-            <a href="Background.html">Background Images (Incl. Parallax Scrolling)</a>
-          </li>
-          <li>
-            <a href="BeforeAfter.html">::before and ::after</a>
-          </li>
-          <li>
-            <a href="BoxModel.html">Box Model</a>
-          </li>
-          <li>
-            <a href="CSSExamples.html">CSS Coding</a>
-          </li>
-          <li>
-            <a href="PseudoClasses.html">CSS Selectors (referencing them (h1, h2) / eg :hover)</a>
-          </li>
-          <li>
-            <a href="oddElements.html">Elements Not Used Much (but interesting)</a>
-          </li>
-          <li>
-            <a href="Float.html">Floating Text</a>
-          </li>
-          <li>
-            <a href="FontFamily.html">Font Family (font-family:)</a>
-          </li>
-          <li>
-            <a href="FontSize.html">Font Sizes (font-size:)</a>
-          </li>
-          <li>
-            <a href="ImageHover.html">Hover over Images / Video & Audio Playback</a>
-          </li>
-          <li>
-            <a href="InputBoxes.html">Input/Text Boxes & Emailing Forms</a>
-          </li>
-          <li>
-            <a href="Links.html">Links (Incl. Text over Image on HOVER)</a>
-          </li>
-          <li>
-            <a href="Lists_ulol.html">Lists (Un-Ordered/Ordered) / Navigation Links</a>
-          </li>
-          <li>
-            <a href="NthChild.html">Using the nth-child(...) selector</a>
-          </li>
-          <li>
-            <a href="Overflow.html">Overflow of Text</a>
-          </li>
-          <li>
-            <a href="Positioning.html">Positioning Elements (Static/Relative/Absolute)</a>
-          </li>
-          <li>
-            <a href="PositioningFixSticky.html">Positioning Elements (fixed/Sticky)</a>
-          </li>
-          <li>
-            <a href="Properties.html">Properties (text-decoration, background-color, etc)</a>
-          </li>
-          <li>
-            <a href="RoundBorders.html">Rounding Borders</a>
-          </li>
-          <li>
-            <a href="Shadow.html">Shadowing</a>
-          </li>
-          <li>
-            <a href="Structure.html">Structure</a>
-          </li>
-          <li>
-            <a href="tables.html">Tables</a>
-          </li>
-          <li>
-            <a href="Transform.html">Transform: & transition: commands</a>
-          </li>
-          <li>
-            <a href="TitlePopup.html">Title Attribute & Other Attributes</a>
-          </li>
-        </ul>
+                <li>
+                    <a href="basics.html">A basic way to code a webpage</a>
+                </li>
+                <li>
+                    <a href="alignment.html">Aligning div's inside a div</a>
+                </li>
+                <li>
+                    <a href="Animation.html">Animation</a>
+                </li>
+                <li>
+                    <a href="Background.html">Background Images (Parallax Scrolling / transparent Div's)</a>
+                </li>
+                <li>
+                    <a href="BeforeAfter.html">::before and ::after</a>
+                </li>
+                <li>
+                    <a href="BoxModel.html">Box Model</a>
+                </li>
+                <li>
+                    <a href="AdditionalContent/DirectoryChange.html">Changing Directory on Links/Images/etc</a>
+                </li>
+                <li>
+                    <a href="CSSExamples.html">CSS Coding</a>
+                </li>
+                <li>
+                    <a href="PseudoClasses.html">CSS Selectors (referencing them (h1, h2) / eg :hover)</a>
+                </li>
+                <li>
+                    <a href="oddElements.html">Elements Not Used Much (but interesting)</a>
+                </li>
+                <li>
+                    <a href="flexItems.html">Flex Boxes (with justify-content & align-items) attributes</a>
+                </li>
+                <li>
+                    <a href="Float.html">Floating Text</a>
+                </li>
+                <li>
+                    <a href="FontFamily.html">Font Family (font-family:)</a>
+                </li>
+                <li>
+                    <a href="FontSize.html">Font Sizes (font-size:)</a>
+                </li>
+                <li>
+                    <a href="grid.html">Grid (display:grid;)</a>
+                </li>
+                <li>
+                    <a href="ImageHover.html">Hover over Images / Video & Audio Playback</a>
+                </li>
+                <li>
+                    <a href="InputBoxes.html">Input/Text Boxes & Emailing Forms</a>
+                </li>
+                <li>
+                    <a href="Links.html">Links (Incl. Text over Image on HOVER)</a>
+                </li>
+                <li>
+                    <a href="Lists_ulol.html">Lists (Un-Ordered/Ordered) / Navigation Links</a>
+                </li>
+                <li>
+                    <a href="NthChild.html">Using the nth-child(...) selector</a>
+                </li>
+                <li>
+                    <a href="Overflow.html">Overflow of Text</a>
+                </li>
+                <li>
+                    <a href="Positioning.html">Positioning Elements (Static/Relative/Absolute)</a>
+                </li>
+                <li>
+                    <a href="PositioningFixSticky.html">Positioning Elements (fixed/Sticky)</a>
+                </li>
+                <li>
+                    <a href="Properties.html">Properties (text-decoration, background-color, etc)</a>
+                </li>
+                <li>
+                    <a href="RoundBorders.html">Rounding Borders</a>
+                </li>
+                <li>
+                    <a href="Shadow.html">Shadowing</a>
+                </li>
+                <li>
+                    <a href="Structure.html">Structure</a>
+                </li>
+                <li>
+                    <a href="tables.html">Tables</a>
+                </li>
+                <li>
+                    <a href="Transform.html">Transform: & transition: commands</a>
+                </li>
+                <li>
+                    <a href="TitlePopup.html">Title Attribute & Other Attributes</a>
+                </li>
+            </ul>
 
-      </div>
+        </div>
 
-      <div class="Index divBorder">
+        <div class="Index divBorder flexBlock">
+            <h1 class="myCenter">Javascript Course Index</h1>
+            <ul>
 
-        <ul>
-          <h1 class="myCenter">Javascript Course Index</h1>
-          <li>
-            <a href="AddJavascript.html">...Adding Javascript to your Code</a>
-          </li>
-          <li>
-            <a href="jsArrays.html">Arrays</a>
-          </li>
-          <li>
-            <a href="jsDates.html">Date Manipulation</a>
-          </li>
-          <li>
-            <a href="jsDropDown.html">Drop Down Box (Select/Option)</a>
-          </li>
-          <li>
-            <a href="jsFunctions.html">Functions</a>
-          </li>
-          <li>
-            <a href="jsLoops.html">Loops (For/While & Do While)</a>
-          </li>
-          <li>
-            <a href="jsNumbers.html">Number Manipulation (Number./Math.)</a>
-          </li>
-          <li>
-            <a href="jsObjects.html">Objects & Properties (plus Getters & Setters)</a>
-          </li>
-          <li>
-            <a href="jsStrings.html">String Manipulation</a>
-          </li>
-          <li>
-            <a href="jsSwitch.html">Switch (Select Case in MS Access)</a>
-          </li>
-          <li>
-            <a href="jsTryCatch.html">Try/Catch/Throw (Error trapping)</a>
-          </li>
-          <li>
-            <a href="jsOperators.html">Variables & Operators</a>
-          </li>
-        </ul>
+                <li>
+                    <a href="AddJavascript.html">...Adding Javascript to your Code</a>
+                </li>
+                <li>
+                    <a href="jsArrays.html">Arrays</a>
+                </li>
+                <li>
+                    <a href="jsDates.html">Date Manipulation</a>
+                </li>
+                <li>
+                    <a href="jsDropDown.html">Drop Down Box (Select/Option)</a>
+                </li>
+                <li>
+                    <a href="jsFunctions.html">Functions</a>
+                </li>
+                <li>
+                    <a href="jsLoops.html">Loops (For/While & Do While)</a>
+                </li>
+                <li>
+                    <a href="jsNumbers.html">Number Manipulation (Number./Math.)</a>
+                </li>
+                <li>
+                    <a href="jsObjects.html">Objects & Properties (plus Getters & Setters)</a>
+                </li>
+                <li>
+                    <a href="jsStrings.html">String Manipulation</a>
+                </li>
+                <li>
+                    <a href="jsSwitch.html">Switch (Select Case in MS Access)</a>
+                </li>
+                <li>
+                    <a href="jsTryCatch.html">Try/Catch/Throw (Error trapping)</a>
+                </li>
+                <li>
+                    <a href="jsOperators.html">Variables & Operators</a>
+                </li>
+            </ul>
 
-      </div>
+        </div>
     </div>
 
-    <div class="divFlex">
-      <div class="Index divBorder">
+    <div class="divFlex flexContainer">
+        <div class="Index divBorder flexBlock">
+            <h1 class="myCenter" style="margin-bottom:0;">DOM</h1>
+            <h3 style="text-align:center;margin-top:0;">(Document Object Manager)</h3>
+            <ul>
 
-        <ul>
-          <h1 class="myCenter" style="margin-bottom:0;">DOM</h1>
-          <h3 style="text-align:center;margin-top:0;">(Document Object Manager)</h3>
-          <li>
-            <a href="domElements.html">Element Manipulation</a> (eg getElementById)
-          </li>
-          <li>
-            <a href="domEventListener.html">Event Listeners & DOM Events</a> (drag/mouse etc)
-          </li>
-          <li>
-            <a href="domMethods.html">Methods/Properties that may be useful</a>
-          </li>
-          <li>
-            <a href="domTimers.html">Timer Functions</a>
-          </li>
+                <li>
+                    <a href="domElements.html">DOM Info/Element Manipulation</a> (eg getElementById)
+                </li>
+                <li>
+                    <a href="domEventListener.html">Event Listeners & DOM Events</a> (drag/mouse etc)
+                </li>
+                <li>
+                    <a href="domMethods.html">Methods/Properties that may be useful</a> eg @media
+                </li>
+                <li>
+                    <a href="domTimers.html">Timer Functions</a>
+                </li>
 
-        </ul>
+            </ul>
 
-      </div>
+        </div>
 
-      <div class="Index divBorder">
-        <ul>
-          <h1 class="myCenter" style="margin-bottom:0;">JQuery</h1>
-          <h3 style="text-align:center;margin-top:0;">(Javascript Library)</h3>
-          <li>
-            <a href="jqSettingUp.html">A Way to implement JQuery</a>
-          </li>
-          <li>
-            <a href="jqCreate.html">Create/Remove Elements - Examples</a>
-          </li>
-          <li>
-            <a href="jqEvents.html">Events & Methods Examples</a> (uses Drag/Drop in examples)
-          </li>
-          <li>
-            <a href="jqSelectors.html">Selector Examples</a>
-          </li>
-          <li>
-            <a href="jqEffects.html">Special Effects - Examples</a>
-          </li>
+        <div class="Index divBorder flexBlock">
+            <h1 class="myCenter" style="margin-bottom:0;">JQuery</h1>
+            <h3 style="text-align:center;margin-top:0;">(Javascript Library)</h3>
+            <ul>
 
-        </ul>
+                <li>
+                    <a href="jqSettingUp.html">A Way to implement JQuery</a>
+                </li>
+                <li>
+                    <a href="jqCreate.html">Create/Remove Elements - Examples</a>
+                </li>
+                <li>
+                    <a href="jqEvents.html">Events & Methods Examples</a> (uses Drag/Drop in examples)
+                </li>
+                <li>
+                    <a href="jqSelectors.html">Selector Examples</a>
+                </li>
+                <li>
+                    <a href="jqEffects.html">Special Effects - Examples</a>
+                </li>
 
-      </div>
+            </ul>
+
+        </div>
     </div>
 
-    <div class="divFlex">
-      <div class="Index divBorder">
+    <div class="divFlex flexContainer">
+        <div class="Index divBorder flexBlock">
+            <h1 class="myCenter" style="margin-bottom:0;">Other</h1>
+            <h3 style="text-align:center;margin-top:0;">(Additional notes)</h3>
+            <ul>
 
-          <ul>
-              <h1 class="myCenter" style="margin-bottom:0;">Other</h1>
-              <h3 style="text-align:center;margin-top:0;">(Additional notes)</h3>
-              <li>
-                  <a href="otherCanvas.html">Canvas Element (Drawing)</a>
-              </li>
-              <li>
-                  <a href="devTools.html">Chrome Development Tools</a>
-              </li>
-              <li>
-                  <a href="otherGoodies.html">Goodies (short things, like - Page Scrolling)</a>
-              </li>
-              <li>
-                  <a href="NumberSection.html">Numbering Sections (CSS Counters)</a>
-              </li>
-              <li>
-                  <a href="otherRegex.html">RegEx Searching (/,\s*/ig)</a>
-              </li>
+                <li>
+                    <a href="otherCanvas.html">Canvas Element (Drawing)</a>
+                </li>
+                <li>
+                    <a href="devTools.html">Chrome Development Tools</a>
+                </li>
+                <li>
+                    <a href="otherGoodies.html">Goodies (short things, like - Page Scrolling)</a>
+                </li>
+                <li>
+                    <a href="NumberSection.html">Numbering Sections (CSS Counters)</a>
+                </li>
+                <li>
+                    <a href="otherRegex.html">RegEx Searching (/,\s*/ig)</a>
+                </li>
 
-          </ul>
+            </ul>
 
-      </div>
+        </div>
 
-      <div class="Index divBorder">
+        <div class="Index divBorder flexBlock">
+            <h1 class="myCenter" style="margin-bottom:0;">Codecademy Work</h1>
+            <h3 style="text-align:center;margin-top:0;">(some lessons)</h3>
+            <ul>
 
-          <ul>
-              <h1 class="myCenter" style="margin-bottom:0;">Codecademy Work</h1>
-              <h3 style="text-align:center;margin-top:0;">(some lessons)</h3>
-              <li>
-                  <a href="codecademyCCards.html">Credit Card Check / DNA Sampling</a>
-              </li>
-              <li>
-                  <a href="codecademyDasmoto.html">Dasmoto's Arts & Crafts</a>
-              </li>
-              <li>
-                  <a href="codecademyExcursion.html">Excursion Project</a>
-              </li>
-              <li>
-                  <a href="codecademyMenu.html">Menu / Team Stats</a>
-              </li>
-              <li>
-                  <a href="codecademyLessons.html">Tasks (using arrays/objects/properties)</a>
-              </li>
+                <li>
+                    <a href="codecademyCCards.html">Credit Card Check / DNA Sampling</a>
+                </li>
+                <li>
+                    <a href="codecademyDasmoto.html">Dasmoto's Arts & Crafts</a>
+                </li>
+                <li>
+                    <a href="codecademyExcursion.html">Excursion Project</a>
+                </li>
+                <li>
+                    <a href="codecademyFlex.html">Flex property example</a>
+                </li>
+                <li>
+                    <a href="codecademyMenu.html">Menu / Team Stats</a>
+                </li>
+                <li>
+                    <a href="codecademyLessons.html">Tasks (using arrays/objects/properties)</a>
+                </li>
 
 
 
-          </ul>
+            </ul>
 
-      </div>
+        </div>
 
     </div>
   </section>

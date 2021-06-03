@@ -28,11 +28,11 @@
     }
 
     .myBorder1 {
-      background-color: #FFB266;
+      background-color: lightblue;
     }
 
     .myBorder2 {
-      background-color: #FFCC99;
+      background-color:pink;
     }
 
     .myBorder3 {
@@ -69,7 +69,17 @@
     Every element is a box model. <br />
     (This means every element is made up of a <br />
     Margin / Border / Padding / Content) <br /> <br />
+    Some elements (maybe most of them) start with default MARGIN & PADDING settings already set and if you want 
+      to start with a clean slate (no margins or paddings) then it is advisable to... <br />
+      In your own CSS styling file (eg MyStyles.css) add the following :- <br /> <br />
+      <strong>* { <br />
+          &nbsp;&nbsp;&nbsp;padding: 0; <br />
+          &nbsp;&nbsp;&nbsp;margin: 0; <br />
+          }</strong></b> <br /> <br />
 
+      That way ALL elements will start with NO MARGINs and NO PADDINGs. So you can now set them individually as you want. <br />
+      The <b>*</b> in the CSS style setting means ALL ELEMENTS. <br />
+      <br />
   </p>
   <section>
     <div id="Div1">
@@ -108,12 +118,12 @@
     </p>
     <div class="divFlex">
 
-      <div class="myBorder1 myDemo1" style="margin: 0 20px 20px 20px;">
+      <div class="myBorder1 myDemo1" style="margin: 0 20px 20px 20px;">  <!--lightblue-->
         <p>
           margin set as - margin: 0 20px 20px 20px;
         </p>
       </div>
-      <div class="myBorder2 myDemo2">
+      <div class="myBorder2 myDemo2"> <!--pink-->
         <p>
           margin set as - margin: 0 20px 20px 20px;
         </p>

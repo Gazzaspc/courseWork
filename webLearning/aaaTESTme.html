@@ -1,130 +1,264 @@
 <!DOCTYPE html>
-
-<html dir="ltr" lang="en">
+<html lang="en" dir="ltr">
 
 <head>
-  <meta charset="utf-8" />
-  <title>Numbering Sections</title>
+    <meta charset="utf-8">
+    <title>Background Images</title>
 
-  <link rel="stylesheet" type="text/css" href="CSS/normalize.css" />
-  <link rel="stylesheet" type="text/css" href="CSS/main.css" />
-  <link rel="stylesheet" type="text/css" href="CSS/myStyles.css" />
+    <style>
+          html {
+              background-color: #E0E0E0;
+          }
 
-  <script src="Scripts/myScripts.js" text="text/javascript"></script>
+          body {
+              /* width: 80%;
+        margin: 0 auto; */
+              /* Cannot use above 2 lines when using Parallax Scrolling */
+              background-image: url("Images/Glacier.jpeg");
+              background-repeat: no-repeat;
+              background-attachment: fixed;
+              background-position: center center;
+              background-size: cover;
+          }
 
-  <style>
-    
-  </style>
+          .divFlex {
+              display: flex;
+          }
+
+          .divMain {
+              /* height: 250px; */
+              border: 1px solid black;
+          }
+
+          .div2 {
+              /* height: 250px; */
+              border: 1px solid black;
+          }
+
+          .div3 {
+              /* height: 250px; */
+              border: 1px solid black;
+              position: relative;
+          }
+
+          .Emu {
+              position: Absolute;
+              border-radius: 50px;
+              border: 2px solid green;
+              height: 200px;
+              width: 200px;
+              top: 7%;
+              right: 5%;
+              background-image: url("Images/EmuSmall.jpg");
+              background-attachment: fixed;
+              background-repeat: no-repeat;
+              background-position: 95% 20%;
+              background-size: 220px 210px;
+              /*
+        For PARALLAX SCROLLING you need to match the
+           right: 5%   to what is the background-position: 95%
+        the two values added together must make 100 for it to work
+        otherwise when you resize the page (making it thinner/fatter)
+        the picture does not move with the div box.
+        */
+          }
+
+          .Looney {
+              position: Absolute;
+              border-radius: 50px;
+              border: 2px solid red;
+              height: 200px;
+              width: 200px;
+              top: 0%;
+              right: 15%;
+              background-image: url("Images/LooneyGK.bmp");
+              background-attachment: fixed;
+              background-repeat: no-repeat;
+              background-position: 85% 50%;
+              background-size: 250px 400px;
+              /*
+        For PARALLAX SCROLLING you need to match the
+           right: 5%   to what is the background-position: 95%
+        the two values added together must make 100 for it to work
+        otherwise when you resize the page (making it thinner/fatter)
+        the picture does not move with the div box.
+        */
+          }
+
+          p {
+              margin-left: 20px;
+          }
+
+          .textCenter {
+              text-align: center;
+          }
+
+          .filler1 {
+              height: 800px;
+          }
+
+          #redSolid {
+              width: 200px;
+              height: 200px;
+              background-color: rgb(255, 0, 0);
+              display: inline-block;
+          }
+
+          #redTransparent {
+              width: 200px;
+              height: 200px;
+              background-color: rgba(255, 0, 0, 0.5);
+              display: inline-block;
+          }
+
+          #redTransparentLess {
+              width: 200px;
+              height: 200px;
+              background-color: rgba(255, 0, 0, 0.75);
+              display: inline-block;
+          }
+
+          #redTransparentMore {
+              width: 200px;
+              height: 200px;
+              background-color: rgba(255, 0, 0, 0.25);
+              display: inline-block;
+          }
+
+          #redTransparentStillMore {
+              width: 200px;
+              height: 200px;
+              background-color: rgba(255, 0, 0, 0.1);
+              display: inline-block;
+          }
+    </style>
 
 </head>
 
-<body class="bodyMove">
+<body>
 
-  <section id="top">
-    <a href="index.html">Home</a> <br />
+    <Parallax-Scrolling>
+        <div class="Emu">
+            <p class="textCenter">
+                Parallax Scrolling 1
+            </p>
+        </div>
+    </Parallax-Scrolling>
+    <!-- Place a Parallax Scrolling (Emu Picture) up here so I can Position
+    it all to the actual [html] area & not the [body] -->
 
-  </section>
+    <a href="index.html">Home</a>
+    <h1>Playing with BACKGROUND settings</h1>
+    <p>
+        NOTE... <br />
+        You cannot set the opacity of a background-picture <br />
+        It is easier to change the picture in PaintShop Pro...under 'Layers'
+        (on the right hand side) change 100 to be a lower number. <br />
+    </p>
+    <section>
+        <div class="divMain">
+            <p>
+                In the &lt;head&gt; section, in the &lt;style&gt; area I created:- <br /> <br />
+                body { <br />
+                &nbsp;&nbsp;&nbsp; background-image: url("Images/Glacier.jpeg"); <br />
+                &nbsp;&nbsp;&nbsp; background-repeat: no-repeat; <br />
+                &nbsp;&nbsp;&nbsp; background-attachment: fixed; <br />
+                &nbsp;&nbsp;&nbsp; background-position: center center; <br />
+                &nbsp;&nbsp;&nbsp; background-size: cover; <br />
+                } <br /> <br />
+            </p>
+        </div>
+    </section>
 
-<script>
+    <section>
+        <div class="div2">
+            <p>
+                In the &lt;head&gt; section, in the &lt;style&gt; area I created:- <br /> <br />
+                .Emu { <br />
+                &nbsp;&nbsp;&nbsp; position: Absolute; <br />
+                &nbsp;&nbsp;&nbsp; border-radius: 50px; <br />
+                &nbsp;&nbsp;&nbsp; border: 2px solid green; <br />
+                &nbsp;&nbsp;&nbsp; height: 200px; <br />
+                &nbsp;&nbsp;&nbsp; width: 200px; <br />
+                &nbsp;&nbsp;&nbsp; bottom: 35%; <br />
+                &nbsp;&nbsp;&nbsp; right: 5%; <br />
+                &nbsp;&nbsp;&nbsp; background-image: url("Images/EmuSmall.jpg"); <br />
+                &nbsp;&nbsp;&nbsp; background-attachment: fixed; <br />
+                &nbsp;&nbsp;&nbsp; background-repeat: no-repeat; <br />
+                &nbsp;&nbsp;&nbsp; background-position: 95% 50%; <br />
+                &nbsp;&nbsp;&nbsp; background-size: 220px 210px; <br />
+                } <br />
+            </p>
+        </div>
+    </section>
 
+    <section>
+        <div class="div3 divFlex">
+            <p>
+                In the &lt;head&gt; section, in the &lt;style&gt; area I created:- <br /> <br />
+                .Looney { <br />
+                &nbsp;&nbsp;&nbsp; position: Absolute; <br />
+                &nbsp;&nbsp;&nbsp; border-radius: 50px; <br />
+                &nbsp;&nbsp;&nbsp; border: 2px solid red; <br />
+                &nbsp;&nbsp;&nbsp; height: 200px; <br />
+                &nbsp;&nbsp;&nbsp; width: 200px; <br />
+                &nbsp;&nbsp;&nbsp; top: 0%; <br />
+                &nbsp;&nbsp;&nbsp; right: 10%; <br />
+                &nbsp;&nbsp;&nbsp; background-image: url("Images/LooneyGK.bmp"); <br />
+                &nbsp;&nbsp;&nbsp; background-attachment: fixed; <br />
+                &nbsp;&nbsp;&nbsp; background-repeat: no-repeat; <br />
+                &nbsp;&nbsp;&nbsp; background-position: 90% 50%; <br />
+                &nbsp;&nbsp;&nbsp; background-size: 250px 400px; <br />
+                } <br />
+            </p>
+            <p>
+                This one (Looney Tunes - Parallax Scrolling 2 example) <br />
+                keeps the &lt;div class="Looney"&gt; associated within this <br />
+                section of the page. <br /> <br />
+                NOTE... <br />
+                I made the div container a position:relative so the <br />
+                child div (looney) will be 'absolutely' positioned within it.
+            </p>
+            <div class="Looney">
+                <p class="textCenter" style="color:white;">
+                    Parallax Scrolling 2
+                </p>
+            </div>
+        </div>
+    </section>
 
-
-    // Returns a random DNA base
-    const returnRandBase = () => {
-        const dnaBases = ['A', 'T', 'C', 'G']
-        return dnaBases[Math.floor(Math.random() * 4)]
-    }
-
-    // Returns a random single stand of DNA containing 15 bases
-    const mockUpStrand = () => {
-        const newStrand = []
-        for (let i = 0; i < 15; i++) {
-            newStrand.push(returnRandBase())
-        }
-        return newStrand
-    }
-
-    const pAequorFactory = (number, array) => {
-        //Return a few different things at the same time
-        //...properties and methods
-        return {
-            specimenNum: number,
-            dna: array,
-
-            mutate: () => {
-                var mutateArray = array;
-                var rnd = Math.floor(Math.random() * mutateArray.length);
-                var stop = 0;
-                var newBase = "";
-                do {
-                    newBase = returnRandBase();
-                    if (mutateArray[rnd] != newBase) {
-                        mutateArray[rnd] = newBase;
-                        stop = 1;
-                    };
-                } while (stop = 0);
-                return mutateArray;
-            },
-
-            //Check percentage match of DNA
-            compareDNA: (pAequor) => {
-                var max = array.length;
-                if (max > pAequor.length) {
-                    max = pAequor.length;
-                };
-                var match = 0;
-                var perc = 0;
-                for (i = 0; i < max; i++) {
-                    if (array[i] == pAequor[i]) {
-                        match++;
-                    };
-                };
-                perc = Math.round((match / max) * 100);
-                return `specimen #1 and specimen #2 have ${perc}% DNA in common.`
-            },
-
-            //Return TRUE if 'G' or 'C' => 60% exists in DNA
-            willLikelySurvive() {
-                var countG = 0;
-                var countC = 0;
-                survive = false;
-                for (i = 0; i < array.length; i++) {
-                    if (array[i] == "G") {
-                        countG++;
-                    } else if (array[i] == "C") {
-                        countC++;
-                    };
-                };
-                if (Math.round((countG / array.length) * 100) >= 60) {
-                    survive = true;
-                } else if (Math.round((countC / array.length) * 100) >= 60) {
-                    survive = true;
-                };
-                return survive;
-            }
-
-        };  //End of main RETURN
-
-    };  //End of pAequorFactory
-
-    function createPAequor() {
-        var pA = [];
-        for (i = 0; i < 30; i++) {
-            pA.push(mockUpStrand());
-        };
-        return pA;
-    }
-
-    var pAequor = createPAequor();
-
-    console.log(pAequor);
-
-    var Animal1 = pAequorFactory(1, pAequor[1]);
-
-
-</script>
-  
-
+    <div class="filler1">
+        <div id="redTransparentStillMore">
+            <p>
+                This is to show a partially transparent background <br />
+                uses <strong>background-color: rgba(255,0,0,0.1);</strong>
+            </p>
+        </div>
+        <div id="redTransparentMore">
+            <p>
+                This is to show a partially transparent background <br />
+                uses <strong>background-color: rgba(255,0,0,0.25);</strong>
+            </p>
+        </div>
+        <div id="redTransparent">
+            <p>
+                This is to show a partially transparent background <br />
+                uses <strong>background-color: rgba(255,0,0,0.5);</strong>
+            </p>
+        </div>
+        <div id="redTransparentLess">
+            <p>
+                This is to show a partially transparent background <br />
+                uses <strong>background-color: rgba(255,0,0,0.75);</strong>
+            </p>
+        </div>
+        <div id="redSolid">
+            <p>
+                This is to show a solid background <br />
+                uses <strong>background-color: rgb(255,0,0);</strong>
+            </p>
+        </div>
+    </div>
 </body>
 
 </html>
