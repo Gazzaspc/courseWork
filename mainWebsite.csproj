@@ -65,6 +65,7 @@
     <None Include="images\logos\pspbrwse.jbf" />
     <None Include="images\logos\ReadMe.docx" />
     <None Include="images\pspbrwse.jbf" />
+    <None Include="MartialArts\fonts\Shojumaru-Regular.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -83,6 +84,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BookAndStuff\bookShop.html" />
     <Content Include="contact.html" />
     <Content Include="css\dingbats.css" />
     <Content Include="css\dingbatsNoB.css" />
@@ -107,10 +109,28 @@
     <Content Include="images\Office3.jpg" />
     <Content Include="images\OfficeLarge.jpg" />
     <Content Include="index.html" />
+    <Content Include="MartialArts\contact.html" />
+    <Content Include="MartialArts\CSS\myStyles.css" />
+    <Content Include="MartialArts\images\Chan.jpg" />
+    <Content Include="MartialArts\images\Contact.jpg" />
+    <Content Include="MartialArts\images\Deakin.jpg" />
+    <Content Include="MartialArts\images\dojo.jpg" />
+    <Content Include="MartialArts\images\fighting-silhouette.jpg" />
+    <Content Include="MartialArts\images\footer.png" />
+    <Content Include="MartialArts\images\JetLi.jpg" />
+    <Content Include="MartialArts\images\maLogo.jpg" />
+    <Content Include="MartialArts\images\Norris.png" />
+    <Content Include="MartialArts\images\styles.jpg" />
+    <Content Include="MartialArts\images\styles.png" />
+    <Content Include="MartialArts\images\teacher.jpg" />
+    <Content Include="MartialArts\images\Yen.jpg" />
+    <Content Include="MartialArts\js\myJScript.js" />
+    <Content Include="MartialArts\martialArts.html" />
     <Content Include="UPDATES.html" />
     <Content Include="webLearning\aaaTESTme.html" />
     <Content Include="webLearning\AdditionalContent\DirectoryChange.html" />
     <Content Include="webLearning\AddJavascript.html" />
+    <Content Include="webLearning\alignment.html" />
     <Content Include="webLearning\Animation.html" />
     <Content Include="webLearning\Background.html" />
     <Content Include="webLearning\BeforeAfter.html" />
@@ -136,6 +156,7 @@
     <Content Include="webLearning\Float.html" />
     <Content Include="webLearning\FontFamily.html" />
     <Content Include="webLearning\FontSize.html" />
+    <Content Include="webLearning\grid.html" />
     <Content Include="webLearning\ImageHover.html" />
     <Content Include="webLearning\Images\courseWork\brushes.jpg" />
     <Content Include="webLearning\Images\courseWork\excursion.mp4" />
@@ -170,6 +191,7 @@
     <Content Include="webLearning\JQuery\Event Examples_files\normalize.css" />
     <Content Include="webLearning\JQuery\jquery-3.5.1.js" />
     <Content Include="webLearning\jsArrays.html" />
+    <Content Include="webLearning\jsClasses.html" />
     <Content Include="webLearning\jsDates.html" />
     <Content Include="webLearning\jsDropDown.html" />
     <Content Include="webLearning\jsFunctions.html" />

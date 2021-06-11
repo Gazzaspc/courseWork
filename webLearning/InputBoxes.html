@@ -65,6 +65,12 @@
           }
 
           /* ---ABOVE--- This will stop the up/down arrows from appearing in the input box */
+
+          #lblLunch2 {
+              vertical-align:top;
+          }
+
+
     </style>
 
 
@@ -510,6 +516,36 @@
                 <option value="ramen">Ramen</option>
                 <option value="tacos">Tacos</option>
             </select>
+            <br /> <br /> <br />
+
+            And if you want it to look like a Listbox then add the <br />
+            <b>size="<em>n</em>" </b>attribute to the <b>&lt;select&gt; </b> element....eg... <br />
+            <b>&lt;select id="lunch2" size="4" name="lunch"&gt;</b> <br />
+            <em>(NOTE...The label will appear at the bottom of the list of options)</em><br />
+
+            <label id="lblLunch1" for="lunch2">What's for lunch?</label>
+            <select id="lunch1" size="4" name="lunch">
+                <option value="pizza">Pizza</option>
+                <option value="pasta">Pasta</option>
+                <option value="curry" selected>Curry</option>
+                <option value="salad">Salad</option>
+                <option value="ramen">Ramen</option>
+                <option value="tacos">Tacos</option>
+            </select>
+            <br /> <br /> <br />
+
+            BUT...If you want the label to appear at the top of the list of options then add the style<br />
+            <b>vertical-align:top;</b> to the &lt;label&gt; <br /> <br />
+
+            <label id="lblLunch2" for="lunch2">What's for lunch?</label>
+            <select id="lunch2" size="4" name="lunch">
+                <option value="pizza">Pizza</option>
+                <option value="pasta">Pasta</option>
+                <option value="curry" selected>Curry</option>
+                <option value="salad">Salad</option>
+                <option value="ramen">Ramen</option>
+                <option value="tacos">Tacos</option>
+            </select>
             <br /> <br />
         </div>
 
@@ -568,6 +604,10 @@
                 <b>NOTE</b> <br />
                 You can also type in a letter that is ANYWHERE in the name and it will change the list and display 
                 just the selections that contain that combination of letters, eg a. <br /> <br />
+
+                <b>ALSO NOTE</b> <br />
+                You can NOT change the way the list of options is displayed in a datalist. <br />
+                The line spacing and grey color is what you get.<br /> <br />
 
             </p>
         </div>

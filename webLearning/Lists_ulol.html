@@ -2,205 +2,219 @@
 <html>
 
 <head>
-  <title>List examples</title>
+    <title>List examples</title>
 
-  <!-- Add my own stylesheet AFTER the 2 downloaded ones -->
-  <link rel="stylesheet" type="text/css" href="css/normalize.css" />
-  <link rel="stylesheet" type="text/css" href="css/main.css" />
-  <link rel="stylesheet" type="text/css" href="CSS/MyStyles.css" />
+    <!-- Add my own stylesheet AFTER the 2 downloaded ones -->
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/MyStyles.css" />
 
-  <style>
-    dd.YW {
-      background-color: yellow;
-    }
+    <style>
+          dd.YW {
+              background-color: yellow;
+          }
 
-    #horizontal li {
-      display: inline;
-    }
+          #horizontal li {
+              display: inline;
+          }
 
-    #horiz2 li {
-      display: inline;
-      background-color: black;
-      color: white;
-      padding: 5px 10px;
-      text-decoration: none;
-      border-radius: 4px 4px 0 0;
-    }
+          #horiz2 li {
+              display: inline;
+              background-color: black;
+              color: white;
+              padding: 5px 10px;
+              text-decoration: none;
+              border-radius: 4px 4px 0 0;
+          }
 
-    /* In order  to NOT change the text color & not have it underlined when
-      the link was clicked on you need to the below...ALSO the :hover MUST be
-      after the :link & :visited*/
-    #horiz2 li a:link,
-    #horiz2 li a:visited {
-      color: white;
-      text-decoration: none;
-    }
+              /* In order  to NOT change the text color & not have it underlined when
+        the link was clicked on you need to the below...ALSO the :hover MUST be
+        after the :link & :visited*/
+              #horiz2 li a:link,
+              #horiz2 li a:visited {
+                  color: white;
+                  text-decoration: none;
+              }
 
-    #horiz2 li:hover {
-      background-color: #696969;
-    }
+              #horiz2 li:hover {
+                  background-color: #696969;
+              }
 
-    .noPad {padding: 0}
-  </style>
+          .noPad {
+              padding: 0
+          }
+    </style>
 </head>
 
 <body class="bodyMove">
-  <section id="Top">
+    <section id="Top">
 
-    <a href="index.html">Home</a>
-  </section>
-  <h1>This is an example of different LIST tags</h1>
+        <a href="index.html">Home</a>
+    </section>
+    <h1>This is an example of different LIST tags</h1>
 
-  <div class="divFlex">
-    <div class="divBorder divBSet">
+    <div class="divFlex">
+        <div class="divBorder divBSet">
 
-      <h3>Example of an ORDERED LIST &lt;ol&gt;</h3>
-      <ol>
-        <h4>Can have a header inside the &lt;ol&gt; tag</h4>
-        <li>First Item in List</li>
-        <li>Second Item in List</li>
-        <ol>
-          <li>Can NEST lists too</li>
-          <li>with another &lt;ol&gt; </li>
-          <li>Last Item in List</li>
-        </ol>
-        <li>Third Item in List</li>
-        <li>Fourth Item in List</li>
-        <ul>
-          <li>Can NEST lists too</li>
-          <li>or with a &lt;ul&gt; </li>
-          <li>Last Item in List</li>
-        </ul>
-      </ol>
+            <h3>Example of an ORDERED LIST &lt;ol&gt;</h3>
+            <h4>Cannot have a &lt;h1 - h6&gt; header inside the &lt;ol&gt; tag</h4>
+            <ol>
+                <li>First Item in List</li>
+                <li>
+                    Second Item in List
+                    <ol>
+                        <li>Can NEST lists too</li>
+                        <li>with another &lt;ol&gt; </li>
+                        <li>Last Item in List</li>
+                    </ol>
+                </li>
+                <li>Third Item in List</li>
+                <li>
+                    Fourth Item in List
+                    <ul>
+                        <li>Can NEST lists too</li>
+                        <li>or with a &lt;ul&gt; </li>
+                        <li>Last Item in List</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="divBorder divBSet">
+
+            <h3>Example of an UN-ORDERED LIST &lt;ul&gt;</h3>
+            <div class="divFlex">
+                <div class="divBorder">
+                    <p>
+                        With BULLET POINTS
+                    </p>
+                    <ul>
+
+                        <li>First Item in List</li>
+                        <li>Second Item in List</li>
+                        <li>Third Item in List</li>
+                        <li>Fourth Item in List</li>
+                    </ul>
+                </div>
+                <div class="divBorder">
+                    <p>
+                        Without BULLET POINTS
+                    </p>
+                    <ul style="list-style-type:none;">
+
+                        <li>First Item in List</li>
+                        <li>Second Item in List</li>
+                        <li>Third Item in List</li>
+                        <li>Fourth Item in List</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="divBorder divBSet">
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h3>A Description/Definition List uses the dl, dd, and dt elements</h3>
+            <p>These elements are used to create a description list:</p>
+            <dl>
+                <dt>Coffee</dt>
+                <dd>Black hot drink</dd>
+                <dd>White hot drink</dd>
+                <dd class="YW">Creamy hot drink</dd>
+                <dt>Milk</dt>
+                <dd>White cold drink</dd>
+            </dl>
+        </div>
 
-      <h3>Example of an UN-ORDERED LIST &lt;ul&gt;</h3>
-      <div class="divFlex">
-        <div class="divBorder">
-          <ul>
+        <div class="divBorder divBSet">
+            <div class="divBorder" style="background-color:#CCFFE5">
+                <h3>A LIST with pictures as Bullet Points</h3>
+                <ul style="list-style-image:url(Images/PawBullet.png)">
+                    <li>First Item in List</li>
+                    <li>Second Item in List</li>
+                    <li>Third Item in List</li>
+                    <li>Fourth Item in List</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h3>A horizontal list is just a matter of making the ul & li 'display:inline;'</h3>
             <p>
-              With BULLET POINTS
+                Note there will be no bullet points...so this...
             </p>
-            <li>First Item in List</li>
-            <li>Second Item in List</li>
-            <li>Third Item in List</li>
-            <li>Fourth Item in List</li>
-          </ul>
-        </div>
-        <div class="divBorder">
-          <ul style="list-style-type:none;">
+            <ul>
+                <li>Home</li>
+                <li>Pictures</li>
+                <li>Contact</li>
+                <li>Location</li>
+            </ul>
             <p>
-              Without BULLET POINTS
+                would become...
             </p>
-            <li>First Item in List</li>
-            <li>Second Item in List</li>
-            <li>Third Item in List</li>
-            <li>Fourth Item in List</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="divFlex">
-    <div class="divBorder divBSet">
-      <h3>A Description/Definition List uses the dl, dd, and dt elements</h3>
-      <p>These elements are used to create a description list:</p>
-      <dl>
-        <dt>Coffee</dt>
-        <dd>Black hot drink</dd>
-        <dd>White hot drink</dd>
-        <dd class="YW">Creamy hot drink</dd>
-        <dt>Milk</dt>
-        <dd>White cold drink</dd>
-      </dl>
-    </div>
-
-    <div class="divBorder divBSet">
-      <div class="divBorder" style="background-color:#CCFFE5">
-        <h3>A LIST with pictures as Bullet Points</h3>
-        <ul style="list-style-image:url(Images/PawBullet.png)">
-          <li>First Item in List</li>
-          <li>Second Item in List</li>
-          <li>Third Item in List</li>
-          <li>Fourth Item in List</li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="divFlex">
-    <div class="divBorder divBSet">
-      <h3>A horizontal list is just a matter of making the ul & li 'display:inline;'</h3>
-      <p>
-        Note there will be no bullet points...so this...
-      </p>
-      <ul>
-        <li>Home</li>
-        <li>Pictures</li>
-        <li>Contact</li>
-        <li>Location</li>
-      </ul>
-      <p>
-        would become...
-      </p>
-      <ul id="horizontal">
-        <li>Home</li>
-        <li>Pictures</li>
-        <li>Contact</li>
-        <li>Location</li>
-      </ul>
-      <p>
-        It could be used to create a navigation bar by adding some styles to give you this... <br />
-        <i>(you can click the first item to take you to the INDEX page)</i>
-      </p>
-      <ul id="horiz2">
-        <li><a href="index.html">Home</a></li>
-        <li>Pictures</li>
-        <li>Contact</li>
-        <li>Location</li>
-      </ul> <br />
-      <i>(Note you need to remove the underline AND the changing of the color
-        of the text when the link has been clicked...see code)</i> <br />
-    </div>
-
-    <div class="divBorder divBSet">
-
-      <h3>Moving bullet points &lt;ul&gt;</h3>
-      <div class="divFlex">
-        <div class="divBorder">
-          <ul class="noPad">
-            Default<br />
-            (outside content area)
-            <li>First Item in List</li>
-            <li>Second Item in List</li>
-            <li>Third Item in List</li>
-            <li>Fourth Item in List plus a longer line to show what happens</li>
-          </ul>
-        </div>
-        <div class="divBorder">
-          <ul class="noPad" style="list-style-position:inside;">
-            inside content area
-            <li>First Item in List</li>
-            <li>Second Item in List</li>
-            <li>Third Item in List</li>
-            <li>Fourth Item in List plus a longer line to show what happens</li>
-          </ul>
-
+            <ul id="horizontal">
+                <li>Home</li>
+                <li>Pictures</li>
+                <li>Contact</li>
+                <li>Location</li>
+            </ul>
+            <p>
+                It could be used to create a navigation bar by adding some styles to give you this... <br />
+                <i>(you can click the first item to take you to the INDEX page)</i>
+            </p>
+            <ul id="horiz2">
+                <li><a href="index.html">Home</a></li>
+                <li>Pictures</li>
+                <li>Contact</li>
+                <li>Location</li>
+            </ul> <br />
+            <i>
+                (Note you need to remove the underline AND the changing of the color
+                of the text when the link has been clicked...see code)
+            </i> <br />
         </div>
 
-      </div>
-      <p>
-        <i>I removed all the padding values from the lists to make it more obvious</i> <br /> <br />
-        <i>Uses the style <b>list-style-position:inside;</b> to make it look like the second display</i>
-      </p>
-    </div>
+        <div class="divBorder divBSet">
 
-  </div>
-  <a href="#Top">Top</a>
+            <h3>Moving bullet points &lt;ul&gt;</h3>
+            <div class="divFlex">
+                <div class="divBorder">
+                    <p>
+                        Default <br />
+                        (outside content area)
+                    </p>
+                    <ul class="noPad">
+                        
+                        <li>First Item in List</li>
+                        <li>Second Item in List</li>
+                        <li>Third Item in List</li>
+                        <li>Fourth Item in List plus a longer line to show what happens</li>
+                    </ul>
+                </div>
+                <div class="divBorder">
+                    <p>inside content area</p>
+                    <ul class="noPad" style="list-style-position:inside;">
+                        
+                        <li>First Item in List</li>
+                        <li>Second Item in List</li>
+                        <li>Third Item in List</li>
+                        <li>Fourth Item in List plus a longer line to show what happens</li>
+                    </ul>
+
+                </div>
+
+            </div>
+            <p>
+                <i>I removed all the padding values from the lists to make it more obvious</i> <br /> <br />
+                <i>Uses the style <b>list-style-position:inside;</b> to make it look like the second display</i>
+            </p>
+        </div>
+
+    </div>
+    <a href="#Top">Top</a>
 </body>
 
 </html>

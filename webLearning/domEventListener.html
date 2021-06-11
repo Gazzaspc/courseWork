@@ -418,11 +418,11 @@
 
     function drop(event) {
       event.preventDefault();
-      <!-- Now to GET the element being dragged (we SET it earlier) -->
+      //Now to GET the element being dragged (we SET it earlier)
       var data = event.dataTransfer.getData("Text");
-      <!-- And we are APPENDING the dragged 'data' to the target [div] -->
+      //And we are APPENDING the dragged 'data' to the target [div]
       event.target.appendChild(document.getElementById(data));
-      <!-- Reset the [div] border to normal as the drop(event) relates to the [div] not the [p] like the 'dragend' would have done. -->
+      //Reset the [div] border to normal as the drop(event) relates to the [div] not the [p] like the 'dragend' would have done. 
       event.target.style.border = "";
       document.getElementById("demo").innerHTML = "Completed a drop";
     }

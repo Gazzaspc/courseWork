@@ -126,6 +126,10 @@ html {
 /* Change ALL input boxes that are 'readonly' */
 input[readonly] {background-color:#E0E0E0}
 
+.noMargin {
+    margin: 0;
+}
+
 .redResult, .redMess {
   color: red;
   font-style:italic;
@@ -171,6 +175,10 @@ input[readonly] {background-color:#E0E0E0}
     inset 2px 2px 3px rgba(0, 0, 0, .6);
     /* transform: translateY(4px); */
     transform: translate(1px, 4px);
+}
+
+.makeAlignRight {
+    text-align: right;
 }
 
 .makeInlineBlock {

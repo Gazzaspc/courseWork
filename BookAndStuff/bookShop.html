@@ -1,0 +1,746 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Books and Stuff</title>
+    <link href="../webLearning/CSS/MyStyles.css" rel="stylesheet" />
+    <script src="../webLearning/Scripts/myScripts.js"></script>
+
+    <style>
+        /* ---BELOW--- This will stop the up/down arrows from appearing in the input box */
+        /* Chrome, Safari, Edge, Opera */
+        input.noArrows::-webkit-outer-spin-button,
+        input.noArrows::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input.noArrows[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        /* ---ABOVE--- This will stop the up/down arrows from appearing in the input box */
+
+        #pages, #MrunTime {
+            width:50px;
+        }
+
+        input:focus, textarea:focus {
+            background-color:yellow;
+        }
+
+        input[disabled], textarea[disabled] {
+            color: blue;
+        }
+
+        #bookTitleMiss, #bookAuthorMiss, #bookPagesMiss {
+            color: red;
+            visibility:hidden;
+        }
+
+        #CDTitleMiss, #CDArtistMiss, #CDSongsMiss {
+            color: red;
+            visibility: hidden;
+        }
+
+        #mTitleMiss, #mDirectorMiss, #mRunTimeMiss {
+            color: red;
+            visibility: hidden;
+        }
+
+        .lblInput {
+            line-height:21px;
+            padding-right:5px;
+        }
+
+        #bookSubmit:hover, #CDSubmit:hover, #mSubmit:hover {
+            background-color:silver;
+        }
+
+        #divCD, #divMovies {
+            display: none;
+        }
+
+    </style>
+</head>
+
+<body class="bodyMove">
+    <a href="../index.html">Home</a> <br />
+    <div class="divFlex">
+
+
+        <div class="divBSet divBorder">
+            <h1>Classes in Javascript</h1>
+            <p>
+                The scenario is you run a BOOK shop that also sells CD's and Movies. <br /> <br />
+
+                Here I will let you add in some Books and display the details <br />
+                also you can rent out a title too by clicking the 'Rental' check box. <br /> 
+                The ratings are randomly created (4 for each entry) to give an average rating.<br /> <br />
+
+                Nothing too fancy - So I can keep the code minimal. <br /> <br />
+
+                Look at the code to see how it is done. <br /> <br />
+                <hr /> <br />
+
+                <label for="media">Type of Media: </label>
+                <select id="media" name="media" onchange="mediaChange(this)">
+                    <option value="book">Book</option>
+                    <option value="cd">CD</option>
+                    <option value="movie">Movie</option>
+                </select>
+                <br />
+
+            </p>
+        </div>
+
+        <div id="divBooks" class="divBorder divBSet">
+            <br />
+            <h2 class="noMargin">Books Entry Screen</h2>
+            <p class="noMargin"><em>(Ratings will be randomly allocated)</em></p> <br />
+            <label for="title">Title: </label> <span id="bookTitleMiss">(please enter a title)</span> <br />
+            <input id="title" type="text" name="title" onblur="hideMissing('bookTitleMiss')" />
+            <br /> <br />
+
+            <label for="author">Author: </label> <span id="bookAuthorMiss">(please enter an Author)</span> <br />
+            <input id="author" type="text" name="author" onblur="hideMissing('bookAuthorMiss')" />
+            <br /> <br />
+
+            <label for="pages">No. of Pages: </label> <span id="bookPagesMiss">(please enter a number of Pages)</span> <br />
+            <input id="pages" type="number" class="noArrows" name="pages" onblur="hideMissing('bookPagesMiss')" />
+            <br /> <br />
+
+            <button id="bookSubmit" onclick="bookSubmit()">Submit</button> <br /> 
+            <span id="bookAdded" class="redMess makeAlignRight" style="display:block;font-size:0.75em;">&nbsp;</span>
+
+            <hr />
+
+            <h3 style="text-decoration:underline">Book List</h3>
+
+            <div>
+                <label id="lblBookList" for="bookList">Books On File: </label> <br />
+                <select id="bookList" size="1" name="bookList" onchange="bookSelected(this.value)"></select>
+            </div>
+            <br /> <hr /> <br />
+            <div class="divFlex divBorder">
+                <!--Need to set min-width so resizing screen does not make "Avg Rating:" spread over two lines--> 
+                <div class="makeInlineBlock makeAlignRight" style="min-width:85px;">
+                    <label class="lblInput">Author: </label> <br />
+                    <label class="lblInput">Avg Rating: </label> <br />
+                    <label class="lblInput"># Pages: </label> <br />
+                    <label class="lblInput">Rented: </label>
+                </div>
+
+                <div class="makeInlineBlock">
+                    <input id="authorL" type="text" size="30" disabled />
+                    <br />
+
+                    <input id="ratingL" type="text" size="5" disabled /> /5<br />
+
+                    <input id="pagesL" type="text" class="noArrows" size="5" disabled /> <br />
+
+                    <input type="checkbox" id="bookCheckL" onclick="bookChecked()"/>
+                    <br />
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <script>
+
+            const allBooks = [];
+
+            function bookChecked() {
+                //Lookup which book was selected in'bookList'
+                let x = document.getElementById("bookList").value;
+                allBooks[x].toggleCheckoutStatus();
+                //Hopefully the checked out field should match but lets read it in and display it anyway
+                document.getElementById("bookCheckL").checked = allBooks[x].isCheckedOut;
+            }
+
+            function bookSubmit() {
+                let bookTitle = document.getElementById("title");
+                let bookAuthor = document.getElementById("author");
+                let bookPages = document.getElementById("pages");
+
+                if (bookTitle.value.length  == 0) {
+                    showMissing("bookTitleMiss");
+                    bookTitle.focus();
+                    return;
+                } else if (bookAuthor.value.length == 0) {
+                    showMissing("bookAuthorMiss");
+                    bookAuthor.focus();
+                    return;
+                } else if (bookPages.value.length == 0) {
+                    showMissing("bookPagesMiss");
+                    bookPages.focus();
+                    return;
+                } 
+
+                let TempBook = new Book(bookTitle.value, bookAuthor.value, bookPages.value, false);
+                TempBook.addRating(randomRating());
+                TempBook.addRating(randomRating());
+                TempBook.addRating(randomRating());
+                TempBook.addRating(randomRating());
+
+                allBooks.push(TempBook);
+
+                let optCount = allBooks.length-1;
+                if (optCount > 8) { optCount = 8 };
+                addToBookList(optCount, bookTitle.value);
+
+                //Lets force this to be visible
+                let pos = document.getElementById("bookList").length - 1;
+                document.getElementById("bookList").selectedIndex = pos;
+                bookSelected(pos)
+
+                document.getElementById("bookAdded").innerHTML = TempBook.title + " - has been added!";
+                bookTitle.value = "";
+                bookAuthor.value = "";
+                bookPages.value = "";
+            }
+
+            function bookSelected(book) {
+                let choice = allBooks[book];
+                document.getElementById("authorL").value = choice.author;
+                document.getElementById("ratingL").value = choice.getAverageRating();
+                document.getElementById("pagesL").value = choice.pages;
+                document.getElementById("bookCheckL").checked = choice.isCheckedOut;
+            }
+            
+
+        </script>
+
+        <div id="divCD" class="divBorder divBSet">
+            <br />
+            <h2 class="noMargin">CD Entry Screen</h2>
+            <p class="noMargin"><em>(Ratings will be randomly allocated)</em></p> <br />
+            <label for="CDtitle">Album Title: </label> <span id="CDTitleMiss">(please enter a title)</span> <br />
+            <input id="CDtitle" type="text" name="CDtitle" onblur="hideMissing('CDTitleMiss')" />
+            <br /> <br />
+
+            <label for="CDartist">Artist: </label> <span id="CDArtistMiss">(please enter an Artist)</span> <br />
+            <input id="CDartist" type="text" name="CDartist" onblur="hideMissing('CDArtistMiss')" />
+            <br /> <br />
+
+            <label for="CDsongs">Song Titles: </label> <span id="CDSongsMiss">(please enter the song list)</span> <br />
+            <textarea id="CDsongs" name="CDsongs" rows="8" cols="30" onblur="hideMissing('CDSongsMiss')"></textarea>
+            <br /> <br />
+
+            <button id="CDSubmit" onclick="CDSubmit()">Submit</button> <br />
+            <span id="CDAdded" class="redMess makeAlignRight" style="display:block;font-size:0.75em;">&nbsp;</span>
+
+            <hr />
+
+            <h3 style="text-decoration:underline">CD List</h3>
+
+            <div>
+                <label id="lblCDList" for="CDList">CD's On File: </label> <br />
+                <select id="CDList" size="1" name="CDList" onchange="CDSelected(this.value)"></select>
+            </div>
+            <br /> <hr /> <br />
+            <div class="divFlex divBorder">
+                <!--Need to set min-width so resizing screen does not make "Avg Rating:" spread over two lines-->
+                <div class="makeInlineBlock makeAlignRight" style="min-width:85px;">
+                    <label class="lblInput">Artist: </label> <br />
+                    <label class="lblInput">Avg Rating: </label> <br />
+                    <label class="lblInput">Rented: </label> <br />
+                    <label class="lblInput">Songs: </label> <br />
+
+                </div>
+
+                <div class="makeInlineBlock">
+                    <input id="CDartistL" type="text" size="30" disabled />
+                    <br />
+
+                    <input id="CDratingL" type="text" size="5" disabled /> /5<br />
+
+                    <input type="checkbox" id="CDcheckL" onclick="CDChecked()" /> <br />
+
+                    <textarea id="CDsongsL" rows="3" cols="30" disabled></textarea>
+                    <br />
+                </div>
+
+            </div>
+
+        </div>
+
+        <script>
+
+            const allCDs = [];
+
+            function CDChecked() {
+                //Lookup which CD was selected in'CDList'
+                let x = document.getElementById("CDList").value;
+                allCDs[x].toggleCheckoutStatus();
+                //Hopefully the checked out field should match but lets read it in and display it anyway
+                document.getElementById("CDcheckL").checked = allCDs[x].isCheckedOut;
+            }
+
+            function CDSubmit() {
+                let CDTitle = document.getElementById("CDtitle");
+                let CDArtist = document.getElementById("CDartist");
+                let CDSongs = document.getElementById("CDsongs");
+
+                if (CDTitle.value.length  == 0) {
+                    showMissing("CDTitleMiss");
+                    CDTitle.focus();
+                    return;
+                } else if (CDArtist.value.length == 0) {
+                    showMissing("CDArtistMiss");
+                    CDArtist.focus();
+                    return;
+                } else if (CDSongs.value.length == 0) {
+                    showMissing("CDSongsMiss");
+                    CDSongs.focus();
+                    return;
+                } 
+
+                let TempCD = new CD(CDTitle.value, CDArtist.value, false, CDSongs.value);
+                TempCD.addRating(randomRating());
+                TempCD.addRating(randomRating());
+                TempCD.addRating(randomRating());
+                TempCD.addRating(randomRating());
+
+                allCDs.push(TempCD);
+
+                let optCount = allCDs.length-1;
+                if (optCount > 8) { optCount = 8 };
+                addToCDList(optCount, CDTitle.value);
+
+                //Lets force this to be visible
+                let pos = document.getElementById("CDList").length - 1;
+                document.getElementById("CDList").selectedIndex = pos;
+                CDSelected(pos)
+
+                document.getElementById("CDAdded").innerHTML = TempCD.title + " - has been added!";
+                CDTitle.value = "";
+                CDArtist.value = "";
+                CDSongs.value = "";
+            }
+
+            function CDSelected(CD) {
+                let choice = allCDs[CD];
+                document.getElementById("CDartistL").value = choice.artist;
+                document.getElementById("CDratingL").value = choice.getAverageRating();
+                document.getElementById("CDsongsL").value = choice.songs;
+                document.getElementById("CDcheckL").checked = choice.isCheckedOut;
+            }
+            
+
+        </script>
+
+        <div id="divMovies" class="divBorder divBSet">
+            <br />
+            <h2 class="noMargin">Movies Entry Screen</h2>
+            <p class="noMargin"><em>(Ratings will be randomly allocated)</em></p> <br />
+            <label for="Mtitle">Movie Title: </label> <br />
+            <input id="Mtitle" type="text" name="Mtitle" onblur="hideMissing('mTitleMiss')" />
+            <span id="mTitleMiss">(please enter a title)</span>
+            <br /> <br />
+
+            <label for="Mdirector">Director: </label> <br />
+            <input id="Mdirector" type="text" name="Mdirector" onblur="hideMissing('mDirectorMiss')" />
+            <span id="mDirectorMiss">(please enter a Director)</span><br /> <br />
+
+            <label for="MrunTime">Run Time (mins): </label> <br />
+            <input id="MrunTime" type="number" title="in Minutes" class="noArrows" name="MrunTime" onblur="hideMissing('mRunTimeMiss')" />
+            <span id="mRunTimeMiss">(please enter a Running Time)</span><br /> <br />
+
+            <button id="mSubmit" onclick="mSubmit()">Submit</button> <br /> 
+            <span id="mAdded" class="redMess makeAlignRight" style="display:block;font-size:0.75em;">&nbsp;</span>
+
+            <hr />
+
+            <h3 style="text-decoration:underline">Movie List</h3>
+
+            <div>
+                <label id="lblMList" for="mList">Movies On File: </label> <br />
+                <select id="mList" size="1" name="mList" onchange="mSelected(this.value)"></select>
+            </div>
+            <br /> <hr /> <br />
+            <div class="divFlex divBorder">
+                <!--Need to set min-width so resizing screen does not make "Avg Rating:" spread over two lines--> 
+                <div class="makeInlineBlock makeAlignRight" style="min-width:85px;">
+                    <label class="lblInput">Director: </label> <br />
+                    <label class="lblInput">Avg Rating: </label> <br />
+                    <label class="lblInput">Run Time: </label> <br />
+                    <label class="lblInput">Rented: </label> <br />
+
+                </div>
+
+                <div class="makeInlineBlock">
+                    <input id="mDirectorL" type="text" size="30" disabled />
+                    <br />
+
+                    <input id="mRatingL" type="text" size="5" disabled /> /5<br />
+
+                    <input id="mRunTimeL" type="text" class="noArrows" size="5" disabled /> <br />
+
+                    <input type="checkbox" id="mCheckL" onclick="MChecked()" />
+                    <br />
+                </div>
+
+            </div>
+
+        </div>
+
+        <script>
+
+            const allMovies = [];
+
+            function MChecked() {
+                //Lookup which Movie was selected in'MList'
+                let x = document.getElementById("mList").value;
+                allMovies[x].toggleCheckoutStatus();
+                //Hopefully the checked out field should match but lets read it in and display it anyway
+                document.getElementById("mCheckL").checked = allMovies[x].isCheckedOut;
+            }
+
+            function mSubmit() {
+                let mTitle = document.getElementById("Mtitle");
+                let mDirector = document.getElementById("Mdirector");
+                let mRunTime = document.getElementById("MrunTime");
+
+                if (mTitle.value.length  == 0) {
+                    showMissing("mTitleMiss");
+                    mTitle.focus();
+                    return;
+                } else if (mDirector.value.length == 0) {
+                    showMissing("mDirectorMiss");
+                    mDirector.focus();
+                    return;
+                } else if (mRunTime.value.length == 0) {
+                    showMissing("mRunTimeMiss");
+                    mRunTime.focus();
+                    return;
+                } 
+
+                let TempM = new Movie(mTitle.value, mDirector.value, mRunTime.value, false);
+                TempM.addRating(randomRating());
+                TempM.addRating(randomRating());
+                TempM.addRating(randomRating());
+                TempM.addRating(randomRating());
+
+                allMovies.push(TempM);
+
+                let optCount = allMovies.length-1;
+                if (optCount > 8) { optCount = 8 };
+                addToMList(optCount, mTitle.value);
+
+                //Lets force this to be visible
+                let pos = document.getElementById("mList").length - 1;
+                document.getElementById("mList").selectedIndex = pos;
+                mSelected(pos)
+
+                document.getElementById("mAdded").innerHTML = TempM.title + " - has been added!";
+                mTitle.value = "";
+                mDirector.value = "";
+                mRunTime.value = "";
+            }
+
+            function mSelected(movie) {
+                let choice = allMovies[movie];
+                document.getElementById("mDirectorL").value = choice.director;
+                document.getElementById("mRatingL").value = choice.getAverageRating();
+                document.getElementById("mRunTimeL").value = choice.runTime;
+                document.getElementById("mCheckL").checked = choice.isCheckedOut;
+            }
+            
+
+        </script>
+
+        
+    </div>
+
+    <script>
+
+        function mediaChange(media) {
+
+            document.getElementById("divBooks").style.display = "none";
+            document.getElementById("divCD").style.display = "none";
+            document.getElementById("divMovies").style.display = "none";
+            switch(media.value) {
+                case "cd":
+                    document.getElementById("divCD").style.display = "block";
+                    break;
+                case "movie":
+                    document.getElementById("divMovies").style.display = "block";
+                    break;
+                default:
+                    document.getElementById("divBooks").style.display = "block";
+            }
+        }
+
+        function randomRating() {
+            let rr = Math.floor(Math.random() * 5) + 1;
+            return rr;
+        }
+
+        function showMissing(ID) {
+            let elem = document.getElementById(ID);
+            elem.style.visibility = "visible";
+        }
+
+        function hideMissing(ID) {
+            let elem = document.getElementById(ID);
+            elem.style.visibility = "hidden";
+        }
+
+        //I included a 'gift' property but it will always be FALSE
+        //it is only here so I can show the use of the 'super(..., ...)' command
+        //when creating the child classes.
+        class media {
+            constructor(title, gift) {
+                this._title = title;
+                this._gift = gift;
+                //Not passing in values for below - I'll set them in methods below.
+                //These methods are ALSO available for use in the SUBCLASSES
+                //(Unless they are static methods - no static methods here though)
+                this._isCheckedOut = false;
+                this._ratings = [];
+            }
+
+            get title() { return this._title };
+            get gift() { return this._gift };
+            get isCheckedOut() { return this._isCheckedOut };
+            get ratings() { return this._ratings };
+
+            getAverageRating() {
+                let numRatings = this._ratings.length;
+                let tot = 0;
+                let x = 0;
+                for (x of this._ratings) {
+                    //Add up all ratings
+                    tot = tot + x;
+                }
+                let avg = (Math.round((tot / numRatings) * 10) / 10);
+                return avg;
+            }
+
+            toggleCheckoutStatus() {
+                //if (this._isCheckedOut == false) {
+                //    this._isCheckedOut = true;
+                //} else {
+                //    this._isCheckedOut = false;
+                //}
+                //The above is the same as...because the ! means 'not equal to...
+                this._isCheckedOut = !this._isCheckedOut
+                //how good is that.
+            }
+
+            addRating(newRating) {
+                this.ratings.push(newRating);
+            }
+        }
+
+        class Book extends media {
+            constructor(title, author, pages, gift) {
+                super(title, gift); //Must have all parent entries in the one 'super' command
+                this._author = author;
+                this._pages = pages;
+            }
+
+            get author() { return this._author };
+            get title() { return this._title };
+            get pages() { return this._pages };
+            get gift() { return this._gift };
+  
+        }
+
+        class Movie extends media {
+            constructor(title, director, runTime, gift) {
+                super(title, gift);
+                this._director = director;
+                this._runTime = runTime;
+            }
+
+            get director() { return this._director };
+            get title() { return this._title };
+            get isCheckedOut() { return this._isCheckedOut };
+            get ratings() { return this._ratings };
+            get runTime() { return this._runTime };
+            get gift() { return this._gift };
+
+        }
+
+        class CD extends media {
+            constructor(title, artist, gift, songs) {
+                super(title, gift);
+                this._artist = artist;
+                this._songs = songs;
+            }
+
+            get artist() { return this._artist };
+            get title() { return this._title };
+            get isCheckedOut() { return this._isCheckedOut };
+            get ratings() { return this._ratings };
+            get songs() { return this._songs };
+            get gift() { return this._gift };
+
+        }
+
+        //******* Add some demo books - BELOW
+        let TempBook = new Book("ONJ Biography", "Tim Ewbank", 550, false);
+        TempBook.addRating(randomRating());
+        TempBook.addRating(randomRating());
+        TempBook.addRating(randomRating());
+        TempBook.addRating(randomRating());
+        allBooks.push(TempBook);
+
+        TempBook = new Book("The Fifth Kind", "Gary Kirby", 500, false);
+        TempBook.addRating(randomRating());
+        TempBook.addRating(randomRating());
+        TempBook.addRating(randomRating());
+        TempBook.addRating(randomRating());
+        allBooks.push(TempBook);
+
+        TempBook = new Book("Holiday to Adventure", "Gary Kirby", 400, false);
+        TempBook.addRating(randomRating());
+        TempBook.addRating(randomRating());
+        TempBook.addRating(randomRating());
+        TempBook.addRating(randomRating());
+        allBooks.push(TempBook);
+
+        //******and add to the SELECT drop down list
+        //<select id="bookList" size="2" name="bookList"> //see above 
+
+        function addToBookList(value, text) {
+            let opt = document.createElement("option");  //Req'd so I can add options on the fly
+            opt.text = text;
+            opt.value = value;
+            opt.selected = false;
+            if (value == 0) {
+                opt.setAttribute("selected", "");
+                opt.selected = true;
+            }
+            document.getElementById("bookList").options.add(opt);
+            document.getElementById("bookList").size = value + 1;
+
+            if (value == 0) {
+                bookSelected(0)
+            }
+            
+        };
+
+        optCount = -1; 
+        allBooks.forEach(bookClass => {
+            optCount++;
+            addToBookList(optCount, bookClass.title);
+
+        });
+
+        //******* Add some demo books - ABOVE
+
+        //******* CD Functions - BELOW
+
+        //******* Add some demo MOVIES - BELOW
+        let TempCD= new CD("Now That's an Album", "Miscellaneous", false, "One long Song");
+        TempCD.addRating(randomRating());
+        TempCD.addRating(randomRating());
+        TempCD.addRating(randomRating());
+        TempCD.addRating(randomRating());
+        allCDs.push(TempCD);
+
+        TempCD = new CD("Purple Rain", "Prince", false, "When Doves Cry \nPurple Rain \nMickey");
+        TempCD.addRating(randomRating());
+        TempCD.addRating(randomRating());
+        TempCD.addRating(randomRating());
+        TempCD.addRating(randomRating());
+        allCDs.push(TempCD)
+
+        TempCD = new CD("Nursery Rhymes", "Miscellaneous", false, "Hickory \nDickory \nDock \nLittle \nRed \nRiding Hood");
+        TempCD.addRating(randomRating());
+        TempCD.addRating(randomRating());
+        TempCD.addRating(randomRating());
+        TempCD.addRating(randomRating());
+        allCDs.push(TempCD)
+
+        //******and add to the SELECT drop down list
+        function addToCDList(value, text) {
+            let opt = document.createElement("option");  //Req'd so I can add options on the fly
+            opt.text = text;
+            opt.value = value;
+            opt.selected = false;
+            if (value == 0) {
+                opt.setAttribute("selected", "");
+                opt.selected = true;
+            }
+            document.getElementById("CDList").options.add(opt);
+            document.getElementById("CDList").size = value + 1;
+
+            if (value == 0) {
+                CDSelected(0)
+            }
+
+        };
+
+        optCount = -1;
+        allCDs.forEach(CDClass => {
+            optCount++;
+            addToCDList(optCount, CDClass.title);
+
+        });
+
+        //******* CD Functions - ABOVE
+
+        //******* MOVIE Functions - BELOW
+
+        //******* Add some demo MOVIES - BELOW
+        let TempM = new Movie("Die Hard", "Bruce Willis", 120, false);
+        TempM.addRating(randomRating());
+        TempM.addRating(randomRating());
+        TempM.addRating(randomRating());
+        TempM.addRating(randomRating());
+        allMovies.push(TempM);
+
+        TempM = new Movie("Peter Pan", "Mr Director", 99, false);
+        TempM.addRating(randomRating());
+        TempM.addRating(randomRating());
+        TempM.addRating(randomRating());
+        TempM.addRating(randomRating());
+        allMovies.push(TempM);
+
+        TempM = new Movie("Batman", "D Rectah", 133, false);
+        TempM.addRating(randomRating());
+        TempM.addRating(randomRating());
+        TempM.addRating(randomRating());
+        TempM.addRating(randomRating());
+        allMovies.push(TempM);
+
+
+        function addToMList(value, text) {
+            let opt = document.createElement("option");  //Req'd so I can add options on the fly
+            opt.text = text;
+            opt.value = value;
+            opt.selected = false;
+            if (value == 0) {
+                opt.setAttribute("selected", "");
+                opt.selected = true;
+            }
+            document.getElementById("mList").options.add(opt);
+            document.getElementById("mList").size = value + 1;
+
+            if (value == 0) {
+                mSelected(0)
+            }
+
+        };
+
+        optCount = -1;
+        allMovies.forEach(MClass => {
+            optCount++;
+            addToMList(optCount, MClass.title);
+
+        });
+
+        //******* MOVIE Functions - ABOVE
+
+    </script>
+
+</body>
+</html>

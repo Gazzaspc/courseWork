@@ -1,0 +1,490 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link href="CSS/normalize.css" rel="stylesheet" />
+    <link href="CSS/main.css" rel="stylesheet" />
+    <link href="CSS/MyStyles.css" rel="stylesheet" />
+
+    <title>Javascript Classes</title>
+
+    <style>
+        .makeBlue {
+            color: blue;
+        }
+
+        .makeGreen {
+            color: green;
+        }
+
+        .makeMaroon {
+            color: red;
+        }
+
+        .makePurple {
+            color: purple;
+        }
+    </style>
+</head>
+<body class="bodyMove">
+    <a href="index.html">Home</a> <br />
+
+    <h1>Javascript Classes</h1>
+
+    <section>
+        <div class="divFlex">
+            <div class="divBSet divBorder">
+                <h2 class="noMargin">Simple Class</h2>
+                <p class="noMargin">
+                    <em>(Using Constructor and Instances)</em> <br /> <br />
+
+                    <em>
+                        Class names should always be capitalized then follow camelcase format (capitalize start of
+                        each word), eg Dog, DogClass, myDogClass, etc. <br /> <br />
+
+                        <strong>this.</strong> is used to tell the system that what follows (the property name)
+                        is part of the class itself.
+                    </em> <br /> <br />
+                </p>
+                <p>
+                    class Dog { <br />
+                    &nbsp;&nbsp;&nbsp;constructor(name) { <em>
+                        // the constructor tells it to expect a
+                        parameter and holds the list of Properties
+                    </em><br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._name = name; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._behavior = 0; <br />
+                    &nbsp;&nbsp;&nbsp;} <br /> <br />
+
+                    <em>Then goes on to create what methods are needed in this class</em>
+                    &nbsp;&nbsp;&nbsp;get name() { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return this._name; <br />
+                    &nbsp;&nbsp;&nbsp;} <br /> <br />
+
+                    &nbsp;&nbsp;&nbsp;get behavior() { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return this._behavior; <br />
+                    &nbsp;&nbsp;&nbsp;} <br /> <br />
+
+                    &nbsp;&nbsp;&nbsp;incrementBehavior() { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._behavior ++; <br />
+                    &nbsp;&nbsp;&nbsp;} <br />
+                    } <br /> <br />
+
+                    <b>const halley = new Dog('Halley'); </b> <br />
+                    console.log(<b>halley.name</b>); <em>// Print name value to console - no () used on getters </em> <br />
+                    console.log(<b>halley.behavior</b>); <em>// Print behavior value to console - no () used on getters </em> <br />
+                    <b>halley.incrementBehavior();</b> <em> // call method to add one to behavior - not a getter so () needed </em> <br />
+                    console.log(<b>halley.name);</b> <em> // Print name value to console - no () used on getters </em> <br />
+                    console.log(<b>halley.behavior</b>); <em>// Print behavior value to console - no () used on getters </em> <br /> <br />
+
+                    <strong>
+                        The result of running the above code will be printing some output to the
+                        console.log :-
+                    </strong> <br /> <br />
+                    <span class="redMess">
+                        <strong>
+                            Halley <br />
+                            0 <br />
+                            Halley <br />
+                            1
+                        </strong>
+                    </span> <br /> <br />
+                </p>
+
+            </div>
+
+            <div class="divBSet divBorder">
+                <br />
+                <h2 class="noMargin">Classes</h2>
+                <p class="noMargin">
+                    When creating a <strong>class</strong> the class name should be capitalized
+                    and there should always be a <strong>constructor</strong>. <br />
+                    The constructor builds a collection of properties used in the class. <br />
+                    After the constructor, within the class, you create the <strong>methods</strong>
+                    you require.<br /> <br />
+
+                    Eg... <br />
+                    <span class="makeBlue">class Car { <em><strong>//class</strong></em> </span><br />
+                    &nbsp;&nbsp;&nbsp;<span class="makeGreen">
+                        constructor(make, model,
+                        engine, ...) { <em><strong>//constructor</strong></em>
+                    </span> <br /> <br />
+
+                    &nbsp;&nbsp;&nbsp;<span class="makePurple">
+                        <em><strong>//Properties below...</strong></em> <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._make = make; <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._model = model; <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>etc...</em>
+                    </span> <br /> <br />
+                    &nbsp;&nbsp;&nbsp;<span class="makeGreen">} <em>//end of constructor</em></span> <br /> <br />
+
+                    &nbsp;&nbsp;&nbsp;<span class="makeMaroon">
+                        <em><strong>//Methods below...</strong></em> <br />
+                        &nbsp;&nbsp;&nbsp;get make() { <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return this._make; <br />
+                        &nbsp;&nbsp;&nbsp;} <br />
+                        &nbsp;&nbsp;&nbsp;get model() { <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return this._model; <br />
+                        &nbsp;&nbsp;&nbsp;} <br />
+                        &nbsp;&nbsp;&nbsp;<em>etc...</em>
+                    </span> <br /> <br />
+
+                    <span class="makeBlue">}<em>//end of class</em></span> <br />
+
+
+                    <br /> <hr /> <br />
+
+                    <h2 class="noMargin">Constructor</h2>
+
+                    The constructor tells a Class what parameters to expect. <br />
+                    <strong>constructor() { }</strong> <em>(no parameters)</em> <br />
+                    <strong>constructor(p1) { }</strong> <em>(1 parameter)</em> <br />
+                    <strong>constructor(p1, p2) { }</strong> <em>(2 parameters)</em> <br />
+                    ...etc. <br /> <br /> <br />
+
+                    <em>
+                        Although you may see similarities between class and object syntax, there is one
+                        important method that sets them apart. <br />
+                        It’s called the constructor method. <br />
+                        JavaScript calls the constructor() method every time it creates a new instance of a class. <br /> <br />
+
+                        The example (in the left pane) expects one parameter - a <strong>name</strong>. <br /> <br />
+                    </em>
+                </p>
+            </div>
+        </div>
+
+        <a href="#">Top</a> <br />
+        <div class="divFlex">
+            <div class="divBSet divBorder">
+                <br />
+                <h2 class="noMargin">Properties(s)</h2>
+                <p class="noMargin">
+                    Creating properties for the class is all part of the constructor section. <br />
+                    Although when you want to access them (read in their values/update their values) then
+                    this is done by using the Getter/Setter methods. <br /> <br />
+                    <strong>NOTE...</strong> <br />
+                    Property names should be prefixed with an <strong>underscore</strong> (_) which indicate these properties
+                    should not be accessed directly.
+
+                    <br /> <hr /> <br />
+
+                    <h2 class="noMargin">Methods</h2>
+
+                    The methods you need are held within the class but outside of the constructor section
+                    (it may be easier to think of the constructor as a method itself, which has to be the first method). <br />
+                    ...Getter's and Setter's are also methods in their own right. <br /> <br />
+
+                    An example method could be :- <br /> <br />
+
+                    <strong>
+                        &nbsp;&nbsp;&nbsp;incrementBehavior() { <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._behavior ++; <br />
+                        &nbsp;&nbsp;&nbsp;} <br />
+                        } <br /> <br />
+                    </strong>
+
+                    Then you would use a GETTER (get) to read in the value of <strong>this._behavior</strong> eg... <br />
+                    <em>
+                        get behavior() { <br />
+                        &nbsp;&nbsp;&nbsp;return this._behavior; <br />
+                        }
+                    </em><br /> <br />
+
+                    And when you want to use the getter in your code you would say, eg... <br />
+                    <strong>const tilly = new Dog("Tilly"); </strong> <em>//Create instance of the Dog class//</em> <br />
+                    <strong>tilly.incrementBehavior(); </strong> <em>//call incrementBehavior method//</em> <br />
+                    <strong>alert(tilly.behavior); </strong> <em>
+                        //call Behavior 'get'
+                        method...note you DO NOT use opening/closing brackets on a getter//
+                    </em> <br />
+                </p>
+            </div>
+
+            <div class="divBSet divBorder">
+                <br />
+                <h2 class="noMargin">Getters(s)</h2>
+                <p class="noMargin">
+                    Getters are methods. They are in the format :- <br /> <br />
+                    <strong>
+                        get make() { <br />
+                        &nbsp;&nbsp;&nbsp;return this._make; <br />
+                        }
+                    </strong> <br /> <br />
+
+                    and/or you could have <br /> <br />
+
+                    <strong>
+                        get vehicle() { <br />
+                        &nbsp;&nbsp;&nbsp;return this._make + " - " + this._model; <br />
+                        }
+                    </strong> <br /> <br />
+
+                    this is called by <br />
+                    <strong><em>classname</em>.vehicle;</strong> <br /> <br />
+
+                    <br /> <hr /> <br />
+
+                    <h2 class="noMargin">Setters</h2>
+
+                    The methods you need are held within the class but outside of the constructor section
+                    (it may be easier to think of the constructor as a method itself, which has to be the first method). <br />
+                    ...Getter's and Setter's are also methods in their own right. <br /> <br />
+
+
+
+                </p>
+            </div>
+        </div>
+        <a href="#">Top</a> <br />
+
+        <div class="divFlex">
+
+            <div class="divBSet divBorder">
+                <br />
+                <h2 class="noMargin">Static Methods</h2>
+                <p class="noMargin">
+                    Static methods can ONLY be accessed via the class they are in (and NOT via any instances
+                    of that class you create), for insance... <br />
+                    If you add a static method to a Superclass then it is NOT available through one of the Subclasses. <br /> <br />
+                    Eg... <br /> <br />
+
+                    <b>
+                        class Animal { <br />
+                        &nbsp;&nbsp;&nbsp;constructor(name) { <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._name = name; <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._behavior = 0; <br />
+                        &nbsp;&nbsp;&nbsp;} <br /> <br />
+
+                        &nbsp;&nbsp;&nbsp;<span class="makeBlue">
+                            static generateName() { <br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const names = ['Angel', 'Spike', 'Buffy', 'Willow', 'Tara']; <br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const randomNumber = Math.floor(Math.random()*5); <br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return names[randomNumber]; <br />
+                            &nbsp;&nbsp;&nbsp;}
+                        </span><br /> <br />
+                        }
+                    </b><br /> <br />
+
+                    <em>So when you run...</em> <br />
+                    <b>
+                        console.log(Animal.generateName());
+                    </b><em>// it returns a name.</em> <br /> <br />
+                    <em>but if you have a subclass of the Animal class (called <b>Dog</b>) then </em> <br />
+                    <b>console.log(Dog.generateName()); </b><em>// will return a TypeError</em> <br />
+                    <br />
+
+                    NOTE... <br />
+                    If you create a <b>static method</b> in a subclass (eg in Dog) then you create an instance of the Dog class... <br />
+                    <b>const tilly = new Dog(param1, param2, ...);</b> <br />
+                    then you can only refer to that static method via the Dog class and NOT via the tilly instance of it. <br /> <br />
+
+                </p>
+
+            </div>
+
+            <div class="divBSet divBorder">
+                <br />
+                <h2 class="noMargin">Instance(s)</h2>
+                <p class="noMargin">
+                    Creating instances of the class is done by creating a (NEW) variable and linking it to the class. <br />
+                    <strong>const myClass = new <em>ClassName</em>(<em>param1, param2, etc</em>); </strong> <br />
+                    EG <br />
+                    <strong>constructor(p1) { }</strong> <em>(1 parameter)</em> <br />
+                    <strong>constructor(p1, p2) { }</strong> <em>(2 parameters)</em> <br />
+                    ...etc <br /> <br />
+
+                    eg... <br />
+                    <strong>const halley = new Dog('Halley'); </strong> <br /> <br />
+
+                    <em>
+                        An instance is an object that contains all the property names and methods of a class. <br /> <br />
+
+                        Using our class scenario (see left pane)... <br />
+                        We use the <strong>new</strong> keyword to create an instance of our Dog class. <br />
+                        Let’s consider the line of code step-by-step. <br /> <br />
+
+                        <strong>
+                            We create a new variable named halley that will store an instance of our Dog class. <br />
+                            We use the new keyword to generate a new instance of the Dog class. <br />
+                            The new keyword calls the constructor(), runs the code inside of it, and then returns the new instance. <br />
+                            We pass the 'Halley' string to the Dog constructor, which sets the name property to 'Halley'. <br />
+                            Finally, we log the value saved to the name key in our halley object,
+                            which logs 'Halley' to the console.
+                        </strong> <br /> <br />
+                    </em>
+
+                </p>
+            </div>
+        </div>
+
+        <a href="#">Top</a> <br />
+        <div class="divFlex">
+            <div class="divBSet divBorder">
+                <br />
+                <h2 class="noMargin">Inheritance</h2>
+                <p class="noMargin">
+                    Classes can inherit properties from a Superclass (or Parent Class) if they
+                    need the same properties/methods. <br />
+                    This way you do not have to repeat a lot of code in multiple classes. <br /> <br />
+
+                    For instance <br />
+                    You could have a superclass <b>Animal</b> class that holds properties
+                    like <b>name, howManyLegs, Nocturnal</b>. <br /> <br />
+
+                    And then you could have Subclasses (or Child Classes) like <b>Dog, Cat, Badger</b> etc that
+                    need all the properties included with the <b>Animal</b> class plus some of their own properties
+                    unique to themselves. <br /> <br />
+
+                    This would be done by :- <br /> <br />
+
+                    <em>Create a Superclass called ANIMAL</em> <br />
+                    <b>
+                        class <span class="makeBlue">Animal</span> { <br />
+                        &nbsp;&nbsp;&nbsp;constructor(<span class="makeGreen">name, howManyLegs, nocturnal</span>) { <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>...code for properties in here... </em> <br />
+                        &nbsp;&nbsp;&nbsp;} <br />
+                        &nbsp;&nbsp;&nbsp;<em>...code for methods in here... </em> <br />
+                        } <br />
+                    </b> <br />
+
+                    Then you would create your SUBCLASS called Dog... <br />
+                    <b>
+                        class Dog <span class="makeBlue">extends Animal</span> { <br />
+                        &nbsp;&nbsp;&nbsp;constructor(<span class="makeGreen">name, howManyLegs, nocturnal</span>, walks) { <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </b><em>
+                        NOTE...When including the properties in ANIMAL you
+                        have to refer to them with <b>'super(...)'</b> <br />
+                        AND they MUST be entered BEFORE you include properties unique to this subclass.
+                    </em> <br />
+                    <b>
+                        <span class="makePurple">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super(name, howManyLegs, nocturnal);
+                        </span> <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._walks = walks; <br />
+                        &nbsp;&nbsp;&nbsp;} <br />
+
+                        &nbsp;&nbsp;&nbsp;<em>...Add any methods that are NOT already in the Animal class here...</em> <br />
+                        &nbsp;&nbsp;&nbsp;<em>...for instance 'get walks() {...} </em> <br />
+                        } <br /> <br />
+                    </b>
+
+                </p>
+            </div>
+
+            <div class="divBorder divBSet">
+                <br />
+                <h2 class="noMargin">Inheritance continued...</h2>
+                <br />
+                <p>
+                    The SUPERCLASS looks just like a normal class and,
+                    therefore, could be used just like a normal class as well as a Superclass. <br /> <br />
+
+                    When you want a class to INHERIT from another class you need to include
+                    the command <b><span class="makeBlue">extends <em>ClassName</em></span></b>
+                    on the line where you create the Subclass (see previous pane on the left). <br /> <br />
+
+                    ******************** <br /> <br />
+
+                    And (in the constructor) you also need to include all the properties (that you need to pass the parameters in for)
+                    that you want to use from the Superclass
+                    as well as any additional ones you want to add to your Subclass. Eg... <br />
+                    <b>constructor(<span class="makeGreen">name, howManyLegs, nocturnal</span>, walks) {...} </b> <br /> <br />
+                    <em>
+                        (<span class="makeGreen">name, howManyLegs, nocturnal</span> are in the ANIMAL Superclass -
+                        and <b>walks</b> is the new property just for use in the new Subclass)
+                    </em> <br /> <br />
+
+                    ******************** <br /> <br />
+
+                    Then in the list of properties you have to FIRST of all list ALL the properties you are using from the
+                    Superclass (defined by the SUPER keyword) followed by an other properties unique to this subclass you are
+                    creating. Eg... <br />
+                    <b>
+                        <span class="makePurple">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super(name, howManyLegs, nocturnal);
+                        </span> <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._walks = walks; <br />
+                        &nbsp;&nbsp;&nbsp;}
+                    </b> <br />
+
+                    <br />
+
+
+                    <br />
+
+                </p>
+
+            </div>
+        </div>
+
+        <div class="divFlex">
+            <div class="divBorder divBSet">
+                <p>
+                    I have a form that uses CLASSES that you can take a look at. <br /> <br />
+
+                    It uses a main MEDIA CLASS and then has SUB CLASSES that inherits properties and Methods from the MEDIA class. <br /> <br />
+
+                    It runs from the Main Menu and is listed as
+                    <b><a href="../BookAndStuff/bookShop.html" target="_blank">Task (classes) - Books And Stuff</a></b><br /> <br />
+                </p>
+            </div>
+        </div>
+        <a href="#">Top</a> <br />
+
+    </section>
+
+    <!--
+                Some comments I want to make :-
+
+            *****One example I had to type in while learning was... ****
+
+        class HospitalEmployee {
+      constructor(name) {
+        this._name = name;
+        this._remainingVacationDays = 20;
+      }
+
+      get name() {
+        return this._name;
+      }
+
+      get remainingVacationDays() {
+        return this._remainingVacationDays;
+      }
+
+      takeVacationDays(daysOff) {
+        this._remainingVacationDays -= daysOff;
+      }
+    }
+
+    class Nurse extends HospitalEmployee {
+      constructor(name, certifications) {
+        super(name);
+        this._certifications = certifications;
+      }
+
+      get certifications() {
+        return this._certifications;
+      }
+
+      addCertification(newCertification) {
+        this._certifications.push(newCertification);
+      }
+    }
+
+    const nurseOlynyk = new Nurse('Olynyk', ['Trauma','Pediatrics']);
+    nurseOlynyk.takeVacationDays(5);
+    console.log(nurseOlynyk.remainingVacationDays);
+
+    nurseOlynyk.addCertification("Genetics");
+    console.log(nurseOlynyk.certifications);
+
+        ****I just wanted to show this as it uses an ARRAY as the value of CERTIFICATIONS ****
+        ****and adding a new certification I used .PUSH to add it to the array ****
+
+            -->
+</body>
+</html>

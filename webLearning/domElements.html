@@ -10,11 +10,11 @@
     <link rel="stylesheet" href="CSS/MyStyles.css" />
 
     <style>
-            h3 {
-                color: red;
-            }
+        h3 {
+            color: red;
+        }
 
-            /* body {background-color:white;}
+        /* body {background-color:white;}
         .divBSet {background-color: white;} */
     </style>
 
@@ -42,28 +42,40 @@
     <p>
         The DOM is a standard for how to get, change, add or delete HTML elements. <br /> <br />
 
-        <b><a href="https://www.w3schools.com/jsref/met_document_getelementbyid.asp" target="_blank">
-    document.getElementsById()</a></b> <br />
+        <b>
+            <a href="https://www.w3schools.com/jsref/met_document_getelementbyid.asp" target="_blank">
+                document.getElementsById()
+            </a>
+        </b> <br />
         <i>
             The getElementById() method returns the element that has the ID attribute
             with the specified value. <br />
             And if you want to store an element as a variable do this, eg... <br />
             var myElement = document.getElementById("myId");
         </i> <br /> <br />
-        <b><a href="https://www.w3schools.com/jsref/met_document_getelementsbyclassname.asp" target="_blank">
-    document.getElementsByClassName() </a></b> <br />
+        <b>
+            <a href="https://www.w3schools.com/jsref/met_document_getelementsbyclassname.asp" target="_blank">
+                document.getElementsByClassName()
+            </a>
+        </b> <br />
         <i>
             The getElementsByClassName() method returns a collection of all elements
             in the document with the specified class name, as an HTMLCollection object.
         </i> <br /> <br />
-        <b><a href="https://www.w3schools.com/jsref/met_document_getelementsbytagname.asp" target="_blank">
-    document.getElementsByTagName() </a></b> <br />
+        <b>
+            <a href="https://www.w3schools.com/jsref/met_document_getelementsbytagname.asp" target="_blank">
+                document.getElementsByTagName()
+            </a>
+        </b> <br />
         <i>
             The getElementsByTagName() method returns a collection of all elements in the document
             with the specified tag name, as an HTMLCollection object.
         </i> <br /> <br />
-        <b><a href="https://www.w3schools.com/jsref/met_doc_getelementsbyname.asp" target="_blank">
-            document.getElementsByName() </a></b> <br />
+        <b>
+            <a href="https://www.w3schools.com/jsref/met_doc_getelementsbyname.asp" target="_blank">
+                document.getElementsByName()
+            </a>
+        </b> <br />
         <i>
             The getElementsByName() method returns a collection of all elements in the document with the
             specified name (the value of the name attribute), as an HTMLCollection object.
@@ -71,9 +83,9 @@
         NOTE <br />
         If you want to save the &lt;body&gt; then you could use <br />
         <strong>var myElement = document.body;</strong> <br />
-        instead of 'var myElement = document.getElementByTagName("body");' <br /> 
-        And make sure that your webpage has finished loading as 'getElementByTagName() (or any of the others) will 
-        not have a 'tag' to read yet....For this you would need to put  the getElementByTagName in to a 
+        instead of 'var myElement = document.getElementByTagName("body");' <br />
+        And make sure that your webpage has finished loading as 'getElementByTagName() (or any of the others) will
+        not have a 'tag' to read yet....For this you would need to put  the getElementByTagName in to a
         &lt;script&gt; which goes at the end of the web page. <br /><br />
 
     </p>
@@ -259,7 +271,7 @@
                 <a target="_blank" href="https://www.w3schools.com/jsref/prop_html_style.asp">
                     .style
                 </a> : Sets or returns the value of the style attribute of an element. <br />
-                Note...in CSS it is <b><i>background-colour</b></i> and here it is <b><i>style.backgroundColor</i></b> so
+                Note...in CSS it is <b><i>background-colour</i></b> and here it is <b><i>style.backgroundColor</i></b> so
                 the '-' is missing and it uses camel case. (font-family vs style.fontFamily...etc) <br />
                 <a target="_blank" href="https://www.w3schools.com/jsref/prop_html_tabindex.asp">
                     .tabIndex
@@ -538,6 +550,80 @@
             <em>(When the new line appears you can click the button again to make it disappear)</em><br />
         </div>
     </div>
+
+
+    <a href="#top">Top</a>
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h2>Adding a new option to a &lt;select&gt; element</h2>
+            <p>
+                Usually you have something like... <br />
+                <b>
+                    &lt;select id="bookList" size="1" name="bookList" onchange="bookSelected(this.value)"&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&lt;option value="0"&gt;Pizza&lt;/option> <br />
+                    &nbsp;&nbsp;&nbsp;&lt;option value="1"&gt;Cheeseburger&lt;/option&gt; <br />
+                    &nbsp;&nbsp;&nbsp;etc... <br />
+                    &lt;/select&gt;
+                </b> <br /> <br />
+
+                I created a function to do this, pass in parameters where... <br />
+                <b>value</b> = the value for the &lt;option&gt; section, eg '0' <br />
+                <b>text</b> = the value that gets displayed, eg 'Pizza' <br /> <br /> 
+            </p>
+            <div class="divBorder">
+                <p>
+                    <b>
+                        function addToBookList(value, text) { <br /> <br />
+                        &nbsp;&nbsp;&nbsp;
+                    </b><em>//create a new 'option' to add to the &lt;select&gt; element</em> <br /><b>
+                        &nbsp;&nbsp;&nbsp;let opt = document.createElement("option");  <br /> <br />
+
+                        &nbsp;&nbsp;&nbsp;opt.value = value; <br />
+                        &nbsp;&nbsp;&nbsp;opt.text = text; <br />
+
+                        &nbsp;&nbsp;&nbsp;
+                    </b><em>//Default is false but I wanted to show how to do this</em> <br /><b>
+                        &nbsp;&nbsp;&nbsp;opt.selected = false; <br /> <br />
+
+                        &nbsp;&nbsp;&nbsp;
+                    </b><em>
+                        //If you are building options from scratch you may want the first
+                        option to be set as selected, so... <br />
+                        (Note...this only works if 'value' is 0 for the first item)
+                    </em> <br /><b>
+                        &nbsp;&nbsp;&nbsp;if (value == 0) { <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;opt.setAttribute("selected", ""); <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;opt.selected = true; <br />
+                        &nbsp;&nbsp;&nbsp;} <br /> <br />
+
+                        &nbsp;&nbsp;&nbsp;
+                    </b><em>//Add the new 'option' to the 'select'</em> <br /><b>
+                        &nbsp;&nbsp;&nbsp;document.getElementById("bookList")<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.options.add(opt); <br />
+                        &nbsp;&nbsp;&nbsp;document.getElementById("bookList") <br /> <br />
+
+                        &nbsp;&nbsp;&nbsp;
+                    </b><em>//'size=n' sets the number of lines to show in the 'select' element - 
+                        and this will only work if value is actually a count of how many line items 
+                        there are.</em> <br /><b>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.size = value + 1; <br />
+                        } <br /> 
+                    </b>
+                </p>
+            </div>
+            <p>I actually use this scenario in the <a href="../BookAndStuff/bookShop.html" target="_blank">Books And Stuff</a> web 
+                page.</p> <br /> <br />
+
+        </div>
+
+        <div class="divBorder divBSet" style="overflow:auto;">
+
+        </div>
+    </div>
+
+    <a href="#top">Top</a>
+
     <script>
         function appendMe(p1) {
             let x = document.getElementById(p1);
