@@ -18,9 +18,11 @@
     <link rel="stylesheet" href="CSS/main.css" />
     <link rel="stylesheet" href="CSS/MyStyles.css" />
 
-    <!--Dont specify the below file as the next one reads in from it using the 'require(..) method --> 
+    <!--Dont specify the below file as the next one reads in from it using the 'require(..) method -->
     <!--<script src="Scripts/converters.js"></script>-->
-    <script src="Scripts/celsius-to-fahrenheit.js"></script>
+
+    <!--This needs to be included but as it does NOT work on a local machine I commented out for now...-->
+    <!--<script src="Scripts/celsius-to-fahrenheit.js"></script>-->
 
 
 </head>
@@ -86,6 +88,8 @@
         </div>
     </div>
 
+    <a href="#">Top</a> <br />
+
     <div class="divFlex">
         <div class="divBorder divBSet">
             <p>
@@ -126,9 +130,129 @@
 
         <div class="divBorder divBSet">
             <p>
+                So, for Node Modules, the EXPORTING code looks like... <br /> <br />
+
+                <b>
+                    module.exports.celsiusToFahrenheit = celsiusToFahrenheit; <br /> <br />
+
+                </b><em>OR</em> <b>
+                    <br /> <br />
+
+                    module.exports.fahrenheitToCelsius = function(fahrenheit) { <br />
+                    &nbsp;return (fahrenheit - 32) * (5/9); <br />
+                    }; <br /> <br />
+                </b>
+
+                And the IMPORTING code looks like... <br /> <br />
+
+                <b>
+                    const { celsiusToFahrenheit } = require('./converters.js');
+                </b>
+                <em>OR if there were more than one function to use you would say... </em>
+                <b>
+                    const { celsiusToFahrenheit, secondFunction, ...etc... } = require('./converters.js');
+                </b> <br /> <br />
 
             </p>
         </div>
     </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <p>
+
+                <h2>Implementations of Modules in JavaScript: Node.js vs ES6</h2>
+
+                In JavaScript, there are two runtime environments and each has a preferred
+                module implementation:- <br /> <br />
+
+                The Node runtime environment and the <b>module.exports and require()</b> syntax. <br />
+                The browser’s runtime environment and the ES6 <b>import/export</b> syntax. <br /> <br />
+
+                Above is the NODE RUNTIME environment. <br /> <br />
+
+                Starting below is the (ES6) runtime browser environment, eg Chrome Browser.
+
+            </p>
+        </div>
+
+
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <p>
+
+                <h2>Runtime environment and the ES6 <b>import/export</b> syntax.</h2>
+
+                For this example I will use the file <span class="redMess">dom-functions.js</span> which holds
+                a couple of commands... then <span class="blueMess">exports</span> the commands, enabling them to be imported
+                to another .js file as and when they
+                are needed.<br /> <br />
+
+                I will also use the file <span class="redMess">secret-messages.js</span>  which <span class="blueMess">imports</span> from <b>dom-functions.js</b> and
+                uses them inside its own routines.<br /> <br />
+
+                <span class="redMess">dom-functions.js</span> <br />
+                <b>
+                    const toggleHiddenElement = (domElement) => { <br />
+                    &nbsp;&nbsp;&nbsp;if (domElement.style.display === 'none') { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;domElement.style.display = 'block'; <br />
+                    &nbsp;&nbsp;&nbsp;} else { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;domElement.style.display = 'none'; <br />
+                    &nbsp;&nbsp;&nbsp;} <br />
+                    } <br /> <br />
+
+                    const changeToFunkyColor = (domElement) => { <br />
+                    &nbsp;&nbsp;&nbsp;const r = Math.random() * 255; <br />
+                    &nbsp;&nbsp;&nbsp;const g = Math.random() * 255; <br />
+                    &nbsp;&nbsp;&nbsp;const b = Math.random() * 255; <br /> <br />
+
+                    &nbsp;&nbsp;&nbsp;domElement.style.background = `rgb(${r}, ${g}, ${b})`; <br />
+                    } <br /> <br />
+
+                    <span class="blueMess">export</span> { toggleHiddenElement, changeToFunkyColor }; <br />
+
+
+                </b>
+
+
+
+            </p>
+        </div>
+
+        <div class="divBorder divBSet">
+            <p>
+                <span class="redMess">secret-messages.js</span> <br />
+                <b>
+                    <span class="blueMess">import</span> { toggleHiddenElement, changeToFunkyColor } from './dom-functions.js'; <br /> <br />
+
+                    const buttonElement = document.getElementById('secret-button'); <br />
+                    const pElement = document.getElementById('secret-p'); <br /> <br />
+
+                    buttonElement.addEventListener('click', () => { <br />
+                    &nbsp;&nbsp;&nbsp;toggleHiddenElement(pElement); <br />
+                    &nbsp;&nbsp;&nbsp;changeToFunkyColor(buttonElement); <br />
+                    }); <br />
+                </b> <br />
+
+                <hr /> <br />
+
+                And to demonstrate this I will add a BUTTON which will toggle a &lt;p id="secret-p"&gt; element, see below... <br /> <br />
+            </p>
+            <button id="secret-button"> Secret Button </button>
+            <p id="secret-p" style="display: none"> Modules are fancy! </p>
+
+            <!-- I need this so bring in the secret-messages.js file -->
+            <script type="module" src="./Scripts/secret-messages.js"></script>
+        </div>
+    </div>
+
+
+
 </body>
 </html>

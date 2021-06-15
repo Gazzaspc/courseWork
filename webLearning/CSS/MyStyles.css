@@ -130,6 +130,12 @@ input[readonly] {background-color:#E0E0E0}
     margin: 0;
 }
 
+.blueMess {
+    color: blue;
+    font-style: italic;
+    font-weight: bold;
+}
+
 .redResult, .redMess {
   color: red;
   font-style:italic;
