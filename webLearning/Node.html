@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+
+
+    <!--Define Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+    <!-- set a TITLE to appear on the tab header-->
+    <title>Using Node</title>
+
+
+    <!--Include a Browser Reset -->
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+    <!--Dont specify the below file as the next one reads in from it using the 'require(..) method --> 
+    <!--<script src="Scripts/converters.js"></script>-->
+    <script src="Scripts/celsius-to-fahrenheit.js"></script>
+
+
+</head>
+<body class="bodyMove">
+    <a href="index.html">Home</a>
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h1>Implementing Modules in Node</h1>
+
+            <p>
+                <h2>What are Modules? </h2>
+                Modules are reusable pieces of code in a file that can be exported and then imported for
+                use in another file. <br />
+                A modular program is one whose components can be separated, used individually, and
+                recombined to create a complex system. <br /> <br />
+
+                <h3>module.exports</h3>
+
+                To create a module, you simply have to create a new file where the functions can be declared. <br />
+                Then, to make these functions available to other files, add them as properties to the built-in
+                module.exports object. For Example... <br /> <br />
+
+                <em>* Inside a file called - <b>converters.js</b> */ </em> <br />
+                <b>
+                    function celsiusToFahrenheit(celsius) { <br />
+                    &nbsp;&nbsp;&nbsp;return celsius * (9/5) + 32; <br />
+                    } <br /> <br />
+
+                    module.exports.celsiusToFahrenheit = celsiusToFahrenheit; <br /> <br />
+
+                    module.exports.fahrenheitToCelsius = function(fahrenheit) { <br />
+                    &nbsp;return (fahrenheit - 32) * (5/9); <br />
+                    }; <br />
+                </b> <br /> <br />
+
+                The <b>module.exports...</b> command will add the methods/functions to the module.exports object, which
+                can then be used by other files (modules). <br /> <br />
+            </p>
+        </div>
+
+        <div class="divBorder divBSet">
+            <p>
+                The code snippet on the left demonstrates two ways of exporting functions from a module. For Example... <br /> <br />
+
+                At the top of the new file, converters.js, the function <b>celsiusToFahrenheit()</b> is declared. <br /> <br />
+
+                After that function, on the next line of code, the first approach for exporting a function from a module is shown. <br />
+                In this case, the already-defined function <b>celsiusToFahrenheit()</b> is assigned
+                to module.exports.celsiusToFahrenheit. <br /><br />
+
+                Below that, an alternative approach for exporting a function from a module is shown. <br />
+                In this second case, a new function expression is declared and assigned to <b>module.exports.fahrenheitToCelsius</b>. <br />
+                This new method is designed to convert Fahrenheit values back to Celsius. <br /> <br />
+
+                Both approaches successfully store a function within the <b>module.exports</b> object. <br /> <br />
+
+                <b>module.exports</b> is an object that is built-in to the Node.js runtime environment. <br /> <br />
+                Other files can now import this object, and make use of these two functions, with another
+                feature that is built-in to the Node.js runtime environment: the <b>require()</b> function. <br /> <br />
+
+            </p>
+        </div>
+    </div>
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <p>
+
+                <h2>The require() function</h2>
+
+                The require() function accepts a string as an argument. <br />
+                That string provides the file path to the module you would like to import and is used when
+                creating an object for it in your code. Eg...<br />
+                <b>const converters = require('./converters.js');</b> <br /> <br />
+
+                For Example, in <b>water-limits.js</b> we need to import and use the functions from <b>converters.js</b>,
+                so...we need to grab them from the module.exports object within converters.js: <br /> <br />
+
+                <em>/* water-limits.js */</em> <br />
+                <b>
+                    const converters = <span class="redMess">require('./converters.js');</span> <br /> <br />
+
+                    const freezingPointC = 0; <br />
+                    const boilingPointC = 100; <br />  <br />
+
+                    const freezingPointF = converters.celsiusToFahrenheit(freezingPointC); <br />
+                    const boilingPointF = converters.celsiusToFahrenheit(boilingPointC); <br /> <br />
+
+
+                    console.log(`The freezing point of water in Fahrenheit is ${freezingPointF}`); <br />
+                    console.log(`The boiling point of water in Fahrenheit is ${boilingPointF}`); <br /> <br />
+                </b>
+                In this case, ./ is a relative path indicating that converters.js is stored in the
+                same folder as water-limits.js. <br />
+                When you use require(), the entire module.exports object
+                is returned and stored in the variable converters. <br /> <br />
+                This means that both the .celsiusToFahrenheit() and .fahrenheitToCelsius() methods can be
+                used in this program! <br /> <br />
+            </p>
+
+        </div>
+
+        <div class="divBorder divBSet">
+            <p>
+
+            </p>
+        </div>
+    </div>
+</body>
+</html>

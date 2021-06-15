@@ -222,15 +222,23 @@
                     </strong> <br /> <br />
 
                     this is called by <br />
-                    <strong><em>classname</em>.vehicle;</strong> <br /> <br />
+                    <strong><em>classname</em>.vehicle;</strong> <br />
+                    <em>Note... you do NOT include open/close round brackets when calling a <b>getter</b></em>.<br />
 
                     <br /> <hr /> <br />
 
                     <h2 class="noMargin">Setters</h2>
 
-                    The methods you need are held within the class but outside of the constructor section
-                    (it may be easier to think of the constructor as a method itself, which has to be the first method). <br />
-                    ...Getter's and Setter's are also methods in their own right. <br /> <br />
+                    Setters are methods. They are in the format :- <br /> <br />
+                    <strong>
+                        set make(value) { <br />
+                        &nbsp;&nbsp;&nbsp;this._make = value; <br />
+                        }
+                    </strong> <br /> <br />
+
+                    this is called by <br />
+                    <strong><em>classname</em>.make = "Ford";</strong> <br />
+                    <em>Note... you do NOT include open/close round brackets when calling a <b>setter</b></em>.<br />
 
 
 
@@ -400,7 +408,7 @@
                     ******************** <br /> <br />
 
                     Then in the list of properties you have to FIRST of all list ALL the properties you are using from the
-                    Superclass (defined by the SUPER keyword) followed by an other properties unique to this subclass you are
+                    Superclass (defined by the SUPER keyword) followed by any other properties unique to this subclass you are
                     creating. Eg... <br />
                     <b>
                         <span class="makePurple">
@@ -429,6 +437,19 @@
 
                     It runs from the Main Menu and is listed as
                     <b><a href="../BookAndStuff/bookShop.html" target="_blank">Task (classes) - Books And Stuff</a></b><br /> <br />
+                </p>
+            </div>
+
+            <div class="divBorder divBSet">
+                <p>
+                    There are also <b>PROTOTYPES</b> that are used with INHERITANCE in Javascript <br /> <br />
+
+                    So far this course does not teach you about them but you can read about it 
+                    <a href="https://www.digitalocean.com/community/tutorials/understanding-prototypes-and-inheritance-in-javascript" 
+                       target="_blank">HERE</a>. <br /> <br />
+
+                    
+
                 </p>
             </div>
         </div>
