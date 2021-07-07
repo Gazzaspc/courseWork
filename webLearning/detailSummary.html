@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+    <!-- set a TITLE to appear on the tab header-->
+    <title>Details & Summary Tags</title>
+
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+    <style>
+        #details2 > #summary2 {
+            padding: 4px;
+            width: 200px;
+            background-color: lightyellow;
+            border: none;
+            box-shadow: 1px 1px 2px #bbbbbb;
+            cursor: pointer;
+        }
+
+        #details2 > p {
+            background-color: lightyellow;
+            padding: 4px;
+            margin: 0;
+            box-shadow: 1px 1px 2px #bbbbbb;
+        }
+    </style>
+
+</head>
+<body class="bodyMove">
+    <a href="index.html">Home</a>
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h1>&lt;details&gt; and &lt;summary&gt; tags</h1>
+
+            <p>
+                The <a href="https://www.w3schools.com/tags/tag_summary.asp" target="_blank"><b>&lt;summary&gt;</b> </a>
+                tag defines a visible
+                heading for the <a href="https://www.w3schools.com/tags/tag_details.asp" target="_blank"><b>&lt;details&gt;</b> </a>
+                element. <br /> <br />
+
+                The heading can be clicked to view/hide the details. <br /> <br />
+                Note: <br />
+                The <b>&lt;summary&gt;</b> tag should be the first child element of the <b>&lt;details&gt;</b> element. <br /> <br />
+
+                <strong>Example 1:</strong> <br /> <br />
+
+                <b>
+                    &lt;details&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;summary&gt;Epcot Center&lt;/summary&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Epcot is a theme park at Walt Disney World Resort featuring exciting attractions,
+                    international pavilions, award-winning fireworks and seasonal special events. <br />
+                    &lt;/p&gt; <br />
+                    &lt;/details&gt; <br /> <br />
+                </b>
+
+                The above will give you...(click on the triangle)... <br /> <br />
+            </p>
+            <details>
+                <summary>Epcot Center</summary>
+                <p>Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international pavilions, award-winning fireworks and seasonal special events.</p>
+            </details>
+            <br /> <br />
+        </div>
+
+        <div class="divBSet divBorder">
+            <p>
+                <b>Example 2:</b> <br /> <br />
+
+                <em>(for this one look at the code to see how it is done, though it is basically the same but with 
+                additional &lt;style&gt; entries at the top of the form)</em> <br /> <br />
+            </p>
+            <details id="details2">
+                <summary id="summary2">Epcot Center</summary>
+                <p>Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international pavilions, award-winning fireworks and seasonal special events.</p>
+            </details>
+
+        </div>
+
+    </div>
+</body>
+</html>

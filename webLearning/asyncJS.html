@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+    <!-- set a TITLE to appear on the tab header-->
+    <title>Asynchronous</title>
+
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+
+
+</head>
+<body class="bodyMove">
+    <a href="index.html">Home</a>
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h1>Asynchronous Javascript</h1>
+
+            <p>
+                <b>Asynchronous</b> - more than one code thread can be run at the same time. <br />
+                <b>Synchronous</b> - (default) code runs as one thread and one command has to finish before the next
+                one can start. <br /> <br />
+
+                <h3>Constructing a Promise Object</h3>
+
+                The Promise constructor method takes a function parameter called the executor function
+                which runs automatically when the constructor is called. <br />
+                The executor function generally starts an asynchronous operation and dictates
+                how the promise should be settled. <br /> <br />
+
+                To create a new Promise object, we use the new keyword and the Promise constructor method:, eg... <br /> <br />
+
+                <b>
+                    const executorFunction = (resolve, reject) => { }; <br />
+                    const myFirstPromise = new Promise(executorFunction);
+                </b> <br /><br />
+
+
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <p>
+                The executor function has two function parameters, usually referred to as the
+                <b>resolve() and reject() functions</b>. <br />
+                The resolve() and reject() functions aren’t defined by the programmer. <br />
+                When the Promise constructor runs, JavaScript will pass its own resolve() and reject() functions
+                into the executor function. <br /> <br />
+
+                <b>resolve</b> <br />
+                is a function with one argument. Under the hood, if invoked, resolve() will
+                change the promise’s status from pending to fulfilled, and the promise’s
+                resolved value will be set to the argument passed into resolve(). <br /> <br />
+
+                <b>reject</b> <br />
+                is a function that takes a reason or error as an argument. Under the hood, if invoked,
+                reject() will change the promise’s status from pending to rejected, and the promise’s
+                rejection reason will be set to the argument passed into reject(). <br /> <br />
+
+                An example of this could be... <br /> <br />
+
+                <b>
+                    const executorFunction = (resolve, reject) => { <br />
+                    &nbsp;&nbsp;&nbsp;if (someCondition) { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resolve('I resolved!'); <br />
+                    &nbsp;&nbsp;&nbsp;} else { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reject('I rejected!');
+                    &nbsp;&nbsp;&nbsp;} <br />
+                    } <br /> <br />
+
+                    const myFirstPromise = new Promise(executorFunction); <br /> <br />
+
+                </b>
+            </p>
+
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+
+            <p>
+                I had to create a small working file as part of my Codecademy course. <br /> <br />
+                It is in a file in the /Scripts folder called <b>sunglasses.js</b>, to run it you can 
+                open <b>windows command prompt</b> then change directory (cd) in to the folder and then type... <br />
+                $ <b>node sunglasses.js</b> <br /> <br />
+
+                The code is also listed below for reference... <br /> <br />
+
+                <pre style="font-size:12px;">
+const inventory = {
+  sunglasses: 1900,
+  pants: 1088,
+  bags: 1344
+};
+
+const myExecutor = (resolve, reject) => {
+  if (inventory.sunglasses > 0) {
+    resolve("Sunglasses order processed.");
+  } else {
+    reject("That item is sold out.");
+  };
+}
+
+const promiseSunglasses = new Promise(myExecutor);
+
+const orderSunglasses = () => {
+  return promiseSunglasses;
+}
+
+var orderPromise = orderSunglasses();
+console.log(orderPromise);
+
+
+</pre>
+            When this is run it should display, in the console.log, the following message... <br />
+            <b>Promise { 'Sunglasses order processed.' }</b> <br /> <br />
+            </p>
+
+        </div>
+
+    </div>
+
+    <a href="#">Top</a> <br />
+
+
+</body>
+</html>

@@ -136,6 +136,12 @@ input[readonly] {background-color:#E0E0E0}
     font-weight: bold;
 }
 
+.greenMess {
+    color: green;
+    font-style: italic;
+    font-weight: bold;
+}
+
 .redResult, .redMess {
   color: red;
   font-style:italic;

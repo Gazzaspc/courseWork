@@ -2,307 +2,383 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta charset="utf-8">
-  <title>String Manipulation</title>
+    <meta charset="utf-8">
+    <title>String Manipulation</title>
 
-  <link rel="stylesheet" href="CSS/normalize.css" />
-  <link rel="stylesheet" href="CSS/main.css" />
-  <link rel="stylesheet" href="CSS/MyStyles.css" />
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/MyStyles.css" />
 
 
 </head>
 
 <body class="bodyMove">
-  <section id="Top">
+    <section id="Top">
 
 
-    <a href="index.html">Home</a>
-    <h1>String Manipulation</h1>
+        <a href="index.html">Home</a>
+        <h1>String Manipulation</h1>
+        <p>
+            There are various methods that can be used to manipulate the strings in Javascript. <br />
+            Or are useful to know... <br /> <br />
+            Further information on the methods can be found
+            <a href="https://www.w3schools.com/jsref/jsref_obj_string.asp" target="_blank">HERE</a> <br /> <br />
+            Unless specified assume that <b>var x = "HELLO WORLD hello world HELLO WORLD"</b> is used. <br /> <br />
+            NOTE... <br />
+            In a STRING if you need to use chr's that may be used as part of the code, eg adding a quote <br />
+            you can use the <b>BACKSLASH (\) </b>before the chr you want to add, for example <br />
+            <b>myVar = "My name is \"Gary\"</b> and it will be in quotes<br />
+            or <br />
+            <b>myvar = "I want to add a single backslash here \\"</b><br />
+            <i>
+                Any character following the backslash will be included but if you want a backslash then you need two, eg \\.
+                as the first tells the system to just include the next chr as a literal chr and not part of the
+                programming code and the second backslash is the chr to include.
+            </i> <br /> <br />
+
+            Other uses could be:- <br />
+            \b - backspace <br />
+            \f - Form Feed <br />
+            \n - New Line (c/r l/f) <br />
+            \r - Carriage Return w/out line feed <br />
+            \t - horizontal tab <br />
+            \v - vertical tab <br /> <br />
+        </p>
+    </section>
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <p>
+                <b>.length</b> <br />
+                x.length = The number of chr's in your string. (answer=35) <br /> <br />
+
+                <b>.charAt(n)</b> <br />
+                n = the position number you want to return the character at. <br />
+                x.charAt(0) will = "H" <br />
+                x.charAt(7) will = "O" <br /> <br />
+
+                <b>.charCodeAt(n)</b> <br />
+                n = the position number you want to return the unicode (ASCII) character at. <br />
+                x.charAt(0) will = 72 (as ASCII 72 = "H") <br />
+                x.charAt(14) will = 108 (as ASCII 108 = "l") <br />
+                See also <b>String.fromCharCode(n)</b> (below)to do the opposite. <br /> <br />
+
+                <b>String.fromCharCode(n)</b> <br />
+                n = the ASCII value you want to return the character of. <br />
+                var z = String.fromCharCode(72) will = "H" <br />
+                var z = String.fromCharCode(108) = "l" <br /> <br />
+
+                <b>.endsWith(string))</b> <br />
+                string = the string you want to check your variable ENDS with. <br />
+                x.endsWith("ORLD") will = true <br />
+                x.endsWith("rld") will = false (as it is case sensitive) <br />
+                to ignore case you can say... <br />
+                x.toLowerCase().endsWith("world") and it will = true <br />
+                x.toUPPerCase().endsWith("WORLD") and it will = true <br /> <br />
+
+                <b>.startsWith(string)</b> <br />
+                string = the string value you want to check your variable STARTS with. <br />
+                x.startsWith("orld") will = true as it exists in the variable x. <br />
+                x.startsWith("orLD") will = false as it is case sensitive and does not exist <br />
+                x.toUpperCase().startsWith("WORLD") will = true as you are now only checking everything in UPPER case <br />
+                x.toLowerCase().startsWith("world") will = true as you are now only checking everything in lower case <br /> <br />
+
+                <b>.includes(string)</b> <br />
+                string = the string value you want to check if it exists. <br />
+                x.includes("world") will = true as it exists in the variable x. <br />
+                x.includes("WorLD") will = false as it is case sensitive and does not exist <br />
+                x.toUpperCase().includes("WORLD") will = true as you are now only checking everything in UPPER case <br />
+                x.toLowerCase().includes("world") will = true as you are now only checking everything in lower case <br /> <br />
+
+                <b>.indexOf(string, n)</b> <br />
+                string = the string value you want to get the position of. <br />
+                n = the starting position (optional : default 0)
+                x.indexOf("world") will = 18 as 'world' start at position 18. <br />
+                x.indexOf("HELLO") will = 0 as 'HELLO' starts at position 0. <br />
+                x.toUpperCase().indexOf("WORLD", 10) will = 18 as 'world' is at pos 18 if you start at pos 10. <br />
+                x.toLowerCase().indexOf("abcd") will = -1 as it does not exist. <br /> <br />
+
+                <b>.lastIndexOf(string, n)</b> <br />
+                string = the string value you want to get the position of. <br />
+                n = the starting position - it works backwards from this point (optional : default 0) <br />
+                NOTE...This will locate the LAST instance of where your string starts from <br />
+                x.lastIndexOf("world") will = 18 as 'world' start at position 18. <br />
+                x.lastIndexOf("HELLO") will = 24 as the last instance of 'HELLO' starts at position 24. <br />
+                BUT if you add a starting position it will look for the FIRST letter of your search string and
+                work BACKWARDS from there. <br />
+                x.lastIndexOf("HELLO", 20) will = 0 as the last instance of 'HELLO' between positions 0 and 20 starts at position 0. <br />
+                x.lastIndexOf("hello", 20) will = 12 as the last instance of 'HELLO' between positions 0 and 20 starts at position 0. <br />
+                x.toUpperCase().lastIndexOf("WORLD", 18) will = 18 as 'world' is at pos 18 and you are not checking for case. <br />
+                x.toLowerCase().lastIndexOf("abcd") will = -1 as it does not exist. <br /> <br />
+            </p>
+        </div>
+
+        <div class="divBorder divBSet">
+            <p>
+                <b>.match(/string/search)</b> <br />
+                This will count how many instances of your string it finds and return them as an array. <br />
+                The format is a bit different, you have to use the global (g) format... <br />
+                <b>/string/g</b> - where string=to search for, /g=perform a global search <br />
+                <b>/string/gi</b> - where string=to search for, /gi=perform a global case insensitive search <br />
+                var z = x.match(/world/gi) will return an array... <br />
+                z[0] will = WORLD <br />
+                z[1] will = world <br />
+                z[2] will = WORLD <br />
+                z.length will = 3 (to show how many instances it found) <br /> <br />
+
+                <b>.repeat(n)</b> <br />
+                n = the number of times to repeat the string. <br />
+                Note...It does not add a space between each string. <br />
+                x.repeat(3) will = "HELLO WORLD hello world HELLO WORLDHELLO WORLD
+                hello world HELLO WORLDHELLO WORLD hello world HELLO WORLD" <br />
+                <br />
+
+                <b>.replace(old, new)</b> <br />
+                This will replace your 'old' string with the 'new' string. <br />
+                Can be done in 2 ways, the first will ONLY replace the FIRST instance of 'old' it finds <br />
+                x.replace("WORLD", "PLANET") <br /> will = "HELLO PLANET hello world HELLO WORLD" <br />
+                x.replace("world", "planet") <br /> will = "HELLO WORLD hello planet HELLO WORLD" <br />
+                <b><i>OR you can use the global (g) modifier...</i></b> <br />
+                x.replace(/WORLD/g, "PLANET") <br /> will = "HELLO PLANET hello world HELLO PLANET" <br />
+                x.replace(/WORLD/gi, "PLANET") <br /> will = "HELLO PLANET hello PLANET HELLO PLANET" <br /> <br />
+
+                <b>.search(string)</b> <br />
+                string = string to search for <br />
+                This will find the FIRST instance of your search string (-1 = not found) <br />
+                x.search("WORLD") <br /> will = 6 <br />
+                x.search("world") <br /> will = 18 <br />
+                <b><i>OR you can use the global (g) modifier...</i></b> <br />
+                x.search(/world/gi) <br /> will = 6 <br /> <br />
+
+                <b>.slice(start, end)</b> <br />
+                start = start position <br />
+                end = up to (but not including) the position to end at. If missing it reads to the end. <br />
+                Will return a string of the chr's from the start position up to end-1.<br />
+                x.slice(4, 7) <br /> will = "O W" <br />
+                x.slice(4) <br /> will = "O WORLD hello world HELLO WORLD" <br />
+                You can also have negative values that will read from the end backwards (-1 is last chr not -0), eg...<br />
+                x.slice(-10, -6); = "ELLO" <br /> <br />
+
+                <b>.split(" ")</b> <br />
+                This will split your string on each value entered and return them as an array without the splitting chr in. <br />
+                So it's best to enter " " really. <br />
+                var z = x.split(" ") will return an array... <br />
+                z[0] will = "HELLO" <br />
+                z[1] will = "WORLD" <br />
+                z[2] will = "hello" <br />
+                z[3] will = "world" <br />
+                z[4] will = "HELLO" <br />
+                z[5] will = "WORLD" <br />
+                z.length will = 6 (to show how many instances it found) <br />
+                var z = x.split("O") will return an array... <br />
+                z[0] will = "HELL" <br />
+                z[1] will = " W" <br />
+                z[2] will = "RLD hello world HELL" <br />
+                z[3] will = " WV <br />
+                z[4] will = "RLD" <br />
+                z.length will = 5 <br />
+                var z = x.split() will return an array of 1 item only as you are not splitting it at all. <br />
+                z[0] = "HELLO WORLD hello world HELLO WORLD" <br /> <br />
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#Top">Top</a>
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <p>
+                <b>.substr(start, length)</b> <br />
+                start = the position number you want to start from (0=1st). <br />
+                if start is negative then count back from the end (-1 = 1st) <br />
+                length = The number of chr's to return (optional, default = last chr). <br />
+                x.substr(18, 4) will = "worl" <br />
+                x.substr(18) will = "world HELLO WORLD" <br />
+                x.substr(-14, 7) will = "ld HELL" <br /><br />
+
+                <b>.substring(start, end)</b> (similar to .slice()) <br />
+                start = the position number you want to start from (0=1st). <br />
+                end = Up to (but not including) the position you want to end at. <br />
+                x.substring(18, 23) will = "world" <br />
+                x.substring(18) will = "world HELLO WORLD" <br /> <br />
+
+                <b>.toLowerCase()</b> <br />
+                Will return your string all in lowercase letters. <br />
+                var z = x.toLowerCase()) will = "hello world hello world hello world" <br /> <br />
+
+                <b>.toUpperCase()</b> <br />
+                Will return your string all in UPPERCASE letters. <br />
+                var z = x.toUpperCase()) will = HELLO WORLD HELLO WORLD HELLO WORLD" <br /> <br />
+
+                <b>.toString()</b> <br />
+                Returns your variable as a STRING. <br />
+                var a = 123.5 <br />
+                var b = a.toString() <br />
+                then b will = "123.5"<br /> <br />
+
+            </p>
+        </div>
+
+        <div class="divBorder divBSet">
+            <p>
+
+                <b>.test(str)</b> <br />
+                The test() method tests for a REGEX match in a string. <br />
+                This method returns true if it finds a match, otherwise it returns false. <br />
+                var aStr = " HELLO WORLD " <br />
+                var regExp = new RegExp("e", "i"); <br />
+                var z = regExp.test(aStr) <br />
+                <i>
+                    (will give z = TRUE as it will search for the letter "e" in the variable 'aStr'
+                    (ignoring case because of the "i"))
+                </i> <br />
+                OR <br />
+                var regExp = new RegExp("E(LL)+"); <br />
+                var z = regExp.test(aStr) <br />
+                <i>
+                    (will give z = TRUE as it will search for the letter "E" followed by "LL" in the variable 'aStr'
+                    (NOT ignoring case because the "i" is missing))
+                </i> <br />
+                <i>See the code on my <a href="otherRegex.html" target="_blank">RegEx</a> web page for more on 'new RegExp()'.</i> <br />
+                <br />
+
+                <b>.trim()</b> <br />
+                Will strip all leading AND trailing spaces from your string. <br />
+                var a = " HELLO WORLD " <br />
+                var b = a.trim() will = "HELLO WORLD" <br /> <br />
+
+                <b>.trimLeft()</b> <br />
+                Will strip all leading spaces from your string. <br />
+                var a = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HELLO WORLD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" <br />
+                var b = a.trimLeft() will = "HELLO WORLD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" <br /> <br />
+
+                <b>.trimRight()</b> <br />
+                Will strip all trailing spaces from your string. <br />
+                var a = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HELLO WORLD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" <br />
+                var b = a.trimRight() will = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HELLO WORLD" <br /> <br />
+                <br />
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#Top">Top</a>
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <p>
+                <h2>Numbers to a formatted string</h2>
+
+                <b><a href="https://www.w3schools.com/jsref/jsref_tolocalestring_number.asp" target="_blank">.toLocaleString()</a> </b> <br />
+                Will return you a formatted string from a value (eg... 123456789.99 to 123,456,789.99) <br /> <br />
+                Assume n = 123456789.99 <br />
+                var z = n.toLocaleString() will = "123,456,789.99" <br />
+                <em>(It's probably best to use the "en-GB" locale setting rather than leave it out)</em><br />
+                var z = n.toLocaleString("en-GB") will = "123,456,789.99" <br />
+                var z = n.toLocaleString("en-GB", {style: 'currency', currency: 'GBP'}) will = "£123,456,789.99"<br />
+                var z = n.toLocaleString("en-US", {style: 'currency', currency: 'USD'}) will = "$123,456,789.99"<br /> <br />
+                Assume n = 123456789 <br />
+                var z = n.toLocaleString("en-GB", {style: 'currency', currency: 'GBP'}) will = "£123,456,789.00"<br />
+                Assume n = 123456789.567 <br />
+                var z = n.toLocaleString("en-GB", {style: 'currency', currency: 'GBP'}) will = "£123,456,789.57"<br />
+                var z = n.toLocaleString("en-GB", {maximumFractionDigits: 2}) will = "123,456,789.57" <br />
+                <em>
+                    <br />
+                    <b>NOTE</b>...if n = "123456789" (a string) rather than 123456789 (an actual number) then toLocaleString(...) will NOT work. <br />
+                    You will get back "123456789" : You could use ...
+                </em><br />
+                var z = Number(n).toLocaleString("en-GB", {style: 'currency', currency: 'GBP'}) will = "£123,456,789.00"<br /> <br />
+
+                <em>
+                    <b>I liked best...</b> <br />
+                    I created a function called <b>formatNumber</b> which looks like:
+                </em> <br />
+                <b>
+                    const formatNumber = number => { <br />
+                </b><em>&nbsp;&nbsp;&nbsp;// If number is NOT a number then return number asis</em> <b>
+                    <br />
+                    &nbsp;&nbsp;&nbsp;if(isNaN(number)) { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return number; <br />
+                    &nbsp;&nbsp;&nbsp;} <br />
+                </b><em>&nbsp;&nbsp;&nbsp;// If I get here then I know it's a number (or a number string)</em> <b>
+                    <br />
+                    &nbsp;&nbsp;&nbsp;return Number(number).toLocaleString("en-GB"); <br />
+                    }
+                </b> <br /> <br />
+
+                <b><span class="redMess">A function for formatting currency</span></b> could be... <br />
+                <b>
+                    const formatNumber = number => { <br />
+                </b><em>&nbsp;&nbsp;&nbsp;// If number is NOT a number then return number asis</em> <b>
+                    <br />
+                    &nbsp;&nbsp;&nbsp;if(isNaN(number)) { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return number; <br />
+                    &nbsp;&nbsp;&nbsp;} <br />
+                </b><em>&nbsp;&nbsp;&nbsp;// If I get here then I know it's a number (or a number string)</em> <b>
+                    <br />
+                    &nbsp;&nbsp;&nbsp;return Number(number).toLocaleString("en-GB",  {style: 'currency', currency: 'GBP'}); <br />
+                    }
+                </b> <br /> <br />
+            </p>
+        </div>
+    </div>
+
+    <a href="#Top">Top</a>
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <p>
+                <b>To get a NUMBER from a STRING</b> <br />
+                Use <a href="https://www.w3schools.com/jsref/jsref_parseint.asp" target="_blank">parseInt(myString)</a> to grab the number value
+                of a string...<a href="https://www.w3schools.com/jsref/jsref_parsefloat.asp" target="_blank">parseFloat(myString)</a>
+                for values with decimal points.<br />
+                var x = "123" and var x = "123ABCD" will both return 123 as the number <br />
+                eg... <br />
+                <b>
+                    var y = parseInt("123ABCD"); <br />
+                    var y = parseInt("123");
+                </b> <br />
+                In both cases y will equal 123 <br /> <br />
+                but... <br />
+                <b>var y = parseInt("ABCD123");</b> <br />
+                will make y equal NaN (Not a Number) <br /> <br />
+                You could use <b><a href="https://www.w3schools.com/jsref/jsref_isnan.asp" target="_blank">isNaN</a>(myString)</b> to check if the string is a number first <br />
+                BUT this would calculate "123ABCD" as NOT A NUMBER whereas parseInt(myString) returns 123 <br /> <br />
+                OR <br />
+                You could check if the variable is a type "string" by using the command... <br />
+                <b>if (typeof myString === "string") {...}</b> <br />
+                or... <b>if (typeof(myString) === "string") {...}</b> <br /> <br />
+
+            </p>
+        </div>
+
+        <div class="divBorder divBSet">
+            <p>
+                <h3>String Interpolation - using variable names in a string</h3>
+                <b>To use a variable name inside a string and replace it with it's value</b> <br />
+                For example... <br /> <br />
+                <b>
+                    var userName = "Gary"; <br />
+                    var myString = ""; <br />
+                    myString = `My name is: ${userName}`; <br />
+                </b> <br />
+                <i>This would make <b>myString = "My name is: Gary"</b></i> <br /> <br />
+                Note... <br />
+                When using the <b>${ }</b> command the whole string must be enclosed in ` ` (that's
+                the chr just before the 1 and NOT " " or ' '). <br />
+                If you use " " (double quotes) or ' ' (single quotes) then myString will = "My name is: ${userName}" <br /> <br />
+
+
+
+
+            </p>
+        </div>
+    </div>
+
     <p>
-      There are various methods that can be used to manipulate the strings in Javascript. <br />
-      Or are useful to know... <br /> <br />
-       Further information on the methods can be found 
-        <a href="https://www.w3schools.com/jsref/jsref_obj_string.asp" target="_blank">HERE</a> <br /> <br />
-      Unless specified assume that <b>var x = "HELLO WORLD hello world HELLO WORLD"</b> is used. <br /> <br />
-        NOTE... <br />
-        In a STRING if you need to use chr's that may be used as part of the code, eg adding a quote <br />
-        you can use the <b>BACKSLASH (\) </b>before the chr you want to add, for example <br />
-        <b>myVar = "My name is \"Gary\"</b> and it will be in quotes<br />
-        or <br />
-        <b>myvar = "I want to add a single backslash here \\"</b><br />
-        <i>Any character following the backslash will be included but if you want a backslash then you need two, eg \\. 
-        as the first tells the system to just include the next chr as a literal chr and not part of the 
-        programming code and the second backslash is the chr to include.</i> <br /> <br />
-
-        Other uses could be:- <br />
-        \b - backspace <br />
-        \f - Form Feed <br />
-        \n - New Line (c/r l/f) <br />
-        \r - Carriage Return w/out line feed <br />
-        \t - horizontal tab <br />
-        \v - vertical tab <br /> <br />
+        Unless specified assume that <b>var x = "HELLO WORLD hello world HELLO WORLD"</b> is used.
     </p>
-  </section>
-  <div class="divFlex">
-    <div class="divBorder divBSet">
-      <p>
-        <b>.length</b> <br />
-        x.length = The number of chr's in your string. (answer=35) <br /> <br />
-
-        <b>.charAt(n)</b> <br />
-        n = the position number you want to return the character at. <br />
-        x.charAt(0) will = "H" <br />
-        x.charAt(7) will = "O" <br /> <br />
-
-        <b>.charCodeAt(n)</b> <br />
-        n = the position number you want to return the unicode (ASCII) character at. <br />
-        x.charAt(0) will = 72 (as ASCII 72 = "H") <br />
-        x.charAt(14) will = 108 (as ASCII 108 = "l") <br />
-        See also <b>String.fromCharCode(n)</b> (below)to do the opposite. <br /> <br />
-
-        <b>String.fromCharCode(n)</b> <br />
-        n = the ASCII value you want to return the character of. <br />
-        var z = String.fromCharCode(72) will = "H" <br />
-        var z = String.fromCharCode(108) = "l" <br /> <br />
-
-        <b>.endsWith(string))</b> <br />
-        string = the string you want to check your variable ENDS with. <br />
-        x.endsWith("ORLD") will = true <br />
-        x.endsWith("rld") will = false (as it is case sensitive) <br />
-        to ignore case you can say... <br />
-        x.toLowerCase().endsWith("world") and it will = true <br />
-        x.toUPPerCase().endsWith("WORLD") and it will = true <br /> <br />
-
-        <b>.startsWith(string)</b> <br />
-        string = the string value you want to check your variable STARTS with. <br />
-        x.startsWith("orld") will = true as it exists in the variable x. <br />
-        x.startsWith("orLD") will = false as it is case sensitive and does not exist <br />
-        x.toUpperCase().startsWith("WORLD") will = true as you are now only checking everything in UPPER case <br />
-        x.toLowerCase().startsWith("world") will = true as you are now only checking everything in lower case <br /> <br />
-
-        <b>.includes(string)</b> <br />
-        string = the string value you want to check if it exists. <br />
-        x.includes("world") will = true as it exists in the variable x. <br />
-        x.includes("WorLD") will = false as it is case sensitive and does not exist <br />
-        x.toUpperCase().includes("WORLD") will = true as you are now only checking everything in UPPER case <br />
-        x.toLowerCase().includes("world") will = true as you are now only checking everything in lower case <br /> <br />
-
-        <b>.indexOf(string, n)</b> <br />
-        string = the string value you want to get the position of. <br />
-        n = the starting position (optional : default 0)
-        x.indexOf("world") will = 18 as 'world' start at position 18. <br />
-        x.indexOf("HELLO") will = 0 as 'HELLO' starts at position 0. <br />
-        x.toUpperCase().indexOf("WORLD", 10) will = 18 as 'world' is at pos 18 if you start at pos 10. <br />
-        x.toLowerCase().indexOf("abcd") will = -1 as it does not exist. <br /> <br />
-
-        <b>.lastIndexOf(string, n)</b> <br />
-        string = the string value you want to get the position of. <br />
-        n = the starting position - it works backwards from this point (optional : default 0) <br />
-        NOTE...This will locate the LAST instance of where your string starts from <br />
-        x.lastIndexOf("world") will = 18 as 'world' start at position 18. <br />
-        x.lastIndexOf("HELLO") will = 24 as the last instance of 'HELLO' starts at position 24. <br />
-        BUT if you add a starting position it will look for the FIRST letter of your search string and
-        work BACKWARDS from there. <br />
-        x.lastIndexOf("HELLO", 20) will = 0 as the last instance of 'HELLO' between positions 0 and 20 starts at position 0. <br />
-        x.lastIndexOf("hello", 20) will = 12 as the last instance of 'HELLO' between positions 0 and 20 starts at position 0. <br />
-        x.toUpperCase().lastIndexOf("WORLD", 18) will = 18 as 'world' is at pos 18 and you are not checking for case. <br />
-        x.toLowerCase().lastIndexOf("abcd") will = -1 as it does not exist. <br /> <br />
-      </p>
-    </div>
-
-    <div class="divBorder divBSet">
-      <p>
-        <b>.match(/string/search)</b> <br />
-        This will count how many instances of your string it finds and return them as an array. <br />
-        The format is a bit different, you have to use the global (g) format... <br />
-        <b>/string/g</b> - where string=to search for, /g=perform a global search <br />
-        <b>/string/gi</b> - where string=to search for, /gi=perform a global case insensitive search <br />
-        var z = x.match(/world/gi) will return an array... <br />
-        z[0] will = WORLD <br />
-        z[1] will = world <br />
-        z[2] will = WORLD <br />
-        z.length will = 3 (to show how many instances it found) <br /> <br />
-
-        <b>.repeat(n)</b> <br />
-        n = the number of times to repeat the string. <br />
-        Note...It does not add a space between each string. <br />
-        x.repeat(3) will = "HELLO WORLD hello world HELLO WORLDHELLO WORLD
-        hello world HELLO WORLDHELLO WORLD hello world HELLO WORLD" <br />
-        <br />
-
-        <b>.replace(old, new)</b> <br />
-        This will replace your 'old' string with the 'new' string. <br />
-        Can be done in 2 ways, the first will ONLY replace the FIRST instance of 'old' it finds <br />
-        x.replace("WORLD", "PLANET") <br /> will = "HELLO PLANET hello world HELLO WORLD" <br />
-        x.replace("world", "planet") <br /> will = "HELLO WORLD hello planet HELLO WORLD" <br />
-        <b><i>OR you can use the global (g) modifier...</i></b> <br />
-        x.replace(/WORLD/g, "PLANET") <br /> will = "HELLO PLANET hello world HELLO PLANET" <br />
-        x.replace(/WORLD/gi, "PLANET") <br /> will = "HELLO PLANET hello PLANET HELLO PLANET" <br /> <br />
-
-        <b>.search(string)</b> <br />
-        string = string to search for <br />
-        This will find the FIRST instance of your search string (-1 = not found) <br />
-        x.search("WORLD") <br /> will = 6 <br />
-        x.search("world") <br /> will = 18 <br />
-        <b><i>OR you can use the global (g) modifier...</i></b> <br />
-        x.search(/world/gi) <br /> will = 6 <br /> <br />
-
-        <b>.slice(start, end)</b> <br />
-        start = start position <br />
-        end = up to (but not including) the position to end at. If missing it reads to the end. <br />
-        Will return a string of the chr's from the start position up to end-1.<br />
-        x.slice(4, 7) <br /> will = "O W" <br />
-        x.slice(4) <br /> will = "O WORLD hello world HELLO WORLD" <br />
-        You can also have negative values that will read from the end backwards (-1 is last chr not -0), eg...<br />
-        x.slice(-10, -6); = "ELLO" <br /> <br />
-
-        <b>.split(" ")</b> <br />
-        This will split your string on each value entered and return them as an array without the splitting chr in. <br />
-        So it's best to enter " " really. <br />
-        var z = x.split(" ") will return an array... <br />
-        z[0] will = "HELLO" <br />
-        z[1] will = "WORLD" <br />
-        z[2] will = "hello" <br />
-        z[3] will = "world" <br />
-        z[4] will = "HELLO" <br />
-        z[5] will = "WORLD" <br />
-        z.length will = 6 (to show how many instances it found) <br />
-        var z = x.split("O") will return an array... <br />
-        z[0] will = "HELL" <br />
-        z[1] will = " W" <br />
-        z[2] will = "RLD hello world HELL" <br />
-        z[3] will = " WV <br />
-        z[4] will = "RLD" <br />
-        z.length will = 5 <br />
-        var z = x.split() will return an array of 1 item only as you are not splitting it at all. <br />
-        z[0] = "HELLO WORLD hello world HELLO WORLD" <br /> <br />
-
-      </p>
-    </div>
-  </div>
-
-  <div class="divFlex">
-    <div class="divBorder divBSet">
-      <p>
-        <b>.substr(start, length)</b> <br />
-        start = the position number you want to start from (0=1st). <br />
-        if start is negative then count back from the end (-1 = 1st) <br />
-        length = The number of chr's to return (optional, default = last chr). <br />
-        x.substr(18, 4) will = "worl" <br />
-        x.substr(18) will = "world HELLO WORLD" <br />
-        x.substr(-14, 7) will = "ld HELL" <br /><br />
-
-        <b>.substring(start, end)</b> (similar to .slice()) <br />
-        start = the position number you want to start from (0=1st). <br />
-        end = Up to (but not including) the position you want to end at. <br />
-        x.substring(18, 23) will = "world" <br />
-        x.substring(18) will = "world HELLO WORLD" <br /> <br />
-
-        <b>.toLowerCase()</b> <br />
-        Will return your string all in lowercase letters. <br />
-        var z = x.toLowerCase()) will = "hello world hello world hello world" <br /> <br />
-
-        <b>.toUpperCase()</b> <br />
-        Will return your string all in UPPERCASE letters. <br />
-        var z = x.toUpperCase()) will = HELLO WORLD HELLO WORLD HELLO WORLD" <br /> <br />
-
-        <b>.toString())</b> <br />
-        Returns your variable as a STRING. <br />
-        var a = 123.5 <br />
-        var b = a.toString() <br />
-        then b will = "123.5"<br /> <br />
-
-      </p>
-    </div>
-
-    <div class="divBorder divBSet">
-      <p>
-        <b>.test(str)</b> <br />
-        The test() method tests for a REGEX match in a string. <br />
-        This method returns true if it finds a match, otherwise it returns false. <br />
-        var aStr = " HELLO WORLD " <br />
-        var regExp = new RegExp("e", "i"); <br />
-        var z = regExp.test(aStr) <br />
-        <i>(will give z = TRUE as it will search for the letter "e" in the variable 'aStr'
-          (ignoring case because of the "i"))</i> <br />
-        OR <br />
-        var regExp = new RegExp("E(LL)+"); <br />
-        var z = regExp.test(aStr) <br />
-        <i>(will give z = TRUE as it will search for the letter "E" followed by "LL" in the variable 'aStr'
-          (NOT ignoring case because the "i" is missing))</i> <br />
-        <i>See the code on my <a href="otherRegex.html" target="_blank">RegEx</a> web page for more on 'new RegExp()'.</i> <br />
-        <br />
-
-        <b>.trim()</b> <br />
-        Will strip all leading AND trailing spaces from your string. <br />
-        var a = " HELLO WORLD " <br />
-        var b = a.trim() will = "HELLO WORLD" <br /> <br />
-
-        <b>.trimLeft()</b> <br />
-        Will strip all leading spaces from your string. <br />
-        var a = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HELLO WORLD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" <br />
-        var b = a.trimLeft() will = "HELLO WORLD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" <br /> <br />
-
-        <b>.trimRight()</b> <br />
-        Will strip all trailing spaces from your string. <br />
-        var a = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HELLO WORLD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" <br />
-        var b = a.trimRight() will = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HELLO WORLD" <br /> <br />
-        <br />
-
-      </p>
-    </div>
-  </div>
-
-  <div class="divFlex">
-    <div class="divBorder divBSet">
-      <p>
-        <b>To get a NUMBER from a STRING</b> <br />
-        Use <a href="https://www.w3schools.com/jsref/jsref_parseint.asp" target="_blank">parseInt(myString)</a> to grab the number value
-        of a string...<a href="https://www.w3schools.com/jsref/jsref_parsefloat.asp" target="_blank">parseFloat(myString)</a>
-        for values with decimal points.<br />
-        var x = "123" and var x = "123ABCD" will both return 123 as the number <br />
-        eg... <br />
-        <b>var y = parseInt("123ABCD"); <br />
-          var y = parseInt("123"); </b> <br />
-        In both cases y will equal 123 <br /> <br />
-        but... <br />
-        <b>var y = parseInt("ABCD123");</b> <br />
-        will make y equal NaN (Not a Number) <br /> <br />
-        You could use <b><a href="https://www.w3schools.com/jsref/jsref_isnan.asp" target="_blank">isNaN</a>(myString)</b> to check if the string is a number first <br />
-        BUT this would calculate "123ABCD" as NOT A NUMBER whereas parseInt(myString) returns 123 <br /> <br />
-        OR <br />
-        You could check if the variable is a type "string" by using the command... <br />
-        <b>if (typeof myString === "string") {...}</b> <br />
-        or... <b>if (typeof(myString) === "string") {...}</b> <br /> <br />
-
-      </p>
-    </div>
-
-    <div class="divBorder divBSet">
-      <p>
-        <h3>String Interpolation - using variable names in a string</h3>
-        <b>To use a variable name inside a string and replace it with it's value</b> <br />
-        For example... <br /> <br />
-        <b>var userName = "Gary"; <br />
-        var myString = ""; <br />
-        myString = `My name is: ${userName}`; <br /> </b> <br />
-        <i>This would make <b>myString = "My name is: Gary"</b></i> <br /> <br />
-        Note... <br />
-        When using the <b>${ }</b> command the whole string must be enclosed in ` ` (that's
-        the chr just before the 1 and NOT " " or ' '). <br />
-        If you use " " (double quotes) or ' ' (single quotes) then myString will = "My name is: ${userName}" <br /> <br />
-
-
-
-
-      </p>
-    </div>
-  </div>
-
-  <p>
-    Unless specified assume that <b>var x = "HELLO WORLD hello world HELLO WORLD"</b> is used.
-  </p>
-  <a href="#Top">Top</a>
+    <a href="#Top">Top</a>
 </body>
 
 </html>

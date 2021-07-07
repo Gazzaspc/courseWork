@@ -20,7 +20,6 @@
 
     <!--Dont specify the below file as the next one reads in from it using the 'require(..) method -->
     <!--<script src="Scripts/converters.js"></script>-->
-
     <!--This needs to be included but as it does NOT work on a local machine I commented out for now...-->
     <!--<script src="Scripts/celsius-to-fahrenheit.js"></script>-->
 
@@ -140,7 +139,7 @@
 
                     module.exports.fahrenheitToCelsius = function(fahrenheit) { <br />
                     &nbsp;return (fahrenheit - 32) * (5/9); <br />
-                    }; <br /> <br />
+                    }; <br /> <br /> <br />
                 </b>
 
                 And the IMPORTING code looks like... <br /> <br />
@@ -152,6 +151,14 @@
                 <b>
                     const { celsiusToFahrenheit, secondFunction, ...etc... } = require('./converters.js');
                 </b> <br /> <br />
+
+                OR you could even create them individually like this... <br />
+                <b>
+                    const allModules = require('./converters.js'); <br /> <br />
+                    const celsiusToFahrenheit = allModules.celsiusToFahrenheit; <br />
+                    const secondFunction = allModules.secondFunction; <br />
+                    const myThirdFunction = allModules.thirdFunction; <br />
+                </b> <br />
 
             </p>
         </div>
@@ -216,12 +223,7 @@
                     } <br /> <br />
 
                     <span class="blueMess">export</span> { toggleHiddenElement, changeToFunkyColor }; <br />
-
-
                 </b>
-
-
-
             </p>
         </div>
 
@@ -240,19 +242,146 @@
                     }); <br />
                 </b> <br />
 
+                <em>
+                    Note... <br />
+                    If you need to import a method/function and change its name (maybe you have 2 different files that
+                    have identically named methods) then you can change the name(s) by...
+                </em> <br />
+                <b>
+                    import {validate as validateUsername} from "./username-validation.js/"; <br />
+                    import {validate as validatePassword} from "./password-validation.js/";
+                </b> <br /> <br />
+
+                <em>And apparently you can import everything from a file by...</em> <br />
+                <b>import * as MyClasses from "./MyClass.js"</b> <br />
+                <em>// use MyClasses.MyClass, MyClasses.MyOtherClass, MyClasses.More</em> <br /> <br />
+
                 <hr /> <br />
 
                 And to demonstrate this I will add a BUTTON which will toggle a &lt;p id="secret-p"&gt; element, see below... <br /> <br />
+                <em>
+                    <b>NOTE...</b> <br />
+                    In order to include the <b>secret-messages.js</b>  module file in to your .html file you will need to include the
+                    script that calls it... <br />
+                    <b>&lt;script type="module" src="./Scripts/secret-messages.js"&gt;&lt;/script&gt;</b>
+                </em> <br /> <br />
             </p>
             <button id="secret-button"> Secret Button </button>
-            <p id="secret-p" style="display: none"> Modules are fancy! </p>
+            <p id="secret-p" style="display: none">Secret Code can be found here! </p>
+            <p>
+                <br /> <br />
+                <em>
+                    NOTE... <br />
+                    This does not work when running on a local machine but when running from a server the clicking of
+                    the button seems to work. <br />
+                    So it works when running via <b>github</b>... so you can try
+                    clicking <a href="https://gazzaspc.github.io/courseWork/webLearning/Node.html" target="_blank">HERE</a> to run it
+                </em> <br /> <br />
+            </p>
 
-            <!-- I need this so bring in the secret-messages.js file -->
+            <!-- I need this so bring in the secret-messages.js module file (note it says ' type="module" ' -->
             <script type="module" src="./Scripts/secret-messages.js"></script>
         </div>
     </div>
 
+    <a href="#">Top</a> <br />
 
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h1>Comments</h1>
+            <p>
+                Using <b>default</b> when exporting/importing. <br /> <br />
+
+                ES6 provides two ways to export a module from a file: <b>named export</b> and <b>default export</b>. <br /> <br />
+
+                <h2>Named Export: (export)</h2>
+                With named exports, you can have multiple named exports per file. <br />
+                Then import the specific exports you want surrounded in braces - {}. <br />
+                The name of imported module has to be the same as the name of the exported module. <br /> <br />
+            </p>
+
+            <div class="divBorder">
+                <p>
+                    // exports from ./MyComponent.js file <br />
+                    export const MyComponent = () => {} <br />
+                    export const MyComponent2 = () => {} <br />
+
+                    <hr> <br />
+
+                    // imports <br />
+                    // ex. importing a single named export <br />
+                    import { MyComponent } from "./MyComponent"; <br /> <br />
+
+                    // ex. importing multiple named exports <br />
+                    import { MyComponent, MyComponent2 } from "./MyComponent"; <br /> <br />
+
+                    // ex. giving a named import a different name by using "as": <br />
+                    import { MyComponent2 as MyNewComponent } from "./MyComponent"; <br /> <br />
+
+                    //Import all the named exports onto an object: <br />
+                    import * as MainComponents from "./MyComponent"; <br />
+                    // use MainComponents.MyComponent and MainComponents.MyComponent2 here <br />
+                </p>
+
+            </div>
+        </div>
+
+        <div class="divBorder divBSet">
+            <p>
+                <h2>Default Export: (export default)</h2>
+
+                You can have ONLY ONE default export per file. <br />
+                When we import we have to specify a name and import like: <br /> <br />
+            </p>
+
+            <div class="divBorder">
+                <p>
+                    // export <br />
+                    const MyComponent = () => {} <br />
+                    export default MyComponent; <br /> <br />
+
+                    // import <br />
+                    import MyDefaultComponent from "./MyDefaultExport.js"; <br />
+                    //The naming of import is completely independent in default export and we can use any name we like. <br />
+
+                </p>
+            </div>
+            <p>
+                <br />
+                So, for <span class="redMess">EXPORTING</span>, we use braces {} when exporting one or more named methods, eg... <br />
+                <b>export {method1, method2, method3, ...}; </b> <br /> <br />
+
+                And/Or we could export it at the time of creating the method... <br />
+                <b>export const MyComponent = (domElement) => {return ...}; </b> <br /> <br />
+
+                and do not use braces for the default export... <br />
+                <b>export default MyDefaultMethod;</b> <br /> <br /> <br />
+
+
+                And, for <span class="redMess">IMPORTING</span>, we use braces {} with named imports, eg... <br />
+                <b>import {method1, method2, ...} from "./MyModules.js"</b> <br /> <br />
+
+                and do not use braces for the default import... <br />
+                <b>import MyDefaultMethodName from "./MyModules.js"</b> <br />
+                <em>
+                    (Note... on default imports we need to name the default method and we can name it
+                    anything we like, it is completely independent from the .js file)
+                </em><br /> <br />
+
+                You could read the MDN Web Document on JavaScript Modules
+                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules" target="_blank">HERE</a>
+                if you like. <br /> <br />
+
+                And you could read the Codecademy Document on getting user input in Node.js 
+                <a href="https://www.codecademy.com/articles/getting-user-input-in-node-js" target="_blank">HERE</a>
+                if you like. <br /> <br />
+            </p>
+
+        </div>
+
+    </div>
+
+    <a href="#">Top</a> <br />
 
 </body>
 </html>

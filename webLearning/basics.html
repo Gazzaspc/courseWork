@@ -23,12 +23,9 @@
     The difference between the two is that Reset completely eradicates all styles, while
     Normalize attempts to add consistency to the browser styling.
     People prefer Normalize, because you don't have to go back and re-style every element.-->
-    <link rel="stylesheet" href="CSS/normalize.css" />
-
-
     <!--Also main.css is a common one used alongside normalise.css-->
+    <link rel="stylesheet" href="CSS/normalize.css" />
     <link rel="stylesheet" href="CSS/main.css" />
-
 
     <!--Then add your own .css with all your own changes...I have MyStyles.css on the go here-->
     <link rel="stylesheet" href="CSS/MyStyles.css" />
@@ -38,8 +35,6 @@
     <script src="JQuery/jquery-3.5.1.js"></script>
     <!-- You can use the online one but for now I will download it and use my copy of it (use one or the other)-->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-
-
     <!-- If you have your own default javaScript file - and you probably will - mine is myScripts.js -->
     <!-- It's inside a [script] as it holds commands that run in a [script] environment -->
     <script src="Scripts/myScripts.js"></script>
@@ -51,14 +46,14 @@
 
         /* ***********eg... BREAKPOINTS for different size screens - SEE BELOW FOR EXAMPLES *************   */
         /*Breakpoints
-        We use @media queries to define breakpoints. A breakpoint sets the pixel width at 
-        which the content will collapse - when your navigation bar will transform in 
-        some way, and your grid will break into individual elements. Google Developers suggests 
+        We use @media queries to define breakpoints. A breakpoint sets the pixel width at
+        which the content will collapse - when your navigation bar will transform in
+        some way, and your grid will break into individual elements. Google Developers suggests
         basing breakpoints on content, not specific devices, and people agree.
 
-        You may have heard the phrase mobile first flying around a lot. 
-        The concept is that you build your content to look great for mobile, and scale up 
-        from there. 
+        You may have heard the phrase mobile first flying around a lot.
+        The concept is that you build your content to look great for mobile, and scale up
+        from there.
         This is a good philosophy to work with.*/
 
         /*(Note the below is used in the  dingbatsNoB.html form)*/
@@ -99,26 +94,31 @@
         /************ legend color-profile BREAKPOINT EXAMPLES **********/
     </style>
 
-    <!--Any code that is just for this page and not to go in myScripts.js can go here (or in a SCRIPT area elsewhere 
+    <!--Any code that is just for this page and not to go in myScripts.js can go here (or in a SCRIPT area elsewhere
     on the page or at the end)-->
     <script>
-                            //...Code / Functions etc...
+                                    //...Code / Functions etc...
     </script>
 
 </head>
 <body class="bodyMove">
     <a href="index.html">Home</a>
 
-    <div class="divBorder divBSet">
-        <h1>See the code behind this page - for a very BASIC set-up of a webpage</h1>
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h1>See the code behind this page - for a very BASIC set-up of a webpage</h1>
 
-        <p>
-            I will probably add to it as I go... <br /> <br />
-            But you can see if this 
-            <a href="https://www.taniarascia.com/you-dont-need-a-framework/" target="_blank">LINK</a> 
-            works for a small guide by 
-            Tania Rascia (whoever she is) <br /> <br />
-        </p>
+            <p>
+                I will probably add to it as I go... <br /> <br />
+                But you can see if this
+                <a href="https://www.taniarascia.com/you-dont-need-a-framework/" target="_blank">LINK</a>
+                works for a small guide by
+                Tania Rascia (whoever she is) <br /> <br />
+            </p>
+        </div>
     </div>
+
+    <a href="#">Top</a> <br />
+
 </body>
 </html>

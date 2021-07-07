@@ -73,7 +73,7 @@
     }
 
     .pos2 {
-      left: 50%;
+      left: 80%;
       top: 50%;
       /* Above will centre the top corner of your box or image on the web page */
       transform: translate(-50%, -50%);
@@ -143,62 +143,91 @@
   </section>
 
   <section id="Sticky">
-    <div class="divFlex divBorder">
+      <div class="divFlex divBorder">
 
-      <div class="divMargin1 divBorder">
-        <h2>default <span class="colBlue">STICKY</span> <br />
-          elements</h2>
+          <div class="divMargin1 divBorder">
+              <h2>
+                  default <span class="colBlue">STICKY</span> <br />
+                  elements
+              </h2>
 
-        <div class="box1 posSticky">1a. On its own, using no<br />
-          left:; <br />
-          top:;</div>
-        <div class="box2 posSticky">
-          1b. Parent, using no<br />
-          left:; <br />
-          top:;
-          <div class="box3 posSticky">1c. Child</div>
-        </div>
-      </div>
-
-
-      <div class="divMargin1 divBorder">
-        <h2>using positioning elements</h2>
-        <p>
-          boxes 2a and 2b & 2c represent <br />
-          Box 2a to centre of screen. <br />
-          Box 2b near to top right <br />
-          - box 2b is parent of 2c <br />
-          Box 2c (child) is set as <br />
-          position: absolute; to keep its <br />
-          anchor point same as its parent (2b)
-        </p>
-
-        <div class="box1 pos2Main posSticky">2a. On its own, using<br />
-          left:50px; <br />
-          top:20px; <br />
-          margin:30px; </div>
-        <div class="box2 pos2St posSticky">
-          2b. Parent, using <br />
-          right:25px; <br />
-          top:5px;
-          <div class="box3 pos3 posAbsolute">2c. Child, using <br />
-            left:20px; <br />
-            top:60px;
+              <div class="box1 posSticky">
+                  1a. On its own, using no<br />
+                  left:; <br />
+                  top:;
+              </div>
+              <div class="box2 posSticky">
+                  1b. Parent, using no<br />
+                  left:; <br />
+                  top:;
+                  <div class="box3 posSticky">1c. Child</div>
+              </div>
           </div>
-        </div>
-        <p>
-          NOTE... <br />
-          The TOP:value when used with a STICKY position: <br />
-          means that when the user SCROLLS down <br />
-          the STICKY element will be fixed in position at <br />
-          the value that was set. Eg if <b>top: 20px;</b> was used <br />
-          then the element will stay on screen at 20px from the <br />
-          top and not disappear from view. <br />
-          It does this as long as it's PARENT element is on screen.
 
-        </p>
+
+          <div class="divMargin1 divBorder">
+              <h2>using positioning elements</h2>
+              <p>
+                  boxes 2a and 2b & 2c represent <br />
+                  Box 2a to centre of screen. <br />
+                  Box 2b near to top right <br />
+                  - box 2b is parent of 2c <br />
+                  Box 2c (child) is set as <br />
+                  position: absolute; to keep its <br />
+                  anchor point same as its parent (2b)
+              </p>
+
+              <div class="box1 pos2Main posSticky">
+                  2a. On its own, using<br />
+                  left:50px; <br />
+                  top:20px; <br />
+                  margin:30px;
+              </div>
+              <div class="box2 pos2St posSticky">
+                  2b. Parent, using <br />
+                  right:25px; <br />
+                  top:5px;
+                  <div class="box3 pos3 posAbsolute">
+                      2c. Child, using <br />
+                      left:20px; <br />
+                      top:60px;
+                  </div>
+              </div>
+              <p>
+                  NOTE... <br />
+                  The TOP:value when used with a STICKY position: <br />
+                  means that when the user SCROLLS down <br />
+                  the STICKY element will be fixed in position at <br />
+                  the value that was set. Eg if <b>top: 20px;</b> was used <br />
+                  then the element will stay on screen at 20px from the <br />
+                  top and not disappear from view. <br />
+                  It does this as long as it's PARENT element is on screen.
+
+              </p>
+          </div>
+
+          <div class="divMargin1 divBorder">
+              <h2>Using Sticky - Example</h2>
+              <p>
+                  Scroll up/down to see what happens to the
+                  boxes in this pane. <br /> <br />
+              </p>
+
+              <div class="box1 pos2Main posSticky">
+                  3a. On its own - Box 1<br />
+
+              </div>
+              <div class="box1 pos2Main posSticky" style="background-color: red;">
+                  3b. On its own - Box 2 <br />
+
+
+              </div>
+              <div class="box1 pos2Main posSticky" style="background-color: green;">
+                  3c. On its own - Box 3 <br />
+              </div>
+
+          </div>
       </div>
-    </div>
   </section>
 
   <section id="Fixed">
@@ -241,7 +270,7 @@
 
         <div class="box1 pos2 posFixed">3a. FIXED <br />
           On its own, using<br />
-          left:50%; <br />
+          left:80%; <br />
           top:50%; <br />
           Also used transform: </div>
         <div class="box2 posParent posFixed">
@@ -261,23 +290,29 @@
   </section>
 
   <section>
-    <p>
-      I just need a FILLER section to <br />
-      add extra to the bottom of the page <br />
-      so I can SCROLL down to see <br />
-      what happens with my boxes <br />
-      . <br />
-      . <br />
-      . <br />
-      . <br />
-      . <br />
-      . <br />
-      . <br />
-      . <br />
-      . <br />
-      . <br />
-      And I also think I need a really long line of text here to enable the bottom scroll bar (horizontal) to actually work then I can see what happens then.
-    </p>
+      <p>
+          I just need a FILLER section to <br />
+          add extra to the bottom of the page <br />
+          so I can SCROLL down to see <br />
+          what happens with my boxes <br />
+          . <br />
+          . <br />
+          . <br />
+          . <br />
+          . <br />
+          . <br />
+          . <br />
+          . <br />
+          . <br />
+          . <br />
+          . <br />
+          . <br />
+          . <br />
+          . <br />
+          . <br />
+          . <br />
+          And I also think I need a really long line of text here to enable the bottom scroll bar (horizontal) to actually work then I can see what happens then.
+      </p>
   </section>
 
 </body>

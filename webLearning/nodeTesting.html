@@ -1,0 +1,459 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+
+
+    <!--Define Viewport
+    Before you do anything else, you should define the width of the viewport
+    in your HTML. This will ensure that your site has no horizontal scroll - the full
+    site will be visible, and users will not have to zoom on mobile to see the content.-->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+    <!-- set a TITLE to appear on the tab header-->
+    <title>Testing using Node.js & Mocha</title>
+
+
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+
+    <!--Then add your own .css with all your own changes...I have MyStyles.css on the go here-->
+    <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+
+
+    <style>
+        /*...Code Styles...*/
+        pre {
+            font-size: 12px;
+
+        }
+
+    </style>
+
+
+</head>
+<body class="bodyMove">
+    <a href="index.html">Home</a>
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h1>Testing using Node and Mocha</h1>
+
+            <p>
+                Most of this will probably be copied from Codecademy's site until I learn it. <br /> <br />
+
+                Before writing any tests you’ll need to use Node.js and npm to set up a JavaScript project and install Mocha. <br /> <br />
+
+                <a href="https://mochajs.org/#getting-started" target="_blank">Here</a> is a getting
+                started document from MOCHA which may help too. <br /> <br />
+
+                <em>(<b>Note...</b> <br />
+                There is also a technique called <b>Chai</b> but my course only mentioned it and gave no 
+                examples - but you can read about it 
+                <a href="https://www.chaijs.com/guide/" target="_blank">HERE</a>... it's a getting
+                started document from CHAI which may help too.) </em><br /> <br />
+
+                Node allows you to run JavaScript in the terminal. <br />
+                npm is a Node tool that allows you to download packages from the web, and manage them in a JavaScript project. <br />
+                Mocha is one of those packages and is used to test other JavaScript code. <br /><br />
+
+                A JavaScript project is a directory of files. <br />
+                The following command (in windows Command Prompt) creates a file <b>package.json</b> that can be
+                used to manage packages for the project. <br />
+                (You will need to change directory (cd) in to your project directory, then...) <br /> <br />
+
+                <b>$ npm init</b> <br /> <br />
+
+                After running this command you will be prompted to enter information about your project. <br />
+                It’s okay to skip some fields if you’re not ready to enter that information. <br /> <br />
+
+                With your project setup, you can install packages. <br /> <br />
+
+                <b>$ npm install mocha -D </b> <br /> <br />
+
+                Here’s what this command means: <br /> <br />
+
+                <b>npm install </b>tells npm to install a package from the internet and any other packages it depends on. <br />
+                <b><em>mocha </em> </b> is the package you want to download. <br />
+                <b>-D </b> notes that this package is a dependency for your project, which makes it easier for other developers to use. <br /> <br />
+
+                Once you 'npm install' packages, you can find the packages and all their dependencies in the node_modules folder. <br />
+                The new directory structure contains the following: <br /> <br />
+
+                project <br />
+                |_ node_modules <br />
+                |___ .bin <br />
+                |___ mocha <br />
+                |___ ... <br />
+                |_ package.json <br />
+                <em>The ... in the file structure represents other packages that are a dependency for Mocha. </em> <br /> <br />
+
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <p>
+                After installing Mocha as a dependency we can run it in two ways. <br /> <br />
+
+                The first (and more tedious) method is to call it directly from node_modules: <br />
+                <b>$ ./node_modules/mocha/bin/mocha </b> <br /> <br />
+
+                The second (and recommended) method is to add a script to the <b>package.json</b> file. <br />
+                In the <b>scripts</b> object in <b>package.json</b>, set the value of "test" to mocha. <br />
+                It should look like this: <br /> <br />
+
+                <b>
+                    "scripts": { <br />
+                    &nbsp;&nbsp;&nbsp;"test": "mocha" <br />
+                    }
+                </b> <br /> <br />
+
+                Now you can call Mocha with the following command: <br />
+                <b>$ npm test </b> <br /> <br />
+
+                Instead of manually running each test in the test directory, you can use this command
+                to run the full test suite automatically. <br /> <br />
+
+                <hr /> <br />
+
+                <b>DESCRIBE</b> and <b>IT</b> blocks <br /> <br />
+
+                In Mocha we group tests using the <b>describe</b> function and define tests using the <b>it</b> function. <br /> <br />
+
+                These two functions can be used to make your test suite complete, maintainable, and expressive
+                in the following ways: <br /> <br />
+
+                Structure your test suite: you can organize tests into nested groups that reflect
+                the structure of your implementation code. <br /> <br />
+
+                Provide informative messages: you can define your tests using human-readable strings. <br /> <br />
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>describe and it</h2>
+
+            <p>
+                In Mocha we group tests using the describe function and define tests using the it function. <br />
+                These two functions can be used to make your test suite complete, maintainable, and expressive. <br /> <br />
+
+                If you are testing a Math object with the method .min, you could use the following test code. <br />
+                <em>
+                    (Note...You need one <b>describe</b> command for the object <b>Math</b> and
+                    another <b>describe</b> command for the <b>.min</b> method)
+                </em><br /> <br />
+
+                You would then use the <b>it</b> command to perform the required test(s). <br />
+                The text in the <b>it</b> command is displayed in the console log to inform you what is being tested. <br /> <br />
+
+                <b>
+                    describe("Math", () => { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;describe(".min", () => { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it("returns the argument with the lowest value", () => { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//...Put your 'assertion code' in here...eg... <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assert.ok(Math.min(30, 40, 50, 20) === 20); <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}); <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;}); <br />
+                    }); <br /> <br />
+                </b>
+
+                When testing this, the above code could be in file <b>index_test.js</b> for example, then in command prompt
+                you would run... <br />
+                <b>$ npm test</b> <br />
+                and you would get a message <br />
+                <span class="greenMess">1 passing</span> <br />
+                as the Math.min would return 20 and check that it equals 20. <br /> <br /> <br />
+
+                I know all of these examples are not really complete as you need the file names & directories and, maybe, more
+                explanation on NODE but this is just an example of what you could do in <b>index_test.js</b> in order
+                to test it. <br /> <br />
+
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>assert</h2>
+
+            <p>
+                To write the tests themselves, we can use the assert.ok method provided by Node.js. <br /> <br />
+
+                In programming, a test compares an expected outcome to an actual outcome. <br />
+                For example, we expect the outcome of the following code… <br /> <br />
+
+                <b>const a = 1 + 2;</b> <br /> <br />
+
+                …to be: a has a value of 3. <br />
+                To test the value saved to a with plain JavaScript, you would need to write a conditional statement
+                comparing a to the expected result. Inside the statement, you would construct an error when the
+                actual outcome does not match the expected. <br /> <br />
+
+                assert.ok() allows you to compare values and throw errors as needed using one function call. <br /> <br />
+
+                As it's a Node module, assert can be imported at the top of your files with: <br /> <br />
+
+                <b>const assert = require('assert'); </b> <br /> <br />
+
+                You call assert functions like this: <br /> <br />
+
+                <b>assert.ok(a === 3); </b> <br />
+                <em>...or you could say...</em> <br />
+                <b>assert.ok(a === 3, "This is my message"); </b> <br />
+                <em>
+                    (the a === 3 is whatever test you are performing... <br />
+                    ...if you include a message then this message will show on the console log as well)
+                </em> <br /> <br />
+
+                In this case a === 3 evaluates to true, so no error is thrown. <br />
+                If an argument passed to assert.ok() evaluates to false, an AssertionError is thrown. <br />
+                The error communicates to Mocha that a test has failed, and Mocha logs the error message to the console. <br /> <br />
+
+                For instance, you could see some text, which includes... <br />
+                <span class="redMess">1) returns the argument with the lowest value</span> <br />
+                <span class="greenMess">0 passing (7ms)</span> <br />
+                <span class="redMess">1 failing</span> <br /> <br />
+
+                <b>Note</b> <br />
+                You can have more than 1 <b>assert</b> command within the <b>it</b> command <br />
+                but each <b>it</b> group counts as 1 passing (or 1 failing) and not each individual <b>assert</b>. <br />
+                Therefore, 4 'assert' in 2 different 'it' (or is it each 'describe'??) will only be 2 passing's. <br /> <br />
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h3>It is also worth noting</h3>
+
+            <p>
+                It is also worth noting that you may need to undo some things that may happen in your test(s), for example... <br />
+                You may create new test files that need to be deleted when the testing is over. <br />
+                Or you may write to tables and need to delete the information. <br />
+                Or maybe you set permissions that need to be removed. <br />
+                Whatever you need to be undone can be put in your file like this (it is known as a 'teardown')... <br /> <br />
+
+                <b>
+                    describe('example', () => { <br /> <br />
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;afterEach(() => { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// teardown goes here <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;}); <br /> <br />
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;it('.sample', () => { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// test goes here <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;}); <br /> <br />
+
+                    });
+                </b> <br /> <br />
+
+                This way then it will run the 'teardown' when your testing completes whether or not it fails or passes okay. <br />
+                <em>(If it fails then the code stops running, but the teardown still happens).</em> <br /> <br />
+
+                Note... <br />
+                <b>afterEach() will be executed after each '<b>it</b>' statement.</b> <br /> <br />
+            </p>
+
+        </div>
+
+        <div class="divBorder divBSet">
+            <h3>Node.js Built-in Modules</h3>
+
+            <p>
+                Node.js has a set of built-in modules which you can use without any further installation. <br /> <br />
+
+                See W3Schools page for a list of
+                <a href="https://www.w3schools.com/nodejs/ref_modules.asp" target="_blank">Node.js Modules</a>
+                like assert(), fail(), equal, etc. <br /> <br />
+
+                And if you want to take a look at nodejs.org's own site on assertion testing then
+                <a href="https://nodejs.org/api/assert.html#assert_assert_throws_fn_error_message" target="_blank">Click Here</a> <br /> <br />
+
+
+            </p>
+
+        </div>
+    </div>
+
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h3>Another small Example</h3>
+
+            <p>
+                This is another small example that builds a test scenario <br />
+                and uses <b>assert.deepEqual(<em>array1, array2</em>)</b> to test two objects (in this case arrays). <br />
+                It also shows the different stages (known as <em>Setup, Exercise & Verify</em>) in the test scenario... <br /> <br />
+
+                <b>
+                    const assert = require('assert'); <br /> <br />
+
+                    describe('+', () => { <br /> <br />
+
+                    &nbsp;&nbsp;&nbsp;it('returns the sum of two values', () => {<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Setup <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let expected = [3, 4, 7]; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let sum = [3, 4]; <br /> <br />
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Exercise <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum.push(3 + 4); <br /> <br />
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Verify <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assert.deepEqual(sum, expected, "My message goes in here"); <br />
+                    &nbsp;&nbsp;&nbsp;}); <br /> <br />
+                    });
+                </b> <br /> <br />
+
+                NOTE... <br />
+                The assert.deepEqual is used to check objects (eg arrays are objects, variables are not) as
+                assert.equal will fail when checking objects. <br />
+                If the test fails then "My message goes in here" will be displayed so you know where it failed... useful
+                when performing a test with multiple <b>asserts()</b>. <br /> <br />
+
+            </p>
+
+        </div>
+
+        <div class="divBorder divBSet">
+            <h2>Other files to see</h2>
+
+            <p>
+                I also have created in:- <br /> <br />
+
+                <b>
+                    D:\ <br />
+                    &nbsp;&nbsp;&nbsp;VisualStudioWeb\ <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Javascript Modules Using Node"\ <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Testing using Node.js - Rooster Call"\  <br /> <br />
+                </b>
+
+                2 files, called:- <br /> <br />
+
+                <b>index.js </b> <br />
+                Which exports some methods/functions that the testing file (index_test.js) uses. <br /> <br />
+
+                <b>index_test.js </b> <br />
+                This imports from index.js and performs the Node.js testing checks. <br /> <br />
+
+                This all make up another little Node.js testing program from Codecademy. <br />
+                So could be worth looking at for further reference. <br /> <br />
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+    <p>Below are a copy of 2 forms used for a Codecademy example <br />
+    <b>index.js & index_test.js</b> <br /> <br />
+    </p>
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h2>Codecademy example</h2>
+            <hr />
+
+            <h3>index.js</h3>
+
+            <pre>
+const Calculate = {
+    //sum (is a function) and will 
+    //  become a property of Calculate
+    //eg    Calculate.sum([1,2,3]); 
+    sum(inputArray) {
+    if(inputArray.length === 0){
+        return 0
+    }
+    
+    return inputArray.reduce((sum, value) => {
+        return sum + value;
+    })
+    }
+}
+
+module.exports = Calculate;
+
+            </pre>
+
+            <hr />
+
+            <h3>Alternative index.js</h3>
+
+            <pre>
+function myReduceFunction(total, num) {
+    return total+num;
+}
+
+const Calculate = {
+    sum(inputArray) {
+    if(inputArray.length === 0){
+        return 0
+    }
+    
+    return inputArray.reduce(myReduceFunction)
+    }
+}
+
+module.exports = Calculate;
+
+            </pre>
+
+        </div>
+
+        <div class="divBorder divBSet">
+            <h2>Codecademy example</h2>
+
+            <h3>index_test.js</h3>
+
+            <pre>
+const assert = require('assert');
+const Calculate =  require('../index.js')
+
+describe('Calculate', () => {
+  describe('.sum',() => {
+    it('returns the sum of an array of numbers', () => {
+      const expectedResult = 6;
+      const inputArray = [1,2,3]
+      
+      const result = Calculate.sum(inputArray)
+      
+      assert.equal(result, expectedResult);
+    });
+    
+    it('returns the sum of a four item list', ()=>{
+      const expectedResult = 22;
+      const inputArray = [4,6,5,7];
+      
+      const result = Calculate.sum(inputArray);
+      
+      assert.equal(result, expectedResult)
+      
+    });
+    
+    it('returns zero when the array is empty', ()=>{
+       const expectedResult = 0;
+       const inputArray = [];
+       const result = Calculate.sum(inputArray);
+       assert.equal(result, expectedResult)
+    });
+  });
+});
+
+            </pre>
+
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+</body>
+</html>

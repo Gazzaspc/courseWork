@@ -21,7 +21,12 @@
     background-position: right 10% bottom 40%;
 }
 
-
+/* A Note for me...
+    My MartialsArts/martialArts.html page also uses its own blocker class
+    BUT that one resizes itself whenever the screen size changes.
+    So if the header gets smaller/bigger the size of the blocker changes with it.
+    ...see MartialArts/js/myJScript.js file 
+*/
 .blocker {
     /* This section creates a block (div) that follows the navbar
   so that the rest of the elements start below the fixed navbar */
@@ -147,7 +152,7 @@
 }
 
 .hideTogOn {
-    display: inline_block;
+    display: inline-block;
 }
 
 .home-section {

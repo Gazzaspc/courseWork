@@ -211,10 +211,68 @@
         </div>
     </div>
 
-
     <br /> <a href="#">Top</a> <br />
 
+    <div class="divFlex">
 
+        <div class="divBSet divBorder">
+            <h3>Some routines I used...part 5</h3>
+            <p>
+                I had to create a little game called Find My Hat <br />
+                It runs from the Command Prompt, using NODE <br />
+                and the code can be found in <br />
+                <b>D:/VisualStudioWeb/codecademyDemos/ <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;FindYourHat/FindYourHat.main.js</b> <br /> <br />
+
+                But a snippet from main.js looks like... <br /> <br />
+
+                class Field { <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;constructor(field) { <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._field = field <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;} <br /> <br />
+
+                &nbsp;&nbsp;&nbsp;&nbsp;get field() { <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return this._field; <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;} <br /> <br />
+
+                &nbsp;&nbsp;&nbsp;&nbsp;print() { <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let display = ""; <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._field.forEach(function (fieldLine) { <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fieldLine.forEach(function (fieldChr) { <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display = display + fieldChr; <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}); <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display = display + "\n"; <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}); <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;console.log(display); <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;} <br /> <br />
+
+                } <br /> <br />
+
+                function checkStatus(p1, p2) { <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;if (myField.field[pos1][pos2] == hole) { return 2; } <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;if (myField.field[pos1][pos2] == hat) { return 3; } <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;return 0; <br />
+                } <br /> <br />
+
+                const myField = new Field([ <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;['*', '░', '░', 'O', '░', '░'], <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;['░', 'O', '░', '░', '░', '░'], <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;['░', '^', '░', '░', '░', '░'], <br />
+                ]); <br /> <br /> <br />
+
+                This is just to show a class that holds an array of arrays & how to retrieve the information. <br />
+                So... <br />
+                Within the class Field is a property (field) <br />
+                The <b>const myField = new Field([ ...</b> creates a class called myField and sets the array to 
+                hold 3 arrays. <br />
+                You then interrogate the class (myField) by using, for example... <br />
+                <b>myField.field[pos1][pos2]</b> <br /> <br />
+
+                ....just an explanation of a small part of it. <br /> <br />
+            </p>
+        </div>
+    </div>
+    <br /> <a href="#">Top</a> <br />
 </body>
 
 </html>

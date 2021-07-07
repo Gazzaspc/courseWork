@@ -132,6 +132,7 @@
     <Content Include="webLearning\AddJavascript.html" />
     <Content Include="webLearning\alignment.html" />
     <Content Include="webLearning\Animation.html" />
+    <Content Include="webLearning\asyncJS.html" />
     <Content Include="webLearning\Background.html" />
     <Content Include="webLearning\BeforeAfter.html" />
     <Content Include="webLearning\BoxModel.html" />
@@ -205,6 +206,7 @@
     <Content Include="webLearning\Links.html" />
     <Content Include="webLearning\Lists_ulol.html" />
     <Content Include="webLearning\lodash.html" />
+    <Content Include="webLearning\nodeTesting.html" />
     <Content Include="webLearning\NthChild.html" />
     <Content Include="webLearning\NumberSection.html" />
     <Content Include="webLearning\oddElements.html" />
@@ -218,10 +220,12 @@
     <Content Include="webLearning\PseudoClasses.html" />
     <Content Include="webLearning\RoundBorders.html" />
     <Content Include="webLearning\Scripts\myScripts.js" />
+    <Content Include="webLearning\Scripts\sunglasses.js" />
     <Content Include="webLearning\Shadow.html" />
     <Content Include="webLearning\startFile.html" />
     <Content Include="webLearning\Structure.html" />
     <Content Include="webLearning\tables.html" />
+    <Content Include="webLearning\tags.html" />
     <Content Include="webLearning\TitlePopup.html" />
     <Content Include="webLearning\Transform.html" />
     <Content Include="webLearning\videos\GarySki.mp4" />

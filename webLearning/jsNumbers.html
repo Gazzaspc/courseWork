@@ -2,177 +2,239 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta charset="utf-8">
-  <title>Number Manipulation</title>
+    <meta charset="utf-8">
+    <title>Number Manipulation</title>
 
-  <link rel="stylesheet" href="CSS/normalize.css" />
-  <link rel="stylesheet" href="CSS/main.css" />
-  <link rel="stylesheet" href="CSS/MyStyles.css" />
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/MyStyles.css" />
 
 
 </head>
 
 <body class="bodyMove">
-  <section id="Top">
+    <section id="Top">
 
 
-    <a href="index.html">Home</a>
-    <h1>Number Manipulation</h1>
-    <p>
-      There are various methods that can be used to manipulate the numbers in Javascript. <br />
-      Or are useful to know... <br /> <br />
-      See <b><a href="https://www.w3schools.com/js/js_math.asp" target="_blank">Math.</a></b> object for more <br />
-      or <br />
-      See <b><a href="https://www.w3schools.com/jsref/jsref_obj_number.asp" target="_blank">Number.</a></b> reference for more
-    </p>
-  </section>
-  <div class="divFlex">
-    <div class="divBorder divBSet">
-      <p>
-        <b><a href="https://www.w3schools.com/jsref/jsref_parseint.asp">parseInt(myString)</a></b><br />
-        Returns the value as an integer. <br />
-        parseInt("123") will give an answer of 123 <br />
-        parseInt("123ABCD") will give an answer of 123 <br />
-        parseInt("123 456") will give an answer of 123 <br />
-        parseInt("ABCD123") will give an answer of NaN (Not a Number) <br />
-        parseInt("ABCD123").toString() will give an answer of "NaN" <br />
-        parseInt("123.456") will give an answer of 123 <br /> <br />
-        var y = parseInt("ABC123"); <br />
-        if (isNaN(y)) {alert("Failed - Not a Number")}; <br />
-        <i>may be a good way to check if it's a number if you want to know if
-          parseInt() worked. This way 'y' would = NaN and not 123. <br />
-          So it depends if you want "123ABC" to be an invalid number or not. </i> <br /> <br />
-        <br />
-        <b><a href="https://www.w3schools.com/jsref/jsref_parsefloat.asp">parseFloat(myString)</a></b><br />
-        Returns the value as a floating point. <br />
-        parseFloat("123") will give an answer of 123 <br />
-        parseFloat("123ABCD") will give an answer of 123 <br />
-        parseFloat("123 456") will give an answer of 123 <br />
-        parseFloat("ABCD123") will give an answer of NaN (Not a Number) <br />
-        parseFloat("ABCD123").toString() will give an answer of "NaN" <br />
-        parseFloat("123.456") will give an answer of 123.456 <br /> <br />
-        var y = parseFloat("ABC123"); <br />
-        if isNaN(y) == "NaN") {alert("Failed - Not a Number")}; <br />
-        <i>is another way to check if it's a number, if you want to know if
-          parseFloat() worked. </i> <br /> <br />
-        <br />
+        <a href="index.html">Home</a>
+        <h1>Number Manipulation</h1>
+        <p>
+            There are various methods that can be used to manipulate the numbers in Javascript. <br />
+            Or are useful to know... <br /> <br />
+            See <b><a href="https://www.w3schools.com/js/js_math.asp" target="_blank">Math.</a></b> object for more <br />
+            or <br />
+            See <b><a href="https://www.w3schools.com/jsref/jsref_obj_number.asp" target="_blank">Number.</a></b> reference for more
+        </p>
+    </section>
 
-        <b><a href="https://www.w3schools.com/jsref/jsref_isnan.asp">isNaN(myString)</a></b><br />
-        Checks to see if the value is Not a Number <br />
-        isNaN("123") will give an answer of FALSE as it is a number <br />
-        isNaN("123ABCD") will give an answer of TRUE as it is Not a Number <br />
-        isNaN("123 456") will give an answer of TRUE <br />
-        isNaN("ABCD123") will give an answer of TRUE <br />
-        isNaN("5-2") will give an answer of FALSE (it reckons 5-2 is a number) <br />
-        isNaN(true) will give an answer of FALSE (true is 1 / false is 0) <br />
-        isNaN(null) will give an answer of FALSE (it reckons null is a number) <br /> <br />
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <p>
+                <b><a href="https://www.w3schools.com/jsref/jsref_parseint.asp">parseInt(myString)</a></b><br />
+                Returns the value as an integer. <br />
+                parseInt("123") will give an answer of 123 <br />
+                parseInt("123ABCD") will give an answer of 123 <br />
+                parseInt("123 456") will give an answer of 123 <br />
+                parseInt("ABCD123") will give an answer of NaN (Not a Number) <br />
+                parseInt("ABCD123").toString() will give an answer of "NaN" <br />
+                parseInt("123.456") will give an answer of 123 <br /> <br />
+                var y = parseInt("ABC123"); <br />
+                if (isNaN(y)) {alert("Failed - Not a Number")}; <br />
+                <i>
+                    may be a good way to check if it's a number if you want to know if
+                    parseInt() worked. This way 'y' would = NaN and not 123. <br />
+                    So it depends if you want "123ABC" to be an invalid number or not.
+                </i> <br /> <br />
+                <br />
+                <b><a href="https://www.w3schools.com/jsref/jsref_parsefloat.asp">parseFloat(myString)</a></b><br />
+                Returns the value as a floating point. <br />
+                parseFloat("123") will give an answer of 123 <br />
+                parseFloat("123ABCD") will give an answer of 123 <br />
+                parseFloat("123 456") will give an answer of 123 <br />
+                parseFloat("ABCD123") will give an answer of NaN (Not a Number) <br />
+                parseFloat("ABCD123").toString() will give an answer of "NaN" <br />
+                parseFloat("123.456") will give an answer of 123.456 <br /> <br />
+                var y = parseFloat("ABC123"); <br />
+                if isNaN(y) == "NaN") {alert("Failed - Not a Number")}; <br />
+                <i>
+                    is another way to check if it's a number, if you want to know if
+                    parseFloat() worked.
+                </i> <br /> <br />
+                <br />
 
-        <b><a href="https://www.w3schools.com/js/js_datatypes.asp">typeof(myString)</a></b><br />
-        Checks to see what the variable type is <br />
-        typeof("123") will give an answer of "string" <br />
-        typeof("123ABCD") will give an answer of "string" <br />
-        typeof(123) will give an answer of "number" <br />
-        typeof(true) will give an answer of "boolean" <br />
-        typeof(myFunction) will give an answer of "function" <br />
-        typeof(myObject) will give an answer of "object" <br />
-        typeof 123 will give an answer of "number" <br />
-        typeof "123" will give an answer of "string" <br />
-        typeof true will give an answer of "boolean" <br />
-        eg <br />
-        if (typeof myString === "string") {...} <br />
-        or... if (typeof(myString) === "string") {...} <br /> <br />
-      </p>
+                <b><a href="https://www.w3schools.com/jsref/jsref_isnan.asp">isNaN(myString)</a></b><br />
+                Checks to see if the value is Not a Number <br />
+                isNaN("123") will give an answer of FALSE as it is a number <br />
+                isNaN("123ABCD") will give an answer of TRUE as it is Not a Number <br />
+                isNaN("123 456") will give an answer of TRUE <br />
+                isNaN("ABCD123") will give an answer of TRUE <br />
+                isNaN("5-2") will give an answer of FALSE (it reckons 5-2 is a number) <br />
+                isNaN(true) will give an answer of FALSE (true is 1 / false is 0) <br />
+                isNaN(null) will give an answer of FALSE (it reckons null is a number) <br /> <br />
+
+                <b><a href="https://www.w3schools.com/js/js_datatypes.asp">typeof(myString)</a></b><br />
+                Checks to see what the variable type is <br />
+                typeof("123") will give an answer of "string" <br />
+                typeof("123ABCD") will give an answer of "string" <br />
+                typeof(123) will give an answer of "number" <br />
+                typeof(true) will give an answer of "boolean" <br />
+                typeof(myFunction) will give an answer of "function" <br />
+                typeof(myObject) will give an answer of "object" <br />
+                typeof 123 will give an answer of "number" <br />
+                typeof "123" will give an answer of "string" <br />
+                typeof true will give an answer of "boolean" <br />
+                eg <br />
+                if (typeof myString === "string") {...} <br />
+                or... if (typeof(myString) === "string") {...} <br /> <br />
+            </p>
+        </div>
+
+        <div class="divBorder divBSet">
+            <p>
+                <b><a href="https://www.w3schools.com/jsref/jsref_round.asp">Math.round(myString)</a></b><br />
+                Rounds to the nearest integer. <br />
+                Math.round("123") will give an answer of 123 <br />
+                Math.round("123ABCD") will give an answer of NaN as it is Not a Number <br />
+                Math.round("123.456") will give an answer of 123 <br />
+                Math.round(123.567) will give an answer of 124 <br />
+                Math.round("-123.456") will give an answer of -123 <br />
+                Math.round(-123.567) will give an answer of -124 <br /> <br />
+
+                <b><a href="https://www.w3schools.com/jsref/jsref_floor.asp">Math.floor(myString)</a></b><br />
+                Rounds DOWN to the nearest integer. <br />
+                Math.floor("123") will give an answer of 123 <br />
+                Math.floor("123ABCD") will give an answer of NaN as it is Not a Number <br />
+                Math.floor("123.456") will give an answer of 123 <br />
+                Math.floor(123.567) will give an answer of 123 <br />
+                Math.floor("-123.456") will give an answer of -124 (-124 is less than -123) <br />
+                Math.floor(-123.567) will give an answer of -124 <br /> <br />
+
+                <b><a href="https://www.w3schools.com/jsref/jsref_ceil.asp">Math.ceil(myString)</a></b><br />
+                Rounds UP to the nearest integer. <br />
+                Math.ceil("123") will give an answer of 123 <br />
+                Math.ceil("123ABCD") will give an answer of NaN as it is Not a Number <br />
+                Math.ceil("123.456") will give an answer of 124 <br />
+                Math.ceil(123.567) will give an answer of 124 <br />
+                Math.ceil("-123.456") will give an answer of -123 <br />
+                Math.ceil(-123.567) will give an answer of -123 (-123 is greater than -124) <br /> <br />
+
+                <b><a href="https://www.w3schools.com/jsref/jsref_trunc.asp">Math.trunc(myString)</a></b><br />
+                Returns the integer part of the number. <br />
+                Math.trunc("123") will give an answer of 123 <br />
+                Math.trunc("123ABCD") will give an answer of NaN as it is Not a Number <br />
+                Math.trunc("123.456") will give an answer of 123 <br />
+                Math.trunc("123.567") will give an answer of 123 <br />
+                Math.trunc("-123.456") will give an answer of -123 <br />
+                Math.trunc(-123.567) will give an answer of -123 <br /> <br />
+
+                <b><a href="https://www.w3schools.com/jsref/jsref_random.asp">Math.random(myString)</a></b><br />
+                Returns a random number between 0 and 0.99999999. <br />
+                Math.random() will give an answer between 0 and 0.99999999 <br />
+                Math.floor((Math.random()*10)+1) will give an answer between 1 and 10 <br />
+                Math.floor((Math.random()*100)+1) will give an answer between 1 and 100 <br />
+                Math.floor((Math.random()*10)+8) will give an answer between 8 and 17 <br />
+                Math.floor((Math.random()*5)+1) will give an answer between 1 and 5 <br />
+                Math.floor((Math.random()*5)+1)+6 will give an answer between 7 and 11 <br /> <br />
+
+                <b><a href="https://www.w3schools.com/jsref/jsref_abs.asp">Math.abs(myString)</a></b><br />
+                Returns the absolute value of a number. <br />
+                Math.abs("123") will give an answer of 123 <br />
+                Math.abs(10.5) will give an answer of 10.5 <br />
+                Math.abs(-10.5) will give an answer of 10.5 <br /> <br />
+
+            </p>
+        </div>
     </div>
 
-    <div class="divBorder divBSet">
-      <p>
-        <b><a href="https://www.w3schools.com/jsref/jsref_round.asp">Math.round(myString)</a></b><br />
-        Rounds to the nearest integer. <br />
-        Math.round("123") will give an answer of 123 <br />
-        Math.round("123ABCD") will give an answer of NaN as it is Not a Number <br />
-        Math.round("123.456") will give an answer of 123 <br />
-        Math.round(123.567) will give an answer of 124 <br />
-        Math.round("-123.456") will give an answer of -123 <br />
-        Math.round(-123.567) will give an answer of -124 <br /> <br />
+    <a href="#Top">Top</a>
 
-        <b><a href="https://www.w3schools.com/jsref/jsref_floor.asp">Math.floor(myString)</a></b><br />
-        Rounds DOWN to the nearest integer. <br />
-        Math.floor("123") will give an answer of 123 <br />
-        Math.floor("123ABCD") will give an answer of NaN as it is Not a Number <br />
-        Math.floor("123.456") will give an answer of 123 <br />
-        Math.floor(123.567) will give an answer of 123 <br />
-        Math.floor("-123.456") will give an answer of -124 (-124 is less than -123) <br />
-        Math.floor(-123.567) will give an answer of -124 <br /> <br />
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <p>
+                <b><a href="https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_number">Number(myString)</a></b><br />
+                Returns different object values to their numbers. <br />
+                Number("123") will give an answer of 123 <br />
+                Number("123ABCD") will give an answer of NaN as it is Not a Number <br />
+                Number("123.456") will give an answer of 123.456 <br />
+                Number("123.567") will give an answer of 123.567 <br />
+                Number("-123.456") will give an answer of -123.456 <br />
+                Number(-123.567) will give an answer of -123.567 <br />
+                Number(true) will give an answer of 1 <br />
+                Number(false) will give an answer of 0 <br />
+                Number(Date()) will give an answer like 160926633135 (No. of milliseconds) <br />
+                Number(null) will give an answer of 0 <br /> <br />
 
-        <b><a href="https://www.w3schools.com/jsref/jsref_ceil.asp">Math.ceil(myString)</a></b><br />
-        Rounds UP to the nearest integer. <br />
-        Math.ceil("123") will give an answer of 123 <br />
-        Math.ceil("123ABCD") will give an answer of NaN as it is Not a Number <br />
-        Math.ceil("123.456") will give an answer of 124 <br />
-        Math.ceil(123.567) will give an answer of 124 <br />
-        Math.ceil("-123.456") will give an answer of -123 <br />
-        Math.ceil(-123.567) will give an answer of -123 (-123 is greater than -124) <br /> <br />
+                <b><a href="https://www.w3schools.com/jsref/jsref_tofixed.asp">myNum.toFixed(n)</a></b><br />
+                Converts a number (not a string/object) into a string, rounding the number to 'n' decimal places. <br />
+                myNum = 123 ... myNum.toFixed(2) will give an answer of "123.00" <br />
+                myNum = 123.456 ... myNum.toFixed(2) will give an answer of "123.46" <br />
+                myNum = 123.567 ... myNum.toFixed(2) will give an answer of "123.57" <br />
+                myNum = -123.456 ... myNum.toFixed(2) will give an answer of "-123.46" <br />
+                myNum = -123.567 ... myNum.toFixed(2) will give an answer of "-123.57" <br />
+                myNum = -123.456 ... myNum.toFixed(0) will give an answer of "-123" <br />
+                myNum = -123.567 ... myNum.toFixed(0) will give an answer of "-124" <br /> <br />
 
-        <b><a href="https://www.w3schools.com/jsref/jsref_trunc.asp">Math.trunc(myString)</a></b><br />
-        Returns the integer part of the number. <br />
-        Math.trunc("123") will give an answer of 123 <br />
-        Math.trunc("123ABCD") will give an answer of NaN as it is Not a Number <br />
-        Math.trunc("123.456") will give an answer of 123 <br />
-        Math.trunc("123.567") will give an answer of 123 <br />
-        Math.trunc("-123.456") will give an answer of -123 <br />
-        Math.trunc(-123.567) will give an answer of -123 <br /> <br />
+            </p>
+        </div>
 
-        <b><a href="https://www.w3schools.com/jsref/jsref_random.asp">Math.random(myString)</a></b><br />
-        Returns a random number between 0 and 0.99999999. <br />
-        Math.random() will give an answer between 0 and 0.99999999 <br />
-        Math.floor((Math.random()*10)+1) will give an answer between 1 and 10 <br />
-        Math.floor((Math.random()*100)+1) will give an answer between 1 and 100 <br />
-        Math.floor((Math.random()*10)+8) will give an answer between 8 and 17 <br />
-        Math.floor((Math.random()*5)+1) will give an answer between 1 and 5 <br />
-        Math.floor((Math.random()*5)+1)+6 will give an answer between 7 and 11 <br /> <br />
+        <div class="divBorder divBSet">
+            <p>
+                <h2>Numbers to a formatted string</h2>
 
-        <b><a href="https://www.w3schools.com/jsref/jsref_abs.asp">Math.abs(myString)</a></b><br />
-        Returns the absolute value of a number. <br />
-        Math.abs("123") will give an answer of 123 <br />
-        Math.abs(10.5) will give an answer of 10.5 <br />
-        Math.abs(-10.5) will give an answer of 10.5 <br /> <br />
+                <b><a href="https://www.w3schools.com/jsref/jsref_tolocalestring_number.asp" target="_blank">.toLocaleString()</a> </b> <br />
+                Will return you a formatted string from a value (eg... 123456789.99 to 123,456,789.99) <br /> <br />
+                Assume n = 123456789.99 <br />
+                var z = n.toLocaleString() will = "123,456,789.99" <br />
+                <em>(It's probably best to use the "en-GB" locale setting rather than leave it out)</em><br />
+                var z = n.toLocaleString("en-GB") will = "123,456,789.99" <br />
+                var z = n.toLocaleString("en-GB", {style: 'currency', currency: 'GBP'}) will = "£123,456,789.99"<br />
+                var z = n.toLocaleString("en-US", {style: 'currency', currency: 'USD'}) will = "$123,456,789.99"<br /> <br />
+                Assume n = 123456789 <br />
+                var z = n.toLocaleString("en-GB", {style: 'currency', currency: 'GBP'}) will = "£123,456,789.00"<br />
+                Assume n = 123456789.567 <br />
+                var z = n.toLocaleString("en-GB", {style: 'currency', currency: 'GBP'}) will = "£123,456,789.57"<br />
+                var z = n.toLocaleString("en-GB", {maximumFractionDigits: 2}) will = "123,456,789.57" <br />
+                <em>
+                    <br />
+                    <b>NOTE</b>...if n = "123456789" (a string) rather than 123456789 (an actual number) then toLocaleString(...) will NOT work. <br />
+                    You will get back "123456789" : You could use ...
+                </em><br />
+                var z = Number(n).toLocaleString("en-GB", {style: 'currency', currency: 'GBP'}) will = "£123,456,789.00"<br /> <br />
 
-      </p>
+                <em>
+                    <b>I liked best...</b> <br />
+                    I created a function called <b>formatNumber</b> which looks like:
+                </em> <br />
+                <b>
+                    const formatNumber = number => { <br />
+                </b><em>&nbsp;&nbsp;&nbsp;// If number is NOT a number then return number asis</em> <b>
+                    <br />
+                    &nbsp;&nbsp;&nbsp;if(isNaN(number)) { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return number; <br />
+                    &nbsp;&nbsp;&nbsp;} <br />
+                </b><em>&nbsp;&nbsp;&nbsp;// If I get here then I know it's a number (or a number string)</em> <b>
+                    <br />
+                    &nbsp;&nbsp;&nbsp;return Number(number).toLocaleString("en-GB"); <br />
+                    }
+                </b> <br /> <br />
+
+                <b><span class="redMess">A function for formatting currency</span></b> could be... <br />
+                <b>
+                    const formatNumber = number => { <br />
+                </b><em>&nbsp;&nbsp;&nbsp;// If number is NOT a number then return number asis</em> <b>
+                    <br />
+                    &nbsp;&nbsp;&nbsp;if(isNaN(number)) { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return number; <br />
+                    &nbsp;&nbsp;&nbsp;} <br />
+                </b><em>&nbsp;&nbsp;&nbsp;// If I get here then I know it's a number (or a number string)</em> <b>
+                    <br />
+                    &nbsp;&nbsp;&nbsp;return Number(number).toLocaleString("en-GB",  {style: 'currency', currency: 'GBP'}); <br />
+                    }
+                </b> <br /> <br />
+        </div>
     </div>
-  </div>
 
-  <div class="divFlex">
-    <div class="divBorder divBSet">
-      <p>
-        <b><a href="https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_number">Number(myString)</a></b><br />
-        Returns different object values to their numbers. <br />
-        Number("123") will give an answer of 123 <br />
-        Number("123ABCD") will give an answer of NaN as it is Not a Number <br />
-        Number("123.456") will give an answer of 123.456 <br />
-        Number("123.567") will give an answer of 123.567 <br />
-        Number("-123.456") will give an answer of -123.456 <br />
-        Number(-123.567) will give an answer of -123.567 <br />
-        Number(true) will give an answer of 1 <br />
-        Number(false) will give an answer of 0 <br />
-        Number(Date()) will give an answer like 160926633135 (No. of milliseconds) <br />
-        Number(null) will give an answer of 0 <br /> <br />
-
-        <b><a href="https://www.w3schools.com/jsref/jsref_tofixed.asp">myNum.toFixed(n)</a></b><br />
-        Converts a number (not a string/object) into a string, rounding the number to 'n' decimal places. <br />
-        myNum = 123 ... myNum.toFixed(2) will give an answer of "123.00" <br />
-        myNum = 123.456 ... myNum.toFixed(2) will give an answer of "123.46" <br />
-        myNum = 123.567 ... myNum.toFixed(2) will give an answer of "123.57" <br />
-        myNum = -123.456 ... myNum.toFixed(2) will give an answer of "-123.46" <br />
-        myNum = -123.567 ... myNum.toFixed(2) will give an answer of "-123.57" <br />
-        myNum = -123.456 ... myNum.toFixed(0) will give an answer of "-123" <br />
-        myNum = -123.567 ... myNum.toFixed(0) will give an answer of "-124" <br /> <br />
-
-      </p>
-    </div>
-
-  </div>
-
-  <a href="#Top">Top</a>
+    <a href="#Top">Top</a>
 </body>
 
 </html>
