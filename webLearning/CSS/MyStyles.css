@@ -28,7 +28,7 @@ which would mean it would change the color of ALL h1 tags with a class=myClass2
 AND it would ALSO change ALL h1 tags that has a class=myClass3 AND an ID=myID2
 
 you could also say, for example
-  div.myClass2 h1 {color:blue;}
+  div.myClass2 h1 {color:blue;}810000
 which would mean it would change the color of ALL h1 tags that has a parent
 <div class=myClass2>
 eg
@@ -44,6 +44,15 @@ of "http://www.google.com" in its href attribute.
 
 ****************************************
    */
+
+
+a:visited {
+    color: #810000;
+}
+
+a:link {
+    color: navy;
+}
 
 .bodyMove {
     background-color: #F0F8FF;
