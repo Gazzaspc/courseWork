@@ -14,7 +14,12 @@
     <link rel="stylesheet" href="CSS/main.css" />
     <link rel="stylesheet" href="CSS/MyStyles.css" />
 
+    <style>
+        pre {
+            font-size:12px;
+        }
 
+    </style>
 
 </head>
 <body class="bodyMove">
@@ -29,7 +34,7 @@
                 <b>Synchronous</b> - (default) code runs as one thread and one command has to finish before the next
                 one can start. <br /> <br />
 
-                <h3>Constructing a Promise Object</h3>
+                <h3>Constructing a <a href="https://www.w3schools.com/js/js_promise.asp" target="_blank">Promise</a> Object</h3>
 
                 The Promise constructor method takes a function parameter called the executor function
                 which runs automatically when the constructor is called. <br />
@@ -91,7 +96,7 @@
 
             <p>
                 I had to create a small working file as part of my Codecademy course. <br /> <br />
-                It is in a file in the /Scripts folder called <b>sunglasses.js</b>, to run it you can 
+                It is in a file in the /Scripts folder called <b>sunglasses.js</b>, to run it you can
                 open <b>windows command prompt</b> then change directory (cd) in to the folder and then type... <br />
                 $ <b>node sunglasses.js</b> <br /> <br />
 
@@ -123,8 +128,8 @@ console.log(orderPromise);
 
 
 </pre>
-            When this is run it should display, in the console.log, the following message... <br />
-            <b>Promise { 'Sunglasses order processed.' }</b> <br /> <br />
+                When this is run it should display, in the console.log, the following message... <br />
+                <b>Promise { 'Sunglasses order processed.' }</b> <br /> <br />
             </p>
 
         </div>
@@ -133,6 +138,239 @@ console.log(orderPromise);
 
     <a href="#">Top</a> <br />
 
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Something different I came across</h2>
+
+            <p>
+                The way you read in (<b>.require</b>) and inherit from a different .js file changes
+                the way you refer to the methods in that file. <br /> <br />
+
+                For example... <br /> <br />
+
+                Below are the contents of a file called myLibrary.js... <br /> <br />
+
+                <pre>
+const inventory = {
+  sunglasses: 1900,
+  pants: 1088,
+  bags: 1344
+};
+
+const checkInventory = (order) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      let inStock = order.every(item => 
+inventory[item[0]] >= item[1]);
+      if (inStock) {
+        resolve(`Thank you. Your order was 
+successful.`);
+      } else {
+        reject(`We're sorry. Your order could 
+not be completed because some items are sold out.`);
+      }
+    }, 1000);
+  })
+};
+
+module.exports = {checkInventory};
+
+</pre>
+            </p>
+
+        </div>
+
+        <div class="divBSet divBorder">
+            <p>
+                <br />
+                There are two ways to <b>.require()</b> the myLibrary.js file in to your main .js file
+                that you want to call the routines from... <br /> <br />
+
+                First Way <br />
+                <b>const {checkInventory} = require('./myLibrary.js'); </b> <br /> <br />
+
+                OR... <br /> <br />
+
+                Second Way <br />
+                <b>const checkInventory = require('./library.js'); </b> <br /> <br />
+
+                <em>
+                    <b>Note...</b> <br />
+                    You use <b>.require()</b> when running thru the command prompt. <br />
+                    And you use import/export (import {method1, method2} from './anotherLibrary.js';) when running
+                    on an .html file. <br />
+                    Here I am ONLY talking about using the <b>.require()</b> option.
+                </em> <br /> <br />
+
+                So when using the FIRST way <br />
+                <b>const {checkInventory} = require('./myLibrary.js'); </b> <br />
+                you would then call <b>checkInventory()</b> by referring to it as a property (which, I think the {} represents), eg... <br />
+                <b>checkInventory(order);</b> <br /> <br />
+
+                Whereas using the SECOND way <br />
+                <b>const checkInventory = require('./myLibrary.js'); </b> <br />
+                you would then call <b>checkInventory()</b> by referring to the variable name used in the .require()
+                followed by a dot (.) and the actual method name used on the <b>myLibrary.js</b> file, eg... <br />
+                <b>checkInventory.checkInventory(order);</b> <br />
+                <em>a little confusing as I called the imported variable the same as the method name in <b>myLibrary.js</b></em> <br /> <br />
+
+                See below for the <b>FIRST</b> and the <b>SECOND</b> examples as a file (myApp.js) <br /> <br />
+            </p>
+        </div>
+    </div>
+
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Example of myApp.js using the FIRST way</h2>
+
+            <p>
+                <pre>
+<b>const {checkInventory} = require('./myLibrary.js'); </b>
+
+const order = [['sunglasses', 1], ['bags', 2]];
+
+const handleSuccess = (resolvedValue) => {
+  console.log(resolvedValue);
+};
+ 
+const handleFailure = (rejectionReason) => {
+  console.log(rejectionReason);
+};
+
+<b>checkInventory(order).then(handleSuccess, 
+handleFailure); </b>
+//will print on the console.log 
+//"Thank you. Your order was successful."
+</pre>
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>Example of myApp.js using the SECOND way</h2>
+
+            <p>
+                <pre>
+<b>const checkInventory = require('./myLibrary.js'); </b>
+
+const order = [['sunglasses', 1], ['bags', 2]];
+
+const handleSuccess = (resolvedValue) => {
+  console.log(resolvedValue);
+};
+ 
+const handleFailure = (rejectionReason) => {
+  console.log(rejectionReason);
+};
+
+<b>checkInventory.checkInventory(order).then(handleSuccess, 
+    handleFailure); </b>
+//will print on the console.log 
+//"Thank you. Your order was successful."
+
+</pre>
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>The box above uses <b>.then()</b></h2>
+
+            <b>.then()</b> is used as part of the 'Success and Failure Callback Functions' <br />
+            To handle a “successful” promise, or a promise that resolved, we invoke .then() on the promise, passing
+            in a success/failure handler callback function. <br /> <br />
+
+            The two functions (<b>handleSuccess & handleFailure</b>)) form part of this routine <br />
+            and the <b>.then()</b> routine uses them, so if the <b>checkInventory()</b> passes or fails then
+            the correct message would get sent to the console log. <br /> <br />
+
+            You can try this link for a bit more information
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises" target="_blank">See Mozilla</a>
+            <br /> <br />
+
+            <p>
+
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>Using .catch() with Promises</h2>
+
+            <p>
+                One way to write cleaner code is to follow a principle called separation of concerns. <br />
+                Separation of concerns means organizing code into distinct sections
+                each handling a specific task. <br />
+                It enables us to quickly navigate our code and know where to look if something isn’t working. <br /> <br />
+
+                To create even more readable code, we can use a different promise function: .catch(). <br />
+                The .catch() function takes only one argument, onRejected. In the case of a rejected promise,
+                this failure handler will be invoked with the reason for rejection. <br />
+                Using .catch() accomplishes the same thing as using a .then() with only a failure handler. <br /> <br />
+
+                An example of using .catch() could be... <br />
+
+                <pre>
+checkInventory(order)
+    .then(handleSuccess)
+    .catch(handleFailure);
+</pre>
+                <br />
+                Because we already created functions <b>handleSuccess & handleFailure</b> to write out
+                to the console.log we only need the above. <br />
+                But if we did NOT create handleSuccess or handleFailure to do that we would need to create
+                anonymous functions in the .then() and .catch() like so... <br />
+                <pre>
+checkInventory(order).then((mySuccess) => {
+    console.log(mySuccess);
+  })
+  .catch((myFailure) => {
+    console.log(myFailure);
+  });
+</pre>
+
+            </p>
+        </div>
+    </div>
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h2>Chaining multiple promises</h2>
+
+            <p>
+                You can chain multiple promises by using multiple <b>.then()</b> commands, eg... <br /> <br />
+
+                                                                                                        <pre>
+checkInventory(order)
+    .then((resolvedValueArray) => {
+      return processPayment(resolvedValueArray);
+    })
+    .then((resolvedValueArray) => {
+      return shipOrder(resolvedValueArray);
+    })
+    .then((successMessage) => {
+      console.log(successMessage);
+    })
+    .catch((errorMessage) => {
+      console.log(errorMessage);
+    });
+
+</pre>
+                <em><b>checkInventory</b> is the first task, <b>processPayment</b> is the second and 
+                <b>shipOrder</b> is the third task. <br />
+                If ANY of them fail then the .catch() will happen and show 
+                the failed message (which is the rejected reason from whatever failed).</em>
+            </p>
+
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
 
 </body>
 </html>
