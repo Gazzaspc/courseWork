@@ -17,6 +17,9 @@
       font-style: italic;
     }
 
+    pre {
+        font-size:12px;
+    }
 
   </style>
 
@@ -290,47 +293,120 @@
   </div>
 
   <div class="divFlex">
-    <div class="divBorder divBSet">
-      <h3>Calculate AGE from Date of Birth</h3>
-      <p>
-        We need to pass the function the Date of Birth then we can calculate it...<br />
-        <b>function calculateAge (birthDate) { <br />
-            &nbsp;&nbsp;&nbsp;birthDate = new Date(birthDate); <br />
-            &nbsp;&nbsp;&nbsp;todayDate = new Date(); <br />
+      <div class="divBorder divBSet">
+          <h3>Calculate AGE from Date of Birth</h3>
+          <p>
+              We need to pass the function the Date of Birth then we can calculate it...<br />
+              <b>
+                  function calculateAge (birthDate) { <br />
+                  &nbsp;&nbsp;&nbsp;birthDate = new Date(birthDate); <br />
+                  &nbsp;&nbsp;&nbsp;todayDate = new Date(); <br />
 
-            &nbsp;&nbsp;&nbsp;var years = (todayDate.getFullYear() - birthDate.getFullYear()); <br />
+                  &nbsp;&nbsp;&nbsp;var years = (todayDate.getFullYear() - birthDate.getFullYear()); <br />
 
-            &nbsp;&nbsp;&nbsp;if todayDate.getMonth() < birthDate.getMonth() ||  <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;todayDate.getMonth() == birthDate.getMonth() && todayDate.getDate() < birthDate.getDate()) { <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;years--; <br />
-            &nbsp;&nbsp;&nbsp;}
+                  &nbsp;&nbsp;&nbsp;if todayDate.getMonth() < birthDate.getMonth() ||  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;todayDate.getMonth() == birthDate.getMonth() && todayDate.getDate() < birthDate.getDate()) { <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;years--; <br />
+                  &nbsp;&nbsp;&nbsp;}
 
-            &nbsp;&nbsp;&nbsp;return years;
-          }</b> <br /> <br />
-        Calling this function will return an age in years (it allows for leap years). <br /> <br />
-        For testing I will pass the Date of Birth as "06/19/1957" (MM/DD/YYYY) to get back... <br />
-        <span id="BDay" class="looping"></span> <br />
-      </p>
-      <script type="text/javascript">
-          function calculateAge (birthDate) {
-            birthDate = new Date(birthDate);
-            todayDate = new Date();
+                  &nbsp;&nbsp;&nbsp;return years;
+                  }
+              </b> <br /> <br />
+              Calling this function will return an age in years (it allows for leap years). <br /> <br />
+              For testing I will pass the Date of Birth as "06/19/1957" (MM/DD/YYYY) to get back... <br />
+              <span id="BDay" class="looping"></span> <br />
+          </p>
+          <script type="text/javascript">
+              function calculateAge(birthDate) {
+                  birthDate = new Date(birthDate);
+                  todayDate = new Date();
 
-            var years = (todayDate.getFullYear() - birthDate.getFullYear());
+                  var years = (todayDate.getFullYear() - birthDate.getFullYear());
 
-            if (todayDate.getMonth() < birthDate.getMonth() ||
-                todayDate.getMonth() == birthDate.getMonth() && todayDate.getDate() < birthDate.getDate()) {
-                years--;
-            }
+                  if (todayDate.getMonth() < birthDate.getMonth() ||
+                      todayDate.getMonth() == birthDate.getMonth() && todayDate.getDate() < birthDate.getDate()) {
+                      years--;
+                  }
 
-            return years;
+                  return years;
+              }
+              redMsg("BDay", calculateAge("06/19/1957"));
+
+          </script>
+      </div>
+
+      <div class="divBSet divBorder">
+          <p>
+              Converting todays date to YYYYMMDD <br />
+              and YYYY-MM-DD then do this... <br />
+
+              <pre> <b>
+var todaysDate = new Date();
+
+function convertDate(date, format) {
+  var yyyy = date.getFullYear().toString();
+  var mm = (date.getMonth()+1).toString();
+  var dd  = date.getDate().toString();
+
+  var mmChars = mm.split('');
+  var ddChars = dd.split('');
+
+  if (format === 1) {
+    return yyyy + 
+        (mmChars[1]?mm:"0" +
+        mmChars[0]) + 
+        (ddChars[1]?dd:"0" +
+        ddChars[0]);
+  } else {
+    return yyyy + '-' + 
+        (mmChars[1]?mm:"0" + mmChars[0]) + '-' + 
+        (ddChars[1]?dd:"0" + ddChars[0]);                
+  }
+}
+
+console.log(convertDate(todaysDate, 0)); </b> 
+    // Returns: YYYY-MM-DD
+<b>console.log(convertDate(todaysDate, 1)); </b> 
+    // Returns: YYYYMMDD
+</pre>
+              <br />
+              Date in format 0 (YYYY-MM-DD) is: <span class="redMess" id="date0"></span> <br /> <br />
+
+              Date in format 1 (YYYYMMDD) is: <span class="redMess" id="date1"></span> <br /> <br />
+          </p>
+
+
+      </div>
+      <script>
+          var todaysDate = new Date();
+
+          function convertDate(date, format) {
+              var yyyy = date.getFullYear().toString();
+              var mm = (date.getMonth() + 1).toString();
+              var dd = date.getDate().toString();
+
+              var mmChars = mm.split('');
+              var ddChars = dd.split('');
+
+              if (format === 1) {
+                  return yyyy +
+                      (mmChars[1] ? mm : "0" +
+                          mmChars[0]) +
+                      (ddChars[1] ? dd : "0" +
+                          ddChars[0]);
+              } else {
+                  return yyyy + '-' +
+                      (mmChars[1] ? mm : "0" +
+                          mmChars[0]) + '-' +
+                      (ddChars[1] ? dd : "0" +
+                          ddChars[0]);
+              }
           }
-          redMsg("BDay", calculateAge("06/19/1957"));
+
+          document.getElementById("date0").innerHTML = convertDate(todaysDate, 0);
+          document.getElementById("date1").innerHTML = convertDate(todaysDate, 1);
 
       </script>
-    </div>
-
-
 
   </div>
 

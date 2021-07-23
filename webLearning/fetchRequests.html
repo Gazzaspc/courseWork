@@ -1,0 +1,430 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Fetch Requests</title>
+
+
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+    <style>
+        pre {
+            font-size:12px;
+        }
+    </style>
+
+</head>
+<body class="bodyMove">
+    <a href="index.html">Home</a>
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h1>Fetch Requests</h1>
+
+            <p>
+                The Fetch API is a modern replacement for XMLHttpRequest <br /> <br />
+
+                My course has a few documents that they recommend taking a look at. <br />
+                So I have listed a few here:- <br /> <br />
+
+                <a href="https://medium.com/beginners-guide-to-mobile-web-development/the-fetch-api-2c962591f5c"
+                   target="_blank">FETCH</a>
+                a beginners guide <br /> <br />
+
+                And a basic document from w3Schools can be found <a href="https://www.w3schools.com/js/js_api_fetch.asp"
+                                                                    target="_blank">HERE</a> <br /> <br />
+
+                Another <a href="https://www.w3schools.com/js/js_api_fetch.asp"
+                           target="_blank">document</a> that may be useful is about <b>{cache: "..."}</b><br />
+                <em>eg: <b>fetch(url, {cache: "no-cache"})</b></em><br /> <br />
+                <br />
+                And a few <b>MDN documents</b> that may be useful:- <br /> <br />
+
+                <b>Fetching Data from the Server</b> - can be found
+                <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Fetching_data"
+                   target="_blank">HERE</a> <br />
+                <b>Using Fetch</b> - can be found
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch"
+                   target="_blank">HERE</a> <br />
+                <b>Third-party APIs</b> - can be found
+                <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Third_party_APIs"
+                   target="_blank">HERE</a> <br /> <br />
+            </p>
+        </div>
+
+        <!--<div class="divBorder divBSet">
+
+        </div>-->
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <p>
+
+                The Fetch API interface allows web browsers to make HTTP requests to web servers. <br />
+                With no need for XMLHttpRequest anymore. <br /> <br />
+
+                A quick example of this, for GETting the information could be... <br /> <br />
+
+                <em>//sends request</em> <br />
+                <em>
+                    //Note <b>.then()</b> will ONLY fire after the promise status <br />
+                    //of <b>fetch()</b> has been resolved
+                </em> <br />
+                <b>
+                    fetch('http://api-to-call.com/endpoint') <br /> <br />
+                    &nbsp;&nbsp;&nbsp;.then(response => { <br /> <br />
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </b><em>//converts response to JSON</em> <b>
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (response.ok) { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </b><em>
+                    //(The reason we’re testing the ok <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//property of the response object <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//is that it will be a Boolean value. <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//If there were no errors response.ok will be true and then <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//your code will return response.json() - this <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//will then get passed on to the next .then() <br />
+                </em> <b>
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return response.json(); <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}; <br /> <br />
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </b><em>
+                    //handles Errors <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// If there was an error with response.json <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// then create the message to be viewed
+                </em> <b>
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw new Error('Request Failed!'); <br /> <br />
+                    &nbsp;&nbsp;&nbsp;}, networkError => { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </b> <em>
+                    // If we could not reach the endpoint at all, <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// e.g., the server is down, then we would get <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// this networkError. <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// If there was an error then run this
+                </em> <b>
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(networkError.message) <br />
+                    &nbsp;&nbsp;&nbsp;})
+                </b><em>// this is the end of the first .then()</em><b>
+                    <br /> <br />
+
+                    &nbsp;&nbsp;&nbsp;
+                </b><em>
+                    //handles Success <br />
+                    &nbsp;&nbsp;&nbsp;// It won’t run until the previous .then() method has <br />
+                    &nbsp;&nbsp;&nbsp;// finished running. <br />
+                    &nbsp;&nbsp;&nbsp;// (the response.json value from the previous <br />
+                    &nbsp;&nbsp;&nbsp;// .then() is used and saved as 'jsonResponse). <br />
+                    &nbsp;&nbsp;&nbsp;// It will also not run if there was <br />
+                    &nbsp;&nbsp;&nbsp;// an error thrown previously.
+                </em> <b>
+                    <br />
+
+                    &nbsp;&nbsp;&nbsp;.then(jsonResponse => { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </b><em>// Code to execute with jsonResponse... </em> <b>
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return jsonResponse; <br />
+                    &nbsp;&nbsp;&nbsp;});
+                </b><em>// this is the end of the second .then()</em><b>
+                    <br />
+                </b> <br /> <br />
+
+            </p>
+        </div>
+
+        <div class="divBorder divBSet">
+            <h1>Fetch Requests (POST)</h1>
+
+            <p>
+                NOTE... <br />
+                This uses <a href="https://www.w3schools.com/js/js_json_stringify.asp"
+                             target="_blank">stringify</a> <br /> <br />
+
+                A quick example of this, for POSTing the information could be... <br /> <br />
+
+                <em>//sends request</em> <br />
+                <em>
+                    //Note <b>.then()</b> will ONLY fire after the promise status <br />
+                    //of <b>fetch()</b> has been resolved
+                </em> <br />
+                <b>
+                    fetch('http://api-to-call.com/endpoint', { <br />
+                    &nbsp;&nbsp;&nbsp;method: "POST", <br />
+                    &nbsp;&nbsp;&nbsp;body: JSON.stringify({id: "200"}) <br /> <br />
+                    &nbsp;&nbsp;&nbsp;.then(response => { <br /> <br />
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </b><em>//converts response to JSON</em> <b>
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (response.ok) { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </b><em>
+                    //(The reason we’re testing the ok <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//property of the response object <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//is that it will be a Boolean value. <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//If there were no errors response.ok will be true and then <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//your code will return response.json() - this <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//will then get passed on to the next .then() <br />
+                </em> <b>
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return response.json(); <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}; <br /> <br />
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </b><em>
+                    //handles Errors <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// If there was an error with response.json <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// then create the message to be viewed
+                </em> <b>
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw new Error('Request Failed!'); <br /> <br />
+                    &nbsp;&nbsp;&nbsp;}, networkError => { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </b> <em>
+                    // If we could not reach the endpoint at all, <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// e.g., the server is down, then we would get <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// this networkError. <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// If there was an error then run this
+                </em> <b>
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(networkError.message) <br />
+                    &nbsp;&nbsp;&nbsp;})
+                </b><em>// this is the end of the first .then()</em><b>
+                    <br /> <br />
+
+                    &nbsp;&nbsp;&nbsp;
+                </b><em>
+                    //handles Success <br />
+                    &nbsp;&nbsp;&nbsp;// It won’t run until the previous .then() method has <br />
+                    &nbsp;&nbsp;&nbsp;// finished running. <br />
+                    &nbsp;&nbsp;&nbsp;// (the response.json value from the previous <br />
+                    &nbsp;&nbsp;&nbsp;// .then() is used and saved as 'jsonResponse). <br />
+                    &nbsp;&nbsp;&nbsp;// It will also not run if there was <br />
+                    &nbsp;&nbsp;&nbsp;// an error thrown previously.
+                </em> <b>
+                    <br />
+
+                    &nbsp;&nbsp;&nbsp;.then(jsonResponse => { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </b><em>// Code to execute with jsonResponse... </em> <b>
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return jsonResponse; <br />
+                    &nbsp;&nbsp;&nbsp;});
+                </b><em>// this is the end of the second .then()</em><b>
+                    <br />
+                </b> <br /> <br />
+
+            </p>
+        </div>
+
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <p>
+                Here is another little example of how async/await and fetch can be used...
+
+                <pre>
+<em>//create an anonymouse function (arrow function)
+//saved to a const getData.
+// The async keyword will ensure that the 
+// function returns a promise. </em>
+<b>const getData = async () => {
+  try { </b>
+
+                <em>//We’ll have to save the returned promise 
+    //in a variable 
+    //called response using the const keyword. 
+    //response will save the response of 
+    //endpoint once 
+    //that information has been sent back. </em>
+                <b>const response = await fetch(
+      "https://api-to-call.com/endpoint"); </b>
+
+                <em>//Create a conditional statement that 
+    //checks if the ok property 
+    //of the response object evaluates to 
+    //a truthy value. </em>
+                <b>if (response.ok) { </b>
+
+                <em>//Since .json() is an asynchronous 
+      //method we have to await 
+      //until the promise status is resolved. 
+      //Then we store the value to know what 
+      //data the JSON holds. </em>
+                <b>const jsonResponse = await response.json(); </b>
+
+                <em>//Normally, we’d want to use the 
+      //information from 
+      //jsonResponse in a different manner. 
+      //but for now just return the result </em>
+                <b>return jsonResponse;
+    } </b>
+    
+                <em>//If it fails create your error message </em>
+                <b>throw new Error('Request failed!'); 
+
+  } catch (error) { </b>
+                <em>//Since this exercise is an example, 
+    //we’re using 
+    //console.log() to view the error. 
+    //Generally, developers create a 
+    //more sophisticated way 
+    //of handling the error, 
+    //like redirecting their 
+    //users to another page </em>
+                <b>console.log(error);
+  }
+} </b>
+</pre>
+                <br /> <br />
+
+            </p>
+        </div>
+
+        <div class="divBorder divBSet">
+            <p>
+                And this partial example consists of the code
+                for one form (would be called main.js). <br />
+                It also uses a file called 'helperFunctions.js' but I have not
+                included it here as it will be pretty much the same as what is
+                already present in the 'HTTPRequest' folder for the other projects. <br />
+                So if you want to then take a look there. <br /> <br />
+
+                The project also used a file which is very similar, if not the same,
+                as rebrandly_HTTPRequests.html
+                so I am not including that either. <br />
+                I am not running this as a working example I just wanted to show the code that did change
+                a bit and that is below... <br /> <br />
+
+                <pre>
+// information to reach API
+const apiKey = 'ENTER YOUR REBRANDLY API KEY IN HERE';
+const url = 'https://api.rebrandly.com/v1/links';
+
+// Some page elements that are on HTTPRequests.html
+const inputField = 
+    document.querySelector('#input');
+const shortenButton = 
+    document.querySelector('#shorten');
+const responseField = 
+    document.querySelector('#responseField');
+
+// AJAX functions
+// Code goes here
+const shortenUrl = async () => {
+  const urlToShorten = inputField.value;
+  const data = JSON.stringify({destination: urlToShorten});
+  try {
+    const response = await fetch(
+      url, 
+      {method: 'POST', 
+      body: data,
+      headers: {'Content-type': 'application/json',
+'apikey': apiKey}
+    }
+    );
+
+    if (response.ok) {
+      const jsonResponse = await response.json();
+      renderResponse(jsonResponse);
+    }
+  } catch (error) {
+    console.log(error);
+  };
+};
+
+// Clear page and call AJAX functions
+const displayShortUrl = (event) => {
+  event.preventDefault();
+  while(responseField.firstChild){
+    responseField.removeChild(responseField.firstChild);
+  }
+  shortenUrl();
+}
+
+shortenButton.addEventListener('click', displayShortUrl);
+
+</pre>
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div id="fourWeather" class="divFlex">
+        <div class="divBorder divBSet">
+            <h3>A quick recap</h3>
+
+            <ol>
+                <li>GET and POST requests can be created a variety of ways.</li>
+                <li>
+                    Use AJAX to asynchronously request data from APIs. fetch() and
+                    async/await are new functionalities developed in ES6 (promises)
+                    and ES8 respectively.
+                </li>
+                <li>
+                    Promises are a new type of JavaScript object that represent data
+                    that will eventually be returned from a request.
+                </li>
+                <li>
+                    fetch() is a web API that can be used to create requests.
+                    fetch() will return promises.
+                </li>
+                <li>We can chain .then() methods to handle promises returned by fetch().</li>
+                <li>The .json() method converts a returned promise to a JSON object.</li>
+                <li>async is a keyword that is used to create functions that will return promises.</li>
+                <li>
+                    await is a keyword that is used to tell a program to continue moving
+                    through the message queue while a promise resolves.
+                </li>
+                <li>await can only be used within functions declared with async.</li>
+            </ol>
+            <br /> <br />
+        </div>
+
+        <div class="divBorder divBSet">
+            <h3>An example: Using two API calls</h3>
+
+            <p>
+                The APIs used are from <br />
+                <b>Foursquare.com <br />
+                Openweathermap.org</b> <br /> <br />
+
+                <em>API Keys provided by the two companies will be required to run the page <br />
+                I have my own keys but cannot hard code them in the form.</em> <br /> <br />
+
+                The files used for this example are as follows:- <br /> <br />
+
+                <b>fourWeather.html <br />
+                /HTTPRequest/fourWeather_helper.js <br />
+                /HTTPRequests/fourWeather_main.js</b> <br /> <br />
+
+                To run this example 
+                <a href="fourWeather_index.html">Click Here</a> <br /> <br />
+
+
+            </p>
+        </div>
+    </div>
+    <a href="#">Top</a> <br />
+
+</body>
+</html>

@@ -8,7 +8,7 @@
 
 
     <!-- set a TITLE to appear on the tab header-->
-    <title>Asynchronous</title>
+    <title>Asynchronous (pt2)</title>
 
     <link rel="stylesheet" href="CSS/normalize.css" />
     <link rel="stylesheet" href="CSS/main.css" />
@@ -16,9 +16,8 @@
 
     <style>
         pre {
-            font-size:12px;
+            font-size: 12px;
         }
-
     </style>
 
 </head>
@@ -34,304 +33,427 @@
                 <b>Synchronous</b> - (default) code runs as one thread and one command has to finish before the next
                 one can start. <br /> <br />
 
-                <h3>Constructing a <a href="https://www.w3schools.com/js/js_promise.asp" target="_blank">Promise</a> Object</h3>
+                ...you can also take a look at an MDN document on
+                <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await" target="_blank">
+                    async/await
+                </a> (Making asynchronous programming easier with async and await). <br /> <br />
 
-                The Promise constructor method takes a function parameter called the executor function
-                which runs automatically when the constructor is called. <br />
-                The executor function generally starts an asynchronous operation and dictates
-                how the promise should be settled. <br /> <br />
+                ...and also another 
+                <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Choosing_the_right_approach" target="_blank">
+                    document</a> on (Choosing the right approach). <br />
 
-                To create a new Promise object, we use the new keyword and the Promise constructor method:, eg... <br /> <br />
+                <br />
 
-                <b>
-                    const executorFunction = (resolve, reject) => { }; <br />
-                    const myFirstPromise = new Promise(executorFunction);
-                </b> <br /><br />
-
-
-            </p>
-        </div>
-
-        <div class="divBSet divBorder">
-            <p>
-                The executor function has two function parameters, usually referred to as the
-                <b>resolve() and reject() functions</b>. <br />
-                The resolve() and reject() functions aren’t defined by the programmer. <br />
-                When the Promise constructor runs, JavaScript will pass its own resolve() and reject() functions
-                into the executor function. <br /> <br />
-
-                <b>resolve</b> <br />
-                is a function with one argument. Under the hood, if invoked, resolve() will
-                change the promise’s status from pending to fulfilled, and the promise’s
-                resolved value will be set to the argument passed into resolve(). <br /> <br />
-
-                <b>reject</b> <br />
-                is a function that takes a reason or error as an argument. Under the hood, if invoked,
-                reject() will change the promise’s status from pending to rejected, and the promise’s
-                rejection reason will be set to the argument passed into reject(). <br /> <br />
-
-                An example of this could be... <br /> <br />
+                The <b>async</b> keyword is used to write functions that handle asynchronous actions. <br />
+                We wrap our asynchronous logic inside a function prepended with the async keyword. <br />
+                Then, we invoke that function. Eg... <br /> <br />
 
                 <b>
-                    const executorFunction = (resolve, reject) => { <br />
-                    &nbsp;&nbsp;&nbsp;if (someCondition) { <br />
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resolve('I resolved!'); <br />
-                    &nbsp;&nbsp;&nbsp;} else { <br />
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reject('I rejected!');
-                    &nbsp;&nbsp;&nbsp;} <br />
-                    } <br /> <br />
+                    async function myFunc() { <br />
+                    &nbsp;&nbsp;&nbsp;// Function body here <br />
+                    }; <br />
+                    <br />
 
-                    const myFirstPromise = new Promise(executorFunction); <br /> <br />
+                    myFunc();
+                </b> <br /> <br />
 
-                </b>
-            </p>
+                OR you can say... <br /> <br />
 
-        </div>
-    </div>
+                <b>
+                    const myFunc = async () => { <br />
+                    &nbsp;&nbsp;&nbsp;// Function body here <br />
+                    }; <br /> <br />
 
-    <a href="#">Top</a> <br />
+                    myFunc();
+                </b> <br /> <br />
 
-    <div class="divFlex">
-        <div class="divBorder divBSet">
+                async functions always return a promise. <br />
+                This means we can use traditional promise syntax, like <b>.then() and .catch()</b>
+                with our async functions. <br />
+                An async function will return in one of three ways:- <br /> <br />
 
-            <p>
-                I had to create a small working file as part of my Codecademy course. <br /> <br />
-                It is in a file in the /Scripts folder called <b>sunglasses.js</b>, to run it you can
-                open <b>windows command prompt</b> then change directory (cd) in to the folder and then type... <br />
-                $ <b>node sunglasses.js</b> <br /> <br />
-
-                The code is also listed below for reference... <br /> <br />
-
-                <pre style="font-size:12px;">
-const inventory = {
-  sunglasses: 1900,
-  pants: 1088,
-  bags: 1344
-};
-
-const myExecutor = (resolve, reject) => {
-  if (inventory.sunglasses > 0) {
-    resolve("Sunglasses order processed.");
-  } else {
-    reject("That item is sold out.");
-  };
-}
-
-const promiseSunglasses = new Promise(myExecutor);
-
-const orderSunglasses = () => {
-  return promiseSunglasses;
-}
-
-var orderPromise = orderSunglasses();
-console.log(orderPromise);
-
-
-</pre>
-                When this is run it should display, in the console.log, the following message... <br />
-                <b>Promise { 'Sunglasses order processed.' }</b> <br /> <br />
-            </p>
-
-        </div>
-
-    </div>
-
-    <a href="#">Top</a> <br />
-
-    <div class="divFlex">
-        <div class="divBSet divBorder">
-            <h2>Something different I came across</h2>
-
-            <p>
-                The way you read in (<b>.require</b>) and inherit from a different .js file changes
-                the way you refer to the methods in that file. <br /> <br />
+                <b>...</b>If there’s nothing returned from the function, it will return a promise
+                with a resolved value of undefined. <br />
+                <b>...</b>If there’s a non-promise value returned from the function, it will return a
+                promise resolved to that value. <br />
+                <b>...</b>If a promise is returned from the function, it will simply return that promise. <br /><br />
 
                 For example... <br /> <br />
 
-                Below are the contents of a file called myLibrary.js... <br /> <br />
-
                 <pre>
-const inventory = {
-  sunglasses: 1900,
-  pants: 1088,
-  bags: 1344
+async function fivePromise() { 
+  return 5;
+}
+ 
+fivePromise()
+.then(resolvedValue => {
+    console.log(resolvedValue);
+  })  
+// Prints 5
+</pre>
+
+                In the example above, even though we return 5 inside the function body, what’s actually
+                returned when we invoke fivePromise() is a promise with a resolved value of 5. <br />
+
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <p>
+                    <br /> <br />
+                Therefore, a promise that may be written like... <br />
+                <pre>
+function nativePromise(){
+  return new Promise((resolve, reject) => {
+      resolve('yay!');
+  })
+}
+</pre>
+
+                Using <b>async</b> could be written like... <br />
+                <pre>
+async function asyncPromise(){
+  return 'yay!';
+}
+</pre>
+
+                Because <br />
+                <b>...</b>If there’s a non-promise value returned from the function, it will return a
+                promise resolved to that value. <br /> <br />
+
+                <hr /> <br />
+
+                A larger example could be... <br /> <br />
+
+                                                    <pre>
+function withConstructor(num){
+  return new Promise((resolve, reject) => {
+    if (num === 0){
+      resolve('zero');
+    } else {
+      resolve('not zero');
+    }
+  });
+}
+
+async function withAsync(num) {
+  return withConstructor(num);
 };
 
-const checkInventory = (order) => {
+
+withAsync(100)
+  .then((resolveValue) => {
+  console.log(` withAsync(100) returned: ${resolveValue}.`);
+})
+<em>>//would print to the Console.log...
+//withAsync(100) returned: not zero. </em>
+
+
+withAsync(0)
+  .then((resolveValue) => {
+  console.log(` withAsync(0) returned: ${resolveValue}.`);
+})
+<em>//would print to the Console.log...
+//withAsync(100) returned: zero. </em>
+
+</pre>
+            </p>
+
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h3>The 'await' operator</h3>
+            <p>
+                <b>async</b> functions are almost always used with the additional keyword <b>await</b> inside
+                the function body. <br /> <br />
+
+                The <span class="blueMess">await</span> keyword can only be used inside an async function. <br />
+                <span class="blueMess">await</span> is an operator: it returns the resolved value of a promise. <br />
+                Since promises resolve in an indeterminate amount of time, <span class="blueMess">await</span> halts, or pauses, the
+                execution of our async function until a given promise is resolved. <br /> <br />
+
+                So, for example... <br /> <br />
+
+                Lets pretend we have a promise function (let's call it <span class="greenMess">'funcTakesTime()'</span>) that runs a
+                few <b>.then()</b> commands that prints out messages as it goes
+                and could take a bit of time to run. <br />
+                And we call it in our <b>async</b> function... <br /> <br />
+
+                <b>
+                    async function myAsync() { <br />
+                    &nbsp;&nbsp;&nbsp;let myTask = <span class="blueMess">await</span>
+                    <span class="greenMess">funcTakesTime()</span>; <br />
+                    &nbsp;&nbsp;&nbsp;console.log(`All tasks have finished now.`); <br />
+                    } <br /> <br />
+                </b>
+
+                When run this would display... <br /> <br />
+
+                <b>
+                    funcTakesTime Message 1 <br />
+                    funcTakesTime Message 2 <br />
+                    funcTakesTime Message 3 <br />
+                    etc... <br />
+                    All tasks have finished now.
+                </b> <br /> <br />
+
+                Because the <b><span class="blueMess">await</span></b> command will make everything stop until all
+                the funcTakesTime tasks
+                have completed (it makes it run synchronously). <br /> <br />
+
+                But if we do <b>NOT</b> have the <b><span class="blueMess">await</span></b> command then the result would be... <br /> <br />
+
+                <b>
+                    All tasks have finished now. <br />
+                    funcTakesTime Message 1 <br />
+                    funcTakesTime Message 2 <br />
+                    funcTakesTime Message 3 <br />
+                    etc... <br />
+                </b> <br />
+
+                Because the removal of the <b><span class="blueMess">await</span></b> command will make everything run
+                asynchronously and not wait for the other funcTakesTime tasks to 
+                complete first. <br /> <br />
+            </p>
+
+        </div>
+
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Another example - library.js</h2>
+
+            <p>
+                This file is called <b>library.js</b> and it exports its functions 
+                for use by the file <b>app.js</b><br /> <br />
+
+                                                <pre>
+const shopForBeans = () => {
   return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      let inStock = order.every(item => 
-inventory[item[0]] >= item[1]);
-      if (inStock) {
-        resolve(`Thank you. Your order was 
-successful.`);
-      } else {
-        reject(`We're sorry. Your order could 
-not be completed because some items are sold out.`);
+	const beanTypes = ['kidney', 
+        'fava', 
+        'pinto', 
+        'black', 
+        'garbanzo'];
+  setTimeout(()=>{
+    let randomIndex = Math.floor(Math.random() * 5);
+    let beanType = beanTypes[randomIndex];
+    console.log(`I bought ${beanType} beans 
+because they were on sale.`);
+   resolve(beanType);
+  }, 1000)
+})
+}
+
+let soakTheBeans = (beanType) => {
+   return new Promise((resolve, reject) => {
+     console.log('Time to soak the beans.');
+    setTimeout(()=>{
+      console.log(`... The ${beanType} beans 
+are softened.`);
+      resolve(true);
+      }, 1000);
+  });
+}
+
+let cookTheBeans = (isSoftened) => {
+  return new Promise((resolve, reject) => {
+    console.log('Time to cook the beans.');
+    setTimeout(()=>{
+      if (isSoftened) {
+        console.log('... The beans are cooked!');
+        resolve('\n\nDinner is served!');
       }
     }, 1000);
-  })
-};
-
-module.exports = {checkInventory};
-
-</pre>
-            </p>
-
-        </div>
-
-        <div class="divBSet divBorder">
-            <p>
-                <br />
-                There are two ways to <b>.require()</b> the myLibrary.js file in to your main .js file
-                that you want to call the routines from... <br /> <br />
-
-                First Way <br />
-                <b>const {checkInventory} = require('./myLibrary.js'); </b> <br /> <br />
-
-                OR... <br /> <br />
-
-                Second Way <br />
-                <b>const checkInventory = require('./library.js'); </b> <br /> <br />
-
-                <em>
-                    <b>Note...</b> <br />
-                    You use <b>.require()</b> when running thru the command prompt. <br />
-                    And you use import/export (import {method1, method2} from './anotherLibrary.js';) when running
-                    on an .html file. <br />
-                    Here I am ONLY talking about using the <b>.require()</b> option.
-                </em> <br /> <br />
-
-                So when using the FIRST way <br />
-                <b>const {checkInventory} = require('./myLibrary.js'); </b> <br />
-                you would then call <b>checkInventory()</b> by referring to it as a property (which, I think the {} represents), eg... <br />
-                <b>checkInventory(order);</b> <br /> <br />
-
-                Whereas using the SECOND way <br />
-                <b>const checkInventory = require('./myLibrary.js'); </b> <br />
-                you would then call <b>checkInventory()</b> by referring to the variable name used in the .require()
-                followed by a dot (.) and the actual method name used on the <b>myLibrary.js</b> file, eg... <br />
-                <b>checkInventory.checkInventory(order);</b> <br />
-                <em>a little confusing as I called the imported variable the same as the method name in <b>myLibrary.js</b></em> <br /> <br />
-
-                See below for the <b>FIRST</b> and the <b>SECOND</b> examples as a file (myApp.js) <br /> <br />
-            </p>
-        </div>
-    </div>
-
-
-    <a href="#">Top</a> <br />
-
-    <div class="divFlex">
-        <div class="divBSet divBorder">
-            <h2>Example of myApp.js using the FIRST way</h2>
-
-            <p>
-                <pre>
-<b>const {checkInventory} = require('./myLibrary.js'); </b>
-
-const order = [['sunglasses', 1], ['bags', 2]];
-
-const handleSuccess = (resolvedValue) => {
-  console.log(resolvedValue);
-};
- 
-const handleFailure = (rejectionReason) => {
-  console.log(rejectionReason);
-};
-
-<b>checkInventory(order).then(handleSuccess, 
-handleFailure); </b>
-//will print on the console.log 
-//"Thank you. Your order was successful."
-</pre>
-            </p>
-        </div>
-
-        <div class="divBSet divBorder">
-            <h2>Example of myApp.js using the SECOND way</h2>
-
-            <p>
-                <pre>
-<b>const checkInventory = require('./myLibrary.js'); </b>
-
-const order = [['sunglasses', 1], ['bags', 2]];
-
-const handleSuccess = (resolvedValue) => {
-  console.log(resolvedValue);
-};
- 
-const handleFailure = (rejectionReason) => {
-  console.log(rejectionReason);
-};
-
-<b>checkInventory.checkInventory(order).then(handleSuccess, 
-    handleFailure); </b>
-//will print on the console.log 
-//"Thank you. Your order was successful."
-
-</pre>
-            </p>
-        </div>
-    </div>
-
-    <a href="#">Top</a> <br />
-
-    <div class="divFlex">
-        <div class="divBSet divBorder">
-            <h2>The box above uses <b>.then()</b></h2>
-
-            <b>.then()</b> is used as part of the 'Success and Failure Callback Functions' <br />
-            To handle a “successful” promise, or a promise that resolved, we invoke .then() on the promise, passing
-            in a success/failure handler callback function. <br /> <br />
-
-            The two functions (<b>handleSuccess & handleFailure</b>)) form part of this routine <br />
-            and the <b>.then()</b> routine uses them, so if the <b>checkInventory()</b> passes or fails then
-            the correct message would get sent to the console log. <br /> <br />
-
-            You can try this link for a bit more information
-            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises" target="_blank">See Mozilla</a>
-            <br /> <br />
-
-            <p>
-
-            </p>
-        </div>
-
-        <div class="divBSet divBorder">
-            <h2>Using .catch() with Promises</h2>
-
-            <p>
-                One way to write cleaner code is to follow a principle called separation of concerns. <br />
-                Separation of concerns means organizing code into distinct sections
-                each handling a specific task. <br />
-                It enables us to quickly navigate our code and know where to look if something isn’t working. <br /> <br />
-
-                To create even more readable code, we can use a different promise function: .catch(). <br />
-                The .catch() function takes only one argument, onRejected. In the case of a rejected promise,
-                this failure handler will be invoked with the reason for rejection. <br />
-                Using .catch() accomplishes the same thing as using a .then() with only a failure handler. <br /> <br />
-
-                An example of using .catch() could be... <br />
-
-                <pre>
-checkInventory(order)
-    .then(handleSuccess)
-    .catch(handleFailure);
-</pre>
-                <br />
-                Because we already created functions <b>handleSuccess & handleFailure</b> to write out
-                to the console.log we only need the above. <br />
-                But if we did NOT create handleSuccess or handleFailure to do that we would need to create
-                anonymous functions in the .then() and .catch() like so... <br />
-                <pre>
-checkInventory(order).then((mySuccess) => {
-    console.log(mySuccess);
-  })
-  .catch((myFailure) => {
-    console.log(myFailure);
   });
+}
+
+  
+module.exports = {
+    shopForBeans, 
+    soakTheBeans, 
+    cookTheBeans};
+
 </pre>
+            </p>
+
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>Another example - app.js</h2>
+
+            <p>
+                This file is called <b>app.js</b> and it imports its functions
+                from the file <b>library.js</b><br /> <br />
+
+                                                      <pre>
+const {shopForBeans, soakTheBeans, cookTheBeans} = 
+require('./library.js');
+
+async function makeBeans() {
+  let type = <span class="blueMess">await</span> shopForBeans();
+  let isSoft = <span class="blueMess">await</span> soakTheBeans(type);
+  let dinner = <span class="blueMess">await</span> cookTheBeans(isSoft);
+  console.log(dinner);
+}
+
+makeBeans();
+
+</pre>
+
+                The line (above) <br /><b>let type = await shopForBeans();</b> <br />
+                will randomly choose a bean and then the 
+                'resolve' part of it will return the name of the bean so it gets stored in the variable <b>type</b>. <br /> <br />
+
+                Each function from <b>library.js</b> is run in order because of 
+                the <b><span class="blueMess">await</span></b> command. <br /> <br />
+
+                <b>shopForBeans()</b> returns a random bean that is passed to <br />
+                <b>soakTheBeans()</b> and then gets soaked. Then it is passed to <br />
+                <b>cookTheBeans()</b> to be cooked. <br /> <br />
+
+                The output from this (when run in 'Command Prompt' using $ <b>node app.js</b>) will display 
+                on the console.log the following... <br /> <br />
+
+                <b>I bought kidney beans they were on sale. <br />
+                Time to soak the beans. <br />
+                ... The kidney beans are softened. <br />
+                Time to cook the beans. <br />
+                ... The beans are cooked! <br /> <br />
+                
+                Dinner is served!</b> <br /> <br />
+
+            </p>
+        </div>
+    </div>
+
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+
+            <p>
+                <br /> 
+                The above is an example of a routine that is expected to complete successfully all the time. <br /> <br />
+                But seeing as not everything does always work, the below example allows for something to fail. <br /> <br />
+
+                With this I have used the <b>
+                <a href="jsTryCatch.html">Try/Catch</a> </b> routine (the link will take you to my page on Try/Catch if you want to see 
+                that as well. <br /> <br />
+
+            </p>
+        </div>
+
+        
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Using Try/Catch example - library.js</h2>
+
+            <p>
+                This file is called <b>library.js</b> and it exports its functions
+                for use by the file <b>app.js</b><br /> <br />
+
+                                                        <pre>
+// This function returns true 50% of the time.
+let randomSuccess = () => {
+ let num = Math.random();
+ if (num < .5 ){
+   return true;
+ } else {
+   return false;
+ }
+};
+
+// This function returns a promise that 
+// resolves half of the time and 
+// rejects half of the time.
+let cookBeanSouffle = () => {
+ return new Promise((resolve, reject) => {
+   console.log('Fingers crossed... Putting the 
+Bean Souffle in the oven');
+   setTimeout(()=>{
+     let success = randomSuccess();
+
+     // Remember to use RESOLVE and REJECT when 
+     // trying to catch errors.
+     if(success){
+       resolve('Bean Souffle');
+     } else {
+       reject('Dinner is ruined!');
+     }
+   }, 1000);
+ });
+};
+
+module.exports = cookBeanSouffle;
+
+</pre>
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>Using Try/Catch example - app.js</h2>
+
+            <p>
+                This file is called <b>app.js</b> and it imports its functions
+                from the file <b>library.js</b><br /> <br />
+
+                                                      <pre>
+const cookBeanSouffle = require('./library.js');
+
+async function hostDinnerParty() {
+  try {
+
+    //lets call our routine
+    let dinnerMsg = await cookBeanSouffle();
+
+    //If it RESOLVED okay then 'dinnerMsg will
+    // = 'Bean Souffle'  
+
+    // But if it REJECTED then it will 
+    // drop to the 'catch (error)' area
+    // and the 'error' variable will    
+    // = 'Dinner is ruined' 
+
+    //If it RESOLVED then
+    //NOTE
+    // when using ${..} to display a variable
+    // you MUST use `` (before the 1 key)
+    // and NOT "" or ''
+    console.log(`${dinnerMsg} is served!`);
+
+  } catch (error){
+    console.log(error);
+    console.log("Ordering a pizza!");
+  }
+}
+
+hostDinnerParty();
+
+
+</pre>
+
+                The first message displayed on the console.log will always be <br />
+                <b>Fingers crossed... Putting the Bean Souffle in the oven</b> <br /> <br />
+
+                Then, if it worked (resolved) okay you will see the message <br />
+                <b>Bean Souffle is served!</b> <br /> <br />
+
+                But if it failed (rejected) then you will see <br />
+                <b>Dinner is ruined! <br />
+                Ordering a pizza!</b> <br /> <br />
 
             </p>
         </div>
@@ -340,37 +462,61 @@ checkInventory(order).then((mySuccess) => {
 
     <div class="divFlex">
         <div class="divBorder divBSet">
-            <h2>Chaining multiple promises</h2>
+            <h2>Two ways of using 'await'</h2>
 
             <p>
-                You can chain multiple promises by using multiple <b>.then()</b> commands, eg... <br /> <br />
+                Normally I would use...eg... <br /> <br />
 
-                                                                                                        <pre>
-checkInventory(order)
-    .then((resolvedValueArray) => {
-      return processPayment(resolvedValueArray);
-    })
-    .then((resolvedValueArray) => {
-      return shipOrder(resolvedValueArray);
-    })
-    .then((successMessage) => {
-      console.log(successMessage);
-    })
-    .catch((errorMessage) => {
-      console.log(errorMessage);
-    });
+                                                    <pre>
+async function serveDinner() {
+  const vegetablePromise = await steamBroccoli();
+  const starchPromise = await cookRice();
+  const proteinPromise = await bakeChicken();
+  const sidePromise = await cookBeans();
+  console.log(`Dinner is served. We're having 
+    ${vegetablePromise}, 
+    ${starchPromise}, 
+    ${proteinPromise}, 
+    and ${sidePromise}.`);
+}
 
 </pre>
-                <em><b>checkInventory</b> is the first task, <b>processPayment</b> is the second and 
-                <b>shipOrder</b> is the third task. <br />
-                If ANY of them fail then the .catch() will happen and show 
-                the failed message (which is the rejected reason from whatever failed).</em>
+                But you could also do it like this... <br /> <br />
+
+                                                             <pre>
+async function serveDinner() {
+  const vegetablePromise = steamBroccoli();
+  const starchPromise = cookRice();
+  const proteinPromise = bakeChicken();
+  const sidePromise = cookBeans();
+  console.log(`Dinner is served. We're having 
+    ${await vegetablePromise}, 
+    ${await starchPromise}, 
+    ${await proteinPromise}, 
+    and ${await sidePromise}.`);
+}
+</pre>
+                Because the
+                <b>const vegetablePromise = steamBroccoli();</b> <br />
+                does not actually run the routine (steamBroccoli), it just creates an instance of it 
+                and stores it as a variable (vegetablePromise) ready for when you actually 
+                want to use it. <br />
+                So it only runs 'steamBroccoli' when it gets to the line that calls it<br />
+                <b>await vegetablePromise</b> <br /> <br />
+
+                <em>My Comment <br />
+                I think that you could combine asynchronous and synchronous running by using... <br />
+                <b>await vegetablePromise</b> in one place in the program and then elsewhere just use <br />
+                <b>vegetablePromise</b> without the 'await'.</em>  <br /> <br />
             </p>
 
         </div>
+
+        
     </div>
 
     <a href="#">Top</a> <br />
+
 
 </body>
 </html>

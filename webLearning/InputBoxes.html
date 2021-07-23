@@ -14,63 +14,61 @@
     <title>HTML Forms/Input Boxes</title>
 
     <style>
-          .spanCenter {
-              display: block;
-              text-align: center;
-              margin-bottom: 0;
-          }
+        .spanCenter {
+            display: block;
+            text-align: center;
+            margin-bottom: 0;
+        }
 
-          input:focus {
-              background-color: yellow;
-          }
+        input:focus {
+            background-color: yellow;
+        }
 
-              /* For any field that is invalid (ie a req'd field not answered or a field
+            /* For any field that is invalid (ie a req'd field not answered or a field
         that has not been entered correctly according to its 'pattern') will
-        have a YELLOW background and RED text */
-              input:invalid,
-              input:required:invalid,
-              input:focus:invalid {
-                  background-color: yellow;
-                  color: red;
-              }
+        have a light green background and RED text */
+            input:invalid,
+            input:required:invalid,
+            input:focus:invalid {
+                background-color: #CCFFCC;
+                color: red;
+            }
 
-          .containerT {
-              display: inline-block;
-              text-align: right;
-              line-height: 1.35;
-              /* use inline-block to make it the same size as the text/boxes;
+        .containerT {
+            display: inline-block;
+            text-align: right;
+            line-height: 1.35;
+            /* use inline-block to make it the same size as the text/boxes;
          and text-align: right to make the text align properly
          and line-height: 1.35 looks like it spaces the text (pretty much) the same as the input box spacing*/
-          }
+        }
 
-          .containerL {
-              display: inline-block;
-              text-align: left;
-              /* use inline-block to make it the same size as the text/boxes;
+        .containerL {
+            display: inline-block;
+            text-align: left;
+            /* use inline-block to make it the same size as the text/boxes;
          and text-align: left to make the boxes align properly...works well with labels in their own div */
-          }
+        }
 
 
-          /* ---BELOW--- This will stop the up/down arrows from appearing in the input box */
-          /* Chrome, Safari, Edge, Opera */
-          input.noArrows::-webkit-outer-spin-button,
-          input.noArrows::-webkit-inner-spin-button {
-              -webkit-appearance: none;
-              margin: 0;
-          }
+        /* ---BELOW--- This will stop the up/down arrows from appearing in the input box */
+        /* Chrome, Safari, Edge, Opera */
+        input.noArrows::-webkit-outer-spin-button,
+        input.noArrows::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
 
-          /* Firefox */
-          input.noArrows[type=number] {
-              -moz-appearance: textfield;
-          }
+        /* Firefox */
+        input.noArrows[type=number] {
+            -moz-appearance: textfield;
+        }
 
-          /* ---ABOVE--- This will stop the up/down arrows from appearing in the input box */
+        /* ---ABOVE--- This will stop the up/down arrows from appearing in the input box */
 
-          #lblLunch2 {
-              vertical-align:top;
-          }
-
-
+        #lblLunch2 {
+            vertical-align: top;
+        }
     </style>
 
 
@@ -119,14 +117,23 @@
             &nbsp;&nbsp;&nbsp;background-color: yellow; <br />
             }
         </strong> <br />
-        <em>This makes all the input boxes go yellow when they receive focus.</em>
+        <em>This makes all the input boxes go yellow when they receive focus.</em> <br /> <br />
+
+        <strong>
+            input:invalid { <br />
+            &nbsp;&nbsp;&nbsp;background-color: #CCFFCC; <br />
+            }
+        </strong> <br />
+        <em>
+            This makes all the input boxes go light green when they have an invalid entry. <br />
+        </em>
     </p>
     <div class="divFlex">
         <div class="divBorder divBSet">
 
 
             <p>
-                For more information on &lt;forms action="" method="GET or POST"&gt; 
+                For more information on &lt;forms action="" method="GET or POST"&gt;
                 <a href="https://www.w3schools.com/tags/tag_form.asp" target="_blank">Click Here</a> <br /> <br />
 
                 A Form should be used to allow the user to provide feedback or send and email <br>
@@ -153,10 +160,29 @@
                 <input type="text" name="" value="Berty" size="20"> <br> <!-- tells it to use a TextBox -->
                 <label>Email Address: </label><input type="email" name="" value="" required> <br>
                 <label>Message:</label> <br>
-                <textarea name="name" rows="8" cols="50" 
+                <textarea name="name" rows="8" cols="50"
                           placeholder="This is a TEXTAREA element (not an INPUT box element)...and this text is created using the PLACEHOLDER attribute."></textarea> <br> <!-- set to be 8 rows deep and 50 columns wide -->
                 <input type="submit" name="" value="Submit"> <br><!-- use a Button to submit the form -->
+
             </form>
+            <br />
+            <p>
+                <em>
+                    NOTE... I also saw code... <br />
+                    <b>
+                        &lt;form id="form" &gt; <br />
+                        &nbsp;&nbsp;&nbsp;&lt;input type="text" id="input" value="" &gt; <br />
+                        &nbsp;&nbsp;&nbsp;&lt;button id="submit"&gt;SUBMIT&lt;/button&gt; <br />
+                        &lt;/form&gt;
+                    </b> <br />
+                    which was a very simple form but because it had <b>&lt;form&gt;&lt;/form&gt;</b> around
+                    the text box & button then when the cursor was in the text box & you pressed ENTER it
+                    automatically ran the onclick for the button. <br />
+                    It's not really recommended, you should think about 
+                    <a href="https://www.w3schools.com/howto/howto_js_trigger_button_enter.asp" target="_blank">doing this</a> 
+                    instead (using 'keyup').
+                </em> <br /> <br />
+            </p>
         </div>
         <div class="divBorder divBSet">
             <!--
@@ -357,7 +383,7 @@
                 <a href="https://www.w3schools.com/tags/tag_input.asp" target="_blank">HERE</a> for an explanation of the
                 &lt;input&gt; tag - and a list of applicable attributes (eg <b>
                     pattern,
-                    list, max, maxlength, minlength, multiple, required, checked
+                    list, max, maxlength, minlength, multiple, required, checked, size
                 </b> etc)<br /> <br />
                 or for the list of different <a href="https://www.w3schools.com/tags/att_input_type.asp" target="_blank">types</a> of input boxes<br />
             </p>
@@ -599,10 +625,10 @@
             </datalist>
             <br /> <br />
             <p>
-                Try typing in what you want, eg p, and the list will change - leaving just Pizza & Pasta 
+                Try typing in what you want, eg p, and the list will change - leaving just Pizza & Pasta
                 then you can type more letters or use the Up/Down arrows to make your selection. <br /> <br />
                 <b>NOTE</b> <br />
-                You can also type in a letter that is ANYWHERE in the name and it will change the list and display 
+                You can also type in a letter that is ANYWHERE in the name and it will change the list and display
                 just the selections that contain that combination of letters, eg a. <br /> <br />
 
                 <b>ALSO NOTE</b> <br />

@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+
+
+    <!--Define Viewport
+    Before you do anything else, you should define the width of the viewport
+    in your HTML. This will ensure that your site has no horizontal scroll - the full
+    site will be visible, and users will not have to zoom on mobile to see the content.-->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+    <!-- set a TITLE to appear on the tab header-->
+    <title>JSON</title>
+
+
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+
+
+</head>
+<body class="bodyMove">
+    <a href="index.html">Home</a>
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h1>Working with JSON</h1>
+            <h3>Introduction</h3>
+            <p>
+                JSON, short for JavaScript Object Notation, is a language-independent data format that
+                has been accepted as an industry standard. <br /> <br />
+
+                Because it is based on the JavaScript programming language, JSON’s syntax looks similar to a
+                JavaScript object with minor differences. <br /> <br />
+
+                Here is an example JSON object of a person named Kate, who is 30 years old, 
+                and whose hobbies include reading, writing, cooking, and playing tennis: <br /> <br />
+
+                <b>{
+                &nbsp;&nbsp;&nbsp;"person": { <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name": "Kate", <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"age": 30, <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"hobbies": [ "reading", "writing", "cooking", "tennis" ] <br />
+                &nbsp;&nbsp;&nbsp;} <br />
+                } </b> <br /> <br />
+
+                Represented as a JavaScript object literal, the same information would appear as: <br /> <br />
+
+                <b>{ <br />
+                &nbsp;&nbsp;&nbsp;person: { <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: 'Kate', <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;age: 30, <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hobbies: [ 'reading', 'writing', 'cooking', 'tennis' ] <br />
+                &nbsp;&nbsp;&nbsp;} <br />
+                } </b> <br /> <br />
+
+
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <p>
+                <h2>Reading a JSON String</h2>
+
+                In a typical web application, the JSON data that we receive from a web request comes in the
+                form of a string. <br />
+                At other times, JSON data is stored in a file that is used for authentication, configuration,
+                or database storage. <br />
+                These files typically have a .json extension, and they have to be opened in order to
+                retrieve the JSON string in it. <br />
+                In either case, we will need to convert the string to a format that we can use in
+                order to access its parts. <br />
+                Each programming language has its own mechanism to handle this conversion. <br />
+                In JavaScript, for example, we have a built-in JSON class with a
+                method called <span class="greenMess"><b>.parse()</b></span> that takes a JSON string as a parameter
+                and returns a JavaScript object. <br /> <br />
+
+                The following code converts a JSON string object, jsonData, into a JavaScript
+                object, jsObject, and logs jsObject on the console. <br /> <br />
+
+                <b>
+                    const jsonData = '{ "book": { <br />
+                    &nbsp;&nbsp;&nbsp;"name": "JSON Primer", <br />
+                    &nbsp;&nbsp;&nbsp;"price": 29.99,  <br />
+                    &nbsp;&nbsp;&nbsp;"inStock": true,  <br />
+                    &nbsp;&nbsp;&nbsp;"rating": null } }'; <br /> <br />
+
+                    const jsObject = JSON<span class="greenMess">.parse</span>(jsonData); <br />
+                    console.log(jsObject);
+                </b> <br /> <br />
+
+                This will print out jsObject as follows: <br /> <br />
+
+                <b>{ <br />
+                &nbsp;&nbsp;&nbsp;book: { name: 'JSON Primer', price: 29.99, inStock: true, rating: null } <br />
+                } <br /> <br /> </b>
+
+                Once we have converted a JSON object to a JavaScript object, we can access 
+                the individual properties inside the JavaScript object, for example... <br /> <br />
+
+                <b>
+                    const book = jsObject.book; <br />
+                    console.log(book); <br />
+                    console.log(book.name, book.price, book.inStock); <br /> <br />
+                </b>
+
+                Which will display... <br /> <br />
+
+                <b>
+                    { name: 'JSON Primer', price: 29.99, inStock: true, rating: null } <br />
+                    JSON Primer 29.99 true <br /> <br />
+                </b>
+
+
+            </p>
+
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+</body>
+</html>

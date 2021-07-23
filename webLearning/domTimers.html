@@ -50,6 +50,14 @@
 
         <b><a href="https://www.w3schools.com/jsref/met_win_clearinterval.asp" target="_blank">clearInterval(myVar);</a></b> <br />
         To stop the setInterval function. <br /> <br />
+
+        <b>NOTE...</b> <br />
+        Your function may not run exactly when you specify, for example, <br />
+        if you set the timer to run your function in 5 seconds then when 
+        the countdown reaches 5 seconds it lets the system know that your function can now be run and 
+        your function will be added to a task queue. <br />
+        If there are still tasks running then these will be completed before your task runs. <br />
+        Therefore it is fair to say "Wait 5 seconds then run my function when you're ready". <br /> <br />
     </p>
 
     <div class="divFlex">

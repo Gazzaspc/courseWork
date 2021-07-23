@@ -1,0 +1,386 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+
+
+    <!--Define Viewport
+    Before you do anything else, you should define the width of the viewport
+    in your HTML. This will ensure that your site has no horizontal scroll - the full
+    site will be visible, and users will not have to zoom on mobile to see the content.-->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+    <!-- set a TITLE to appear on the tab header-->
+    <title>HTTP Requests</title>
+
+
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+    <style>
+        #XHRimg {
+            width: 100%;
+        }
+
+        pre {
+            font-size: 12px;
+        }
+
+        main {
+            background-color: #ef6b68;
+            height: 600px;
+            text-align: center;
+        }
+
+        li {
+            text-align: center;
+            margin: 0 25% 0 25%;
+        }
+
+        .container {
+            width: 400px;
+            margin: auto;
+            text-align: center;
+        }
+
+        #input {
+            width: 219px;
+            height: 37px;
+            border-radius: 3.2px;
+            border: solid 0.8px #1f233e;
+            background-color: inherit;
+            display: block;
+            margin: auto;
+            margin-top: 10px;
+            font-family: Source Sans Pro;
+            font-size: 14px;
+            letter-spacing: 0.2px;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        #submit {
+            width: 125px;
+            height: 30px;
+            border-radius: 2px;
+            border-color: inherit;
+            background-color: #1f233e;
+            margin-top: 30px;
+            font-family: Work Sans, sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            text-align: center;
+            color: #ef6b68;
+            margin-right: -3px;
+        }
+
+        #responseField {
+            min-width: 191px;
+            min-height: 120px;
+            background-color: #1f233e;
+            margin: auto;
+            margin-top: 25px;
+            font-family: Source Sans Pro;
+            font-weight: 400;
+            font-size: 14px;
+            letter-spacing: 0.2px;
+            text-align: center;
+            color: #ffffff;
+            overflow-wrap: break-word;
+            padding: 20px;
+        }
+
+        #submit:hover {
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        #submit:active {
+            background-color: #ffffff;
+            border-color: #ffffff;
+            color: #ef6b68;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+<body class="bodyMove">
+    <a href="index.html">Home</a>
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h1>HTTP Requests</h1>
+            <h3>Introduction</h3>
+            <p>
+                NOTE... <br />
+                Some say <b><a href="fetchRequests.html">fetch</a></b> requests are better than the below. <br /> <br />
+
+                The four most commonly used types of (XMLHttpRequest) HTTP requests are GET, POST, PUT, and DELETE.  <br /> <br />
+
+                You can see an MDN document on HTTP Request Methods
+                <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods" target="_blank">here</a> <br /> <br />
+
+                With a <b>GET</b> request, we’re retrieving, or getting, information from some
+                source (usually a website). <br /> <br />
+
+                For a <b>POST</b> request, we’re posting information to a source that will process the
+                information and send it back. <br /> <br />
+
+                For now this covers <b>GET</b> and <b>POST</b> requests, PUT and DELETE may be covered later. <br /> <br />
+
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <p>
+                <h2>Get API Key</h2>
+
+                <b>My course goes on to say... </b> <br />
+                "In this lesson, we will explain how to make GET and POST requests by using JavaScript’s XHR object. <br />
+                We’ll also incorporate query strings into our requests. <br /> <br />
+
+                We’ll use the Datamuse API for GET requests and the Rebrandly URL Shortener API for POST requests. <br />
+                To complete the exercise on POST, make sure you create a Rebrandly API Key by
+                clicking the
+                <a href="https://app.rebrandly.com" target="_blank">rebrandly site</a> link." <br /> <br />
+
+                Then you will need to create a new account. <br />
+                Once that is done you have access to Rebrandly's dashboard. <br />
+                &nbsp;&nbsp;&nbsp;In the top right hand corner is an 'account Icon' <br />
+                &nbsp;&nbsp;&nbsp;Click this for a drop down menu <br />
+                &nbsp;&nbsp;&nbsp;Select 'Account Settings' <br />
+                &nbsp;&nbsp;&nbsp;On the pop-up select the tab 'API Keys' <br /> <br />
+
+                &nbsp;&nbsp;&nbsp;Then choose the button for 'Generate new API Key' <br /> <br />
+
+                They then go on to say <br />
+                "Wonderful! Now you can use this newly created API key. <br />
+                Please note that your API key is unique to your account so you should keep it
+                safe and do not share it with anyone! <br />
+                However, you can use your API key to interact with the
+                Rebrandly API — think about what you can make!"
+            </p>
+
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h2>Event Loops</h2>
+
+            <p>
+                JavaScript uses an <b>event loop</b> to handle asynchronous function calls. <br />
+                When a program is run, function calls are made and added to a stack. <br />
+                The functions that make requests that need to wait for servers to respond
+                then get sent to a separate queue. <br />
+                Once the stack has cleared, then the functions in the queue are executed. <br /> <br />
+
+                Web developers use the event loop to create a smoother browsing experience by
+                deciding when to call functions and how to handle asynchronous events. <br />
+                my course explored one system of technologies called
+                <b>A</b>synchronous <b>J</b>avaScript <b>a</b>nd <b>X</b>ML, or <b>AJAX</b>. <br /> <br />
+
+                You can also read the MDN documentation on <b>Event Loops</b>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop" target="_blank">Here</a> <br /> <br />
+
+                and you can read an <b>Introduction to XML</b> - an MDN documentation
+                <a href="https://developer.mozilla.org/en-US/docs/Web/XML/XML_introduction" target="_blank">Here</a> <br /> <br />
+            </p>
+        </div>
+
+        <div class="divBorder divBSet">
+            <h2>XHR GET Diagram</h2>
+
+            <p>
+                Codeacademy have created this image as a basic example of the XHR GET commands <br /> <br />
+
+                <img id="XHRimg" src="Images/XMLHttpRequest.jpg" alt="XHR Request image" /> <br />
+
+                <b>const <span class="greenMess">xhr</span> = new XMLHttpRequest();</b> <br />
+                <em>
+                    the <span class="greenMess">xhr</span> can be called anything but calling it
+                    <span class="greenMess">xhr</span> is the accepted name.
+                </em> <br /> <br />
+
+
+                <pre>
+// xhr is the accepted name but can be anything
+<b>const xhr = new XMLHttpRequest(); </b>
+
+// the url is a string
+<b>const url = "https://api-to-call.com/endpoint"; </b>
+
+// set this to json as it is how the
+// response is going to be formatted
+<b>xhr.responseType = "json"; </b>
+
+// this property defines a function to be 
+// executed when the readyState changes.
+<b>xhr.onreadystatechange = () => { </b>
+
+  // this checks to see if
+  // the request has finished
+  <b>if (xhr.readyState === XMLHttpRequest.DONE) { </b>
+
+        // return the response property
+        <b>return xhr.response; </b>
+
+        <b>  }
+
+}; </b>
+
+// open creates a new GET request
+<b>xhr.open("GET", url); </b>
+
+// send the request
+<b>xhr.send(); </b>
+// NOTE
+// I think that with the  xhr.open("GET", ...) the
+// xhr.send() will always have no parameter, ie 
+// just  xhr.send()
+// BUT
+// If using xhr.open("POST", ...); then 
+// xhr.send() will have a parameter eg   
+// xhr.send(data);
+
+</pre>
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h2>An example: using the Datamuse API</h2>
+
+            <p>
+                You can see documentation for the Datamuse API
+                <a href="https://www.datamuse.com/api/" target="_blank">Here</a> <br /> <br />
+
+                This example will display up to 10 words that rhyme your chosen word (sort of) <br /> <br />
+
+                <em>It also uses the <br />
+                <b>/HTTPRequest/main.js <br />
+                 /HTTPRequest/helperFunctions.js </b> <br />
+                files.</em> <br /> <br />
+            </p>
+
+            <main id="main">
+                <div class="container">
+
+                    <h1>Enter a Word</h1>
+
+                    <form id="form" autocomplete="off">
+                        <!--Because this is a FORM when you click ENTER it will 
+                            automatically perform a BUTTON click...
+                            ...note the onclick event is set in file 'main.js' -->
+                        <input type="text" id="input" value="">
+                        <button id="submit">SUBMIT</button>
+                    </form>
+
+                    <div style="text-align:left;padding-left:10px;">
+                        <p>
+                            <input id="radForm" type="radio" name="display" value="0" checked/> <label for="radForm">Formatted Text</label> <br />
+                            <input id ="radRaw" type="radio" name="display" value="1" /> <label for="radRaw">Raw Text</label> <br />
+                        </p>
+                    </div>
+
+                    <div id="responseField">
+
+                    </div>
+
+
+                </div>
+            </main>
+
+        </div>
+        <script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
+        <script src="HTTPRequest/main.js"></script>
+        <script src="HTTPRequest/helperFunctions.js"></script>
+
+        <div class="divBorder divBSet">
+            <h3>XHR GET request with Query Strings</h3>
+
+            <p>
+                The previous pane's program has the code for setting up the <br />
+                <b>const xhr = new XMLHttpRequest();</b> inside the <b>main.js</b> file. <br /> <br />
+
+                It creates the <b><em>myString</em> string and passes it back to be used in the</b>
+                <b>xhr.open("GET", <em>myString</em>);</b> <br />
+                command. <br />
+                The format of <em>myString</em> was, eg... <br />
+                (url) followed by (key) followed by (value): <br /> <br />
+                The url = "https://api.datamuse.com/words?" - url of the Datamuse API <br />
+                The key = "rel_rhy=" - which is defined by the API call (Datamuse API) <br />
+                The value = "<em>the word you entered on the form</em>" - word to rhyme (eg 'chair') <br /> <br />
+
+                For example: <br />
+                <b>
+                    myString = <br />
+                    "https://api.datamuse.com/words?rel_rhy=chair"
+                </b> <br /> <br />
+
+                <em>
+                    <b>Note</b> <br />
+                    You must NOT use spaces between the url, key and/or value as it will most likely fail to run. <br />
+                    If you need spaces then you MUST send '%20' where you want the space as
+                    %20 = space in XHTTPRequest(s). <br />
+                    Maybe use <b>value.replace(/ /g, "%20")</b> to change spaces
+                </em> <br /> <br />
+
+                <br />
+                A <b>query string</b> contains additional information to be sent with a request. <br />
+                The Datamuse API allows us to retrieve more specific data with query strings attached to the request URL. <br />
+
+                A <b>query string</b> is separated from the URL using a <b>?</b> character. <br />
+                After <b>?</b>, you can then create a parameter which is a key value pair joined by a <b>=</b> <br />
+                Eg... <br />
+                <b>'https://api.datamuse.com/words?key=value'</b> <br /> <br />
+
+                If you want to add an additional parameter you will have to use the & character to
+                separate your parameters. Like so: <br />
+                <b>'https://api.datamuse.com/words?key=value&anotherKey=anotherValue'</b> <br />
+                <em>or</em> <br />
+                <b>'https://api.datamuse.com/words?key=value&anotherKey=another%20Value'</b>
+            </p>
+        </div>
+
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div id="rebrandly" class="divFlex">
+        <div class="divBorder divBSet">
+            <h3>An example: Using the Rebrandly API</h3>
+
+            <p>
+                The files used for this example are as follows:- <br /> <br />
+
+                <b>rebrandly_HTTPRequests.html <br />
+                /HTTPRequest/rebrandly_helperFunctions.js <br />
+                /HTTPRequests/rebrandly_main.js</b> <br /> <br />
+
+                To run this example 
+                <a href="rebrandly_HTTPRequests.html">Click Here</a> <br /> <br />
+
+
+            </p>
+        </div>
+
+        <!--<div class="divBorder divBSet">
+
+        </div>-->
+
+    </div>
+
+    <a href="#">Top</a> <br />
+
+</body>
+</html>
