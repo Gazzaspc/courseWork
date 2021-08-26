@@ -1,0 +1,612 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>React Components</title>
+
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+    <style>
+        pre {
+            font-size: 12px;
+            color: blue;
+        }
+    </style>
+
+    <!--Any code that is just for this page and not to go in myScripts.js can go here (or in a SCRIPT area elsewhere
+    on the page or at the end)-->
+    <script>
+                                                        //...Code / Functions etc...
+    </script>
+
+</head>
+<body class="bodyMove">
+    <a href="index.html">Home</a>
+
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h1>React Components</h1>
+
+            <p>
+                React applications are made out of components. <br />
+                A component is a small, reusable chunk of code that is responsible for one job. <br />
+                That job is often to render some HTML. <br /> <br />
+
+                This code example will create and render a new React component: <br /> <br />
+
+                <b>
+                    import React from 'react'; <br />
+                    import ReactDOM from 'react-dom'; <br /> <br />
+
+                    class MyComponentClass extends React.Component { <br />
+                    &nbsp;&nbsp;&nbsp;render() { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return &lt;h1&gt;Hello world&lt;/h1&gt; <br />
+                    &nbsp;&nbsp;&nbsp;} <br />
+                    }; <br /> <br />
+
+                    ReactDOM.render( <br />
+                    &nbsp;&nbsp;&nbsp;&lt;MyComponentClass /&gt;, <br />
+                    &nbsp;&nbsp;&nbsp;document.getElementById('app') <br />
+                    );
+                </b> <br /> <br />
+
+
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>React Library</h2>
+
+            <p>
+                The following 2 lines of code that go at the top of the form are necessary... <br /> <br />
+
+                <span class="forceGreen">
+                    import React from 'react'; <br />
+                    import ReactDOM from 'react-dom';
+                </span> <br /> <br />
+
+                Both of the above lines of code import JavaScript objects. <br />
+                In both lines, the imported object contains React-related methods. <br /> <br />
+
+
+
+                The methods imported from <b>'react'</b> don’t deal with the DOM at all -
+                They don’t engage directly with anything that isn’t part of React. <br /> <br />
+
+                And the methods imported from <b>'react-dom'</b> are used to interact with the DOM. <br /> <br />
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>import React from 'react';</h2>
+
+            <p>
+                This line of code creates an object named <b>React</b> which contains
+                methods necessary in order to use the React Library. <br /> <br />
+
+                One of the methods contained in this object is <b>React.component</b> which is
+                required by JSX (and called automatically by JSX). <br />
+                Therefore we MUST have this line of code before JSX will work. <br /> <br />
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>import ReactDOM from 'react-dom';</h2>
+
+            <p>
+                The methods imported from <b>'react-dom'</b> are meant for interacting with the DOM, eg <br />
+                <b>ReactDom.render()</b> <br /> <br />
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Create a Component Class</h2>
+
+            <p>
+                React component is a small, reusable chunk of code that is responsible for one job,
+                which often involves rendering HTML. <br /> <br />
+
+                We can use a JavaScript class to define a new React component. <br />
+                We can also define components with JavaScript functions. <br /> <br />
+
+                Dealing with class components first. <br /> <br /> <br />
+
+                All class components will have some methods and properties in common. <br />
+                Rather than rewriting those same properties over and over again every time, we
+                extend the Component class from the React library. <br />
+                This way, we can use code that we import from the React library, without having to
+                write it over and over again ourselves. <br /> <br />
+
+                <b>React.Component</b> is a JavaScript class. <br />
+                To create your own component class, you must subclass <b>React.Component</b>. <br />
+                You can do this, for example, by... <br />
+                <b>class <em>YourComponentNameGoesHere</em> extends React.Component {}</b> <br /> <br />
+
+                <em>
+                    In this scenario <b>YourComponentNameGoesHere</b> is a <b>subclass</b> of
+                    <b>React.Component</b>
+                </em> <br /> <br />
+
+                <hr />
+                An example can be seen here... <br /> <br />
+
+                <b>
+                    import React from 'react'; <br />
+                    import ReactDOM from 'react-dom'; <br /> <br />
+
+                    class MyComponentClass extends React.Component { <br />
+                    &nbsp;&nbsp;&nbsp;render() { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return (&lt;h1&gt;Hello world&lt;/h1&gt;) <br />
+                    &nbsp;&nbsp;&nbsp;} <br />
+                    }; <br /> <br />
+
+                    ReactDOM.render( <br />
+                    &nbsp;&nbsp;&nbsp;&lt;MyComponentClass /&gt;, <br />
+                    &nbsp;&nbsp;&nbsp;document.getElementById('app') <br />
+                    );
+                </b> <br /> <br />
+
+                <em style="color:red">
+                    <b>NOTE</b> <br />
+                    Class names should start with a capital letter (known as UpperCamelCase). <br />
+                    This is the case for Javascript coding but in the case of React
+                    class names <b>MUST</b> start with a capital letter. <br /> <br />
+
+                    <b>ALSO NOTE</b> <br />
+                    The line of code <br />
+                    <b>return (&lt;h1&gt;Hello world&lt;/h1&gt;)</b> <br />
+                    has round brackets '( )' but if you are only returning 1 element (the h1 element) then
+                    the ( )'s can be omitted.
+                </em><br /> <br />
+
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>Make a React Component</h2>
+
+            <p>
+                To make a React component, you write a JSX element. <br />
+                Instead of naming your JSX element something like h1 or div this time we
+                give it the same name as the component class, eg... <br />
+                <span class="greenMess">&lt;MyComponentClass /&gt; </span> <br /> <br />
+
+                So when you want to render your class you would say... <br /> <br />
+
+                <b>
+                    ReactDOM.render( <br />
+                    &nbsp;&nbsp;&nbsp;<span class="greenMess">&lt;MyComponentClass /&gt;</span>, <br />
+                    &nbsp;&nbsp;&nbsp;document.getElementById('app') <br />
+                    );
+                </b> <br /> <br />
+
+                <em>
+                    Basically you are pretending it is a (self closing) JavaScript Tag and rendering it. <br />
+                    You will be putting the name inside the <span class="forceGreen">&lt; /&gt;</span> (not forgetting the / to close it).
+                </em> <br /> <br />
+
+                <hr /> <br />
+
+                <b>Another Example...</b> <br /> <br />
+
+                <pre>
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const redPanda = {
+  src: 'Images/Red_Panda.jpg',
+  alt: 'Red Panda',
+  width:  '200px'
+};
+
+class RedPanda extends React.Component {
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;h1&gt;Cute Red Panda&lt;/h1&gt;
+        &lt;img 
+          src={redPanda.src}
+          alt={redPanda.alt}
+          width={redPanda.width} /&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+ReactDOM.render(
+  &lt;RedPanda /&gt;,
+  document.getElementById('app')
+);
+
+</pre> <br />
+
+                This example creates an object (<b>redPanda</b>) that has properties
+                (<b>src, alt & width</b>) associated with it. <br /> <br />
+
+                That objects properties are then used inside the <b>RedPanda</b> class in the <b>render()</b>
+                method. <br />
+                <em>
+                    <b>NOTE</b> the curly brackets { }'s around the <b>redPanda</b> object to
+                    tell JSX it is to use the object, otherwise it will just treat it as TEXT and
+                    not display the actual value of the object.property.
+                </em><br /> <br />
+
+                <em>
+                    <b>ALSO NOTE</b> In the <b>ReactDOM.render()</b>the class name <b>RedPanda</b>
+                    is listed inside <b>&lt; /&gt; (&lt;RedPanda /&gt;)</b> as it is treated like a
+                    JavaScript self-closing TAG/ELEMENT (eg &lt;img /&gt;) and
+                    must be coded like that.
+                </em><br /> <br />
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Adding Logic to a Render Function</h2>
+
+            <p>
+                A render() function must have a return statement. <br />
+                A render() function can also be a fine place to put simple calculations
+                that need to happen right before a component renders. <br /> <br />
+
+                Any simple calculations/logic <b>MUST</b> be placed <b>AFTER the RENDER()</b> and
+                <b>BEFORE the RETURN</b> command. Eg...<br /> <br />
+
+                <b>
+                    class Random extends React.Component { <br />
+                    &nbsp;&nbsp;&nbsp;render()
+                </b> { <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>
+                    // First, some logic that must happen <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// before rendering:
+                </em> <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>const n = Math.floor(Math.random() * 10 + 1); </b> <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>
+                    // Next, a return statement <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// using that logic (must be inside {}'s):
+                </em> <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>
+                    return (<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;The number is {n}!&lt;/h1&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;); <br />
+                    &nbsp;&nbsp;&nbsp;} <br />
+                    }
+                </b> <br /> <br />
+
+                And remember, when you call the routine to render the class <br />
+                In the <b>ReactDOM.render()</b>the class name <b>Friend</b>
+                is listed inside <b>&lt; /&gt; (<span class="forceRed">&lt;Friend /&gt;</span>)</b> as it is treated like
+                a self-closing JavaScript TAG/ELEMENT (eg &lt;img /&gt;) and
+                must be coded like that.
+                <br /> <br />
+
+                <b>
+                    ReactDOM.render( <br />
+                    &nbsp;&nbsp;&nbsp;<span class="forceRed">&lt;Friend /&gt;</span>, <br />
+                    &nbsp;&nbsp;&nbsp;document.getElementById('app') <br />
+                    );
+                </b> <br /> <br />
+
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>Adding Logic Part 2</h2>
+
+            <p>
+                Another Example... <br /> <br />
+
+                <pre>
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const apocalypse = false;
+
+class TodaysPlan extends React.Component {
+  render() {
+    let task;
+    if (!apocalypse) {
+      task = 'learn React.js'
+    } else {
+      task = 'run around'
+    }
+
+    return &lt;h1&gt;Today I am going to {task}!&lt;/h1&gt;
+  }
+}
+
+ReactDOM.render(
+    &lt;TodaysPlan /&gt;,
+	document.getElementById('app')
+);
+</pre>
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Methods in Classes</h2>
+
+            <p>
+                <b>render()</b> is a method inside the class. <br />
+                You can also create other methods (like <b><span class="forceGreen">functions()</span> </b>) and then
+                call them inside the render() method (using the <b>this.</b> command). <br /> <br />
+
+                Because the <span class="forceGreen">functions()</span> are being called by
+                the render() method they need to go above the
+                render method inside of the class, eg... <br /> <br />
+
+                <b>
+                    class MyClass extends React.Component { <br />
+                    &nbsp;&nbsp;&nbsp;<span class="forceGreen">
+                        myFunc() { <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert('Stop it. Stop hovering.'); <br />
+                        &nbsp;&nbsp;&nbsp;}
+                    </span> <br /> <br />
+
+                    &nbsp;&nbsp;&nbsp;render() { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return ( <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div
+                    <span class="forceGreen">onClick={this.myFunc}</span>&gt;&lt;/div&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;); <br />
+                    &nbsp;&nbsp;&nbsp;} <br />
+                    }
+                </b> <br /> <br />
+
+                <em>
+                    <b>NOTE</b> <br />
+                    You do not use the ()'s when calling the function (but you do need them when creating
+                    the function)... <b>{this.myFunc}</b> and <b>NOT {this.myFunc()}</b>.
+                </em> <br /> <br />
+
+                <span class="forceRed">
+                    <em>
+                        <b>Also Note...</b> <br />
+                        <b>this.</b> is not used when referring to a property/method/function that is
+                        created <b>outside</b> of the class (see <b>Adding Logic Part 2</b> example, above.
+                        The property <b>apocalypse</b> is outside the class).
+                    </em>
+                </span> <br /> <br />
+
+
+
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>Getters in Classes</h2>
+
+            <p>
+                Similar to other methods... <br />
+                You can also create other methods (like <b><span class="forceGreen">Getters</span> </b>) and then
+                call them inside the render() method (using the <b>this.</b> command). <br /> <br />
+
+                Because the <span class="forceGreen">Getters</span> are being called by
+                the render() method they need to go above the
+                render method inside of the class, eg... <br /> <br />
+
+                <b>
+                    class IceCreamGuy extends React.Component { <br />
+                    &nbsp;&nbsp;&nbsp;<span class="forceGreen">
+                        get food() { <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 'ice cream'; <br />
+                        &nbsp;&nbsp;&nbsp;}
+                    </span> <br /> <br />
+
+                    &nbsp;&nbsp;&nbsp;render() { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return ( <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;I
+                    like {<span class="forceGreen">this.food</span>}.&lt;/h1&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;); <br />
+                    &nbsp;&nbsp;&nbsp;} <br />
+                    }
+                </b> <br /> <br />
+
+                <em>
+                    <b>NOTE</b> <br />
+                    You do not use the ()'s when calling the getter (but you do need them when creating
+                    the getter)... <b>{this.food}</b> and <b>NOT {this.food()}</b>.
+                </em> <br /> <br />
+
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Setting Properties to JSX</h2>
+
+            <p>
+                Variables (or properties) can be set to JSX and be passed to render, eg... <br /> <br />
+
+                <b>const myProp = &lt;h1&gt;This is a h1 tag&lt;/h1&gt;;</b> <br /> <br />
+                or <br /> <br />
+
+                <b>const myProp = <span class="forceRed">(</span> <br />
+                &nbsp;&nbsp;&nbsp;&lt;div&gt; <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;This is a h1 tag&lt;/h1&gt; <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;Followed by h2&lt;/h2&gt; <br />
+                &nbsp;&nbsp;&nbsp;&lt;/div&gt; <br />
+                <span class="forceRed">)</span>; <br /> <br /> </b>
+
+                <b>NOTE</b> <br />
+                If you only have <b>ONE</b> tag to saved to the property then you do not need to 
+                specify any opening/closing parentheses, <span class="forceRed">()</span>. <br />
+                BUT if you have <b>TWO OR MORE</b> then you must include <span class="forceRed">()</span>'s. <br /> 
+                <em>I think I like to include them anyway whilst learning.</em> <br /> <br />
+
+
+
+            </p>
+        </div>
+
+        <!--<div class="divBSet divBorder">
+
+        </div>-->
+    </div>
+
+    <a href="#">Top</a> <br />
+
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Example Code...</h2>
+            <h3>Authorization Form</h3>
+
+            <p>
+                <b>Scenario</b> <br />
+                A client just called you to say that they love their new website! <br />
+                There’s only one problem: they don’t like how their contact page displays
+                their personal information for all to see. <br /> <br />
+
+                They’ve asked you to hide their website’s contact page behind a password form. <br /> <br />
+
+                <hr /> <br />
+
+                You can read about <b>.bind(this)</b> in w3schools React Events page
+                <a href="https://www.w3schools.com/react/react_events.asp" target="_blank">Here</a> <br /> <br />
+                <em>
+                    <b>NOTE</b>
+                    If you must use regular functions instead of arrow functions you have to bind this to the
+                    component instance using the bind() method. <br />
+                    Without the binding, the this keyword would return undefined.
+                </em> <br /> <br />
+
+                Also, it's worth taking a look at another document about binding .this()
+                <a href="https://www.w3schools.com/react/react_es6.asp#arrowthis" target="_blank">Here</a> <br /> <br />
+
+
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>Example...</h2>
+
+            <pre>
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class Contact extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      password: 'swordfish',
+      authorized: false
+    };
+    this.authorize = this.authorize.bind(this);
+  }
+
+  authorize(e) {
+    const password = e.target.querySelector(
+      'input[type="password"]').value;
+    const auth = password == this.state.password;
+    this.setState({
+      authorized: auth
+    });
+  }
+
+  render() {
+    let contact = "Contact";
+    if (!this.state.authorized) {
+      contact = "Enter the Password";
+    }
+
+    const login = (
+        &lt;form onSubmit={this.authorize} action="#"&gt;
+            &lt;input type="password" placeholder="password" /&gt;
+            &lt;input type="submit" /&gt;
+        &lt;/form&gt;);
+    
+    const contactInfo = (
+      &lt;ul&gt;
+        &lt;li&gt;
+          client@example.com
+        &lt;/li&gt;
+        &lt;li&gt;
+          555.555.5555
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    );
+
+    return (
+      &lt;div id="authorization"&gt;
+         &lt;h1&gt;{contact}&lt;/h1&gt;
+         {this.state.authorized ? contactInfo : login};
+      &lt;/div&gt;
+    );
+  }
+}
+
+ReactDOM.render(
+            &lt;Contact /&gt;, 
+  document.getElementById('app')
+);
+</pre>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <!--<div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+
+        </div>-->
+
+        <!--<div class="divBSet divBorder">
+
+        </div>-->
+    <!--</div>
+
+    <a href="#">Top</a> <br />
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+
+        </div>-->
+
+        <!--<div class="divBSet divBorder">
+
+        </div>-->
+    <!--</div>
+
+    <a href="#">Top</a> <br />
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+
+        </div>-->
+
+        <!--<div class="divBSet divBorder">
+
+        </div>-->
+    <!--</div>
+
+    <a href="#">Top</a> <br />-->
+</body>
+</html>

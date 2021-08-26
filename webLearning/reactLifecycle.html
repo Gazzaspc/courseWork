@@ -1,0 +1,471 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>React Lifestyle Methods</title>
+
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+    <style>
+        pre {
+            font-size: 12px;
+            color: blue;
+        }
+    </style>
+
+    <!--Any code that is just for this page and not to go in myScripts.js can go here (or in a SCRIPT area elsewhere
+    on the page or at the end)-->
+    <script>
+         //...Code / Functions etc...
+    </script>
+
+</head>
+<body class="bodyMove">
+    <a href="index.html">Home</a>
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h1>Component Lifestyle Methods</h1>
+
+            <p>
+                the component lifecycle has three high-level parts:- <br /> <br />
+
+                <b>Mounting</b> <br />
+                when the component is being initialized and put into the DOM for the first time. <br /> <br />
+
+                <b>Updating</b> <br />
+                when the component updates as a result of changed state or changed props. <br /> <br />
+
+                <b>Unmounting</b> <br />
+                when the component is being removed from the DOM. <br /> <br />
+
+                <em>
+                    The constructor runs in the <b>Mounting</b> phase. <br />
+                    While the render() can run in the <b>mounting</b> and/or the <b>Updating</b> phase. <br />
+                </em> <br />
+
+                Therefore it could be best to run some functions, for example the <b>setInterval() function</b>,
+                <b>AFTER</b> the render(). <br />
+
+                <em>
+                    <b>NOTE</b> <br />
+                    For things like <b>setInterval()</b> the <b>render()</b> isn’t a good location. <br />
+                    For one, it executes during the mounting phase and the updating phase—too often for us. <br />
+                    It’s also generally a bad idea to set up any kind of side-effect like this
+                    in render(), as it can create subtle bugs in the future. <br /> <br />
+
+                    the <b>constructor()</b> is also not a great location. <br />
+                    It does only execute during the mounting phase, so that’s good, but
+                    you should generally avoid side-effects like this in constructors
+                    because it violates something called the Single Responsibility Principle. <br />
+                    In short, it’s not a constructor’s responsibility to start side-effects.
+                </em> <br /> <br />
+
+                During the <b>Mounting Phase</b> there is a FINAL method (after <b>constructor()</b>
+                and <b>render()</b>) - it is known as the <b>componentDidMount</b> method. <br />
+                <em>
+                    This is where you run statements that requires that the
+                    component is already placed in the DOM.
+                </em><br /> <br />
+
+                During the <b>Unmounting Phase</b> there is a FINAL method - it is
+                known as the <b>componentWillUnMount</b> method, <br />
+                <em>It runs just BEFORE the class it is in gets removed/cleared.</em> <br /> <br />
+
+                The <b>componentDidUpdate</b> method runs when an update occurs (after a render()). <br />
+                <em>This is called after the update has been rendered in the DOM</em><br />
+
+                See w3schools document on
+                <a href="https://www.w3schools.com/react/react_lifecycle.asp" target="_blank">
+                    React Lifestyle
+                </a> <br /> <br />
+
+            </p>
+        </div>
+        <div class="divBSet divBorder">
+            <h2>componentDidMount() method</h2>
+
+            <p>
+                This method is called <b>AFTER</b> the render method is completed. <br />
+                Which means that, for functions like, for example the <b>setInterval() function</b>,
+                it will only start once the render() has been dealt with.<br /> <br />
+
+                <b>A Code Example...</b> <br /> <br />
+
+                <pre>
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class Clock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { date: new Date() };
+  }
+
+  render() {
+    return (
+        &lt;div&gt;
+                <span class="forceGreen">{this.state.date.toLocaleTimeString()}</span>
+        &lt;/div&gt;
+  }
+
+                <span class="forceRed"><b>componentDidMount()</b> {</span>
+        const oneSecond = 1000;
+        setInterval(() =&gt; {
+          this.setState({ date: new Date() });
+        }, oneSecond);
+                <span class="forceRed">}</span>
+
+}
+
+ReactDOM.render(&lt;Clock /&gt;, document.getElementById('app'));
+</pre>
+
+                The above example code will just print the TIME on screen using (in render()) <br />
+                <b><span class="forceGreen">{this.state.date.toLocaleTimeString()}</span></b> <br /> <br />
+
+                To do this it sets, in <b>the constructor()</b>, the property <b>date</b> <br />
+                and as it is set as a <b>this.state.date</b> property then whenever it's value
+                changes the screen will get re-rendered. <br /> <br />
+
+                The value of <b>this.state.date</b> changes inside the <span class="forceRed">
+                    <b>componentDidMount()</b>
+                </span>
+                method - it uses <b>this.setState</b> to change the time stored in <b>this.state.date</b>
+                every one second. <br /> <br />
+
+                For more on <b>setInterval()</b> you can
+                <a href="https://www.w3schools.com/jsref/met_win_setinterval.asp" target="_blank">
+                    Click Here
+                </a> <br /> <br />
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>componentWillUnmount()</h2>
+
+            <p>
+
+                <b>componentWillUnmount()</b>
+                is the last function to be called immediately before the component is
+                removed from the DOM. <br />
+                It is generally used to perform clean-up for any DOM-elements or timers
+                created in <b>componentWillMount()</b>. <br /> <br />
+
+                Using this <b>Clock class</b> scenario... <br />
+                ...We never told the interval to stop, so it’ll keep running that
+                function forever (or at least, until the user leaves/refreshes the page). <br /> <br />
+
+                When the component is unmounted (in other words, removed from the page),
+                that timer will keep on ticking, trying to update the state of a
+                component that’s effectively gone. <br /> <br />
+
+                This means your users will have some JavaScript code running unnecessarily,
+                which will hurt the performance of the app. <br /> <br />
+
+                React will log a warning that looks something like this: <br /> <br />
+                <em>
+                    <b>Warning:</b> Can't perform a React state update on an unmounted component. <br />
+                    This is a no-op, but it indicates a memory leak in your application. <br />
+                    To fix, cancel all subscriptions and asynchronous tasks in the
+                    componentWillUnmount method.
+                </em> <br /> <br />
+
+                If you do not <b>stop the setInterval()</b> then the clock gets mounted
+                and unmounted hundreds of times—eventually, this will cause your page to
+                become sluggish because of all of the unnecessary work. <br />
+                You’ll also see warnings in your browser console. <br />
+                Even worse, this can lead to subtle, annoying bugs. <br /> <br />
+
+                <em>
+                    components can have lots of other side-effects: <br />
+                    loading external data with AJAX, doing manual tweaking of the DOM,
+                    setting a global value, and more. <br />
+                    We try to limit our side-effects, but it’s difficult to build an interesting
+                    app with truly zero side-effects.
+                </em> <br /> <br />
+
+                ...JavaScript gives us the <b>clearInterval()</b> function to reset the <b>setInterval()</b>. <br /> <br />
+
+                <b>setInterval()</b> can return an ID, which you can then pass into clearInterval() to clear it. <br /> <br />
+
+                Example... <br />
+
+                <pre>
+const oneSecond = 1000;
+this.intervalID = setInterval(() =&gt; {
+  this.setState({ date: new Date() });
+}, oneSecond);
+ 
+// Some time later...
+clearInterval(this.intervalID);
+</pre>
+
+            </p>
+        </div>
+        <div class="divBSet divBorder">
+            <h2>ComponentWillUnmount() Example</h2>
+
+            <p>
+                <pre>
+import React from 'react';
+
+export class Clock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { date: new Date() };
+  }
+  render() {
+    return (
+        &lt;div&gt;{this.state.date.toLocaleTimeString()}&lt;/div&gt;
+    )
+  }
+  componentDidMount() {
+    const oneSecond = 1000;
+                <span class="forceGreen">this.intervalID</span> = setInterval(() =&gt; {
+      this.setState({ date: new Date() });
+    }, oneSecond);
+  }
+
+                <span class="forceRed">componentWillUnmount() {</span>
+        clearInterval(<span class="forceGreen">this.intervalID</span>);
+                <span class="forceRed">}</span>
+}
+</pre>
+
+                <em>
+                    The above example creates a class (<b>Clock</b>) that gets exported<br />
+                    And, therefore will be imported, in another file and ran from there.
+                </em> <br /> <br />
+
+                While the <b>componentWillMount()</b> gets run after the <b>render()</b> completes the
+                <b>componentWillUnmount()</b> runs just before the class it is in gets removed/cleared. <br /> <br />
+
+                <em>
+                    In the above example <b><span class="forceGreen">this.intervalID</span></b> gets
+                    set (in the <b>componentWillMount()</b> method and then is read in when
+                    <b>clearInterval()</b> is run.
+                </em> <br /> <br />
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>componentWillUpdate()</h2>
+
+            <p>
+                The <b>componentDidUpdate</b> method runs when an update occurs (eg
+                <b>this.setState()</b> was used) and a render() occurred. <br /> <br />
+
+                Using our clock example (shown to the right) we now have... <br /> <br />
+
+                a function called <b><span class="forceRed">startInterval()</span></b> which
+                sets the interval timer
+                (<b>setInterval()</b>) and is called from both the <b>componentDidMount()</b> and
+                <b>componentDidUpdate()</b> methods. <br />
+                <em>This was done so we do not duplicate code</em> <br /> <br />
+
+                <b><span class="forceRed">startInterval()</span></b> checks if the precise time
+                is required to be displayed (<b>this.props.isPrecise</b> will be TRUE) and if so
+                the interval is set to be 10 times a second. <br />
+                If it was FALSE it is set to be once a second. <br /> <br />
+
+                In the <b>render()</b> method it also checks the <b>this.props.isPrecise</b> value and if
+                it is TRUE it will display a longer time, with 100th's of a second... <br />
+                <b>2021-08-24T12:38:57.546Z</b> <br />
+                and if it was FALSE it displays as <br />
+                <b>12:38:57 PM</b> <br /> <br />
+
+                Although the <b>render()</b> method displays the time it would not update the value
+                as it needs the timer to be set (<b><span class="forceRed">startInterval()</span></b>)
+                which tells it to keep updating the time which also makes it re-render the screen. <br /> <br />
+
+                The <b>componentWillMount()</b> method runs when the page first mounts (displays)
+                so we have called the <b><span class="forceRed">startInterval()</span></b> function in here. <br />
+                <em>That way the interval timer starts the first time the page is displayed.</em> <br /> <br />
+
+                If/when the Clock class is stopped from running then the <b>componentWillUnmount()</b>
+                method runs so we had to tell the program to STOP the interval timer running. <br />
+                <em><b>clearInterval()</b> stops the interval timer.</em> <br /> <br />
+
+                Finally we have a method called <b>componentDidUpdate</b> which runs whenever the
+                <b>render()</b> method runs. <br />
+                Here we need to check if the clock has to be re-displayed or not. <br />
+                If <b>this.props.isPrecise = TRUE</b> then show the longer time Nd if it was FALSE then
+                show the shorter time. <br />
+                But because we do not want to redisplay it AND start a new interval timer running we needed
+                to check if <b>this.props.isPrecise</b> had been changed. <br />
+                If was unchanged then DO NOTHING. <br />
+                But if it has changed then we have to start a new interval timer running by calling
+                <b><span class="forceRed">startInterval()</span></b> again
+                (Note, the <b>componentWillUnmount</b> method will have already stopped the old timer running). <br /> <br />
+
+
+
+            </p>
+
+        </div>
+        <div class="divBSet divBorder">
+            <h2>componentWillUpdate() example</h2>
+
+            <p>
+                <pre>
+import React from 'react';
+
+export class Clock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { date: new Date() };
+  }
+
+                <span class="forceRed">startInterval()</span> {
+    let delay = 1000;
+    if (this.props.isPrecise) {
+      delay = 100;
+    }
+    this.intervalID = setInterval(() => {
+      this.setState({ date: new Date() });
+    }, delay);
+  }
+
+  render() {
+    return (
+        &lt;div&gt;
+            {this.props.isPrecise
+              ? this.state.date.toISOString()
+              : this.state.date.toLocaleTimeString()}
+      &lt;/div&gt;
+    );
+  }
+  componentDidMount() {
+                <span class="forceRed">this.startInterval()</span>;
+  }
+  
+  componentWillUnmount() {
+    clearInterval(this.intervalID);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.isPrecise === prevProps.isPrecise) {
+      return;
+    }
+                <span class="forceRed">this.startInterval()</span>;
+  }
+}
+</pre>
+                <hr /> <pre>
+</pre>
+                The web page that uses this class had two buttons on it <br />
+                plus the time being displayed. <br /> <br />
+
+                <button onclick="hideClock()" class="button2">Toggle Clock On/Off</button>
+                <button onclick="toggleClock()" class="button2">Toggle Precise Mode Clock</button>
+                <br />
+                <div id="clockDisplay">
+                    <span id="myClock">12:38:57 pm</span>
+                </div>
+                <br /> <br />
+                The [Toggle Clock On/Off] button removed the clock & stopped it running. <br />
+                The [Toggle Precise Mode Clock] button stopped the clock and displayed a new one in
+                the new (longer) format (or, if it was already the longer format, displayed it in
+                the short format). <br />
+                <em>but here I am not showing a working clock (no interval timer)</em><br />
+            </p>
+        </div>
+
+        <script>
+            let clock = 0;
+            let isPrecise = false;
+
+            function hideClock() {
+                if (clock == 0) {
+                    clock = 1;
+                    document.getElementById("clockDisplay").style.visibility = "hidden";
+                } else {
+                    clock = 0;
+                    document.getElementById("clockDisplay").style.visibility = "visible";
+                }
+            }
+
+            function toggleClock() {
+                if (isPrecise == false) {
+                    isPrecise = true;
+                    document.getElementById("myClock").innerHTML = "2021-08-24T12:38:57.546Z";
+                } else {
+                    isPrecise = false;
+                    document.getElementById("myClock").innerHTML = "12:38:57 pm";
+                }
+            }
+        </script>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Component Lifestyle Review</h2>
+
+            <p>
+                <b>Review</b> <br />
+                There are three major phases of a component’s lifecycle:- <br /> <br />
+
+                <b>Mounting</b> <br />
+                when the component is being initialized and put into the DOM for the first time. <br />
+                The constructor(), render(), and componentDidMount() methods are called during this phase. <br /> <br />
+
+                <b>Updating</b> <br />
+                when the component updates as a result of changed state or changed props. <br />
+                The render() and componentDidUpdate() are called during this phase. <br /> <br />
+
+                <b>Unmounting</b> <br />
+                when the component is being removed from the DOM. <br />
+                The componentWillUnmount() is called here, which is a good time to clean things up. <br /> <br />
+
+
+
+            </p>
+        </div>
+        <div class="divBSet divBorder">
+            <p>
+                <br />
+                A picture representing the common lifestyles can be found 
+                <a href="https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/" target="_blank">
+                    Here</a> <br /> <br />
+
+                Note <br />
+                If you click on the link you can then tick the 'Show less common lifecycles' option to 
+                see more methods (that are less used). <br /> <br />
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <!--<div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+
+
+        </div>
+        <div class="divBSet divBorder">
+
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />-->
+
+</body>
+</html>

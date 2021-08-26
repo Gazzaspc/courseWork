@@ -1,0 +1,868 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>React - JSX</title>
+
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+    <style>
+        pre {
+            font-size: 12px;
+            color: blue;
+        }
+
+    </style>
+
+    <!--Any code that is just for this page and not to go in myScripts.js can go here (or in a SCRIPT area elsewhere
+    on the page or at the end)-->
+    <script>
+                                                    //...Code / Functions etc...
+    </script>
+
+</head>
+<body class="bodyMove">
+    <a href="index.html">Home</a>
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h1>React - JSX Intro</h1>
+
+            <p>
+                JSX files have a .js extension <br /> <br />
+
+                and need, at the top of the file... <br /> <br />
+
+                <b>
+                    import React from 'react'; <br />
+                    import ReactDOM from 'react-dom';
+                </b> <br /> <br />
+
+                This is explained a little more on the 
+                <a href="reactComponents.html">React Components</a> page. <br /> <br />
+            </p>
+
+            <h2>Attributes</h2>
+
+            <p>
+                JSX elements can have attributes, just like HTML elements can. <br />
+                A JSX attribute is written using HTML-like syntax: a name, followed
+                by an equals sign, followed by a value. <br />
+                The value should be wrapped in quotes, like this:- <br /> <br />
+
+                <b>my-attribute-name="my-attribute-value" </b> <br /> <br />
+
+                Here are some JSX elements with attributes... <br /> <br />
+
+                <b>
+                    &lt;a href='http://www.example.com'&gt;Welcome to the Web&lt;/a&gt; <br /> <br />
+
+                    const title = &lt;h1 id='title'&gt;Introduction to React.js: Part I&lt;/h1&gt;;
+                </b> <br /> <br />
+
+                A single JSX element can have many attributes, eg... <br /> <br />
+
+                <b>
+                    const panda = &lt;img src='images/panda.jpg' <br />
+                    &nbsp;&nbsp;&nbsp;alt='panda' <br />
+                    &nbsp;&nbsp;&nbsp;width='500px' <br />
+                    &nbsp;&nbsp;&nbsp;height='500px' /&gt; <br />
+                </b> <br />
+
+                <h2>class vs className</h2>
+                Because the word <b>class</b> is a reserved word if you need to specify the
+                class as an attribute you will have to change it to <b>className</b>, eg... <br /> <br />
+
+                <b>
+                    const title = &lt;h1 className='myClass' id='title'&gt;
+                    Introduction to React.js: Part I&lt;/h1&gt;;
+                </b> <br /> <br />
+            </p>
+        </div>
+
+        <div class="divBorder divBSet">
+            <h2>JSX Expression</h2>
+
+            <p>
+                A JSX expression can only have <b>one outer element</b>, eg... <br /> <br />
+
+                <em>
+                    This code snippet will work okay because there is
+                    a <b>&lt;div&gt;</b> as the outer element and then all the other
+                    elements are anclosed inside it.
+                </em><br /> <br />
+                <b>
+                    const paragraphs = ( <br />
+                    &nbsp;&nbsp;&nbsp;&lt;div id="i-am-the-outermost-element"&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;I am a paragraph.&lt;/p&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;I, too, am a paragraph.&lt;/p&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&lt;/div&gt; <br />
+                    );
+                </b> <br /> <br />
+
+                <em>
+                    Whereas this code snippet will <b>NOT</b> work as the elements (&lt;p&gt;) are not
+                    enclosed inside another element.
+                </em> <br /> <br />
+
+                <b>
+                    const paragraphs = ( <br />
+                    &nbsp;&nbsp;&nbsp;&lt;p&gt;I am a paragraph.&lt;/p&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&lt;p&gt;I, too, am a paragraph.&lt;/p&gt; <br />
+                    );
+                </b> <br /> <br />
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h2>Rendering JSX</h2>
+
+            <p>
+                To render a JSX expression means to make it appear onscreen. <br /> <br />
+
+                The following code would render a JSX expression... <br />
+                <b>
+                    ReactDOM.render( <br />
+                    &nbsp;&nbsp;&nbsp;&lt;h1&gt;Hello World&lt;/h1&gt;,
+                    &nbsp;&nbsp;&nbsp;document.getElementById('app')
+                </b> <br /> <br />
+
+                It assumes you already have an empty element in your <b>html file</b> with
+                an ID equal to 'app', eg <br />
+                <b>&lt;div id="app"&gt;&lt;/div&gt; </b> <br /> <br />
+
+            </p>
+        </div>
+
+        <div class="divBorder divBSet">
+            <h2>Passing a Variable to ReactDOM.render()</h2>
+
+            <p>
+                You can also set all your elements up in a variable and then pass the
+                variable to ReactDOM.render(), eg... <br /> <br />
+
+                <b>
+                    const toDoList = ( <br />
+                    &nbsp;&nbsp;&nbsp;&lt;ol&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Learn React&lt;/li&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Become a Developer&lt;/li&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&lt;/ol&gt; <br />
+                    ); <br /> <br />
+
+                    ReactDOM.render( <br />
+                    &nbsp;&nbsp;&nbsp;toDoList, <br />
+                    &nbsp;&nbsp;&nbsp;document.getElementById('app') <br />
+                    );
+                </b> <br /> <br />
+
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Self Closing Tags</h2>
+
+            <p>
+                When you write a self-closing tag in HTML, it is optional to
+                include a forward-slash immediately before the final angle-bracket, eg... <br /> <br />
+
+                <b>&lt;br /&gt;</b> and <b>&lt;br&gt;</b> <br /> <br />
+
+                Are both accepted in HTML (although it's good practice to use the /) <br />
+                BUT in JSX you <b>must</b> include the slash (/) otherwise it will error. <br /> <br />
+
+            </p>
+        </div>
+        <div class="divBSet divBorder">
+            <h2>Curly Braces</h2>
+            <p>
+                Any code in between the tags of a JSX element will be read as JSX,
+                not as regular JavaScript! <br />
+                JSX doesn’t add numbers - it reads them as text, just like HTML. <br /> <br />
+
+                Which is usually okay, eg... <br />
+                <b>&lt;h1&gt;2 + 3&lt;/h1&gt;</b> <br />
+                displays as a normal HTML <b>&lt;h1&gt;</b> header <br />
+                and displays itself as <b>2 + 3</b><br /> <br />
+
+                BUT if, for some reason, you wanted it to process as a JavaScript command
+                then you <b>must enclose it in curly braces {}</b>, eg... <br /> <br />
+
+                <b>&lt;h1&gt;{2 + 3)&lt;/h1&gt;</b> <br />
+                <em>then it will display as </em><b>5</b> <br /> <br />
+
+                <b>&lt;h1&gt;2 + 3 = {2 + 3)&lt;/h1&gt;</b> <br />
+                <em>then it will display as </em><b>2 + 3 = 5</b> <br /> <br />
+
+            </p>
+        </div>
+
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Curly Braces Part 2</h2>
+            <p>
+                When you inject JavaScript into JSX, that JavaScript is part of the
+                same environment as the rest of the JavaScript in your file. <br /> <br />
+
+                That means that you can access variables while inside of a JSX expression,
+                even if those variables were declared on the outside, eg... <br /> <br />
+
+                <b>
+                    const <span class="greenMess">name</span> = "Gary"; <br /> <br />
+
+                    ReactDOM.render( <br />
+                    &nbsp;&nbsp;&nbsp;&lt;h1&gt;My name is {<span class="greenMess">name</span>}&lt;/h1&gt; , <br />
+                    &nbsp;&nbsp;&nbsp;document.getElementById('app') <br />
+                    );
+                </b> <br />
+                displays as a <b>&lt;h1&gt;</b> header <br />
+                and displays itself as <b>My name is Gary</b><br /> <br />
+
+                <hr /> <br />
+
+                <b>NOTE...</b> <br /> <br />
+
+                When creating <b>variables</b> the following applies:- <br /> <br />
+
+                Using parenthesis () basically means you are creating a variable that
+                holds a JSX value. <br />
+                <b>const myVar = (&lt;h1&gt;H1 text here&lt;/h1&gt;;</b> <br /> <br />
+
+                and using curly braces {} basically means that you are creating a variable
+                that holds properties. <br />
+                <b>
+                    const myVar = { <br />
+                    &nbsp;&nbsp;&nbsp;prop1: "Property 1", <br />
+                    &nbsp;&nbsp;&nbsp;prop2: "Property 2" <br />
+                    };
+                </b> <br />
+                <em>
+                    myVar.prop1 will = "Property 1" <br />
+                    and myVar.prop2 will = "Property 2"
+                </em><br /> <br />
+
+            </p>
+
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>Curly Braces Part 3</h2>
+            <p>
+                A more common way of doing things can be, for example... <br /> <br />
+
+                <b>
+                    const myElement = document.getElementById("app"); <br />
+                    const imgSize = "200px"; <br /> <br />
+
+                    const panda = ( <br />
+                    &nbsp;&nbsp;&nbsp;&lt;img <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src="images/panda.jpg" <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alt="Panda Pic" <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height={imgSize} <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width={imgSize} <br />
+                    &nbsp;&nbsp;&nbsp;/&gt; <br />
+                    ); <br /> <br />
+
+                    ReactDOM.render(panda, myElement);
+                </b> <br />
+
+                <hr /> <br />
+
+                Or even this... <br /> <br />
+
+                <b>
+                    const myElement = document.getElementById("app"); <br />
+                    const imgSize = "200px"; <br /> <br />
+                    const pics = { <br />
+                    &nbsp;&nbsp;&nbsp;panda: "images/panda.jpg", <br />
+                    &nbsp;&nbsp;&nbsp;owl: "images/owl.jpg", <br />
+                    &nbsp;&nbsp;&nbsp;tiger: "images/tiger.jpg" <br />
+                    }   ; <br /> <br />
+
+                    const panda = ( <br />
+                    &nbsp;&nbsp;&nbsp;&lt;img <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src={pics.panda} <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alt="Panda Pic" <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height={imgSize} <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width={imgSize} <br />
+                    &nbsp;&nbsp;&nbsp;/&gt; <br />
+                    ); <br /> <br />
+
+                    const owl = ( <br />
+                    &nbsp;&nbsp;&nbsp;&lt;img <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src={pics.owl} <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alt="Owl Pic" <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height={imgSize} <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width={imgSize} <br />
+                    &nbsp;&nbsp;&nbsp;/&gt; <br />
+                    ); <br /> <br />
+
+                    ReactDOM.render(panda, myElement); <br />
+                </b>or <b>
+                    <br />
+                    ReactDOM.render(owl, myElement); <br />
+                </b> <br /> <br />
+
+                Which may be a good way of storing the names of image files to use on the page.
+                <br /> <br />
+
+                <b>ALSO</b> see the pane (at the bottom) for more info on creating a 
+                function/variable for <b>myElement</b>. <br />
+                Or <a href="#myElement">Click Here</a> to go straight there. <br /> <br />
+
+            </p>
+        </div>
+
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+
+        <div class="divBSet divBorder">
+            <h2>Event Listeners in JSX</h2>
+
+            <p>
+                JSX elements can have event listeners, just like HTML elements can. <br />
+                Programming in React means constantly working with event listeners. <br /> <br />
+
+                You create an event listener by giving a JSX element a special attribute, eg... <br /> <br />
+
+                <b><img onClick={myFunc} /></b> <br />
+                <em>
+                    This adds the <b>onClick</b> event to the image <br />
+                    and the value of <b>myFunc</b> will be passed to it (which is a function).
+                </em> <br /> <br />
+
+                An event listener attribute’s name should be something like onClick or onMouseOver:
+                the word on, plus the type of event that you’re listening for. <br /> <br />
+                You can see a list of valid event names
+                <a href="https://reactjs.org/docs/events.html#supported-events" target="_blank">Here</a>. <br /> <br />
+
+                Alternatively, see w3schools document on it
+                <a href="https://www.w3schools.com/react/react_events.asp" target="_blank">Here</a>. <br /> <br />
+
+                Just like HTML, React can perform actions based on user events. React has the same
+                events as HTML: click, change, mouseover etc. <br /> <br />
+
+                React events are written in camelCase syntax: <br />
+                <b>onClick</b> instead of <b>onclick</b>. <br />
+                React event handlers are written inside curly braces: <br />
+                <b>onClick={shoot}</b> instead of <b>onClick="shoot()"</b> <br /> <br />
+
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>Event Listener Code Example</h2>
+
+            <p>
+                The below is an example of the code from a .js file <br /> <br />
+
+                <pre>
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+function makeDoggy(e) {
+  // When called, this function changes the 
+  // picture to be
+  // that of a doggy.
+  e.target.setAttribute('src', 
+    'https://content.codecademy.com/courses/
+        React/react_photo-puppy.jpeg');
+
+  e.target.setAttribute('alt', 'doggy');
+}
+
+const kitty = (
+   &lt;img 
+      onClick={makeDoggy} 
+      src="https://content.codecademy.com/
+        courses/React/react_photo-kitty.jpg" 
+      alt="kitty" /&gt;
+);
+
+ReactDOM.render(kitty, document.getElementById('app'));
+</pre> <br />
+
+                When run it displays a picture of a cat. <br />
+                When you click on the picture it activates the 'onClick' event and runs the <b>makeDoggy</b> function <br />
+                which changes it to a picture of a dog. <br /> <br />
+
+                <b>Note...</b> <br />
+                The function <b>makeDoggy</b> requires one parameter (called <b>e</b>) and
+                this gets automatically passed via the <b>onClick</b> call on the <b>&lt;img /&gt;</b>
+                element (so it is not specified in the code of the &lt;img /&gt;) <br /> <br />
+
+
+
+
+            </p>
+
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>JSX Conditionals...</h2>
+            <h3>'if' statements that don't work</h3>
+
+            <p>
+                Here’s a rule that you need to know: <br />
+                <b>you can not inject an 'if' statement into a JSX expression.</b> <br /> <br />
+
+                For Example...this will not work... <br />
+                <b>
+                    const myJSX = ( <br />
+                    &nbsp;&nbsp;&nbsp;&lt;p&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (purchase.complete) { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Thank you for your order!" <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br />
+                    &nbsp;&nbsp;&nbsp;&lt;/p&gt; <br />
+                    );
+                </b> <br /> <br />
+
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>JSX Conditionals Part 2...</h2>
+            <h3>'if' statements that DO WORK</h3>
+
+            <p>
+                How can you write a conditional, if you can’t inject an if statement into JSX? <br /> <br />
+
+                One option is to write an if statement, and NOT inject it into JSX. <br /> <br />
+
+                For Example... <br /> <br />
+
+                <b>
+                    let <span class="forceRed">message</span>; <br /> <br />
+
+                    if (user.age >= drinkingAge) { <br />
+                    &nbsp;&nbsp;&nbsp;<span class="forceRed">
+                        message = ( <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt; <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buy Drink <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/h1&gt; <br />
+                        &nbsp;&nbsp;&nbsp;);
+                    </span> <br />
+                    } else { <br />
+                    &nbsp;&nbsp;&nbsp;<span class="forceRed">
+                        message = ( <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt; <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Do Not Buy Drink <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/h1&gt; <br />
+                        &nbsp;&nbsp;&nbsp;);
+                    </span> <br />
+                    } <br /> <br />
+
+                    ReactDOM.render( <br />
+                    &nbsp;&nbsp;&nbsp;<span class="forceRed">message</span>, <br />
+                    &nbsp;&nbsp;&nbsp;document.getElementById('app') <br />
+                    );
+                </b> <br /> <br />
+
+                So the code in <span class="forceRed">red</span> relates to the <span class="forceRed">JSX code</span> <br />
+                The rest of the code will get run but is outside of the JSX code. <br />
+                This way the <b>message</b> will be relevant to what you need it to be. <br /> <br />
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div id="ternary" class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>JSX Conditionals: The Ternary Operator</h2>
+
+            <p>
+                The ternary operator works the same way in React as it does in regular JavaScript. <br /> <br />
+
+                A little reminder... <br />
+                <b>x ? y : z</b> <br />
+                <em>
+                    Where x is 'true' or 'false' (truthy or falsy). <br />
+                    So if x is 'truthy' then use y <br />
+                    but if x is 'falsey' then use z
+                </em> <br /> <br />
+
+                eg... <br /> <br />
+
+                <b>
+                    const headline = ( <br />
+                    &nbsp;&nbsp;&nbsp;&lt;h1&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ age >= drinkingAge ? 'Buy Drink' : 'Do Not Buy Drink' } <br />
+                    &nbsp;&nbsp;&nbsp;&lt;/h1&gt; <br />
+                    );
+                </b> <br /> <br />
+
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>JSX Conditionals: The Ternary Operator (pt 2)</h2>
+
+            <p>
+                An example of code:- <br /> <br />
+
+                <pre>
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+function coinToss () {
+  // Randomly return either 'heads' or 'tails'.
+  return Math.random() < 0.5 ? 'heads' : 'tails';
+}
+
+const pics = {
+  kitty: 'Images/kitty.jpg',
+  doggy: 'Images/puppy.jpeg'
+};
+
+const img = &lt;img 
+    src={pics[coinToss() === 'heads' ? 'kitty' : 'doggy']} 
+  /&gt;
+
+ReactDOM.render(
+	img, 
+	document.getElementById('app')
+);
+</pre> <br />
+
+                This code creates a function called <b>coinToss()</b> which returns either a
+                "heads" or a "tails" <br /> <br />
+
+                It then creates an object called <b>pics</b> that has two
+                properties (<b>kitty</b>) and <b>doggy</b>. <br /> <br />
+
+                It then creates a JSX variable called <b>img</b> and the <b>src</b> attribute uses the
+                'Ternary Operator'. <br />
+                Which says <b>if coinToss() = "heads"</b> then use the kitty picture
+                otherwise use the doggy picture. <br /> <br />
+
+                Then render the screen with whichever picture (kitty or doggy) was selected. <br /> <br />
+
+                <em>
+                    <b>NOTE...</b> <br />
+                    When referring to the properties of <b>pics</b> you could say <br />
+                    <b>pics.kitty</b> or <b>pics.doggy</b> <br />
+                    or you could also say <br />
+                    <b>pics["kitty"]</b> or <b>pics["doggy"]</b> <br /> <br />
+
+                    Therefore in the code above we had to use the <b>pics["kitty"]</b> (or <b>pics["doggy"]</b>)
+                    version as the <b>Ternary Operator</b> returned a string for <b>"kitty"</b> and <b>"doggy"</b>.
+                </em>
+                <br /> <br />
+
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>JSX Conditionals: && and ||</h2>
+
+            <p>
+                <b>&&</b> works best in conditionals that will sometimes do an action,
+                but other times do nothing at all. <br /> <br />
+
+                In other words if the condition is <b>truthy</b> then perform the command <br />
+                and if it is <b>falsy</b> then do nothing. <br /> <br />
+
+                For example... <br /> <br />
+
+                <b>
+                    const drinks = ( <br />
+                    &nbsp;&nbsp;&nbsp;&lt;ul&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Coca Cola&lt;/li&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Lemonade&lt;/li&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ age >= 16 && &lt;li&gt;Cider&lt;/li&gt;} <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ age >= 18 && &lt;li&gt;Beer&lt;/li&gt;} <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ age >= 21 && &lt;li&gt;Scotch&lt;/li&gt;} <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ !(age >= 21) && &lt;li&gt;Water&lt;/li&gt;} <br />
+                    &nbsp;&nbsp;&nbsp;&lt;/ul&gt; <br />
+                    );
+                </b> <br /> <br />
+
+                This would create an un-ordered list that has <br />
+                <b>
+                    Coca Cola <br />
+                    Lemonade <br />
+                </b> <br />
+
+                But will Only list <b>Cider</b> if you are over 16 <br />
+                But will Only list <b>Beer</b> if you are over 18 <br />
+                But will Only list <b>Scotch</b> if you are over 21 <br /> <br />
+
+                But will Only list <b>Water</b> if you are NOT over 21 <br />
+                <em>
+                    - the ! means NOT, though I could have
+                    just said <b>age < 21</b> but I wanted to show a different way.
+                </em> <br />
+
+                <hr /> <br />
+
+                <b>||</b> can be used in this way... <br /> <br />
+
+                say you have a string (<b>myString</b>) which is empty <br />
+                <b>var myString = "";</b> <br /> <br />
+
+                An empty string is treated as FALSEY <br />
+                So you can say, eg... <br />
+                <b>{ myString || &lt;li&gt;Show this message&lt;/li&gt;}</b> <br /> <br />
+
+                The result would be it INCLUDES the <b>&lt;li&gt;Show this message&lt;/li&gt;</b> <br /> <br />
+                <br />
+
+                BUT if <b>myString = &lt;li&gt;ABCDEF&lt;/li&gt;</b> then it is treated as TRUTHY which means <br />
+                <b>{ myString || &lt;li&gt;Show this message&lt;/li&gt;}</b> <br /> <br />
+
+                The result would be it INCLUDES the value of <b>myString</b> and will 
+                therefore include <br />
+                <b>&lt;li&gt;ABCDEF&lt;/li&gt;</b> <br /> <br />
+
+            </p>
+
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>JSX .map</h2>
+
+            <p>
+                If you want to create a list of JSX elements, then .map() is often your best bet. <br />
+                It is an <b>array</b> method. <br /> <br />
+
+                For example... <br /> <br />
+
+                <b>
+                    const strings = ['Home', 'Shop', 'About Me']; <br /> <br />
+
+                    const listItems = strings.map(string => &lt;li&gt;{string}&lt;/li&gt;); <br /> <br />
+
+                    ReactDOM.render( <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;{listItems}&lt;/ul&gt;, <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;document.getElementById('app') <br />
+                    );
+                </b> <br /> <br />
+
+                What happened with the above code is <br /> <br />
+
+                <b>const strings = ['Home', 'Shop', 'About Me']; </b> <br />
+                <em>This line creates an array of 3 items</em> <br /> <br />
+
+                <b>const listItems = strings.map(string => &lt;li&gt;{string}&lt;/li&gt;); </b> <br />
+                <em>
+                    This line uses the <b>strings.map</b> method and creates a new array (called listItems) <br />
+                    each item in the new array will look like
+                </em> <br />
+                <b>&lt;li&gt;{string}&lt;/li&gt;</b> <br />
+                <em>where {string} is the item from the original array ('Home', 'Shop' & 'About Me') </em>
+                <br /> <br />
+
+                <b>ReactDOM.render(&lt;ul&gt;{listItems}&lt;/ul&gt;, document.getElementById('app'));</b> <br />
+                <em>
+                    This line will then render the un-ordered list and put all the items from the
+                    new array (listItems) inside it.
+                </em> <br /> <br />
+
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>JSX Keys</h2>
+
+            <p>
+                A key is a JSX attribute. <br />
+                The attribute’s name is key. The attribute’s value should be something <b>inique</b>,
+                similar to an id attribute. <br /> <br />
+
+                keys don’t do anything that you can see! <br />
+                React uses them internally to keep track of lists. <br />
+                If you don’t use keys when you’re supposed to, React might accidentally scramble
+                your list-items into the wrong order. <br /> <br />
+
+                Not all lists need to have keys. <br />
+                <b>A list needs keys if</b> either of the following are true:- <br /> <br />
+
+                <b>1.</b> <br />
+                The list-items have memory from one render to the next. <br />
+                For instance, when a to-do list renders, each item must “remember” whether it was checked off. <br /> <br />
+
+                <b>2.</b> <br />
+                A list’s order might be shuffled. <br />
+                For instance, a list of search results might be shuffled from one render to the next. <br /> <br />
+
+                If neither of these conditions are true, then you don’t have to worry about keys. <br />
+                If you aren’t sure then it never hurts to use them! <br /> <br />
+
+                For Example... <br /> <br />
+
+                <b>&lt;ul&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&lt;li key="li-01"&gt;Example1&lt;/li&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&lt;li key="li-02"&gt;Example2&lt;/li&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&lt;li key="li-03"&gt;Example3&lt;/li&gt; <br />
+                &lt;/ul&gt; </b> <br /> <br />
+
+
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>JSX Keys with .map()</h2>
+
+            <p>
+                Each key must be a unique string that React can use to correctly pair each
+                rendered element with its corresponding item in the array. <br /> <br />
+
+                So how can you get .map() to produce unique keys? <br /> <br />
+
+                Well, first, add an i parameter to .map()‘s inner function, so that you can 
+                access each array items unique index: <br /> <br />
+
+                Example... <br /> <br />
+
+                <b>const peopleLIs = people.map((person, i) => <br />
+                &nbsp;&nbsp;&nbsp;key={'person_' + i} <br />
+                ); </b> <br /> <br />
+
+                <em>So when it reads in the array (<b>people</b>) it will read in each item as 
+                <b>person</b> and it will give the parameter <b>i</b> the value of the 
+                items index number. <br />
+                Therefore creating a key of <br />
+                <b>"person_0" <br />
+                    "person_1" <br />
+                    "person_2" <br />
+                    etc...</b></em> <br /> <br />
+
+                NOTE <br />
+                When there is more than 1 parameter they must be inside brackets (), eg... <br />
+                people.map(<b> (person, i)</b> => <br /> <br />
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>React.createElement()</h2>
+
+            <p>You can write React code without JSX but the majority do use it. <br /> <br />
+            
+            When a JSX element is compiled , the compiler transforms the JSX element 
+            into the React code for you automatically. <br /> <br />
+
+            Here is an example of JSX code... <br /> <br />
+
+            <b>const h1 = &lt;h1&gt;Hello world&lt;/h1&gt;</b> <br /> <br />
+
+            And here is the same thing without JSX... <br /> <br />
+
+            <b>const h1 = React.createElement("h1", null, "Hello World"); </b> <br /> <br />
+
+            </p>
+        </div>
+
+        <!--<div class="divBSet divBorder">
+
+        </div>-->
+    </div>
+
+    <a href="#">Top</a> <br />
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Creating a Function for React.render()</h2>
+
+            <p>
+                Seeing as I had to keep typing <br />
+                <b>document.getElementById('app')</b> <br />
+                continuously in my lessons I figured I would also try to
+                create a <b>function/variable</b> to hold the value for me. <br /> <br />
+
+                For Example... <br /> <br />
+
+                <em>I kept typing...</em> <br /> <br />
+
+                <b>
+                    ReactDOM.Render( <br />
+                    &nbsp;&nbsp;&nbsp;JSXString,  <br />
+                    &nbsp;&nbsp;&nbsp;<span class="forceRed">document.getElementById('app')</span>) <br />
+                    );
+                </b> <br /> <br />
+
+                <em>So I thought I would, instead, create a variable that runs a function - and do this...</em> <br /> <br />
+
+                <b>
+                    const <span class="greenMess">myElement</span> = id => { <br />
+                    &nbsp;&nbsp;&nbsp;let myL = document.getElementById(id); <br />
+                    &nbsp;&nbsp;&nbsp;return myL; <br />
+                    }
+                </b> <br /> <br />
+
+                <em>then I can call it like this</em> <br />
+                <b>ReactDOM.render(JSXString, <span class="greenMess">myElement</span>("app")); </b> <br />
+                <em>or</em> <br />
+                <b>ReactDOM.render(JSXString, <span class="greenMess">myElement</span>("root")); </b> <br />
+
+                <hr /> <br />
+
+                I also found that I could just call a function instead of 
+                storing the function in a variable... <br /> <br />
+
+                <b>
+                    function <span class="greenMess">myElement</span>(id) { <br />
+                    &nbsp;&nbsp;&nbsp;let myL = document.getElementById(id); <br />
+                    &nbsp;&nbsp;&nbsp;return myL; <br />
+                    }
+                </b> <br /> <br />
+
+                <em>then I can call it like this</em> <br />
+                <b>ReactDOM.render(JSXString, <span class="greenMess">myElement</span>("app")); </b> <br />
+                <em>or</em> <br />
+                <b>ReactDOM.render(JSXString, <span class="greenMess">myElement</span>("root")); </b> <br />
+                <br /> <br />
+                Both ways work well. <br /> <br />
+            </p>
+        </div>
+
+        <!--<div class="divBSet divBorder">
+
+        </div>-->
+    </div>
+
+    <a href="#">Top</a> <br />
+</body>
+</html>

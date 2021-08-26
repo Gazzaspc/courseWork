@@ -6,6 +6,15 @@
     <title>Text over Images</title>
 
     <link href="CSS/MyStyles.css" rel="stylesheet" />
+
+    <!-- Required for JQuery to work - this is the library file from JQuery.com (uncompressed development file) -->
+    <script src="JQuery/jquery-3.5.1.js"></script>
+    <!-- You can use the online one but for now I will download it and use my copy of it (use one or the other)-->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <!-- If you have your own default javaScript file - and you probably will - mine is myScripts.js -->
+    <!-- It's inside a [script] as it holds commands that run in a [script] environment -->
+    <script src="Scripts/myScripts.js"></script>
+
     <style>
         /* Place text over the top of some pictures when HOVERing over image */
         .img__wrap {
@@ -30,6 +39,22 @@
         .img__wrap:hover .img__description {
             visibility: visible;
             opacity: 1;
+        }
+
+        #TweetyGray:hover {
+            filter: grayscale(100%);
+        }
+
+        #TweetyColour:hover {
+            filter: grayscale(0%);
+        }
+
+        #TweetyColour {
+            filter: grayscale(100%);
+        }
+
+        .iBlock {
+            display: inline-block;
         }
 
         /* END OF CODE FOR -- Place text over the top of some pictures when HOVERing over image */
@@ -81,15 +106,71 @@
                     <br />
                 </div>
 
+                <!-- This image shows I can change from colour to black & white -->
+                <div>
+                    <img id="TweetyGray" border="0" alt="Tweety Pic" src="Images/Tweety.png" width="100" height="100">
+                    <p class="iBlock">Hover to make black/white</p>
+                    <img id="TweetyColour" border="0" alt="Tweety Pic" src="Images/Tweety.png" width="100" height="100">
+                    <p class="iBlock">Hover to make colour</p>
+                    <br />
+                </div>
                 <div>
                     <p>
-                        Hover over the next image to change it to another image <br /> 
-                        <em>(This example changes the image in the &lt;img&gt; tag from one picture to another 
-                            but another way may be changing the style <b>visibility: visible;</b> to 
-                            <b>visibility: hidden;</b> and vice-versa)</em><br />
+                        Hover over the next image to change it to another image <br />
+                        <em>
+                            (This example changes the image in the &lt;img&gt; tag from one picture to another
+                            but another way may be changing the style <b>visibility: visible;</b> to
+                            <b>visibility: hidden;</b> and vice-versa)
+                        </em><br />
                         <img id="imgChg" src="Images/EmuSmall.jpg" alt="Emu piccy" onmouseover="changeImage()" width="100" height="100" />
                     </p>
                 </div>
+                <hr />
+                <div>
+                    <p>
+                        Here's a thought (something I came across)... <br />
+                        When dealing with more than one picture you could consider creating
+                        a variable that holds properties for each picture you want, eg... <br /> <br />
+
+                        <em>In the HTML file you could have your image <b>&lt;img&gt;</b> set up as, eg...</em> <br />
+                        <b>&lt;img id="picProp1" border="0" alt="Picture" width="100" height="100"&gt; </b> <br /> <br />
+
+                        Then you could have (inside the <b>&lt;script&gt;</b>) tag... <br /> <br />
+
+                        <b>
+                            const picList = { <br />
+                            &nbsp;&nbsp;&nbsp;tweety: "Images/Tweety.png", <br />
+                            &nbsp;&nbsp;&nbsp;wiley: "Images/WileHelp.jpeg", <br />
+                            &nbsp;&nbsp;&nbsp;top: "Images/Top.png" <br />
+                            }; <br /> <br /> </b>
+
+                            <em>The code using DOM...</em> <br />
+                            <b>document.getElementById('picProp1').src = picList.wiley;
+                        </b> <br /> <br />
+
+
+
+                        <img id="picProp1" border="0" alt="Picture" width="100" height="100" /> <br /> <br />
+
+                        or using JQuery you could say... <br />
+                        <b>$("#picProp1").attr('src', picList.wiley);</b> <br /> <br />
+                        <img id="picProp2" border="0" alt="Picture" width="100" height="100" /> <br /> <br />
+
+                    </p>
+                    
+                </div>
+                <script>
+                    const picList = {
+                        tweety: "Images/Tweety.png",
+                        top: "Images/Top.png",
+                        wiley: "Images/WileHelp.jpeg"
+                    };
+
+                    document.getElementById('picProp1').src = picList.wiley;
+
+                    //or using JQuery
+                    $("#picProp2").attr('src', picList.wiley);
+                </script>
 
             </div>
 

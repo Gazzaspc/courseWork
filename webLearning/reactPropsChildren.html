@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>props.children</title>
+
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+    <style>
+        pre {
+            font-size: 12px;
+            color: blue;
+        }
+    </style>
+
+    <!--Any code that is just for this page and not to go in myScripts.js can go here (or in a SCRIPT area elsewhere
+    on the page or at the end)-->
+    <script>
+                                                                //...Code / Functions etc...
+    </script>
+
+</head>
+<body class="bodyMove">
+    <a href="index.html">Home</a>
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h1>this.props.children</h1>
+
+            <p>
+                Every component’s props object has a property named children. <br /> <br />
+
+                <b>this.props.children</b> will return everything in between a component’s
+                opening and closing JSX tags. <br /> <br />
+
+                Instead of rendering a class by using a self-closing tag, eg... <br />
+                <b>&lt;MyClass /&gt;</b> <br /> <br />
+
+                You could also say <br />
+                <b>
+                    &lt;MyComponentClass &gt; <br />
+                    &nbsp;&nbsp;&nbsp;&lt;h1&gt;Header Title&lt;/h1&gt; <br />
+                    &lt;/myComponentClass&gt;
+                </b> <br /> <br />
+
+                So <b>this.props.children</b>, would equal &lt;h1&gt;Header Title&lt;/h1&gt; <br /> <br />
+
+                <b>NOTE</b> <br />
+                If you only used it as a self-closing tag, eg... <br />
+                <b>&lt;MyComponentClass /&gt;</b> <br />
+                then <b>this.props.children</b> would equal <b>undefined</b> <br /> <br />
+
+                <em>
+                    <b>ALSO NOTE</b> <br />
+                    If a component has more than one child between its JSX tags,
+                    then this.props.children will return those children in an <b>array</b>. <br />
+                    However, if a component has only one child, then this.props.children will return
+                    the single child, not wrapped in an array.
+                </em> <br /> <br />
+
+
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>Example...</h2>
+
+            <p>
+                So, for example, we could use <b>this.props.children</b> to help build
+                this unordered list:- <br /> <br /> <br />
+
+                <span style="text-align: center; display: block;">
+                    <b>Favorite Living Musician</b> <br /> <br />
+                    Sachiko M <br />
+                    Harvey Sid Fisher <br /> <br />
+
+                    <b>Favorite Living Cat Musician</b> <br /> <br />
+                    Nora the Piano Cat <br /> <br />
+                </span> <br />
+
+                <em>
+                    See below code examples for <br />
+                    <b>
+                        App.js <br />
+                        List.js
+                    </b>
+                </em> <br /> <br />
+
+            </p>
+        </div>
+    </div>
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Code Example (App.js)</h2>
+
+            <p><pre>
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { List } from './List';
+
+class App extends React.Component {
+  render() {
+    return (
+        &lt;div&gt;
+            &lt;<span class="forceRed">List</span> type='Living Musician'&gt;
+                <span class="forceGreen">&lt;li&gt;Sachiko M&lt;/li&gt;
+                &lt;li&gt;Harvey Sid Fisher&lt;/li&gt;</span>
+            &lt;/List&gt;
+            &lt;<span class="forceRed">List</span> type='Living Cat Musician'&gt;
+                <span class="forceGreen">&lt;li&gt;Nora the Piano Cat&lt;/li&gt;</span>
+            &lt;/List&gt;
+        &lt;/div&gt;
+    );
+  }
+}
+
+ReactDOM.render(
+    &lt;App /&gt;, 
+    document.getElementById('app')
+);
+</pre> <br />
+
+            Here we have, in the <b>return</b> section of the <b>App</b> class, a 
+            call of the <b><span class="forceRed">List</span></b> class (that is 
+            imported from <b>List.js</b>). <br /> <br />
+
+            Inside the call of the <b><span class="forceRed">List</span></b> class are just 
+            some line items for an unordered list 
+            (<b><span class="forceGreen">&lt;li&gt;...&lt;/li&gt;</span></b>). <br /> <br />
+
+            It ALSO includes a property to send (called TYPE) so it can include the headers 
+            in the <b>List</b> class.
+
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>Code Example (List.js)</h2>
+
+            <p><pre>
+import React from 'react';
+
+export class <span class="forceRed">List</span> extends React.Component {
+  render() {
+    let titleText = `Favorite ${this.props.type}`;
+    if (this.props.children.length instanceof Array) {
+    	titleText += 's';
+    }
+
+    return (
+        &lt;div&gt;
+            &lt;h1&gt;{titleText}&lt;/h1&gt;
+            &lt;ul&gt;<span class="forceGreen">{this.props.children}</span>&lt;/ul&gt;
+        &lt;/div&gt;
+
+    );
+  }
+}
+</pre><br />
+
+             Because the ONLY items inside the call to the <b><span class="forceRed">List</span></b> class 
+            (in <b>App.js</b>) are just the  
+            (<b><span class="forceGreen">&lt;li&gt;...&lt;/li&gt;</span></b>) items then that is 
+            all that gets added to the the above as the 
+            <span class="forceGreen">{this.props.children}</span>. <br /> <br />
+            
+            And because the call to the <b><span class="forceRed">List</span></b> class 
+            (in <b>App.js</b>) happens twice, with different 
+            <b><span class="forceGreen">&lt;li&gt;...&lt;/li&gt;</span></b>) items then that means we get 
+            two different unordered lists displayed. <br /> <br />
+
+            <span style="text-align: center; display: block;">
+                <em>First unordered list</em> <br />
+                <b>Favorite Living Musician</b> <br /> <br />
+                Sachiko M <br />
+                Harvey Sid Fisher <br /> <br />
+
+                <em>Second unordered list</em> <br />
+                <b>Favorite Living Cat Musician</b> <br /> <br />
+                Nora the Piano Cat <br /> <br />
+            </span> <br />
+
+            </p>
+        </div>
+    </div>
+    <a href="#">Top</a> <br />
+
+    <!--<div class="divFlex">
+        <div class="divBSet divBorder">
+
+        </div>
+
+        <div class="divBSet divBorder">
+
+        </div>
+    </div>
+    <a href="#">Top</a> <br />-->
+</body>
+</html>

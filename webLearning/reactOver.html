@@ -1,0 +1,823 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>React (Part 1)</title>
+
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+    <style>
+        pre {
+            font-size: 12px;
+            color: blue;
+        }
+
+        .imgGrid {
+            width: 100px;
+        }
+    </style>
+
+    <!--Any code that is just for this page and not to go in myScripts.js can go here (or in a SCRIPT area elsewhere
+    on the page or at the end)-->
+    <script>
+                                                    //...Code / Functions etc...
+    </script>
+
+</head>
+<body class="bodyMove">
+    <a href="index.html">Home</a>
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h1>React - An Overview</h1>
+            <h2>What is React?</h2>
+            <p>
+                React is a declarative, efficient, and flexible JavaScript library
+                for building user interfaces. <br />
+                It lets you compose complex UIs from small and isolated pieces
+                of code called “components”. <br /> <br />
+
+                React has a few different kinds of components, first we'll go with
+                <b>React.Component</b> <br /> <br />
+                <br /> <br />
+
+                You can find an MDN Tutorial Document on React
+                <a href="https://reactjs.org/tutorial/tutorial.html" target="_blank">Here</a>
+                that may be useful. <br /> <br />
+
+                <em>Extracts from this are used below...</em><br /> <br />
+
+                You can also take a look at w3Schools offering and follow their
+                <a href="https://www.w3schools.com/react/default.asp" target="_blank">
+                    React Tutorial</a> (also listed in next pane, Set-up Environment)<br /> <br />
+
+                <hr /> <br />
+
+                To create a REACT/NODE.JS set-up using 
+                <b>Visual Studio 2019</b> take a look at the
+                <a href="https://docs.microsoft.com/en-us/visualstudio/javascript/tutorial-nodejs-with-react-and-jsx?view=vs-2019" 
+                   target="_blank">Microsoft Document</a>. <br /> <br /> <br />
+
+                <b>NOTE</b> <br />
+                When following this document to create a Project in Visual Studio 2019, and 
+                installing the <b>NPM Packages</b> it says you can also just add/create the 
+                list of dependencies in to the <b>package.json</b> file. <br /> <br />
+
+                The dependencies to add are as follows (you can cut & paste it in):-
+
+                <pre>
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "ts-loader": "^9.2.5",
+    "typescript": "^4.3.5",
+    "webpack": "^5.51.1",
+    "webpack-cli": "^4.8.0"
+  }
+</pre>
+
+                So a <b>package.json</b> file may look like this... <br /> <br />
+                
+                                                                           <pre>
+{
+  "name": "jamming",
+  "version": "0.0.0",
+  "description": "Jamming",
+  "main": "server.js",
+  "author": {
+    "name": ""
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "ts-loader": "^9.2.5",
+    "typescript": "^4.3.5",
+    "webpack": "^5.51.1",
+    "webpack-cli": "^4.8.0"
+  }
+}
+
+</pre>
+                <em>The name of the project that this was taken from was called <b>Jamming</b></em> <br /> <br />
+
+            </p>
+        </div>
+
+        <div class="divBorder divBSet">
+            <h2>Set-up Environment</h2>
+
+            <p>
+                In order to learn and test React, you should set up a React Environment on your computer. <br />
+                The create-react-app is an officially supported way to create React applications. <br /> <br />
+
+                If you have NPM and Node.js installed, you can create a React application by first
+                installing the create-react-app. <br /> <br />
+
+                Install create-react-app by running this command in your terminal: <br /> <br />
+
+                <b>D:\<em>YourDirectoryToWorkFrom</em> npm install -g create-react-app</b> <br /> <br />
+
+                When done you can create a React application (named myTestReact)... <br /> <br />
+
+                <b>D:\<em>YourDirectoryToWorkFrom</em> npx create-react-app mytestreact</b> <br />
+                <em>It does not like CAPITAL letters in the name (mytestreact NOT MyTestReact).</em><br /> <br />
+
+                Then you can log into the folder <b>mytestreact</b> <br />
+                <b>cd mytestreact</b> <br /> <br />
+
+                Then to start the React application for your <b>mytestreact</b> do this... <br /> <br />
+
+                <b>D:\<em>YourDirectoryToWorkFrom</em> npm start</b> <br />
+                <em>It will open a tab in your browser (it may take a moment)</em> <br /> <br />
+
+                <img src="Images/react.jpg" alt="screen image" width="220" height="200" /> <br /> <br />
+
+                The above will result in a new directory inside your chosen directory, eg... <br />
+                <b>D:\<em>YourDirectoryToWorkFrom</em>\mytestreact\src</b> <br /> <br />
+
+                I created this in my <b>d:\ReactDirectories\CreateReactApp</b> directory. <br /> <br />
+
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h2>subclasses:</h2>
+
+            <p>
+                <em>
+                    We use components to tell React what we want to see on the screen. <br />
+                    When our data changes, React will efficiently update and re-render our components.
+                </em> <br /> <br />
+
+                Here is an example to start with... <br /> <br />
+
+                <pre>
+class ShoppingList extends React.Component {
+  render() {
+    return (
+      &lt;div className="shopping-list"&gt;
+        &lt;h1&gt;Shopping List for {this.props.name}&lt;/h1&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Instagram&lt;/li&gt;
+          &lt;li&gt;WhatsApp&lt;/li&gt;
+          &lt;li&gt;Oculus&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+// Example usage: &lt;ShoppingList name="Mark" /&gt;
+</pre>
+
+                Here, ShoppingList is a React component class, or React component type. <br />
+                A component takes in parameters, called <b>props</b> (short for “properties”),
+                and returns a hierarchy of views to display via the render method. <br /> <br />
+
+                The render method returns a description of what you want to see on the screen. <br />
+                React takes the description and displays the result. <br />
+                In particular, render returns a React element, which is a
+                lightweight description of what to render. <br />
+                Most React developers use a special syntax called <b>"JSX"</b> which makes these
+                structures easier to write. <br />
+                The <b>&lt;div&gt;</b> syntax is transformed at build time to
+                <b>React.createElement('div')</b>. <br /> <br />
+
+                The example above is equivalent to (the non JSX version) of: <br /> <br />
+
+                <pre>
+return React.createElement(
+        'div', 
+        {className: 'shopping-list'},
+    React.createElement('h1', /* ... h1 children ... */),
+    React.createElement('ul', /* ... ul children ... */)
+);
+</pre>
+
+                JSX comes with the full power of JavaScript. <br />
+                You can put any JavaScript expressions within braces inside JSX. <br />
+                Each React element is a JavaScript object that you can store in a variable
+                or pass around in your program. <br /> <br />
+
+                The ShoppingList component above only renders built-in DOM components
+                like <b>
+                    &lt;div&gt;, &lt;ul&gt; and &lt;li&gt;
+                </b>. <br />
+                But you can compose and render custom React components too. <br />
+                For example, we can now refer to the whole shopping list by
+                writing &lt;ShoppingList&gt;. <br />
+                Each React component is encapsulated and can operate independently;
+                this allows you to build complex UIs from simple components. <br /> <br />
+
+            </p>
+        </div>
+
+        <div class="divBorder divBSet">
+            <h2>Creating a new React App</h2>
+
+            <p>
+                See 'Creating a New React App' document by reactjs.org
+                <a href="https://reactjs.org/docs/create-a-new-react-app.html#create-react-app"
+                   target="_blank">Here</a> <br /> <br />
+
+                Create React App is a comfortable environment for learning React,
+                and is the best way to start building a new single-page
+                application in React. <br /> <br />
+
+                It sets up your development environment so that you can use the
+                latest JavaScript features, provides a nice developer experience,
+                and optimizes your app for production. <br />
+                You’ll need to have Node >= 10.16 and npm >= 5.6 on your machine. <br /> <br />
+
+                To create a project, run (in Windows Command Prompt): <br /> <br />
+
+                First log into the directory you want to use <br />
+                The below will create a new directory there called <b>my-app</b> <br /> <br />
+
+                <b>npx create-react-app my-app <br /> </b>
+                <em>Say 'y' to install - it may take a few minutes</em> <br />
+                <b>
+                    cd my-app <br />
+                    npm start
+                </b> <br /> <br />
+
+                <em>Some commands to use from the command propmpt:- <br /> <br />
+
+                <b>npm start</b> <br />
+                Starts the development server. <br /> <br />
+
+                <b>npm run build</b> <br />
+                Bundles the app into static files for production <br /> <br />
+
+                <b>npm test</b> <br />
+                Starts the test runner. <br /> <br />
+
+
+                <b>run eject</b> <br />
+                Removes this tool and copies build dependencies, configuration files 
+                and scripts into the app directory (you cannot go back if you run this). <br /> <br />
+                </em>
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+
+        <div class="divBSet divBorder">
+            <h2>Examples</h2>
+
+            <p>
+                The examples given in the next pane(s) are taken
+                from a Tic Tac Toe (Noughts and Crosses) program. <br /> <br />
+
+                It is basically a 3 x 3 grid... <br /> <br />
+
+                <img class="imgGrid" src="React/grid.jpg" alt="grid" />
+
+            </p>
+        </div>
+        <div class="divBSet divBorder">
+            <h2>Examples...</h2>
+
+            <pre>
+class Square extends React.Component {
+  render() {
+    return (
+        &lt;button className="square"&gt;
+
+        {/*Tells it to render the .sqPos property value
+        - which prints a number in one of the squares.
+        In other words it makes the text of the button be 
+        the value of sqPos*/} 
+        {this.props.sqPos} 
+
+      &lt;/button&gt;
+    );
+  }
+}
+
+class Board extends React.Component {
+  renderSquare(i) {
+
+    {/*Let's create/set a property for Square class
+    - giving it a value (i) which will end up in the grid*/}
+    return &lt;Square sqPos={i} /&gt;;
+
+  }
+</pre>
+
+            <p>
+                So when the routine has been called properly the end result
+                would look like <br /> <br />
+
+                <img class="imgGrid" src="React/grid1.jpg" alt="grid2" /> <br /> <br />
+
+            </p>
+        </div>
+
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Adding onClick to a button</h2>
+
+            <pre>
+class Square extends React.Component {
+  render() {
+    return (
+            <b>&lt;button className="square" 
+            onClick={function() { alert('click'); }}&gt;</b>
+        {this.props.sqPos}
+      &lt;/button&gt;
+    );
+  }
+}
+</pre>
+            Or you could use the arrow function (=>)command instead, which is
+            probably the preferred way... <br /> <br />
+
+            <pre>
+class Square extends React.Component {
+  render() {
+    return (
+            <b>&lt;button className="square" 
+            onClick={() => { alert('click'); }}&gt;</b>
+        {this.props.sqPos}
+      &lt;/button&gt;
+    );
+  }
+}
+</pre>
+            <p>
+                Now you can click on a square (it's really a button) and you
+                will get the <b>alert()</b> message on screen.
+            </p> <br /> <br />
+
+        </div>
+
+        <!--<div class="divBSet divBorder">
+
+        </div>-->
+
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div id="constructors" class="divFlex">
+
+        <div class="divBSet divBorder">
+            <h2>Adding a constructor</h2>
+
+            <p>
+                As a next step, we want the Square component to “remember” that it got clicked,
+                and fill it with an “X” mark. <br />
+                To “remember” things, <b>components use state</b>. <br /> <br />
+
+                See w3Schools comments on
+                <a href="https://www.w3schools.com/react/react_state.asp"
+                   target="_blank">state</a> <br /> <br />
+
+                React components has a built-in state object. <br />
+                The state object is where you store property values that belongs to the component. <br />
+                When the state object changes, the component re-renders. <br />
+                The state object is initialized in the constructor. <br />
+                The state object can contain as many properties as you like, eg... <br />
+                <b>
+                    this.state = { <br />
+                    &nbsp;&nbsp;&nbsp;brand: "Ford", <br />
+                    &nbsp;&nbsp;&nbsp;model: "Mustang", <br />
+                    &nbsp;&nbsp;&nbsp;colour: "Red" <br />
+                    };
+                </b> <br /> <br />
+
+
+                Let’s store the current value of the Square in <b>this.state</b>, and
+                change it when the Square is clicked. <br /> <br />
+
+                First we need to add a constructor to the class to initialize the state: <br /> <br />
+
+                <pre>
+class Square extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sqPos: null,
+    };
+  }
+
+  render() {
+    return (
+                <b>&lt;button className="square" 
+            onClick={() => { alert('click'); }}&gt;</b>
+        {this.props.sqPos}
+      &lt;/button&gt;
+    );
+  }
+}
+</pre>
+                <em>
+                    <b>Note</b>...Setting <b>sqPos: null</b> in the constructor will
+                    make all the squares display NULL (blank)...<br />
+                    if I still wanted the numbers displayed then I could make it...<br />
+                    <b>
+                        this.state = { <br />
+                        &nbsp;&nbsp;&nbsp;sqPos: this.props.sqPos <br />
+                        };
+                    </b> <br />
+                    because in the class 'board' (in a different pane above) I have set
+                    a value for sqPos...later, though, it will change so this.props.sqPos
+                    will no longer work.
+                </em> <br /> <br />
+
+                <b>Note</b>...In JavaScript classes, you need to always call <b>super</b> when
+                defining the constructor of a subclass. <br />
+                All React component classes that have a constructor should
+                start with a <b>super(props)</b> call. <br /> <br />
+
+                <b>Props</b> are arguments passed into React Components. <br />
+                See w3Schools page regarding
+                <a href="https://www.w3schools.com/react/react_props.asp"
+                   target="_blank">React Props</a>. <br /> <br />
+
+                <h3>See next pane to continue...</h3>
+
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+
+            <h2>Continued...</h2>
+            <p>
+                After setting up the constructor to set the <b>sqPos</b> value to null
+                we then need to change the render method to change the value when
+                the button is clicked. <br />
+                For now I will change it to show an 'X' in the square that was clicked on. <br /> <br />
+
+                To do this the onClick function (in the 'class square's render section)
+                needs to be changed to read... <br /> <br />
+
+                <pre>
+class Square extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sqPos: null,
+    };
+  }
+
+<b>render() {
+    return (
+      &lt;button
+        className="square"
+        onClick={() => this.setState({sqPos: 'X'})}
+      &gt;
+        {this.state.sqPos}
+      &lt;/button&gt;
+    );
+  } </b>
+}
+</pre>
+                The <b>this.setState()</b> method is used to change a properties
+                value held in <b>this.state</b> <br /> <br />
+
+                When a value in the <b>state</b> object changes, the component will re-render,
+                meaning that the output will change according to the new value(s). <br /> <br />
+
+                Therefore, when we click on a square we are changing the value from NULL to X <br />
+                The component will then re-render and change the output. <br /> <br />
+
+                <hr />
+                <br /> <br />
+
+                <h2>React Developer Tools for Chrome</h2>
+
+            <p>
+                The React Devtools extension for Chrome lets you inspect a React component
+                tree with your browser’s developer tools. <br />
+                Click
+                <a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en"
+                   target="_blank">Here</a> for download instructions. <br /> <br />
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Lifting State Up (pt 1)</h2>
+
+            <p>
+                Next, to have a complete game, we now need to alternate placing “X”s
+                and “O”s on the board, and we need a way to determine a winner. <br /> <br />
+
+                Currently, each Square component maintains the game’s state. <br />
+                To check for a winner, we’ll maintain the value of each
+                of the 9 squares in one location. <br /> <br />
+
+                We may think that Board should just ask each Square for the Square’s state. <br />
+                Although this approach is possible in React, we discourage it because the
+                code becomes difficult to understand, susceptible to bugs, and hard to refactor. <br />
+                Instead, the best approach is to store the game’s state in the parent Board
+                component instead of in each Square. <br />
+                The Board component can tell each Square what to display by
+                passing a prop, just like we did when we passed a number to each Square. <br /> <br />
+
+                <b>
+                    To collect data from multiple children, or to have two child components
+                    communicate with each other, you need to declare the shared state
+                    in their parent component instead. <br />
+                    The parent component can pass the state back down to the children by
+                    using props; this keeps the child components in sync with each
+                    other and with the parent component.
+                </b> <br /> <br />
+
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>Lifting State Up (pt 2)</h2>
+
+            <p>
+                We need to add a constructor to the parent (board class) and tell
+                it we need a property (called <b>squares</b> which will hold an
+                array of 9 items (as the board is 9 squares). <br />
+                We will Null fill it as we want to start with a blank board. <br /> <br />
+
+                <pre>
+class Board extends React.Component {
+                <b>constructor(props) {
+    super(props);
+    this.state = {
+      squares: Array().fill(null),
+    };
+  }</b>
+  renderSquare(i) {
+    return &lt;Square sqPos={i} /&gt;;
+  }
+
+  render() {
+    ...more code continues here..
+</pre>
+
+                As we start to play the game the array, referred to as <b>this.state.squares</b>,
+                could look like, for example... <br />
+                <b>"O", null, "X", "X", "X", "O", "O", null, null</b> <br /> <br />
+                it makes better sense to picture it more like... <br />
+                <b>
+                    "O", null, "X" <br />
+                    "X", "X", "O" <br />
+                    "O", null, null
+                </b> <br /> <br />
+
+                As a Tic Tac Toe board is a 3 x 3 square. <br /> <br />
+
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Lifting State Up (pt 3)</h2>
+
+            <p>
+                And then we have to change the <b>renderSquare</b> method
+                to use the array, as in... <br /> <br />
+
+                <b>
+                    renderSquare(i) { <br />
+                    &nbsp;&nbsp;&nbsp;return &lt;Square sqPos={this.state.squares[i]} /&gt; <br>
+                    }
+                </b> <br /> <br />
+
+                Next, we need to change what happens when a Square is clicked. <br />
+                The Board component now maintains which squares are filled. <br />
+                We need to create a way for the Square to update the Board’s state. <br />
+                Since state is considered to be private to the component that
+                defines it, we cannot update the Board’s state directly from Square. <br /> <br />
+
+                Instead, we’ll pass down a function from the Board to the Square, and
+                we’ll have Square call that function when a square is clicked. <br /> <br />
+
+                We’ll change the renderSquare method in Board to do this first... <br /> <br />
+
+                <b>
+                    renderSquare(i) { <br />
+                    &nbsp;&nbsp;&nbsp;return ( <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Square <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sqPos={this.state.squares[i]} <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;onClick={() => this.handleClick(i)} <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&gt; <br />
+                    &nbsp;&nbsp;&nbsp;); <br />
+                    }
+                </b> <br /> <br />
+
+                So it will set the value of sqPos to be the current state of <b>this.state.squares[i]</b> <br />
+                then it will pass down the function that will get called when a square is clicked. <br /> <br />
+
+                <b>NOTE...</b> <br />
+                Now we’re passing down two <b>props</b> from Board to Square: sqPos and onClick. <br />
+                The onClick prop is a function that Square can call when clicked. <br /> <br />
+
+                The actual function (<b>handleClick</b>) needs to be created inside 
+                Board, below the constructor, and will look like this... <br /> <br />
+
+                <b>
+                    handleClick(i) {<br />
+                    &nbsp;&nbsp;&nbsp;const squares = this.state.squares.slice(); <br />
+                    &nbsp;&nbsp;&nbsp;squares[i] = 'X'; <br />
+                    &nbsp;&nbsp;&nbsp;this.setState({squares: squares}); <br />
+                    } <br /> <br />
+                </b>
+                <em>...the function creates a variable called squares and sets it's 
+                value to be equal to the array "this.state.squares" - not sure if I  
+                need the <b>.slice()</b> but the lesson wants it. <br />
+                ...It then sets the relevant array item in the local squares variable to 'X'. <br />
+                ...Then sets the squares property in this.state</em>
+
+                And because now we do not want Square to keep track of the game's state (it's to be 
+                handled in Board instead)
+                the <b>constructor in Square</b> is no longer needed...and we should render 
+                the values by using <b>this.props.sqPos</b> instead of this.state.sqPos <br />
+                As well as passing it the function from Boards. <br /> <br />
+
+
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>Part 4</h2>
+
+            <p>
+                The code so far looks like this... <br /> <br />
+
+            <pre>
+class Square extends React.Component {
+  render() {
+    return (
+        &lt;button className="square"
+            onClick={() =&gt; this.props.onClick()}
+        &gt;
+        {this.props.sqPos}
+        &lt;/button&gt;
+    );
+  }
+}
+
+class Board extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      squares: Array(9).fill(null),
+    };
+  }
+
+  handleClick(i) {
+    const squares = this.state.squares.slice();
+    squares[i] = 'X';
+    this.setState({squares: squares});
+  }
+
+  renderSquare(i) {
+    return (
+        &lt;Square 
+            sqPos={this.state.squares[i]}
+            onClick={() =&gt; this.handleClick(i)}
+      /&gt;
+    );
+  }
+
+  render() {
+    ....more code below...
+</pre>
+            <br />
+            <b>Note...</b> <br />
+            in handleClick, we call <b>.slice()</b> to create a copy of the squares array to 
+                modify instead of modifying the existing array. <br />
+            <em>.slice() without any start/end values (eg .slice(0, 3)) means it will copy 
+                everything...(0,3) means it will copy 3 items starting at 
+                position 0 (items 0, 1 & 2) only</em> <br /> <br />
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Function Components</h2>
+
+            <p>
+                In React, <b>function components</b> are a simpler way to write components 
+                that only contain a render method and don’t have their own state. <br />
+                Instead of defining a class which extends React.Component, we can write a 
+                function that takes props as input and returns what should be rendered. <br />
+                Function components are less tedious to write than classes, and many 
+                components can be expressed this way. <br /> <br />
+
+                So we can replace the Square class with this Square function... <br /> <br />
+
+                <b>function Square(props) { <br />
+                &nbsp;&nbsp;&nbsp;return ( <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;className="square" <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;onClick={props.onClick}&gt; <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{props.sqPos} <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/button&gt; <br />
+                &nbsp;&nbsp;&nbsp;); <br />
+                }      
+                </b> <br /> <br />
+
+                <em><b>Note</b> As <b>props</b> is now a parameter of the function we 
+                do not refer to it as <b>this.props</b>. Instead we would be passing 
+                <b>this.props</b> when we call the function.</em> <br /> <br />
+
+            </p>
+
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>Player - X or O</h2>
+
+            <p>So far we are always putting "X" on the board when a square is clicked. <br />
+            So we need to add code to alternate between "X" and "O" to allow for 2 players. <br /> <br />
+            
+            To do this we are going to add a new property (<b>xIsNext</b>)) to the Board set up <br />
+            So inside the Board Class where it sets the <b>state</b> we need it to look like... <br />
+            <b>this.state = { <br />
+            &nbsp;&nbsp;&nbsp;squares: Array(9).fill(null), <br />
+            &nbsp;&nbsp;&nbsp;xIsNext: true, <br />
+            };</b> <br /> <br />
+
+            And then in the <b>handleClick()</b> function (still in the Board class) we need to 
+            check the new property (xIsNext) to see if we need to display "X" or "O". <br />
+            Then change the value of <b>xIsNext</b> so the next click will display correctly. <br /> <br />
+
+            <b>
+                handleClick(i) { <br />
+                &nbsp;&nbsp;&nbsp;const squares = this.state.squares.slice(); <br />
+                &nbsp;&nbsp;&nbsp;squares[i] = this.state.xIsNext ? 'X' : 'O'; <br />
+                &nbsp;&nbsp;&nbsp;this.setState({ <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;squares: squares, <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xIsNext: !this.state.xIsNext, <br />
+                &nbsp;&nbsp;&nbsp;}); <br />
+                } </b> <br /> <br />
+
+            <em>The line of code <b>xIsNext: !this.state.xIsNext</b> will change the value of 
+                xIsNext to be <b>true</b> if it is <b>false</b> and vice-versa.</em> <br /> <br />
+
+
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Too much</h2>
+            <p>
+                Not wanting to put everything in the overview I'm going to stop there. <br />
+                The whole code for the game can be seen in... <br /> <br />
+
+                <b>React/ticTacToe.html <br />
+                React/ticTacToe.js </b> <br /> <br />
+
+            </p>
+        </div>
+
+        <!--<div class="divBSet divBorder">
+
+        </div>-->
+    </div>
+
+    <a href="#">Top</a> <br />
+
+</body>
+</html>

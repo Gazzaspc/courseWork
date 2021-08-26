@@ -1,0 +1,258 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>React (Destructuring)</title>
+
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+    <style>
+    </style>
+
+    <!--Any code that is just for this page and not to go in myScripts.js can go here (or in a SCRIPT area elsewhere
+    on the page or at the end)-->
+    <script>
+                                        //...Code / Functions etc...
+    </script>
+
+</head>
+<body class="bodyMove">
+    <a href="index.html">Home</a>
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h1>React</h1>
+
+        </div>
+
+        <!--<div class="divBorder divBSet">
+
+        </div>-->
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h1>Destructuring</h1>
+
+            <p>
+                <b>What is Destructuring?</b> <br /> <br />
+                Destructuring, or destructuring assignment, is a JavaScript feature that makes it
+                easier to extract data from arrays and objects <br /> <br />
+
+                For example... <br /> <br />
+
+                <h2>Destructuring Arrays...</h2>
+                Data structures like arrays can be very useful for storing large amounts of data. <br />
+                The process of converting individual elements of an array into
+                individual variables can be tedious:- <br /> <br />
+
+                <b>let cars = ['ferrari', 'tesla', 'cadillac']; </b> <br />
+                <em>
+                    If we wanted to access these cars individually and
+                    assign them to variables we could do this:
+                </em> <br /> <br />
+
+                <b>
+                    let cars = ['ferrari', 'tesla', 'cadillac']; <br />
+                    let car1 = cars[0]; <br />
+                    let car2 = cars[1]; <br />
+                    let car3 = cars[2]; <br />
+                    console.log(car1, car2, car3);
+                </b> <br />
+                <em> // Prints: ferrari tesla cadillac </em> <br /> <br />
+
+                We can use destructuring to shorten our code and make it more concise: <br /> <br />
+
+                <b>
+                    let cars = ['ferrari', 'tesla', 'cadillac']; <br />
+                    let [car1, car2, car3] = cars; <br />
+                    console.log(car1, car2, car3);
+                </b> <br />
+                <em> // Prints: ferrari tesla cadillac </em> <br /> <br />
+
+
+            </p>
+        </div>
+
+        <div class="divBorder divBSet">
+            <p>
+                <br /> <br />
+                <h2>Destructuring Objects...</h2>
+                Data structures like objects can be very useful for storing large amounts of data. <br />
+                The process of converting individual elements of an object into
+                individual variables can also be tedious:- <br /> <br />
+
+                <b>let destinations = { x: 'LA', y: 'NYC', z: 'MIA' }; </b> <br />
+                <em>
+                    If we wanted to access these properties individually and
+                    assign them to variables we could do this:
+                </em> <br /> <br />
+
+                <b>
+                    let destinations = { x: 'LA', y: 'NYC', z: 'MIA' }; <br />
+                    let x = destinations.x; <br />
+                    let y = destinations.y; <br />
+                    let z = destinations.z; <br />
+                    console.log(x, y, z);
+                </b> <br />
+                <em> // Prints LA NYC MIA </em> <br /> <br />
+
+                We can use destructuring to shorten our code and make it more concise: <br /> <br />
+
+                <b>
+                    let destinations = { x: 'LA', y: 'NYC', z: 'MIA' }; <br />
+                    let {x, y, z} = destinations; <br />
+                    console.log(x, y, z);
+                </b> <br />
+                <em> // Prints LA NYC MIA </em> <br /> <br />
+
+                <b>Note</b> <br />
+                Because we are assigning properties to x, y & z we have to use the
+                curly barces <b>{}</b> instead of the square brackets <b>[]</b> as we did with arrays. <br /> <br />
+
+
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <p>
+                <br />
+                <h2>Destructuring Function Parameters...</h2>
+                Function arguments are another place where destructuring is useful. <br />
+                Instead of accepting a complete object as an argument, a function can use
+                destructuring to capture specific properties as named parameters:- <br /> <br />
+
+                <b>
+                    let truck = { <br />
+                    &nbsp;&nbsp;&nbsp;model: '1977 Mustang convertible', <br />
+                    &nbsp;&nbsp;&nbsp;maker: 'Ford', <br />
+                    &nbsp;&nbsp;&nbsp;city: 'Detroit', <br />
+                    &nbsp;&nbsp;&nbsp;year: '1977', <br />
+                    &nbsp;&nbsp;&nbsp;convertible: true <br />
+                    }; <br /> <br />
+
+                </b><em>
+                    //Note...we are only including parameters for the <br />
+                    //property names - inside { }'s <br />
+                    //When we call the function we just pass it the object (truck).
+                </em> <b>
+                    <br />
+                    const printCarInfo = ({model, maker, city}) => { <br />
+                    &nbsp;&nbsp;&nbsp;console.log(`The ${model}, or ${maker},
+                    is in the city ${city}.`); <br />
+                    }; <br /> <br />
+
+                </b><em>
+                    //Note...here we just pass it the object (truck). <br />
+                    //and it will only use the relevant parameters
+                </em> <b>
+                    <br />
+                    printCarInfo(truck);
+                </b> <br />
+                <em>
+                    // Prints: The 1977 Mustang convertible, or Ford,
+                    is in the city Detroit.
+                </em> <br /> <br />
+
+                The printCarInfo function uses object destructuring to create three
+                parameter variables: model, maker, and city. <br />
+                When the function is invoked with the truck object, these parameters
+                are assigned the corresponding values from that object. <br /> <br />
+
+                <b>Note</b> that we don’t have to use every property from the truck
+                object: we only create parameter variables for the values that we need. <br /> <br />
+
+
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <p>
+                <br />
+                An MDN document on <b>Destructing Assignment</b> can be found
+                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment"
+                   target="_blank">Here</a> <br /> <br />
+
+                <span class="greenMess">
+                    It is worth taking a look to remind you of what can be done
+                    under the heading 'Destructuring'.
+                </span> <br /> <br />
+
+                This document demonstrates something else I had not yet come across. <br />
+                You can create a variable which, when assigning a value, is preceeded by three
+                dots (...), eg ...rest or ...c <br />
+                which then creates a variable array with all the remaining values. <br />
+                By this I mean, eg: <br /> <br />
+
+                <b>
+                    let a, b, rest; <br />
+                </b>//now to assign values to a & b only <br />
+                <b>
+                    [a, b] = [10, 25]; <br /> <br />
+
+                    console.log(a);
+                </b>  // expected output: 10 <br />
+                <b>console.log(b); </b> // expected output: 20 <br /> <br />
+
+                // BUT if you assign values like this <br />
+                <b>
+                    [a, b, ...rest] = [10, 20, 30, 40, 50, 60]; <br /> <br />
+
+                </b>// Then a will = 10 <br />
+                // b will = 20 <br />
+                // rest will be an array = "[30, 40, 50, 60]" <br />
+                // <em>Note it is NOT referred to as <b>...rest</b> </em> <br />
+                <b>console.log(rest); </b> <br />
+                // expected output: 30, 40, 50, 60 <br />
+                <br />
+
+                <span id="Ex1" class="redMess"></span> <br />
+                <span id="Ex2" class="redMess"></span> <br />
+                <span id="Ex3" class="redMess"></span> <br />
+                <span id="Ex4" class="redMess"></span> <br />
+                <span id="Ex5" class="redMess"></span> <br />
+
+            </p>
+            <script>
+                let a, b, rest;
+
+                [a, b, ...rest] = [10, 20, 30, 40, 50, 60];
+
+                document.getElementById("Ex1").innerHTML = "Value of a: " + a;
+                document.getElementById("Ex2").innerHTML = "Value of b: " + b;
+                document.getElementById("Ex3").innerHTML = "Value of rest: " + rest;
+                document.getElementById("Ex4").innerHTML = "Value of rest[0]: " + rest[0];
+                document.getElementById("Ex5").innerHTML = "Value of rest[2]: " + rest[2];
+
+            </script>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <!--<div class="divFlex">
+        <div class="divBSet divBorder">
+
+        </div>
+
+        <div class="divBSet divBorder">
+
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />-->
+</body>
+</html>

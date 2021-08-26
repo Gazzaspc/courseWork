@@ -105,6 +105,10 @@
                     I spent a while trying to sort thru a problem and found I mixed the logic
                     of splice & slice together, doh!
                 </i> <br /> <br /> <br />
+
+                Also... You can fill an array with the same values by using the <b>.fill()</b> 
+                method. See the <a href="#review">Review</a> section below. <br /> <br />
+
                 <hr /> <br /> <br />
 
                 I can ADD to the END of the array by... <br />
@@ -159,7 +163,7 @@
                 "One, Two, --Three--, Four, Five" <br /> <br />
                 <b>myArray.join(" / ")</b> will put your array in to a string (seperated by ' / '), eg <br />
                 "One / Two / --Three-- / Four / Five" <br /> <br />
-            </p> 
+            </p>
             <script>
                 toDisplay1("myArray4a", myArray);
                 var text, i;
@@ -173,21 +177,25 @@
                 document.getElementById("demo1").innerHTML = text;
             </script>
 
-            <hr /> <br /> 
+            <hr /> <br />
             <p>
                 <h3>.slice(start, end)</h3>
                 The <b>myArray.slice(<i>start, end</i>) </b> option returns the selected elements
                 in an array. <br />
-                This method selects the elements starting at the given start 
+                This method selects the elements starting at the given start
                 argument, and ends at, but does not include, the given end argument. <br /> <br />
                 For example... <br /> <br />
-                <b>var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"]; <br />
-                var citrus = fruits.slice(1, 3);</b> <br /> <br />
+                <b>
+                    var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"]; <br />
+                    var citrus = fruits.slice(1, 3);
+                </b> <br /> <br />
                 Will return <b>Orange, Lemon</b> <br />
                 as Orange is at index 1 and <br />
                 Lemon is at index 2 (the end position is up to but NOT including, so 3 = index 2). <br />
-                <i>Sounds strange but it allows you to say, for example, from 
-                start index 2 and ending at myArray.length</i> <br /> <br />
+                <i>
+                    Sounds strange but it allows you to say, for example, from
+                    start index 2 and ending at myArray.length
+                </i> <br /> <br />
             </p>
 
         </div>
@@ -330,10 +338,42 @@
                 SHIFT() to remove from the beginning of the array <br />
                 UNSHIFT("value") to add to the beginning of the array <br />
                 ...But really it is BEST PRACTICE to use <br />
+                SLICE() will slice out a piece of the array if you enter a start (end, optional) position <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;or if you do not have start/end then it copies everything. <br />
                 SPLICE(<i>startIndex, deleteCount, "item1", "item2", ...etc)</i> to add/remove items <br />
                 For more... visit <a href="https://www.w3schools.com/js/js_array_methods.asp" target="_blank">Methods in W3Schools</a> <br />
 
             </p>
+            <hr /> <br />
+                   <p>
+                       <h2>.map() method</h2>
+
+                       The map() method creates a new array with the results of calling a function
+                       for every array element. <br />
+                       The map() method calls the provided function once for each element
+                       in an array, in order. <br />
+                       map() does not execute the function for empty elements. <br />
+                       map() does not change the original array. <br /> <br />
+
+                       For more you can see the w3schools
+                       <a href="https://www.w3schools.com/jsref/jsref_map.asp"
+                          target="_blank">document</a> <br /> <br />
+
+                       Or for more you can see the MDN
+                       <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map"
+                          target="_blank">document</a> <br /> <br />
+
+                       For example... <br /> <br />
+
+                       <b>const array1 = [1, 4, 9, 16]; <br /> <br />
+
+                       </b><em>// pass a function to map </em> <br />
+                       <b>const map1 = array1.map(x => x * 2); <br /> <br />
+
+                       console.log(map1); <br /> </b>
+                       <em>// expected output: Array [2, 8, 18, 32] </em> <br /> <br />
+
+                   </p>
         </div>
         <div class="divBorder divBSet">
             <h3>Multidimensional Array</h3>
@@ -681,7 +721,7 @@
 
     <br /> <a href="#">Top</a> <br />
 
-    <div class="divFlex">
+    <div id="review" class="divFlex">
         <div class="divBSet divBorder">
 
             <h1>Dealing with arrays</h1>
@@ -766,17 +806,24 @@
             Click <a href="https://www.w3schools.com/jsref/jsref_obj_array.asp" target="_blank">here</a> for a full list. <br /> <br />
 
             <p>
-                
+
                 .every() <br />
                 The every() method returns true if all elements in an array pass a test (provided as a function). <br />
                 The method executes the function once for each element present in the array. <br />
-                If it finds an array element where the function returns a false value, every() returns false 
+                If it finds an array element where the function returns a false value, every() returns false
                 (and does not check the remaining values). <br />
                 If no false occur, every() returns true <br /> <br />
 
                 .forEach() <br />
                 is used to execute the same code on every element in an array but does
                 not change the array and returns undefined. <br /> <br />
+
+                .fill() <br />
+                The fill() method fills specified elements in an array with a value. <br />
+                You can specify the position of where to start and end the filling. <br />
+                eg... <b>myArray.fill("newValue", <em>0, 5</em>)</b><br />
+                If not specified, all elements will be filled. eg... <br /> 
+                <b>myArray.fill("newValue")</b><br /> <br />
 
                 .filter() <br />
                 checks every element in an array to see if it meets certain criteria
@@ -786,14 +833,14 @@
                 returns the index of the first element of an array which satisfies a condition
                 in the callback function. <br />
                 It returns -1 if none of the elements in the array satisfies the condition. <br /> <br />
-                
+
                 .map() <br />
                 executes the same code on every element in an array and returns a
                 new array with the updated elements. <br /> <br />
 
                 .reduce() <br />
-                iterates through an array and takes the values of the elements and returns a single value. <br /> 
-                <b>Note</b>... This is useful if you want to quickly add up all values of a number array as you can 
+                iterates through an array and takes the values of the elements and returns a single value. <br />
+                <b>Note</b>... This is useful if you want to quickly add up all values of a number array as you can
                 change myFunc (see <a href="https://www.w3schools.com/jsref/jsref_reduce.asp" target="_blank">.reduce() for more)</a>
                 where it says 'return total - num;' to read '<b>return total + num;</b>' instead. <br /> <br />
 
@@ -807,13 +854,62 @@
         </div>
     </div>
 
-    <br /> 
-    To see some examples of tasks I was set that use 
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Destructuring</h2>
+
+            <p>
+                In other course lessons I came across an MDN document on <b>Destructing Assignment</b>
+                which can be found
+                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment"
+                   target="_blank">Here</a>. <br /> <br />
+
+                It explains how you can assign variables in a more destructured way, eg... <br /> <br />
+
+                <em>
+                    Consider an array <b>fooArray</b> and you want to create variables for each value. <br />
+                    You may have done...
+                </em> <br /> <br />
+
+                <b>
+                    let fooArray = ['one', 'two', 'three']; <br />
+                    let red = fooArray[0]; <br />
+                    let blue = fooArray[1]; <br />
+                    let yellow = fooArray[2]; <br />
+                </b> <br />
+
+                But instead you can say... <br /> <br />
+
+                <b>
+                    const fooArray = ['one', 'two', 'three']; <br />
+                    const [red, yellow, green] = fooArray;
+                </b> <br /> <br />
+
+                In BOTH cases <br />
+                red = 'one' <br />
+                blue = 'two' <br />
+                green = 'three' <br /> <br />
+
+                <span class="greenMess">It is worth taking a look to remind you of what can be done 
+                under the heading 'Destructuring'.</span> <br /> <br />
+            </p>
+        </div>
+
+        <!--<div class="divBSet divBorder">
+
+        </div>-->
+    </div>
+
+
+    <br />
+    To see some examples of tasks I was set that use
     Arrays/Functions/Objects then <a href="codecademyLessons.html">click here</a> <br />
-    <a href="#">Top</a> 
+    <a href="#">Top</a>
     <br />
 
-    
+
 </body>
 
 </html>

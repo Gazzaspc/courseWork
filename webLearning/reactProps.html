@@ -1,0 +1,579 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>React Props</title>
+
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+    <style>
+        pre {
+            font-size: 12px;
+            color: blue;
+        }
+    </style>
+
+    <!--Any code that is just for this page and not to go in myScripts.js can go here (or in a SCRIPT area elsewhere
+    on the page or at the end)-->
+    <script>
+                                                            //...Code / Functions etc...
+    </script>
+
+</head>
+<body class="bodyMove">
+    <a href="index.html">Home</a>
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h1>Component Props</h1>
+
+            <p>
+                Every React component has something called <b>props</b> <br /> <br />
+
+                A component’s props is an object. <br />
+                It holds information about that component. <br />
+                To see a component’s props object, you use the expression <b>this.props</b>. <br /> <br />
+
+                You can pass information that becomes part of the <b>props</b>, in fact it
+                becomes a <b>property</b> within props (eg <b>this.props.<em>yourProperty</em></b>).<br /> <br />
+
+                <hr /> <br />
+
+                The next panes describe how to pass properties to other classes <br />
+                But it is worth noting that you can set <b>defaultProps</b> values. <br />
+                This is explained at the end - 
+                <a href="#defaultProps">Click Here</a> to go straight there. <br /> <br />
+
+            </p>
+        </div>
+        <div class="divBSet divBorder">
+            <h2>Passing a Property to a Class</h2>
+
+            <p>
+                For Example, <br /> <br />
+
+                by adding the desired property (<span class="forceRed">firstName</span>)
+                to the <b>ReactDom.render</b> for the class
+                it will attach it as a props.<em>property</em>. Eg... <br /> <br />
+
+                <b>
+                    ReactDOM.render( <br />
+                    &nbsp;&nbsp;&nbsp;&lt;Greeting <span class="forceRed">firstName='Gary'</span> /&gt;, <br />
+                    &nbsp;&nbsp;&nbsp;document.getElementById('app') <br />
+                    );
+                </b> <br /> <br />
+
+                Then, inside the CLASS called <b>Greeting</b>, you will be able to refer to the
+                property with a <b>this.props.firstName</b> call. <br /> <br />
+
+                <hr /> <br />
+
+                <h2>Passing 2 or more Properties</h2>
+                <em>
+                    <b>NOTE</b> <br />
+                    If you need to <b>pass two or more properties</b> then they
+                    are <b>NOT</b> comma delimited, eg... <br /> <br />
+                    <b>
+                        ReactDOM.render( <br />
+                        &nbsp;&nbsp;&nbsp;&lt;Greeting <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="forceRed">firstName='Gary'</span> <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="forceRed">lastName='Kirby'</span> <br />
+                        &nbsp;&nbsp;&nbsp;/&gt;,
+                        &nbsp;&nbsp;&nbsp;document.getElementById('app') <br />
+                        );
+                    </b>
+                </em> <br /> <br />
+
+            </p>
+
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>this.props.firstName</h2>
+
+            <p>
+                Now the class (<b>Greeting</b>) will have access to the property <b>firstName</b>. Eg... <br /> <br />
+
+                <b>
+                    class Greeting extends React.Component { <br />
+                    &nbsp;&nbsp;&nbsp;render() { <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return &lt;h1&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="forceRed">Hi there, {this.props.firstName}</span> <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/h1&gt; <br />
+                    &nbsp;&nbsp;&nbsp;} <br />
+                    }
+                </b> <br /> <br />
+
+                <span class="forceRed">this.</span> - refers to the class object (Greeting) itself. <br />
+                <span class="forceRed">this.props</span> - refers to the props object inside the class. <br />
+                <span class="forceRed">this.props.firstName='Gary'</span> - refers to the property itself. <br /> <br />
+
+                ...and because we need to include the value of the property inside the &lt;h1&gt;&lt;/h1&gt;
+                element we need to put it inside curly braces <span class="forceRed">{ }</span>. <br /> <br />
+
+            </p>
+        </div>
+        <div class="divBSet divBorder">
+            <h2>Example Greetings.js file</h2>
+
+            <p>
+                <pre>
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class Greeting extends React.Component {
+  render() {
+    return &lt;h1&gt;
+        Hi there, <span class="forceRed">{this.props.firstName}</span>
+    &lt;/h1&gt;
+  }
+}
+
+ReactDOM.render(
+    &lt;Greeting <span class="forceRed">firstName='Gary'</span> /&gt;, 
+    document.getElementById('app')
+);
+</pre>
+
+                When passed to the <b>.html</b> file the result would be <br />
+                <b>Hi there, Gary</b> <br /> <br />
+
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Passing .props between Classes</h2>
+
+            <p>
+                Let's say you wanted to pass the <b>.props</b> from one class/file to another. <br />
+                <em>(from (class Greetings) in Greetings.js TO (class App) in App.js)</em> <br /> <br />
+
+                And also NOT having a <b>ReactDOM.render()</b> being set-up in the Greetings.js file
+                as it will be in the App.js file now. <br /> <br />
+
+
+            </p>
+        </div>
+        <div class="divBSet divBorder">
+            <h2>Exporting Greetings.js to App.js</h2>
+
+            <p>
+                <b style="text-decoration:underline;">Greetings.js</b> <br />
+
+                <pre>
+import React from 'react'; 
+
+<span class="forceGreen">export</span> class <b>Greeting</b> extends React.Component { 
+    render() { 
+        return (
+            &lt;h1&gt;Hi there, {<span class="forceRed">this.props.name</span>}!&lt;/h1&gt;; 
+        )
+    } 
+}
+</pre>
+
+                <em>
+                    In order to be able to pass the class <b>Greeting</b> you need to
+                    <span class="forceGreen"><b>export</b></span> the class so it can be <b>import</b>ed by
+                    the App.js file. <br /> <br />
+
+                    <span class="forceRed">this.props.name</span> will get passed to the class from the
+                    <b>Apps.js</b> file.
+                </em> <br /> <br />
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Importing Greeting.js to App.js</h2>
+
+            <p>
+                <b style="text-decoration:underline;">App.js</b> <br />
+
+                <pre>
+import React from 'react'; 
+import ReactDOM from 'react-dom'; 
+<span class="forceGreen">import</span> { Greeting } from './Greeting'; 
+
+class App extends React.Component {
+    render() {
+        return (
+            &lt;div&gt;
+                &lt;h1&gt;
+                    Welcome to The App.js file!
+                &lt;/h1&gt;
+                &lt;Greeting <span class="forceRed">name="Gary" </span>/&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+
+<b>ReactDOM.render</b>(
+    &lt;App /&gt;, 
+    document.getElementById('app')
+);
+</pre>
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <p>
+                We have to <b><span class="forceGreen">import</span></b> the <b>Greeting</b> class
+                at the top of App.js in order to be able to use the Greeting class. <br /> <br />
+
+                When calling the <b>Greeting</b> class we are adding the <b>props</b> (property) we want
+                (<span class="forceRed">name="Gary" </span>), which will get read in
+                the Greetings.js file and dealt with there (<span class="forceRed">this.props.name</span>). <br /> <br />
+
+                The <b>App.js</b> file will be the one that performs the main <b>ReactDOM.render()</b> as this
+                is the controlling file. <br /> <br />
+
+            </p>
+        </div>
+    </div>
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>A Reminder...</h2>
+
+            <p>
+                If you need to add  some logic that changes the output of the
+                <b>Greeting</b> class then that logic should go <b>AFTER</b> the
+                <b>render</b> in the class (NOT inside the RETURN), eg... <br /> <br />
+
+                <b style="text-decoration:underline;">Greetings.js</b> <br />
+
+                <pre>
+import React from 'react'; 
+
+<span class="forceGreen">export</span> class <b>Greeting</b> extends React.Component { 
+    render() { 
+        if (this.props.name === "Gary") {
+            return (
+                &lt;h1&gt;Hi there, {<span class="forceRed">this.props.name</span>}!&lt;/h1&gt;; 
+            )
+        } else {
+            return (
+                &lt;h1&gt;
+                    Hey, you're not Gary are you, 
+                    {<span class="forceRed">this.props.name</span>}!
+                &lt;/h1&gt;;
+            )
+        }
+    } 
+}
+</pre>
+
+            </p>
+        </div>
+
+        <!--<div class="divBSet divBorder">
+
+        </div>-->
+    </div>
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Passing Event Handlers as a Property</h2>
+
+            <p>
+                You define an event handler as a method on the component class, just like the render method. <br /> <br />
+
+                If you are to pass methods from one file (<b>.js</b>) to another then the method(s)
+                MUST be part of the <b>class</b>, eg... <br /> <br />
+
+                <pre>
+class Example extends React.Component {
+                <span class="forceGreen"><b>myMethod() {
+        alert(`I am an event handler.
+          If you see this message,
+          then I have been called.`);
+      }</b></span>
+
+  render() {
+    return (
+      &lt;h1 <span class="forceRed">onClick={<b>this.myMethod</b>}</span>&gt;
+        Hello world
+      &lt;/h1&gt;
+    );
+  }
+}
+</pre>
+
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <p>
+                There you will see the method...<span class="forceGreen"><b>myMethod() {}</b></span> <br />
+                created after the class declaration. <br />
+                <em>
+                    <b>NOTE</b> <br />
+                    There is NO COMMA after the <span class="forceGreen"><b>myMethod() {}</b></span> and
+                    before the <b>render</b> is declared.
+                </em> <br /> <br />
+
+                <span class="forceGreen"><b>myMethod() {}</b></span> is being set as the
+                <b>onClick</b> event handler for the &lt;h1&gt; element in
+                the class using <b>.this</b>, eg... <br />
+                <b><span class="forceRed">onClick={<b>this.myMethod</b>}</span></b> <br />
+                <em>
+                    the curly braces {} are required as it is a variable/method being passed... <br />
+                    <b>AND </b>the method does not require the () when passed. <br />
+                    So NOT <b><span class="forceRed">onClick={<b>this.myMethod()</b>}</span></b> <br />
+                    But IT IS <b><span class="forceRed">onClick={<b>this.myMethod</b>}</span></b> <br /> <br />
+
+                    This is because we only want the method to run when the onClick is fired. <br />
+                    At the moment we are just telling the system the name of the method
+                    we want to use and saying that we do not want it run just yet.
+                </em> <br /> <br />
+
+            </p>
+        </div>
+    </div>
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Event Handler passing between files</h2>
+
+            <p>
+                The same principle applies when passing the event handler method between <b>.js</b> files <br /> <br />
+
+                You would pass it as a property, so using the <br />
+                <b>
+                    Greeting.js <br />
+                    App.js
+                </b> <br />
+                files from above, you could add the <b>Event Handler</b> you want to use <br />
+                <em>Let's say I want to be able to <b>click on &lt;h1&gt;</b></em> <br />
+                So I would add the <b>onClick</b> attribute to a &lt;h1&gt; in Greetings.js... <br /> <br />
+
+                <b>
+                    return <br />
+                    &nbsp;&nbsp;&nbsp;&lt;h1 <span class="forceRed">onClick={this.props.myPropsMethod}</span>&gt; <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hi there, {this.props.firstName} <br />
+                    &nbsp;&nbsp;&nbsp;&lt;/h1&gt; <br /> <br />
+                </b>
+
+                Then the <b>App.js</b> file would need to change so it includes the method
+                (<b>myMethod</b>) when passing information to <b>Greetings.js</b>... <br /> <br />
+
+                <b>
+
+                </b>
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>Example Greetings.js file</h2>
+
+            <p>
+                <pre>
+import React from 'react';
+
+export class Greeting extends React.Component {
+  render() {
+    return &lt;h1 <span class="forceRed">onClick={this.props.myPropsMethod}</span>&gt;
+        Hi there, {this.props.firstName}
+    &lt;/h1&gt;
+  }
+}
+
+</pre>
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>And then in App.js...</h2>
+
+            <p>
+                <b style="text-decoration:underline;">App.js</b> <br />
+
+                <pre>
+import React from 'react'; 
+import ReactDOM from 'react-dom'; 
+import { Greeting } from './Greeting'; 
+
+class App extends React.Component {
+                <span class="forceGreen"><b>myMethod() {
+        alert(`I am an event handler.
+          If you see this message,
+          then I have been called.`);
+      }</b></span>
+
+    render() {
+        return (
+            &lt;div&gt;
+                &lt;h1&gt;
+                    Welcome to The App.js file!
+                &lt;/h1&gt;
+                &lt;Greeting 
+                    firstName="Gary" 
+                <span class="forceRed">myPropsMethod={this.myMethod}</span>/&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+
+<b>ReactDOM.render</b>(
+    &lt;App /&gt;, 
+    document.getElementById('app')
+);
+</pre>
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>When run you will see</h2>
+
+            <p>
+                <br />
+                <b>
+                    Welcome to the App.js file! <br /> <br />
+
+                    Hi there, Gary
+                </b> <br /> <br /> <br />
+
+                <em>
+                    You would then be able to click on <br />
+                    <b>Hi there, Gary</b> <br />
+                    and then you will get an <b>alert message</b> saying... <br /> <br />
+
+                    <b>
+                        I am an event handler. <br />
+                        If you see this message, <br />
+                        then I have been called.
+                    </b>
+                </em> <br /> <br />
+            </p>
+        </div>
+    </div>
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h1>Event Naming Conventions</h1>
+
+            <p>
+                Although you can name your EVENT HANDLERS whatever you want <br />
+                it is common practice to :- <br /> <br />
+
+                If you are naming an event that is to be an <b>onClick</b> event then you should consider
+                calling it something like <br />
+                <b><em>myMethod</em>Click</b> <br /> <br />
+
+                <b><em>myMethod</em>Hover</b> for an onHover event<br /> 
+                <b><em>myMethod</em>KeyPress</b> for an onKeyPress event<br /> 
+                etc... <br /> <br />
+
+
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+
+        </div>
+    </div>
+    <a href="#">Top</a> <br />
+
+    <div id="defaultProps" class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Setting defaultProps Values</h2>
+
+            <p>
+                Sometimes a property that you pass to other classes may not have a value <br />
+                It is possible to set default values by giving your component class a property 
+                named <b>defaultProps</b> and setting each required property a default value, eg... <br /> <br />
+
+                                                                                                           <pre>
+class CatComponent extends React.Component {    
+  constructor(props) {}    
+  render() {        
+    return ( 
+        &lt;div&gt;
+            {this.props.catName} the Cat
+            &lt;br /&gt; 
+            EyeColor: {this.props.eyeColor },
+            Age: {this.props.age}
+        &lt;/div&gt;    
+  }
+}
+CatComponent.defaultProps = {    
+  catName: "Sandy",    
+  eyeColor: "deepblue",    
+  age: "120"
+}
+</pre>
+
+
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>Result...</h2>
+
+            <p>
+                So, if you run it with... <br /> <br />
+                <b>
+                    ReactDOM.render( <br />
+                    &nbsp;&nbsp;&nbsp;&lt;CatComponent  /&gt;, <br />
+                    &nbsp;&nbsp;&nbsp;document.getElementById('app') <br />
+                    );
+                </b> <br /> <br />
+
+                The above is passing NO property values, you would get... <br />
+                <b>
+                    Sandy the Cat <br />
+                    EyeColor: deepblue, Age: 120
+                </b> <br /> <br />
+
+                BUT if you ran... <br /> <br />
+
+                <b>
+                    ReactDOM.render( <br />
+                    &nbsp;&nbsp;&nbsp;&lt;CatComponent catName='Tiddles' Age='7' /&gt;, <br />
+                    &nbsp;&nbsp;&nbsp;document.getElementById('app') <br />
+                    );
+                </b> <br /> <br />
+
+                The above is passing ONLY the catName and age property values, you would get... <br />
+                <b>
+                    Tiddles the Cat <br />
+                    EyeColor: deepblue, Age: 7
+                </b> <br /> <br />
+
+            </p>
+        </div>
+    </div>
+    <a href="#">Top</a> <br />
+
+
+</body>
+</html>

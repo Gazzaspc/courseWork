@@ -1,0 +1,382 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>this.state</title>
+
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+    <style>
+        pre {
+            font-size: 12px;
+            color: blue;
+        }
+    </style>
+
+    <!--Any code that is just for this page and not to go in myScripts.js can go here (or in a SCRIPT area elsewhere
+    on the page or at the end)-->
+    <script>
+                                                                //...Code / Functions etc...
+    </script>
+
+</head>
+<body class="bodyMove">
+    <a href="index.html">Home</a>
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h1>React this.state</h1>
+
+            <p>
+                Dynamic information is information that can change. <br /> <br />
+
+                React components will often need dynamic information in order to render. <br />
+                For example, imagine a component that displays the score of a basketball game. <br />
+                The score of the game might change over time, meaning that the score is dynamic. <br />
+                Our component will have to know the score, a piece of dynamic information, in
+                order to render in a useful way. <br /> <br />
+
+                There are two ways for a component to get dynamic information: props and state. <br />
+                Besides props and state, every value used in a component should
+                always stay exactly the same. <br /> <br />
+
+                Unlike <b>props</b>, a component’s <b>state</b> is not passed in from the outside. <br />
+                A component decides its own state. <br /> <br />
+
+                You can take a look at w3schools document on React State
+                <a href="https://www.w3schools.com/react/react_state.asp" target="_blank">Here</a> <br /> <br />
+
+                <em>
+                    <b>constructor()</b> and <b>super()</b> are not unique to React. <br />
+                    The constructor() is a special method for creating and initializing
+                    objects created within a class. <br />
+                </em>
+
+                Here you can see more from w3schools about... <br />
+                <b>
+                    <a href="https://www.w3schools.com/jsref/jsref_constructor_class.asp" target="_blank">constructor()</a> <br />
+                    <a href="https://www.w3schools.com/jsref/jsref_class_super.asp" target="_blank">super()</a> <br /> <br />
+                </b>
+
+                <em><b>Stateful Components</b> are any component that has a <b>state property</b>. <br />
+                <b>Stateless Components</b> are any component that does NOT have a <b>state property</b>.</em>
+                <br /> <br />
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>Example...</h2>
+
+            <p>
+                <pre>
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const green = '#39D1B4';
+const yellow = '#FFD712';
+
+class Toggle extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      color: green
+    };
+    this.changeColor = this.changeColor.bind(this);
+  }
+
+  changeColor() {
+    if (this.state.color == green) {
+      this.setState({
+          color: yellow})
+    } else {
+      this.setState({
+          color: green})
+    }
+  }
+
+  render() {
+    return (
+      &lt;div style={{background:this.state.color}}&gt;
+        &lt;h1&gt;
+          Change my color
+        &lt;/h1&gt;
+        &lt;button onClick={this.changeColor}&gt;
+          Change color
+        &lt;/button&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+ReactDOM.render(
+  &lt;Toggle /&gt;, 
+document.getElementById('app')
+)
+</pre>
+            </p>
+        </div>
+    </div>
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Code Example Breakdown</h2>
+            <h3>Constructor</h3>
+
+            <p>
+                <pre>
+constructor(props) {
+    super(props);
+    <span class="forceGreen">this.state</span> = {
+        color: green
+    };
+    this.changeColor = this.changeColor.bind(this);
+    <span class="forceRed">this.myName = "Gary";</span>
+  }
+</pre>
+
+                For properties that are created inside the class we need the
+                constructor & super as <b>props</b> means 'properties'. <br />
+                As it is not specific to React I won't go in to these further. <br /> <br />
+
+                <span class="forceGreen">this.state</span> is where we need to specify any
+                properties that are specific to this class and where the value of the
+                property may change (and therefore re-render (re-draw) the page). <br /> <br />
+
+                You can add properties where the value doesn't change
+                (and does not force a render) by NOT adding them in the <b>this.state</b>, eg...<br />
+                <span class="forceRed">this.myName = "Gary";</span> <br /> <br />
+
+                <em>
+                    I will expand on the <br />
+                    <b>this.changeColor = this.changeColor.bind(this);</b> <br />
+                    in the next pane.
+                </em> <br /> <br />
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>Code Example Breakdown</h2>
+            <h3>Method</h3>
+
+            <p>
+                <pre>
+<span class="forceGreen">changeColor()</span> {
+    if (this.state.color == green) {
+      this.setState({
+          color: yellow})
+    } else {
+      this.setState({
+          color: green})
+    }
+  }
+</pre>
+
+                To create a method in the class you need to, eg... <br />
+                <span class="forceGreen">changeColor() { }</span> <br />
+                or, if you need parameters... <br />
+                <span class="forceGreen">changeColor(param1, param2, etc...) { }</span> <br /> <br />
+
+                <em>
+                    <b>Note...</b> <br />
+                    If you do not use arrow functions (<b>=></b>), like you might do in
+                    JavaScript, eg... <br />
+                    <b>changeColor = () => { }</b> <br />
+                    but instead use it as described in this code example then you
+                    MUST bind it in the <b>constructor</b> function, eg... <br />
+                    <span class="forceRed">this.changeColor = this.changeColor.bind(this);</span>
+                </em> <br /> <br />
+
+                <h3>BINDING</h3>
+
+                When creating a method/function in React that performs <b>this.setState()</b> 
+                like this, the <b>.bind()</b>
+                makes React understand it is a method/function that will be using <b>this.</b> <br /> <br />
+
+                See the w3schools document on bind
+                <a href="https://www.w3schools.com/react/react_events.asp" target="_blank">Here</a> <br />
+                <em>scroll down to the <b>bind</b> section.</em> <br /> <br /> <br />
+
+                <em>
+                    So far I have found that the arrow function works/doesn't work in my coursework
+                    sometimes...it looks like how React is set to work (setup is different maybe?) <br />
+                    More on this when I get a chance to look in to it more.
+                </em> <br /> <br />
+
+            </p>
+        </div>
+    </div>
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>More on changeColor()</h2>
+
+            <p>
+                <pre>
+changeColor() {
+    if (this.state.color == green) {
+      this.setState({
+          color: yellow})
+    } else {
+      this.setState({
+          color: green})
+    }
+  }
+</pre>
+
+                Just a side comment <br />
+                The code inside the <b>changeColor()</b> method could be shorter <br />
+                I could have said... <br /> <br />
+
+                <pre>
+changeColor() {
+  const newColor = 
+    this.state.color == green ? yellow : green;
+  this.setState({color: newColor})
+}
+</pre>
+
+                This way uses the <b>
+                    <a href="reactJSX.html#ternary">Ternary Operator</a> expression
+                </b>, eg... <br />
+                <b>(operator) ? value1 : value2</b> <br />
+                <em>if operator is <b>true</b> then use <b>value1</b> else use <b>value2</b></em> <br /> <br />
+
+
+
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>changeColor() and this.state</h2>
+
+            <p>
+                <pre>
+changeColor() {
+    if (this.state.color == green) {
+                <span class="forceGreen">this.setState({
+          color: yellow})</span>
+    } else {
+                <span class="forceGreen">this.setState({
+          color: green})</span>
+    }
+  }
+</pre>
+
+                Once the properties have been set-up inside <b>this.state</b> you
+                can change their values by, for example, in
+                the <b>changeColor()</b> method. <br /> <br />
+
+                Because the propertyis stored inside <b>this.state</b> in ordedr to change the property
+                value you have to use the in-built <b>setState</b> method to do this, eg... <br /> <br />
+
+                <b><span class="forceGreen">this.setState( {color: yellow} )</span></b> <br /> <br />
+
+                We need to put the property (or properties) inside curly braces
+                just like we did when setting them up inside <b>this.state {}</b> in the
+                constructor. <br />
+                <b>this.state = { color: green };</b> <br /> <br />
+
+                <em>
+                    <b>Note...</b> <br />
+                    When dealing with multiple properties it would be, eg... <br />
+                    <b>
+                        this.state = { <br />
+                        &nbsp;&nbsp;&nbsp;color: green, <br />
+                        &nbsp;&nbsp;&nbsp;name: "Gary", <br />
+                        &nbsp;&nbsp;&nbsp;age: 21 <br />
+                        }; <br /> <br />
+
+                        this.setState( { <br />
+                        &nbsp;&nbsp;&nbsp;color: yellow, <br />
+                        &nbsp;&nbsp;&nbsp;name: "Bert", <br />
+                        &nbsp;&nbsp;&nbsp;age: 29 <br />
+                        });
+                    </b>
+                </em> <br /> <br />
+
+                <em>but as <b>setState()</b> is a method we need the brackets ()'s</em>
+
+            </p>
+        </div>
+    </div>
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>this.setState() automatically calls render</h2>
+
+            <p>
+                <b>this.setState()</b> is actually two things: <br />
+                this.setState(), immediately followed by <b>.render()</b> <br /> <br />
+
+                <em>Which is why you can’t call <b>this.setState()</b> from inside 
+                of the <b>.render()</b> method! this.setState() automatically calls .render(). <br />
+                If .render() calls this.setState(), then an infinite loop is created.</em> <br /> <br />
+
+
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>Double Curly Braces { {} }</h2>
+
+            <p><pre>
+render() {
+    return (
+      &lt;div style=<span class="forceRed">{{background:this.state.color}}</span>&gt;
+        &lt;h1&gt;
+          Change my color
+        &lt;/h1&gt;
+        &lt;button onClick={this.changeColor}&gt;
+          Change color
+        &lt;/button&gt;
+      &lt;/div&gt;
+    );
+  }
+</pre>
+
+                <b>NOTE</b> that in the <b>render</b> method of the class we used 
+                double curly braces <b>{ {} }</b> inside the <b>&lt;div&gt;</b> element. <br /> <br />
+
+                This is because the command... <br />
+                <b><span class="forceRed">background:this.state.color</span></b> <br />
+            is a Javascript object <br />
+                (and needs to be inside {}'s)... <br /> <br />
+
+                ...And to embed this object into JSX it also needs to be inside 
+            its own set of curly braces {}'s<br /> <br />
+
+                Therefore the first set of <span class="forceRed">{}'s</span> represents 
+            one instruction (a JSX instruction) <br />
+                and the second set of <span class="forceGreen">{}'s</span> represents another 
+            instruction (Javascript instruction). <br />
+            <b>&lt;div style=<span class="forceRed">{
+                <span class="forceGreen">{background:this.state.color}</span> }</span>&gt;</b>
+            <br /> <br />
+
+            </p>
+        </div>
+    </div>
+    <a href="#">Top</a> <br />
+
+    <!--<div class="divFlex">
+        <div class="divBSet divBorder">
+
+        </div>
+
+        <div class="divBSet divBorder">
+
+        </div>
+    </div>
+    <a href="#">Top</a> <br />-->
+
+</body>
+</html>

@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>React Importing</title>
+
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+    <style>
+        pre {
+            font-size: 12px;
+            color: blue;
+        }
+    </style>
+
+    <!--Any code that is just for this page and not to go in myScripts.js can go here (or in a SCRIPT area elsewhere
+    on the page or at the end)-->
+    <script>
+                                                        //...Code / Functions etc...
+    </script>
+
+</head>
+<body class="bodyMove">
+    <a href="index.html">Home</a>
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h1>Importing Files</h1>
+
+            <p>
+                When you use React.js, every JavaScript file in your
+                application is invisible to every other JavaScript
+                file by default. <br />
+                One .js file cannot see another .js file. <br /> <br />
+
+                For instance, you may have a React Application that contains... <br />
+                <b>Main.js</b> <br />
+                <b>NavBar.js</b> <br />
+                <b>Directions.js</b> <br /> <br />
+
+                If you want your <b>main.js</b> to use a variable that’s declared in a different file, 
+                such as <b>NavBar.js</b>, then you have to import the variable that you want. <br /> <br />
+
+                To import a variable, you can use an import statement: <br />
+                <b>import { Contact } from './NavBar.js';</b> <br /> <br />
+
+                <em><b>NOTE</b> <br />
+                The file extension defaults to <b>.js</b> so you you could just say</em> <br />
+                <b>import { NavBar } from './NavBar';</b> <br />
+                <em>and it will know you mean NavBar.js</em> <br /> <br />
+
+
+
+
+            </p>
+        </div>
+        <div class="divBSet divBorder">
+            <h2>Example Main.js file</h2>
+
+            <p>
+                <pre>
+import React from 'react';
+import ReactDOM from 'react-dom';
+<span class="forceRed">import {NavBar} from './NavBar.js';</span>
+
+class Main extends React.Component {
+  render() {
+    return (
+        &lt;div&gt;
+                <span class="forceRed">&lt;NavBar /&gt;</span>
+            &lt;h1&gt;All NavBar Details are above!&lt;/h1&gt;
+            &lt;p&gt;...More comments and things are here&lt;/p&gt;
+        &lt;/div&gt;
+    );
+  }
+}
+
+ReactDOM.render(
+    &lt;Main /&gt;, 
+    document.getElementById('app')
+);
+</pre>
+                The above code will give access to the <b>NavBar.js</b> file by the line <br />
+                <span class="forceRed">import {NavBar} from './NavBar.js';</span> <br /> <br />
+
+                In this case the file holds a CLASS OBJECT called <b>NavBar</b> and gets used by the line <br />
+                <span class="forceRed">&lt;NavBar /&gt;</span> <br /> <br />
+
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Example NavBar.js file</h2>
+
+            <p>
+                <pre>
+import React from 'react';
+
+<span class="forceGreen">export</span> class NavBar extends React.Component {
+  render() {
+    const name = ['home', 'blog', 'pics', 
+        'bio', 'art', 'shop', 
+        'about', 'contact'];
+    const navLinks = pages.map(page => {
+      return (
+        &lt;a href={'/' + page}&gt;
+          {page}
+        &lt;/a&gt;
+      )
+    });
+
+    return &lt;nav&gt;{navLinks}&lt;/nav&gt;
+  }
+}
+</pre>
+
+                So the above code creates a class object called <b>NavBar</b> <br />
+                The RENDER of the class will read thru the array (<b>name</b>) and
+                create a Navigation Bar of the array items. <br /> <br />
+
+                <b>NOTE</b> <br />
+                The <span class="forceGreen">export</span> in front of the class declaration 
+                will allow other files to be able to <b>import</b> it. <br /> 
+                If you do not include the export command then it will only be available 
+                inside the NavBar,js file itself. <br /> <br />
+
+            </p>
+        </div>
+        <div class="divBSet divBorder">
+            <h2>Example index.html file</h2>
+
+            <p>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+            &lt;meta charset="utf-8"&gt;
+            &lt;link rel="stylesheet" href="./styles.css"&gt;
+            &lt;title&gt;Learn ReactJS&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  &lt;main id="app"&gt;&lt;/main&gt;
+
+    &lt;script 
+        src="/React/react-course-bundle.min.js"
+    &gt;&lt;/script&gt;
+    &lt;script 
+        src="/ProfilePage.compiled.js"
+    &gt;&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</pre>
+
+                ...I'll add more about this file when I understand it better...' <br /> <br />
+
+                re... <br />
+                Not sure about the 2 <b>scripts</b> at the bottom <br />
+                and also how the app knows to update index.html - it does not seem to matter 
+                if I remove the <b>script</b> that refers to <b>ProfilePage.compiled.js</b><br /> <br />
+                
+               
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>More Information...</h2>
+
+            <p>
+                In <b>Main.js</b> there is a line (at the bottom) telling it to 
+                render the class (<b>Main</b>), see line... <br /> <br />
+
+                <b>ReactDOM.render( <br />
+                &nbsp;&nbsp;&nbsp;&lt;Main /&gt;, <br />
+                &nbsp;&nbsp;&nbsp;document.getElementById('app') <br />
+                );</b> <br /> <br />
+
+                This tells the app to update the element that has an <b>id="app"</b> <br />
+                <em>in this case, in <b>index.html</b> there is an element called <b>&lt;main&gt;</b> <br />
+                that has the <b>id="app"</b> associated with it. <br />
+                    (although, at this moment I don't know how it knows to look at file index.html 
+                and not a different html file)....UPDATE, apparently the <b>webpack</b> you 
+                load on for React does all this and defaults to index.html</em> <br /> <br />
+
+                I guess one day I'll look into that more. <br /> <br />
+
+            </p>
+        </div>
+        <div class="divBSet divBorder">
+
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+</body>
+</html>
