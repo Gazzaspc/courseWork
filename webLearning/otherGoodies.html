@@ -99,12 +99,30 @@
         <div class="divBorder divBSet">
             <h2>Centering a &lt;div&gt; on the page</h2>
             <p>
-                If you want to center a &lt;div&gt; element on the page (horizontally) then 
+                If you want to center a &lt;div&gt; element on the page (horizontally) then
                 you should set the style... <br /> <br />
                 <b>margin: auto;</b> <br /> <br />
                 <i>(you may also need to set width:100%; if the margin:auto; does not work properly)</i>
             </p> <br />
-            <hr /> <br /> <br />
+            <hr /> <br />
+
+            <p>
+                Setting a default value for a parameter, eg... <br /></br>
+
+                Creating a function where if no parameter is passed to it then default it to be "MY TEST" <br />
+                <b>function myFunc(a="MY TEST") {...}</b> <br />  <br />
+
+                <em>
+                    so when calling <b>myFunc</b> you can specify a parameter, eg...
+                    <b>var myValue = myFunc("ABC")</b> and myValue will = "ABC" <br />
+                    or you can NOT specify a parameter <br />
+                    <b>var myValue = myFunc()</b> and myValue will = "MY TEST"
+                </em> <br />
+
+                <hr /> <br />
+
+
+            </p>
         </div>
         <div class="divBordedr divBSet">
             <h2>Difference between <b>var</b> and <b>let</b></h2>
@@ -121,27 +139,67 @@
                 Eg... <br /> <br />
 
                 <strong>
-                var a = 1; <br />
-                var b = 2; <br />
-                     <br />
-                if (a === 1) { <br />
-                &nbsp;&nbsp;&nbsp;var a = 11; // the scope is global <br />
-                &nbsp;&nbsp;&nbsp;let b = 22; // the scope is inside the if-block <br />
-                     <br />
-                &nbsp;&nbsp;&nbsp;console.log(a);  // 11 <br />
-                &nbsp;&nbsp;&nbsp;console.log(b);  // 22 <br />
-                } <br />
-                     <br />
-                console.log(a); // 11 <br />
-                console.log(b); // 2 <br />
+                    var a = 1; <br />
+                    var b = 2; <br />
+                    <br />
+                    if (a === 1) { <br />
+                    &nbsp;&nbsp;&nbsp;var a = 11; // the scope is global <br />
+                    &nbsp;&nbsp;&nbsp;let b = 22; // the scope is inside the if-block <br />
+                    <br />
+                    &nbsp;&nbsp;&nbsp;console.log(a);  // 11 <br />
+                    &nbsp;&nbsp;&nbsp;console.log(b);  // 22 <br />
+                    } <br />
+                    <br />
+                    console.log(a); // 11 <br />
+                    console.log(b); // 2 <br />
                 </strong>
                 <br />
-                <em>(It is also worth noting that <b>let</b> is a newer command and may 
-                not work in all (older) browsers (okay in 2015 onwards I think))</em> <br /> <br />
+                <em>
+                    (It is also worth noting that <b>let</b> is a newer command and may
+                    not work in all (older) browsers (okay in 2015 onwards I think))
+                </em> <br /> <br />
             </p>
         </div>
     </div>
 
+    <a href="#">Top</a> <br />
+
+    <div class="divFlex">
+        <div class="divBorder divBSet">
+            <h2>Template Literal</h2>
+
+            <p>If you want to add the value of a property to a string you could say, eg... <br />
+            <b>console.log("Some text" + myValue + " a bit more text" + myValue2);</b> <br /> <br />
+
+            or, using the <b>template literal</b> format you would say, eg... <br />
+            <b>console.log(`Some text ${myValue} a bit more text ${myValue2}`);</b> <br /> <br />
+
+            <em><b>NOTE</b> <br />
+                The text <b>MUST</b> be enclosed in the `` (the key just before the '1' on my keyboard, 
+                don't know what it is called though - maybe 'backticks')</em> <br /> <br />
+
+                So in that example, where <br />
+                <b>myValue = 1</b> <br />
+                and <b>myValue2 = "again"</b> <br />
+                you will see... <br /> <br />
+
+                <span id="messExample1" class="redMess"></span> <br /> <br />
+
+                See this <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals" 
+                    target="_blank">Document</a> for more. <br /> <br />
+            
+            </p>
+            <script>
+                var myValue = 1;
+                var myValue2 = "again";
+                document.getElementById("messExample1").innerHTML = `Some text ${myValue} a bit more text ${myValue2}`;
+            </script>
+        </div>
+
+        <!--<div class="divBorder divBSet">
+
+        </div>-->
+    </div>
     <a href="#">Top</a> <br />
 
 </body>

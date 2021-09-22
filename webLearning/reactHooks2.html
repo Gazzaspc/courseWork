@@ -1,0 +1,356 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>React Hooks (Pt2)</title>
+
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+    <style>
+        pre {
+            font-size: 12px;
+            color: blue;
+        }
+    </style>
+
+    <!--Any code that is just for this page and not to go in myScripts.js can go here (or in a SCRIPT area elsewhere
+    on the page or at the end)-->
+    <script>
+                                                        //...Code / Functions etc...
+    </script>
+
+</head>
+<body class="bodyMove">
+    <a href="index.html">Home</a>
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h1>React Hooks useEffect()</h1>
+
+            <p>
+                We <b>import</b> the <b>useEffect()</b> hook from the react library by adding the code<br />
+                <b>import React, {useEffect } from 'react';</b> <br />
+                or...if you also want the useState() hook as well then... <br />
+                <b>import React, {useState, useEffect } from 'react';</b> <br /> <br />
+
+                The Effect Hook is used to call another function that does something
+                for us so there is nothing returned when we call the <b>useEffect()</b> function. <br /> <br />
+
+                There are three key moments when the Effect Hook can be utilized: <br /> <br />
+
+                When the component is first added, or mounted, to the DOM and renders. <br />
+                When the state or props change, causing the component to re-render. <br />
+                When the component is removed, or unmounted, from the DOM. <br /> <br />
+
+                Then when you want to use the useEffect() command you could, eg... <br /> <br />
+
+                <b>
+                    useEffect( <span class="forceGreen">
+                        () => { <br />
+                        &nbsp;&nbsp;&nbsp;alert(`Counter: ${myCount}`) <br />
+                        }
+                    </span> );
+                </b> <br /> <br />
+
+                <em>
+                    We are calling the <b>useEffect</b> <br />
+                    with a <b>callback function</b> <span class="forceGreen">() => {...}</span> <br />
+                    which tells it to display an alert = <b>Counter: 0</b><br /> <br />
+                </em>
+
+
+            </p>
+        </div>
+        <div class="divBSet divBorder">
+            <h2>Clean Up Effects</h2>
+
+            <p>
+                Some effects require cleanup. For example, we might want to add
+                event listeners to some element in the DOM, beyond the
+                JSX in our component. <br />
+                When we add event listeners to the DOM, it is important to remove
+                those event listeners when we are done with them to avoid memory leaks! <br /> <br />
+
+                Let’s consider the following effect: <br />
+                <pre>
+useEffect(()=>{
+    document.addEventListener('keydown', handleKeyPress);
+    <span class="forceGreen">return () => {
+        document.removeEventListener(
+            'keydown', handleKeyPress);
+    };</span>
+})
+</pre>
+                If our effect didn’t return a cleanup function <br />
+                (see <span class="forceGreen"><b>return () => {...}</b>)</span>,
+                then a new event listener
+                would be added to the DOM’s document object every time that our
+                component re-renders. <br />
+                Not only would this cause bugs, but it could cause our application performance
+                to diminish and maybe even crash! <br /> <br />
+
+                Because effects run after every render and not just once, React calls our
+                cleanup function before each re-render and before unmounting to clean
+                up each effect call. <br /> <br />
+
+                If our effect returns a function, then the useEffect() Hook always
+                treats that as a cleanup function. <br />
+                <b>React will call this cleanup function before the component re-renders or unmounts.</b> <br />
+                Since this cleanup function is optional, it is our responsibility to return a
+                cleanup function from our effect when our effect code could create memory leaks. <br /> <br />
+
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div id="myElement" class="divFlex">
+
+        <div class="divBSet divBorder">
+            <h2>Example code</h2>
+
+            <p>
+                <pre>
+import React, { useState, useEffect } from 'react';
+
+export default function Counter() {
+    const [clickCount, setClickCount] = useState(0);
+
+    <span class="forceGreen">const increment = () => {
+        setClickCount((prevClickCount) => 
+            prevClickCount + 1);
+    } </span>
+
+    <span class="forceRed">useEffect( () => {
+        document.addEventListener('mousedown', increment);
+        return () => {
+            document.removeEventListener(
+                'mousedown', increment);
+        }
+    });</span>
+
+     return (
+        &lt;h1&gt;Document Clicks: {clickCount}&lt;/h1&gt;
+    );
+}
+
+</pre>
+                In the code I created a function called <span class="forceGreen">increment</span>
+                which gets called on a <b>mousedown event handler</b>.
+
+                This <span class="forceGreen">increment</span> function
+                uses a <b>state setter callback function (setClickCount)</b> to add 1 to clickCount. <br />
+                <em>
+                    The <b>setClickCount</b> automatically updates <b>clickCount</b> as this is
+                    all part of the <b>useState()</b> hook that we set up
+                </em>. <br /> <br />
+
+                The <span class="forceRed">useEffect()</span> hook to add a <b>mousedown event listener</b>
+                to the document, so when you perform a mousedown anywhere on the form it fires the
+                call to the <span class="forceGreen">increment</span> function. <br /> <br />
+
+                <em>
+                    <b>NOTE</b> <br />
+                    Because of where the <b>useEffect()</b> is placed it gets run on every render. <br />
+                    And because you must not keep adding event listeners every time the screen renders
+                    you will need to <b>remove the event listener</b> too. <br />
+                    (so this will add the mousedown listener - perform the increment - then remove
+                    the mousedown listener. Thus preventing memory leaks/too many mousedown listeners) <br /> <br />
+                </em>.
+
+            </p>
+        </div>
+
+        <div class="divBSet divBorder">
+            <h2>Another Example Code</h2>
+
+            <p>
+                <pre>
+import React, { useState, useEffect } from 'react';
+
+export default function Timer() {
+  const [time, setTime] = useState(0);
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setTime((prev) => prev + 1);
+    }, 1000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }<span class="forceRed">, []</span>);
+
+  const handleChange = 
+       ({ target }) => setName(target.value);
+
+  return (
+    &lt;&gt;
+      &lt;h1&gt;Time: {time}&lt;/h1&gt;
+      &lt;input 
+        value={name} 
+        onChange={handleChange} 
+        type='text' /&gt;
+    &lt;/&gt;
+  );
+}
+
+</pre>
+
+                The bit of code on the end of the <b>useEffect()</b> hook <br />
+                <b><span class="forceRed">, []</span></b> <br />
+                is called an '<b>empty dependency array</b>'. <br /> <br />
+
+                See next pane for more on the <b>dependency array</b>. <br /> <br />
+
+            </p>
+        </div>
+
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Control when Effects are called</h2>
+            <h3>Dependency Array</h3>
+
+            <p>
+                It is common, when defining function components, to run an effect only when
+                the component mounts (renders the first time), but not when
+                the component re-renders. <br />
+                The Effect Hook makes this very easy for us to do! If we want to only call
+                our effect after the first render, we pass an <b>empty array</b> to
+                useEffect() as the second argument. <br />
+                This second argument is called the <b>dependency array</b>. <br /> <br />
+
+                The dependency array is used to tell the useEffect() method when to
+                call our effect and when to skip it. <br />
+                Our effect is always called after the first render but is <b>
+                    only
+                    called again if something in our dependency array has
+                    changed values between renders
+                </b>. <br /> <br />
+
+                <pre>
+useEffect(() => {
+    const intervalId = setInterval(() => {
+      setTime((prev) => prev + 1);
+    }, 1000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }<span class="forceRed">, []</span>);
+</pre>
+
+                The second argument is the empty dependency array...<br />
+                <b><span class="forceRed">, []</span></b> <br /> <br /> <br />
+
+                More on this can be found in this
+                <a href="https://blog.logrocket.com/guide-to-react-useeffect-hook/" target="_blank">
+                    document
+                </a> <br /> <br />
+
+            </p>
+
+        </div>
+        <div class="divBSet divBorder">
+            <h2>Control when Effects are called (pt2)</h2>
+            <p>
+                In the following bit of code the <b>Effect</b> will be
+                run on the <b>FIRST RENDER</b> <br />
+                But will then only be re-run when the value of <b>count</b> changes. <br /> <br />
+
+                <em>
+                    Because <span class="forceGreen">count</span> is passed to
+                    <b>useEffect()</b> as the second parameter it will ONLY get re-run when
+                    the value of <span class="forceGreen">count</span> changes.
+                </em> <br /> <br />
+
+                <pre>
+useEffect(
+    <span class="forceRed">() => {
+        document.title = `You clicked ${count} times`;
+    }</span>
+    <b><span class="forceGreen">, [count]</span></b>
+); 
+
+</pre>
+                <em>
+                    <span class="forceRed">First parameter in red</span> <br />
+                    <span class="forceGreen">Second parameter in green</span>
+                </em> <br /> <br />
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Rules of Hooks</h2>
+
+            <p>
+                There are two main rules to keep in mind when using Hooks: <br /> <br />
+
+                <b>Only call Hooks at the top level <br />
+                Only call Hooks from React functions </b> <br /> <br />
+
+                So <b>DO NOT</b> do this sort of thing <br /> <br />
+
+                <pre>
+if (userName !== '') {
+  useEffect(() => {
+    alert("this is my code");
+  });
+}
+</pre>
+                <br />
+                <b>INSTEAD</b> you should do this... <br /> <br /> 
+
+                <pre>
+useEffect(() => {
+  if (userName !== '') {
+    alert("this is my code");
+  }
+});
+</pre>
+
+                Which performs the check of the value of <b>userName</b> inside 
+                the <b>useEffect</b> hook statement. <br /> <br />
+
+
+            </p>
+        </div>
+        <!--<div class="divBSet divBorder">
+
+        </div>-->
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <!--<div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+
+
+        </div>
+        <div class="divBSet divBorder">
+
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />-->
+
+</body>
+</html>

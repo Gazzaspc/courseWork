@@ -44,14 +44,16 @@
                 <b>NavBar.js</b> <br />
                 <b>Directions.js</b> <br /> <br />
 
-                If you want your <b>main.js</b> to use a variable that’s declared in a different file, 
+                If you want your <b>main.js</b> to use a variable that’s declared in a different file,
                 such as <b>NavBar.js</b>, then you have to import the variable that you want. <br /> <br />
 
                 To import a variable, you can use an import statement: <br />
                 <b>import { Contact } from './NavBar.js';</b> <br /> <br />
 
-                <em><b>NOTE</b> <br />
-                The file extension defaults to <b>.js</b> so you you could just say</em> <br />
+                <em>
+                    <b>NOTE</b> <br />
+                    The file extension defaults to <b>.js</b> so you you could just say
+                </em> <br />
                 <b>import { NavBar } from './NavBar';</b> <br />
                 <em>and it will know you mean NavBar.js</em> <br /> <br />
 
@@ -73,7 +75,7 @@ class Main extends React.Component {
   render() {
     return (
         &lt;div&gt;
-                <span class="forceRed">&lt;NavBar /&gt;</span>
+            <span class="forceRed">&lt;NavBar /&gt;</span>
             &lt;h1&gt;All NavBar Details are above!&lt;/h1&gt;
             &lt;p&gt;...More comments and things are here&lt;/p&gt;
         &lt;/div&gt;
@@ -92,7 +94,13 @@ ReactDOM.render(
                 In this case the file holds a CLASS OBJECT called <b>NavBar</b> and gets used by the line <br />
                 <span class="forceRed">&lt;NavBar /&gt;</span> <br /> <br />
 
+                <hr /> <br />
 
+                <b>Note</b> <br />
+                Importing more from 'react' - you may see code like <br />
+                <b>import React, { useState } from 'react'</b> <br />
+                <em>See my page titled 
+                <a href="reactHooks.html">'React Hooks'</a> for more as this uses it.</em> <br /> <br />
             </p>
         </div>
     </div>
@@ -130,9 +138,9 @@ import React from 'react';
                 create a Navigation Bar of the array items. <br /> <br />
 
                 <b>NOTE</b> <br />
-                The <span class="forceGreen">export</span> in front of the class declaration 
-                will allow other files to be able to <b>import</b> it. <br /> 
-                If you do not include the export command then it will only be available 
+                The <span class="forceGreen">export</span> in front of the class declaration
+                will allow other files to be able to <b>import</b> it. <br />
+                If you do not include the export command then it will only be available
                 inside the NavBar,js file itself. <br /> <br />
 
             </p>
@@ -141,13 +149,13 @@ import React from 'react';
             <h2>Example index.html file</h2>
 
             <p>
-            <pre>
+                <pre>
 &lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
-            &lt;meta charset="utf-8"&gt;
-            &lt;link rel="stylesheet" href="./styles.css"&gt;
-            &lt;title&gt;Learn ReactJS&lt;/title&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;link rel="stylesheet" href="./styles.css"&gt;
+    &lt;title&gt;Learn ReactJS&lt;/title&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
@@ -169,10 +177,10 @@ import React from 'react';
 
                 re... <br />
                 Not sure about the 2 <b>scripts</b> at the bottom <br />
-                and also how the app knows to update index.html - it does not seem to matter 
+                and also how the app knows to update index.html - it does not seem to matter
                 if I remove the <b>script</b> that refers to <b>ProfilePage.compiled.js</b><br /> <br />
-                
-               
+
+
             </p>
         </div>
     </div>
@@ -184,30 +192,159 @@ import React from 'react';
             <h2>More Information...</h2>
 
             <p>
-                In <b>Main.js</b> there is a line (at the bottom) telling it to 
+                In <b>Main.js</b> there is a line (at the bottom) telling it to
                 render the class (<b>Main</b>), see line... <br /> <br />
 
-                <b>ReactDOM.render( <br />
-                &nbsp;&nbsp;&nbsp;&lt;Main /&gt;, <br />
-                &nbsp;&nbsp;&nbsp;document.getElementById('app') <br />
-                );</b> <br /> <br />
+                <b>
+                    ReactDOM.render( <br />
+                    &nbsp;&nbsp;&nbsp;&lt;Main /&gt;, <br />
+                    &nbsp;&nbsp;&nbsp;document.getElementById('app') <br />
+                    );
+                </b> <br /> <br />
 
                 This tells the app to update the element that has an <b>id="app"</b> <br />
-                <em>in this case, in <b>index.html</b> there is an element called <b>&lt;main&gt;</b> <br />
-                that has the <b>id="app"</b> associated with it. <br />
-                    (although, at this moment I don't know how it knows to look at file index.html 
-                and not a different html file)....UPDATE, apparently the <b>webpack</b> you 
-                load on for React does all this and defaults to index.html</em> <br /> <br />
+                <em>
+                    in this case, in <b>index.html</b> there is an element called <b>&lt;main&gt;</b> <br />
+                    that has the <b>id="app"</b> associated with it. <br />
+                    (although, at this moment I don't know how it knows to look at file index.html
+                    and not a different html file)....UPDATE, apparently the <b>webpack</b> you
+                    load on for React does all this and defaults to index.html
+                </em> <br /> <br />
 
                 I guess one day I'll look into that more. <br /> <br />
 
             </p>
+        </div>
+        <!--<div class="divBSet divBorder">
+
+        </div>-->
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+
+            <h2>Importing Classes & Functions</h2>
+
+            <p>
+                In React, as well as Classes we can also define components as JavaScript functions. <br />
+                We call them function components to differentiate them from class components. <br /> <br />
+
+                See below for example code... <br /> <br />
+
+                <pre>
+<span class="forceGreen">// A component class 
+// written in the usual way:</span>
+export class MyComponentClass extends React.Component {
+  render() {
+    return &lt;h1&gt;Hello world&lt;/h1&gt;
+  }
+}
+
+<span class="forceGreen">// The same component class, 
+//written as a stateless functional component:</span>
+export const MyComponentClass = () => {
+  return &lt;h1&gt;Hello world&lt;/h1&gt;
+}
+
+<span class="forceGreen">// The same component class, 
+//written as a NAMED functional component:</span>
+export function MyComponentClass () {
+  return &lt;h1&gt;Hello world&lt;/h1&gt;
+}
+
+<span class="forceGreen">// Works the same either way:</span>
+ReactDOM.render(
+    &lt;MyComponentClass /&gt;,
+	document.getElementById('app')
+);
+</pre>
+            </p>
+        </div>
+        <div class="divBSet divBorder">
+            <h2>Passing 'props' to a Function</h2>
+
+            <p>
+                You can also access the <b>props</b> property but you will not need the <b>this.props</b>
+                command as it will be treated as a parameter being passed to the function, eg... <br /> <br />
+
+                <pre>
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+export const NewFriend = (<span class="forceRed">props</span>) => {
+    return (
+      &lt;div&gt;
+        &lt;img src={<span class="forceRed">props.src</span>} /&gt;
+      &lt;/div&gt;
+    );
+}
+
+ReactDOM.render(
+  &lt;NewFriend 
+    <span class="forceRed">src="./Images/squid.jpg"</span> /&gt;,
+  document.getElementById('app')
+);
+
+
+</pre>
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Passing 'props' to a Function (pt2)</h2>
+
+            <p>
+                Instead of creating the function and saving it as an object that 
+                contains an anonymous function (like the last pane) you can create it 
+                as an actual NAMED function, eg..." <br /> <br />
+                
+                                                           <pre>
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+export function NewFriend (<span class="forceRed">props</span>) {
+    return (
+        &lt;div&gt;
+            &lt;img src={<span class="forceRed">props.src</span>} /&gt;
+        &lt;/div&gt;
+    );
+}
+
+ReactDOM.render(
+  &lt;NewFriend 
+    <span class="forceRed">src="./Images/squid.jpg"</span> /&gt;,
+  document.getElementById('app')
+);
+
+
+</pre>
+            </p>
+        </div>
+        <!--<div class="divBSet divBorder">
+
+        </div>-->
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <!--<div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+
+
         </div>
         <div class="divBSet divBorder">
 
         </div>
     </div>
 
-    <a href="#">Top</a> <br />
+    <a href="#">Top</a> <br />-->
+
 </body>
 </html>

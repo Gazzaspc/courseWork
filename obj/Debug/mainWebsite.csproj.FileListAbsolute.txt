@@ -7,3 +7,4 @@ D:\VisualStudioWeb\mainWebsite\bin\Debug\mainWebsite.dll
 D:\VisualStudioWeb\mainWebsite\bin\Debug\mainWebsite.pdb
 D:\VisualStudioWeb\mainWebsite\obj\Debug\mainWebsite.dll
 D:\VisualStudioWeb\mainWebsite\obj\Debug\mainWebsite.pdb
+D:\VisualStudioWeb\mainWebsite\obj\Debug\mainWebsite.csproj.AssemblyReference.cache

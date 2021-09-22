@@ -1,0 +1,557 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>React Hooks</title>
+
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+    <style>
+        pre {
+            font-size: 12px;
+            color: blue;
+        }
+    </style>
+
+    <!--Any code that is just for this page and not to go in myScripts.js can go here (or in a SCRIPT area elsewhere
+    on the page or at the end)-->
+    <script>
+         //...Code / Functions etc...
+    </script>
+
+</head>
+<body class="bodyMove">
+    <a href="index.html">Home</a>
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h1>React Hooks</h1>
+
+            <p>
+                React 16.8+ supports Hooks. <br />
+                With Hooks, we can use simple function components to do lots of the fancy
+                things that we could only do with class components in the past. <br /> <br />
+
+                React Hooks, plainly put, are functions that let us manage the internal
+                state of components and handle post-rendering side effects directly
+                from our function components. <br /> <br />
+
+                <b>Hooks don’t work inside classes</b> — they let us use fancy React features
+                without classes. <br />
+                Keep in mind that function components and React Hooks do not replace class components. <br />
+                They are completely optional; just a new tool that we can take advantage of. <br /> <br />
+
+                React offers a number of built-in Hooks. <br />
+                A few of these include... <br />
+                <b>useState(), useEffect(), useContext(), useReducer(), and useRef()</b>. <br /> <br />
+
+                <hr /> <br />
+
+                There is a full list
+                <a href="https://reactjs.org/docs/hooks-reference.html" target="_blank">Here</a> that
+                you can look at. <br /> <br />
+
+            </p>
+        </div>
+        <div class="divBSet divBorder">
+            <h2>useState() hook</h2>
+
+            <p>
+                The most common <b>hook</b> is probably the <b>useState()</b> hook. <br />
+                It is a named export from the React library <br />
+                and is imported like this... <br />
+                <b>import React, { useState } from 'react'</b> <br /> <br />
+
+                <b>useState()</b> is a JavaScript function defined in the React library. <br />
+                When we call this function, it returns an array with two values:- <br /> <br />
+
+                <b>current state</b><br />
+                The current value of this state <br /> <br />
+
+                <b>state setter</b><br />
+                A function that we can use to update the value of this state <br /> <br />
+
+                Because React returns these two values in an array, we can assign them
+                to local variables, naming them whatever we like. <br />
+                For example: <br />
+                <b>const [toggle, setToggle] = useState();</b> <br /> <br />
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Example Code with useState()</h2>
+
+            <p>
+                <pre>
+import React, { useState } from "react";
+ 
+function Toggle() {
+  const [toggle, setToggle] = useState();
+ 
+  return (
+    &lt;div&gt;
+      &lt;p&gt;The toggle is {toggle}&lt;/p&gt;
+      &lt;button onClick={() =&gt; setToggle("On")}&gt;On&lt;/button&gt;
+      &lt;button onClick={() =&gt; setToggle("Off")}&gt;Off&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+</pre>
+                The above code will create a <b>toggle</b> variable (with no value). <br />
+                And (when you click on a button) will use <b>setToggle()</b> to set the value
+                of <b>toggle</b> to Off or On, depending on which button was clicked. <br /> <br />
+
+                <em>
+                    Using this <b>'hook'</b> there was no need to worry about binding functions
+                    to class instances, working with constructors, or dealing with the this keyword. <br />
+                    With the <b>State Hook</b>, updating state is as simple as calling a state setter function.<br />
+                    NOTE ALSO that toggle was set as a <b>const</b> variable but <b>setState()</b> was
+                    still able to reset the value.
+                </em> <br /> <br />
+
+                Calling the state setter also signals to React that the component needs to re-render. <br />
+                The magic of <b>useState()</b> is that it allows React to keep track of the
+                current value of state from one render to the next! <br /> <br />
+
+            </p>
+        </div>
+        <div class="divBSet divBorder">
+            <h2>Example 2</h2>
+
+            <p>
+                <pre>
+import React, {useState } from 'react';
+
+export default function ColorPicker() {
+  const [color, setColor] = useState();
+
+  const <span class="forceRed">divStyle</span> = {
+    backgroundColor: color ? color : 'purple'
+  };
+
+  return (
+    &lt;div style={<span class="forceRed">divStyle</span>}&gt;
+      &lt;p>
+        The color is {color ? color : 'Purple (default)'}
+      &lt;/p&gt;
+      &lt;button onClick={() =&gt; setColor("Aquamarine")}&gt;
+        Aquamarine
+      &lt;/button&gt;
+      &lt;button onClick={() =&gt; setColor("BlueViolet")}&gt;
+        BlueViolet
+      &lt;/button&gt;
+      &lt;button onClick={() =&gt; setColor("Chartreuse")}&gt;
+        Chartreuse
+      &lt;/button>
+      button onClick={() =&gt; setColor("CornflowerBlue")}&gt;
+        CornflowerBlue
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+
+</pre>
+
+                In the above I am using <b>useState()</b> to create <b>color</b> and <b>setColor</b>. <br /> <br />
+
+                I am creating <b><span class="forceRed">divStyle</span></b> which sets
+                the backgroundColor of the div. <br />
+                It uses the Ternary Operator (a ? b : c) so if <b>color</b> is <b>true</b>
+                (not blank) it will show set it = to the value of <b>color</b> otherwise it
+                will set it to be 'purple'. <br /> <br />
+
+                Then when you click on a button it uses <b>setColor()</b> to change the value of <b>color</b>
+                and that will force a render and change the <b>backgroundColor</b> <br /> <br />
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Setting a default value in useState()</h2>
+
+            <p>
+                Sometimes you will need to set a default value for the property created
+                by <b>useState()</b> <br /> <br />
+
+                For example, we may want the default colour in the above examples to
+                be <span class="forceGreen">Green</span>. This can be done by... <br /> <br />
+
+                <b>const [color, setColor] = useState(<span class="forceGreen">"Green"</span>)</b> <br />
+
+                <hr /> <br />
+
+                Though most common would be to set the value to either TRUE of FALSE, eg... <br />
+                <b>const [isLoading, setIsLoading] = useState(true)</b> <br /> <br />
+
+                So when you FIRST check the value of isLoading it will = true <br /> <br />
+
+                OR <br /> <br />
+
+                maybe the setting of a value to 0 , eg... <br />
+                <b>const [counter, setCounter] = useState(0)</b> <br /> <br />
+
+                So when you FIRST check the value of counter it will = 0 <br /> <br />
+            </p>
+        </div>
+        <div class="divBSet divBorder">
+            <h2>Using a 'callback function'</h2>
+
+            <p>
+                Often, the next value of our state is calculated using the current state. <br />
+                <em>for example...adding 1 to the current value</em> <br /> <br />
+
+                In this case, it is best practice to update state with a callback function. <br />
+                If we do not, we risk capturing outdated, or “stale”, state values. <br /> <br />
+
+                In this example (below) I am creating a property (called: <b>increment</b>)
+                that is a function to add 1 to itself using the <b>'callback function'</b> within
+                the <b>state hook</b> (setCount). Eg... <br />
+
+                <pre>
+const [count, setCount] = useState(0); 
+const increment = () =&gt; setCount(prevCount =&gt; prevCount + 1); 
+</pre>
+                The best I can see is... <br />
+                you put the <b>prev</b> in front of whatever value property you used
+                (in this case <b>count</b>) to make it <b>prevCount</b> (but make it camelCase). <br />
+                <em>
+                    You can probably call it anything you like as the system knows the property
+                    is <b>count</b> as it looks back to the <b>useState()</b> command to find it... <br />
+                    ...but protocol says
+                    to keep it simple, stupid (KISS) and make this example <b>prevCount</b>.
+                </em> <br /> <br />
+
+                <em>
+                    <b>NOTE</b> <br />
+                    We can just call setCount(count +1) and it would work the same in this example... <br />
+                    ...but it is safer to use the callback method. <br />
+                    (for reasons that my course did not go into as it was too big a topic to discuss) <br />
+                    you can see
+                    <a href="https://reactjs.org/docs/react-component.html#setstate" target="_blank">this document</a>
+                    for further information as to why but it may have something to do with...
+                </em> <br /> <br />
+                <div style="width:80%;margin: 0 auto;">
+                    <em>
+                        "<b>Think</b> of setState() as a request rather than an immediate command to update the component. <br />
+                        For better perceived performance, React may delay it, and then update
+                        several components in a single pass. <br />
+                        React does not guarantee that the state changes are applied immediately."
+                    </em>
+                </div>
+                <br /> <br />
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Another little example</h2>
+
+            <p>
+                <pre>
+import React, { useState } from 'react';
+
+export default function QuizNavBar({ questions }) {
+  const [questionIndex, setQuestionIndex] = useState(0);
+
+  const goBack = () => {
+    setQuestionIndex(
+        prevQuestionIndex => prevQuestionIndex-1
+    );
+  }
+
+  const goToNext = () => {
+    setQuestionIndex(
+        prevQuestionIndex => prevQuestionIndex+1
+    );
+  }
+  // determine if on the first question or not 
+  const onFirstQuestion = 
+    questionIndex === 0;
+
+  const onLastQuestion = 
+    questionIndex === questions.length - 1;
+
+  return (
+    &lt;nav&gt;
+        &lt;span&gt;Question #{questionIndex + 1}&lt;/span&gt;
+        &lt;div&gt;
+            &lt;button 
+                onClick={goBack} 
+                disabled={onFirstQuestion}&gt;
+                    Go Back
+            &lt;/button&gt;
+            &lt;button 
+                onClick={goToNext} 
+                disabled={onLastQuestion}&gt;
+                    Next Question
+            &lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/nav&gt;
+  );
+}
+
+</pre>
+            </p>
+
+        </div>
+        <div class="divBSet divBorder">
+            <h2>The explanation of left pane</h2>
+
+            <p>
+                <b>questionIndex</b> is given a starting value = 0, by the... <br />
+                <b>useState(0)</b> command. <br /> <br />
+
+                <b>goBack</b> is a function that decreases the <b>questionIndex</b> value by 1... <br />
+                ...the <b>setQuestionIndex()</b> does this through the use of the <b>callback function</b>... <br />
+                ...<b>prevQuestionIndex => prevQuestionIndex-1</b> <br /> <br />
+
+                <b>goToNext()</b> is similar to <b>goBack()</b> but ADDS 1 to the value instead of reducing the value
+                of <b>questionIndex</b> <br /> <br />
+
+                <b>onFirstQuestion</b> returns TRUE (if questionIndex is = 0) or FALSE (if it is not equal to 0) <br />
+                <em>
+                    This says that <b>onFirstQuestion = <span class="forceRed">questionIndex === 0</span> </b> <br />
+                    and here the command <span class="forceRed">questionIndex === 0</span> is not a calculation it is just
+                    more of a question, so if the value of questionIndex is 0 then it
+                    returns TRUE (if not it returns FALSE).
+                </em>
+                <br /> <br />
+
+                <b>onLastQuestion</b> checks if the value of <b>questionIndex</b> is equal to the number
+                questions there are and if so return TRUE (otherwise return FALSE). <br /> <br />
+
+                And in the main <b>return</b> section the button to <b>goBack</b>
+                fires the <b>onClick</b> event - which is the <b>goBack()</b> function - and then
+                reduces the count. <br />
+                The <b>disabled</b> event calls <b>onFirstQuestion()</b> and if it gets
+                back TRUE it will disable the button. <br /> <br />
+
+                While the <b>goToNext</b> button adds 1 to the count and disables the button if it is
+                at the maximum number of questions. <br /> <br />
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>One more example</h2>
+
+            <p>
+                <pre>
+import React, { useState } from "react";
+import ItemList from "./ItemList";
+import { produce, pantryItems } from "./storeItems";
+
+export default function GroceryCart() {
+  const [cart, setCart] = useState([]);
+
+                <span class="forceGreen">const addItem = (item) => {
+    setCart((prev) => {
+      return [item, ...prev];
+    });
+   };</span>
+
+                <span class="forceRed">const removeItem = (targetIndex) => {
+    setCart(
+      (prev) => {
+        return (
+          prev.filter((item, index) => index !== targetIndex);
+        )
+      }
+    );
+  };</span>
+
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Grocery Cart&lt;/h1&gt;
+      &lt;ul&gt;
+        {cart.map((item, index) => (
+          &lt;li onClick={() => <span class="forceRed">removeItem(index)</span>} key={index}&gt;
+            {item}
+          &gt;/li&gt;
+        ))}
+      &lt;/ul&gt;
+      &lt;h2&gt;Produce&lt;/h2&gt;
+      &lt;ItemList items={produce} <span class="forceGreen">onItemClick={addItem}</span> /&gt;
+      &lt;h2&gt;Pantry Items&lt;/h2&gt;
+      &lt;ItemList items={pantryItems} <span class="forceGreen">onItemClick={addItem}</span> /&gt;
+    &lt;/div&gt;
+  );
+}
+
+</pre>
+                <hr /> <br />
+
+                The <b>3 dots (...)</b> syntax (see <span class="forceGreen">...prev</span> in the
+                <span class="forceGreen">addItem</span> function, above) is not unique to React
+                and is used by two operators: <br />
+                <b>Spread Operator</b> (Spread Syntax) <br />
+                <b>Rest Operator</b> (Rest Syntax)<br /> <br />
+
+                The <b>Spread operator</b> lets you expand an iterable like an object, string,
+                or array into its elements while <br />
+                the <b>Rest operator</b> does the inverse by reducing a set of elements into one array. <br /> <br />
+
+                See this
+                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax"
+                   target="_blank">document</a> for more info on Spread Syntax. <br /> <br />
+
+
+            </p>
+
+        </div>
+        <div class="divBSet divBorder">
+            <h2>One more explanation</h2>
+
+            <p>
+                The pane on the left is part of the code for choosing food items from
+                two different lists (Produce and Pantry items). <br /> <br />
+
+                Here, though, I just want to expand on two things... <br />
+                <span class="forceGreen">addItem()</span> <br />
+                <span class="forceRed">removeItem()</span> <br /> <br />
+
+                <hr /> <br />
+
+                <b><span class="forceGreen">addItem()</span></b> <br />
+                will add items to your array (<b>cart</b>) as used in the <b>useState()</b> hook. <br /> <br />
+
+                When the food item you want is clicked on (<span class="forceGreen">onItemClick={addItem}</span>)
+                it will run the function <span class="forceGreen">const addItem...</span> <br /> <br />
+
+                The <span class="forceGreen">item</span> passed to the function
+                <span class="forceGreen">const addItem</span> will be the food item
+                clicked on (it comes from the imported class(es)). <br /> <br />
+
+                The <span class="forceGreen">return [item, ...prev]</span> line of code is used to
+                return a new array... <br />
+                With the new <span class="forceGreen">item</span> as the first item in the
+                new array. <br />
+                And the <span class="forceGreen">...prev</span> refers to the
+                array (... means it's an object (array) I think) so it will add the
+                items in the <span class="forceGreen">prev</span> array after the new
+                <span class="forceGreen">item</span>. <br />  <br />
+
+                <hr /> <br />
+
+                <b><span class="forceRed">removeItem()</span></b> <br />
+                The <span class="forceRed">prev.filter((item, index) => index !== targetIndex)</span> command
+                will... <br /> <br />
+
+                filter out (remove) the item you clicked on to be removed from the list. <br /> <br />
+
+                <span class="forceRed">prev.filter</span> is the array we are to be working with
+                (it knows which array by the use of <b>setCart()</b>). <br /> <br />
+
+                The <span class="forceRed">(item, index)</span> it grabs as it reads through the array
+                (automatically happens in the<b>.filter</b> function). <br /> <br />
+
+                And the <span class="forceRed">index !== targetIndex</span> means if the <b>index</b> value of the
+                item in the array it is currently dealing with is NOT EQUAL to the value of
+                <span class="forceRed">targetIndex</span> (passed to it via the <b>onClick</b> event
+                - see <span class="forceRed">removeItem(index)</span>) then it will NOT REMOVE the
+                item from the array. <br /> <br />
+
+
+
+
+
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Grouping variables in an Object</h2>
+
+            <p>
+                When working with variables it can be useful to 
+                group them in an object. <br /> <br />
+
+                <b>const [profile, setProfile] = useState( {} )</b> <br />
+                creates a 'state hook' 
+                variable called <b>profile</b> <br />
+                <em>the <b>{}</b> tells React to create it as an EMPTY OBJECT.</em> <br /> <br />
+
+                Then when we want to populate the <b>profile</b> object we would normally say something like... <br /> <br />
+
+                <b>setProfile( <br />
+                &nbsp;&nbsp;&nbsp; myName: "Gary", <br />
+                &nbsp;&nbsp;&nbsp; myTest: "Test", <br />
+                )</b> <br /> <br />
+
+                <em>which would create <b>profile.myName</b> (the value would be "Gary")</em> <br /> <br />
+
+
+            </p>
+        </div>
+        <div class="divBSet divBorder">
+            <h2>Grouping variables in an Object (2)</h2>
+
+            <p>
+                When working with variables it can be useful to
+                group them in an object. <br /> <br />
+
+                <b>const [profile, setProfile] = useState( { <br />
+                &nbsp;&nbsp;&nbsp;title: "Best Musical Ever", <br />
+                &nbsp;&nbsp;&nbsp;actors: ["George Wilson", "Tim Hughes", "Larry Clements"], <br />
+                &nbsp;&nbsp;&nbsp;locations: { <br />
+                &nbsp;&nbsp;&nbsp;Chicago: { <br />
+                &nbsp;&nbsp;&nbsp;dates: ["1/1", "2/2"] <br />
+                } )</b> <br />
+                creates a 'state hook'
+                variable called <b>profile</b> <br />
+                <em>this time it populates <b>profile</b> when created</em> <br /> <br />
+                                
+                <em>and refer them as <b>profile.title</b> (the value would be "Best Musical Ever")</em> <br /> <br />
+
+                This example also creates <b>profile.actors</b> as an array. <br /> <br />
+
+                And <b>profile.locations</b> as an object which holds <b>profile.locations.Chicago.dates</b> and
+                <b>.dates</b> itself is an array. <br /> <br />
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <!--<div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+
+
+        </div>
+        <div class="divBSet divBorder">
+
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />-->
+
+</body>
+</html>

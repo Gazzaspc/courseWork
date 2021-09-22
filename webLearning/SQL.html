@@ -1,0 +1,632 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>SQL Commands</title>
+
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/MyStyles.css" />
+
+    <style>
+        pre {
+            font-size: 12px;
+            color: blue;
+        }
+    </style>
+
+    <!--Any code that is just for this page and not to go in myScripts.js can go here (or in a SCRIPT area elsewhere
+    on the page or at the end)-->
+    <script>
+                                                        //...Code / Functions etc...
+    </script>
+
+</head>
+<body class="bodyMove">
+    <a href="index.html">Home</a>
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h1>SQL Commands</h1>
+            <h2>SQL / mySQL and PostgreSQL commands</h2>
+
+            <p>
+                Some commands - mainly to remind me in case I forget. <br /> <br />
+
+                <b>NOTE</b> <br />
+                Sometimes there is a difference between SQL, mySQL and PostgreSQL command. <br /> <br /> <br />
+
+                <b><span class="forceRed">PostgreSQL</span> (I think) is case-sensitive in the WHERE CLAUSE</b> <br />
+                So if using PostgreSQL you should consider using, eg... <br /> <br />
+
+                <span class="forceRed"><b>WHERE LOWER(myName) = 'gary kirby'</b> <br />
+                or <br />
+                <b>WHERE UPPER(myName) = 'GARY KIRBY'</b> <br /> 
+                or you can even say <br />
+                <b>WHERE UPPER(myName) = UPPER('Gary kirby')</b></span> <br /> <br />
+
+                <em>in SQL & mySQL you can just say <br />
+                <b>WHERE myName = 'Gary Kirby'</b> <br />
+                and you would get back all Gary Kirby, GARY KIRBY and gary Kirby records.</em> <br> <br /> <br />
+
+
+                And see the document in w3schools for more on
+                <a href="https://www.w3schools.com/sql/default.asp" target="_blank">
+                    SQL Tutorial
+                </a>  - then look at its menu on the left of the page for more SQL Options. <br /> <br />
+
+            </p>
+        </div>
+    </div>
+
+    <div class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>SQL Commands</h2>
+            
+            <p>
+                Some commands - mainly to remind me in case I forget. <br /> <br />
+
+                And see the document in w3schools for more on
+                <a href="https://www.w3schools.com/sql/default.asp" target="_blank">
+                    SQL Tutorial
+                </a>  - then look at its menu on the left of the page for more SQL Options. <br /> <br />
+
+                <em><span class="forceRed">Read in from a table</span> </em> <br /> <br />
+
+                <b>
+                    SELECT * FROM myTable <br />
+                    &nbsp;&nbsp;&nbsp;WHERE myID > 100 <br />
+                    &nbsp;&nbsp;&nbsp;ORDER BY myName, myID;
+                </b> <br /> <br />
+
+                <em><span class="forceRed">Read in from a table using BETWEEN</span> </em> <br /> <br />
+
+                <b>
+                    SELECT * FROM myTable <br />
+                    &nbsp;&nbsp;&nbsp;WHERE myName BETWEEN 'A' and 'J' <br />
+                    &nbsp;&nbsp;&nbsp;ORDER BY myName, myID;
+                </b> <br />
+                <em>
+                    this will find all myName's that start with the letter A and go up to
+                    the letter J (but NOT J followed by other letters, eg Not Ja, Jb etc). <br />
+                    ...may be easier to explain by... <br />
+                    Where myAge BETWEEN 18 and 49 - will give all ages from 18 to 49 inclusive.
+                </em><br /> <br />
+
+                <em><span class="forceRed">Create a table</span> </em> <br /> <br />
+
+                <b>
+                    CREATE TABLE myTABLE ( <br />
+                    &nbsp;&nbsp;&nbsp;myID INTEGER, <br />
+                    &nbsp;&nbsp;&nbsp;myName TEXT, <br />
+                    &nbsp;&nbsp;&nbsp;myAge INTEGER <br />
+                    );
+                </b> <br /> <br />
+
+                <em><span class="forceRed">Create a table with constraints</span> </em> <br /> <br />
+
+                <b>
+                    CREATE TABLE myTABLE ( <br />
+                    &nbsp;&nbsp;&nbsp;myID INTEGER PRIMARY KEY, <br />
+                    &nbsp;&nbsp;&nbsp;myName TEXT UNIQUE, <br />
+                    &nbsp;&nbsp;&nbsp;myAge INTEGER NOT NULL, <br />
+                    &nbsp;&nbsp;&nbsp;mySex VARCHAR(1), <br />
+                    &nbsp;&nbsp;&nbsp;myNickName VARCHAR(20) 'Not Applicable', <br />
+                    &nbsp;&nbsp;&nbsp;myDecimal decimal(7, 2), <br />
+                    &nbsp;&nbsp;&nbsp;myBirthday DATE <br />
+                    );
+                </b> <br />
+                <em>
+                    (see <a href="https://www.w3schools.com/sql/sql_datatypes.asp" target="_blank">
+                        Datatypes
+                    </a> for more info) <br />
+                    (Note decimal(7,2) means 5 digits to left of decimal point and 2 after, total 7 digits)
+                </em>
+                <br /> <br />
+
+                <em><span class="forceRed">Populate a table</span> </em> <br /> <br />
+
+                <b>
+                    INSERT INTO myTable (myID, myName, myAge) <br />
+                    &nbsp;&nbsp;&nbsp;VALUES (1, 'Gary Kirby', 21);
+                </b> <br /> <br />
+
+                <em><span class="forceRed">Add a new field to a table</span> </em> <br /> <br />
+
+                <b>
+                    ALTER TABLE myTable <br />
+                    &nbsp;&nbsp;&nbsp;ADD COLUMN mySex TEXT;
+                </b> <br /> <br />
+
+
+            </p>
+
+        </div>
+        <div class="divBSet divBorder">
+            <p>
+                <br /> <br />
+
+                <em><span class="forceRed">Read in from a table using IN</span> </em> <br /> <br />
+
+                <b>
+                    SELECT * FROM myTable <br />
+                    &nbsp;&nbsp;&nbsp;WHERE myName in ('Gary Kirby', 'Tilly Kirby)';
+                </b> <br /> <br />
+
+                <em><span class="forceRed">Update a field in a table</span> </em> <br /> <br />
+
+                <b>
+                    UPDATE myTable <br />
+                    &nbsp;&nbsp;&nbsp;SET mySex='M' <br />
+                    &nbsp;&nbsp;&nbsp;WHERE myName='Gary Kirby';
+                </b> <br /> <br />
+
+                <em><span class="forceRed">Delete a row from a table</span> </em> <br /> <br />
+
+                <b>
+                    DELETE FROM myTable <br />
+                    &nbsp;&nbsp;&nbsp;WHERE myName="Gary Kirby"; <br />
+
+                    <em><span class="forceRed">or</span></em> <br />
+
+                    DELETE FROM myTable <br />
+                    &nbsp;&nbsp;&nbsp;WHERE mySex IS NULL;
+                </b> <br /> <br />
+
+                <em><span class="forceRed">Select first 100 records only</span> </em> <br /> <br />
+
+                <b>
+                    SELECT TOP 100 * <br />
+                    &nbsp;&nbsp;&nbsp;FROM myTable;
+                </b> <br />
+                <em>(SQL Command)</em><br />
+                <span class="forceRed"><em>or</em></span> <br />
+                <b>
+                    SELECT * <br />
+                    &nbsp;&nbsp;&nbsp;FROM myTable <br />
+                    &nbsp;&nbsp;&nbsp;LIMIT 100;
+                </b> <br />
+                <em>(MySQL command)</em><br /> <br />
+
+                <em><span class="forceRed">Add a constraint to a column</span> </em> <br /> <br />
+
+                <b>
+                    ALTER TABLE myTable <br />
+                    &nbsp;&nbsp;&nbsp;ALTER COLUMN mySex <br />
+                    &nbsp;&nbsp;&nbsp;SET NOT NULL;
+                </b> <br />
+                <em>(this will ADD the constraint 'NOT NULL' to 'mySex')</em> <br /> <br />
+
+                <em><span class="forceRed">Drop a constraint from a column</span> </em> <br /> <br />
+
+                <b>
+                    ALTER TABLE myTable <br />
+                    &nbsp;&nbsp;&nbsp;ALTER COLUMN mySex <br />
+                    &nbsp;&nbsp;&nbsp;DROP NOT NULL;
+                </b> <br />
+                <em>(this will DROP the constraint 'NOT NULL' from 'mySex')</em> <br /> <br />
+
+                <em><span class="forceRed">make a field into a Primary Key</span> </em> <br /> <br />
+
+                <b>
+                    ALTER TABLE myTable <br />
+                    &nbsp;&nbsp;&nbsp;ADD PRIMARY KEY (myID); <br />
+                </b> <br /> <br />
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Check Constraints</h2>
+
+            <p>
+                Here is a document covering
+                <a href="https://www.w3schools.com/sql/default.asp" target="_blank">
+                    PostgreSQL constraints
+                </a>  which could be worth taking a look at. <br /> <br />
+
+                <hr /> <br />
+
+                In some situations, we might want to establish specific rules to determine
+                what makes a row valid. <br />
+                For example, we might want to ensure that the myAge column is: <br />
+                <b>
+                    An Integer <br />
+                    NOT NULL <br />
+                    A Positive value greater than 18 AND less than 80 <br />
+                </b> <br />
+
+                While the first two rules can be handled by the <b>datatype</b> and <b>NOT NULL</b> constraints
+                the last one will need some additional logic to check the value. <br /> <br />
+
+                To do this we need to include the <b>ADD CHECK</b> constraint. <br /> <br />
+
+                For example... <br /> <br />
+
+                <em><span class="forceRed">add a CHECK CONSTRAINT to an existing table</span></em> <br /> <br />
+                <b>
+                    ALTER TABLE myTable <br />
+                    <span class="forceGreen">ADD CHECK (myAge > 18);</span>
+                </b> <br /> <br />
+
+                <em><span class="forceRed">add a CHECK CONSTRAINT while CREATING A TABLE</span></em> <br /> <br />
+                <b>
+                    CREATE TABLE myTABLE ( <br />
+                    &nbsp;&nbsp;&nbsp;myID INTEGER PRIMARY KEY, <br />
+                    &nbsp;&nbsp;&nbsp;myName TEXT UNIQUE, <br />
+                    &nbsp;&nbsp;&nbsp;myAge INTEGER NOT NULL, <br />
+                    &nbsp;&nbsp;&nbsp;mySex VARCHAR(1), <br />
+                    &nbsp;&nbsp;&nbsp;CHECK (myAge > 18 AND myAge < 80) <br />
+                    );
+                </b> <br /> <br />
+
+                The above will allow the system to assign its own 'constraint name' to the CHECK
+                - although this is not really recommended. <br />
+                <b><span class="forceGreen">IDEALLY</span></b> you should give it a 'constraint name' yourself. <br /> <br />
+
+                Eg... <br /> <br />
+
+                <b>
+                    CREATE TABLE myTABLE ( <br />
+                    &nbsp;&nbsp;&nbsp;myID INTEGER PRIMARY KEY, <br />
+                    &nbsp;&nbsp;&nbsp;myName TEXT UNIQUE, <br />
+                    &nbsp;&nbsp;&nbsp;myAge INTEGER NOT NULL, <br />
+                    &nbsp;&nbsp;&nbsp;mySex VARCHAR(1), <br />
+                    &nbsp;&nbsp;&nbsp;<span class="forceGreen">
+                        CONSTRAINT CK_myTable_Age
+                        CHECK (myAge > 18 AND myAge < 80)
+                    </span> <br />
+                    );
+                </b> <br /> <br />
+
+
+
+            </p>
+
+        </div>
+        <div class="divBSet divBorder">
+            <h2>Creating unique constraints</h2>
+
+            <p>
+                As well as making individual fields in a table unique by creating the table, eg... <br /> <br />
+
+                <b>
+                    CREATE TABLE myTest (<br />
+                    &nbsp;&nbsp;&nbsp;id INTEGER PRIMARY KEY, <br />
+                    &nbsp;&nbsp;&nbsp;email VARCHAR(25) UNIQUE, <br />
+                    &nbsp;&nbsp;&nbsp;name VARCHAR(25) <br />
+                    );
+                </b> <br /> <br />
+
+                Or making a field unique AFTER the table was created by, eg... <br /> <br />
+
+                <b>
+                    ALTER TABLE myTest <br />
+                    &nbsp;&nbsp;&nbsp;ADD UNIQUE (email); <br />
+                </b>
+                <em>
+                    NOTE... This only works if there are NO DUPLICATES already in the table in the
+                    email field.
+                </em><br /> <br />
+
+                You can also add a CONSTRAINT that checks multiple fields to make sure that
+                the combination of the fields result in a unique entry, eg... <br /> <br />
+
+                <b>
+                    CREATE TABLE myTest (<br />
+                    &nbsp;&nbsp;&nbsp;id INTEGER PRIMARY KEY, <br />
+                    &nbsp;&nbsp;&nbsp;email VARCHAR(25), <br />
+                    &nbsp;&nbsp;&nbsp;name VARCHAR(25), <br />
+                    &nbsp;&nbsp;&nbsp;UNIQUE (email, name); <br />
+                    );
+                </b> <br />
+                <em>this means that <b>email + name</b>, when combined, must be a unique result.</em><br />
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Foreign Keys</h2>
+
+            <p>
+                See this document from w3schools on
+                <a href="https://www.w3schools.com/sql/sql_foreignkey.asp" target="_blank">
+                    Foreign Keys
+                </a> as there may be slightly different terminology for SQL and
+                MySQL. <br /> <br />
+
+
+                When information in tables depend upon records having to exist in
+                a different table - this is known as <b>Referential Integrity</b>. <br /> <br />
+
+                For example... <br /> <br />
+
+                If we have two tables <b>registrations</b> and <b>talks</b> <br />
+                and people register to visit one of the talks being made then we know that
+                the table <b>registrations</b> must reference the <b>talks</b> table to make
+                sure the talk actually exists. <br /> <br />
+
+                In this case the <b>talks</b> table will be classed as a <b>parent</b> of the
+                <b>registrations (child)</b> table. <br /> <br />
+
+                Referential integrity can be enforced by adding a <b>FOREIGN KEY</b> on the
+                child table that references the primary key of a parent table. <br /> <br />
+
+                Therefore we may have a scenario where the <br />
+                <b>talks</b> table has a Primary Key called <b>id</b> <br />
+                and the <b>registrations</b> table has a field called <b>talk_id</b> that
+                needs to be the same value as one of the <b>talks.id</b> values. <br />
+                So we would use <b>foreign Keys</b> on the <b>registrations</b> table like so... <br /> <br />
+
+                <b>
+                    ALTER TABLE registrations <br />
+                    ADD FOREIGN KEY (talk_id) <br />
+                    REFERENCES talks (id);
+                </b> <br /> <br />
+
+                Or if creating the <b>registrations</b> table from scratch we would... <br /> <br />
+
+                <b>
+                    CREATE TABLE registrations ( <br />
+                    &nbsp;&nbsp;&nbsp;id INTEGER PRIMARY KEY NOT NULL, <br />
+                    &nbsp;&nbsp;&nbsp;talk_id INTEGER NOT NULL, <br />
+                    &nbsp;&nbsp;&nbsp;name VARCHAR(25), <br />
+                    &nbsp;&nbsp;&nbsp;FOREIGN KEY (talk_id) REFERENCES talks (id) <br />
+                    );
+                </b> <br /> <br />
+
+
+
+            </p>
+
+        </div>
+        <div class="divBSet divBorder">
+            <h2>Other SQL Commands</h2>
+
+            <p>
+                There are other commands that I won't go into detail here <br />
+                but are covered in the w3schools SQL Commands site -
+                <a href="https://www.w3schools.com/sql/default.asp" target="_blank">
+                    Found Here
+                </a>  - then look at its menu on the left of the page for more SQL Options. <br /> <br />
+
+                <b>NOTE</b>... <br />
+                Only one <b>ALTER COLUMN</b> command can be used at any one time. <br /> <br />
+
+                But you can <b>ADD</b> more than one field at a time, eg... <br />
+                <b>
+                    ALTER TABLE table_name <br />
+                    &nbsp;&nbsp;&nbsp;ADD column_1 column_definition, <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;column_2 column_definition, <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;... <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;column_n column_definition;
+                </b> <br /> <br />
+
+                <hr /> <br />
+
+                And...some other commands that may be useful (?) like:- <br /> <br />
+
+                <b><span class="forceRed">DELETE / UPDATE CASCADE</span> </b> <br />
+                Some information can be found
+                <a href="https://www.sqlshack.com/delete-cascade-and-update-cascade-in-sql-server-foreign-key/"
+                   target="_blank">Here</a>. <br />
+                It causes the updates or deletes to automatically be applied to
+                any child tables. <br /> <br /> <br />
+
+                <b><span class="forceRed">'LIKE' on the WHERE clause</span> </b> <br />
+                LIKE can be a useful operator when you want to compare similar values. <br />
+                <em>For instance, this movie could be stored as ‘Se7en’ or ‘Seven’.</em> <br />
+                So you could say... <br /> <br />
+                <b>
+                    SELECT * <br />
+                    FROM movies <br />
+                    WHERE title LIKE 'se_en'
+                </b> <br /> <br />
+                <em>
+                    (the search on the where clause is NOT case sensitive (PostgreSQL is I think). <br />
+                    underscore = 1 single chr <br />
+                    % = multiple chr's (2 or more))
+                </em> <br />
+                Visit the w3schools document here for
+                <a href="https://www.w3schools.com/sql/sql_like.asp"
+                   target="_blank">SQL LIKE Operator</a> for examples <br /> <br />
+
+            </p>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Other SQL commands (more)</h2>
+
+            <p>
+                <em><span class="forceRed">Using CASE in SELECT</span> </em> <br /> <br />
+
+                <b>
+                    SELECT myID, myName,  <br />
+                    &nbsp;&nbsp;&nbsp;CASE <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHEN myAge > 70 THEN 'pensioner' <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHEN myAge > 17 THEN 'Adult' <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ELSE 'Child' <br />
+                    &nbsp;&nbsp;&nbsp;END as 'Category' <br />
+                    FROM myTable;
+                </b> <br /> 
+                <em>this will create a column head 'Category' and fill with 
+                Pensioner, Adult or Child</em><br /> <br />
+
+                <em><span class="forceRed">Using DISTINCT in SELECT</span> </em> <br /> <br />
+
+                <b>
+                    SELECT DISTINCT myID, myName  <br />
+                    FROM myTable;
+                </b> <br /> 
+                <em>this will display rows without duplicating the details displayed. <br />
+                    Note... in MS SQL you can also use DISTINCTROW which looks at the whole 
+                    record and not just the displayed details. You could get duplicates displayed
+                    with this as some data not being displayed may be different in the table.</em><br /> <br />
+
+                <em><span class="forceRed">Using COUNT, GROUP BY & HAVING when reading</span> </em> <br /> <br />
+
+                <b>
+                    SELECT count(myID) as Quantity, myAge  <br />
+                    FROM myTable <br />
+                    GROUP BY MyAge <br />
+                    HAVING MyAge > 17;
+                </b> <br /> 
+                <em>this will count the number of records found in each myAge value 
+                and show the count followed by the myAge value for anyone over 17.</em><br /> <br />
+            </p>
+
+        </div>
+        <div class="divBSet divBorder">
+            <h2>SQL Calculations (aka Aggregates)</h2>
+
+            <p>
+                Common aggregates are:- <br /> <br />
+
+                <b>COUNT() - count the number of rows<br />
+                SUM() - sums the values in a column <br />
+                MAX() - gets the largest value <br />
+                MIN() - gets the lowest value <br />
+                AVG() - the average of the values in a column <br />
+                ROUND(a, n) - round the values (to n places) in the column</b> <br /> <br />
+
+                Eg... <br /> <br />
+
+                <b>SELECT ROUND(myVal, 2) as myValRounded, * <br />
+                FROM myTable</b> <br /> <br />
+
+                <span id="myTest" class="redMess"></span>
+                
+            </p>
+
+            <script>
+                function fizzBuzz(n) {
+                    var ans = "";
+
+                    if (n % 3 == 0) { ans += "Fizz" };
+                    if (n % 5 == 0) { ans += "Buzz" };
+                    if (ans == "") { ans = n };
+                    alert(ans);
+                }
+
+                for (i=0; i < 21; i++) {
+                    fizzBuzz(i);
+                }
+
+            </script>
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+            <h2>Some commands entered in one of my 'tests'</h2>
+
+            <pre>
+Select * from parts;
+
+ALTER TABLE parts
+ALTER COLUMN code SET NOT NULL;
+ 
+ALTER TABLE parts
+ADD UNIQUE(code);
+
+UPDATE parts
+SET description='default'
+WHERE description IS NULL; 
+
+ALTER TABLE parts
+ALTER COLUMN description SET NOT NULL;
+
+INSERT INTO parts 
+    (id, description, code, manufacturer_id) 
+    values 
+    (54, 'default', 'V1-009', 9);
+
+ALTER TABLE reorder_options
+ALTER COLUMN price_usd SET NOT NULL;
+
+ALTER TABLE reorder_options
+ALTER COLUMN quantity SET NOT NULL;
+
+ALTER TABLE reorder_options
+ADD CHECK (price_usd>0 and quantity>0);
+
+ALTER TABLE reorder_options
+ADD CHECK (
+    ((price_usd/quantity)> 0.02) 
+    and 
+    ((price_usd/quantity)<25) 
+);
+
+ALTER TABLE parts
+ADD PRIMARY KEY (id);
+
+ALTER TABLE reorder_options
+ADD FOREIGN KEY (part_id) REFERENCES parts (id);
+
+ALTER TABLE locations
+ADD CHECK (qty> 0);
+
+ALTER TABLE locations
+ADD UNIQUE (part_id, location);
+
+ALTER TABLE locations
+ADD FOREIGN KEY (part_id) REFERENCES parts (id);
+
+ALTER TABLE parts
+ADD FOREIGN KEY (manufacturer_id) 
+    REFERENCES manufacturers (id);
+
+INSERT INTO manufacturers (id, name) 
+    values 
+    (11, 'Pip-NNC Industrial');
+
+Select * from manufacturers;
+
+UPDATE parts
+SET manufacturer_id = 11 
+WHERE manufacturer_id=1 or manufacturer_id=2;
+
+Select * from parts;
+
+
+</pre>
+
+
+        </div>
+        <!--<div class="divBSet divBorder">
+
+        </div>-->
+    </div>
+
+    <a href="#">Top</a> <br />
+
+    <!--<div id="myElement" class="divFlex">
+        <div class="divBSet divBorder">
+
+
+        </div>
+        <div class="divBSet divBorder">
+
+        </div>
+    </div>
+
+    <a href="#">Top</a> <br />-->
+
+</body>
+</html>
